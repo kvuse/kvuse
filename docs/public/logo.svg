@@ -1,0 +1,19 @@
+<svg width="165" height="165" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <clipPath id="clip0_301_2">
+   <rect id="svg_1" fill="white" height="165" width="165"/>
+  </clipPath>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_2" clip-path="url(#clip0_301_2)">
+   <text opacity="0.9" stroke="null" transform="matrix(2.107593201477608,0,0,1.708636453998034,-109.04512299328537,-6.092995582899941) " xml:space="preserve" text-anchor="start" font-family="Georgia, Times, 'Times New Roman', serif" font-size="24" id="svg_12" y="56.205822" x="83.423425" stroke-opacity="null" stroke-width="0" fill="#FFB27C">K</text>
+   <text font-weight="normal" stroke="null" transform="matrix(5.807017977918405,0,0,2.0123484134674072,-447.5279456067002,-151.72944124625428) " xml:space="preserve" text-anchor="start" font-family="Euphoria, sans-serif" font-size="24" id="svg_13" y="131.950909" x="83.227401" stroke-opacity="null" stroke-width="0" fill="#729b1b">U</text>
+   <line stroke="null" stroke-linecap="null" stroke-linejoin="null" id="svg_15" y2="115.609375" x2="59.000001" y1="87.609376" x1="47" stroke-opacity="null" fill="none"/>
+  </g>
+ </g>
+</svg>
