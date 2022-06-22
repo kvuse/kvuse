@@ -1,0 +1,36 @@
+{
+  "name": "@kvuse/example",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "serve": "vite preview",
+    "clean": "rm -rf node_modules **/*/node_modules",
+    "stylelint": "stylelint **/*.vue --fix",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^1.1.4",
+    "axios": "^0.21.4",
+    "element-plus": "^2.2.6",
+    "pinia": "^2.0.14",
+    "pinia-persistedstate": "^0.1.2",
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.10.2",
+    "@vue/compiler-sfc": "^3.2.37",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "postcss-html": "^1.4.1",
+    "sass": "^1.52.3",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "unplugin-auto-import": "^0.5.11",
+    "unplugin-vue-components": "^0.17.21",
+    "vite": "^3.0.0-alpha.13"
+  }
+}

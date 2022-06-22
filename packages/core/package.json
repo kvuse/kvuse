@@ -1,0 +1,28 @@
+{
+  "name": "@kvuse/core",
+  "version": "1.0.0",
+  "description": "vue3一些常用的API",
+  "files": [
+    "lib"
+  ],
+  "main": "./lib/k-use.umd.js",
+  "module": "./lib/k-use.es.js",
+  "exports": {
+    ".": {
+      "import": "./lib/k-use.es.js",
+      "require": "./lib/k-use.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview"
+  },
+  "author": "wenxin",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "element-plus": "^2.2.0",
+    "vue": "^3.2.32"
+  }
+}
