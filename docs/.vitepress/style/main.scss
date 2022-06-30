@@ -12,15 +12,20 @@ html:not(.dark) [img-dark] {
   transform: scale(0.9);
 }
 
+.vp-doc {
+  table {
+    margin: 0;
+  }
 
-.vp-doc th, .vp-doc td {
-  padding: 6px 20px;
-  border: 1px solid #8882;
-  border-bottom: 1px solid var(--border-color);
-  padding: 0.6em 1em;
-  text-align: left;
-  max-width: 250px;
-  white-space: pre-wrap;
+  tr,
+  th,
+  td {
+    border: none;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
 }
 
 /* h3 breaks SEO => replaced with h2 with the same size */
@@ -35,4 +40,3 @@ img.resizable-img {
   width: unset;
   height: unset;
 }
-

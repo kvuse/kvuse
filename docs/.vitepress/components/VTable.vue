@@ -1,0 +1,45 @@
+<template>
+  <k-table
+    :header-cell-style="{ background: '#fff', color: '#909399'}"
+    :show-overflow-tooltip="false"
+    :table-column="tableColumn"
+    :table-data="data"
+  />
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  type: { type: String, default: 'attrs' },
+  data: { type: Array, default: () => [] },
+});
+
+const tableColumn = computed(() => {
+  if (props.type === 'attrs') {
+    return [
+      { label: '属性', prop: 'attr' },
+      { label: '类型', prop: 'type' },
+      { label: '说明', prop: 'dec', width: 180  },
+      { label: '可选值', prop: 'optional', width: 180 },
+      { label: '默认', prop: 'default' },
+    ];
+  }
+  if (props.type === 'event') {
+    return [
+      { label: '事件', prop: 'event' },
+      { label: '说明', prop: 'dec' },
+      { label: '回调参数', prop: 'callback' },
+    ];
+  }
+  return [
+    { label: '事件', prop: 'event' },
+    { label: '说明', prop: 'dec' },
+    { label: '回调参数', prop: 'callback' },
+  ];
+});
+</script>
+
+<style lang="scss" scoped>
+
+</style>

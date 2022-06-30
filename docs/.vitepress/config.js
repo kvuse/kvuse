@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
-import { version } from '../package.json'
-import { mdPlugin } from './config/plugins'
+import { useItemList } from './config/useItemList'
+
+const { componentsList } = useItemList()
 
 export default defineConfig({
   lang: 'en-CN',
@@ -16,22 +17,16 @@ export default defineConfig({
     ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
   ],
   lastUpdated: true,
-  markdown: {
-    config: (md) => mdPlugin(md),
-  },
   themeConfig: {
     logo: '/logo1.svg',
 
     editLink: {
-      repo: 'Happylife56/kui-next',
-      branch: 'main',
-      dir: 'docs',
-      text: 'Suggest changes to this page',
+      pattern: 'https://github.com/kvuse/kvuse/master/docs',
     },
 
     socialLinks: [
       // { icon: 'discord', link: discord },
-      { icon: 'github', link: 'https://github.com/Happylife56/kui-next' },
+      { icon: 'github', link: 'https://github.com/kvuse/kvuse' },
     ],
 
     nav: [
@@ -46,19 +41,6 @@ export default defineConfig({
        },
       // { text: 'API', link: '/api/' },
       // { text: 'Config', link: '/config/' },
-      {
-        text: `v${version}`,
-        items: [
-          // {
-          //   text: 'Release Notes ',
-          //   link: releases,
-          // },
-          // {
-          //   text: 'Contributing ',
-          //   link: contributing,
-          // },
-        ],
-      },
     ],
 
     sidebar: {
@@ -66,16 +48,7 @@ export default defineConfig({
       '/': [
         {
           text: '组件',
-          items: [
-            {
-              text: '开始',
-              link: '/components/',
-            },
-            {
-              text: 'button',
-              link: '/components/button',
-            },
-          ],
+          items: componentsList,
         },
         {
           text: '自定义指令',

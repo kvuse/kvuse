@@ -1,0 +1,12 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="302" width="302" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <text stroke="null" transform="rotate(0.5310930013656616 141.99549865722585,119.00305175781331) matrix(6.493143021455082,0,0,4.162249928837928,-620.4370016683093,-213.89606214225356) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_4" y="88.323561" x="109.417697" stroke-opacity="null" stroke-width="0" fill="#fcc72b">K</text>
+  <text stroke="null" transform="matrix(12.923040129906262,0,0,4.831265966372099,-968.4434561649358,-468.2034818004943) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_5" y="147.37291" x="77.139343" stroke-opacity="null" stroke-width="0" fill="#729b1b">U</text>
+ </g>
+</svg>

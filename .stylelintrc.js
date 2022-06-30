@@ -21,7 +21,7 @@ module.exports = {
   },
   "overrides": [
     {
-      "files": ["*.scss", "**/*.scss"],
+      "files": ["*.scss", "**/*.scss","*.css", "**/*.css"],
       "customSyntax": "postcss-scss"
     },
   ]

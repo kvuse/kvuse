@@ -1,14 +1,14 @@
 import { h } from "vue";
 import Theme from "vitepress/theme";
-import "../style/main.css";
+import "../style/main.scss";
 import "../style/vars.css";
 import HomePage from "../components/HomePage.vue";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import * as ElIconModules from "@element-plus/icons-vue";
-import vuecode from "../components/vueCode.vue";
-import demo from "../components/Demo.vue";
-import { KUI } from "kui-next";
+import Demo from "../components/Demo.vue";
+import VTable from "../components/VTable.vue";
+import { KUI } from "@kvuse/components";
 import "../../../styles/common.scss";
 
 export default {
@@ -21,8 +21,8 @@ export default {
   enhanceApp({ app }) {
     app.use(ElementPlus);
     app.use(KUI);
-    app.component("Demo", demo);
-    app.component("vuecode", vuecode);
+    app.component("demo", Demo);
+    app.component("vTable", VTable);
     Object.keys(ElIconModules).forEach((iconName) => {
       if (Reflect.has(ElIconModules, iconName)) {
         const item = ElIconModules[iconName];

@@ -12,7 +12,8 @@
   "author": "wenxin",
   "license": "ISC",
   "dependencies": {
-    "kui-next": "workspace:1.3.0-alpha.14",
+    "@kvuse/components": "workspace:^1.0.1",
+    "highlight.js": "^11.5.1",
     "vue": "^3.2.32"
   },
   "devDependencies": {

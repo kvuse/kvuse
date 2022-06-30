@@ -1,6 +1,6 @@
 <template>
   <el-table :data="tableDataList" style="width: 100%;" class="mt20" :header-cell-style="headerCellStyle" v-bind="$attrs" :empty-text="emptyText" @sort-change="sortChange">
-    <el-table-column v-for="item in tableColumn" :key="item.prop" :label="item.label" :name="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.fixed" :sortable="item.sortable" :type="item.type" show-overflow-tooltip>
+    <el-table-column v-for="item in tableColumn" :key="item.prop" :label="item.label" :name="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.fixed" :sortable="item.sortable" :type="item.type" ：：：水电:show-overflow-tooltip="showOverflowTooltip">
       <template #header v-if="item.header">
         <slot :name="item.header" />
       </template>
@@ -39,6 +39,7 @@ export default defineComponent({
         { label: '姓名', prop: 'name' },
       ],
     },
+    showOverflowTooltip: { type: Boolean, default: true },
     tableData: { type: Array, default: () => [] },
     modelValue: { type: Number, default: 1 },
     total: { type: Number, default: 9 },
