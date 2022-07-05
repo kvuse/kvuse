@@ -5,7 +5,7 @@ const { componentsList } = useItemList()
 
 export default defineConfig({
   lang: 'en-CN',
-  title: 'kui-next',
+  title: 'kvuse',
   description: 'vue3常用的组件以及API',
   head: [
     ['meta', { name: 'theme-color', content: '#ffffff' }],
@@ -16,7 +16,7 @@ export default defineConfig({
     ['link', { rel: 'mask-icon', href: '/logo1.svg', color: '#ffffff' }],
     ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
   ],
-  base:'/kvuse/',
+  // base:'/kvuse/',
   lastUpdated: true,
   themeConfig: {
     logo: '/logo1.svg',
@@ -36,7 +36,8 @@ export default defineConfig({
         items: [
           { 
             text: 'elementPlus组件',
-            link: '/components/'
+            link: '/components/',
+            activeMatch: '/components/'
           }
         ]
        },

@@ -1,1 +1,0 @@
-import{f as l,r as n,o as s,c as r,a as c}from"../app.220716c4.js";const u={class:"width-240"},m={__name:"basic",setup(p){const e=l("");return(_,o)=>{const a=n("k-input");return s(),r("div",u,[c(a,{placeholder:"\u8BF7\u8F93\u5165\u91D1\u989D",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=t=>e.value=t)},null,8,["modelValue"])])}}};export{m as default};

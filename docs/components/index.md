@@ -10,13 +10,13 @@ vue3组件库
 ## 安装
 
 ```bash
-npm i kui-next
+npm i @kvuse/components
 ```
 
 ## 全局引入
 ```js
 import { createApp } from 'vue';
-import { KUI } from 'kui-next';
+import { KUI } from '@kvuse/components';
  
 Vue.use(KUI)
 ```
@@ -34,7 +34,7 @@ import {
   KBreadcrumb,
   KTabs,
   KPicker,
-} from 'kui-next';
+} from '@kvuse/components';
 
 export default {
   components: {

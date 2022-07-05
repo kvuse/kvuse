@@ -2,16 +2,16 @@
 layout: home
 sidebar: false
 
-title: kui-next
+title: kvuse
 titleTemplate: vue3常用的组件以及API
 
 hero:
-  name: kui-next
+  name: kvuse 
   text: 
   tagline: vue3常用的组件以及常用的API
   image:
     src: /logo.svg
-    alt: kui-next
+    alt: kvuse
   actions:
     - theme: brand
       text: 开始

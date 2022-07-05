@@ -7,10 +7,10 @@ vue3组件库
 #### 安装
 ```
 # Npm  
-npm install kui-next
+npm install @kvuse/components
  
 # Yarn  
-yarn add kui-next 
+yarn add @kvuse/components
 ```
 #### 使用 按需引入
 
@@ -25,7 +25,7 @@ import {
   KBreadcrumb,
   KTabs,
   KPicker,
-} from 'kui-next';
+} from '@kvuse/components';
 
 export default {
   components: {
@@ -45,8 +45,8 @@ export default {
 
 ```
 import { createApp } from 'vue';
-import { KUI } from 'kui-next';
-import 'kui-next/lib/style.css';
+import { KUI } from '@kvuse/components';
+import '@kvuse/components/lib/style.css';
  
 Vue.use(KUI)
 ```
