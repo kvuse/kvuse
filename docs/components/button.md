@@ -1,5 +1,4 @@
-# Button 
-
+# Button
 
 ::: tip
 点击之后延时 800ms, 防止重复点击
@@ -29,14 +28,12 @@
 :::
 
 <v-table type="attrs" :data="[
-  { attr :'size', dec: '按钮大小', type: 'String', Optional: 'large / default /small', default: '-' },
-  { attr :'type', dec: '按钮类型', type: 'String', Optional: 'primary / success / warning / danger / info / text', default: '-' },
+  { attr :'size', dec: '按钮大小', type: 'String', optional: 'large / default /small', default: '-' },
+  { attr :'type', dec: '按钮类型', type: 'String', optional: 'primary / success / warning / danger / info / text', default: '-' },
 ]" />
-
 
 ## Button 事件
 
 <v-table type="event" :data="[
   { event :'click', dec: '当用户点击触发该事件', callback: '-' },
 ]" />
-

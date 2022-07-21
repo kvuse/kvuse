@@ -20,8 +20,8 @@ const tableColumn = computed(() => {
     return [
       { label: '属性', prop: 'attr' },
       { label: '类型', prop: 'type' },
-      { label: '说明', prop: 'dec', width: 180  },
-      { label: '可选值', prop: 'optional', width: 180 },
+      { label: '说明', prop: 'dec', width: 200  },
+      { label: '可选值', prop: 'optional', width: '220' },
       { label: '默认', prop: 'default' },
     ];
   }
@@ -33,9 +33,9 @@ const tableColumn = computed(() => {
     ];
   }
   return [
-    { label: '事件', prop: 'event' },
+    { label: '插槽名', prop: 'name' },
     { label: '说明', prop: 'dec' },
-    { label: '回调参数', prop: 'callback' },
+    { label: '子标签', prop: 'child' },
   ];
 });
 </script>

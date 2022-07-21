@@ -1,22 +1,11 @@
 {
   "name": "@kvuse/components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "vue3常用组件",
   "files": [
     "lib"
   ],
-  "main": "./lib/k.umd.js",
-  "module": "./lib/k.es.js",
-  "exports": {
-    ".": {
-      "import": "./lib/k.es.js",
-      "require": "./lib/k.umd.js"
-    },
-    "./lib/style.css": {
-      "import": "./lib/style.css",
-      "require": "./lib/style.css"
-    }
-  },
+  "main": "main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",
@@ -26,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@element-plus/icons-vue": "^1.0.0",
-    "element-plus": "^2.2.0",
+    "element-plus": "^2.2.9",
     "vue": "^3.2.32"
   },
   "devDependencies": {

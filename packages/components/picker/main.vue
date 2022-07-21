@@ -33,6 +33,7 @@
         </div>
       </el-col>
     </el-row>
+    <slot name="footer" />
   </div>
 </template>
 
@@ -54,7 +55,7 @@ export default defineComponent({
     tableData: { type: Array, default: () => [] },
     tableColumn: { type: Array, default: () => [] },
     keyId: { type: String, default: 'id' },
-    keyName: { type: String, default: 'pName' },
+    keyName: { type: String, default: 'name' },
     showCount: { type: Boolean, default: false },
   },
   setup(props, { emit }) {

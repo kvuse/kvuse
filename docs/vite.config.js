@@ -9,6 +9,7 @@ export default defineConfig({
     Components({
       include: [/\.vue/, /\.md/],
       dirs: 'example',
+      allowOverrides: true,
     }),
   ],
   serve: {

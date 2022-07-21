@@ -29,9 +29,15 @@
 <<< @/example/input/point.vue
 </demo>
 
-## 属性
+## Input 属性
 <v-table type="attrs" :data="[
-  { attr :'type', dec: 'integer 只能输入整数', type: 'String', Optional: '-', default: '-' },
-  { attr :'point', dec: '小数点后几位', type: 'Number', Optional: '-', default: 2 },
+  { attr :'type', dec: 'integer 只能输入整数', type: 'String', optional: '-', default: '-' },
+  { attr :'modelValue / v-model', dec: '绑定值', type: 'String / Number', optional: '-', default: '-' },
+  { attr :'point', dec: '小数点后几位', type: 'Number', optional: '-', default: 2 },
+]" />
+
+## Input 事件
+<v-table type="event" :data="[
+  { event :'change', dec: '数值改变的时候触发', callback: 'value' },
 ]" />
 

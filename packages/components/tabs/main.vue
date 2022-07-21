@@ -18,7 +18,7 @@ export default defineComponent({
   name: 'KTabs',
   props: {
     type: { type: String, default: '' },
-    path: { type: String, default: '' },
+    isRouter: { type: Boolean, default: false },
     modelValue: { type: String, default: '' },
     isPadding: { type: Boolean, default: true },
     replace: { type: Boolean, default: false },
@@ -36,23 +36,24 @@ export default defineComponent({
     const instance = getCurrentInstance();
     const route = instance.appContext.config.globalProperties.$route;
     const router = instance.appContext.config.globalProperties.$router;
-    const type = computed(() => props.path || route.params.type || route.name);
+    const active = computed(() => route?.params.type || route?.name);
 
-    const activeName = ref(type.value);
+    const activeName = ref(active.value);
 
     watchEffect(() => {
-      activeName.value = props.modelValue || type.value;
+      activeName.value = props.modelValue || active.value;
       emit('update:modelValue', activeName.value);
     });
 
     const query = computed(() => route.query);
     const handleClick = (tab) => {
-      if (!props.path) {
+      if (props.isRouter) {
         const pathParams = { path: `${tab.paneName}`, query: query.value };
         if (props.replace) router.replace(pathParams);
         else router.push(pathParams);
-      } else emit('tab-click', tab.paneName);
-      emit('change', tab.paneName);
+      }
+      emit('tab-click', tab.paneName);
+      emit('update:modelValue', tab.paneName);
     };
     return { activeName, handleClick };
   },
@@ -71,7 +72,7 @@ export default defineComponent({
   &::after {
     background-color: #d8dce5;
     bottom: 0;
-    content: '';
+    content: "";
     height: 1px;
     left: 0;
     position: absolute;

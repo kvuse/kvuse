@@ -1,0 +1,9 @@
+{
+  "default": true,
+  "MD007": { "indent": 4 },
+  "no-hard-tabs": false,
+  "MD033": {
+    "allowed_elements": [ "demo","v-table"]
+  },
+  "MD013":false
+}

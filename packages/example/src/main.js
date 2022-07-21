@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import ElementPlus from 'element-plus';
+import { KUI } from '@kvuse/components';
 import * as ElIconModules from '@element-plus/icons-vue';
 import router from './router';
 import store from './store';
@@ -8,7 +9,8 @@ import './styles/normalize.css';
 import 'element-plus/dist/index.css';
 
 const app = createApp(App);
-app.use(router).use(store).use(ElementPlus).mount('#app');
+app.use(router).use(store).use(ElementPlus).use(KUI)
+  .mount('#app');
 
 // 统一注册Icon图标
 Object.keys(ElIconModules).forEach((iconName) => {

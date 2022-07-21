@@ -1,6 +1,6 @@
 <template>
   <el-table :data="tableDataList" style="width: 100%;" class="mt20" :header-cell-style="headerCellStyle" v-bind="$attrs" :empty-text="emptyText" @sort-change="sortChange">
-    <el-table-column v-for="item in tableColumn" :key="item.prop" :label="item.label" :name="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.fixed" :sortable="item.sortable" :type="item.type" ：：：水电:show-overflow-tooltip="showOverflowTooltip">
+    <el-table-column v-for="item in tableColumn" :key="item.prop" :label="item.label" :name="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.fixed" :sortable="item.sortable" :type="item.type" :show-overflow-tooltip="showOverflowTooltip">
       <template #header v-if="item.header">
         <slot :name="item.header" />
       </template>
@@ -14,7 +14,7 @@
       <slot name="empty" />
     </template>
   </el-table>
-  <pagination :total="total" v-model="currentPage" @current-change="changePage" />
+  <pagination :total="total" :show-size="showSize" v-model="currentPage" @current-change="changePage" />
 </template>
 
 <script>
@@ -42,6 +42,7 @@ export default defineComponent({
     showOverflowTooltip: { type: Boolean, default: true },
     tableData: { type: Array, default: () => [] },
     modelValue: { type: Number, default: 1 },
+    showSize: { type: Boolean, default: false },
     total: { type: Number, default: 9 },
     size: { type: Number, default: 10 },
   },
@@ -58,15 +59,15 @@ export default defineComponent({
 
     const changePage = (val) => emit('current-change', val);
 
-    const sortChange = ({ column, prop, order }) => {
+    const sortChange = ({ column, order }) => {
       const sortType = order === 'ascending' ? 1 : 0;
       emit('sort-change', {
-        prop,
+        prop: column?.rawColumnKey,
         order,
         sortType,
         currentPage: currentPage.value,
         column,
-        sortColumn: column.rawColumnKey.replace(/[A-Z]/g, (res) => `_${res.toLowerCase()}`),
+        sortColumn: column?.rawColumnKey,
       });
     };
 

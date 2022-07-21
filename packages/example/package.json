@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
+    "@kvuse/components": "workspace:*",
     "axios": "^0.21.4",
-    "element-plus": "^2.2.6",
+    "element-plus": "^2.2.9",
     "pinia": "^2.0.14",
     "pinia-persistedstate": "^0.1.2",
     "vue": "^3.2.37",
@@ -31,6 +32,6 @@
     "stylelint-config-standard-scss": "^3.0.0",
     "unplugin-auto-import": "^0.5.11",
     "unplugin-vue-components": "^0.17.21",
-    "vite": "^3.0.0-alpha.13"
+    "vite": "^3.0.0"
   }
 }

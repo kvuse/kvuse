@@ -14,10 +14,12 @@ npm i @kvuse/components
 ```
 
 ## 全局引入
+
 ```js
 import { createApp } from 'vue';
 import { KUI } from '@kvuse/components';
- 
+import '@kvuse/components/lib/style.css'
+
 Vue.use(KUI)
 ```
 

@@ -8,9 +8,14 @@ export function usePage() {
   const loading = ref(true);
   const isNullData = ref(false);
 
-  // 删除判断是否跳转上一页
-  const getNowPage = (list = listData.value) => {
-    const isLastPage = currentPage.value > 1 && list.length === 1;
+  /**
+   * 删除判断是否跳转上一页
+   * @param {array} delList 删除的商品列表(批量删除)
+   * @param {array} list // 当前商品列表
+   * @returns currentPage
+   */
+  const getNowPage = (delList = [], list = listData.value) => {
+    const isLastPage = currentPage.value > 1 && (list.length === 1 || list.length === delList.length);
     if (isLastPage) currentPage.value--;
     return currentPage.value;
   };

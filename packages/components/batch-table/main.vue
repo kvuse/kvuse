@@ -14,11 +14,11 @@
       <slot name="empty" />
     </template>
   </el-table>
-  <div v-if="$slots.footer" class="mt20 flex-between">
+  <div class="mt20 flex-between">
     <div class="flex1">
-      <slot name="footer" />
+      <slot name="footer" v-if="$slots.footer" />
     </div>
-    <pagination :total="total" class="mt0 ml20" v-model="currentPage" @current-change="changePage" />
+    <pagination :total="total" :show-size="showSize" class="mt0 ml20" v-model="currentPage" @current-change="changePage" />
   </div>
 </template>
 
@@ -36,6 +36,9 @@ export default defineComponent({
   emits: ['update:modelValue', 'update:page', 'current-change', 'row-click'],
   setup(props, { emit }) {
     const multipleTable = ref(null);
+
+    const clear = () => multipleTable.value.clearSelection();
+
     const toggleSelection = (rows) => {
       if (rows) {
         props.tableData.forEach((item) => {
@@ -126,7 +129,7 @@ export default defineComponent({
     const getId = (item) => item[props.keyId];
 
     return {
-      multipleTable, handleSelect, selectAll, handleRowClick, checkSelection, toggleSelection, currentPage, changePage,
+      multipleTable, handleSelect, selectAll, handleRowClick, checkSelection, toggleSelection, currentPage, changePage, clear,
     };
   },
 });

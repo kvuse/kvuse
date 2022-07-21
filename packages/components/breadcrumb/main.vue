@@ -1,40 +1,57 @@
 <template>
-  <div class="k-breadcrumb flex-between" :class="{'style-padding':isPadding}">
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item v-for="item in list" :to="item.path ? { path: item.path } : ''" :key="item.path">
-        {{ item.title }}
-      </el-breadcrumb-item>
-    </el-breadcrumb>
+  <div class="crumb-header flex-between">
+    <div class="crumb-contain">
+      <el-space spacer="/">
+        <span
+          v-for="(item, index) of list" :key="index"
+          :class="{'crumb-item': index !== list.length - 1}" @click="clickHandle(item, index)"
+        >
+          {{ item.title }}
+        </span>
+      </el-space>
+    </div>
     <slot />
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, getCurrentInstance } from 'vue';
 
 export default defineComponent({
   name: 'KBreadcrumb',
   props: {
-    isPadding: { type: Boolean, default: true },
-    list: { type: Array, default: () => [] },
+    list: {
+      type: Array,
+      default: () => ([]),
+    },
   },
-  setup() {
-    return {};
+  setup(props) {
+    const instance = getCurrentInstance();
+    const router = instance.appContext.config.globalProperties.$router;
+
+    const clickHandle = (item, index) => {
+      if (item.url) {
+        window.location.href = item.url;
+        return;
+      }
+      if (item.path) router?.push(item.path);
+      else router?.go((index - props.list.length) + 1);
+    };
+    return { clickHandle };
   },
 });
 </script>
 
-<style lang="scss">
-.k-breadcrumb {
+<style lang="scss" scoped>
+.crumb-header {
   border-bottom: 1px solid #d8dce5;
   height: 50px;
-}
-
-.style-padding {
   padding: 0 20px;
-}
 
-.is-link {
-  color: var(--el-color-primary) !important;
+  .crumb-item {
+    color: var(--el-color-primary) !important;
+    font-weight: 600;
+    cursor: pointer;
+  }
 }
 </style>

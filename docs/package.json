@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress --port 3333 --open",
+    "dev": "vitepress --port 3334 --open",
     "build": "vitepress build",
     "serve": "vitepress serve"
   },
@@ -12,19 +12,17 @@
   "author": "wenxin",
   "license": "ISC",
   "dependencies": {
-    "@kvuse/components": "workspace:^1.0.1",
-    "highlight.js": "^11.5.1",
+    "@element-plus/icons-vue": "^1.0.0",
+    "@kvuse/components": "workspace:^1.0.2",
+    "element-plus": "^2.2.9",
     "vue": "^3.2.32"
   },
   "devDependencies": {
-    "@element-plus/icons-vue": "^1.0.0",
     "@vue/theme": "^1.0.2",
     "@vueuse/core": "^8.6.0",
-    "element-plus": "^2.2.0",
     "markdown-it": "^13.0.1",
     "markdown-it-container": "^3.0.0",
-    "unocss": "^0.39.0",
     "unplugin-vue-components": "^0.19.6",
-    "vitepress": "^1.0.0-alpha.1"
+    "vitepress": "1.0.0-alpha.4"
   }
 }

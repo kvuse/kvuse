@@ -16,7 +16,7 @@ export default defineConfig({
     ['link', { rel: 'mask-icon', href: '/logo1.svg', color: '#ffffff' }],
     ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
   ],
-  // base:'/kvuse/',
+  // base:'/docs/',
   lastUpdated: true,
   themeConfig: {
     logo: '/logo1.svg',

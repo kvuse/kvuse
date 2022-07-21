@@ -1,11 +1,15 @@
 <template>
-  <div class="page-right mt20" v-if="total > size">
-    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" v-model:currentPage="currentPage" :page-sizes="[10, 20, 50, 100]" :page-size="size" :layout="layoutList" :total="total" :small="small" v-bind="$attrs" />
+  <div class="page-right mt20" v-if="showPage">
+    <el-config-provider :locale="locale">
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" v-model:currentPage="currentPage" :page-sizes="[10, 20, 50, 100]" :page-size="size" :layout="layoutList" :total="total" :small="small" :pager-count="pagerCount" />
+    </el-config-provider>
   </div>
 </template>
 
 <script>
 import { computed, defineComponent } from 'vue';
+import { ElConfigProvider } from 'element-plus';
+import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
 export default defineComponent({
   name: 'KPage',
@@ -15,9 +19,16 @@ export default defineComponent({
     total: { type: Number, default: 9 },
     showSize: { type: Boolean, default: false },
     small: { type: Boolean, default: false },
+    pagerCount: { type: Number, default: 7 },
   },
+  components: { ElConfigProvider },
   emits: ['update:modelValue', 'update:size', 'current-change', 'size-change', 'change'],
   setup(props, { emit }) {
+    const locale = zhCn;
+    const showPage = computed(() => {
+      const { total, size, showSize } = props;
+      return showSize ? true : total > size;
+    });
     const currentPage = computed({
       get() {
         return props.modelValue;
@@ -42,7 +53,7 @@ export default defineComponent({
       emit('change', { page: val, size: props.size });
     };
     return {
-      currentPage, layoutList, handleSizeChange, handleCurrentChange,
+      locale, currentPage, layoutList, handleSizeChange, handleCurrentChange, showPage,
     };
   },
 });
