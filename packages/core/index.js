@@ -1,3 +1,4 @@
+export * from './useCommon';
 export * from './useRequest';
 export * from './useMessage';
 export * from './useForm';

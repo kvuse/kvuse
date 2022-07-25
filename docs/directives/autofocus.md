@@ -1,5 +1,4 @@
-
-# focus
+# autofocus
 
 自动获取焦
 
@@ -7,10 +6,10 @@
   <k-input placeholder="自动获取焦点" v-focus></k-input>
 </div>
 
-设置`v-focus`,节点创建的时候触发
+设置`v-autofocus`,节点更新和创建触发
 
 ```html
 <div class="width-240">
-  <k-input placeholder="自动获取焦点" v-focus></k-input>
+  <k-input placeholder="自动获取焦点" v-autofocus></k-input>
 </div>
 ```

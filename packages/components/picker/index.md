@@ -1,6 +1,7 @@
 ## picker组件
 
 ### props
+
 | 属性 | 类型 | 使用说明 |
 | ---- | ----| ---- |
 | modelValue | Array | 勾选的列表 |
@@ -14,6 +15,7 @@
 其他参数看element官网
 
 ### tableColumn参数说明
+
 | Props | 说明 | 类型 |
 | ---- | ----| ---- |
 | custom | 自定义插槽 | string |
@@ -21,7 +23,4 @@
 | minWidth | 对应列的最小宽度 | string |
 | sortable | 对应列是否可以排序 | boolean |
 
-
 ### event
-
-

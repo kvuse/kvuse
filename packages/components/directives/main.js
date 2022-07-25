@@ -8,11 +8,21 @@ export const directives = {
         el.querySelector('input').focus();
       }, 100);
     },
-    // updated: (el) => {
-    //   setTimeout(() => {
-    //     el.querySelector('input').focus();
-    //   }, 100);
-    // },
+  },
+  /**
+   * 输入框自动获取焦点 更新和创建
+   */
+  autofocus: {
+    mounted: (el) => {
+      setTimeout(() => {
+        el.querySelector('input').focus();
+      }, 100);
+    },
+    updated: (el) => {
+      setTimeout(() => {
+        el.querySelector('input').focus();
+      }, 100);
+    },
   },
   /**
    * 返参金额的处理
@@ -25,14 +35,17 @@ export const directives = {
       const value = el.textContent;
       if (typeof Number(value) !== 'number') return;
       let valText = '￥0';
-      const { inter } = binding.modifiers;
-      const valFixed = value >= 0 ? `￥${Number(value).toFixed(2)}` : `-￥${Math.abs(Number(value.toFixed(2)))}`;
+      const { inter, point } = binding.modifiers;
+      const pointNum = point ? binding.value : 2;
+      const valFixed = value >= 0 ? `￥${Number(value).toFixed(pointNum)}` : `-￥${Math.abs(Number(value.toFixed(pointNum)))}`;
       if (inter) valText = value >= 0 ? `￥${value}` : `-￥${Math.abs(value)}`;
       else valText = value ? valFixed : '￥0.00';
       el.innerHTML = `${valText}`;
     },
     updated: (el, binding) => {
-      const valText = binding.value ? `￥${Number(binding.value).toFixed(2)}` : el.textContent;
+      const { point } = binding.modifiers;
+      const pointNum = point ? binding.value : 2;
+      const valText = binding.arg === 'value' && binding.value ? `￥${Number(binding.value).toFixed(pointNum)}` : el.textContent;
       el.innerHTML = valText;
     },
   },

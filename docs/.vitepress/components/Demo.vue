@@ -62,8 +62,8 @@ const props = defineProps({
 
 // 组件
 const comp = defineAsyncComponent(() => {
-  const [folder, file] = props.src.split('/');
-  return import(`../../example/${folder}/${file}.vue`);
+  const [folder, file, last] = props.src.split('/');
+  return import(`../../example/${folder}/${file}${last ? `/${last}` : ''}.vue`);
 });
 
 const showCode = ref(false);

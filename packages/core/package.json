@@ -5,14 +5,7 @@
   "files": [
     "lib"
   ],
-  "main": "./lib/k-use.umd.js",
-  "module": "./lib/k-use.es.js",
-  "exports": {
-    ".": {
-      "import": "./lib/k-use.es.js",
-      "require": "./lib/k-use.umd.js"
-    }
-  },
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",

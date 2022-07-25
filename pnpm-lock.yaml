@@ -87,6 +87,7 @@ importers:
     specifiers:
       '@element-plus/icons-vue': ^1.1.4
       '@kvuse/components': workspace:*
+      '@kvuse/core': workspace:^1.0.0
       '@vitejs/plugin-vue': ^1.10.2
       '@vue/compiler-sfc': ^3.2.37
       axios: ^0.21.4
@@ -109,6 +110,7 @@ importers:
     dependencies:
       '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue/1.1.4_vue@3.2.37
       '@kvuse/components': link:../components
+      '@kvuse/core': link:../core
       axios: registry.npmmirror.com/axios/0.21.4
       element-plus: registry.npmmirror.com/element-plus/2.2.9_vue@3.2.37
       pinia: registry.npmmirror.com/pinia/2.0.16_vue@3.2.37

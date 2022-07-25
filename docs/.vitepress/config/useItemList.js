@@ -34,10 +34,33 @@ export function useItemList(){
       link: '/components/batch-table',
     },
     {
+      text: 'Dialog 对话框',
+      link: '/components/dialog',
+    },
+    {
       text: 'Picker 添加选择器',
       link: '/components/picker',
     },
   ]
 
-  return { componentsList }
+  const directiveList = [
+    {
+      text: 'v-focus',
+      link: '/directives/',
+    },
+    {
+      text: 'v-autofocus',
+      link: '/directives/autofocus',
+    },
+    {
+      text: 'v-money',
+      link: '/directives/money',
+    },
+    {
+      text: 'v-params',
+      link: '/directives/params',
+    },
+  ]
+
+  return { componentsList,directiveList }
 }

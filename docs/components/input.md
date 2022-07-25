@@ -30,6 +30,7 @@
 </demo>
 
 ## Input 属性
+
 <v-table type="attrs" :data="[
   { attr :'type', dec: 'integer 只能输入整数', type: 'String', optional: '-', default: '-' },
   { attr :'modelValue / v-model', dec: '绑定值', type: 'String / Number', optional: '-', default: '-' },
@@ -37,7 +38,7 @@
 ]" />
 
 ## Input 事件
+
 <v-table type="event" :data="[
   { event :'change', dec: '数值改变的时候触发', callback: 'value' },
 ]" />
-

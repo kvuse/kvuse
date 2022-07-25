@@ -19,38 +19,26 @@
 <<< @/example/picker/dialog.vue
 </demo>
 
-## 小型分页
+## 显示数量
 
-设置`small`, 可设置小型分页
+设置`show-count`, 可设置数量选择
 
-<demo md src="pagination/small">
+<demo md src="picker/show-count">
 
-<<< @/example/pagination/small.vue
-</demo>
-
-## 设置最大页码按钮数
-
-默认情况下，当总页数超过 7 页时，Pagination 会折叠多余的页码按钮。 通过 `pager-count` 属性可以设置最大页码按钮数。
-
-<demo md src="pagination/pager-count">
-
-<<< @/example/pagination/pager-count.vue
+<<< @/example/picker/show-count.vue
 </demo>
 
 ## Pagination 属性
 
 <v-table type="attrs" :data="[
-  { attr :'modelValue / v-model', dec: '绑定的当前页数', type: 'number', optional: '-', default: 1 },
-  { attr :'total', dec: '数据的总条数', type: 'number', optional: '-', default: 9 },
-  { attr :'size / v-model:size', dec: '每页显示的条数', type: 'number', optional: '-', default: 10 },
-  { attr :'small', dec: '是否使用小型分页', type: 'boolean', optional: '-', default: false },
-  { attr :'show-size', dec: '是否显示切换页码', type: 'boolean', optional: '-', default: false },
-  { attr :'pager-count', dec: '最多显示的页码按钮', type: 'number', optional: '-', default: 7 },
+  { attr :'modelValue / v-model', dec: '勾选的列表', type: 'array', optional: '-', default: [] },
+  { attr :'table-column', dec: '表格列表', type: 'array', optional: '-', default: '[]' },
+  { attr :'table-data', dec: '表格数据', type: 'array', optional: '-', default: '[]' },
+  { attr :'select-list', dec: '设置选中的数组', type: 'array', optional: '-', default: [] },
+  { attr :'key-id', dec: '设置选择的唯一值', type: 'string', optional: '-', default: 'id' },
+  { attr :'key-name', dec: '设置选择的名字参数', type: 'string', optional: '-', default: 'name' },
 ]" />
 
-## Pagination 事件
+## TableColumn 属性
 
-<v-table type="event" :data="[
-  { event :'current-change', dec: '当用户切换分页的触发该事件', callback: 'currengPage' },
-  { event :'size-change', dec: '当用户切换页码的时候触发', callback: 'curentSize' },
-]" />
+[查看TableColumn属性](/components/batch-table)

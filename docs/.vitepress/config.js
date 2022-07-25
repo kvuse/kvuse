@@ -1,7 +1,9 @@
-import { defineConfig } from 'vitepress'
-import { useItemList } from './config/useItemList'
+import { defineConfig } from 'vitepress';
+import { useItemList } from './config/useItemList';
+import { useApiList } from './config/useApiList';
 
-const { componentsList } = useItemList()
+const { componentsList, directiveList } = useItemList();
+const { apiList } = useApiList();
 
 export default defineConfig({
   lang: 'en-CN',
@@ -10,7 +12,9 @@ export default defineConfig({
   head: [
     ['meta', { name: 'theme-color', content: '#ffffff' }],
     ['link', { rel: 'icon', href: '/logo1.svg', type: 'image/svg+xml' }],
-    ['link', { rel: 'alternate icon', href: '/favicon.ico', type: 'image/png', sizes: '16x16' }],
+    ['link', {
+      rel: 'alternate icon', href: '/favicon.ico', type: 'image/png', sizes: '16x16',
+    }],
     ['meta', { name: 'keywords', content: 'vitest, vite, test, coverage, snapshot, react, vue, preact, svelte, solid, lit, ruby, cypress, puppeteer, jsdom, happy-dom, test-runner, jest, typescript, esm, tinypool, tinyspy, c8, node' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['link', { rel: 'mask-icon', href: '/logo1.svg', color: '#ffffff' }],
@@ -31,22 +35,28 @@ export default defineConfig({
     ],
 
     nav: [
-      { 
-        text: '组件', 
+      {
+        text: '组件',
         items: [
-          { 
+          {
             text: 'elementPlus组件',
             link: '/components/',
-            activeMatch: '/components/'
-          }
-        ]
-       },
-      // { text: 'API', link: '/api/' },
+            activeMatch: '/components/',
+          },
+        ],
+      },
+      { text: 'API', link: '/api/' },
       // { text: 'Config', link: '/config/' },
     ],
 
     sidebar: {
       // TODO: bring sidebar of apis and config back
+      '/api/': [
+        {
+          text: 'API',
+          items: apiList,
+        },
+      ],
       '/': [
         {
           text: '组件',
@@ -54,14 +64,10 @@ export default defineConfig({
         },
         {
           text: '自定义指令',
-          items: [
-            {
-              text: 'v-focus',
-              link: '/directives/',
-            },
-          ],
+          items: directiveList,
         },
       ],
+     
     },
   },
-})
+});
