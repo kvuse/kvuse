@@ -9,11 +9,12 @@ const checkCode = (msg) => message.error(msg);
  * @auth liukai
  * @param {object} axios 实例
  * @param {function} beforeRequest // 请求拦截
- * @param {function} beforeResponse // 响应处理
+ * @param {function} beforeResponse // 响应拦截
+ * @param {function} responseHandler // 响应处理
  * @param {function} errorHandler 报错信息处理
  */
 export function useRequest({
-  instance = axios, beforeRequest, beforeResponse, errorHandler = checkCode, errorResponse,
+  instance = axios, beforeRequest, beforeResponse, responseHandler, errorHandler = checkCode, errorResponse,
 } = {}) {
   if (!instance) {
     instance.defaults = {
@@ -58,8 +59,13 @@ export function useRequest({
         const result = beforeResponse ? await beforeResponse(response) : response;
         return result;
       }
+      // 响应处理
+      if (responseHandler) {
+        const result = await responseHandler(response);
+        return result;
+      }
       const { data, data: { code } } = response || {};
-      if (code === 0) return data;
+      if ([0, 1001].includes(code)) return data;
       if (data) errorResponse(data);
       return errorHandler(response.message);
     },
@@ -79,62 +85,59 @@ export function useRequest({
       if (error.message === 'timeout of 10000ms exceeded') error.message = '网络超时, 请检查网络！';
       // 对返回的错误处理
       if (error.message) return Promise.reject(error);
-      return '';
+      return error;
     },
   );
 
+  /**
+   * 返参正确处理
+   * @param {object} res
+   * @param {boolean} isObject  是否返回对象模式
+   * @returns object | data
+   */
+  const setResult = (res, isObject = false) => {
+    if (isObject) return res;
+    return typeof res.data !== 'undefined' && res.data;
+  };
+
+  /**
+   * 请求方式处理
+   * @param {string} url 请求路径
+   * @param {object} params 请求参数
+   * @param {string} method 请求类型
+   * @param {boolean} isObject 是否返回队形模式
+   * @returns
+   */
+  // eslint-disable-next-line consistent-return
+  const requestHandle = async (url, params, method, isObject) => {
+    try {
+      const res = ['post', 'put'].includes(method)
+        ? await instance({ method, url, data: params })
+        : await instance[method](url, { params });
+      return setResult(res, isObject);
+    } catch (err) {
+      errorHandler(err.message);
+      if (isObject) return err;
+    }
+  };
+
   const $api = {
-    async get(url, params) {
-      try {
-        const res = await axios.get(url, { params });
-        return typeof res.data !== 'undefined' && res.data;
-      } catch (err) {
-        return errorHandler(err.message);
-      }
-    },
-    async post(url, params) {
-      try {
-        const res = await axios({
-          method: 'post',
-          url,
-          data: params,
-        });
-        return typeof res.data !== 'undefined' && res.data;
-      } catch (err) {
-        return errorHandler(err.message);
-      }
-    },
-    async put(url, params) {
-      try {
-        const res = await axios({
-          method: 'put',
-          url,
-          data: params,
-        });
-        return typeof res.data !== 'undefined' && res.data;
-      } catch (err) {
-        return errorHandler(err.message);
-      }
-    },
-    async delete(url, params) {
-      try {
-        const res = await axios.delete(url, { params });
-        return typeof res.data !== 'undefined' && res.data;
-      } catch (err) {
-        return errorHandler(err.message);
-      }
-    },
-    async all(url, params) {
-      try {
-        const res = await axios.all(url, { params });
-        return typeof res.data !== 'undefined' && res.data;
-      } catch (err) {
-        return errorHandler(err.message);
-      }
-    },
+    get: (url, params) => requestHandle(url, params, 'get'),
+    post: (url, params) => requestHandle(url, params, 'post'),
+    put: (url, params) => requestHandle(url, params, 'put'),
+    delete: (url, params) => requestHandle(url, params, 'delete'),
+    all: (url, params) => requestHandle(url, params, 'all'),
+  };
+
+  const $http = {
+    get: (url, params) => requestHandle(url, params, 'get', true),
+    post: (url, params) => requestHandle(url, params, 'post', true),
+    put: (url, params) => requestHandle(url, params, 'put', true),
+    delete: (url, params) => requestHandle(url, params, 'delete', true),
+    all: (url, params) => requestHandle(url, params, 'all', true),
   };
 
   return {
-    $api,
+    $api, $http,
   };
 }

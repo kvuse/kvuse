@@ -1,11 +1,19 @@
 {
   "name": "@kvuse/core",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "vue3一些常用的API",
+  "homepage": "https://kvuse.github.io/docs/api/",
   "files": [
     "lib"
   ],
-  "main": "index.js",
+  "main": "./lib/k-use.umd.js",
+  "module": "./lib/k-use.es.js",
+  "exports": {
+    ".": {
+      "import": "./lib/k-use.es.js",
+      "require": "./lib/k-use.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",

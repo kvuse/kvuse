@@ -46,9 +46,10 @@ export function useFilters() {
   /**
    * 限制小数点后两位
    * @param {number|string} val
+   * @param {number} digits
    * @returns string
    */
-  const rounding = (val) => Number(val.toFixed(2));
+  const rounding = (val, digits = 2) => Number(val.toFixed(digits));
 
   return {
     moneyType, moneyPoint, dataType, paramsType, rounding,

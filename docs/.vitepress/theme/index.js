@@ -2,7 +2,7 @@ import { h } from "vue";
 import Theme from "vitepress/theme";
 import "../style/main.scss";
 import "../style/vars.css";
-import "../../../styles/common.scss";
+import "../style/common.scss";
 import HomePage from "../components/HomePage.vue";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";

@@ -4,10 +4,10 @@ import {
 
 export function useCommon() {
   const instance = getCurrentInstance();
-  console.log('instance.appContext.config.globalProperties: ', instance.appContext.config.globalProperties);
+  const { globalProperties } = instance.appContext.config;
   const {
-    $route, $router, $loading, $message, $pinia, $store,
-  } = instance.appContext.config.globalProperties;
+    $route, $router, $pinia, $store,
+  } = globalProperties;
   const route = $route;
   const router = $router;
 
@@ -28,6 +28,6 @@ export function useCommon() {
   const isDev = computed(() => import.meta.env.MODE === 'development');
 
   return {
-    route, router, nextTick, ref, reactive, computed, watch, watchEffect, onMounted, onUnmounted, routerName, loadPage, isDev, replacePage, $loading, $message, pinia: $pinia, store: $store,
+    route, router, nextTick, ref, reactive, computed, watch, watchEffect, onMounted, onUnmounted, routerName, loadPage, isDev, replacePage, pinia: $pinia, store: $store, globalProperties,
   };
 }

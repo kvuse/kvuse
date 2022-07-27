@@ -44,7 +44,7 @@ export default defineComponent({
         props.tableData.forEach((item) => {
           rows.forEach((row) => {
             if (getId(item) === getId(row)) {
-              nextTick(() => multipleTable.value.toggleRowSelection(item));
+              nextTick(() => multipleTable.value && multipleTable.value.toggleRowSelection(item));
             }
           });
         });

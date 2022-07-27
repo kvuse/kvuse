@@ -1,23 +1,53 @@
-var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { getCurrentScope, onScopeDispose, ref, unref, watch, openBlock, createElementBlock, createElementVNode, warn, computed, getCurrentInstance, inject, provide, onMounted, watchEffect, onBeforeUnmount, toRef, onUnmounted, isRef, defineComponent, mergeProps, renderSlot, useAttrs as useAttrs$1, useSlots, shallowRef, nextTick, onUpdated, withDirectives, createCommentVNode, Fragment, normalizeClass, createBlock, withCtx, resolveDynamicComponent, withModifiers, createVNode, toDisplayString, normalizeStyle, vShow, Transition, Text, reactive, h, resolveComponent, isVNode, render, toRefs, withKeys, createTextVNode } from "vue";
+import { getCurrentInstance, computed, nextTick, ref, reactive, watch, watchEffect, onMounted, onUnmounted, getCurrentScope, onScopeDispose, unref, openBlock, createElementBlock, createElementVNode, warn, provide, inject, onBeforeUnmount, toRef, isRef, defineComponent, mergeProps, renderSlot, useAttrs as useAttrs$1, useSlots, shallowRef, onUpdated, withDirectives, createCommentVNode, Fragment, normalizeClass, createBlock, withCtx, resolveDynamicComponent, withModifiers, createVNode, toDisplayString, normalizeStyle, vShow, Transition, Text, h, shallowReactive, isVNode, render, toRefs, resolveComponent, withKeys, createTextVNode } from "vue";
+function useCommon() {
+  const instance = getCurrentInstance();
+  const { globalProperties } = instance.appContext.config;
+  const {
+    $route,
+    $router,
+    $pinia,
+    $store
+  } = globalProperties;
+  const route = $route;
+  const router = $router;
+  const routerName = computed(() => route.name);
+  const loadPage = (name2, params) => {
+    if (params)
+      router.push({ path: name2, ...params });
+    else if (name2.includes("/"))
+      router.push(name2);
+    else
+      router.push({ name: name2 });
+  };
+  const replacePage = (name2, params) => {
+    if (params)
+      router.replace({ path: name2, ...params });
+    else if (name2.includes("/"))
+      router.replace(name2);
+    else
+      router.replace({ name: name2 });
+  };
+  const isDev = computed(() => false);
+  return {
+    route,
+    router,
+    nextTick,
+    ref,
+    reactive,
+    computed,
+    watch,
+    watchEffect,
+    onMounted,
+    onUnmounted,
+    routerName,
+    loadPage,
+    isDev,
+    replacePage,
+    pinia: $pinia,
+    store: $store,
+    globalProperties
+  };
+}
 var axios$2 = { exports: {} };
 var bind$2 = function bind(fn, thisArg) {
   return function wrap() {
@@ -288,7 +318,13 @@ var settle$1 = function settle(resolve, reject, response) {
   if (!response.status || !validateStatus2 || validateStatus2(response.status)) {
     resolve(response);
   } else {
-    reject(createError$1("Request failed with status code " + response.status, response.config, null, response.request, response));
+    reject(createError$1(
+      "Request failed with status code " + response.status,
+      response.config,
+      null,
+      response.request,
+      response
+    ));
   }
 };
 var utils$9 = utils$d;
@@ -493,7 +529,12 @@ var xhr = function xhrAdapter(config) {
       if (config.timeoutErrorMessage) {
         timeoutErrorMessage = config.timeoutErrorMessage;
       }
-      reject(createError2(timeoutErrorMessage, config, config.transitional && config.transitional.clarifyTimeoutError ? "ETIMEDOUT" : "ECONNABORTED", request2));
+      reject(createError2(
+        timeoutErrorMessage,
+        config,
+        config.transitional && config.transitional.clarifyTimeoutError ? "ETIMEDOUT" : "ECONNABORTED",
+        request2
+      ));
       request2 = null;
     };
     if (utils$6.isStandardBrowserEnv()) {
@@ -662,21 +703,43 @@ function throwIfCancellationRequested(config) {
 var dispatchRequest$1 = function dispatchRequest(config) {
   throwIfCancellationRequested(config);
   config.headers = config.headers || {};
-  config.data = transformData2.call(config, config.data, config.headers, config.transformRequest);
-  config.headers = utils$3.merge(config.headers.common || {}, config.headers[config.method] || {}, config.headers);
-  utils$3.forEach(["delete", "get", "head", "post", "put", "patch", "common"], function cleanHeaderConfig(method) {
-    delete config.headers[method];
-  });
+  config.data = transformData2.call(
+    config,
+    config.data,
+    config.headers,
+    config.transformRequest
+  );
+  config.headers = utils$3.merge(
+    config.headers.common || {},
+    config.headers[config.method] || {},
+    config.headers
+  );
+  utils$3.forEach(
+    ["delete", "get", "head", "post", "put", "patch", "common"],
+    function cleanHeaderConfig(method) {
+      delete config.headers[method];
+    }
+  );
   var adapter = config.adapter || defaults$1.adapter;
   return adapter(config).then(function onAdapterResolution(response) {
     throwIfCancellationRequested(config);
-    response.data = transformData2.call(config, response.data, response.headers, config.transformResponse);
+    response.data = transformData2.call(
+      config,
+      response.data,
+      response.headers,
+      config.transformResponse
+    );
     return response;
   }, function onAdapterRejection(reason) {
     if (!isCancel2(reason)) {
       throwIfCancellationRequested(config);
       if (reason && reason.response) {
-        reason.response.data = transformData2.call(config, reason.response.data, reason.response.headers, config.transformResponse);
+        reason.response.data = transformData2.call(
+          config,
+          reason.response.data,
+          reason.response.headers,
+          config.transformResponse
+        );
       }
     }
     return Promise.reject(reason);
@@ -892,7 +955,12 @@ validators$1.transitional = function transitional(validator2, version2, message2
     }
     if (isDeprecated && !deprecatedWarnings[opt]) {
       deprecatedWarnings[opt] = true;
-      console.warn(formatMessage(opt, " has been deprecated since v" + version2 + " and will be removed in the near future"));
+      console.warn(
+        formatMessage(
+          opt,
+          " has been deprecated since v" + version2 + " and will be removed in the near future"
+        )
+      );
     }
     return validator2 ? validator2(value, opt, opts) : true;
   };
@@ -1156,9 +1224,9 @@ function isSymbol(value) {
   return typeof value == "symbol" || isObjectLike(value) && baseGetTag(value) == symbolTag;
 }
 function arrayMap(array, iteratee) {
-  var index2 = -1, length = array == null ? 0 : array.length, result = Array(length);
-  while (++index2 < length) {
-    result[index2] = iteratee(array[index2], index2, array);
+  var index = -1, length = array == null ? 0 : array.length, result = Array(length);
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
   }
   return result;
 }
@@ -1220,7 +1288,9 @@ var reIsHostCtor = /^\[object .+?Constructor\]$/;
 var funcProto = Function.prototype, objectProto$2 = Object.prototype;
 var funcToString = funcProto.toString;
 var hasOwnProperty$3 = objectProto$2.hasOwnProperty;
-var reIsNative = RegExp("^" + funcToString.call(hasOwnProperty$3).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$");
+var reIsNative = RegExp(
+  "^" + funcToString.call(hasOwnProperty$3).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
+);
 function baseIsNative(value) {
   if (!isObject$1(value) || isMasked(value)) {
     return false;
@@ -1285,10 +1355,10 @@ function hashSet(key, value) {
   return this;
 }
 function Hash(entries) {
-  var index2 = -1, length = entries == null ? 0 : entries.length;
+  var index = -1, length = entries == null ? 0 : entries.length;
   this.clear();
-  while (++index2 < length) {
-    var entry = entries[index2];
+  while (++index < length) {
+    var entry = entries[index];
     this.set(entry[0], entry[1]);
   }
 }
@@ -1313,41 +1383,41 @@ function assocIndexOf(array, key) {
 var arrayProto = Array.prototype;
 var splice = arrayProto.splice;
 function listCacheDelete(key) {
-  var data = this.__data__, index2 = assocIndexOf(data, key);
-  if (index2 < 0) {
+  var data = this.__data__, index = assocIndexOf(data, key);
+  if (index < 0) {
     return false;
   }
   var lastIndex = data.length - 1;
-  if (index2 == lastIndex) {
+  if (index == lastIndex) {
     data.pop();
   } else {
-    splice.call(data, index2, 1);
+    splice.call(data, index, 1);
   }
   --this.size;
   return true;
 }
 function listCacheGet(key) {
-  var data = this.__data__, index2 = assocIndexOf(data, key);
-  return index2 < 0 ? void 0 : data[index2][1];
+  var data = this.__data__, index = assocIndexOf(data, key);
+  return index < 0 ? void 0 : data[index][1];
 }
 function listCacheHas(key) {
   return assocIndexOf(this.__data__, key) > -1;
 }
 function listCacheSet(key, value) {
-  var data = this.__data__, index2 = assocIndexOf(data, key);
-  if (index2 < 0) {
+  var data = this.__data__, index = assocIndexOf(data, key);
+  if (index < 0) {
     ++this.size;
     data.push([key, value]);
   } else {
-    data[index2][1] = value;
+    data[index][1] = value;
   }
   return this;
 }
 function ListCache(entries) {
-  var index2 = -1, length = entries == null ? 0 : entries.length;
+  var index = -1, length = entries == null ? 0 : entries.length;
   this.clear();
-  while (++index2 < length) {
-    var entry = entries[index2];
+  while (++index < length) {
+    var entry = entries[index];
     this.set(entry[0], entry[1]);
   }
 }
@@ -1392,10 +1462,10 @@ function mapCacheSet(key, value) {
   return this;
 }
 function MapCache(entries) {
-  var index2 = -1, length = entries == null ? 0 : entries.length;
+  var index = -1, length = entries == null ? 0 : entries.length;
   this.clear();
-  while (++index2 < length) {
-    var entry = entries[index2];
+  while (++index < length) {
+    var entry = entries[index];
     this.set(entry[0], entry[1]);
   }
 }
@@ -1465,20 +1535,20 @@ function toKey(value) {
 }
 function baseGet(object, path) {
   path = castPath(path, object);
-  var index2 = 0, length = path.length;
-  while (object != null && index2 < length) {
-    object = object[toKey(path[index2++])];
+  var index = 0, length = path.length;
+  while (object != null && index < length) {
+    object = object[toKey(path[index++])];
   }
-  return index2 && index2 == length ? object : void 0;
+  return index && index == length ? object : void 0;
 }
 function get(object, path, defaultValue) {
   var result = object == null ? void 0 : baseGet(object, path);
   return result === void 0 ? defaultValue : result;
 }
 function fromPairs(pairs) {
-  var index2 = -1, length = pairs == null ? 0 : pairs.length, result = {};
-  while (++index2 < length) {
-    var pair = pairs[index2];
+  var index = -1, length = pairs == null ? 0 : pairs.length, result = {};
+  while (++index < length) {
+    var pair = pairs[index];
     result[pair[0]] = pair[1];
   }
   return result;
@@ -1528,13 +1598,6 @@ const off = (element, event, handler, useCapture = false) => {
     element == null ? void 0 : element.removeEventListener(event, handler, useCapture);
   }
 };
-function tryOnScopeDispose(fn) {
-  if (getCurrentScope()) {
-    onScopeDispose(fn);
-    return true;
-  }
-  return false;
-}
 var _a;
 const isClient = typeof window !== "undefined";
 const isNumber = (val) => typeof val === "number";
@@ -1542,6 +1605,13 @@ const isString$1 = (val) => typeof val === "string";
 const noop = () => {
 };
 isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
+function tryOnScopeDispose(fn) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn);
+    return true;
+  }
+  return false;
+}
 function useTimeoutFn(cb, interval, options = {}) {
   const {
     immediate = true
@@ -1620,17 +1690,17 @@ const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !
 const globalKey = "__vueuse_ssr_handlers__";
 _global[globalKey] = _global[globalKey] || {};
 _global[globalKey];
-var __getOwnPropSymbols$c = Object.getOwnPropertySymbols;
-var __hasOwnProp$c = Object.prototype.hasOwnProperty;
-var __propIsEnum$c = Object.prototype.propertyIsEnumerable;
+var __getOwnPropSymbols$e = Object.getOwnPropertySymbols;
+var __hasOwnProp$e = Object.prototype.hasOwnProperty;
+var __propIsEnum$e = Object.prototype.propertyIsEnumerable;
 var __objRest$2 = (source2, exclude) => {
   var target = {};
   for (var prop in source2)
-    if (__hasOwnProp$c.call(source2, prop) && exclude.indexOf(prop) < 0)
+    if (__hasOwnProp$e.call(source2, prop) && exclude.indexOf(prop) < 0)
       target[prop] = source2[prop];
-  if (source2 != null && __getOwnPropSymbols$c)
-    for (var prop of __getOwnPropSymbols$c(source2)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum$c.call(source2, prop))
+  if (source2 != null && __getOwnPropSymbols$e)
+    for (var prop of __getOwnPropSymbols$e(source2)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum$e.call(source2, prop))
         target[prop] = source2[prop];
     }
   return target;
@@ -1774,7 +1844,7 @@ const getScrollBarWidth = () => {
   scrollBarWidth = widthNoScroll - widthWithScroll;
   return scrollBarWidth;
 };
-/*! Element Plus Icons Vue v2.0.5 */
+/*! Element Plus Icons Vue v2.0.6 */
 var export_helper_default = (sfc, props) => {
   let target = sfc.__vccOpts || sfc;
   for (let [key, val] of props)
@@ -2679,11 +2749,12 @@ const iconProps = buildProps({
     type: String
   }
 });
-const __default__$4 = {
+const __default__$5 = {
   name: "ElIcon",
   inheritAttrs: false
 };
-const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__$4), {
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+  ...__default__$5,
   props: iconProps,
   setup(__props) {
     const props = __props;
@@ -2705,7 +2776,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       ], 16);
     };
   }
-}));
+});
 var Icon = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/icon/src/icon.vue"]]);
 const ElIcon = withInstall(Icon);
 let hiddenTextarea = void 0;
@@ -2887,11 +2958,12 @@ const inputEmits = {
 const _hoisted_1$4 = ["role"];
 const _hoisted_2$2 = ["id", "type", "disabled", "formatter", "parser", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder"];
 const _hoisted_3$1 = ["id", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder"];
-const __default__$3 = {
+const __default__$4 = {
   name: "ElInput",
   inheritAttrs: false
 };
-const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__$3), {
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+  ...__default__$4,
   props: inputProps,
   emits: inputEmits,
   setup(__props, { expose, emit }) {
@@ -2939,7 +3011,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       return (_a2 = form == null ? void 0 : form.statusIcon) != null ? _a2 : false;
     });
     const validateState = computed(() => (formItem == null ? void 0 : formItem.validateState) || "");
-    const validateIcon = computed(() => ValidateComponentsMap[validateState.value]);
+    const validateIcon = computed(() => validateState.value && ValidateComponentsMap[validateState.value]);
     const passwordIcon = computed(() => passwordVisible.value ? view_default : hide_default);
     const containerStyle = computed(() => [
       rawAttrs.style,
@@ -2974,7 +3046,9 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       if (autosize) {
         const minRows = isObject(autosize) ? autosize.minRows : void 0;
         const maxRows = isObject(autosize) ? autosize.maxRows : void 0;
-        textareaCalcStyle.value = __spreadValues({}, calcTextareaHeight(textarea.value, minRows, maxRows));
+        textareaCalcStyle.value = {
+          ...calcTextareaHeight(textarea.value, minRows, maxRows)
+        };
       } else {
         textareaCalcStyle.value = {
           minHeight: calcTextareaHeight(textarea.value).minHeight
@@ -3230,15 +3304,14 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
                 unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
                   key: 1,
                   class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("clear")]),
-                  onMousedown: _cache[0] || (_cache[0] = withModifiers(() => {
-                  }, ["prevent"])),
+                  onMousedown: withModifiers(unref(NOOP), ["prevent"]),
                   onClick: clear
                 }, {
                   default: withCtx(() => [
                     createVNode(unref(circle_close_default))
                   ]),
                   _: 1
-                }, 8, ["class"])) : createCommentVNode("v-if", true),
+                }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
                 unref(showPwdVisible) ? (openBlock(), createBlock(unref(ElIcon), {
                   key: 2,
                   class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("password")]),
@@ -3315,7 +3388,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       ]);
     };
   }
-}));
+});
 var Input = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/input/src/input.vue"]]);
 const ElInput = withInstall(Input);
 const obtainAllFocusableElements = (element) => {
@@ -3616,10 +3689,10 @@ const _sfc_main$5 = defineComponent({
     };
   }
 });
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default", { handleKeydown: _ctx.onKeydown });
 }
-var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$2], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/focus-trap/src/focus-trap.vue"]]);
+var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$1], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/focus-trap/src/focus-trap.vue"]]);
 const badgeProps = buildProps({
   value: {
     type: [String, Number],
@@ -3638,10 +3711,11 @@ const badgeProps = buildProps({
   }
 });
 const _hoisted_1$3 = ["textContent"];
-const __default__$2 = {
+const __default__$3 = {
   name: "ElBadge"
 };
-const _sfc_main$4 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__$2), {
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  ...__default__$3,
   props: badgeProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -3684,7 +3758,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       ], 2);
     };
   }
-}));
+});
 var Badge = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/badge/src/badge.vue"]]);
 const ElBadge = withInstall(Badge);
 const buttonTypes = [
@@ -4659,10 +4733,11 @@ function useButtonCustomStyle(props) {
   });
 }
 const _hoisted_1$2 = ["aria-disabled", "disabled", "autofocus", "type"];
-const __default__$1 = {
+const __default__$2 = {
   name: "ElButton"
 };
-const _sfc_main$3 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__$1), {
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  ...__default__$2,
   props: buttonProps,
   emits: buttonEmits,
   setup(__props, { expose, emit }) {
@@ -4762,16 +4837,17 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       ], 14, _hoisted_1$2);
     };
   }
-}));
+});
 var Button = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button.vue"]]);
 const buttonGroupProps = {
   size: buttonProps.size,
   type: buttonProps.type
 };
-const __default__ = {
+const __default__$1 = {
   name: "ElButtonGroup"
 };
-const _sfc_main$2 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__), {
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+  ...__default__$1,
   props: buttonGroupProps,
   setup(__props) {
     const props = __props;
@@ -4788,7 +4864,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       ], 2);
     };
   }
-}));
+});
 var ButtonGroup = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button-group.vue"]]);
 const ElButton = withInstall(Button, {
   ButtonGroup
@@ -4826,7 +4902,7 @@ const TrapFocus = {
     el[FOCUSABLE_CHILDREN] = obtainAllFocusableElements$1(el);
     FOCUS_STACK.push(el);
     if (FOCUS_STACK.length <= 1) {
-      on(document, "keydown", FOCUS_HANDLER);
+      document.addEventListener("keydown", FOCUS_HANDLER);
     }
   },
   updated(el) {
@@ -4837,7 +4913,7 @@ const TrapFocus = {
   unmounted() {
     FOCUS_STACK.shift();
     if (FOCUS_STACK.length === 0) {
-      off(document, "keydown", FOCUS_HANDLER);
+      document.removeEventListener("keydown", FOCUS_HANDLER);
     }
   }
 };
@@ -4939,30 +5015,47 @@ var Overlay = defineComponent({
 });
 const ElOverlay = Overlay;
 const messageTypes = ["success", "info", "warning", "error"];
+const messageDefaults = mutable({
+  customClass: "",
+  center: false,
+  dangerouslyUseHTMLString: false,
+  duration: 3e3,
+  icon: "",
+  id: "",
+  message: "",
+  onClose: void 0,
+  showClose: false,
+  type: "info",
+  offset: 16,
+  zIndex: 0,
+  grouping: false,
+  repeatNum: 1,
+  appendTo: isClient ? document.body : void 0
+});
 const messageProps = buildProps({
   customClass: {
     type: String,
-    default: ""
+    default: messageDefaults.customClass
   },
   center: {
     type: Boolean,
-    default: false
+    default: messageDefaults.center
   },
   dangerouslyUseHTMLString: {
     type: Boolean,
-    default: false
+    default: messageDefaults.dangerouslyUseHTMLString
   },
   duration: {
     type: Number,
-    default: 3e3
+    default: messageDefaults.duration
   },
   icon: {
     type: iconPropType,
-    default: ""
+    default: messageDefaults.icon
   },
   id: {
     type: String,
-    default: ""
+    default: messageDefaults.id
   },
   message: {
     type: definePropType([
@@ -4970,7 +5063,7 @@ const messageProps = buildProps({
       Object,
       Function
     ]),
-    default: ""
+    default: messageDefaults.message
   },
   onClose: {
     type: definePropType(Function),
@@ -4978,78 +5071,95 @@ const messageProps = buildProps({
   },
   showClose: {
     type: Boolean,
-    default: false
+    default: messageDefaults.showClose
   },
   type: {
     type: String,
     values: messageTypes,
-    default: "info"
+    default: messageDefaults.type
   },
   offset: {
     type: Number,
-    default: 20
+    default: messageDefaults.offset
   },
   zIndex: {
     type: Number,
-    default: 0
+    default: messageDefaults.zIndex
   },
   grouping: {
     type: Boolean,
-    default: false
+    default: messageDefaults.grouping
   },
   repeatNum: {
     type: Number,
-    default: 1
+    default: messageDefaults.repeatNum
   }
 });
 const messageEmits = {
   destroy: () => true
 };
-const _sfc_main$1 = defineComponent({
-  name: "ElMessage",
-  components: __spreadValues({
-    ElBadge,
-    ElIcon
-  }, TypeComponents),
+const instances = shallowReactive([]);
+const getInstance = (id) => {
+  const idx = instances.findIndex((instance) => instance.id === id);
+  const current = instances[idx];
+  let prev;
+  if (idx > 0) {
+    prev = instances[idx - 1];
+  }
+  return { current, prev };
+};
+const getLastOffset = (id) => {
+  const { prev } = getInstance(id);
+  if (!prev)
+    return 0;
+  return prev.vm.exposeProxy.bottom;
+};
+const _hoisted_1$1 = ["id"];
+const _hoisted_2$1 = ["innerHTML"];
+const __default__ = {
+  name: "ElMessage"
+};
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  ...__default__,
   props: messageProps,
   emits: messageEmits,
-  setup(props) {
+  setup(__props, { expose }) {
+    const props = __props;
+    const { Close } = TypeComponents;
     const ns = useNamespace("message");
+    const messageRef = ref();
     const visible = ref(false);
-    const badgeType = ref(props.type ? props.type === "error" ? "danger" : props.type : "info");
+    const height = ref(0);
     let stopTimer = void 0;
+    const badgeType = computed(() => props.type ? props.type === "error" ? "danger" : props.type : "info");
     const typeClass = computed(() => {
       const type = props.type;
       return { [ns.bm("icon", type)]: type && TypeComponentsMap[type] };
     });
-    const iconComponent = computed(() => {
-      return props.icon || TypeComponentsMap[props.type] || "";
-    });
+    const iconComponent = computed(() => props.icon || TypeComponentsMap[props.type] || "");
+    const lastOffset = computed(() => getLastOffset(props.id));
+    const offset = computed(() => props.offset + lastOffset.value);
+    const bottom = computed(() => height.value + offset.value);
     const customStyle = computed(() => ({
-      top: `${props.offset}px`,
+      top: `${offset.value}px`,
       zIndex: props.zIndex
     }));
     function startTimer() {
-      if (props.duration > 0) {
-        ({ stop: stopTimer } = useTimeoutFn(() => {
-          if (visible.value)
-            close2();
-        }, props.duration));
-      }
+      if (props.duration === 0)
+        return;
+      ({ stop: stopTimer } = useTimeoutFn(() => {
+        close();
+      }, props.duration));
     }
     function clearTimer() {
       stopTimer == null ? void 0 : stopTimer();
     }
-    function close2() {
+    function close() {
       visible.value = false;
     }
     function keydown({ code }) {
       if (code === EVENT_CODE.esc) {
-        if (visible.value) {
-          close2();
-        }
-      } else {
-        startTimer();
+        close();
       }
     }
     onMounted(() => {
@@ -5061,209 +5171,198 @@ const _sfc_main$1 = defineComponent({
       startTimer();
     });
     useEventListener(document, "keydown", keydown);
-    return {
-      ns,
-      typeClass,
-      iconComponent,
-      customStyle,
+    useResizeObserver(messageRef, () => {
+      height.value = messageRef.value.getBoundingClientRect().height;
+    });
+    expose({
       visible,
-      badgeType,
-      close: close2,
-      clearTimer,
-      startTimer
+      bottom,
+      close
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(Transition, {
+        name: unref(ns).b("fade"),
+        onBeforeLeave: _ctx.onClose,
+        onAfterLeave: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("destroy")),
+        persisted: ""
+      }, {
+        default: withCtx(() => [
+          withDirectives(createElementVNode("div", {
+            id: _ctx.id,
+            ref_key: "messageRef",
+            ref: messageRef,
+            class: normalizeClass([
+              unref(ns).b(),
+              { [unref(ns).m(_ctx.type)]: _ctx.type && !_ctx.icon },
+              unref(ns).is("center", _ctx.center),
+              unref(ns).is("closable", _ctx.showClose),
+              _ctx.customClass
+            ]),
+            style: normalizeStyle(unref(customStyle)),
+            role: "alert",
+            onMouseenter: clearTimer,
+            onMouseleave: startTimer
+          }, [
+            _ctx.repeatNum > 1 ? (openBlock(), createBlock(unref(ElBadge), {
+              key: 0,
+              value: _ctx.repeatNum,
+              type: unref(badgeType),
+              class: normalizeClass(unref(ns).e("badge"))
+            }, null, 8, ["value", "type", "class"])) : createCommentVNode("v-if", true),
+            unref(iconComponent) ? (openBlock(), createBlock(unref(ElIcon), {
+              key: 1,
+              class: normalizeClass([unref(ns).e("icon"), unref(typeClass)])
+            }, {
+              default: withCtx(() => [
+                (openBlock(), createBlock(resolveDynamicComponent(unref(iconComponent))))
+              ]),
+              _: 1
+            }, 8, ["class"])) : createCommentVNode("v-if", true),
+            renderSlot(_ctx.$slots, "default", {}, () => [
+              !_ctx.dangerouslyUseHTMLString ? (openBlock(), createElementBlock("p", {
+                key: 0,
+                class: normalizeClass(unref(ns).e("content"))
+              }, toDisplayString(_ctx.message), 3)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                createCommentVNode(" Caution here, message could've been compromised, never use user's input as message "),
+                createElementVNode("p", {
+                  class: normalizeClass(unref(ns).e("content")),
+                  innerHTML: _ctx.message
+                }, null, 10, _hoisted_2$1)
+              ], 2112))
+            ]),
+            _ctx.showClose ? (openBlock(), createBlock(unref(ElIcon), {
+              key: 2,
+              class: normalizeClass(unref(ns).e("closeBtn")),
+              onClick: withModifiers(close, ["stop"])
+            }, {
+              default: withCtx(() => [
+                createVNode(unref(Close))
+              ]),
+              _: 1
+            }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true)
+          ], 46, _hoisted_1$1), [
+            [vShow, visible.value]
+          ])
+        ]),
+        _: 3
+      }, 8, ["name", "onBeforeLeave"]);
     };
   }
 });
-const _hoisted_1$1 = ["id"];
-const _hoisted_2$1 = ["innerHTML"];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_el_badge = resolveComponent("el-badge");
-  const _component_el_icon = resolveComponent("el-icon");
-  const _component_close = resolveComponent("close");
-  return openBlock(), createBlock(Transition, {
-    name: _ctx.ns.b("fade"),
-    onBeforeLeave: _ctx.onClose,
-    onAfterLeave: _cache[2] || (_cache[2] = ($event) => _ctx.$emit("destroy")),
-    persisted: ""
-  }, {
-    default: withCtx(() => [
-      withDirectives(createElementVNode("div", {
-        id: _ctx.id,
-        class: normalizeClass([
-          _ctx.ns.b(),
-          { [_ctx.ns.m(_ctx.type)]: _ctx.type && !_ctx.icon },
-          _ctx.ns.is("center", _ctx.center),
-          _ctx.ns.is("closable", _ctx.showClose),
-          _ctx.customClass
-        ]),
-        style: normalizeStyle(_ctx.customStyle),
-        role: "alert",
-        onMouseenter: _cache[0] || (_cache[0] = (...args) => _ctx.clearTimer && _ctx.clearTimer(...args)),
-        onMouseleave: _cache[1] || (_cache[1] = (...args) => _ctx.startTimer && _ctx.startTimer(...args))
-      }, [
-        _ctx.repeatNum > 1 ? (openBlock(), createBlock(_component_el_badge, {
-          key: 0,
-          value: _ctx.repeatNum,
-          type: _ctx.badgeType,
-          class: normalizeClass(_ctx.ns.e("badge"))
-        }, null, 8, ["value", "type", "class"])) : createCommentVNode("v-if", true),
-        _ctx.iconComponent ? (openBlock(), createBlock(_component_el_icon, {
-          key: 1,
-          class: normalizeClass([_ctx.ns.e("icon"), _ctx.typeClass])
-        }, {
-          default: withCtx(() => [
-            (openBlock(), createBlock(resolveDynamicComponent(_ctx.iconComponent)))
-          ]),
-          _: 1
-        }, 8, ["class"])) : createCommentVNode("v-if", true),
-        renderSlot(_ctx.$slots, "default", {}, () => [
-          !_ctx.dangerouslyUseHTMLString ? (openBlock(), createElementBlock("p", {
-            key: 0,
-            class: normalizeClass(_ctx.ns.e("content"))
-          }, toDisplayString(_ctx.message), 3)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-            createCommentVNode(" Caution here, message could've been compromised, never use user's input as message "),
-            createElementVNode("p", {
-              class: normalizeClass(_ctx.ns.e("content")),
-              innerHTML: _ctx.message
-            }, null, 10, _hoisted_2$1)
-          ], 2112))
-        ]),
-        _ctx.showClose ? (openBlock(), createBlock(_component_el_icon, {
-          key: 2,
-          class: normalizeClass(_ctx.ns.e("closeBtn")),
-          onClick: withModifiers(_ctx.close, ["stop"])
-        }, {
-          default: withCtx(() => [
-            createVNode(_component_close)
-          ]),
-          _: 1
-        }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true)
-      ], 46, _hoisted_1$1), [
-        [vShow, _ctx.visible]
-      ])
-    ]),
-    _: 3
-  }, 8, ["name", "onBeforeLeave"]);
-}
-var MessageConstructor = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/message/src/message.vue"]]);
-const instances = [];
+var MessageConstructor = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/message/src/message.vue"]]);
 let seed = 1;
-const message = function(options = {}, context) {
+const normalizeOptions = (params) => {
+  const options = !params || isString(params) || isVNode(params) || isFunction(params) ? { message: params } : params;
+  const normalized = {
+    ...messageDefaults,
+    ...options
+  };
+  if (!normalized.appendTo) {
+    normalized.appendTo = document.body;
+  } else if (isString(normalized.appendTo)) {
+    let appendTo = document.querySelector(normalized.appendTo);
+    if (!isElement(appendTo)) {
+      appendTo = document.body;
+    }
+    normalized.appendTo = appendTo;
+  }
+  return normalized;
+};
+const closeMessage = (instance) => {
+  const idx = instances.indexOf(instance);
+  if (idx === -1)
+    return;
+  instances.splice(idx, 1);
+  const { handler } = instance;
+  handler.close();
+};
+const createMessage = ({ appendTo, ...options }, context) => {
+  const { nextZIndex } = useZIndex();
+  const id = `message_${seed++}`;
+  const userOnClose = options.onClose;
+  const container = document.createElement("div");
+  const props = {
+    ...options,
+    zIndex: nextZIndex() + options.zIndex,
+    id,
+    onClose: () => {
+      userOnClose == null ? void 0 : userOnClose();
+      closeMessage(instance);
+    },
+    onDestroy: () => {
+      render(null, container);
+    }
+  };
+  const vnode = createVNode(MessageConstructor, props, isFunction(props.message) || isVNode(props.message) ? { default: props.message } : null);
+  vnode.appContext = context || message$1._context;
+  render(vnode, container);
+  appendTo.appendChild(container.firstElementChild);
+  const vm = vnode.component;
+  const handler = {
+    close: () => {
+      vm.exposeProxy.visible = false;
+    }
+  };
+  const instance = {
+    id,
+    vnode,
+    vm,
+    handler,
+    props: vnode.component.props
+  };
+  return instance;
+};
+const message$1 = (options = {}, context) => {
   if (!isClient)
     return { close: () => void 0 };
   if (isNumber(messageConfig.max) && instances.length >= messageConfig.max) {
     return { close: () => void 0 };
   }
-  if (!isVNode(options) && isObject(options) && options.grouping && !isVNode(options.message) && instances.length) {
-    const tempVm = instances.find((item) => {
-      var _a2, _b, _c;
-      return `${(_b = (_a2 = item.vm.props) == null ? void 0 : _a2.message) != null ? _b : ""}` === `${(_c = options.message) != null ? _c : ""}`;
+  const normalized = normalizeOptions(options);
+  if (normalized.grouping && instances.length) {
+    const instance2 = instances.find(({ vnode: vm }) => {
+      var _a2;
+      return ((_a2 = vm.props) == null ? void 0 : _a2.message) === normalized.message;
     });
-    if (tempVm) {
-      tempVm.vm.component.props.repeatNum += 1;
-      tempVm.vm.component.props.type = (options == null ? void 0 : options.type) || "info";
-      return {
-        close: () => vm.component.proxy.visible = false
-      };
+    if (instance2) {
+      instance2.props.repeatNum += 1;
+      instance2.props.type = normalized.type;
+      return instance2.handler;
     }
   }
-  if (isString(options) || isVNode(options)) {
-    options = { message: options };
-  }
-  let verticalOffset = options.offset || 20;
-  instances.forEach(({ vm: vm2 }) => {
-    var _a2;
-    verticalOffset += (((_a2 = vm2.el) == null ? void 0 : _a2.offsetHeight) || 0) + 16;
-  });
-  verticalOffset += 16;
-  const { nextZIndex } = useZIndex();
-  const id = `message_${seed++}`;
-  const userOnClose = options.onClose;
-  const props = __spreadProps(__spreadValues({
-    zIndex: nextZIndex()
-  }, options), {
-    offset: verticalOffset,
-    id,
-    onClose: () => {
-      close(id, userOnClose);
-    }
-  });
-  let appendTo = document.body;
-  if (isElement(options.appendTo)) {
-    appendTo = options.appendTo;
-  } else if (isString(options.appendTo)) {
-    appendTo = document.querySelector(options.appendTo);
-  }
-  if (!isElement(appendTo)) {
-    appendTo = document.body;
-  }
-  const container = document.createElement("div");
-  container.className = `container_${id}`;
-  const messageContent = props.message;
-  const vm = createVNode(MessageConstructor, props, isFunction(messageContent) ? { default: messageContent } : isVNode(messageContent) ? { default: () => messageContent } : null);
-  vm.appContext = context || message._context;
-  vm.props.onDestroy = () => {
-    render(null, container);
-  };
-  render(vm, container);
-  instances.push({ vm });
-  appendTo.appendChild(container.firstElementChild);
-  return {
-    close: () => vm.component.proxy.visible = false
-  };
+  const instance = createMessage(normalized, context);
+  instances.push(instance);
+  return instance.handler;
 };
 messageTypes.forEach((type) => {
-  message[type] = (options = {}, appContext) => {
-    if (isString(options) || isVNode(options)) {
-      options = {
-        message: options
-      };
-    }
-    return message(__spreadProps(__spreadValues({}, options), {
-      type
-    }), appContext);
+  message$1[type] = (options = {}, appContext) => {
+    const normalized = normalizeOptions(options);
+    return message$1({ ...normalized, type }, appContext);
   };
 });
-function close(id, userOnClose) {
-  const idx = instances.findIndex(({ vm: vm2 }) => id === vm2.component.props.id);
-  if (idx === -1)
-    return;
-  const { vm } = instances[idx];
-  if (!vm)
-    return;
-  userOnClose == null ? void 0 : userOnClose(vm);
-  const removedHeight = vm.el.offsetHeight;
-  instances.splice(idx, 1);
-  const len = instances.length;
-  if (len < 1)
-    return;
-  for (let i = idx; i < len; i++) {
-    const pos = Number.parseInt(instances[i].vm.el.style["top"], 10) - removedHeight - 16;
-    instances[i].vm.component.props.offset = pos;
+function closeAll(type) {
+  for (const instance of instances) {
+    if (!type || type === instance.props.type) {
+      instance.handler.close();
+    }
   }
 }
-function closeAll() {
-  var _a2;
-  for (let i = instances.length - 1; i >= 0; i--) {
-    const instance = instances[i].vm.component;
-    (_a2 = instance == null ? void 0 : instance.proxy) == null ? void 0 : _a2.close();
-  }
-}
-message.closeAll = closeAll;
-message._context = null;
-const ElMessage = withInstallFunction(message, "$message");
+message$1.closeAll = closeAll;
+message$1._context = null;
+const ElMessage = withInstallFunction(message$1, "$message");
 const _sfc_main = defineComponent({
   name: "ElMessageBox",
   directives: {
     TrapFocus
   },
-  components: __spreadValues({
+  components: {
     ElButton,
     ElFocusTrap,
     ElInput,
     ElOverlay,
-    ElIcon
-  }, TypeComponents),
+    ElIcon,
+    ...TypeComponents
+  },
   inheritAttrs: false,
   props: {
     buttonSize: {
@@ -5316,6 +5415,7 @@ const _sfc_main = defineComponent({
     const visible = ref(false);
     const { nextZIndex } = useZIndex();
     const state = reactive({
+      autofocus: true,
       beforeClose: null,
       callback: null,
       cancelButtonText: "",
@@ -5373,8 +5473,12 @@ const _sfc_main = defineComponent({
     watch(() => visible.value, (val) => {
       var _a2, _b;
       if (val) {
-        if (props.boxType === "alert" || props.boxType === "confirm") {
-          focusStartRef.value = (_b = (_a2 = confirmRef.value) == null ? void 0 : _a2.$el) != null ? _b : rootRef.value;
+        if (props.boxType !== "prompt") {
+          if (state.autofocus) {
+            focusStartRef.value = (_b = (_a2 = confirmRef.value) == null ? void 0 : _a2.$el) != null ? _b : rootRef.value;
+          } else {
+            focusStartRef.value = rootRef.value;
+          }
         }
         state.zIndex = nextZIndex();
       }
@@ -5384,7 +5488,11 @@ const _sfc_main = defineComponent({
         nextTick().then(() => {
           var _a22;
           if (inputRef.value && inputRef.value.$el) {
-            focusStartRef.value = (_a22 = getInputElement()) != null ? _a22 : rootRef.value;
+            if (state.autofocus) {
+              focusStartRef.value = (_a22 = getInputElement()) != null ? _a22 : rootRef.value;
+            } else {
+              focusStartRef.value = rootRef.value;
+            }
           }
         });
       } else {
@@ -5481,7 +5589,8 @@ const _sfc_main = defineComponent({
       useLockscreen(visible);
     }
     useRestoreActive(visible);
-    return __spreadProps(__spreadValues({}, toRefs(state)), {
+    return {
+      ...toRefs(state),
       ns,
       overlayEvent,
       visible,
@@ -5504,7 +5613,7 @@ const _sfc_main = defineComponent({
       handleInputEnter,
       handleAction,
       t
-    });
+    };
   }
 });
 const _hoisted_1 = ["aria-label", "aria-describedby"];
@@ -5808,11 +5917,12 @@ function messageBoxFactory(boxType) {
     } else {
       title = titleOrOpts;
     }
-    return MessageBox(Object.assign(__spreadValues({
+    return MessageBox(Object.assign({
       title,
       message: message2,
-      type: ""
-    }, MESSAGE_BOX_DEFAULT_OPTS[boxType]), options, {
+      type: "",
+      ...MESSAGE_BOX_DEFAULT_OPTS[boxType]
+    }, options, {
       boxType
     }), appContext);
   };
@@ -5834,189 +5944,10 @@ _MessageBox.install = (app) => {
   app.config.globalProperties.$prompt = _MessageBox.prompt;
 };
 const ElMessageBox = _MessageBox;
-function getSource(url) {
-  if (url.includes("/admin/"))
-    return "admin";
-  if (url.includes("/erp/"))
-    return "erp";
-  return "";
-}
-function interceptors(code, config) {
-  const piniaSessions = JSON.parse(sessionStorage.getItem("pinia"));
-  const source2 = getSource(config.url);
-  if (source2 === "admin") {
-    if (code === 20001) {
-      clearStorage();
-      parent.window.postMessage("outLogin()", "*");
-    }
-  }
-  if (source2 === "erp") {
-    const codeList = [32101, 20001];
-    const isClient2 = /electron/i.test(window.navigator.userAgent);
-    if (codeList.includes(code)) {
-      clearStorage();
-      if (isClient2)
-        return;
-      const webLoginOutUrl = piniaSessions == null ? void 0 : piniaSessions.home.baseGlobal.webLoginOutUrl;
-      if (webLoginOutUrl)
-        window.location.href = piniaSessions == null ? void 0 : piniaSessions.home.baseGlobal.webLoginOutUrl;
-    }
-  }
-}
-function clearStorage() {
-  localStorage.clear();
-  sessionStorage.clear();
-}
-function checkCode(message2) {
-  if (!message2)
-    return;
-  ElMessage.closeAll();
-  ElMessage({ message: message2, type: "error", customClass: "deep-message" });
-}
-axios.defaults.timeout = 1e4;
-axios.defaults.withCredentials = true;
-axios.defaults.headers = {
-  "X-Requested-With": "XMLHttpRequest",
-  "Content-Type": "application/json; charset=UTF-8"
-};
-const pending = [];
-const cancelToken = axios.CancelToken;
-const removePending = (config) => {
-  const resUrl = `${config.url}&${config.method}`;
-  for (const p in pending) {
-    if (pending[p].url === resUrl) {
-      pending[p].fn();
-      pending.splice(p, 1);
-    }
-  }
-};
-axios.interceptors.request.use((config) => {
-  const { url, params, data } = config;
-  const urlKey = (config.url.match(new RegExp("(?<={).*?(?=})")) || [])[0];
-  const paramsData = params || data || {};
-  const retailId = JSON.parse(sessionStorage.getItem("retailId"));
-  if (urlKey) {
-    const replaceKey = urlKey === "retailId" ? paramsData[urlKey] || retailId : paramsData[urlKey];
-    config.url = url.replace(new RegExp("(?={).*?(?<=})"), replaceKey);
-  }
-  if (retailId)
-    config.headers.retailId = retailId;
-  removePending(config);
-  config.cancelToken = new cancelToken((cf) => {
-    pending.push({ url: `${config.url}&${config.method}`, fn: cf });
-  });
-  return config;
-}, (error) => Promise.reject(error));
-axios.interceptors.response.use((response) => {
-  removePending(response.config);
-  const { data, data: { code }, config } = response || {};
-  interceptors(code, config);
-  if (code === 0)
-    return data;
-  return checkCode(response.message);
-}, (error) => {
-  if (error && error.response) {
-    const { data, status, config } = error.response;
-    if (status)
-      interceptors(data.code, config);
-    if (data.errors && data.errors.length)
-      error.message = data.errors[0].message || data.message;
-    else {
-      switch (status) {
-        case 400:
-          error.message = "\u8BF7\u6C42\u9519\u8BEF";
-          break;
-        case 401:
-          error.message = "\u767B\u5F55\u8FC7\u671F\uFF0C\u8BF7\u91CD\u65B0\u767B\u5F55";
-          break;
-        case 403:
-          error.message = "\u62D2\u7EDD\u8BBF\u95EE";
-          break;
-        case 404:
-          error.message = "\u8BF7\u6C42\u5931\u8D25";
-          break;
-        case 408:
-          error.message = "\u8BF7\u6C42\u8D85\u65F6";
-          break;
-        case 500:
-          error.message = "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF";
-          break;
-        case 501:
-          error.message = "\u670D\u52A1\u672A\u5B9E\u73B0";
-          break;
-        case 502:
-          error.message = "\u65E0\u6CD5\u8FDE\u63A5\u670D\u52A1\u5668";
-          break;
-        case 503:
-          error.message = "\u670D\u52A1\u4E0D\u53EF\u7528";
-          break;
-        case 504:
-          error.message = "\u8FDE\u63A5\u670D\u52A1\u5668\u8D85\u65F6";
-          break;
-        case 505:
-          error.message = "HTTP\u7248\u672C\u4E0D\u53D7\u652F\u6301";
-          break;
-      }
-    }
-  }
-  if (error.message === "timeout of 10000ms exceeded")
-    error.message = "\u7F51\u7EDC\u8D85\u65F6, \u8BF7\u68C0\u67E5\u7F51\u7EDC\uFF01";
-  return Promise.reject(error);
-});
-var index = {
-  async get(url, params) {
-    try {
-      const res = await axios.get(url, { params });
-      return typeof res.data !== "undefined" && res.data;
-    } catch (err) {
-      return checkCode(err.message);
-    }
-  },
-  async post(url, params) {
-    try {
-      const res = await axios({
-        method: "post",
-        url,
-        data: params
-      });
-      return typeof res.data !== "undefined" && res.data;
-    } catch (err) {
-      return checkCode(err.message);
-    }
-  },
-  async put(url, params) {
-    try {
-      const res = await axios({
-        method: "put",
-        url,
-        data: params
-      });
-      return typeof res.data !== "undefined" && res.data;
-    } catch (err) {
-      return checkCode(err.message);
-    }
-  },
-  async delete(url, params) {
-    try {
-      const res = await axios.delete(url, { params });
-      return typeof res.data !== "undefined" && res.data;
-    } catch (err) {
-      return checkCode(err.message);
-    }
-  },
-  async all(url, params) {
-    try {
-      const res = await axios.all(url, { params });
-      return typeof res.data !== "undefined" && res.data;
-    } catch (err) {
-      return checkCode(err.message);
-    }
-  }
-};
 function useMessage() {
   const setOption = (text, type, arg) => {
     ElMessage.closeAll();
-    ElMessage(__spreadValues({ message: text, type }, arg));
+    ElMessage({ message: text, type, ...arg });
   };
   const message2 = {
     error: (text, arg) => setOption(text, "error", arg),
@@ -6053,6 +5984,129 @@ function useMessage() {
     messageBox
   };
 }
+const { message } = useMessage();
+const checkCode = (msg) => message.error(msg);
+function useRequest({
+  instance = axios,
+  beforeRequest,
+  beforeResponse,
+  responseHandler,
+  errorHandler = checkCode,
+  errorResponse
+} = {}) {
+  if (!instance) {
+    instance.defaults = {
+      instance: 1e3,
+      withCredentials: true,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        "Content-Type": "application/json; charset=UTF-8"
+      }
+    };
+  }
+  const pending = [];
+  const cancelToken = instance.CancelToken;
+  const removePending = (config) => {
+    const resUrl = `${config.url}&${config.method}`;
+    for (const p in pending) {
+      if (pending[p].url === resUrl) {
+        pending[p].fn();
+        pending.splice(p, 1);
+      }
+    }
+  };
+  instance.interceptors.request.use(async (config) => {
+    const result = beforeRequest ? await beforeRequest(config) : config;
+    removePending(result);
+    result.cancelToken = new cancelToken((cf) => {
+      pending.push({ url: `${result.url}&${result.method}`, fn: cf });
+    });
+    return result;
+  });
+  instance.interceptors.response.use(
+    async (response) => {
+      removePending(response.config);
+      if (beforeResponse) {
+        const result = beforeResponse ? await beforeResponse(response) : response;
+        return result;
+      }
+      if (responseHandler) {
+        const result = await responseHandler(response);
+        return result;
+      }
+      const { data, data: { code } } = response || {};
+      if ([0, 1001].includes(code))
+        return data;
+      if (data)
+        errorResponse(data);
+      return errorHandler(response.message);
+    },
+    async (error) => {
+      if (error && error.response) {
+        const { data, status } = error.response;
+        if (status && errorResponse)
+          await errorResponse(data);
+        if (data.errors && data.errors.length)
+          error.message = data.errors[0].message || data.message;
+        else {
+          const errorStatus = {
+            400: "\u8BF7\u6C42\u9519\u8BEF",
+            401: "\u767B\u5F55\u8FC7\u671F\uFF0C\u8BF7\u91CD\u65B0\u767B\u5F55",
+            403: "\u62D2\u7EDD\u8BBF\u95EE",
+            404: "\u8BF7\u6C42\u5931\u8D25",
+            408: "\u8BF7\u6C42\u8D85\u65F6",
+            500: "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF",
+            501: "\u670D\u52A1\u672A\u5B9E\u73B0",
+            502: "\u65E0\u6CD5\u8FDE\u63A5\u670D\u52A1\u5668",
+            503: "\u670D\u52A1\u4E0D\u53EF\u7528",
+            504: "\u8FDE\u63A5\u670D\u52A1\u5668\u8D85\u65F6",
+            505: "HTTP\u7248\u672C\u4E0D\u53D7\u652F\u6301"
+          };
+          error.message = errorStatus[status];
+        }
+        errorHandler(error.message);
+      }
+      if (error.message === "timeout of 10000ms exceeded")
+        error.message = "\u7F51\u7EDC\u8D85\u65F6, \u8BF7\u68C0\u67E5\u7F51\u7EDC\uFF01";
+      if (error.message)
+        return Promise.reject(error);
+      return error;
+    }
+  );
+  const setResult = (res, isObject2 = false) => {
+    if (isObject2)
+      return res;
+    return typeof res.data !== "undefined" && res.data;
+  };
+  const requestHandle = async (url, params, method, isObject2) => {
+    try {
+      const res = ["post", "put"].includes(method) ? await instance({ method, url, data: params }) : await instance[method](url, { params });
+      return setResult(res, isObject2);
+    } catch (err) {
+      errorHandler(err.message);
+      if (isObject2)
+        return err;
+    }
+  };
+  const $api = {
+    get: (url, params) => requestHandle(url, params, "get"),
+    post: (url, params) => requestHandle(url, params, "post"),
+    put: (url, params) => requestHandle(url, params, "put"),
+    delete: (url, params) => requestHandle(url, params, "delete"),
+    all: (url, params) => requestHandle(url, params, "all")
+  };
+  const $http = {
+    get: (url, params) => requestHandle(url, params, "get", true),
+    post: (url, params) => requestHandle(url, params, "post", true),
+    put: (url, params) => requestHandle(url, params, "put", true),
+    delete: (url, params) => requestHandle(url, params, "delete", true),
+    all: (url, params) => requestHandle(url, params, "all", true)
+  };
+  return {
+    $api,
+    $http
+  };
+}
 function useForm() {
   const ruleFormRef = ref(null);
   const submitForm = (formRef = ruleFormRef) => {
@@ -6078,8 +6132,8 @@ function usePage() {
   const listData = ref([]);
   const loading = ref(true);
   const isNullData = ref(false);
-  const getNowPage = (list = listData.value) => {
-    const isLastPage = currentPage.value > 1 && list.length === 1;
+  const getNowPage = (delList = [], list = listData.value) => {
+    const isLastPage = currentPage.value > 1 && (list.length === 1 || list.length === delList.length);
     if (isLastPage)
       currentPage.value--;
     return currentPage.value;
@@ -6135,7 +6189,7 @@ function useFilters() {
     }
     return "-";
   };
-  const rounding = (val) => Number(val.toFixed(2));
+  const rounding = (val, digits = 2) => Number(val.toFixed(digits));
   return {
     moneyType,
     moneyPoint,
@@ -6144,4 +6198,4 @@ function useFilters() {
     rounding
   };
 }
-export { index as request, useFilters, useForm, useMessage, usePage };
+export { useCommon, useFilters, useForm, useMessage, usePage, useRequest };

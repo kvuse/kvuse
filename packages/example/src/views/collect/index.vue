@@ -6,12 +6,27 @@
 </template>
 
 <script setup>
-import { useCommon } from '@kvuse/core';
+import { useRequest } from '@kvuse/core';
 import test from './test.vue';
 
-const { router, route } = useCommon();
-console.log('router, route: ', router, route);
-console.log('router: ', router);
+const { $api, $http } = useRequest({
+  responseHandler(response) {
+    const { data, data: { code } } = response || {};
+    if (code === 0) return data;
+    // 报错处理
+    return data;
+  },
+});
+
+const getData = async () => {
+  const result = await $api.get('/erp/global');
+  console.log('result: ', result);
+  const { code, data, message } = await $http.get('/erp/global/list');
+  console.log('code,data,message: ', code, data, message);
+};
+onMounted(() => {
+  getData();
+});
 </script>
 
 <style lang="scss" scoped>
