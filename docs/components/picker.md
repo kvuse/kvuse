@@ -8,6 +8,14 @@
 
 </demo>
 
+## 插槽使用
+
+<demo md src="picker/slots">
+
+<<< @/example/picker/slots.vue
+
+</demo>
+
 ## 弹框模式
 
 :::tip
@@ -42,3 +50,10 @@
 ## TableColumn 属性
 
 [查看TableColumn属性](/components/batch-table)
+
+## Table-column slots
+
+<v-table type="slot" :data="[
+  { name :'header', dec: '自定义表头插槽', child: '{  column }' },
+  { name :'custom', dec: '自定义内容插槽', child: '{ row, column, index }' },
+]" />

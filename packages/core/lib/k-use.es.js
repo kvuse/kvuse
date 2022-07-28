@@ -1,4 +1,4 @@
-import { getCurrentInstance, computed, nextTick, ref, reactive, watch, watchEffect, onMounted, onUnmounted, getCurrentScope, onScopeDispose, unref, openBlock, createElementBlock, createElementVNode, warn, provide, inject, onBeforeUnmount, toRef, isRef, defineComponent, mergeProps, renderSlot, useAttrs as useAttrs$1, useSlots, shallowRef, onUpdated, withDirectives, createCommentVNode, Fragment, normalizeClass, createBlock, withCtx, resolveDynamicComponent, withModifiers, createVNode, toDisplayString, normalizeStyle, vShow, Transition, Text, h, shallowReactive, isVNode, render, toRefs, resolveComponent, withKeys, createTextVNode } from "vue";
+import { getCurrentInstance, computed as computed$1, nextTick, ref, reactive, watch, watchEffect, onMounted, onUnmounted, getCurrentScope, onScopeDispose, unref, openBlock, createElementBlock, createElementVNode, warn, provide, inject, onBeforeUnmount, toRef, isRef, defineComponent, mergeProps, renderSlot, useAttrs as useAttrs$1, useSlots, shallowRef, onUpdated, withDirectives, createCommentVNode, Fragment, normalizeClass, createBlock, withCtx, resolveDynamicComponent, withModifiers, createVNode, toDisplayString, normalizeStyle, vShow, Transition, Text, h, shallowReactive, isVNode, render, toRefs, resolveComponent, withKeys, createTextVNode } from "vue";
 function useCommon() {
   const instance = getCurrentInstance();
   const { globalProperties } = instance.appContext.config;
@@ -10,7 +10,7 @@ function useCommon() {
   } = globalProperties;
   const route = $route;
   const router = $router;
-  const routerName = computed(() => route.name);
+  const routerName = computed$1(() => route.name);
   const loadPage = (name2, params) => {
     if (params)
       router.push({ path: name2, ...params });
@@ -27,14 +27,14 @@ function useCommon() {
     else
       router.replace({ name: name2 });
   };
-  const isDev = computed(() => false);
+  const isDev = computed$1(() => false);
   return {
     route,
     router,
     nextTick,
     ref,
     reactive,
-    computed,
+    computed: computed$1,
     watch,
     watchEffect,
     onMounted,
@@ -60,7 +60,7 @@ var bind$2 = function bind(fn, thisArg) {
 };
 var bind$1 = bind$2;
 var toString$1 = Object.prototype.toString;
-function isArray$2(val) {
+function isArray$3(val) {
   return toString$1.call(val) === "[object Array]";
 }
 function isUndefined$1(val) {
@@ -134,7 +134,7 @@ function forEach(obj, fn) {
   if (typeof obj !== "object") {
     obj = [obj];
   }
-  if (isArray$2(obj)) {
+  if (isArray$3(obj)) {
     for (var i = 0, l = obj.length; i < l; i++) {
       fn.call(null, obj[i], i, obj);
     }
@@ -153,7 +153,7 @@ function merge() {
       result[key] = merge(result[key], val);
     } else if (isPlainObject(val)) {
       result[key] = merge({}, val);
-    } else if (isArray$2(val)) {
+    } else if (isArray$3(val)) {
       result[key] = val.slice();
     } else {
       result[key] = val;
@@ -181,7 +181,7 @@ function stripBOM(content) {
   return content;
 }
 var utils$d = {
-  isArray: isArray$2,
+  isArray: isArray$3,
   isArrayBuffer,
   isBuffer,
   isFormData,
@@ -1230,15 +1230,15 @@ function arrayMap(array, iteratee) {
   }
   return result;
 }
-var isArray = Array.isArray;
-var isArray$1 = isArray;
+var isArray$1 = Array.isArray;
+var isArray$2 = isArray$1;
 var INFINITY$1 = 1 / 0;
 var symbolProto = Symbol$2 ? Symbol$2.prototype : void 0, symbolToString = symbolProto ? symbolProto.toString : void 0;
 function baseToString(value) {
   if (typeof value == "string") {
     return value;
   }
-  if (isArray$1(value)) {
+  if (isArray$2(value)) {
     return arrayMap(value, baseToString) + "";
   }
   if (isSymbol(value)) {
@@ -1310,7 +1310,7 @@ function eq(value, other) {
 }
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, reIsPlainProp = /^\w*$/;
 function isKey(value, object) {
-  if (isArray$1(value)) {
+  if (isArray$2(value)) {
     return false;
   }
   var type = typeof value;
@@ -1520,7 +1520,7 @@ function toString2(value) {
   return value == null ? "" : baseToString(value);
 }
 function castPath(value, object) {
-  if (isArray$1(value)) {
+  if (isArray$2(value)) {
     return value;
   }
   return isKey(value, object) ? [value] : stringToPath$1(toString2(value));
@@ -1586,16 +1586,6 @@ const isFocusable = (element) => {
     default: {
       return false;
     }
-  }
-};
-const on = (element, event, handler, useCapture = false) => {
-  if (element && event && handler) {
-    element == null ? void 0 : element.addEventListener(event, handler, useCapture);
-  }
-};
-const off = (element, event, handler, useCapture = false) => {
-  if (element && event && handler) {
-    element == null ? void 0 : element.removeEventListener(event, handler, useCapture);
   }
 };
 var _a;
@@ -1744,6 +1734,7 @@ const NOOP = () => {
 };
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 const hasOwn = (val, key) => hasOwnProperty.call(val, key);
+const isArray = Array.isArray;
 const isFunction = (val) => typeof val === "function";
 const isString = (val) => typeof val === "string";
 const isObject = (val) => val !== null && typeof val === "object";
@@ -1821,14 +1812,14 @@ function addUnit(value, defaultUnit = "px") {
   }
 }
 let scrollBarWidth;
-const getScrollBarWidth = () => {
+const getScrollBarWidth = (namespace) => {
   var _a2;
   if (!isClient)
     return 0;
   if (scrollBarWidth !== void 0)
     return scrollBarWidth;
   const outer = document.createElement("div");
-  outer.className = "el-scrollbar__wrap";
+  outer.className = `${namespace}-scrollbar__wrap`;
   outer.style.visibility = "hidden";
   outer.style.width = "100px";
   outer.style.position = "absolute";
@@ -2141,14 +2132,14 @@ const DEFAULT_EXCLUDE_KEYS = ["class", "style"];
 const LISTENER_PREFIX = /^on[A-Z]/;
 const useAttrs = (params = {}) => {
   const { excludeListeners = false, excludeKeys } = params;
-  const allExcludeKeys = computed(() => {
+  const allExcludeKeys = computed$1(() => {
     return ((excludeKeys == null ? void 0 : excludeKeys.value) || []).concat(DEFAULT_EXCLUDE_KEYS);
   });
   const instance = getCurrentInstance();
   if (!instance) {
-    return computed(() => ({}));
+    return computed$1(() => ({}));
   }
-  return computed(() => {
+  return computed$1(() => {
     var _a2;
     return fromPairs(Object.entries((_a2 = instance.proxy) == null ? void 0 : _a2.$attrs).filter(([key]) => !allExcludeKeys.value.includes(key) && !(excludeListeners && LISTENER_PREFIX.test(key))));
   });
@@ -2159,7 +2150,7 @@ const formContextKey = Symbol("formContextKey");
 const formItemContextKey = Symbol("formItemContextKey");
 const useProp = (name2) => {
   const vm = getCurrentInstance();
-  return computed(() => {
+  return computed$1(() => {
     var _a2, _b;
     return (_b = ((_a2 = vm.proxy) == null ? void 0 : _a2.$props)[name2]) != null ? _b : void 0;
   });
@@ -2168,7 +2159,7 @@ const globalConfig = ref();
 function useGlobalConfig(key, defaultValue = void 0) {
   const config = getCurrentInstance() ? inject(configProviderContextKey, globalConfig) : globalConfig;
   if (key) {
-    return computed(() => {
+    return computed$1(() => {
       var _a2, _b;
       return (_b = (_a2 = config.value) == null ? void 0 : _a2[key]) != null ? _b : defaultValue;
     });
@@ -2184,7 +2175,7 @@ const provideGlobalConfig = (config, app, global2 = false) => {
   if (!provideFn) {
     return;
   }
-  const context = computed(() => {
+  const context = computed$1(() => {
     const cfg = unref(config);
     if (!(oldConfig == null ? void 0 : oldConfig.value))
       return cfg;
@@ -2216,12 +2207,12 @@ const useSize = (fallback, ignore = {}) => {
   const globalConfig2 = ignore.global ? emptyRef : useGlobalConfig("size");
   const form = ignore.form ? { size: void 0 } : inject(formContextKey, void 0);
   const formItem = ignore.formItem ? { size: void 0 } : inject(formItemContextKey, void 0);
-  return computed(() => size.value || unref(fallback) || (formItem == null ? void 0 : formItem.size) || (form == null ? void 0 : form.size) || globalConfig2.value || "");
+  return computed$1(() => size.value || unref(fallback) || (formItem == null ? void 0 : formItem.size) || (form == null ? void 0 : form.size) || globalConfig2.value || "");
 };
 const useDisabled = (fallback) => {
   const disabled = useProp("disabled");
   const form = inject(formContextKey, void 0);
-  return computed(() => disabled.value || unref(fallback) || (form == null ? void 0 : form.disabled) || false);
+  return computed$1(() => disabled.value || unref(fallback) || (form == null ? void 0 : form.disabled) || false);
 };
 const useDeprecated = ({ from, replacement, scope, version: version2, ref: ref2, type = "API" }, condition) => {
   watch(() => unref(condition), (val) => {
@@ -2295,7 +2286,7 @@ const defaultIdInjection = {
 const ID_INJECTION_KEY = Symbol("elIdInjection");
 const useId = (deterministicId) => {
   const idInjection = inject(ID_INJECTION_KEY, defaultIdInjection);
-  const idRef = computed(() => unref(deterministicId) || `el-id-${idInjection.prefix}-${idInjection.current++}`);
+  const idRef = computed$1(() => unref(deterministicId) || `el-id-${idInjection.prefix}-${idInjection.current++}`);
   return idRef;
 };
 const useFormItem = () => {
@@ -2319,7 +2310,7 @@ const useFormItemInputId = (props, {
   }
   const inputId = ref();
   let idUnwatch = void 0;
-  const isLabeledByFormItem = computed(() => {
+  const isLabeledByFormItem = computed$1(() => {
     var _a2;
     return !!(!props.label && formItemContext && formItemContext.inputIds && ((_a2 = formItemContext.inputIds) == null ? void 0 : _a2.length) <= 1);
   });
@@ -2510,7 +2501,7 @@ const translate = (path, option, locale) => get(locale, path, path).replace(/\{(
   return `${(_a2 = option == null ? void 0 : option[key]) != null ? _a2 : `{${key}}`}`;
 });
 const buildLocaleContext = (locale) => {
-  const lang = computed(() => unref(locale).name);
+  const lang = computed$1(() => unref(locale).name);
   const localeRef = isRef(locale) ? locale : ref(locale);
   return {
     lang,
@@ -2520,104 +2511,217 @@ const buildLocaleContext = (locale) => {
 };
 const useLocale = () => {
   const locale = useGlobalConfig("locale");
-  return buildLocaleContext(computed(() => locale.value || English));
+  return buildLocaleContext(computed$1(() => locale.value || English));
 };
-const useLockscreen = (trigger) => {
-  if (!isRef(trigger)) {
-    throwError("[useLockscreen]", "You need to pass a ref param to this function");
+let activeEffectScope;
+function recordEffectScope(effect, scope = activeEffectScope) {
+  if (scope && scope.active) {
+    scope.effects.push(effect);
   }
-  if (!isClient || hasClass(document.body, "el-popup-parent--hidden")) {
-    return;
-  }
-  let scrollBarWidth2 = 0;
-  let withoutHiddenClass = false;
-  let bodyPaddingRight = "0";
-  let computedBodyPaddingRight = 0;
-  const cleanup = () => {
-    removeClass(document.body, "el-popup-parent--hidden");
-    if (withoutHiddenClass) {
-      document.body.style.paddingRight = bodyPaddingRight;
-    }
-  };
-  watch(trigger, (val) => {
-    if (!val) {
-      cleanup();
-      return;
-    }
-    withoutHiddenClass = !hasClass(document.body, "el-popup-parent--hidden");
-    if (withoutHiddenClass) {
-      bodyPaddingRight = document.body.style.paddingRight;
-      computedBodyPaddingRight = Number.parseInt(getStyle(document.body, "paddingRight"), 10);
-    }
-    scrollBarWidth2 = getScrollBarWidth();
-    const bodyHasOverflow = document.documentElement.clientHeight < document.body.scrollHeight;
-    const bodyOverflowY = getStyle(document.body, "overflowY");
-    if (scrollBarWidth2 > 0 && (bodyHasOverflow || bodyOverflowY === "scroll") && withoutHiddenClass) {
-      document.body.style.paddingRight = `${computedBodyPaddingRight + scrollBarWidth2}px`;
-    }
-    addClass(document.body, "el-popup-parent--hidden");
-  });
-  onScopeDispose(() => cleanup());
+}
+const createDep = (effects) => {
+  const dep = new Set(effects);
+  dep.w = 0;
+  dep.n = 0;
+  return dep;
 };
-const useRestoreActive = (toggle, initialFocus) => {
-  let previousActive;
-  watch(() => toggle.value, (val) => {
-    var _a2, _b;
-    if (val) {
-      previousActive = document.activeElement;
-      if (isRef(initialFocus)) {
-        (_b = (_a2 = initialFocus.value).focus) == null ? void 0 : _b.call(_a2);
+const wasTracked = (dep) => (dep.w & trackOpBit) > 0;
+const newTracked = (dep) => (dep.n & trackOpBit) > 0;
+const initDepMarkers = ({ deps }) => {
+  if (deps.length) {
+    for (let i = 0; i < deps.length; i++) {
+      deps[i].w |= trackOpBit;
+    }
+  }
+};
+const finalizeDepMarkers = (effect) => {
+  const { deps } = effect;
+  if (deps.length) {
+    let ptr = 0;
+    for (let i = 0; i < deps.length; i++) {
+      const dep = deps[i];
+      if (wasTracked(dep) && !newTracked(dep)) {
+        dep.delete(effect);
+      } else {
+        deps[ptr++] = dep;
       }
+      dep.w &= ~trackOpBit;
+      dep.n &= ~trackOpBit;
+    }
+    deps.length = ptr;
+  }
+};
+let effectTrackDepth = 0;
+let trackOpBit = 1;
+const maxMarkerBits = 30;
+let activeEffect;
+class ReactiveEffect {
+  constructor(fn, scheduler = null, scope) {
+    this.fn = fn;
+    this.scheduler = scheduler;
+    this.active = true;
+    this.deps = [];
+    this.parent = void 0;
+    recordEffectScope(this, scope);
+  }
+  run() {
+    if (!this.active) {
+      return this.fn();
+    }
+    let parent2 = activeEffect;
+    let lastShouldTrack = shouldTrack;
+    while (parent2) {
+      if (parent2 === this) {
+        return;
+      }
+      parent2 = parent2.parent;
+    }
+    try {
+      this.parent = activeEffect;
+      activeEffect = this;
+      shouldTrack = true;
+      trackOpBit = 1 << ++effectTrackDepth;
+      if (effectTrackDepth <= maxMarkerBits) {
+        initDepMarkers(this);
+      } else {
+        cleanupEffect(this);
+      }
+      return this.fn();
+    } finally {
+      if (effectTrackDepth <= maxMarkerBits) {
+        finalizeDepMarkers(this);
+      }
+      trackOpBit = 1 << --effectTrackDepth;
+      activeEffect = this.parent;
+      shouldTrack = lastShouldTrack;
+      this.parent = void 0;
+      if (this.deferStop) {
+        this.stop();
+      }
+    }
+  }
+  stop() {
+    if (activeEffect === this) {
+      this.deferStop = true;
+    } else if (this.active) {
+      cleanupEffect(this);
+      if (this.onStop) {
+        this.onStop();
+      }
+      this.active = false;
+    }
+  }
+}
+function cleanupEffect(effect) {
+  const { deps } = effect;
+  if (deps.length) {
+    for (let i = 0; i < deps.length; i++) {
+      deps[i].delete(effect);
+    }
+    deps.length = 0;
+  }
+}
+let shouldTrack = true;
+function trackEffects(dep, debuggerEventExtraInfo) {
+  let shouldTrack2 = false;
+  if (effectTrackDepth <= maxMarkerBits) {
+    if (!newTracked(dep)) {
+      dep.n |= trackOpBit;
+      shouldTrack2 = !wasTracked(dep);
+    }
+  } else {
+    shouldTrack2 = !dep.has(activeEffect);
+  }
+  if (shouldTrack2) {
+    dep.add(activeEffect);
+    activeEffect.deps.push(dep);
+  }
+}
+function triggerEffects(dep, debuggerEventExtraInfo) {
+  const effects = isArray(dep) ? dep : [...dep];
+  for (const effect of effects) {
+    if (effect.computed) {
+      triggerEffect(effect);
+    }
+  }
+  for (const effect of effects) {
+    if (!effect.computed) {
+      triggerEffect(effect);
+    }
+  }
+}
+function triggerEffect(effect, debuggerEventExtraInfo) {
+  if (effect !== activeEffect || effect.allowRecurse) {
+    if (effect.scheduler) {
+      effect.scheduler();
     } else {
-      {
-        previousActive.focus();
-      }
+      effect.run();
     }
-  });
-};
-const useSameTarget = (handleClick) => {
-  if (!handleClick) {
-    return { onClick: NOOP, onMousedown: NOOP, onMouseup: NOOP };
   }
-  let mousedownTarget = false;
-  let mouseupTarget = false;
-  const onClick = (e) => {
-    if (mousedownTarget && mouseupTarget) {
-      handleClick(e);
+}
+function toRaw(observed) {
+  const raw = observed && observed["__v_raw"];
+  return raw ? toRaw(raw) : observed;
+}
+function trackRefValue(ref2) {
+  if (shouldTrack && activeEffect) {
+    ref2 = toRaw(ref2);
+    {
+      trackEffects(ref2.dep || (ref2.dep = createDep()));
     }
-    mousedownTarget = mouseupTarget = false;
-  };
-  const onMousedown = (e) => {
-    mousedownTarget = e.target === e.currentTarget;
-  };
-  const onMouseup = (e) => {
-    mouseupTarget = e.target === e.currentTarget;
-  };
-  return { onClick, onMousedown, onMouseup };
-};
-let registeredEscapeHandlers = [];
-const useEscapeKeydown = (handler) => {
-  const cachedHandler = (e) => {
-    const event = e;
-    if (event.key === EVENT_CODE.esc) {
-      registeredEscapeHandlers.forEach((registeredHandler) => registeredHandler(event));
+  }
+}
+function triggerRefValue(ref2, newVal) {
+  ref2 = toRaw(ref2);
+  if (ref2.dep) {
+    {
+      triggerEffects(ref2.dep);
     }
-  };
-  onMounted(() => {
-    if (registeredEscapeHandlers.length === 0) {
-      document.addEventListener("keydown", cachedHandler);
+  }
+}
+class ComputedRefImpl {
+  constructor(getter, _setter, isReadonly, isSSR) {
+    this._setter = _setter;
+    this.dep = void 0;
+    this.__v_isRef = true;
+    this._dirty = true;
+    this.effect = new ReactiveEffect(getter, () => {
+      if (!this._dirty) {
+        this._dirty = true;
+        triggerRefValue(this);
+      }
+    });
+    this.effect.computed = this;
+    this.effect.active = this._cacheable = !isSSR;
+    this["__v_isReadonly"] = isReadonly;
+  }
+  get value() {
+    const self2 = toRaw(this);
+    trackRefValue(self2);
+    if (self2._dirty || !self2._cacheable) {
+      self2._dirty = false;
+      self2._value = self2.effect.run();
     }
-    if (isClient)
-      registeredEscapeHandlers.push(handler);
-  });
-  onBeforeUnmount(() => {
-    registeredEscapeHandlers = registeredEscapeHandlers.filter((registeredHandler) => registeredHandler !== handler);
-    if (registeredEscapeHandlers.length === 0) {
-      if (isClient)
-        document.removeEventListener("keydown", cachedHandler);
-    }
-  });
-};
+    return self2._value;
+  }
+  set value(newValue) {
+    this._setter(newValue);
+  }
+}
+function computed(getterOrOptions, debugOptions, isSSR = false) {
+  let getter;
+  let setter;
+  const onlyGetter = isFunction(getterOrOptions);
+  if (onlyGetter) {
+    getter = getterOrOptions;
+    setter = NOOP;
+  } else {
+    getter = getterOrOptions.get;
+    setter = getterOrOptions.set;
+  }
+  const cRef = new ComputedRefImpl(getter, setter, onlyGetter || !setter, isSSR);
+  return cRef;
+}
 const defaultNamespace = "el";
 const statePrefix = "is-";
 const _bem = (namespace, block, blockSuffix, element, modifier) => {
@@ -2635,7 +2739,7 @@ const _bem = (namespace, block, blockSuffix, element, modifier) => {
 };
 const useNamespace = (block) => {
   const globalConfig2 = useGlobalConfig("namespace");
-  const namespace = computed(() => globalConfig2.value || defaultNamespace);
+  const namespace = computed$1(() => globalConfig2.value || defaultNamespace);
   const b = (blockSuffix = "") => _bem(unref(namespace), block, blockSuffix, "", "");
   const e = (element) => element ? _bem(unref(namespace), block, "", element, "") : "";
   const m = (modifier) => modifier ? _bem(unref(namespace), block, "", "", modifier) : "";
@@ -2679,10 +2783,108 @@ const useNamespace = (block) => {
     cssVarBlockName
   };
 };
+const useLockscreen = (trigger) => {
+  if (!isRef(trigger)) {
+    throwError("[useLockscreen]", "You need to pass a ref param to this function");
+  }
+  const ns = useNamespace("popup");
+  const hiddenCls = computed(() => ns.bm("parent", "hidden"));
+  if (!isClient || hasClass(document.body, hiddenCls.value)) {
+    return;
+  }
+  let scrollBarWidth2 = 0;
+  let withoutHiddenClass = false;
+  let bodyPaddingRight = "0";
+  let computedBodyPaddingRight = 0;
+  const cleanup = () => {
+    removeClass(document.body, hiddenCls.value);
+    if (withoutHiddenClass) {
+      document.body.style.paddingRight = bodyPaddingRight;
+    }
+  };
+  watch(trigger, (val) => {
+    if (!val) {
+      cleanup();
+      return;
+    }
+    withoutHiddenClass = !hasClass(document.body, hiddenCls.value);
+    if (withoutHiddenClass) {
+      bodyPaddingRight = document.body.style.paddingRight;
+      computedBodyPaddingRight = Number.parseInt(getStyle(document.body, "paddingRight"), 10);
+    }
+    scrollBarWidth2 = getScrollBarWidth(ns.namespace.value);
+    const bodyHasOverflow = document.documentElement.clientHeight < document.body.scrollHeight;
+    const bodyOverflowY = getStyle(document.body, "overflowY");
+    if (scrollBarWidth2 > 0 && (bodyHasOverflow || bodyOverflowY === "scroll") && withoutHiddenClass) {
+      document.body.style.paddingRight = `${computedBodyPaddingRight + scrollBarWidth2}px`;
+    }
+    addClass(document.body, hiddenCls.value);
+  });
+  onScopeDispose(() => cleanup());
+};
+const useRestoreActive = (toggle, initialFocus) => {
+  let previousActive;
+  watch(() => toggle.value, (val) => {
+    var _a2, _b;
+    if (val) {
+      previousActive = document.activeElement;
+      if (isRef(initialFocus)) {
+        (_b = (_a2 = initialFocus.value).focus) == null ? void 0 : _b.call(_a2);
+      }
+    } else {
+      {
+        previousActive.focus();
+      }
+    }
+  });
+};
+const useSameTarget = (handleClick) => {
+  if (!handleClick) {
+    return { onClick: NOOP, onMousedown: NOOP, onMouseup: NOOP };
+  }
+  let mousedownTarget = false;
+  let mouseupTarget = false;
+  const onClick = (e) => {
+    if (mousedownTarget && mouseupTarget) {
+      handleClick(e);
+    }
+    mousedownTarget = mouseupTarget = false;
+  };
+  const onMousedown = (e) => {
+    mousedownTarget = e.target === e.currentTarget;
+  };
+  const onMouseup = (e) => {
+    mouseupTarget = e.target === e.currentTarget;
+  };
+  return { onClick, onMousedown, onMouseup };
+};
+let registeredEscapeHandlers = [];
+const cachedHandler = (e) => {
+  const event = e;
+  if (event.key === EVENT_CODE.esc) {
+    registeredEscapeHandlers.forEach((registeredHandler) => registeredHandler(event));
+  }
+};
+const useEscapeKeydown = (handler) => {
+  onMounted(() => {
+    if (registeredEscapeHandlers.length === 0) {
+      document.addEventListener("keydown", cachedHandler);
+    }
+    if (isClient)
+      registeredEscapeHandlers.push(handler);
+  });
+  onBeforeUnmount(() => {
+    registeredEscapeHandlers = registeredEscapeHandlers.filter((registeredHandler) => registeredHandler !== handler);
+    if (registeredEscapeHandlers.length === 0) {
+      if (isClient)
+        document.removeEventListener("keydown", cachedHandler);
+    }
+  });
+};
 const zIndex = ref(0);
 const useZIndex = () => {
   const initialZIndex = useGlobalConfig("zIndex", 2e3);
-  const currentZIndex = computed(() => initialZIndex.value + zIndex.value);
+  const currentZIndex = computed$1(() => initialZIndex.value + zIndex.value);
   const nextZIndex = () => {
     zIndex.value++;
     return currentZIndex.value;
@@ -2759,7 +2961,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const props = __props;
     const ns = useNamespace("icon");
-    const style = computed(() => {
+    const style = computed$1(() => {
       if (!props.size && !props.color)
         return {};
       return {
@@ -2975,7 +3177,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     const instance = getCurrentInstance();
     const rawAttrs = useAttrs$1();
     const slots = useSlots();
-    const containerAttrs = computed(() => {
+    const containerAttrs = computed$1(() => {
       const comboBoxAttrs = {};
       if (props.containerRole === "combobox") {
         comboBoxAttrs["aria-haspopup"] = rawAttrs["aria-haspopup"];
@@ -2985,7 +3187,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
       return comboBoxAttrs;
     });
     const attrs = useAttrs({
-      excludeKeys: computed(() => {
+      excludeKeys: computed$1(() => {
         return Object.keys(containerAttrs.value);
       })
     });
@@ -3005,30 +3207,30 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     const passwordVisible = ref(false);
     const countStyle = ref();
     const textareaCalcStyle = shallowRef(props.inputStyle);
-    const _ref = computed(() => input.value || textarea.value);
-    const needStatusIcon = computed(() => {
+    const _ref = computed$1(() => input.value || textarea.value);
+    const needStatusIcon = computed$1(() => {
       var _a2;
       return (_a2 = form == null ? void 0 : form.statusIcon) != null ? _a2 : false;
     });
-    const validateState = computed(() => (formItem == null ? void 0 : formItem.validateState) || "");
-    const validateIcon = computed(() => validateState.value && ValidateComponentsMap[validateState.value]);
-    const passwordIcon = computed(() => passwordVisible.value ? view_default : hide_default);
-    const containerStyle = computed(() => [
+    const validateState = computed$1(() => (formItem == null ? void 0 : formItem.validateState) || "");
+    const validateIcon = computed$1(() => validateState.value && ValidateComponentsMap[validateState.value]);
+    const passwordIcon = computed$1(() => passwordVisible.value ? view_default : hide_default);
+    const containerStyle = computed$1(() => [
       rawAttrs.style,
       props.inputStyle
     ]);
-    const textareaStyle = computed(() => [
+    const textareaStyle = computed$1(() => [
       props.inputStyle,
       textareaCalcStyle.value,
       { resize: props.resize }
     ]);
-    const nativeInputValue = computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
-    const showClear = computed(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (focused.value || hovering.value));
-    const showPwdVisible = computed(() => props.showPassword && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (!!nativeInputValue.value || focused.value));
-    const isWordLimitVisible = computed(() => props.showWordLimit && !!attrs.value.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
-    const textLength = computed(() => Array.from(nativeInputValue.value).length);
-    const inputExceed = computed(() => !!isWordLimitVisible.value && textLength.value > Number(attrs.value.maxlength));
-    const suffixVisible = computed(() => !!slots.suffix || !!props.suffixIcon || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
+    const nativeInputValue = computed$1(() => isNil(props.modelValue) ? "" : String(props.modelValue));
+    const showClear = computed$1(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (focused.value || hovering.value));
+    const showPwdVisible = computed$1(() => props.showPassword && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (!!nativeInputValue.value || focused.value));
+    const isWordLimitVisible = computed$1(() => props.showWordLimit && !!attrs.value.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
+    const textLength = computed$1(() => Array.from(nativeInputValue.value).length);
+    const inputExceed = computed$1(() => !!isWordLimitVisible.value && textLength.value > Number(attrs.value.maxlength));
+    const suffixVisible = computed$1(() => !!slots.suffix || !!props.suffixIcon || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
     const [recordCursor, setCursor] = useCursor(input);
     useResizeObserver(textarea, (entries) => {
       if (!isWordLimitVisible.value || props.resize !== "both")
@@ -3720,7 +3922,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   setup(__props, { expose }) {
     const props = __props;
     const ns = useNamespace("badge");
-    const content = computed(() => {
+    const content = computed$1(() => {
       if (props.isDot)
         return "";
       if (isNumber(props.value) && isNumber(props.max)) {
@@ -4685,7 +4887,7 @@ function darken(color, amount = 20) {
 function useButtonCustomStyle(props) {
   const _disabled = useDisabled();
   const ns = useNamespace("button");
-  return computed(() => {
+  return computed$1(() => {
     let styles = {};
     const buttonColor = props.color;
     if (buttonColor) {
@@ -4749,20 +4951,20 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
       version: "3.0.0",
       scope: "props",
       ref: "https://element-plus.org/en-US/component/button.html#button-attributes"
-    }, computed(() => props.type === "text"));
+    }, computed$1(() => props.type === "text"));
     const buttonGroupContext = inject(buttonGroupContextKey, void 0);
     const globalConfig2 = useGlobalConfig("button");
     const ns = useNamespace("button");
     const { form } = useFormItem();
-    const _size = useSize(computed(() => buttonGroupContext == null ? void 0 : buttonGroupContext.size));
+    const _size = useSize(computed$1(() => buttonGroupContext == null ? void 0 : buttonGroupContext.size));
     const _disabled = useDisabled();
     const _ref = ref();
-    const _type = computed(() => props.type || (buttonGroupContext == null ? void 0 : buttonGroupContext.type) || "");
-    const autoInsertSpace = computed(() => {
+    const _type = computed$1(() => props.type || (buttonGroupContext == null ? void 0 : buttonGroupContext.type) || "");
+    const autoInsertSpace = computed$1(() => {
       var _a2, _b, _c;
       return (_c = (_b = props.autoInsertSpace) != null ? _b : (_a2 = globalConfig2.value) == null ? void 0 : _a2.autoInsertSpace) != null ? _c : false;
     });
-    const shouldAddSpace = computed(() => {
+    const shouldAddSpace = computed$1(() => {
       var _a2;
       const defaultSlot = (_a2 = slots.default) == null ? void 0 : _a2.call(slots);
       if (autoInsertSpace.value && (defaultSlot == null ? void 0 : defaultSlot.length) === 1) {
@@ -5131,16 +5333,16 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     const visible = ref(false);
     const height = ref(0);
     let stopTimer = void 0;
-    const badgeType = computed(() => props.type ? props.type === "error" ? "danger" : props.type : "info");
-    const typeClass = computed(() => {
+    const badgeType = computed$1(() => props.type ? props.type === "error" ? "danger" : props.type : "info");
+    const typeClass = computed$1(() => {
       const type = props.type;
       return { [ns.bm("icon", type)]: type && TypeComponentsMap[type] };
     });
-    const iconComponent = computed(() => props.icon || TypeComponentsMap[props.type] || "");
-    const lastOffset = computed(() => getLastOffset(props.id));
-    const offset = computed(() => props.offset + lastOffset.value);
-    const bottom = computed(() => height.value + offset.value);
-    const customStyle = computed(() => ({
+    const iconComponent = computed$1(() => props.icon || TypeComponentsMap[props.type] || "");
+    const lastOffset = computed$1(() => getLastOffset(props.id));
+    const offset = computed$1(() => props.offset + lastOffset.value);
+    const bottom = computed$1(() => height.value + offset.value);
+    const customStyle = computed$1(() => ({
       top: `${offset.value}px`,
       zIndex: props.zIndex
     }));
@@ -5449,21 +5651,21 @@ const _sfc_main = defineComponent({
       validateError: false,
       zIndex: nextZIndex()
     });
-    const typeClass = computed(() => {
+    const typeClass = computed$1(() => {
       const type = state.type;
       return { [ns.bm("icon", type)]: type && TypeComponentsMap[type] };
     });
     const contentId = useId();
     const inputId = useId();
-    const btnSize = useSize(computed(() => props.buttonSize), { prop: true, form: true, formItem: true });
-    const iconComponent = computed(() => state.icon || TypeComponentsMap[state.type] || "");
-    const hasMessage = computed(() => !!state.message);
+    const btnSize = useSize(computed$1(() => props.buttonSize), { prop: true, form: true, formItem: true });
+    const iconComponent = computed$1(() => state.icon || TypeComponentsMap[state.type] || "");
+    const hasMessage = computed$1(() => !!state.message);
     const rootRef = ref();
     const headerRef = ref();
     const focusStartRef = ref();
     const inputRef = ref();
     const confirmRef = ref();
-    const confirmButtonClasses = computed(() => state.confirmButtonClass);
+    const confirmButtonClasses = computed$1(() => state.confirmButtonClass);
     watch(() => state.inputValue, async (val) => {
       await nextTick();
       if (props.boxType === "prompt" && val !== null) {
@@ -5500,17 +5702,17 @@ const _sfc_main = defineComponent({
         state.validateError = false;
       }
     });
-    const draggable = computed(() => props.draggable);
+    const draggable = computed$1(() => props.draggable);
     useDraggable(rootRef, headerRef, draggable);
     onMounted(async () => {
       await nextTick();
       if (props.closeOnHashChange) {
-        on(window, "hashchange", doClose);
+        window.addEventListener("hashchange", doClose);
       }
     });
     onBeforeUnmount(() => {
       if (props.closeOnHashChange) {
-        off(window, "hashchange", doClose);
+        window.removeEventListener("hashchange", doClose);
       }
     });
     function doClose() {
@@ -6143,13 +6345,14 @@ function usePage() {
       records = [],
       totalPage: totalPages = 1,
       pageNo = 1,
+      pageIndex,
       totalRecord: totalElements = 1
     } = result || {};
     listData.value = records;
     loading.value = false;
     totalPage.value = totalPages;
     totalRecord.value = totalElements;
-    currentPage.value = pageNo;
+    currentPage.value = pageIndex != null ? pageIndex : pageNo;
     isNullData.value = !records.length;
   };
   return {

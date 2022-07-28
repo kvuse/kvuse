@@ -3,10 +3,12 @@
     <el-table-column type="selection" width="55" :selectable="checkSelection" />
     <el-table-column v-for="item in tableColumn" :label="item.label" :key="item.prop" :width="item.width" :fixed="item.fixed" :min-width="item.minWidth" show-overflow-tooltip>
       <template #header v-if="item.header">
-        <slot :name="item.header" />
+        <slot name="header" :column="item" />
+        <slot :name="item.header" :column="item" />
       </template>
       <template #default="scope">
-        <slot v-if="item.custom && scope.$index >=0" :name="item.custom" :item="scope.row" :row="scope.row" :index="scope.$index" />
+        <slot v-if="$slots.default" :item="scope.row" :row="scope.row" :column="item" :index="scope.$index" />
+        <slot v-if="item.custom && scope.$index >=0" :name="item.custom" :item="scope.row" :column="item" :row="scope.row" :index="scope.$index" />
         <span v-else>{{ scope.row[item.prop] ?? '-' }}</span>
       </template>
     </el-table-column>

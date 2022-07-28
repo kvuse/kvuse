@@ -99,7 +99,7 @@
 ## Table-column slots
 
 <v-table type="slot" :data="[
-  { name :'default', dec: '默认插槽', child: '-' },
-  { name :'custom', dec: '自定义内容插槽', child: '-' },
+  { name :'default', dec: '默认插槽', child: '{ row, column, index }' },
+  { name :'custom', dec: '自定义内容插槽', child: '{ row, column, index }' },
   { name :'header', dec: '自定义表头插槽', child: '-' },
 ]" />

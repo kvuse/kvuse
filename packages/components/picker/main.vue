@@ -4,7 +4,14 @@
     <el-row :gutter="10">
       <el-col :span="15">
         <div class="col-left">
-          <batchTable ref="batchTableRef" height="440px" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage" />
+          <batchTable ref="batchTableRef" height="440px" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage">
+            <template #header="{column}">
+              <slot :name="column.header" :column="column" />
+            </template>
+            <template #default="{row,column,index}">
+              <slot v-if="column.custom && index >=0" :name="column.custom" :row="row" :index="index" />
+            </template>
+          </batchTable>
         </div>
       </el-col>
       <el-col :span="9">

@@ -22,13 +22,13 @@ export function usePage() {
 
   const setListAndPage = (result) => {
     const {
-      records = [], totalPage: totalPages = 1, pageNo = 1, totalRecord: totalElements = 1,
+      records = [], totalPage: totalPages = 1, pageNo = 1, pageIndex, totalRecord: totalElements = 1,
     } = result || {};
     listData.value = records;
     loading.value = false;
     totalPage.value = totalPages;
     totalRecord.value = totalElements;
-    currentPage.value = pageNo;
+    currentPage.value = pageIndex ?? pageNo;
     isNullData.value = !records.length;
   };
 

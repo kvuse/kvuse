@@ -877,7 +877,7 @@ const _sfc_main$5 = defineComponent({
     };
   }
 });
-const _hoisted_1$5 = { key: 1 };
+const _hoisted_1$5 = { key: 2 };
 const _hoisted_2$4 = { class: "mt20 flex-between" };
 const _hoisted_3$4 = { class: "flex1" };
 function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
@@ -911,9 +911,17 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
             default: withCtx((scope) => {
               var _a;
               return [
-                item.custom && scope.$index >= 0 ? renderSlot(_ctx.$slots, item.custom, {
+                _ctx.$slots.default ? renderSlot(_ctx.$slots, "default", {
                   key: 0,
                   item: scope.row,
+                  row: scope.row,
+                  column: item,
+                  index: scope.$index
+                }) : createCommentVNode("", true),
+                item.custom && scope.$index >= 0 ? renderSlot(_ctx.$slots, item.custom, {
+                  key: 1,
+                  item: scope.row,
+                  column: item,
                   row: scope.row,
                   index: scope.$index
                 }) : (openBlock(), createElementBlock("span", _hoisted_1$5, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
@@ -924,7 +932,8 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
             item.header ? {
               name: "header",
               fn: withCtx(() => [
-                renderSlot(_ctx.$slots, item.header)
+                renderSlot(_ctx.$slots, "header", { column: item }),
+                renderSlot(_ctx.$slots, item.header, { column: item })
               ])
             } : void 0
           ]), 1032, ["label", "width", "fixed", "min-width"]);
@@ -1300,10 +1309,22 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.multipleSelection = $event),
                 page: _ctx.currentPage,
                 "onUpdate:page": _cache[1] || (_cache[1] = ($event) => _ctx.currentPage = $event)
-              }, null, 8, ["table-data", "table-column", "select-list", "key-id", "modelValue", "page"])
+              }, {
+                header: withCtx(({ column }) => [
+                  renderSlot(_ctx.$slots, column.header, { column }, void 0, true)
+                ]),
+                default: withCtx(({ row, column, index }) => [
+                  column.custom && index >= 0 ? renderSlot(_ctx.$slots, column.custom, {
+                    key: 0,
+                    row,
+                    index
+                  }, void 0, true) : createCommentVNode("", true)
+                ]),
+                _: 3
+              }, 8, ["table-data", "table-column", "select-list", "key-id", "modelValue", "page"])
             ])
           ]),
-          _: 1
+          _: 3
         }),
         createVNode(_component_el_col, { span: 9 }, {
           default: withCtx(() => [
@@ -1372,12 +1393,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           _: 1
         })
       ]),
-      _: 1
+      _: 3
     }),
     renderSlot(_ctx.$slots, "footer", {}, void 0, true)
   ]);
 }
-var KPicker = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-35fe7388"]]);
+var KPicker = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-502798a4"]]);
 KPicker.install = function(app) {
   app.component(KPicker.name, KPicker);
 };
