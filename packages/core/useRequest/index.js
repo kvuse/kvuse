@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { useMessage } from '../useMessage';
 
-const { message } = useMessage();
-const checkCode = (msg) => message.error(msg);
-
 /**
  * 请求封装
  * @auth liukai
@@ -14,7 +11,7 @@ const checkCode = (msg) => message.error(msg);
  * @param {function} errorHandler 报错信息处理
  */
 export function useRequest({
-  instance = axios, beforeRequest, beforeResponse, responseHandler, errorHandler = checkCode, errorResponse,
+  instance = axios, beforeRequest, beforeResponse, responseHandler, errorHandler, errorResponse,
 } = {}) {
   if (!instance) {
     instance.defaults = {
@@ -26,6 +23,12 @@ export function useRequest({
       },
     };
   }
+
+  const { message } = useMessage();
+  const checkCode = (msg) => {
+    if (errorHandler) errorHandler(msg);
+    else message.error(msg);
+  };
 
   const pending = []; // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
   const cancelToken = instance.CancelToken;
@@ -67,7 +70,7 @@ export function useRequest({
       const { data, data: { code } } = response || {};
       if ([0, 1001].includes(code)) return data;
       if (data) errorResponse(data);
-      return errorHandler(response.message);
+      return checkCode(response.message);
     },
     async (error) => {
       if (error && error.response) {
@@ -80,7 +83,7 @@ export function useRequest({
           };
           error.message = errorStatus[status];
         }
-        errorHandler(error.message);
+        checkCode(error.message);
       }
       if (error.message === 'timeout of 10000ms exceeded') error.message = '网络超时, 请检查网络！';
       // 对返回的错误处理
@@ -116,7 +119,7 @@ export function useRequest({
         : await instance[method](url, { params });
       return setResult(res, isObject);
     } catch (err) {
-      errorHandler(err.message);
+      checkCode(err.message);
       if (isObject) return err;
     }
   };

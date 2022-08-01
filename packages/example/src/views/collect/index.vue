@@ -6,8 +6,12 @@
 </template>
 
 <script setup>
-import { useRequest } from '@kvuse/core';
+import { useMessage, useRequest } from '@kvuse/core';
 import test from './test.vue';
+
+console.log('useCommon: ', useMessage());
+
+// console.log('useRequest: ', useRequest);
 
 const { $api, $http } = useRequest({
   responseHandler(response) {

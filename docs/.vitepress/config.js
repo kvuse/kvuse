@@ -11,7 +11,7 @@ export default defineConfig({
   description: 'vue3常用的组件以及API',
   head: [
     ['meta', { name: 'theme-color', content: '#ffffff' }],
-    ['link', { rel: 'icon', href: '/logo1.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'icon', href: '/docs/logo1.svg', type: 'image/svg+xml' }],
     ['link', {
       rel: 'alternate icon', href: '/favicon.ico', type: 'image/png', sizes: '16x16',
     }],

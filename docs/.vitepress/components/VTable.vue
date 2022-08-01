@@ -25,11 +25,16 @@ const tableColumn = computed(() => {
       { label: '默认', prop: 'default' },
     ];
   }
-  if (props.type === 'event') {
+  else if (props.type === 'event') {
     return [
       { label: '事件', prop: 'event' },
       { label: '说明', prop: 'dec' },
       { label: '回调参数', prop: 'callback' },
+    ];
+  }else if (props.type === 'dec'){
+    return [
+      { label: '名称', prop: 'name' },
+      { label: '说明', prop: 'dec' },
     ];
   }
   return [

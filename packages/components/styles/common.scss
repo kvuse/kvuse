@@ -1,13 +1,13 @@
 //flex布局样式
 //单轴
-@mixin flex-type ($type1, $type2) {
+@mixin flex-type($type1, $type2) {
   align-items: $type2;
   display: flex;
   justify-content: $type1;
 }
 
 //多轴
-@mixin flex-types ($type1, $type2) {
+@mixin flex-types($type1, $type2) {
   align-items: $type2;
   display: flex;
   flex-direction: column;
@@ -31,8 +31,10 @@
 
 // 主题色
 $themecolor: #f4364c;
+
 // 加粗色
 $color333: #333;
+
 //蓝色
 $bluecolor: #409eff;
 $maincolor: #409eff;
@@ -104,6 +106,10 @@ input:-webkit-autofill {
   margin-right: 20px;
 }
 
+.ml30 {
+  margin-left: 30px;
+}
+
 .mr30 {
   margin-right: 30px;
 }
@@ -130,6 +136,14 @@ input:-webkit-autofill {
 
 .pr10 {
   padding-right: 10px;
+}
+
+.pl20 {
+  padding-left: 20px;
+}
+
+.pr20 {
+  padding-right: 20px;
 }
 
 .p20-d40 {
@@ -164,6 +178,14 @@ input:-webkit-autofill {
 
 .pointer {
   cursor: pointer;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}
+
+.width-180 {
+  width: 180px;
 }
 
 .width-220 {
@@ -228,7 +250,7 @@ input:-webkit-autofill {
 }
 
 .flex-column {
-  @include flex-column();
+  @include flex-column;
 }
 
 .overflow {

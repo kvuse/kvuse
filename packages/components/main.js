@@ -1,3 +1,5 @@
+import './styles/normalize.css';
+import './styles/common.scss';
 import directives from './directives';
 import KButton from './button';
 import KInput from './input';

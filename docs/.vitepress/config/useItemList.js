@@ -6,6 +6,10 @@ export function useItemList(){
       link: '/components/',
     },
     {
+      text: 'Layout 布局',
+      link: '/components/layout',
+    },
+    {
       text: 'Button 按钮',
       link: '/components/button',
     },

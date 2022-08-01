@@ -1,6 +1,6 @@
 {
   "name": "@kvuse/core",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "vue3一些常用的API",
   "homepage": "https://kvuse.github.io/docs/api/",
   "files": [
@@ -23,7 +23,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
-    "element-plus": "^2.2.9",
     "vue": "^3.2.32"
   }
 }
