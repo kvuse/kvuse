@@ -14,7 +14,7 @@
     "@kvuse/components": "workspace:*",
     "@kvuse/core": "workspace:*",
     "axios": "^0.21.4",
-    "element-plus": "^2.2.9",
+    "element-plus": "^2.2.12",
     "pinia": "^2.0.14",
     "pinia-persistedstate": "^0.1.2",
     "vue": "^3.2.37",

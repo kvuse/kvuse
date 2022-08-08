@@ -1,6 +1,5 @@
 # Tabs 标签页
 
-
 ## 基础使用
 
 <demo md src="tabs/basic">
@@ -42,6 +41,7 @@
 </demo>
 
 ## Tabs 属性
+
 <v-table type="attrs" :data="[
   { attr :'type', dec: '风格类型', type: 'string', optional: 'card/border-card', default: '-' },
   { attr :'modelValue / v-model', dec: '绑定值', type: 'string / Number', optional: '-', default: '-' },
@@ -52,16 +52,14 @@
 ]" />
 
 ## Tabs 事件
+
 <v-table type="event" :data="[
   { event :'tab-click', dec: '当用户点击确认触发该事件', callback: 'name' },
   { event :'change', dec: '数值改变的时候触发', callback: 'name' },
 ]" />
 
+## Tabs slots
 
-## Tabs slots 
 <v-table type="slot" :data="[
   { name :'-', dec: '右侧的内容', child: '-' },
 ]" />
-
-
-

@@ -80,7 +80,7 @@ var _export_sfc$1 = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$9 = defineComponent({
+const _sfc_main$b = defineComponent({
   name: "KButton",
   props: {
     clickState: { type: Boolean, default: false },
@@ -107,11 +107,11 @@ const _sfc_main$9 = defineComponent({
     return { onclick, buttonStatus };
   }
 });
-const _hoisted_1$8 = {
+const _hoisted_1$a = {
   key: 0,
   class: "el-icon-lock el-icon--right"
 };
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_button = resolveComponent("el-button");
   return openBlock(), createBlock(_component_el_button, mergeProps({
     disabled: !_ctx.buttonStatus || _ctx.disabled,
@@ -121,16 +121,16 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   }), {
     default: withCtx(() => [
       renderSlot(_ctx.$slots, "default"),
-      _ctx.iconLock ? (openBlock(), createElementBlock("i", _hoisted_1$8)) : createCommentVNode("", true)
+      _ctx.iconLock ? (openBlock(), createElementBlock("i", _hoisted_1$a)) : createCommentVNode("", true)
     ]),
     _: 3
   }, 16, ["disabled", "click-state", "onClick"]);
 }
-var KButton = /* @__PURE__ */ _export_sfc$1(_sfc_main$9, [["render", _sfc_render$9]]);
+var KButton = /* @__PURE__ */ _export_sfc$1(_sfc_main$b, [["render", _sfc_render$b]]);
 KButton.install = function(app) {
   app.component(KButton.name, KButton);
 };
-const _sfc_main$8 = defineComponent({
+const _sfc_main$a = defineComponent({
   name: "KInput",
   props: {
     modelValue: { type: [String, Number], default: "" },
@@ -204,7 +204,7 @@ const _sfc_main$8 = defineComponent({
     };
   }
 });
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_input = resolveComponent("el-input");
   return openBlock(), createBlock(_component_el_input, mergeProps({
     modelValue: _ctx.inputValue,
@@ -240,7 +240,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     } : void 0
   ]), 1040, ["modelValue", "onKeyup", "onChange"]);
 }
-var KInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$8, [["render", _sfc_render$8]]);
+var KInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$a, [["render", _sfc_render$a]]);
 KInput.install = function(app) {
   app.component(KInput.name, KInput);
 };
@@ -527,8 +527,8 @@ var zhCn$1 = {};
   exports["default"] = zhCn2;
 })(zhCn$1);
 var zhCn = /* @__PURE__ */ getDefaultExportFromCjs(zhCn$1);
-var main_vue_vue_type_style_index_0_scoped_true_lang$2 = "";
-const _sfc_main$7 = defineComponent({
+var main_vue_vue_type_style_index_0_scoped_true_lang$3 = "";
+const _sfc_main$9 = defineComponent({
   name: "KPage",
   props: {
     modelValue: { type: Number, default: 1 },
@@ -580,14 +580,14 @@ const _sfc_main$7 = defineComponent({
     };
   }
 });
-const _hoisted_1$7 = {
+const _hoisted_1$9 = {
   key: 0,
   class: "page-right mt20"
 };
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_pagination = resolveComponent("el-pagination");
   const _component_el_config_provider = resolveComponent("el-config-provider");
-  return _ctx.showPage ? (openBlock(), createElementBlock("div", _hoisted_1$7, [
+  return _ctx.showPage ? (openBlock(), createElementBlock("div", _hoisted_1$9, [
     createVNode(_component_el_config_provider, { locale: _ctx.locale }, {
       default: withCtx(() => [
         createVNode(_component_el_pagination, {
@@ -607,11 +607,11 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     }, 8, ["locale"])
   ])) : createCommentVNode("", true);
 }
-var KPage = /* @__PURE__ */ _export_sfc$1(_sfc_main$7, [["render", _sfc_render$7], ["__scopeId", "data-v-10266ac2"]]);
+var KPage = /* @__PURE__ */ _export_sfc$1(_sfc_main$9, [["render", _sfc_render$9], ["__scopeId", "data-v-10266ac2"]]);
 KPage.install = function(app) {
   app.component(KPage.name, KPage);
 };
-const _sfc_main$6 = defineComponent({
+const _sfc_main$8 = defineComponent({
   name: "KTable",
   components: { pagination: KPage },
   props: {
@@ -667,8 +667,8 @@ const _sfc_main$6 = defineComponent({
     };
   }
 });
-const _hoisted_1$6 = { key: 2 };
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$8 = { key: 2 };
+function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_table_column = resolveComponent("el-table-column");
   const _component_el_table = resolveComponent("el-table");
   const _component_pagination = resolveComponent("pagination");
@@ -708,7 +708,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
                   item: scope.row,
                   row: scope.row,
                   index: scope.$index
-                }) : (openBlock(), createElementBlock("span", _hoisted_1$6, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
+                }) : (openBlock(), createElementBlock("span", _hoisted_1$8, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
               ];
             }),
             _: 2
@@ -740,7 +740,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8, ["total", "show-size", "modelValue", "onCurrentChange"])
   ], 64);
 }
-var KTable = /* @__PURE__ */ _export_sfc$1(_sfc_main$6, [["render", _sfc_render$6]]);
+var KTable = /* @__PURE__ */ _export_sfc$1(_sfc_main$8, [["render", _sfc_render$8]]);
 KTable.install = function(app) {
   app.component(KTable.name, KTable);
 };
@@ -770,7 +770,7 @@ var propsValue = {
     })
   }
 };
-const _sfc_main$5 = defineComponent({
+const _sfc_main$7 = defineComponent({
   name: "KBatchTable",
   components: { pagination: KPage },
   props: propsValue,
@@ -879,10 +879,10 @@ const _sfc_main$5 = defineComponent({
     };
   }
 });
-const _hoisted_1$5 = { key: 2 };
-const _hoisted_2$4 = { class: "mt20 flex-between" };
-const _hoisted_3$4 = { class: "flex1" };
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$7 = { key: 2 };
+const _hoisted_2$6 = { class: "mt20 flex-between" };
+const _hoisted_3$5 = { class: "flex1" };
+function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_table_column = resolveComponent("el-table-column");
   const _component_el_table = resolveComponent("el-table");
   const _component_pagination = resolveComponent("pagination");
@@ -926,7 +926,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
                   column: item,
                   row: scope.row,
                   index: scope.$index
-                }) : (openBlock(), createElementBlock("span", _hoisted_1$5, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
+                }) : (openBlock(), createElementBlock("span", _hoisted_1$7, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
               ];
             }),
             _: 2
@@ -950,8 +950,8 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         ])
       } : void 0
     ]), 1040, ["data", "header-cell-style", "onSelect", "onSelectAll", "onRowClick"]),
-    createElementVNode("div", _hoisted_2$4, [
-      createElementVNode("div", _hoisted_3$4, [
+    createElementVNode("div", _hoisted_2$6, [
+      createElementVNode("div", _hoisted_3$5, [
         _ctx.$slots.footer ? renderSlot(_ctx.$slots, "footer", { key: 0 }) : createCommentVNode("", true)
       ]),
       createVNode(_component_pagination, {
@@ -965,12 +965,12 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 64);
 }
-var batchTable = /* @__PURE__ */ _export_sfc$1(_sfc_main$5, [["render", _sfc_render$5]]);
+var batchTable = /* @__PURE__ */ _export_sfc$1(_sfc_main$7, [["render", _sfc_render$7]]);
 batchTable.install = function(app) {
   app.component(batchTable.name, batchTable);
 };
 var main_vue_vue_type_style_index_0_lang$1 = "";
-const _sfc_main$4 = defineComponent({
+const _sfc_main$6 = defineComponent({
   name: "KDialog",
   props: {
     modelValue: { type: Boolean, default: false },
@@ -1011,11 +1011,11 @@ const _sfc_main$4 = defineComponent({
     };
   }
 });
-const _hoisted_1$4 = /* @__PURE__ */ createElementVNode("span", null, "\u8FD9\u662F\u4E00\u6BB5\u4FE1\u606F", -1);
-const _hoisted_2$3 = { class: "dialog-footer" };
-const _hoisted_3$3 = /* @__PURE__ */ createTextVNode("\u53D6 \u6D88");
+const _hoisted_1$6 = /* @__PURE__ */ createElementVNode("span", null, "\u8FD9\u662F\u4E00\u6BB5\u4FE1\u606F", -1);
+const _hoisted_2$5 = { class: "dialog-footer" };
+const _hoisted_3$4 = /* @__PURE__ */ createTextVNode("\u53D6 \u6D88");
 const _hoisted_4$1 = /* @__PURE__ */ createTextVNode("\u786E \u5B9A");
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_button = resolveComponent("el-button");
   const _component_el_dialog = resolveComponent("el-dialog");
   return openBlock(), createBlock(_component_el_dialog, mergeProps({
@@ -1029,7 +1029,7 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   }), createSlots({
     default: withCtx(() => [
       renderSlot(_ctx.$slots, "default", {}, () => [
-        _hoisted_1$4
+        _hoisted_1$6
       ])
     ]),
     _: 2
@@ -1038,13 +1038,13 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
       name: "footer",
       fn: withCtx(() => [
         renderSlot(_ctx.$slots, "footer", {}, () => [
-          createElementVNode("span", _hoisted_2$3, [
+          createElementVNode("span", _hoisted_2$5, [
             createVNode(_component_el_button, {
               size: "large",
               onClick: _cache[0] || (_cache[0] = ($event) => _ctx.dialogVisible = false)
             }, {
               default: withCtx(() => [
-                _hoisted_3$3
+                _hoisted_3$4
               ]),
               _: 1
             }),
@@ -1064,12 +1064,12 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     } : void 0
   ]), 1040, ["title", "modelValue", "custom-class", "onClose", "onOpen"]);
 }
-var KDialog = /* @__PURE__ */ _export_sfc$1(_sfc_main$4, [["render", _sfc_render$4]]);
+var KDialog = /* @__PURE__ */ _export_sfc$1(_sfc_main$6, [["render", _sfc_render$6]]);
 KDialog.install = function(app) {
   app.component(KDialog.name, KDialog);
 };
-var main_vue_vue_type_style_index_0_scoped_true_lang$1 = "";
-const _sfc_main$3 = defineComponent({
+var main_vue_vue_type_style_index_0_scoped_true_lang$2 = "";
+const _sfc_main$5 = defineComponent({
   name: "KBreadcrumb",
   props: {
     list: {
@@ -1093,13 +1093,13 @@ const _sfc_main$3 = defineComponent({
     return { clickHandle };
   }
 });
-const _hoisted_1$3 = { class: "crumb-header flex-between" };
-const _hoisted_2$2 = { class: "crumb-contain" };
-const _hoisted_3$2 = ["onClick"];
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$5 = { class: "crumb-header flex-between" };
+const _hoisted_2$4 = { class: "crumb-contain" };
+const _hoisted_3$3 = ["onClick"];
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_space = resolveComponent("el-space");
-  return openBlock(), createElementBlock("div", _hoisted_1$3, [
-    createElementVNode("div", _hoisted_2$2, [
+  return openBlock(), createElementBlock("div", _hoisted_1$5, [
+    createElementVNode("div", _hoisted_2$4, [
       createVNode(_component_el_space, { spacer: "/" }, {
         default: withCtx(() => [
           (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.list, (item, index) => {
@@ -1107,7 +1107,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
               key: index,
               class: normalizeClass({ "crumb-item": index !== _ctx.list.length - 1 }),
               onClick: ($event) => _ctx.clickHandle(item, index)
-            }, toDisplayString(item.title), 11, _hoisted_3$2);
+            }, toDisplayString(item.title), 11, _hoisted_3$3);
           }), 128))
         ]),
         _: 1
@@ -1116,12 +1116,12 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default", {}, void 0, true)
   ]);
 }
-var KBreadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$3, [["render", _sfc_render$3], ["__scopeId", "data-v-4a9a2e45"]]);
+var KBreadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$5, [["render", _sfc_render$5], ["__scopeId", "data-v-4a9a2e45"]]);
 KBreadcrumb.install = function(app) {
   app.component(KBreadcrumb.name, KBreadcrumb);
 };
 var main_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$2 = defineComponent({
+const _sfc_main$4 = defineComponent({
   name: "KTabs",
   props: {
     type: { type: String, default: "" },
@@ -1164,8 +1164,8 @@ const _sfc_main$2 = defineComponent({
     return { activeName, handleClick };
   }
 });
-const _hoisted_1$2 = { class: "tabs-right ml10" };
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$4 = { class: "tabs-right ml10" };
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tab_pane = resolveComponent("el-tab-pane");
   const _component_el_tabs = resolveComponent("el-tabs");
   return openBlock(), createElementBlock("div", {
@@ -1190,12 +1190,12 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 1
     }, 16, ["type", "modelValue", "onTabClick"]),
-    createElementVNode("div", _hoisted_1$2, [
+    createElementVNode("div", _hoisted_1$4, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2);
 }
-var KTabs = /* @__PURE__ */ _export_sfc$1(_sfc_main$2, [["render", _sfc_render$2]]);
+var KTabs = /* @__PURE__ */ _export_sfc$1(_sfc_main$4, [["render", _sfc_render$4]]);
 KTabs.install = function(app) {
   app.component(KTabs.name, KTabs);
 };
@@ -1206,26 +1206,44 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$1 = defineComponent({
+const _sfc_main$3 = defineComponent({
   name: "Delete"
 });
-const _hoisted_1$1 = {
+const _hoisted_1$3 = {
   viewBox: "0 0 1024 1024",
   xmlns: "http://www.w3.org/2000/svg"
 };
-const _hoisted_2$1 = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_2$3 = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M160 256H96a32 32 0 0 1 0-64h256V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V256zm448-64v-64H416v64h192zM224 896h576V256H224v640zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zm192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32z"
 }, null, -1);
-const _hoisted_3$1 = [
-  _hoisted_2$1
+const _hoisted_3$2 = [
+  _hoisted_2$3
 ];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", _hoisted_1$1, _hoisted_3$1);
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$3, _hoisted_3$2);
 }
-var _delete = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
-var main_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _sfc_main = defineComponent({
+var _delete = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
+const _sfc_main$2 = defineComponent({
+  name: "Warning"
+});
+const _hoisted_1$2 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2$2 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896zm0 832a384 384 0 0 0 0-768 384 384 0 0 0 0 768zm48-176a48 48 0 1 1-96 0 48 48 0 0 1 96 0zm-48-464a32 32 0 0 1 32 32v288a32 32 0 0 1-64 0V288a32 32 0 0 1 32-32z"
+}, null, -1);
+const _hoisted_3$1 = [
+  _hoisted_2$2
+];
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$2, _hoisted_3$1);
+}
+var warning = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+var main_vue_vue_type_style_index_0_scoped_true_lang$1 = "";
+const _sfc_main$1 = defineComponent({
   name: "KPicker",
   components: { batchTable, Delete: _delete },
   emits: ["update:modelValue", "update:page"],
@@ -1274,8 +1292,8 @@ const _sfc_main = defineComponent({
     };
   }
 });
-const _hoisted_1 = { class: "k-picker" };
-const _hoisted_2 = { class: "col-left" };
+const _hoisted_1$1 = { class: "k-picker" };
+const _hoisted_2$1 = { class: "col-left" };
 const _hoisted_3 = { class: "col-right" };
 const _hoisted_4 = { class: "selete-header flex-between" };
 const _hoisted_5 = /* @__PURE__ */ createTextVNode("\u5DF2\u9009\u62E9");
@@ -1284,7 +1302,7 @@ const _hoisted_7 = { class: "selete-content" };
 const _hoisted_8 = { class: "flex flex1 mr20 overflow" };
 const _hoisted_9 = { class: "text-overflow" };
 const _hoisted_10 = /* @__PURE__ */ createTextVNode(" \u5220\u9664 ");
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_batchTable = resolveComponent("batchTable");
   const _component_el_col = resolveComponent("el-col");
   const _component_delete = resolveComponent("delete");
@@ -1293,13 +1311,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_input_number = resolveComponent("el-input-number");
   const _component_el_row = resolveComponent("el-row");
-  return openBlock(), createElementBlock("div", _hoisted_1, [
+  return openBlock(), createElementBlock("div", _hoisted_1$1, [
     renderSlot(_ctx.$slots, "top", {}, void 0, true),
     createVNode(_component_el_row, { gutter: 10 }, {
       default: withCtx(() => [
         createVNode(_component_el_col, { span: 15 }, {
           default: withCtx(() => [
-            createElementVNode("div", _hoisted_2, [
+            createElementVNode("div", _hoisted_2$1, [
               createVNode(_component_batchTable, {
                 ref: "batchTableRef",
                 height: "440px",
@@ -1400,9 +1418,53 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "footer", {}, void 0, true)
   ]);
 }
-var KPicker = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-502798a4"]]);
+var KPicker = /* @__PURE__ */ _export_sfc$1(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-502798a4"]]);
 KPicker.install = function(app) {
   app.component(KPicker.name, KPicker);
+};
+var main_vue_vue_type_style_index_0_scoped_true_lang = "";
+const _sfc_main = defineComponent({
+  name: "KTooltip",
+  props: {
+    placement: { type: String, default: "top" },
+    showIcon: { type: Boolean, default: false }
+  },
+  components: { Warning: warning }
+});
+const _hoisted_1 = { class: "flex flex1 overflow" };
+const _hoisted_2 = { class: "text-overflow flex-center" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_warning = resolveComponent("warning");
+  const _component_el_icon = resolveComponent("el-icon");
+  const _component_el_tooltip = resolveComponent("el-tooltip");
+  return openBlock(), createElementBlock("div", _hoisted_1, [
+    createVNode(_component_el_tooltip, mergeProps(_ctx.$attrs, { placement: _ctx.placement }), {
+      content: withCtx(() => [
+        renderSlot(_ctx.$slots, "content", {}, void 0, true)
+      ]),
+      default: withCtx(() => [
+        createElementVNode("div", _hoisted_2, [
+          renderSlot(_ctx.$slots, "default", {}, void 0, true),
+          _ctx.showIcon ? (openBlock(), createBlock(_component_el_icon, {
+            key: 0,
+            class: "ml5"
+          }, {
+            default: withCtx(() => [
+              renderSlot(_ctx.$slots, "icon", {}, () => [
+                createVNode(_component_warning)
+              ], true)
+            ]),
+            _: 3
+          })) : createCommentVNode("", true)
+        ])
+      ]),
+      _: 3
+    }, 16, ["placement"])
+  ]);
+}
+var KTooltip = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1965eb9f"]]);
+KTooltip.install = function(app) {
+  app.component(KTooltip.name, KTooltip);
 };
 const KUI = {
   KButton,
@@ -1414,6 +1476,7 @@ const KUI = {
   KBreadcrumb,
   KTabs,
   KPicker,
+  KTooltip,
   install: () => {
   }
 };
@@ -1431,4 +1494,4 @@ KUI.install = function(app) {
     app.directive(key, directives[key]);
   });
 };
-export { batchTable as KBatchTable, KBreadcrumb, KButton, KDialog, KInput, KPage, KPicker, KTable, KTabs, KUI, directives };
+export { batchTable as KBatchTable, KBreadcrumb, KButton, KDialog, KInput, KPage, KPicker, KTable, KTabs, KTooltip, KUI, directives };

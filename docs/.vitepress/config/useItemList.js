@@ -45,6 +45,14 @@ export function useItemList(){
       text: 'Picker 添加选择器',
       link: '/components/picker',
     },
+    {
+      text: 'Tooltip 消息提示',
+      link: '/components/tooltip',
+    },
+    {
+      text: 'DatePicker 时间选择',
+      link: '/components/date-picker',
+    },
   ]
 
   const directiveList = [

@@ -59,6 +59,7 @@
   { name :'overflow-y', dec: '设置y轴: auto' },
   { name :'flex', dec: '设置flex布局' },
   { name :'flex-warp', dec: '超出换行' },
+  { name :'flex-shrink', dec: '比例不缩小 flex-shrink：0' },
   { name :'flex-align-center', dec: '左右居中' },
   { name :'flex-justify-center', dec: '上下居中' },
   { name :'flex-center', dec: '左右上下居中' },
