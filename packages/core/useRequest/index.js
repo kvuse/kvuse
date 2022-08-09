@@ -32,7 +32,7 @@ export function useRequest({
   };
 
   const pending = []; // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
-  const cancelToken = instance.CancelToken;
+  const cancelToken = axios.CancelToken;
   const removePending = (config) => {
     const resUrl = `${config.url}&${config.method}`;
     // eslint-disable-next-line no-restricted-syntax
