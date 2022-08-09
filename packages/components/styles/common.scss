@@ -225,6 +225,11 @@ input:-webkit-autofill {
   flex-shrink: 0;
 }
 
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .flex-justify-center {
   @include flex-type(center, null);
 }
@@ -241,12 +246,16 @@ input:-webkit-autofill {
   @include flex-type(space-between, center);
 }
 
+.flex-around {
+  @include flex-type(space-around, center);
+}
+
 .flexs-justify-center {
-  @include flex-types(center, null);
+  @include flex-types(null, center);
 }
 
 .flexs-align-center {
-  @include flex-types(null, center);
+  @include flex-types(center, null);
 }
 
 .flexs-center {
@@ -255,6 +264,10 @@ input:-webkit-autofill {
 
 .flexs-between {
   @include flex-types(space-between, center);
+}
+
+.flexs-around {
+  @include flex-types(space-around, center);
 }
 
 .flex-column {

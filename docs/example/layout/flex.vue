@@ -25,7 +25,7 @@
     <div class="mb10 mt10">
       超出换行：flex-warp
     </div>
-    <ul class="guid-content flex-warp">
+    <ul class="guid-content flex-wrap">
       <li class="bg-purple">
         content1
       </li>
@@ -42,17 +42,17 @@
   </div>
   <div>
     <div class="mb10 mt10">
-      左右居中：flex-align
+      左右居中：flex-justify-center
     </div>
-    <div class="flex-align flex1 bg-row">
+    <div class="flex-justify-center flex1 bg-row">
       左右
     </div>
   </div>
   <div class="mt10">
     <div class="mb10">
-      上下居中：flex-justify
+      上下居中：flex-align-center
     </div>
-    <div class="flex-justify flex1 bg-row">
+    <div class="flex-align-center flex1 bg-row">
       上下
     </div>
   </div>
@@ -95,9 +95,9 @@
   </div>
   <div>
     <div class="mb10">
-      左右居中：flexs-justify
+      左右居中：flexs-justify-center
     </div>
-    <ul class="guid-content flexs-justify">
+    <ul class="guid-content flexs-justify-center">
       <li class="bg-purple flex-center">
         左右
       </li>
@@ -108,9 +108,9 @@
   </div>
   <div>
     <div class="mb10 mt10">
-      上下居中：flexs-align
+      上下居中：flexs-align-center
     </div>
-    <ul class="guid-content flexs-align">
+    <ul class="guid-content flexs-align-center">
       <li class="bg-purple flex-center">
         左右
       </li>

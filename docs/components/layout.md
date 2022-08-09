@@ -66,7 +66,7 @@
   { name :'flex-around', dec: '两侧的间隔相等' },
   { name :'flex-between', dec: '两端对齐，项目之间的间隔都相等' },
   { name :'flex-column', dec: '设置flex方向: column' },
-  { name :'flexs-justify', dec: '多轴方式：左右居中' },
-  { name :'flexs-align', dec: '多轴方式：上下居中' },
+  { name :'flexs-justify-center', dec: '多轴方式：左右居中' },
+  { name :'flexs-align-center', dec: '多轴方式：上下居中' },
   { name :'flexs-center', dec: '多轴方式：上下左右居中' },
 ]" />

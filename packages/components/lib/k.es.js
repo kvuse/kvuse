@@ -1,4 +1,4 @@
-import { defineComponent, ref, resolveComponent, openBlock, createBlock, mergeProps, withModifiers, withCtx, renderSlot, createElementBlock, createCommentVNode, computed, withKeys, createSlots, warn, getCurrentInstance, provide, unref, inject, watch, createVNode, Fragment, renderList, toDisplayString, nextTick, createElementVNode, createTextVNode, normalizeClass, watchEffect } from "vue";
+import { defineComponent, ref, resolveComponent, openBlock, createBlock, mergeProps, withModifiers, withCtx, renderSlot, createElementBlock, createCommentVNode, computed, withKeys, createSlots, warn, getCurrentInstance, provide, unref, inject, watch, createVNode, Fragment, renderList, toDisplayString, nextTick, createElementVNode, createTextVNode, normalizeClass, watchEffect, isRef, normalizeProps } from "vue";
 var normalize = "";
 var common = "";
 const directives = {
@@ -80,7 +80,7 @@ var _export_sfc$1 = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$b = defineComponent({
+const _sfc_main$f = defineComponent({
   name: "KButton",
   props: {
     clickState: { type: Boolean, default: false },
@@ -107,11 +107,11 @@ const _sfc_main$b = defineComponent({
     return { onclick, buttonStatus };
   }
 });
-const _hoisted_1$a = {
+const _hoisted_1$b = {
   key: 0,
   class: "el-icon-lock el-icon--right"
 };
-function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_button = resolveComponent("el-button");
   return openBlock(), createBlock(_component_el_button, mergeProps({
     disabled: !_ctx.buttonStatus || _ctx.disabled,
@@ -121,16 +121,16 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   }), {
     default: withCtx(() => [
       renderSlot(_ctx.$slots, "default"),
-      _ctx.iconLock ? (openBlock(), createElementBlock("i", _hoisted_1$a)) : createCommentVNode("", true)
+      _ctx.iconLock ? (openBlock(), createElementBlock("i", _hoisted_1$b)) : createCommentVNode("", true)
     ]),
     _: 3
   }, 16, ["disabled", "click-state", "onClick"]);
 }
-var KButton = /* @__PURE__ */ _export_sfc$1(_sfc_main$b, [["render", _sfc_render$b]]);
+var KButton = /* @__PURE__ */ _export_sfc$1(_sfc_main$f, [["render", _sfc_render$c]]);
 KButton.install = function(app) {
   app.component(KButton.name, KButton);
 };
-const _sfc_main$a = defineComponent({
+const _sfc_main$e = defineComponent({
   name: "KInput",
   props: {
     modelValue: { type: [String, Number], default: "" },
@@ -204,7 +204,7 @@ const _sfc_main$a = defineComponent({
     };
   }
 });
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_input = resolveComponent("el-input");
   return openBlock(), createBlock(_component_el_input, mergeProps({
     modelValue: _ctx.inputValue,
@@ -240,7 +240,7 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     } : void 0
   ]), 1040, ["modelValue", "onKeyup", "onChange"]);
 }
-var KInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$a, [["render", _sfc_render$a]]);
+var KInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$e, [["render", _sfc_render$b]]);
 KInput.install = function(app) {
   app.component(KInput.name, KInput);
 };
@@ -528,7 +528,7 @@ var zhCn$1 = {};
 })(zhCn$1);
 var zhCn = /* @__PURE__ */ getDefaultExportFromCjs(zhCn$1);
 var main_vue_vue_type_style_index_0_scoped_true_lang$3 = "";
-const _sfc_main$9 = defineComponent({
+const _sfc_main$d = defineComponent({
   name: "KPage",
   props: {
     modelValue: { type: Number, default: 1 },
@@ -580,14 +580,14 @@ const _sfc_main$9 = defineComponent({
     };
   }
 });
-const _hoisted_1$9 = {
+const _hoisted_1$a = {
   key: 0,
   class: "page-right mt20"
 };
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_pagination = resolveComponent("el-pagination");
   const _component_el_config_provider = resolveComponent("el-config-provider");
-  return _ctx.showPage ? (openBlock(), createElementBlock("div", _hoisted_1$9, [
+  return _ctx.showPage ? (openBlock(), createElementBlock("div", _hoisted_1$a, [
     createVNode(_component_el_config_provider, { locale: _ctx.locale }, {
       default: withCtx(() => [
         createVNode(_component_el_pagination, {
@@ -607,11 +607,11 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     }, 8, ["locale"])
   ])) : createCommentVNode("", true);
 }
-var KPage = /* @__PURE__ */ _export_sfc$1(_sfc_main$9, [["render", _sfc_render$9], ["__scopeId", "data-v-10266ac2"]]);
+var KPage = /* @__PURE__ */ _export_sfc$1(_sfc_main$d, [["render", _sfc_render$a], ["__scopeId", "data-v-10266ac2"]]);
 KPage.install = function(app) {
   app.component(KPage.name, KPage);
 };
-const _sfc_main$8 = defineComponent({
+const _sfc_main$c = defineComponent({
   name: "KTable",
   components: { pagination: KPage },
   props: {
@@ -667,8 +667,8 @@ const _sfc_main$8 = defineComponent({
     };
   }
 });
-const _hoisted_1$8 = { key: 2 };
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$9 = { key: 2 };
+function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_table_column = resolveComponent("el-table-column");
   const _component_el_table = resolveComponent("el-table");
   const _component_pagination = resolveComponent("pagination");
@@ -708,7 +708,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                   item: scope.row,
                   row: scope.row,
                   index: scope.$index
-                }) : (openBlock(), createElementBlock("span", _hoisted_1$8, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
+                }) : (openBlock(), createElementBlock("span", _hoisted_1$9, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
               ];
             }),
             _: 2
@@ -740,7 +740,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8, ["total", "show-size", "modelValue", "onCurrentChange"])
   ], 64);
 }
-var KTable = /* @__PURE__ */ _export_sfc$1(_sfc_main$8, [["render", _sfc_render$8]]);
+var KTable = /* @__PURE__ */ _export_sfc$1(_sfc_main$c, [["render", _sfc_render$9]]);
 KTable.install = function(app) {
   app.component(KTable.name, KTable);
 };
@@ -770,7 +770,7 @@ var propsValue = {
     })
   }
 };
-const _sfc_main$7 = defineComponent({
+const _sfc_main$b = defineComponent({
   name: "KBatchTable",
   components: { pagination: KPage },
   props: propsValue,
@@ -879,10 +879,10 @@ const _sfc_main$7 = defineComponent({
     };
   }
 });
-const _hoisted_1$7 = { key: 2 };
+const _hoisted_1$8 = { key: 2 };
 const _hoisted_2$6 = { class: "mt20 flex-between" };
 const _hoisted_3$5 = { class: "flex1" };
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_table_column = resolveComponent("el-table-column");
   const _component_el_table = resolveComponent("el-table");
   const _component_pagination = resolveComponent("pagination");
@@ -926,7 +926,7 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
                   column: item,
                   row: scope.row,
                   index: scope.$index
-                }) : (openBlock(), createElementBlock("span", _hoisted_1$7, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
+                }) : (openBlock(), createElementBlock("span", _hoisted_1$8, toDisplayString((_a = scope.row[item.prop]) != null ? _a : "-"), 1))
               ];
             }),
             _: 2
@@ -965,12 +965,12 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 64);
 }
-var batchTable = /* @__PURE__ */ _export_sfc$1(_sfc_main$7, [["render", _sfc_render$7]]);
+var batchTable = /* @__PURE__ */ _export_sfc$1(_sfc_main$b, [["render", _sfc_render$8]]);
 batchTable.install = function(app) {
   app.component(batchTable.name, batchTable);
 };
 var main_vue_vue_type_style_index_0_lang$1 = "";
-const _sfc_main$6 = defineComponent({
+const _sfc_main$a = defineComponent({
   name: "KDialog",
   props: {
     modelValue: { type: Boolean, default: false },
@@ -1011,11 +1011,11 @@ const _sfc_main$6 = defineComponent({
     };
   }
 });
-const _hoisted_1$6 = /* @__PURE__ */ createElementVNode("span", null, "\u8FD9\u662F\u4E00\u6BB5\u4FE1\u606F", -1);
+const _hoisted_1$7 = /* @__PURE__ */ createElementVNode("span", null, "\u8FD9\u662F\u4E00\u6BB5\u4FE1\u606F", -1);
 const _hoisted_2$5 = { class: "dialog-footer" };
 const _hoisted_3$4 = /* @__PURE__ */ createTextVNode("\u53D6 \u6D88");
 const _hoisted_4$1 = /* @__PURE__ */ createTextVNode("\u786E \u5B9A");
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_button = resolveComponent("el-button");
   const _component_el_dialog = resolveComponent("el-dialog");
   return openBlock(), createBlock(_component_el_dialog, mergeProps({
@@ -1029,7 +1029,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   }), createSlots({
     default: withCtx(() => [
       renderSlot(_ctx.$slots, "default", {}, () => [
-        _hoisted_1$6
+        _hoisted_1$7
       ])
     ]),
     _: 2
@@ -1064,12 +1064,12 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     } : void 0
   ]), 1040, ["title", "modelValue", "custom-class", "onClose", "onOpen"]);
 }
-var KDialog = /* @__PURE__ */ _export_sfc$1(_sfc_main$6, [["render", _sfc_render$6]]);
+var KDialog = /* @__PURE__ */ _export_sfc$1(_sfc_main$a, [["render", _sfc_render$7]]);
 KDialog.install = function(app) {
   app.component(KDialog.name, KDialog);
 };
 var main_vue_vue_type_style_index_0_scoped_true_lang$2 = "";
-const _sfc_main$5 = defineComponent({
+const _sfc_main$9 = defineComponent({
   name: "KBreadcrumb",
   props: {
     list: {
@@ -1093,12 +1093,12 @@ const _sfc_main$5 = defineComponent({
     return { clickHandle };
   }
 });
-const _hoisted_1$5 = { class: "crumb-header flex-between" };
+const _hoisted_1$6 = { class: "crumb-header flex-between" };
 const _hoisted_2$4 = { class: "crumb-contain" };
 const _hoisted_3$3 = ["onClick"];
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_space = resolveComponent("el-space");
-  return openBlock(), createElementBlock("div", _hoisted_1$5, [
+  return openBlock(), createElementBlock("div", _hoisted_1$6, [
     createElementVNode("div", _hoisted_2$4, [
       createVNode(_component_el_space, { spacer: "/" }, {
         default: withCtx(() => [
@@ -1116,12 +1116,12 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default", {}, void 0, true)
   ]);
 }
-var KBreadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$5, [["render", _sfc_render$5], ["__scopeId", "data-v-4a9a2e45"]]);
+var KBreadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$9, [["render", _sfc_render$6], ["__scopeId", "data-v-4a9a2e45"]]);
 KBreadcrumb.install = function(app) {
   app.component(KBreadcrumb.name, KBreadcrumb);
 };
 var main_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$4 = defineComponent({
+const _sfc_main$8 = defineComponent({
   name: "KTabs",
   props: {
     type: { type: String, default: "" },
@@ -1164,8 +1164,8 @@ const _sfc_main$4 = defineComponent({
     return { activeName, handleClick };
   }
 });
-const _hoisted_1$4 = { class: "tabs-right ml10" };
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$5 = { class: "tabs-right ml10" };
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tab_pane = resolveComponent("el-tab-pane");
   const _component_el_tabs = resolveComponent("el-tabs");
   return openBlock(), createElementBlock("div", {
@@ -1190,12 +1190,12 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 1
     }, 16, ["type", "modelValue", "onTabClick"]),
-    createElementVNode("div", _hoisted_1$4, [
+    createElementVNode("div", _hoisted_1$5, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2);
 }
-var KTabs = /* @__PURE__ */ _export_sfc$1(_sfc_main$4, [["render", _sfc_render$4]]);
+var KTabs = /* @__PURE__ */ _export_sfc$1(_sfc_main$8, [["render", _sfc_render$5]]);
 KTabs.install = function(app) {
   app.component(KTabs.name, KTabs);
 };
@@ -1206,10 +1206,10 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$3 = defineComponent({
+const _sfc_main$7 = defineComponent({
   name: "Delete"
 });
-const _hoisted_1$3 = {
+const _hoisted_1$4 = {
   viewBox: "0 0 1024 1024",
   xmlns: "http://www.w3.org/2000/svg"
 };
@@ -1220,14 +1220,14 @@ const _hoisted_2$3 = /* @__PURE__ */ createElementVNode("path", {
 const _hoisted_3$2 = [
   _hoisted_2$3
 ];
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", _hoisted_1$3, _hoisted_3$2);
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$4, _hoisted_3$2);
 }
-var _delete = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
-const _sfc_main$2 = defineComponent({
+var _delete = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$4]]);
+const _sfc_main$6 = defineComponent({
   name: "Warning"
 });
-const _hoisted_1$2 = {
+const _hoisted_1$3 = {
   viewBox: "0 0 1024 1024",
   xmlns: "http://www.w3.org/2000/svg"
 };
@@ -1238,12 +1238,12 @@ const _hoisted_2$2 = /* @__PURE__ */ createElementVNode("path", {
 const _hoisted_3$1 = [
   _hoisted_2$2
 ];
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", _hoisted_1$2, _hoisted_3$1);
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$3, _hoisted_3$1);
 }
-var warning = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+var warning = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3]]);
 var main_vue_vue_type_style_index_0_scoped_true_lang$1 = "";
-const _sfc_main$1 = defineComponent({
+const _sfc_main$5 = defineComponent({
   name: "KPicker",
   components: { batchTable, Delete: _delete },
   emits: ["update:modelValue", "update:page"],
@@ -1292,7 +1292,7 @@ const _sfc_main$1 = defineComponent({
     };
   }
 });
-const _hoisted_1$1 = { class: "k-picker" };
+const _hoisted_1$2 = { class: "k-picker" };
 const _hoisted_2$1 = { class: "col-left" };
 const _hoisted_3 = { class: "col-right" };
 const _hoisted_4 = { class: "selete-header flex-between" };
@@ -1302,7 +1302,7 @@ const _hoisted_7 = { class: "selete-content" };
 const _hoisted_8 = { class: "flex flex1 mr20 overflow" };
 const _hoisted_9 = { class: "text-overflow" };
 const _hoisted_10 = /* @__PURE__ */ createTextVNode(" \u5220\u9664 ");
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_batchTable = resolveComponent("batchTable");
   const _component_el_col = resolveComponent("el-col");
   const _component_delete = resolveComponent("delete");
@@ -1311,7 +1311,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_input_number = resolveComponent("el-input-number");
   const _component_el_row = resolveComponent("el-row");
-  return openBlock(), createElementBlock("div", _hoisted_1$1, [
+  return openBlock(), createElementBlock("div", _hoisted_1$2, [
     renderSlot(_ctx.$slots, "top", {}, void 0, true),
     createVNode(_component_el_row, { gutter: 10 }, {
       default: withCtx(() => [
@@ -1418,12 +1418,12 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "footer", {}, void 0, true)
   ]);
 }
-var KPicker = /* @__PURE__ */ _export_sfc$1(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-502798a4"]]);
+var KPicker = /* @__PURE__ */ _export_sfc$1(_sfc_main$5, [["render", _sfc_render$2], ["__scopeId", "data-v-502798a4"]]);
 KPicker.install = function(app) {
   app.component(KPicker.name, KPicker);
 };
 var main_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _sfc_main = defineComponent({
+const _sfc_main$4 = defineComponent({
   name: "KTooltip",
   props: {
     placement: { type: String, default: "top" },
@@ -1431,13 +1431,13 @@ const _sfc_main = defineComponent({
   },
   components: { Warning: warning }
 });
-const _hoisted_1 = { class: "flex flex1 overflow" };
+const _hoisted_1$1 = { class: "flex flex1 overflow" };
 const _hoisted_2 = { class: "text-overflow flex-center" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_warning = resolveComponent("warning");
   const _component_el_icon = resolveComponent("el-icon");
   const _component_el_tooltip = resolveComponent("el-tooltip");
-  return openBlock(), createElementBlock("div", _hoisted_1, [
+  return openBlock(), createElementBlock("div", _hoisted_1$1, [
     createVNode(_component_el_tooltip, mergeProps(_ctx.$attrs, { placement: _ctx.placement }), {
       content: withCtx(() => [
         renderSlot(_ctx.$slots, "content", {}, void 0, true)
@@ -1462,9 +1462,217 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 16, ["placement"])
   ]);
 }
-var KTooltip = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1965eb9f"]]);
+var KTooltip = /* @__PURE__ */ _export_sfc$1(_sfc_main$4, [["render", _sfc_render$1], ["__scopeId", "data-v-1965eb9f"]]);
 KTooltip.install = function(app) {
   app.component(KTooltip.name, KTooltip);
+};
+const _sfc_main$3 = {
+  __name: "main",
+  setup(__props) {
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(ElConfigProvider), { locale: unref(zhCn) }, {
+        default: withCtx(() => [
+          renderSlot(_ctx.$slots, "default")
+        ]),
+        _: 3
+      }, 8, ["locale"]);
+    };
+  }
+};
+const _sfc_main$2 = {
+  __name: "datePicker",
+  props: {
+    type: { type: String, default: "daterange" },
+    modelValue: { type: [String, Array], default: () => [] }
+  },
+  emits: ["change", "update:modelValue"],
+  setup(__props, { emit }) {
+    const props = __props;
+    const pickerFormat = computed(() => props.type === "datetimerange" ? "YYYY-MM-DD HH:mm:ss" : "YYYY-MM-DD");
+    const getDateResult = (day) => {
+      const start = new Date();
+      const end = new Date();
+      start.setTime(start.getTime() - 3600 * 1e3 * 24 * day);
+      return props.type === "date" ? start : [start, end];
+    };
+    const shortcuts = [
+      {
+        text: "\u6700\u8FD1\u4E00\u5468",
+        value: () => getDateResult(7)
+      },
+      {
+        text: "\u6700\u8FD1\u4E00\u4E2A\u6708",
+        value: () => getDateResult(30)
+      },
+      {
+        text: "\u6700\u8FD1\u4E09\u4E2A\u6708",
+        value: () => getDateResult(90)
+      }
+    ];
+    const defaultTime = [new Date(2e3, 1, 1, 0, 0, 0), new Date(2e3, 2, 1, 23, 59, 59)];
+    const dateTime = computed({
+      get: () => props.modelValue,
+      set: (value) => emit("update:modelValue", value)
+    });
+    const disabledDate = (data) => data.getTime() > Date.now();
+    const changeHandle = (val) => emit("change", val);
+    return (_ctx, _cache) => {
+      const _component_el_date_picker = resolveComponent("el-date-picker");
+      return openBlock(), createBlock(_component_el_date_picker, {
+        modelValue: unref(dateTime),
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => isRef(dateTime) ? dateTime.value = $event : null),
+        type: __props.type,
+        "unlink-panels": "",
+        "range-separator": "\u81F3",
+        "start-placeholder": "\u5F00\u59CB\u65E5\u671F",
+        "end-placeholder": "\u7ED3\u675F\u65E5\u671F",
+        shortcuts,
+        format: unref(pickerFormat),
+        "value-format": "YYYY-MM-DD HH:mm:ss",
+        "disabled-date": disabledDate,
+        "default-time": defaultTime,
+        editable: false,
+        clearable: false,
+        onChange: changeHandle
+      }, null, 8, ["modelValue", "type", "format"]);
+    };
+  }
+};
+const _hoisted_1 = { class: "date-picker flex" };
+const _sfc_main$1 = {
+  __name: "selectType",
+  props: {
+    daterange: { type: Boolean, default: false },
+    modelValue: { type: [String, Array], default: () => [] }
+  },
+  emits: ["change", "update:modelValue"],
+  setup(__props, { emit }) {
+    const props = __props;
+    const timeType = ref(0);
+    const selectList = ref([
+      { value: 0, label: "\u65E5" },
+      { value: 1, label: "\u5468" },
+      { value: 2, label: "\u6708" },
+      { value: 3, label: "\u5E74" }
+    ]);
+    const dateTime = computed({
+      get: () => props.modelValue,
+      set: (value) => emit("update:modelValue", value)
+    });
+    const disabledDate = (data) => data.getTime() > Date.now();
+    const pickerFormat = computed(() => {
+      const listMap = {
+        0: "YYYY-MM-DD",
+        1: "YYYY \u7B2C ww \u5468",
+        2: "YYYY-MM",
+        3: "YYYY"
+      };
+      return listMap[timeType.value];
+    });
+    const pickerType = computed(() => {
+      const listMap = {
+        0: props.daterange ? "daterange" : "date",
+        1: "week",
+        2: "month",
+        3: "year"
+      };
+      return listMap[timeType.value];
+    });
+    const pickerPlaceholder = computed(() => {
+      const { label } = selectList.value.filter((item) => item.value === timeType.value)[0];
+      return `\u9009\u62E9${label}`;
+    });
+    const currentDateTime = ref("");
+    watchEffect(() => {
+      if (Array.isArray(dateTime.value)) {
+        const [startTime, endTime] = dateTime.value;
+        currentDateTime.value = [startTime, endTime];
+      }
+    });
+    const changeTimeType = (type) => {
+      if (type) {
+        if (Array.isArray(dateTime.value)) {
+          const [startTime] = dateTime.value;
+          dateTime.value = startTime;
+        }
+      } else if (props.daterange) {
+        dateTime.value = currentDateTime.value;
+      }
+      changeHandle();
+    };
+    const changeHandle = () => {
+      emit("change", { type: timeType.value, time: dateTime.value });
+    };
+    return (_ctx, _cache) => {
+      const _component_el_option = resolveComponent("el-option");
+      const _component_el_select = resolveComponent("el-select");
+      const _component_el_date_picker = resolveComponent("el-date-picker");
+      return openBlock(), createElementBlock("div", _hoisted_1, [
+        createVNode(_component_el_select, {
+          modelValue: timeType.value,
+          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => timeType.value = $event),
+          class: "width-100 mr10",
+          onChange: changeTimeType
+        }, {
+          default: withCtx(() => [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(selectList.value, (item) => {
+              return openBlock(), createBlock(_component_el_option, {
+                key: item.value,
+                label: item.label,
+                value: item.value
+              }, null, 8, ["label", "value"]);
+            }), 128))
+          ]),
+          _: 1
+        }, 8, ["modelValue"]),
+        createElementVNode("div", null, [
+          __props.daterange && !timeType.value ? (openBlock(), createBlock(_sfc_main$2, mergeProps({
+            key: 0,
+            modelValue: unref(dateTime),
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => isRef(dateTime) ? dateTime.value = $event : null)
+          }, _ctx.$props, { onChange: changeHandle }), null, 16, ["modelValue"])) : (openBlock(), createBlock(_component_el_date_picker, {
+            key: 1,
+            modelValue: unref(dateTime),
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => isRef(dateTime) ? dateTime.value = $event : null),
+            type: unref(pickerType),
+            format: unref(pickerFormat),
+            "value-format": "YYYY-MM-DD HH:mm:ss",
+            placeholder: unref(pickerPlaceholder),
+            "disabled-date": disabledDate,
+            clearable: false,
+            editable: false,
+            "start-placeholder": "\u5F00\u59CB\u65E5\u671F",
+            "end-placeholder": "\u7ED3\u675F\u65E5\u671F",
+            onChange: changeHandle
+          }, null, 8, ["modelValue", "type", "format", "placeholder"]))
+        ])
+      ]);
+    };
+  }
+};
+const _sfc_main = defineComponent({
+  name: "KDatePicker",
+  props: {
+    selectType: { type: Boolean, default: false }
+  },
+  components: { configProvider: _sfc_main$3, selectType: _sfc_main$1, datePicker: _sfc_main$2 },
+  setup() {
+  }
+});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_selectType = resolveComponent("selectType");
+  const _component_datePicker = resolveComponent("datePicker");
+  const _component_config_provider = resolveComponent("config-provider");
+  return openBlock(), createBlock(_component_config_provider, null, {
+    default: withCtx(() => [
+      _ctx.selectType ? (openBlock(), createBlock(_component_selectType, normalizeProps(mergeProps({ key: 0 }, _ctx.$attrs)), null, 16)) : (openBlock(), createBlock(_component_datePicker, normalizeProps(mergeProps({ key: 1 }, _ctx.$attrs)), null, 16))
+    ]),
+    _: 1
+  });
+}
+var KDatePicker = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["render", _sfc_render]]);
+KDatePicker.install = function(app) {
+  app.component(KDatePicker.name, KDatePicker);
 };
 const KUI = {
   KButton,
@@ -1477,6 +1685,7 @@ const KUI = {
   KTabs,
   KPicker,
   KTooltip,
+  KDatePicker,
   install: () => {
   }
 };
@@ -1494,4 +1703,4 @@ KUI.install = function(app) {
     app.directive(key, directives[key]);
   });
 };
-export { batchTable as KBatchTable, KBreadcrumb, KButton, KDialog, KInput, KPage, KPicker, KTable, KTabs, KTooltip, KUI, directives };
+export { batchTable as KBatchTable, KBreadcrumb, KButton, KDatePicker, KDialog, KInput, KPage, KPicker, KTable, KTabs, KTooltip, KUI, directives };
