@@ -10,21 +10,21 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.39"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.10.2",
-    "@vue/compiler-sfc": "^3.2.37",
-    "eslint": "^8.18.0",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "@vue/compiler-sfc": "^3.2.39",
+    "eslint": "^8.23.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-vue": "^8.7.1",
-    "postcss-html": "^1.4.1",
-    "sass": "^1.52.3",
-    "stylelint": "^14.9.1",
-    "stylelint-config-standard-scss": "^3.0.0",
-    "unplugin-auto-import": "^0.5.11",
-    "unplugin-vue-components": "^0.17.21",
-    "vite": "^2.9.14"
+    "eslint-plugin-vue": "^9.5.1",
+    "postcss-html": "^1.5.0",
+    "sass": "^1.54.9",
+    "stylelint": "^14.12.0",
+    "stylelint-config-standard-scss": "^5.0.0",
+    "unplugin-auto-import": "^0.11.2",
+    "unplugin-vue-components": "^0.22.7",
+    "vite": "^3.1.3"
   }
 }

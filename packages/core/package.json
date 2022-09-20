@@ -23,7 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
-    "element-plus": "^2.2.12",
-    "vue": "^3.2.32"
+    "element-plus": "^2.2.17",
+    "vue": "^3.2.39"
   }
 }

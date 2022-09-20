@@ -30,27 +30,30 @@
 }
 
 // 主题色
-$themecolor: #f4364c;
+$theme-color: #f4364c;
 
 // 加粗色
-$color333: #333;
+$color-333: #333;
+$color-666: #666;
+$color-999: #999;
 
-//蓝色
-$bluecolor: #409eff;
-$maincolor: #409eff;
-$color999: #999;
-$colorgray: #97a8be;
+// 颜色
+$blue-color: #409eff;
+$red-color: #f4364c;
+$color-gray: #97a8be;
+$color-yellow: #ffb14d;
+$color-green: #66bf4b;
 
 .color-33 {
-  color: $color333;
+  color: $color-333;
 }
 
 .color-99 {
-  color: $color999;
+  color: $color-999;
 }
 
 .color-66 {
-  color: #666;
+  color: $color-666;
 }
 
 .color-d2 {
@@ -58,28 +61,56 @@ $colorgray: #97a8be;
 }
 
 .c-yellow {
-  color: #ffb14d;
+  color: $color-yellow;
 }
 
 .c-red {
-  color: #ff3d3d;
+  color: $red-color;
 }
 
 .c-blue {
-  color: $maincolor;
+  color: $blue-color;
 }
 
 .c-green {
-  color: #66bf4b;
+  color: $color-green;
 }
 
 .c-gray {
-  color: $colorgray;
+  color: $color-gray;
 }
 
-$bgcolor: #ffb14d;
-$borderdivcolor: #d8dce5;
-$bordercolor: #f5f5f5;
+.c-white {
+  color: #fff;
+}
+
+$bg-color: #ffb14d;
+$border-div-color: #d8dce5;
+$border-color: #f5f5f5;
+
+.bg-red {
+  background: $red-color;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.bg-gray {
+  background: #f5f5f5;
+}
+
+.bg-yellow {
+  background: $color-yellow;
+}
+
+.bg-blue {
+  background: $blue-color;
+}
+
+.bg-green {
+  background: $color-green;
+}
 
 //去除浏览器自动填充内容背景颜色为黄色解决方法
 input:-webkit-autofill {
@@ -130,12 +161,20 @@ input:-webkit-autofill {
   margin-top: 20px;
 }
 
+.p10 {
+  padding: 10px;
+}
+
 .pl10 {
   padding-left: 10px;
 }
 
 .pr10 {
   padding-right: 10px;
+}
+
+.p20 {
+  padding: 20px;
 }
 
 .pl20 {
@@ -206,6 +245,27 @@ input:-webkit-autofill {
 
 .weight-600 {
   font-weight: 600;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.border-radius {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .iconfont {

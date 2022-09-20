@@ -16,6 +16,13 @@
 <<< @/example/layout/color.vue
 </demo>
 
+## 背景颜色
+
+<demo md src="layout/background">
+
+<<< @/example/layout/background.vue
+</demo>
+
 ## 使用边距
 
 <demo md src="layout/margin">
@@ -40,8 +47,12 @@
 ## 样式属性class
 
 <v-table type="dec" :data="[
+  { name :'c-red, c-yellow, c-blue, c-green', dec: '字体颜色：红色，黄色，蓝色，绿色' },
+  { name :'color-33, color-66, color-99', dec: '其他字体颜色：#333，#666，#999' },
+  { name :'bg-red, bg-yellow, bg-blue, bg-green', dec: '背景颜色：红色，黄色，蓝色，绿色' },
   { name :'mt10, mt20', dec: '上边距10px，上边距20px' },
   { name :'mb10, mb20', dec: '下边距10px，下边距20px' },
+  { name :'p10, p20', dec: '内边距10px，内边距20px' },
   { name :'ml10, ml20, ml30', dec: '左边距10px，左边距20px, 左边距30px' },
   { name :'mr10, mr20, mr30', dec: '右边距10px，右边距10px, 右边距30px' },
   { name :'pl10, pr10, pl20, pr20', dec: '左内距10px，右内边距10px, 左内边距20px,右内边距20px' },
@@ -49,6 +60,8 @@
   { name :'p-tb20', dec: '上下内距20px' },
   { name :'p-lr40', dec: '左右内距20px' },
   { name :'width-180, width-220, width-240', dec: '宽度180px，宽度220px，宽度240px' },
+  { name :'font-12, font-14, font-16, font-18', dec: '字体大小：12px，14px，16px，18px' },
+  { name :'border-radius', dec: '边框弧度：8px' },
   { name :'line-through', dec: '中划线' },
   { name :'pointer', dec: '光标手指指针' },
   { name :'not-allowed', dec: '禁用样式' },
