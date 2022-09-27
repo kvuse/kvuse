@@ -7,13 +7,19 @@
 
 <script setup>
 import { useMessage, useRequest } from '@kvuse/core';
+import axios from 'axios';
 import test from './test.vue';
 
 console.log('useCommon: ', useMessage());
 
 // console.log('useRequest: ', useRequest);
 
+const instance = axios.create({
+  timeout: 1000,
+});
+
 const { $api, $http } = useRequest({
+  instance,
   responseHandler(response) {
     const { data, data: { code } } = response || {};
     if (code === 0) return data;

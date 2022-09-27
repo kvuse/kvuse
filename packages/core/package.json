@@ -1,6 +1,6 @@
 {
   "name": "@kvuse/core",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "vue3一些常用的API",
   "homepage": "https://kvuse.github.io/docs/api/",
   "files": [

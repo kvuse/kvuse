@@ -12,14 +12,14 @@ import { ElMessage } from 'element-plus';
 export function useRequest({
   instance = axios, beforeRequest, beforeResponse, responseHandler, errorHandler, errorResponse,
 } = {}) {
-  if (!instance) {
-    instance.defaults = {
-      instance: 1000, // 响应时间
-      withCredentials: true, // `withCredentails`选项表明了是否是跨域请求
-      headers: { // 设置默认请求头
-        'X-Requested-With': 'XMLHttpRequest',
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+  let axiosInstance = instance;
+  if (!axiosInstance) {
+    axiosInstance = axios;
+    axiosInstance.defaults.timeout = 10000; // 响应时间
+    axiosInstance.defaults.withCredentials = true; // `withCredentails`选项表明了是否是跨域请求
+    axiosInstance.defaults.headers = { // 设置默认请求头
+      'X-Requested-With': 'XMLHttpRequest',
+      'Content-Type': 'application/json; charset=UTF-8',
     };
   }
 
@@ -45,7 +45,7 @@ export function useRequest({
   };
 
   // 添加请求拦截器
-  instance.interceptors.request.use(async (config) => {
+  axiosInstance.interceptors.request.use(async (config) => {
     const result = beforeRequest ? await beforeRequest(config) : config;
     removePending(result); // 在一个ajax发送前执行一下取消操作
     // eslint-disable-next-line new-cap
@@ -56,7 +56,7 @@ export function useRequest({
   });
 
   // 添加返回拦截器
-  instance.interceptors.response.use(
+  axiosInstance.interceptors.response.use(
     async (response) => {
       removePending(response.config); // 在一个ajax响应后再执行一下取消操作，把已经完成的请求从pending中移除
       if (beforeResponse) {
@@ -86,7 +86,7 @@ export function useRequest({
         }
         checkCode(error.message);
       }
-      if (error.message === 'timeout of 10000ms exceeded') error.message = '网络超时, 请检查网络！';
+      if (error.message && error.message.includes('timeout of')) error.message = '网络超时, 请检查网络！';
       // 对返回的错误处理
       if (error.message) return Promise.reject(error);
       return error;
@@ -116,8 +116,8 @@ export function useRequest({
   const requestHandle = async (url, params, method, isObject) => {
     try {
       const res = ['post', 'put'].includes(method)
-        ? await instance({ method, url, data: params })
-        : await instance[method](url, { params });
+        ? await axiosInstance({ method, url, data: params })
+        : await axiosInstance[method](url, { params });
       return setResult(res, isObject);
     } catch (err) {
       checkCode(err.message);

@@ -107,6 +107,35 @@ const getList = async () => {
 </script>
 ```
 
+## 使用实例
+
+:::warning
+默认设置超时时间为10s
+:::
+
+```js
+<script setup>
+import { useRequest } from '@kvuse/core';
+import axios from 'axios';
+
+
+const instance = axios.create({
+  timeout: 5000, // 超时时间
+});
+
+
+const { $api } = useRequest({
+  instance,
+});
+
+const getList = async () => {
+  const result = await $api.get('接口地址');
+  console.log('result: ', result);
+};
+
+</script>
+```
+
 ## 参数说明
 
 <v-table type="event" :data="[
