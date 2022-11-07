@@ -2,6 +2,7 @@
   <div class="collect">
     Collect
     <test />
+    <k-input v-model="num" placeholder="测试输入框" class="mt20" />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import test from './test.vue';
 
 console.log('useCommon: ', useMessage());
 
+const num = ref('');
 // console.log('useRequest: ', useRequest);
 
 const instance = axios.create({

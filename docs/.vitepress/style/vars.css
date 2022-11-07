@@ -52,7 +52,15 @@
 
 .dark {
   --vp-code-block-bg: rgb(0 0 0 / 20%);
-  --vp-c-text-code: #c0cec0;
+  --vp-c-text-1: #86b91a;
+  --vp-c-text-2: #86b91a;
+  --vp-c-text-3: #86b91a;
+  --vp-c-text-4: #86b91a;
+  --el-text-color-primary: #86b91a !important;
+}
+
+.dark body {
+  color: #86b91a;
 }
 
 @media (min-width: 640px) {

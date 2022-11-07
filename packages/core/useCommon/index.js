@@ -27,7 +27,14 @@ export function useCommon() {
 
   const isDev = computed(() => import.meta.env.MODE === 'development');
 
+  /**
+   * 重置参数
+   * @param {string} params 参数名称
+   * @returns
+   */
+  const resetParams = (params) => instance.proxy[params];
+
   return {
-    route, router, nextTick, ref, reactive, computed, watch, watchEffect, onMounted, onUnmounted, routerName, loadPage, isDev, replacePage, pinia: $pinia, store: $store, globalProperties,
+    route, router, nextTick, ref, reactive, computed, watch, watchEffect, onMounted, onUnmounted, routerName, loadPage, isDev, replacePage, pinia: $pinia, store: $store, globalProperties, resetParams,
   };
 }

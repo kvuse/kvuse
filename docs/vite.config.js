@@ -17,6 +17,7 @@ export default defineConfig({
       // 设置别名
       alias: {
         '@': resolve(__dirname, 'example/'),
+        '@kvuse/components': resolve(__dirname, '../packages/components'),
       },
     },
   },
