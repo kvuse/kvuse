@@ -15,14 +15,14 @@
     "@element-plus/icons-vue": "^2.0.10",
     "@kvuse/components": "workspace:*",
     "element-plus": "^2.2.20",
-    "vue": "^3.2.41"
+    "vue": "^3.2.44"
   },
   "devDependencies": {
     "@vue/theme": "^1.2.2",
-    "@vueuse/core": "^9.4.0",
+    "@vueuse/core": "^9.5.0",
     "markdown-it": "^13.0.1",
     "markdown-it-container": "^3.0.0",
     "unplugin-vue-components": "^0.22.9",
-    "vitepress": "1.0.0-alpha.27"
+    "vitepress": "1.0.0-alpha.28"
   }
 }

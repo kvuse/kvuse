@@ -12,13 +12,15 @@ export default defineConfig({
       allowOverrides: true,
     }),
   ],
-  serve: {
-    resolve: {
-      // 设置别名
-      alias: {
-        '@': resolve(__dirname, 'example/'),
-        '@kvuse/components': resolve(__dirname, '../packages/components'),
-      },
+  resolve: {
+    // 设置别名
+    alias: {
+      '@/example': resolve(__dirname, 'example/'),
+    },
+  },
+  server: {
+    fs: {
+      allow: ['..'],
     },
   },
 });

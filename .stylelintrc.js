@@ -3,7 +3,8 @@ module.exports = {
   "customSyntax": "postcss-html",
   rules: {
     "selector-max-id": 2,
-    "at-rule-no-unknown": [true, { ignoreAtRules: ["include", "mixin"] }],
+    "at-rule-no-unknown": [true, { ignoreAtRules: ["include", "mixin", "each", "if", "else", "while"] }],
+    "unit-no-unknown": [true, { ignoreUnits: ["rpx"] }],
     "selector-max-compound-selectors": 4, // 允许伪类嵌套4层
     "max-nesting-depth": [
       4,
