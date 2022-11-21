@@ -18,8 +18,10 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
 
-      - name: Build
+      - name: cd docs
         run: cd docs
+
+      - name: Build
         run: pnpm build
 
       - name: Deploy
