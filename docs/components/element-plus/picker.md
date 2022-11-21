@@ -49,7 +49,7 @@
 
 ## TableColumn 属性
 
-[查看TableColumn属性](/components/batch-table)
+[查看TableColumn属性](/components/element-plus/batch-table)
 
 ## Table-column slots
 
