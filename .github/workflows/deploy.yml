@@ -21,11 +21,8 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: cd docs
-        run: cd docs
-
       - name: Install & Build
-        run: pnpm i  &&  pnpm build
+        run: cd docs && pnpm i  &&  pnpm build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
