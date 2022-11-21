@@ -4,7 +4,7 @@
 
 <demo md src="pagination/basic">
 
-<<< @/example/pagination/basic.vue
+<<< @/example/element-plus/pagination/basic.vue
 
 </demo>
 
@@ -12,7 +12,7 @@
 
 <demo md src="pagination/change-size">
 
-<<< @/example/pagination/change-size.vue
+<<< @/example/element-plus/pagination/change-size.vue
 </demo>
 
 ## 小型分页
@@ -21,7 +21,7 @@
 
 <demo md src="pagination/small">
 
-<<< @/example/pagination/small.vue
+<<< @/example/element-plus/pagination/small.vue
 </demo>
 
 ## 设置最大页码按钮数
@@ -30,7 +30,7 @@
 
 <demo md src="pagination/pager-count">
 
-<<< @/example/pagination/pager-count.vue
+<<< @/example/element-plus/pagination/pager-count.vue
 </demo>
 
 ## Pagination 属性
@@ -49,4 +49,5 @@
 <v-table type="event" :data="[
   { event :'current-change', dec: '当用户切换分页的触发该事件', callback: 'currengPage' },
   { event :'size-change', dec: '当用户切换页码的时候触发', callback: 'curentSize' },
+  { event :'change', dec: '当用户切换页码或者分页的时候触发', callback: 'page, size' },
 ]" />

@@ -8,7 +8,7 @@
 
 <demo md src="input/basic">
 
-<<< @/example/input/basic.vue
+<<< @/example/element-plus/input/basic.vue
 </demo>
 
 ## 整数类型
@@ -17,7 +17,7 @@
 
 <demo md src="input/integer">
 
-<<< @/example/input/integer.vue
+<<< @/example/element-plus/input/integer.vue
 </demo>
 
 ## 控制小数点
@@ -26,7 +26,7 @@
 
 <demo md src="input/point">
 
-<<< @/example/input/point.vue
+<<< @/example/element-plus/input/point.vue
 </demo>
 
 ## Input 属性

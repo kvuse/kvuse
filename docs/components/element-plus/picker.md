@@ -4,7 +4,7 @@
 
 <demo md src="picker/basic">
 
-<<< @/example/picker/basic.vue
+<<< @/example/element-plus/picker/basic.vue
 
 </demo>
 
@@ -12,7 +12,7 @@
 
 <demo md src="picker/slots">
 
-<<< @/example/picker/slots.vue
+<<< @/example/element-plus/picker/slots.vue
 
 </demo>
 
@@ -24,7 +24,7 @@
 
 <demo md src="picker/dialog">
 
-<<< @/example/picker/dialog.vue
+<<< @/example/element-plus/picker/dialog.vue
 </demo>
 
 ## 显示数量
@@ -33,7 +33,7 @@
 
 <demo md src="picker/show-count">
 
-<<< @/example/picker/show-count.vue
+<<< @/example/element-plus/picker/show-count.vue
 </demo>
 
 ## Pagination 属性

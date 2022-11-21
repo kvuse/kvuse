@@ -2,9 +2,11 @@
 # kvuse
 
 vue3组件库
-####  基于element-ui二次开发，根据项目需求，方便项目开发使用 
+
+#### 基于element-ui二次开发，根据项目需求，方便项目开发使用
 
 #### 安装
+
 ```
 # Npm  
 npm install @kvuse/components
@@ -12,6 +14,7 @@ npm install @kvuse/components
 # Yarn  
 yarn add @kvuse/components
 ```
+
 #### 使用 按需引入
 
 ```js
@@ -41,7 +44,8 @@ export default {
   },
 };
 ```
-#### 全局components:
+
+#### 全局components
 
 ```
 import { createApp } from 'vue';
@@ -52,16 +56,23 @@ Vue.use(KUI)
 ```
 
 ### 使用
+
 #### KButton
+
 > 点击之后延时800ms,防止重复点击
+
 ```html
   <k-button type="primary">
     测试按钮
   </k-button>
 ```
+
 #### KInput
+
 > 默认只能输入数字，默认小数点后两位
+
 ### props
+
 | 属性 | 类型 | 默认 | 使用说明 |
 | ---- | ----| ---- | ---- |
 |type | String | number | integer 只能输入整数 |
@@ -79,7 +90,9 @@ const value = ref('');
 
 </script>
 ```
+
 #### KTable
+
 ```js
 <template>
   <k-table :table-column="tableColumn" :table-data="tableData">
@@ -118,6 +131,7 @@ const clickHandle = (row) => {
 ```
 
 ### props
+
 | 属性 | 类型 | 使用说明 |
 | ---- | ----| ---- |
 | tableColumn | Array | [{ lable:'日期', prop: 'date'}] |
@@ -129,6 +143,7 @@ const clickHandle = (row) => {
 其他参数看element官网
 
 ### tableColumn参数说明
+
 | Props | 说明 | 类型 |
 | ---- | ----| ---- |
 | custom | 自定义内容插槽 | string |
@@ -138,7 +153,6 @@ const clickHandle = (row) => {
 | sortable | 对应列是否可以排序 | boolean |
 | fixed | 列是否固定在左侧`left`或者右侧`right`， true 表示固定在左侧  | string / boolean |
 
-
 ### event
 
 | 事件 | 说明 | 回调参数 |
@@ -147,6 +161,7 @@ const clickHandle = (row) => {
 |  sort-change | 点击排序触发 | { prop, order, currentPage, column } |
 
 #### kPage
+
 ```js
 <template>
   <k-page v-model="currentPage" :total="100" @current-change="currentChange" />
@@ -167,7 +182,9 @@ const currentChange = (value) => {
 </style>
 
 ```
+
 ### props
+
 | 属性 | 类型 | 使用说明 |
 | ---- | ----| ---- |
 | currentPage | Number |  v-model="current" |
@@ -183,6 +200,7 @@ const currentChange = (value) => {
 |  size-change | 切换条数触发改事件 | size |
 
 #### KBatchTable
+
 ```js
 <template>
   <k-batch-table :table-column="tableColumn" :table-data="tableData" key-id="id" v-model="multipleSelection">
@@ -220,9 +238,11 @@ const clickHandle = (row) => {
 </style>
 
 ```
+
 ## batchTable组件
 
 ### props
+
 | 属性 | 类型 | 使用说明 |
 | ---- | ----| ---- |
 | tableColumn | Array | [{ lable:'日期', prop: 'date'}] |
@@ -233,10 +253,10 @@ const clickHandle = (row) => {
 | model-value / v-model | Array |  选择的数组 |
 | selectList | Array |  已选择的列表 |
 
-
 其他参数看element官网
 
 ### tableColumn参数说明
+
 | Props | 说明 | 类型 |
 | ---- | ----| ---- |
 | custom | 自定义内容插槽 | string |
@@ -246,7 +266,6 @@ const clickHandle = (row) => {
 | sortable | 对应列是否可以排序 | boolean |
 | fixed | 列是否固定在左侧`left`或者右侧`right`， true 表示固定在左侧  | string / boolean |
 
-
 ### event
 
 | 事件 | 说明 | 回调参数 |
@@ -255,6 +274,7 @@ const clickHandle = (row) => {
 |  sort-change | 点击排序触发 | { prop, order, currentPage, column } |
 
 #### KDialog
+
 ```js
 <template>
   <K-dialog title="提示" v-model="visible" />
@@ -268,6 +288,7 @@ const visible = ref(true);
 ```
 
 ### props
+
 | 属性 | 类型 | 使用说明 |
 | ---- | ----| ---- |
 | showFooter | Boolean | 是否显示footer,默认false |
@@ -280,16 +301,18 @@ const visible = ref(true);
 |  open | 打开对话框的时候触发 |  |
 |  close | 关闭对话框的时候触发 |  |
 
-#### slots 
+#### slots
 
 | 插槽名 | 说明 | 插槽作用域 |
 | ---- | ----| ---- |
 | footer | footer内容 |  |
 
 #### KTabs
+
 > **首先要配置路由，name值要和路由名一致，切换路由自动跳转，刷新默认当前路由**
-> 
+>
 > **如果没有配置路由，请使用elmentPlus tabs**
+
 ```js
 <template>
   <k-tabs :tabs-list="tabsList" @tab-click="tabClick" />
@@ -309,7 +332,9 @@ const tabClick = (name) => {
 </script>
 
 ```
+
 ### props
+
 | 属性 | 类型 | 使用说明 |
 | ---- | ----| ---- |
 | tabsList | Array |  |
@@ -322,7 +347,7 @@ const tabClick = (name) => {
 | tab-click | 当用户点击确认触发该事件 |  |
 |  change | 路由改变的触发 |  |
 
-#### slots 
+#### slots
 
 | 插槽名 | 说明 | 插槽作用域 |
 | ---- | ----| ---- |
@@ -331,6 +356,7 @@ const tabClick = (name) => {
 #### KPicker
 
 ### props
+
 | 属性 | 类型 | 使用说明 |
 | ---- | ----| ---- |
 | modelValue | Array | 勾选的列表 |
@@ -344,6 +370,7 @@ const tabClick = (name) => {
 其他参数看element官网
 
 ### tableColumn参数说明
+
 | Props | 说明 | 类型 |
 | ---- | ----| ---- |
 | custom | 自定义插槽 | string |
@@ -351,7 +378,4 @@ const tabClick = (name) => {
 | minWidth | 对应列的最小宽度 | string |
 | sortable | 对应列是否可以排序 | boolean |
 
-
 ### event
-
-

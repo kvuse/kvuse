@@ -1,57 +1,61 @@
 export function useItemList(){
-
+  
   const componentsList = [
     {
       text: '开始',
-      link: '/components/',
+      link: '/components/element-plus/guide',
     },
     {
       text: 'Layout 布局',
-      link: '/components/layout',
+      link: '/components/element-plus/layout',
     },
     {
       text: 'Button 按钮',
-      link: '/components/button',
+      link: '/components/element-plus/button',
     },
     {
       text: 'Input 输入框',
-      link: '/components/input',
+      link: '/components/element-plus/input',
+    },
+    {
+      text: 'InputNumber 数字输入框',
+      link: '/components/element-plus/input-number',
     },
     {
       text: 'Tabs 标签页',
-      link: '/components/tabs',
+      link: '/components/element-plus/tabs',
     },
     {
       text: 'breadcrumb 面包屑',
-      link: '/components/breadcrumb',
+      link: '/components/element-plus/breadcrumb',
     },
     {
       text: 'Pagination 分页',
-      link: '/components/pagination',
+      link: '/components/element-plus/pagination',
     },
     {
       text: 'Table 表格',
-      link: '/components/table',
+      link: '/components/element-plus/table',
     },
     {
       text: 'BatchTable 批量表格',
-      link: '/components/batch-table',
+      link: '/components/element-plus/batch-table',
     },
     {
       text: 'Dialog 对话框',
-      link: '/components/dialog',
+      link: '/components/element-plus/dialog',
     },
     {
       text: 'Picker 添加选择器',
-      link: '/components/picker',
+      link: '/components/element-plus/picker',
     },
     {
       text: 'Tooltip 消息提示',
-      link: '/components/tooltip',
+      link: '/components/element-plus/tooltip',
     },
     {
       text: 'DatePicker 时间选择',
-      link: '/components/date-picker',
+      link: '/components/element-plus/date-picker',
     },
   ]
 

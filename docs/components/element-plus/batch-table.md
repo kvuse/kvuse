@@ -12,7 +12,7 @@
 
 <demo md src="batch-table/basic">
 
-<<< @/example/batch-table/basic.vue
+<<< @/example/element-plus/batch-table/basic.vue
 </demo>
 
 ## 使用分页
@@ -21,7 +21,7 @@
 
 <demo md src="batch-table/page">
 
-<<< @/example/batch-table/page.vue
+<<< @/example/element-plus/batch-table/page.vue
 </demo>
 
 ## 设置不可选
@@ -30,7 +30,7 @@
 
 <demo md src="batch-table/disabled">
 
-<<< @/example/batch-table/disabled.vue
+<<< @/example/element-plus/batch-table/disabled.vue
 </demo>
 
 ## 默认选中
@@ -39,14 +39,14 @@
 
 <demo md src="batch-table/select">
 
-<<< @/example/batch-table/select.vue
+<<< @/example/element-plus/batch-table/select.vue
 </demo>
 
 ## 使用插槽
 
 <demo md src="batch-table/slots">
 
-<<< @/example/batch-table/slots.vue
+<<< @/example/element-plus/batch-table/slots.vue
 </demo>
 
 ## BatchTable 属性

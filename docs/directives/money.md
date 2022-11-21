@@ -6,7 +6,7 @@
 
 <demo src="directives-money/basic">
 
-<<< @/example/directives-money/basic.vue
+<<< @/example/element-plus/directives-money/basic.vue
 </demo>
 
 ## 小数点位数
@@ -15,7 +15,7 @@
 
 <demo src="directives-money/point">
 
-<<< @/example/directives-money/point.vue
+<<< @/example/element-plus/directives-money/point.vue
 </demo>
 
 ## 数据更新
@@ -28,5 +28,5 @@
 
 <demo src="directives-money/update">
 
-<<< @/example/directives-money/update.vue
+<<< @/example/element-plus/directives-money/update.vue
 </demo>

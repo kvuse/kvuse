@@ -1,8 +1,8 @@
 {
-  "name": "@kvuse/components",
-  "version": "1.0.10",
+  "name": "@kvuse/vant",
+  "version": "1.0.0",
   "description": "vue3常用组件",
-  "homepage": "https://kvuse.github.io/docs/components/",
+  "homepage": "https://kvuse.github.io/docs/vant/",
   "files": [
     "lib"
   ],
@@ -14,15 +14,11 @@
   },
   "author": "wenxin",
   "license": "ISC",
-  "dependencies": {
-    "@element-plus/icons-vue": "^2.0.9",
-    "element-plus": "^2.2.17",
-    "vue": "^3.2.39"
-  },
-  "devDependencies": {
-    "vue-router": "^4.1.5"
-  },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "vant": "^3.6.5",
+    "vue": "^3.2.45"
   }
 }

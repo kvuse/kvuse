@@ -3,6 +3,7 @@ import './styles/common.scss';
 import directives from './directives';
 import KButton from './button';
 import KInput from './input';
+import KInputNumber from './input-number';
 import KTable from './table';
 import KPage from './pagination';
 import KBatchTable from './batch-table';
@@ -16,6 +17,7 @@ import KDatePicker from './date-picker';
 const KUI = {
   KButton,
   KInput,
+  KInputNumber,
   KTable,
   KPage,
   KBatchTable,
@@ -48,5 +50,5 @@ KUI.install = function (app) {
 // export default KUI;
 
 export {
-  directives, KButton, KInput, KTable, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker, KTooltip, KDatePicker, KUI,
+  directives, KButton, KInput, KInputNumber, KTable, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker, KTooltip, KDatePicker, KUI,
 };

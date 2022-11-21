@@ -12,11 +12,14 @@
     <el-button @click="setDetailsHandle">
       修改details
     </el-button>
+    <k-input-number v-model="value" />
   </div>
 </template>
 
 <script setup>
 import { useAboutStore } from './store';
+
+const value = ref(2);
 
 // 如果解构要用storeToRefs，要不就会失去响应式
 // pinia使用详情 https://juejin.cn/post/7047762419019415559

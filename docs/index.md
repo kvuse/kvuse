@@ -15,7 +15,7 @@ hero:
   actions:
     - theme: brand
       text: 开始
-      link: /guide/
+      link: /components/element-plus/guide
     - theme: alt
       text: GitHub
       link: https://github.com/kvuse/kvuse

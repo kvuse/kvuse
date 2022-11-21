@@ -18,6 +18,22 @@ describe('Button.vue', () => {
     });
     expect(wrapper.html()).toContain('测试');
   });
+  it('border button', () => {
+    const wrapper = mount(Button, {
+      props: {
+        type: 'primary',
+        border: true,
+      },
+      slots: {
+        default: '测试',
+      },
+      global: {
+        components: { ElButton },
+      },
+    });
+    const btnComponent = wrapper.getComponent(Button);
+    expect(btnComponent.props('border')).toBe(true);
+  });
   it('button click', async () => {
     const wrapper = mount(Button, {
       global: {

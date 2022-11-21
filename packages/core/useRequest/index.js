@@ -68,15 +68,18 @@ export function useRequest({
         const result = await responseHandler(response);
         return result;
       }
-      const { data, data: { code } } = response || {};
+      const { data, data: { code }, config } = response || {};
       if ([0, 1001].includes(code)) return data;
-      if (data) errorResponse(data);
+      if (data) errorResponse(data, config);
       return checkCode(response.message);
     },
     async (error) => {
       if (error && error.response) {
-        const { data, status } = error.response;
-        if (status && errorResponse) await errorResponse(data);
+        const { data, status, config } = error.response;
+        if (status && errorResponse) {
+          const [errorItem] = data?.errors || [];
+          await errorResponse(errorItem ?? data, config);
+        }
         if (data.errors && data.errors.length) error.message = data.errors[0].message || data.message;
         else {
           const errorStatus = {

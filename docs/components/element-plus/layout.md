@@ -13,35 +13,35 @@
 
 <demo md src="layout/color">
 
-<<< @/example/layout/color.vue
+<<< @/example/element-plus/layout/color.vue
 </demo>
 
 ## 背景颜色
 
 <demo md src="layout/background">
 
-<<< @/example/layout/background.vue
+<<< @/example/element-plus/layout/background.vue
 </demo>
 
 ## 使用边距
 
 <demo md src="layout/margin">
 
-<<< @/example/layout/margin.vue
+<<< @/example/element-plus/layout/margin.vue
 </demo>
 
 ## 鼠标类型
 
 <demo md src="layout/mouse">
 
-<<< @/example/layout/mouse.vue
+<<< @/example/element-plus/layout/mouse.vue
 </demo>
 
 ## flex布局
 
 <demo md src="layout/flex">
 
-<<< @/example/layout/flex.vue
+<<< @/example/element-plus/layout/flex.vue
 </demo>
 
 ## 样式属性class

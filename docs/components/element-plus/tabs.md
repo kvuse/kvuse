@@ -4,7 +4,7 @@
 
 <demo md src="tabs/basic">
 
-<<< @/example/tabs/basic.vue
+<<< @/example/element-plus/tabs/basic.vue
 </demo>
 
 ## Card 类型
@@ -13,7 +13,7 @@
 
 <demo md src="tabs/card">
 
-<<< @/example/tabs/card.vue
+<<< @/example/element-plus/tabs/card.vue
 </demo>
 
 ## Router 路由模式
@@ -28,7 +28,7 @@
 
 <demo md src="tabs/router">
 
-<<< @/example/tabs/router.vue
+<<< @/example/element-plus/tabs/router.vue
 </demo>
 
 ## Layout 左右布局
@@ -37,7 +37,7 @@
 
 <demo md src="tabs/layout">
 
-<<< @/example/tabs/layout.vue
+<<< @/example/element-plus/tabs/layout.vue
 </demo>
 
 ## Tabs 属性

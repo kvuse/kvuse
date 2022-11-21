@@ -46,7 +46,7 @@ export default defineComponent({
       currentPage.value = 1;
       emit('update:size', val);
       emit('size-change', val);
-      emit('change', { page: currentPage.value, size: val });
+      emit('change', { page: props.size === val ? currentPage.value : 1, size: val });
     };
     const handleCurrentChange = (val) => {
       emit('current-change', val);

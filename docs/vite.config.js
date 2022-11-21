@@ -15,7 +15,8 @@ export default defineConfig({
   resolve: {
     // 设置别名
     alias: {
-      '@/example': resolve(__dirname, 'example/'),
+      '@/example/element-plus': resolve(__dirname, 'example/element-plus/'),
+      '@/vant': resolve(__dirname, 'vant/'),
     },
   },
   server: {

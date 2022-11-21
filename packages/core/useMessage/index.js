@@ -16,7 +16,7 @@ export function useMessage() {
     close: () => $message.closeAll(),
   };
   const messageBox = {
-    confirm: ({ msg, title = '提示', type = 'warning' }) => new Promise((resolve) => {
+    confirm: ({ msg, title = '提示', type = 'warning' }) => new Promise((resolve, reject) => {
       // eslint-disable-next-line no-restricted-globals
       parent.window.postMessage('openMask()', '*');
       window.top.postMessage('openMask()', '*');
@@ -26,7 +26,7 @@ export function useMessage() {
         buttonSize: '',
         type,
       }).then(() => resolve(true))
-        .catch(() => { }).finally(() => {
+        .catch(() => reject()).finally(() => {
           // eslint-disable-next-line no-restricted-globals
           parent.window.postMessage('closeMask()', '*');
           window.top.postMessage('closeMask()', '*');

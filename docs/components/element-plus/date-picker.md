@@ -4,7 +4,7 @@
 
 <demo md src="date-picker/basic">
 
-<<< @/example/date-picker/basic.vue
+<<< @/example/element-plus/date-picker/basic.vue
 </demo>
 
 ## 选择模式
@@ -13,14 +13,14 @@
 
 <demo md src="date-picker/select">
 
-<<< @/example/date-picker/select.vue
+<<< @/example/element-plus/date-picker/select.vue
 </demo>
 
 ## 设置默认值
 
 <demo md src="date-picker/default">
 
-<<< @/example/date-picker/default.vue
+<<< @/example/element-plus/date-picker/default.vue
 </demo>
 
 ## DatePicker 属性

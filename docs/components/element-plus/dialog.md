@@ -4,7 +4,7 @@
 
 <demo md src="dialog/basic">
 
-<<< @/example/dialog/basic.vue
+<<< @/example/element-plus/dialog/basic.vue
 
 </demo>
 
@@ -14,7 +14,7 @@
 
 <demo md src="dialog/footer">
 
-<<< @/example/dialog/footer.vue
+<<< @/example/element-plus/dialog/footer.vue
 </demo>
 
 ## 自定义底部
@@ -23,7 +23,7 @@
 
 <demo md src="dialog/slot">
 
-<<< @/example/dialog/slot.vue
+<<< @/example/element-plus/dialog/slot.vue
 </demo>
 
 ## 内容居中
@@ -32,7 +32,7 @@
 
 <demo md src="dialog/center">
 
-<<< @/example/dialog/center.vue
+<<< @/example/element-plus/dialog/center.vue
 </demo>
 
 ## Dialog 属性

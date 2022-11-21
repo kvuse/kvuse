@@ -1,13 +1,13 @@
 <template>
   <!--  按钮防多次点击 -->
-  <el-button :disabled="!buttonStatus || disabled" :click-state="clickState" v-bind="$attrs" @click.stop="onclick">
+  <el-button :disabled="!buttonStatus || disabled" :style="buttonStyle" :click-state="clickState" v-bind="$attrs" @click.stop="onclick">
     <slot />
     <i class="el-icon-lock el-icon--right" v-if="iconLock" />
   </el-button>
 </template>
 
 <script>
-import { ref, defineComponent } from 'vue';
+import { ref, computed, defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'KButton',
@@ -15,11 +15,12 @@ export default defineComponent({
     // 是否可以点击
     clickState: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
+    border: { type: Boolean, default: false },
     // 是否有权限
     iconLock: { type: Boolean, default: false },
   },
   emits: ['click'],
-  setup(props, { emit }) {
+  setup(props, { emit, attrs }) {
     const buttonStatus = ref(true);
     const stopTime = ref(null);
 
@@ -37,7 +38,20 @@ export default defineComponent({
         buttonStatus.value = true;
       }, 800);
     };
-    return { onclick, buttonStatus };
+
+    const buttonStyle = computed(() => {
+      const { border } = props;
+      const { type = 'text' } = attrs;
+      if (border) {
+        return {
+          backgroundColor: 'transparent',
+          color: `var(--el-color-${type})`,
+        };
+      }
+      return {};
+    });
+
+    return { onclick, buttonStatus, buttonStyle };
   },
 });
 </script>

@@ -10,7 +10,7 @@ export default defineConfig({
     outDir: 'lib',
     lib: {
       entry: resolve(__dirname, 'main.js'),
-      name: 'kvuse-element',
+      name: 'kvuse-vant',
       fileName: (format) => `k.${format}.js`,
     },
     rollupOptions: {

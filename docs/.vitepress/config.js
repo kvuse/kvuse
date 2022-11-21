@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitepress';
-import { useItemList } from './config/useItemList';
-import { useApiList } from './config/useApiList';
+import { useItemList, useApiList,useVantList } from './configList';
 
-const { componentsList, directiveList } = useItemList();
+const { componentsList, directiveList  } = useItemList();
 const { apiList } = useApiList();
+const {vantComponets} = useVantList()
 
 export default defineConfig({
   lang: 'en-CN',
@@ -11,7 +11,7 @@ export default defineConfig({
   description: 'vue3常用的组件以及API',
   head: [
     ['meta', { name: 'theme-color', content: '#ffffff' }],
-    ['link', { rel: 'icon', href: '/docs/logo1.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'icon', href: '/logo1.svg', type: 'image/svg+xml' }],
     ['link', {
       rel: 'alternate icon', href: '/favicon.ico', type: 'image/png', sizes: '16x16',
     }],
@@ -20,7 +20,7 @@ export default defineConfig({
     ['link', { rel: 'mask-icon', href: '/logo1.svg', color: '#ffffff' }],
     ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
   ],
-  // base:'/docs/',
+  base:'/kvuse/kvuse/',
   lastUpdated: true,
   themeConfig: {
     logo: '/logo1.svg',
@@ -37,15 +37,21 @@ export default defineConfig({
     nav: [
       {
         text: '组件',
+        activeMatch:'/components/',
         items: [
           {
             text: 'elementPlus组件',
-            link: '/components/',
-            activeMatch: '/components/',
+            link: '/components/element-plus/',
+            activeMatch: '/element-plus/',
+          },
+          {
+            text: 'vant组件',
+            link: '/components/vant/',
+            activeMatch: '/vant/',
           },
         ],
       },
-      { text: 'API', link: '/api/' },
+      { text: 'API', link: '/api/', activeMatch: 'api' },
       // { text: 'Config', link: '/config/' },
     ],
 
@@ -57,7 +63,7 @@ export default defineConfig({
           items: apiList,
         },
       ],
-      '/': [
+      '/components/element-plus/': [
         {
           text: '组件',
           items: componentsList,
@@ -65,6 +71,12 @@ export default defineConfig({
         {
           text: '自定义指令',
           items: directiveList,
+        },
+      ],
+      '/components/vant/': [
+        {
+          text: '组件',
+          items: vantComponets,
         },
       ],
      

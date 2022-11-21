@@ -6,7 +6,7 @@
 
 <demo md src="breadcrumb/basic">
 
-<<< @/example/breadcrumb/basic.vue
+<<< @/example/element-plus/breadcrumb/basic.vue
 
 </demo>
 
@@ -14,7 +14,7 @@
 
 <demo md src="breadcrumb/layout">
 
-<<< @/example/breadcrumb/layout.vue
+<<< @/example/element-plus/breadcrumb/layout.vue
 </demo>
 
 ## href 模式
@@ -23,7 +23,7 @@
 
 <demo md src="breadcrumb/href">
 
-<<< @/example/breadcrumb/href.vue
+<<< @/example/element-plus/breadcrumb/href.vue
 </demo>
 
 ## Breadcrumb 属性

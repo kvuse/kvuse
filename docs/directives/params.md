@@ -7,5 +7,5 @@
 
 <demo src="directives-params/basic">
 
-<<< @/example/directives-params/basic.vue
+<<< @/example/element-plus/directives-params/basic.vue
 </demo>

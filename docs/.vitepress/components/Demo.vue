@@ -57,13 +57,14 @@ import { ElMessage } from 'element-plus';
 const props = defineProps({
   md: { type: Boolean, default: false },
   src: { type: String, default: '' },
+  dir: {type: String, default: 'element-plus'},
   explain: { type: String, default: '' },
 });
 
 // 组件
 const comp = defineAsyncComponent(() => {
   const [folder, file, last] = props.src.split('/');
-  return import(`../../example/${folder}/${file}${last ? `/${last}` : ''}.vue`);
+  return import(`../../example/${props.dir}/${folder}/${file}${last ? `/${last}` : ''}.vue`);
 });
 
 const showCode = ref(false);

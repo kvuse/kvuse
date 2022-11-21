@@ -101,7 +101,7 @@ const { $http } = useRequest({
 
 const getList = async () => {
   const { code, data, message } = await $http.get('接口地址');
-  console.log('code,data,message: ', code, data, message);
+  console.log('code, data, message: ', code, data, message);
 };
 
 </script>
@@ -143,5 +143,6 @@ const getList = async () => {
   { event :'beforeRequest', dec: '请求拦截', callback: 'config' },
   { event :'beforeResponse', dec: '响应拦截', callback: 'response' },
   { event :'responseHandler', dec: '响应处理', callback: 'response' },
+  { event :'errorResponse', dec: '响应报错处理', callback: 'error, config' },
   { event :'errorHandler', dec: '报错信息处理, 默认message.error提示报错信息', callback: 'error' },
 ]" />

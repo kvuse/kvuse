@@ -8,7 +8,7 @@
 
 <demo md src="table/basic">
 
-<<< @/example/table/basic.vue
+<<< @/example/element-plus/table/basic.vue
 </demo>
 
 ## 使用分页
@@ -17,7 +17,7 @@
 
 <demo md src="table/page">
 
-<<< @/example/table/page.vue
+<<< @/example/element-plus/table/page.vue
 </demo>
 
 ## 使用排序
@@ -26,14 +26,14 @@
 
 <demo md src="table/sort">
 
-<<< @/example/table/sort.vue
+<<< @/example/element-plus/table/sort.vue
 </demo>
 
 ## 使用插槽
 
 <demo md src="table/slots">
 
-<<< @/example/table/slots.vue
+<<< @/example/element-plus/table/slots.vue
 </demo>
 
 ## 使用批量操作

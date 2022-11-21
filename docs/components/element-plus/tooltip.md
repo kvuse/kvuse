@@ -4,21 +4,21 @@
 
 <demo md src="tooltip/basic">
 
-<<< @/example/tooltip/basic.vue
+<<< @/example/element-plus/tooltip/basic.vue
 </demo>
 
 ## 使用主题
 
 <demo md src="tooltip/theme">
 
-<<< @/example/tooltip/theme.vue
+<<< @/example/element-plus/tooltip/theme.vue
 </demo>
 
 ## 显示图标
 
 <demo md src="tooltip/icon">
 
-<<< @/example/tooltip/icon.vue
+<<< @/example/element-plus/tooltip/icon.vue
 </demo>
 
 ## Tooltip 属性
