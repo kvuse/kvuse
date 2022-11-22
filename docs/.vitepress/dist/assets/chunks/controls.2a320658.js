@@ -1,1 +1,0 @@
-import{h as n,r as a,o as s,c as r,b as u}from"../app.ef82ab6e.js";const c={class:"width-240"},d={__name:"controls",setup(m){const e=n(1);return(p,o)=>{const t=a("k-input-number");return s(),r("div",c,[u(t,{controls:!1,placeholder:"\u8BF7\u8F93\u5165\u91D1\u989D",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=l=>e.value=l)},null,8,["modelValue"])])}}};export{d as default};
