@@ -1,12 +1,23 @@
 {
   "name": "@kvuse/components",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "vue3常用组件",
   "homepage": "https://kvuse.github.io/docs/components/",
   "files": [
     "lib"
   ],
-  "main": "main.js",
+  "main": "./lib/k.umd.js",
+  "module": "./lib/k.es.js",
+  "exports": {
+    ".": {
+      "import": "./lib/k.es.js",
+      "require": "./lib/k.umd.js"
+    },
+    "./lib/style.css": {
+      "import": "./lib/style.css",
+      "require": "./lib/style.css"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",
@@ -15,12 +26,12 @@
   "author": "wenxin",
   "license": "ISC",
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.9",
-    "element-plus": "^2.2.17",
-    "vue": "^3.2.39"
+    "@element-plus/icons-vue": "^2.0.10",
+    "element-plus": "^2.2.22",
+    "vue": "^3.2.45"
   },
   "devDependencies": {
-    "vue-router": "^4.1.5"
+    "vue-router": "^4.1.6"
   },
   "publishConfig": {
     "access": "public"
