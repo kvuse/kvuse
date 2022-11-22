@@ -1,0 +1,1 @@
+import{h as n,r as t,o as r,i as c,w as e,b as _,e as l}from"../app.fd0a5ca8.js";const b={__name:"layout",setup(u){const o=n([{title:"\u9996\u9875",path:"home"},{title:"\u524D\u53F0"}]);return(m,p)=>{const a=t("k-button"),s=t("k-breadcrumb");return r(),c(s,{list:o.value},{default:e(()=>[_(a,null,{default:e(()=>[l("\u8BBE\u7F6E")]),_:1})]),_:1},8,["list"])}}};export{b as default};
