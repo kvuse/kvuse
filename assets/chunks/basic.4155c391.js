@@ -1,0 +1,1 @@
+import{h as n,g as o,o as e,c as s,f as c,e as r,t as l,d as i}from"../app.c09c8e17.js";const _=i("span",null,"\u91D1\u989D\u5904\u7406\uFF1A",-1),v={__name:"basic",setup(p){const a=n(88.8888);return(u,m)=>{const t=o("money");return e(),s("span",null,[_,c((e(),s("span",null,[r(l(a.value),1)])),[[t]])])}}};export{v as default};
