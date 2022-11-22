@@ -15,15 +15,15 @@ export default defineConfig({
     ['link', {
       rel: 'alternate icon', href: '/favicon.ico', type: 'image/png', sizes: '16x16',
     }],
-    ['meta', { name: 'keywords', content: 'vitest, vite, test, coverage, snapshot, react, vue, preact, svelte, solid, lit, ruby, cypress, puppeteer, jsdom, happy-dom, test-runner, jest, typescript, esm, tinypool, tinyspy, c8, node' }],
+    ['meta', { name: 'keywords', content: 'component, element-plus, vant, kvuse, api, composition' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['link', { rel: 'mask-icon', href: '/logo1.svg', color: '#ffffff' }],
+    ['link', { rel: 'mask-icon', href: './logo1.svg', color: '#ffffff' }],
     ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
   ],
   base:'/kvuse/',
   lastUpdated: true,
   themeConfig: {
-    logo: '/logo1.svg',
+    logo: './logo1.svg',
 
     editLink: {
       pattern: 'https://github.com/kvuse/kvuse/master/docs',
