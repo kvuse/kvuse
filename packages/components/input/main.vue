@@ -62,7 +62,7 @@ export default defineComponent({
               const reg = new RegExp(`^\\d+(\\.\\d{0,${props.point}})?`, 'g');
               value = (value.match(reg)[0]) || null;
             }
-          }
+          } else if (value === '.') value = '';
         }
       } else if (props.type === 'integer') { // 只能输入整数
         value = value.replace(/[^\d]/g, '');

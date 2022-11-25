@@ -10,14 +10,21 @@
   </van-button>
 </template>
 
-<script setup>
-defineProps({
-  type: {
-    type: String,
-    default: 'default',
-    validate: (value) => ['primary', 'success', 'warning', 'danger', 'text'].includes(value),
+<script>
+import { Button as VanButton } from 'vant';
+
+export default defineComponent({
+  name: 'KButton',
+  components: { VanButton },
+  props: {
+    type: {
+      type: String,
+      default: 'default',
+      validate: (value) => ['primary', 'success', 'warning', 'danger', 'text'].includes(value),
+    },
   },
 });
+
 </script>
 
 <style lang="scss" scoped>

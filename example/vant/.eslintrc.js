@@ -7,7 +7,7 @@ module.exports = {
     './.eslintrc-auto-import.json',
   ],
   parserOptions: {
-    ecmaVersion: 2022,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: ['vue'],
@@ -47,7 +47,4 @@ module.exports = {
       },
     },
   ],
-  globals: {
-    defineOptions: true,
-  },
 };

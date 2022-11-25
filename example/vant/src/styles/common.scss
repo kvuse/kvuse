@@ -1,0 +1,242 @@
+//flex布局样式
+//单轴
+@mixin flex-type($type1, $type2) {
+  align-items: $type2;
+  display: flex;
+  justify-content: $type1;
+}
+
+//多轴
+@mixin flex-types($type1, $type2) {
+  align-items: $type2;
+  display: flex;
+  flex-direction: column;
+  justify-content: $type1;
+}
+
+//设置竖直方向
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@mixin font-size($size) {
+  font-size: #{$size}px;
+}
+
+@mixin margin($direction, $size) {
+  margin-#{$direction}: #{$size}px;
+}
+
+// 主题色
+$themecolor: #f4364c;
+
+// 加粗色
+$color333: #333;
+
+//蓝色
+$bluecolor: #409eff;
+$maincolor: #409eff;
+$color999: #999;
+$colorgray: #97a8be;
+
+.color-33 {
+  color: $color333;
+}
+
+.color-99 {
+  color: $color999;
+}
+
+.color-66 {
+  color: #666;
+}
+
+.color-d2 {
+  color: #d2d2d2;
+}
+
+.c-yellow {
+  color: #ffb14d;
+}
+
+.c-red {
+  color: #ff3d3d;
+}
+
+.c-blue {
+  color: $maincolor;
+}
+
+.c-green {
+  color: #66bf4b;
+}
+
+.c-gray {
+  color: $colorgray;
+}
+
+$bgcolor: #ffb14d;
+$borderdivcolor: #d8dce5;
+$bordercolor: #f5f5f5;
+
+//去除浏览器自动填充内容背景颜色为黄色解决方法
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #fff inset !important;
+}
+
+.mt0 {
+  margin-top: 0 !important;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.mr30 {
+  margin-right: 30px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.pl10 {
+  padding-left: 10px;
+}
+
+.pr10 {
+  padding-right: 10px;
+}
+
+.p20-d40 {
+  padding: 20px 40px;
+}
+
+.p-tb20 {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.p-lr40 {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-overflow {
+  display: inline-block;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.width-220 {
+  width: 220px;
+}
+
+.width-240 {
+  width: 240px;
+}
+
+.weight-600 {
+  font-weight: 600;
+}
+
+.iconfont {
+  color: #a4b3c6;
+  font-size: 24px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.flex-shrink {
+  flex-shrink: 0;
+}
+
+.flex-justify-center {
+  @include flex-type(center, null);
+}
+
+.flex-align-center {
+  @include flex-type(null, center);
+}
+
+.flex-center {
+  @include flex-type(center, center);
+}
+
+.flex-between {
+  @include flex-type(space-between, center);
+}
+
+.flexs-justify-center {
+  @include flex-types(center, null);
+}
+
+.flexs-align-center {
+  @include flex-types(null, center);
+}
+
+.flexs-center {
+  @include flex-types(center, center);
+}
+
+.flexs-between {
+  @include flex-types(space-between, center);
+}
+
+.flex-column {
+  @include flex-column;
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+.overflow-y {
+  overflow-y: auto;
+}
