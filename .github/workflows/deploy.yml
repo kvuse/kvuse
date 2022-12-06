@@ -19,10 +19,10 @@ jobs:
       - name: Install PNPM
         run: npm i -g pnpm
 
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --no-frozen-lockfile
 
       - name: Install & Build
-        run: pnpm install --no-frozen-lockfile && cd docs && pnpm build
+        run: pnpm install && cd docs && pnpm build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
