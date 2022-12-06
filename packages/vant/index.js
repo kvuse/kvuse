@@ -1,7 +1,11 @@
-import KButton from './button';
+import KvButton from './button';
+import KvInput from './input';
+import KvTable from './table';
 
-const KUI = {
-  KButton,
+const KVant = {
+  KvButton,
+  KvInput,
+  KvTable,
   install: () => {},
 };
 
@@ -9,10 +13,10 @@ function startsWith(string, query, position = 0) {
   return string.substr(position, query.length) === query;
 }
 
-KUI.install = function (app) {
-  Object.keys(KUI).forEach((key) => {
+KVant.install = function (app) {
+  Object.keys(KVant).forEach((key) => {
     if (startsWith(key, 'K')) {
-      const Component = KUI[key];
+      const Component = KVant[key];
       app.component(Component.name, Component);
     }
   });
@@ -25,5 +29,5 @@ KUI.install = function (app) {
 // export default KUI;
 
 export {
-  KButton, KUI,
+  KvButton, KvInput, KVant,
 };

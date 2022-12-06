@@ -1,7 +1,7 @@
-import KButton from './main.vue';
+import KvButton from './main.vue';
 
-KButton.install = function (app) {
-  app.component(KButton.name, KButton);
+KvButton.install = function (app) {
+  app.component(KvButton.name, KvButton);
 };
 
-export default KButton;
+export default KvButton;

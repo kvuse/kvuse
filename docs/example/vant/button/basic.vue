@@ -1,18 +1,18 @@
 <template>
-  <k-button>button</k-button>
-  <k-button type="primary">
+  <kv-button>button</kv-button>
+  <kv-button type="primary">
     primary-vant
-  </k-button>
-  <k-button type="success">
+  </kv-button>
+  <kv-button type="success">
     success
-  </k-button>
-  <k-button type="danger">
+  </kv-button>
+  <kv-button type="danger">
     danger
-  </k-button>
-  <k-button type="warning">
+  </kv-button>
+  <kv-button type="warning">
     warning
-  </k-button>
-  <k-button type="info">
+  </kv-button>
+  <kv-button type="info">
     info
-  </k-button>
+  </kv-button>
 </template>

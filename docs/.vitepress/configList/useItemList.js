@@ -57,6 +57,10 @@ export function useItemList(){
       text: 'DatePicker 时间选择',
       link: '/components/element-plus/date-picker',
     },
+    {
+      text: 'NumberKeyboard 数字输入框',
+      link: '/components/element-plus/number-keyboard',
+    },
   ]
 
   const directiveList = [

@@ -13,6 +13,7 @@ import KTabs from './tabs';
 import KPicker from './picker';
 import KTooltip from './tooltip';
 import KDatePicker from './date-picker';
+import KNumberKeyboard from './number-keyboard';
 
 const KUI = {
   KButton,
@@ -27,6 +28,7 @@ const KUI = {
   KPicker,
   KTooltip,
   KDatePicker,
+  KNumberKeyboard,
   install: () => {},
 };
 
@@ -50,5 +52,5 @@ KUI.install = function (app) {
 // export default KUI;
 
 export {
-  directives, KButton, KInput, KInputNumber, KTable, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker, KTooltip, KDatePicker, KUI,
+  directives, KButton, KInput, KInputNumber, KTable, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker, KTooltip, KDatePicker, KNumberKeyboard, KUI,
 };

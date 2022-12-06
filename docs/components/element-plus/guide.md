@@ -14,11 +14,14 @@ npm i kui-next
 ```
 
 ## 全局引入
+
 ```js
 import { createApp } from 'vue';
-import { KUI } from 'kui-next';
- 
+import { KUI } from '@kvuse/components';
+import '@kvuse/components/dist/index.css'
+
 Vue.use(KUI)
+
 ```
 
 ## 按需引入
@@ -34,7 +37,8 @@ import {
   KBreadcrumb,
   KTabs,
   KPicker,
-} from 'kui-next';
+  kNumberKeyboard
+} from '@kvuse/components';
 
 export default {
   components: {
@@ -47,6 +51,7 @@ export default {
     KBreadcrumb,
     KTabs,
     KPicker,
+    kNumberKeyboard
   },
 };
 ```

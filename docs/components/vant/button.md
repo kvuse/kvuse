@@ -15,31 +15,32 @@
 ## 调整尺寸
 
 可设置`size`类型，控制按钮大小。可选值：large, default, small
-<!-- 
-<demo md src="button/size">
 
-<<< @/example/element-plus/button/size.vue
-</demo> -->
+<demo md src="button/size" dir="vant">
 
-## 镂空模式
+<<< @/example/vant/button/size.vue
 
-可设置`border`类型，控制按钮边框模式
+</demo>
 
-<!-- <demo md src="button/border">
+## 链接模式
 
-<<< @/example/element-plus/button/border.vue
-</demo> -->
+可设置`link`类型，控制按钮链接模式
+
+<demo md src="button/link" dir="vant">
+
+<<< @/example/vant/button/link.vue
+</demo>
 
 ## Button 属性
 
 ::: tip
-其他属性查看 [elementPlus 按钮属性](https://element-plus.gitee.io/zh-CN/component/button.html#button-%E5%B1%9E%E6%80%A7)
+其他属性查看 [Vant 按钮属性](https://vant-ui.github.io/vant/#/zh-CN/button)
 :::
 
 <v-table type="attrs" :data="[
-  { attr :'size', dec: '按钮大小', type: 'String', optional: 'large / default /small', default: '-' },
-  { attr :'type', dec: '按钮类型', type: 'String', optional: 'primary / success / warning / danger / info / text', default: '-' },
-   { attr :'border', dec: '镂空模式', type: 'Boolean', optional: 'true / false', default: 'false' },
+  { attr :'size', dec: '按钮大小', type: 'String', optional: 'large / small / mini', default: 'normal' },
+  { attr :'type', dec: '按钮类型', type: 'String', optional: 'primary / success / warning / danger / info / text', default: 'default' },
+   { attr :'link', dec: '链接模式', type: 'Boolean', optional: 'true / false', default: 'false' },
 ]" />
 
 ## Button 事件

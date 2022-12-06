@@ -1,15 +1,15 @@
-```json
+``` json
 {
-  "main": "./lib/k.umd.js",
-  "module": "./lib/k.es.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
   "exports": {
     ".": {
-      "import": "./lib/k.es.js",
-      "require": "./lib/k.umd.js"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
     },
-    "./lib/style.css": {
-      "import": "./lib/style.css",
-      "require": "./lib/style.css"
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
 }

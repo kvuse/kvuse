@@ -14,7 +14,9 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
     "@kvuse/components": "workspace:*",
+    "@kvuse/vant": "workspace:*",
     "element-plus": "^2.2.22",
+    "vant": "^4.0.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {

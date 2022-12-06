@@ -13,6 +13,10 @@ export function useVantList(){
       text: 'Button 按钮',
       link: '/components/vant/button',
     },
+    {
+      text: 'Input 输入框',
+      link: '/components/vant/input',
+    },
   ]
 
   const vantDirectives = []

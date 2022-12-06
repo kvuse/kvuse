@@ -12,7 +12,9 @@
     <van-button @click="setDetailsHandle">
       修改details
     </van-button>
-    <k-button>测试</k-button>
+    <kv-button type="primary" link>
+      测试
+    </kv-button>
   </div>
 </template>
 

@@ -18,7 +18,7 @@ npm i @kvuse/components
 ```js
 import { createApp } from 'vue';
 import { KUI } from '@kvuse/components';
-import '@kvuse/components/lib/style.css'
+import '@kvuse/components/dist/index.css'
 
 Vue.use(KUI)
 ```

@@ -14,6 +14,7 @@ npm i kui-next
 ```
 
 ## 全局引入
+
 ```js
 import { createApp } from 'vue';
 import { KUI } from 'kui-next';

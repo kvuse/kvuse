@@ -5,5 +5,6 @@
   "MD033": {
     "allowed_elements": ["demo", "v-table", "div", "k-input"]
   },
-  "MD013": false
+  "MD013": false,
+  "MD001": false
 }

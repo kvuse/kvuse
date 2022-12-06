@@ -6,7 +6,7 @@
   "files": [
     "lib"
   ],
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "dependencies": {
-    "vant": "^3.6.5",
+    "vant": "^4.0.0",
     "vue": "^3.2.45"
   }
 }

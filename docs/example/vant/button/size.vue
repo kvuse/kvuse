@@ -1,23 +1,19 @@
 <template>
   <div>
-    <k-button size="large">
-      primary
-    </k-button>
-    <k-button>default</k-button>
-    <k-button size="small">
-      info
-    </k-button>
-  </div>
-  <div class="mt10">
-    <k-button type="primary" size="large">
-      primary
-    </k-button>
-    <k-button type="primary">
-      default
-    </k-button>
-    <k-button type="primary" size="small">
-      info
-    </k-button>
+    <div class="mb10">
+      <kv-button size="large" type="primary">
+        primary
+      </kv-button>
+    </div>
+    <kv-button type="primary">
+      normal
+    </kv-button>
+    <kv-button size="small" type="primary">
+      small
+    </kv-button>
+    <kv-button size="mini" type="primary">
+      mini
+    </kv-button>
   </div>
 </template>
 

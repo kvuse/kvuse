@@ -1,5 +1,5 @@
 <template>
-  <van-button :type="type" v-bind="$attrs">
+  <van-button :type="type" :class="{'is-link':link}" v-bind="$attrs">
     <slot />
     <template #icon v-if="!$attrs.icon">
       <slot name="icon" />
@@ -11,10 +11,11 @@
 </template>
 
 <script>
+import { defineComponent, computed } from 'vue';
 import { Button as VanButton } from 'vant';
 
 export default defineComponent({
-  name: 'KButton',
+  name: 'KvButton',
   components: { VanButton },
   props: {
     type: {
@@ -22,6 +23,14 @@ export default defineComponent({
       default: 'default',
       validate: (value) => ['primary', 'success', 'warning', 'danger', 'text'].includes(value),
     },
+    link: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(props) {
+    const textcolor = computed(() => `var(--van-button-${props.type}-background)`);
+    return { textcolor };
   },
 });
 
@@ -55,5 +64,21 @@ export default defineComponent({
       color: var(--van-tab-active-text-color);
     }
   }
+}
+
+.is-link {
+  background: transparent;
+  border-color: transparent;
+  padding: 2px;
+  color: v-bind(textcolor);
+
+  &::before {
+    border-color: transparent;
+    background: none;
+  }
+}
+
+.van-button:not(:last-child) {
+  margin-right: var(--van-padding-md);
 }
 </style>
