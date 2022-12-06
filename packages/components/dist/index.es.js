@@ -2426,7 +2426,7 @@ const ze = B({
       get: () => e.modelValue,
       set: (c) => t("update:modelValue", c)
     }), o = (c) => {
-      if (console.log("props.maxlength: ", e.maxlength), e.maxlength && l.value.length >= Number(e.maxlength))
+      if (e.maxlength && l.value.length >= Number(e.maxlength))
         return;
       const v = l.value.indexOf("."), h = l.value.split(".");
       h.length === 2 && (c === "." || h[1].length >= e.precision) || (l.value = `${v === 0 ? 0 : ""}${l.value}${c}`, !e.decimalPoint && l.value.slice(0, 1) === "0" && (l.value = l.value.slice(1) + c), te(() => t("change", Number(l.value))));
@@ -2446,9 +2446,9 @@ const ze = B({
   }
 }), Ge = () => {
   _t((e) => ({
-    e5b5c9cc: e.totalwidth,
-    e56785b0: e.gridwidth,
-    "7ebc0915": e.zerogridend
+    a11fb8a0: e.totalwidth,
+    "3bd2c9d2": e.gridwidth,
+    b45bd982: e.zerogridend
   }));
 }, We = ze.setup;
 ze.setup = We ? (e, t) => (Ge(), We(e, t)) : Ge;
@@ -2475,7 +2475,7 @@ function Ja(e, t, n, a, l, o) {
     ])
   ]);
 }
-const me = /* @__PURE__ */ T(Ga, [["render", Ja], ["__scopeId", "data-v-3d8049b6"]]);
+const me = /* @__PURE__ */ T(Ga, [["render", Ja], ["__scopeId", "data-v-2801f997"]]);
 me.install = function(e) {
   e.component(me.name, me);
 };

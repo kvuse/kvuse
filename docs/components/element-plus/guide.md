@@ -55,3 +55,26 @@ export default {
   },
 };
 ```
+
+## 常见问题
+
+- 如果出现以下警告⚠️
+
+  ```js
+  resolveComponent can only be used in render() or setup()
+  ```
+
+  是因为vue版本不统一导致，解决如下：
+  `vite.config.js`设置
+  
+  ```js
+  const { resolve } = require('path');
+
+  export default {
+    resolve: {
+      alias: {
+        vue: resolve(__dirname, './node_modules/vue'),
+      },
+    },
+  };
+  ```

@@ -58,7 +58,6 @@ export default defineComponent({
     });
 
     const clickBtn = (name) => {
-      console.log('props.maxlength: ', props.maxlength);
       if (props.maxlength && numberVal.value.length >= Number(props.maxlength)) return;
       // 小数点处理
       const poniterIndex = numberVal.value.indexOf('.');
