@@ -1,0 +1,1 @@
+import{h as r,r as o,o as s,i as c}from"../app.27be988a.js";const i={__name:"href",setup(l){const t=r([{title:"\u767E\u5EA6",url:"https://www.baidu.com/"},{title:"\u6398\u91D1",url:"https://juejin.cn/"},{title:"\u5176\u4ED6"}]);return(n,a)=>{const e=o("k-breadcrumb");return s(),c(e,{list:t.value},null,8,["list"])}}};export{i as default};

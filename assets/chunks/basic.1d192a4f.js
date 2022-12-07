@@ -1,0 +1,1 @@
+import{h as l,r as n,o as s,c as r,b as c}from"../app.27be988a.js";const u={class:"width-240"},m={__name:"basic",setup(p){const e=l("");return(_,o)=>{const t=n("kv-input");return s(),r("div",u,[c(t,{placeholder:"\u8BF7\u8F93\u5165\u91D1\u989D",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=a=>e.value=a)},null,8,["modelValue"])])}}};export{m as default};
