@@ -25,6 +25,7 @@ export default defineComponent({
     maxlength: { type: [String, Number], default: 0 },
     precision: { type: Number, default: 2 },
     decimalPoint: { type: Boolean, default: false }, // 是否显示小数点
+    startZero: { type: Boolean, default: true }, // 开头是否可以为零
   },
   emits: ['update:modelValue', 'change', 'clear', 'confirm'],
   setup(props, { emit }) {
@@ -57,6 +58,10 @@ export default defineComponent({
       set: (value) => emit('update:modelValue', value),
     });
 
+    const changeHanler = () => {
+      nextTick(() => emit('change', numberVal.value));
+    };
+
     const clickBtn = (name) => {
       if (props.maxlength && numberVal.value.length >= Number(props.maxlength)) return;
       // 小数点处理
@@ -68,9 +73,10 @@ export default defineComponent({
         if (pointerList[1].length >= props.precision) return;
       }
       numberVal.value = `${poniterIndex === 0 ? 0 : ''}${numberVal.value}${name}`;
-      // 整数 去掉0开头
-      if (!props.decimalPoint && numberVal.value.slice(0, 1) === '0') numberVal.value = numberVal.value.slice(1) + name;
-      nextTick(() => emit('change', Number(numberVal.value)));
+      // 允许开头不为0 整数 去掉0开头
+      if (!props.startZero && numberVal.value.slice(0, 1) === '0') numberVal.value = numberVal.value.slice(1) + name;
+
+      changeHanler();
     };
 
     const clickHandle = (type) => {
@@ -81,7 +87,7 @@ export default defineComponent({
       }
 
       if (type === 'confirm') emit('confirm');
-      else nextTick(() => emit('change', Number(numberVal.value)));
+      else changeHanler();
     };
 
     const clickHandleBtn = ({ key, name }) => {
@@ -95,7 +101,7 @@ export default defineComponent({
     const zerogridend = computed(() => (props.decimalPoint ? 3 : 4));
 
     return {
-      keyboardList, clickHandleBtn, totalwidth, gridwidth, numberVal, zerogridend,
+      keyboardList, clickHandleBtn, clickBtn, totalwidth, gridwidth, numberVal, zerogridend,
     };
   },
 });

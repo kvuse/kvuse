@@ -1,3 +1,16 @@
+
+# 1.2.3 (2022-12-07)
+
+### Add
+
+- `number-keyboard`组件，添加`startZero`属性
+
+# 1.2.2 (2022-12-06)
+
+### Bug Fixes
+
+- 修复组件引入出现`resolveComponent can only be used in render() or setup()`报错问题
+
 # 1.2.0 (2022-12-05)
 
 ### Bug Fixes

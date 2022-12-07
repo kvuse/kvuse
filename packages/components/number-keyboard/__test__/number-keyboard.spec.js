@@ -39,4 +39,10 @@ describe('NumberKeyboard.vue', () => {
       list: expect.arrayContaining([{ name: '.' }]),
     });
   });
+  it('startZero', async () => {
+    const wrapper = mount(NumberKeyboard, {
+      props: { startZero: true, modelValue: '010' },
+    });
+    expect(wrapper.vm.numberVal).toBe('010');
+  });
 });

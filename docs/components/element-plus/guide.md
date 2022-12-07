@@ -10,7 +10,7 @@ vue3组件库
 ## 安装
 
 ```bash
-npm i kui-next
+pnpm install @kvuse/components
 ```
 
 ## 全局引入

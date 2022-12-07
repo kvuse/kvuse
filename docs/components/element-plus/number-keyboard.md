@@ -27,6 +27,15 @@
 <<< @/example/element-plus/number-keyboard/max-length.vue
 </demo>
 
+## 开头是否为0
+
+设置`startZero`,可设置能否为0开头，默认`true`
+
+<demo md src="number-keyboard/start-zero">
+
+<<< @/example/element-plus/number-keyboard/start-zero.vue
+</demo>
+
 ## NumberKeyboard 属性
 
 <v-table type="attrs" :data="[
@@ -36,6 +45,7 @@
   { attr :'maxlength', dec: '最大输入长度', type: 'number', optional: '-', default: '-' },
   { attr :'decimalPoint', dec: '按键显示小数点', type: 'boolean', optional: '-', default: false },
   { attr :'precision', dec: '小数点后几位', type: 'number', optional: '-', default: 2 },
+  { attr :'startZero', dec: '是否开头可以输入0', type: 'boolean', optional: '-', default: true },
 ]" />
 
 ## NumberKeyboard 事件

@@ -1,6 +1,6 @@
 {
   "name": "@kvuse/components",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "vue3常用组件",
   "homepage": "https://kvuse.github.io/kvuse/components/element-plus/",
   "files": [
