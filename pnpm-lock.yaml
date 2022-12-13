@@ -193,10 +193,13 @@ importers:
 
   packages/vant:
     specifiers:
+      kucss: ^1.0.7
       vant: ^4.0.0
       vue: ^3.2.45
     dependencies:
       vant: registry.npmmirror.com/vant/4.0.0_vue@3.2.45
+    devDependencies:
+      kucss: registry.npmmirror.com/kucss/1.0.7
       vue: registry.npmmirror.com/vue/3.2.45
 
 packages:
@@ -3333,6 +3336,12 @@ packages:
     resolution: {integrity: sha512-5FZRzrZzNTBruuurWpvZnvP9pum+fe0HcK8z/ooo+U+Hmp4vtbyp1/QDsqmufirXy4egGzbaH/y2uCZf+6W5Kg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/known-css-properties/-/known-css-properties-0.26.0.tgz}
     name: known-css-properties
     version: 0.26.0
+    dev: true
+
+  registry.npmmirror.com/kucss/1.0.7:
+    resolution: {integrity: sha512-wPYnY0mTi9lb8biCozu0l0pHSHSfSaUQKgNqtxfafCAnZ2GEM9gn3/eFvwbPa2DFK4DcrgRLopw+qq3owmTlWg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/kucss/-/kucss-1.0.7.tgz}
+    name: kucss
+    version: 1.0.7
     dev: true
 
   registry.npmmirror.com/language-subtag-registry/0.3.22:

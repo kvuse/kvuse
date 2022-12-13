@@ -8,6 +8,7 @@ import * as ElIconModules from '@element-plus/icons-vue';
 import { KUI } from '@kvuse/components';
 import { KVant } from '@kvuse/vant';
 import '@kvuse/components/dist/index.css';
+import '@kvuse/vant/dist/index.css';
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import { useRoute } from 'vitepress';

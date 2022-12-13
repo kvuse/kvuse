@@ -1,11 +1,14 @@
+import 'kucss/src/index.css';
 import KvButton from './button';
 import KvInput from './input';
 import KvTable from './table';
+import KvTree from './tree';
 
 const KVant = {
   KvButton,
   KvInput,
   KvTable,
+  KvTree,
   install: () => {},
 };
 
@@ -29,5 +32,5 @@ KVant.install = function (app) {
 // export default KUI;
 
 export {
-  KvButton, KvInput, KVant,
+  KvButton, KvInput, KvTree, KVant,
 };

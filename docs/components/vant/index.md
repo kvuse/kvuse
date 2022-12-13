@@ -29,12 +29,14 @@ Vue.use(KUI)
 import {
   KButton,
   KInput,
+  KTree,
 } from '@kvuse/components';
 
 export default {
   components: {
     KButton,
     KInput,
+    KTree,
   },
 };
 ```
