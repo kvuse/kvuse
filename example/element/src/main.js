@@ -7,6 +7,7 @@ import store from './store';
 import App from './App.vue';
 import './styles/normalize.css';
 import 'element-plus/dist/index.css';
+import '@kvuse/components/dist/index.css';
 
 const app = createApp(App);
 app.use(router).use(store).use(ElementPlus).use(KUI)

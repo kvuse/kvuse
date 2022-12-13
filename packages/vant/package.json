@@ -29,7 +29,7 @@
     "access": "public"
   },
   "dependencies": {
-    "vant": "^4.0.0"
+    "vant": "^4.0.3"
   },
   "devDependencies": {
     "kucss": "^1.0.7",
