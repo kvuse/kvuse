@@ -15,6 +15,7 @@
     "vue": "^3.2.45"
   },
   "devDependencies": {
+    "@testing-library/vue": "^6.6.1",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.2.45",
     "@vue/test-utils": "^2.2.6",

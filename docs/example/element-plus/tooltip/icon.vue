@@ -6,7 +6,9 @@
     <k-tooltip content="消息提示显示图标" show-icon placement="right">
       <k-button>插槽图标提示</k-button>
       <template #icon>
-        <el-icon><InfoFilled /></el-icon>
+        <el-icon :size="18">
+          <InfoFilled />
+        </el-icon>
       </template>
     </k-tooltip>
   </div>

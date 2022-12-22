@@ -1,0 +1,62 @@
+{
+  "hash": "966c2134",
+  "browserHash": "bf927bff",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/.pnpm/vue@3.2.45/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "b663cdc6",
+      "needsInterop": false
+    },
+    "element-plus": {
+      "src": "../../../../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/index.mjs",
+      "file": "element-plus.js",
+      "fileHash": "826d8f50",
+      "needsInterop": false
+    },
+    "@element-plus/icons-vue": {
+      "src": "../../../../node_modules/.pnpm/@element-plus+icons-vue@2.0.10_vue@3.2.45/node_modules/@element-plus/icons-vue/dist/index.js",
+      "file": "@element-plus_icons-vue.js",
+      "fileHash": "82e9581e",
+      "needsInterop": false
+    },
+    "vant": {
+      "src": "../../../../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/index.mjs",
+      "file": "vant.js",
+      "fileHash": "a5b9067e",
+      "needsInterop": false
+    },
+    "element-plus/lib/locale/lang/zh-cn": {
+      "src": "../../../../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/lib/locale/lang/zh-cn.js",
+      "file": "element-plus_lib_locale_lang_zh-cn.js",
+      "fileHash": "2427398b",
+      "needsInterop": true
+    },
+    "markdown-it": {
+      "src": "../../../../node_modules/.pnpm/markdown-it@13.0.1/node_modules/markdown-it/index.js",
+      "file": "markdown-it.js",
+      "fileHash": "95c9108c",
+      "needsInterop": true
+    },
+    "@vueuse/core": {
+      "src": "../../../../node_modules/.pnpm/@vueuse+core@9.6.0_vue@3.2.45/node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "1cb87f22",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-X5XGKAPI": {
+      "file": "chunk-X5XGKAPI.js"
+    },
+    "chunk-6RB766UK": {
+      "file": "chunk-6RB766UK.js"
+    },
+    "chunk-HHWHORSU": {
+      "file": "chunk-HHWHORSU.js"
+    },
+    "chunk-J43GMYXM": {
+      "file": "chunk-J43GMYXM.js"
+    }
+  }
+}

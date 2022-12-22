@@ -9,7 +9,7 @@
         插槽消息提示
       </template>
     </k-tooltip>
-    <k-tooltip>
+    <k-tooltip overflow>
       <span class="text-overflow">超出显示省略号超出显示省略号超出显示省略号超出显示省略号超出显示省略号超出显示省略号</span>
       <template #content>
         超出显示省略号超出显示省略号超出显示省略号超出显示省略号超出显示省略号超出显示省略号

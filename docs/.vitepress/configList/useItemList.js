@@ -37,6 +37,10 @@ export function useItemList(){
       text: 'Table 表格',
       link: '/components/element-plus/table',
     },
+    // {
+    //   text: 'Table-v2 表格',
+    //   link: '/components/element-plus/table-v2',
+    // },
     {
       text: 'BatchTable 批量表格',
       link: '/components/element-plus/batch-table',
@@ -60,6 +64,10 @@ export function useItemList(){
     {
       text: 'NumberKeyboard 数字输入框',
       link: '/components/element-plus/number-keyboard',
+    },
+    {
+      text: 'VirtualList 虚拟列表',
+      link: '/components/element-plus/virtual-list',
     },
   ]
 

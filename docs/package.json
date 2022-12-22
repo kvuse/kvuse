@@ -25,6 +25,6 @@
     "markdown-it": "^13.0.1",
     "markdown-it-container": "^3.0.0",
     "unplugin-vue-components": "^0.22.12",
-    "vitepress": "1.0.0-alpha.31"
+    "vitepress": "1.0.0-alpha.33"
   }
 }

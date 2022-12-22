@@ -27,6 +27,7 @@
   { attr :'placement', dec: 'Tooltip 组件出现的位置', type: 'string', optional: 'top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end', default: 'bottom' },
   { attr :'content', dec: '显示的内容', type: 'string', optional: 'dark / light', default: 'dark' },
   { attr :'effect', dec: 'Tooltip 主题', type: 'array', optional: '-', default: [] },
+  { attr :'overflow', dec: '当内容过长超出显示...', type: 'boolean', optional: '-', default: false },
 ]" />
 
 ## Tooltip slots

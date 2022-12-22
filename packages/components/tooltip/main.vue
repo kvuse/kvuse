@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex1 overflow">
+  <div class="flex flex1" :class="{'text-overflow':overflow}">
     <el-tooltip v-bind="$attrs" :placement="placement">
       <template #content>
         <slot name="content" />
       </template>
-      <div class="text-overflow flex-center">
+      <div class="flex-center" :class="{'text-overflow':overflow}">
         <slot />
         <el-icon class="ml5" v-if="showIcon">
           <slot name="icon">
@@ -25,6 +25,7 @@ export default defineComponent({
   props: {
     placement: { type: String, default: 'top' },
     showIcon: { type: Boolean, default: false },
+    overflow: { type: Boolean, default: false },
   },
   components: { Warning },
 });
