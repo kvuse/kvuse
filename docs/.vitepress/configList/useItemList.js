@@ -69,6 +69,10 @@ export function useItemList(){
       text: 'VirtualList 虚拟列表',
       link: '/components/element-plus/virtual-list',
     },
+    {
+      text: 'AutoCounter 数字动效',
+      link: '/components/element-plus/auto-counter',
+    },
   ]
 
   const directiveList = [

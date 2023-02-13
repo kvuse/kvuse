@@ -111,16 +111,29 @@ export function useRequest({
    * 请求方式处理
    * @param {string} url 请求路径
    * @param {object} params 请求参数
+   * @param {object} arg 其他参数
    * @param {string} method 请求类型
    * @param {boolean} isObject 是否返回队形模式
    * @returns
    */
   // eslint-disable-next-line consistent-return
-  const requestHandle = async (url, params, method, isObject) => {
+  const requestHandle = async (url, params, arg = {}, method = 'get', isObject = false) => {
     try {
+      // 处理特殊字符
+      const encodeParams = {};
+      if (params) {
+        const isRes = (str) => /\[|\]/g.test(str);
+        Object.keys(params).forEach((key) => {
+          encodeParams[key] = params[key] && isRes
+            ? [...(params[key]).toString()].map((item) => (isRes(item) ? encodeURIComponent(item) : item)).join('')
+            : params[key];
+        });
+      }
       const res = ['post', 'put'].includes(method)
-        ? await axiosInstance({ method, url, data: params })
-        : await axiosInstance[method](url, { params });
+        ? await axiosInstance({
+          method, url, data: params, ...arg,
+        })
+        : await axiosInstance[method](url, { params: encodeParams, ...arg });
       return setResult(res, isObject);
     } catch (err) {
       checkCode(err.message);
@@ -129,19 +142,19 @@ export function useRequest({
   };
 
   const $api = {
-    get: (url, params) => requestHandle(url, params, 'get'),
-    post: (url, params) => requestHandle(url, params, 'post'),
-    put: (url, params) => requestHandle(url, params, 'put'),
-    delete: (url, params) => requestHandle(url, params, 'delete'),
-    all: (url, params) => requestHandle(url, params, 'all'),
+    get: (url, params, arg) => requestHandle(url, params, arg, 'get'),
+    post: (url, params, arg) => requestHandle(url, params, arg, 'post'),
+    put: (url, params, arg) => requestHandle(url, params, arg, 'put'),
+    delete: (url, params, arg) => requestHandle(url, params, arg, 'delete'),
+    all: (url, params, arg) => requestHandle(url, params, arg, 'all'),
   };
 
   const $http = {
-    get: (url, params) => requestHandle(url, params, 'get', true),
-    post: (url, params) => requestHandle(url, params, 'post', true),
-    put: (url, params) => requestHandle(url, params, 'put', true),
-    delete: (url, params) => requestHandle(url, params, 'delete', true),
-    all: (url, params) => requestHandle(url, params, 'all', true),
+    get: (url, params, arg) => requestHandle(url, params, arg, 'get', true),
+    post: (url, params, arg) => requestHandle(url, params, arg, 'post', true),
+    put: (url, params, arg) => requestHandle(url, params, arg, 'put', true),
+    delete: (url, params, arg) => requestHandle(url, params, arg, 'delete', true),
+    all: (url, params, arg) => requestHandle(url, params, arg, 'all', true),
   };
 
   return {

@@ -10,12 +10,13 @@
   --vp-c-brand-dark: #668d11;
   --vp-c-brand-darker: #52730d;
   --vp-c-text-code: #5d6f5d;
-  --vp-code-block-bg: rgb(125 125 125 / 4%);
-  --vp-custom-block-tip-text: rgb(18 181 157);
+  --vp-code-block-bg: #fafafa;
+  --vp-custom-block-tip-text: rgb(2 49 42);
   --vp-custom-block-tip-border: rgb(18 181 157 / 50%);
   --vp-custom-block-tip-bg: rgb(18 181 157 / 10%);
   --vp-code-block-color: #0b0b0e;
   --vp-layout-max-width: 1566px;
+  --vp-code-font-size: 0.98em;
 
   /**
  * Component: Button
