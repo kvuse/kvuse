@@ -1,6 +1,6 @@
 <template>
   <div class="width-240">
-    <k-auto-counter v-model="count" prefix="小数点位数：" suffix="元" :decimals="2" class="font-20 font-bold mt20" />
+    <k-auto-counter v-model="count" prefix="小数点两位：" suffix="元" :decimals="2" class="font-20 font-bold mt20" />
     <div class="mt20">
       <k-button type="primary" @click="setNum">
         设置随机数

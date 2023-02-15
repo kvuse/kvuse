@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress';
 import { useItemList, useApiList,useVantList } from './configList';
 
-const { componentsList, directiveList  } = useItemList();
+const { componentsList, directiveList, otherList  } = useItemList();
 const { apiList } = useApiList();
 const {vantComponets} = useVantList()
 
@@ -72,11 +72,19 @@ export default defineConfig({
           text: '自定义指令',
           items: directiveList,
         },
+        {
+          text: '其他',
+          items: otherList,
+        },
       ],
       '/components/vant/': [
         {
           text: '组件',
           items: vantComponets,
+        },
+        {
+          text: '更新日志',
+          items: directiveList,
         },
       ],
      

@@ -94,5 +94,12 @@ export function useItemList(){
     },
   ]
 
-  return { componentsList,directiveList }
+  const otherList = [
+    {
+      text: '更新日志',
+      link: '/components/element-plus/CHANGELOG',
+    },
+  ]
+
+  return { componentsList, directiveList, otherList }
 }

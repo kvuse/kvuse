@@ -11,7 +11,7 @@
 
 <v-table type="attrs" :data="[
   { attr :'height', dec: '容器高度', type: 'string', optional: '', default: '500px' },
-  { attr :'rowClass', dec: 'row行的class', type: 'string', optional: '-', default: '-' },
+  { attr :'rowClass', dec: 'row行的class', type: 'string / object', optional: '-', default: '-' },
   { attr :'rowStyle', dec: 'row行的样式设置', type: 'object', optional: '-', default: {} },
   { attr :'data', dec: '绑定列表的数组', type: 'array', optional: '-', default: [] },
 ]" />

@@ -37,7 +37,9 @@ import {
   KBreadcrumb,
   KTabs,
   KPicker,
-  kNumberKeyboard
+  kNumberKeyboard,
+  KVirtualList,
+  KAutoCounter,
 } from '@kvuse/components';
 
 export default {
@@ -51,7 +53,9 @@ export default {
     KBreadcrumb,
     KTabs,
     KPicker,
-    kNumberKeyboard
+    KNumberKeyboard,
+    KVirtualList,
+    KAutoCounter,
   },
 };
 ```
