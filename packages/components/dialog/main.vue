@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :title="title" v-model="dialogVisible" :custom-class="customClassName" v-bind="$attrs" @close="closeHandle" @open="openHandler">
+  <el-dialog :title="title" v-model="dialogVisible" :class="customClassName" v-bind="$attrs" @close="closeHandle" @open="openHandler">
     <slot>
       <span>这是一段信息</span>
     </slot>
@@ -24,6 +24,7 @@ export default defineComponent({
     title: { type: String, default: '提示' },
     showFooter: { type: Boolean, default: true },
     customClass: { type: String, default: '' },
+    class: { type: String, default: '' },
   },
   emits: ['update:modelValue', 'confirm', 'open', 'close'],
   setup(props, { emit }) {
@@ -33,6 +34,7 @@ export default defineComponent({
     });
 
     const customClassName = computed(() => {
+      if (props.class) return props.class;
       if (props.customClass) return props.customClass;
       return !props.showFooter ? 'custom-dialog no-footer' : 'custom-dialog';
     });

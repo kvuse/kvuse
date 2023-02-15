@@ -7,14 +7,33 @@ describe('Virtual-list.vue', () => {
   it('create', async () => {
     const wrapper = mount(AutoCount);
     await nextTick();
+    await nextTick();
     expect(wrapper.find('.auto-counter').exists()).toBeTruthy();
   });
-  it('props data', () => {
+  it('props start', () => {
     const wrapper = mount(AutoCount, {
       props: {
-        modelValue: 20,
+        start: 20,
       },
     });
-    expect(wrapper.find('.span-text').text()).toBe('');
+    expect(wrapper.find('.span-text').text()).toBe('20');
+  });
+  it('props prefix', () => {
+    const wrapper = mount(AutoCount, {
+      props: {
+        prefix: '￥',
+        start: 20,
+      },
+    });
+    expect(wrapper.find('.auto-counter').text()).toBe('￥20');
+  });
+  it('props decimals', () => {
+    const wrapper = mount(AutoCount, {
+      props: {
+        decimals: 2,
+        start: 20,
+      },
+    });
+    expect(wrapper.find('.span-text').text()).toBe('20.00');
   });
 });

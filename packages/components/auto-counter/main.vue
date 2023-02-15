@@ -1,7 +1,7 @@
 <template>
   <div class="auto-counter">
     <span class="mr5">{{ prefix }}</span>
-    <span class="span-text" ref="spanText">{{ autoinit ? '' : setDeimals(textValue) }}</span>
+    <span class="span-text" ref="spanText">{{ autoinit ? setDeimals(start) : setDeimals(textValue) }}</span>
     <span class="ml5">{{ suffix }}</span>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default defineComponent({
     // add and minus
     const updateMinusData = (isAdd = true) => {
       const counter = spanText.value;
+      if (!counter) return;
       const tmp = +counter.innerText;
       const changeData = +textValue.value / 200;
       const isAddOrMinis = (isAdd && tmp < Number(textValue.value)) || (!isAdd && tmp > Number(textValue.value));
@@ -59,7 +60,6 @@ export default defineComponent({
     onMounted(() => {
       const counter = spanText.value;
       if (counter && props.autoinit) {
-        counter.innerText = setDeimals(props.start);
         updateMinusData();
       }
     });

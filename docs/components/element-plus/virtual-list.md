@@ -7,6 +7,13 @@
 <<< @/example/element-plus/virtual-list/basic.vue
 </demo>
 
+## 滚动加载
+
+<demo md src="virtual-list/scroll">
+
+<<< @/example/element-plus/virtual-list/scroll.vue
+</demo>
+
 ## VirtualList 属性
 
 <v-table type="attrs" :data="[
@@ -20,11 +27,11 @@
 
 <v-table type="event" :data="[
   { event :'row-click', dec: '当用户点击行触发该事件', callback: 'row,index' },
-  { event :'scroll', dec: '滚动条滚动触发', callback: '' },
+  { event :'scroll', dec: '滚动条滚动触发，distance：滚动条到底部的距离，scrollTop：滚动条上滚的高度', callback: '{ distance, scrollTop }' },
 ]" />
 
 ## VirtualList slots
 
 <v-table type="slot" :data="[
-  { name :'-', dec: '默认slot内容', child: '-' },
+  { name :'-', dec: '默认slot内容,参数: { row, index }', child: '-' },
 ]" />

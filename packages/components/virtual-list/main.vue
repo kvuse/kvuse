@@ -17,7 +17,7 @@
 
 <script>
 import {
-  defineComponent, ref, onMounted, computed,
+  defineComponent, ref, onMounted, computed, watch,
 } from 'vue';
 import { ElScrollbar } from 'element-plus';
 
@@ -39,7 +39,7 @@ export default defineComponent({
     // 可视区最后一个元素标识
     const endIndex = ref(10);
     // get endIndex
-    const itemHeight = () => document.querySelector('.list-item')?.offsetHeight;
+    const itemHeight = () => document.querySelector('.list-item')?.offsetHeight ?? 100;
 
     const getEndIndex = () => {
       const { clientHeight = 100 } = viewport.value.wrapRef || {};
@@ -50,7 +50,7 @@ export default defineComponent({
     const containHeight = ref(100);
 
     onMounted(() => {
-      endIndex.value = getEndIndex();
+      endIndex.value = Number(getEndIndex()) || 10;
       containHeight.value = props.data.length * itemHeight();
     });
 
@@ -64,12 +64,17 @@ export default defineComponent({
 
     const listRanges = computed(() => props.data.filter((item, index) => showViewRanges(index)));
 
-    const onScroll = () => {
-      const { scrollTop } = viewport.value.wrapRef;
+    watch(() => props.data, () => {
+      containHeight.value = props.data.length * itemHeight();
+    });
+
+    const onScroll = (event) => {
+      const { scrollTop, clientHeight } = viewport.value.wrapRef;
       startIndex.value = getStartIndex(scrollTop);
       startOffset.value = getStartOffset(startIndex.value);
       endIndex.value = getEndIndex();
-      emit('scroll');
+      const distance = Math.abs(containHeight.value - clientHeight - scrollTop);
+      emit('scroll', { distance, ...event });
     };
 
     const rowClick = (item, index) => {

@@ -1,8 +1,14 @@
 {
   "name": "@kvuse/components",
-  "version": "1.2.4",
-  "description": "vue3常用组件",
+  "version": "1.2.5",
+  "description": "vue3 + elementPlus 常用组件",
   "homepage": "https://kvuse.github.io/kvuse/components/element-plus/",
+  "keywords": [
+    "vite",
+    "vue3",
+    "vue",
+    "elementPlus"
+  ],
   "files": [
     "dist"
   ],
