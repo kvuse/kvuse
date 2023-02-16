@@ -10,7 +10,7 @@ hero:
   text: vue3
   tagline: vue3常用的组件以及常用的API
   image:
-    src: /logo.svg
+    src: /logo-view.svg
     alt: kvuse
   actions:
     - theme: brand
