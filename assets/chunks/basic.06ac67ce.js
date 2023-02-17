@@ -1,1 +1,0 @@
-import{h as n,r as l,o as s,c as r,b as u}from"../app.b49ff7ce.js";const c={class:"width-240"},d={__name:"basic",setup(m){const e=n(1);return(p,o)=>{const t=l("k-input-number");return s(),r("div",c,[u(t,{placeholder:"请输入金额",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=a=>e.value=a)},null,8,["modelValue"])])}}};export{d as default};
