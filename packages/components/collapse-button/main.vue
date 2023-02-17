@@ -31,7 +31,7 @@ export default defineComponent({
     onMounted(() => {
       const { parentNode } = collapse.value;
       parentNode.style.position = 'relative';
-      parentNode.style.overflow = 'inherit';
+      parentNode.style.overflow = 'initial';
     });
 
     const collapseStyle = computed(() => {

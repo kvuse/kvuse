@@ -3121,7 +3121,7 @@ const Hl = M({
     const a = S(!1), o = S(null);
     $e(() => {
       const { parentNode: s } = o.value;
-      s.style.position = "relative", s.style.overflow = "inherit";
+      s.style.position = "relative", s.style.overflow = "initial";
     });
     const l = y(() => {
       const { clientWidth: s, clientHeight: u } = o.value || {}, {
@@ -3196,7 +3196,7 @@ function Dl(e, t, n, a, o, l) {
     ], !0)
   ], 4);
 }
-const xe = /* @__PURE__ */ D(Hl, [["render", Dl], ["__scopeId", "data-v-b9534bc1"]]);
+const xe = /* @__PURE__ */ D(Hl, [["render", Dl], ["__scopeId", "data-v-447ed96e"]]);
 xe.install = function(e) {
   e.component(xe.name, xe);
 };
