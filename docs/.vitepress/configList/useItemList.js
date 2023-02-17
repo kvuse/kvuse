@@ -73,6 +73,10 @@ export function useItemList(){
       text: 'AutoCounter 数字动效',
       link: '/components/element-plus/auto-counter',
     },
+    {
+      text: 'CollapseButton 折叠按钮',
+      link: '/components/element-plus/collapse-button',
+    },
   ]
 
   const directiveList = [

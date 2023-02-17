@@ -17,6 +17,7 @@ import KDatePicker from './date-picker';
 import KNumberKeyboard from './number-keyboard';
 import KVirtualList from './virtual-list';
 import KAutoCounter from './auto-counter';
+import KCollapseButton from './collapse-button';
 
 const KUI = {
   KButton,
@@ -35,6 +36,7 @@ const KUI = {
   KNumberKeyboard,
   KVirtualList,
   KAutoCounter,
+  KCollapseButton,
   install: () => {},
 };
 
@@ -58,5 +60,5 @@ KUI.install = function (app) {
 // export default KUI;
 
 export {
-  directives, KButton, KInput, KInputNumber, KTable, KTableV2, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker, KTooltip, KDatePicker, KNumberKeyboard, KVirtualList, KAutoCounter, KUI,
+  directives, KButton, KInput, KInputNumber, KTable, KTableV2, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker, KTooltip, KDatePicker, KNumberKeyboard, KVirtualList, KAutoCounter, KCollapseButton, KUI,
 };
