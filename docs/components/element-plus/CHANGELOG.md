@@ -1,8 +1,19 @@
-# 1.2.6 (2023-02-17)
+# 1.2.8 (2023-02-17)
+
+### Add
+
+- 添加`tableV2`组件，虚拟列表
+
+# 1.2.7 (2023-02-17)
 
 ### Add
 
 - 添加`collapse-button`组件，折叠按钮
+
+### Features
+
+- `collapse-button`添加`type = selection / expand`
+- 如果设置了selection则显示多选框, 如果设置了 expand 则显示为一个可展开的按钮
 
 # 1.2.5 (2023-02-16)
 

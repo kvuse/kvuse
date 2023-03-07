@@ -1,9 +1,5 @@
 # Table-V2 表格
 
-:::tip
-  表格带有分页，如果设置`total`大于10，会显示分页，如果只有一页数据，分页不显示
-:::
-
 ## 基础使用
 
 <demo md src="table-v2/basic">
@@ -11,45 +7,29 @@
 <<< @/example/element-plus/table-v2/basic.vue
 </demo>
 
-## 使用分页
-
-如果设置`total`值，数值大于`size`值（默认10），显示分页
-
-<demo md src="table/page">
-
-<<< @/example/element-plus/table/page.vue
-</demo>
-
 ## 使用排序
 
 如果`table-column`中属性设置`sortable`为`true`，可设置排序，可使用`sort-change`方法，进行排序操作
 
-<demo md src="table/sort">
+<demo md src="table-v2/sort">
 
-<<< @/example/element-plus/table/sort.vue
+<<< @/example/element-plus/table-v2/sort.vue
 </demo>
 
 ## 使用插槽
 
-<demo md src="table/slots">
+<demo md src="table-v2/slots">
 
-<<< @/example/element-plus/table/slots.vue
+<<< @/example/element-plus/table-v2/slots.vue
 </demo>
 
-## 使用批量操作
-
-请使用[BatchTable 批量表格](batch-table.md)
-
-## Table 属性
+## TableV2 属性
 
 <v-table type="attrs" :data="[
   { attr :'table-column', dec: '表格列表', type: 'array', optional: '-', default: '[]' },
   { attr :'table-data', dec: '表格数据', type: 'array', optional: '-', default: '[]' },
   { attr :'modelValue / v-model', dec: '绑定的当前页数', type: 'number', optional: '-', default: 1 },
-  { attr :'header-cell-style', dec: '表格头部样式', type: 'object', optional: '-', default: `{ background:'#f5f7fa', color:'#909399'}` },
-  { attr :'total', dec: '数据的总条数', type: 'number', optional: '-', default: 9 },
-  { attr :'size', dec: '每页显示的条数', type: 'number', optional: '-', default: 10 },
-  { attr :'show-size', dec: '是否显示切换页码', type: 'boolean', optional: '-', default: false },
+  { attr :'header-cell-style', dec: '表格头部样式', type: 'object', optional: '-', default: `{ background:'#f5f7fa', color:'#909399'}` }, { attr :'height', dec: '表格列表高度', type: 'string', optional: 'auto/string', default: '500px' }
 ]" />
 
 ## Table-column 属性

@@ -80,4 +80,38 @@ export const directives = {
       };
     },
   },
+  /**
+   * 键盘事件
+   * @example
+   * <div v-keyboard:[fn].focus="object"><div>  fn：执行的方法  object:{ buttonKey:'Enter' }
+   * modifiers: { focus, dialog, any }
+   * focus：输入框焦点下是否可用 dialog：是否是弹框可用 any: 监听所有键值
+   */
+  keyboard: {
+    mounted: (el, binding) => {
+      let lastTime = 0;
+      el.handler = function (event) {
+        const nowTime = Date.now();
+        const currentKey = /^[a-zA-Z]{2,}/.test(event.key) ? event.key : event.key.toLocaleUpperCase();
+        const { buttonKey, isCombination = 0 } = binding.value || {};
+        const isHasEl = document.contains(el);
+        const isFocused = event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT';
+        if (!isHasEl) { document.removeEventListener('keydown', el.handler); return; }
+        const { dialog, focus, any } = binding.modifiers;
+        // any
+        if (any && binding.arg) { binding.arg(event); return; }
+        const isFast = nowTime - lastTime > 30; // 解决扫码枪回车和单键回车冲突
+        const isDialogVisible = document.querySelector('.el-popup-parent--hidden') || document.querySelector('.is-message-box');
+        lastTime = nowTime;
+        if (isDialogVisible && !dialog) return;
+        const modifierPressed = event.ctrlKey || event.metaKey;
+        const isEqualKey = isCombination === +modifierPressed && buttonKey === currentKey;
+        if ((!isFocused || focus) && isEqualKey && isFast) binding.arg && binding.arg(event);
+      };
+      document.addEventListener('keydown', el.handler);
+    },
+    unmounted: (el) => {
+      document.removeEventListener('keydown', el.handler);
+    },
+  },
 };

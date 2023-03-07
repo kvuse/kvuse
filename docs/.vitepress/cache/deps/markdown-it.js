@@ -3,7 +3,7 @@ import {
   __esm,
   __export,
   __toCommonJS
-} from "./chunk-J43GMYXM.js";
+} from "./chunk-AC2VUBZ6.js";
 
 // ../node_modules/.pnpm/entities@3.0.1/node_modules/entities/lib/maps/entities.json
 var require_entities = __commonJS({
@@ -1655,6 +1655,8 @@ var require_parser_core = __commonJS({
       ["linkify", require_linkify()],
       ["replacements", require_replacements()],
       ["smartquotes", require_smartquotes()],
+      // `text_join` finds `text_special` tokens (for escape sequences)
+      // and joins them with the rest of the text
       ["text_join", require_text_join()]
     ];
     function Core() {
@@ -3027,6 +3029,8 @@ var require_parser_block = __commonJS({
     "use strict";
     var Ruler = require_ruler();
     var _rules = [
+      // First 2 params - rule name & source. Secondary array - list of rules,
+      // which can be terminated by this one.
       ["table", require_table(), ["paragraph", "reference"]],
       ["code", require_code()],
       ["fence", require_fence(), ["paragraph", "reference", "blockquote", "list"]],
@@ -3369,6 +3373,7 @@ var require_strikethrough = __commonJS({
         state.delimiters.push({
           marker,
           length: 0,
+          // disable "rule of 3" length checks meant for emphasis
           token: state.tokens.length - 1,
           end: -1,
           open: scanned.can_open,
@@ -3448,10 +3453,22 @@ var require_emphasis = __commonJS({
         token = state.push("text", "", 0);
         token.content = String.fromCharCode(marker);
         state.delimiters.push({
+          // Char code of the starting marker (number).
+          //
           marker,
+          // Total length of these series of delimiters.
+          //
           length: scanned.length,
+          // A position of the token this delimiter corresponds to.
+          //
           token: state.tokens.length - 1,
+          // If this delimiter is matched as a valid opener, `end` will be
+          // equal to its position, otherwise it's `-1`.
+          //
           end: -1,
+          // Boolean flags that determine if this delimiter could open or close
+          // an emphasis.
+          //
           open: scanned.can_open,
           close: scanned.can_close
         });
@@ -3470,7 +3487,9 @@ var require_emphasis = __commonJS({
           continue;
         }
         endDelim = delimiters[startDelim.end];
-        isStrong = i > 0 && delimiters[i - 1].end === startDelim.end + 1 && delimiters[i - 1].marker === startDelim.marker && delimiters[i - 1].token === startDelim.token - 1 && delimiters[startDelim.end + 1].token === endDelim.token + 1;
+        isStrong = i > 0 && delimiters[i - 1].end === startDelim.end + 1 && // check that first two markers match and adjacent
+        delimiters[i - 1].marker === startDelim.marker && delimiters[i - 1].token === startDelim.token - 1 && // check that last two markers are adjacent (we can safely assume they match)
+        delimiters[startDelim.end + 1].token === endDelim.token + 1;
         ch = String.fromCharCode(startDelim.marker);
         token = state.tokens[startDelim.token];
         token.type = isStrong ? "strong_open" : "em_open";
@@ -4109,6 +4128,8 @@ var require_parser_inline = __commonJS({
       ["balance_pairs", require_balance_pairs()],
       ["strikethrough", require_strikethrough().postProcess],
       ["emphasis", require_emphasis().postProcess],
+      // rules for pairs separate '**' into its own text tokens, which may be left unused,
+      // rule below merges unused segments back with the rest of the text
       ["fragments_join", require_fragments_join()]
     ];
     function ParserInline() {
@@ -4205,7 +4226,8 @@ var require_re = __commonJS({
       re.src_path = "(?:[/?#](?:(?!" + re.src_ZCc + "|" + text_separators + `|[()[\\]{}.,"'?!\\-;]).|\\[(?:(?!` + re.src_ZCc + "|\\]).)*\\]|\\((?:(?!" + re.src_ZCc + "|[)]).)*\\)|\\{(?:(?!" + re.src_ZCc + '|[}]).)*\\}|\\"(?:(?!' + re.src_ZCc + `|["]).)+\\"|\\'(?:(?!` + re.src_ZCc + "|[']).)+\\'|\\'(?=" + re.src_pseudo_letter + "|[-])|\\.{2,}[a-zA-Z0-9%/&]|\\.(?!" + re.src_ZCc + "|[.]|$)|" + (opts["---"] ? "\\-(?!--(?:[^-]|$))(?:-*)|" : "\\-+|") + ",(?!" + re.src_ZCc + "|$)|;(?!" + re.src_ZCc + "|$)|\\!+(?!" + re.src_ZCc + "|[!]|$)|\\?(?!" + re.src_ZCc + "|[?]|$))+|\\/)?";
       re.src_email_name = '[\\-;:&=\\+\\$,\\.a-zA-Z0-9_][\\-;:&=\\+\\$,\\"\\.a-zA-Z0-9_]*';
       re.src_xn = "xn--[a-z0-9\\-]{1,59}";
-      re.src_domain_root = "(?:" + re.src_xn + "|" + re.src_pseudo_letter + "{1,63})";
+      re.src_domain_root = // Allow letters & digits (http://test1)
+      "(?:" + re.src_xn + "|" + re.src_pseudo_letter + "{1,63})";
       re.src_domain = "(?:" + re.src_xn + "|(?:" + re.src_pseudo_letter + ")|(?:" + re.src_pseudo_letter + "(?:-|" + re.src_pseudo_letter + "){0,61}" + re.src_pseudo_letter + "))";
       re.src_host = "(?:(?:(?:(?:" + re.src_domain + ")\\.)*" + re.src_domain + "))";
       re.tpl_host_fuzzy = "(?:" + re.src_ip4 + "|(?:(?:(?:" + re.src_domain + ")\\.)+(?:%TLDS%)))";
@@ -4217,8 +4239,12 @@ var require_re = __commonJS({
       re.tpl_host_port_no_ip_fuzzy_strict = re.tpl_host_no_ip_fuzzy + re.src_port + re.src_host_terminator;
       re.tpl_host_fuzzy_test = "localhost|www\\.|\\.\\d{1,3}\\.|(?:\\.(?:%TLDS%)(?:" + re.src_ZPCc + "|>|$))";
       re.tpl_email_fuzzy = "(^|" + text_separators + '|"|\\(|' + re.src_ZCc + ")(" + re.src_email_name + "@" + re.tpl_host_fuzzy_strict + ")";
-      re.tpl_link_fuzzy = "(^|(?![.:/\\-_@])(?:[$+<=>^`|｜]|" + re.src_ZPCc + "))((?![$+<=>^`|｜])" + re.tpl_host_port_fuzzy_strict + re.src_path + ")";
-      re.tpl_link_no_ip_fuzzy = "(^|(?![.:/\\-_@])(?:[$+<=>^`|｜]|" + re.src_ZPCc + "))((?![$+<=>^`|｜])" + re.tpl_host_port_no_ip_fuzzy_strict + re.src_path + ")";
+      re.tpl_link_fuzzy = // Fuzzy link can't be prepended with .:/\- and non punctuation.
+      // but can start with > (markdown blockquote)
+      "(^|(?![.:/\\-_@])(?:[$+<=>^`|｜]|" + re.src_ZPCc + "))((?![$+<=>^`|｜])" + re.tpl_host_port_fuzzy_strict + re.src_path + ")";
+      re.tpl_link_no_ip_fuzzy = // Fuzzy link can't be prepended with .:/\- and non punctuation.
+      // but can start with > (markdown blockquote)
+      "(^|(?![.:/\\-_@])(?:[$+<=>^`|｜]|" + re.src_ZPCc + "))((?![$+<=>^`|｜])" + re.tpl_host_port_no_ip_fuzzy_strict + re.src_path + ")";
       return re;
     };
   }
@@ -4291,7 +4317,9 @@ var require_linkify_it = __commonJS({
           var tail = text.slice(pos);
           if (!self.re.no_http) {
             self.re.no_http = new RegExp(
-              "^" + self.re.src_auth + "(?:localhost|(?:(?:" + self.re.src_domain + ")\\.)+" + self.re.src_domain_root + ")" + self.re.src_port + self.re.src_host_terminator + self.re.src_path,
+              "^" + self.re.src_auth + // Don't allow single-level domains, because of false positives like '//test'
+              // with code comments
+              "(?:localhost|(?:(?:" + self.re.src_domain + ")\\.)+" + self.re.src_domain_root + ")" + self.re.src_port + self.re.src_host_terminator + self.re.src_path,
               "i"
             );
           }
@@ -4580,7 +4608,7 @@ var require_linkify_it = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/punycode@2.1.1/node_modules/punycode/punycode.es6.js
+// ../node_modules/.pnpm/punycode@2.3.0/node_modules/punycode/punycode.es6.js
 var punycode_es6_exports = {};
 __export(punycode_es6_exports, {
   decode: () => decode,
@@ -4594,24 +4622,24 @@ __export(punycode_es6_exports, {
 function error(type) {
   throw new RangeError(errors[type]);
 }
-function map(array, fn) {
+function map(array, callback) {
   const result = [];
   let length = array.length;
   while (length--) {
-    result[length] = fn(array[length]);
+    result[length] = callback(array[length]);
   }
   return result;
 }
-function mapDomain(string, fn) {
-  const parts = string.split("@");
+function mapDomain(domain, callback) {
+  const parts = domain.split("@");
   let result = "";
   if (parts.length > 1) {
     result = parts[0] + "@";
-    string = parts[1];
+    domain = parts[1];
   }
-  string = string.replace(regexSeparators, ".");
-  const labels = string.split(".");
-  const encoded = map(labels, fn).join(".");
+  domain = domain.replace(regexSeparators, ".");
+  const labels = domain.split(".");
+  const encoded = map(labels, callback).join(".");
   return result + encoded;
 }
 function ucs2decode(string) {
@@ -4636,7 +4664,7 @@ function ucs2decode(string) {
 }
 var maxInt, base, tMin, tMax, skew, damp, initialBias, initialN, delimiter, regexPunycode, regexNonASCII, regexSeparators, errors, baseMinusTMin, floor, stringFromCharCode, ucs2encode, basicToDigit, digitToBasic, adapt, decode, encode, toUnicode, toASCII, punycode, punycode_es6_default;
 var init_punycode_es6 = __esm({
-  "../node_modules/.pnpm/punycode@2.1.1/node_modules/punycode/punycode.es6.js"() {
+  "../node_modules/.pnpm/punycode@2.3.0/node_modules/punycode/punycode.es6.js"() {
     "use strict";
     maxInt = 2147483647;
     base = 36;
@@ -4648,7 +4676,7 @@ var init_punycode_es6 = __esm({
     initialN = 128;
     delimiter = "-";
     regexPunycode = /^xn--/;
-    regexNonASCII = /[^\0-\x7E]/;
+    regexNonASCII = /[^\0-\x7F]/;
     regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g;
     errors = {
       "overflow": "Overflow: input needs wider integers to process",
@@ -4658,15 +4686,15 @@ var init_punycode_es6 = __esm({
     baseMinusTMin = base - tMin;
     floor = Math.floor;
     stringFromCharCode = String.fromCharCode;
-    ucs2encode = (array) => String.fromCodePoint(...array);
+    ucs2encode = (codePoints) => String.fromCodePoint(...codePoints);
     basicToDigit = function(codePoint) {
-      if (codePoint - 48 < 10) {
-        return codePoint - 22;
+      if (codePoint >= 48 && codePoint < 58) {
+        return 26 + (codePoint - 48);
       }
-      if (codePoint - 65 < 26) {
+      if (codePoint >= 65 && codePoint < 91) {
         return codePoint - 65;
       }
-      if (codePoint - 97 < 26) {
+      if (codePoint >= 97 && codePoint < 123) {
         return codePoint - 97;
       }
       return base;
@@ -4700,13 +4728,16 @@ var init_punycode_es6 = __esm({
         output.push(input.charCodeAt(j));
       }
       for (let index = basic > 0 ? basic + 1 : 0; index < inputLength; ) {
-        let oldi = i;
+        const oldi = i;
         for (let w = 1, k = base; ; k += base) {
           if (index >= inputLength) {
             error("invalid-input");
           }
           const digit = basicToDigit(input.charCodeAt(index++));
-          if (digit >= base || digit > floor((maxInt - i) / w)) {
+          if (digit >= base) {
+            error("invalid-input");
+          }
+          if (digit > floor((maxInt - i) / w)) {
             error("overflow");
           }
           i += digit * w;
@@ -4734,7 +4765,7 @@ var init_punycode_es6 = __esm({
     encode = function(input) {
       const output = [];
       input = ucs2decode(input);
-      let inputLength = input.length;
+      const inputLength = input.length;
       let n = initialN;
       let delta = 0;
       let bias = initialBias;
@@ -4743,7 +4774,7 @@ var init_punycode_es6 = __esm({
           output.push(stringFromCharCode(currentValue));
         }
       }
-      let basicLength = output.length;
+      const basicLength = output.length;
       let handledCPCount = basicLength;
       if (basicLength) {
         output.push(delimiter);
@@ -4765,7 +4796,7 @@ var init_punycode_es6 = __esm({
           if (currentValue < n && ++delta > maxInt) {
             error("overflow");
           }
-          if (currentValue == n) {
+          if (currentValue === n) {
             let q = delta;
             for (let k = base; ; k += base) {
               const t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
@@ -4780,7 +4811,7 @@ var init_punycode_es6 = __esm({
               q = floor(qMinusT / baseMinusT);
             }
             output.push(stringFromCharCode(digitToBasic(q, 0)));
-            bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+            bias = adapt(delta, handledCPCountPlusOne, handledCPCount === basicLength);
             delta = 0;
             ++handledCPCount;
           }
@@ -4801,7 +4832,19 @@ var init_punycode_es6 = __esm({
       });
     };
     punycode = {
+      /**
+       * A string representing the current Punycode.js version number.
+       * @memberOf punycode
+       * @type String
+       */
       "version": "2.1.0",
+      /**
+       * An object of methods to convert from JavaScript's internal character
+       * representation (UCS-2) to Unicode code points, and back.
+       * @see <https://mathiasbynens.be/notes/javascript-encoding>
+       * @memberOf punycode
+       * @type Object
+       */
       "ucs2": {
         "decode": ucs2decode,
         "encode": ucs2encode
@@ -4822,14 +4865,33 @@ var require_default = __commonJS({
     module.exports = {
       options: {
         html: false,
+        // Enable HTML tags in source
         xhtmlOut: false,
+        // Use '/' to close single tags (<br />)
         breaks: false,
+        // Convert '\n' in paragraphs into <br>
         langPrefix: "language-",
+        // CSS language prefix for fenced blocks
         linkify: false,
+        // autoconvert URL-like texts to links
+        // Enable some language-neutral replacements + quotes beautification
         typographer: false,
+        // Double + single quotes replacement pairs, when typographer enabled,
+        // and smartquotes on. Could be either a String or an Array.
+        //
+        // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
+        // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
         quotes: "“”‘’",
+        /* “”‘’ */
+        // Highlighter function. Should return escaped HTML,
+        // or '' if the source string is not changed and should be escaped externaly.
+        // If result starts with <pre... internal wrapper is skipped.
+        //
+        // function (/*str, lang*/) { return ''; }
+        //
         highlight: null,
         maxNesting: 100
+        // Internal protection, recursion limit
       },
       components: {
         core: {},
@@ -4847,14 +4909,33 @@ var require_zero = __commonJS({
     module.exports = {
       options: {
         html: false,
+        // Enable HTML tags in source
         xhtmlOut: false,
+        // Use '/' to close single tags (<br />)
         breaks: false,
+        // Convert '\n' in paragraphs into <br>
         langPrefix: "language-",
+        // CSS language prefix for fenced blocks
         linkify: false,
+        // autoconvert URL-like texts to links
+        // Enable some language-neutral replacements + quotes beautification
         typographer: false,
+        // Double + single quotes replacement pairs, when typographer enabled,
+        // and smartquotes on. Could be either a String or an Array.
+        //
+        // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
+        // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
         quotes: "“”‘’",
+        /* “”‘’ */
+        // Highlighter function. Should return escaped HTML,
+        // or '' if the source string is not changed and should be escaped externaly.
+        // If result starts with <pre... internal wrapper is skipped.
+        //
+        // function (/*str, lang*/) { return ''; }
+        //
         highlight: null,
         maxNesting: 20
+        // Internal protection, recursion limit
       },
       components: {
         core: {
@@ -4891,14 +4972,33 @@ var require_commonmark = __commonJS({
     module.exports = {
       options: {
         html: true,
+        // Enable HTML tags in source
         xhtmlOut: true,
+        // Use '/' to close single tags (<br />)
         breaks: false,
+        // Convert '\n' in paragraphs into <br>
         langPrefix: "language-",
+        // CSS language prefix for fenced blocks
         linkify: false,
+        // autoconvert URL-like texts to links
+        // Enable some language-neutral replacements + quotes beautification
         typographer: false,
+        // Double + single quotes replacement pairs, when typographer enabled,
+        // and smartquotes on. Could be either a String or an Array.
+        //
+        // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
+        // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
         quotes: "“”‘’",
+        /* “”‘’ */
+        // Highlighter function. Should return escaped HTML,
+        // or '' if the source string is not changed and should be escaped externaly.
+        // If result starts with <pre... internal wrapper is skipped.
+        //
+        // function (/*str, lang*/) { return ''; }
+        //
         highlight: null,
         maxNesting: 20
+        // Internal protection, recursion limit
       },
       components: {
         core: {

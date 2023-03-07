@@ -1,6 +1,8 @@
 import {
+  Comment,
   Fragment,
   Teleport,
+  Text,
   Transition,
   computed2 as computed,
   createApp,
@@ -31,10 +33,10 @@ import {
   watchEffect,
   withDirectives,
   withKeys
-} from "./chunk-HHWHORSU.js";
-import "./chunk-J43GMYXM.js";
+} from "./chunk-Z5H376BI.js";
+import "./chunk-AC2VUBZ6.js";
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/validate.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/validate.mjs
 var isDef = (val) => val !== void 0 && val !== null;
 var isFunction = (val) => typeof val === "function";
 var isObject = (val) => val !== null && typeof val === "object";
@@ -47,7 +49,7 @@ function isMobile(value) {
 var isNumeric = (val) => typeof val === "number" || /^\d+(\.\d+)?$/.test(val);
 var isIOS = () => inBrowser ? /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase()) : false;
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/basic.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/basic.mjs
 function noop() {
 }
 var extend = Object.assign;
@@ -72,7 +74,7 @@ function pick(obj, keys, ignoreUndefined) {
 var isSameValue = (newValue, oldValue) => JSON.stringify(newValue) === JSON.stringify(oldValue);
 var toArray = (item) => Array.isArray(item) ? item : [item];
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/props.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/props.mjs
 var unknownProp = null;
 var numericProp = [Number, String];
 var truthProp = {
@@ -100,7 +102,7 @@ var makeStringProp = (defaultVal) => ({
   default: defaultVal
 });
 
-// ../node_modules/.pnpm/@vant+use@1.4.3/node_modules/@vant/use/dist/index.esm.mjs
+// ../node_modules/.pnpm/@vant+use@1.5.0/node_modules/@vant/use/dist/index.esm.mjs
 var inBrowser2 = typeof window !== "undefined";
 function raf(fn2) {
   return inBrowser2 ? requestAnimationFrame(fn2) : -1;
@@ -181,10 +183,19 @@ function flattenVNodes(children) {
   traverse(children);
   return result;
 }
+var findVNodeIndex = (vnodes, vnode) => {
+  const index = vnodes.indexOf(vnode);
+  if (index === -1) {
+    return vnodes.findIndex(
+      (item) => vnode.key !== void 0 && vnode.key !== null && item.type === vnode.type && item.key === vnode.key
+    );
+  }
+  return index;
+};
 function sortChildren(parent, publicChildren, internalChildren) {
   const vnodes = flattenVNodes(parent.subTree.children);
   internalChildren.sort(
-    (a, b) => vnodes.indexOf(a.vnode) - vnodes.indexOf(b.vnode)
+    (a, b) => findVNodeIndex(vnodes, a.vnode) - findVNodeIndex(vnodes, b.vnode)
   );
   const orderedPublicChildren = internalChildren.map((item) => item.proxy);
   publicChildren.sort((a, b) => {
@@ -355,8 +366,12 @@ function useEventListener(type, listener, options = {}) {
     return;
   }
   const { target = window, passive: passive2 = false, capture = false } = options;
+  let cleaned = false;
   let attached;
   const add = (target2) => {
+    if (cleaned) {
+      return;
+    }
     const element = unref(target2);
     if (element && !attached) {
       element.addEventListener(type, listener, {
@@ -367,6 +382,9 @@ function useEventListener(type, listener, options = {}) {
     }
   };
   const remove2 = (target2) => {
+    if (cleaned) {
+      return;
+    }
     const element = unref(target2);
     if (element && attached) {
       element.removeEventListener(type, listener, capture);
@@ -376,12 +394,18 @@ function useEventListener(type, listener, options = {}) {
   onUnmounted(() => remove2(target));
   onDeactivated(() => remove2(target));
   onMountedOrActivated(() => add(target));
+  let stopWatch;
   if (isRef(target)) {
-    watch(target, (val, oldVal) => {
+    stopWatch = watch(target, (val, oldVal) => {
       remove2(oldVal);
       add(val);
     });
   }
+  return () => {
+    stopWatch == null ? void 0 : stopWatch();
+    remove2(target);
+    cleaned = true;
+  };
 }
 function useClickAway(target, listener, options = {}) {
   if (!inBrowser2) {
@@ -470,7 +494,7 @@ function useCustomFieldValue(customValue) {
   }
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/dom.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/dom.mjs
 function getScrollTop(el) {
   const top2 = "scrollTop" in el ? el.scrollTop : el.pageYOffset;
   return Math.max(top2, 0);
@@ -523,7 +547,7 @@ function isHidden(elementRef) {
 }
 var { width: windowWidth, height: windowHeight } = useWindowSize();
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/format.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/format.mjs
 function addUnit(value) {
   if (isDef(value)) {
     return isNumeric(value) ? `${value}px` : String(value);
@@ -630,7 +654,7 @@ function addNumber(num1, num2) {
   return Math.round((num1 + num2) * cardinal) / cardinal;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/deep-assign.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/deep-assign.mjs
 var { hasOwnProperty } = Object.prototype;
 function assignKey(to, from, key) {
   const val = from[key];
@@ -650,7 +674,7 @@ function deepAssign(to, from) {
   return to;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/locale/lang/zh-CN.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/locale/lang/zh-CN.mjs
 var stdin_default = {
   name: "姓名",
   tel: "电话",
@@ -713,7 +737,7 @@ var stdin_default = {
   }
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/locale/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/locale/index.mjs
 var lang = ref("zh-CN");
 var messages = reactive({
   "zh-CN": stdin_default
@@ -730,9 +754,10 @@ var Locale = {
     deepAssign(messages, newMessages);
   }
 };
+var useCurrentLang = () => lang;
 var stdin_default2 = Locale;
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/create.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/create.mjs
 function createTranslate(name103) {
   const prefix = camelize(name103) + ".";
   return (path, ...args) => {
@@ -778,7 +803,7 @@ function createNamespace(name103) {
   ];
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/constant.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/constant.mjs
 var BORDER = "van-hairline";
 var BORDER_TOP = `${BORDER}--top`;
 var BORDER_LEFT = `${BORDER}--left`;
@@ -790,7 +815,7 @@ var HAPTICS_FEEDBACK = "van-haptics-feedback";
 var FORM_KEY = Symbol("van-form");
 var LONG_PRESS_START_TIME = 500;
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/interceptor.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/interceptor.mjs
 function callInterceptor(interceptor, {
   args = [],
   done,
@@ -816,7 +841,7 @@ function callInterceptor(interceptor, {
   }
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/with-install.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/with-install.mjs
 function withInstall(options) {
   options.install = (app) => {
     const { name: name103 } = options;
@@ -828,7 +853,7 @@ function withInstall(options) {
   return options;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/on-popup-reopen.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/on-popup-reopen.mjs
 var POPUP_TOGGLE_KEY = Symbol();
 function onPopupReopen(callback) {
   const popupToggleStatus = inject(POPUP_TOGGLE_KEY, null);
@@ -841,7 +866,7 @@ function onPopupReopen(callback) {
   }
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-height.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-height.mjs
 var useHeight = (element, withSafeArea) => {
   const height2 = ref();
   const setHeight = () => {
@@ -860,7 +885,7 @@ var useHeight = (element, withSafeArea) => {
   return height2;
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-placeholder.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-placeholder.mjs
 function usePlaceholder(contentRef, bem98) {
   const height2 = useHeight(contentRef, true);
   return (renderContent) => createVNode("div", {
@@ -871,7 +896,7 @@ function usePlaceholder(contentRef, bem98) {
   }, [renderContent()]);
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/action-bar/ActionBar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/action-bar/ActionBar.mjs
 var [name, bem] = createNamespace("action-bar");
 var ACTION_BAR_KEY = Symbol(name);
 var actionBarProps = {
@@ -908,10 +933,10 @@ var stdin_default3 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/action-bar/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/action-bar/index.mjs
 var ActionBar = withInstall(stdin_default3);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-expose.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-expose.mjs
 function useExpose(apis) {
   const instance4 = getCurrentInstance();
   if (instance4) {
@@ -919,7 +944,7 @@ function useExpose(apis) {
   }
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-route.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-route.mjs
 var routeProps = {
   to: [String, Object],
   url: String,
@@ -942,7 +967,7 @@ function useRoute() {
   return () => route(vm);
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/badge/Badge.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/badge/Badge.mjs
 var [name2, bem2] = createNamespace("badge");
 var badgeProps = {
   dot: Boolean,
@@ -986,18 +1011,27 @@ var stdin_default4 = defineComponent({
         return content;
       }
     };
+    const getOffsetWithMinusString = (val) => val.startsWith("-") ? val.replace("-", "") : `-${val}`;
     const style = computed(() => {
       const style2 = {
         background: props.color
       };
       if (props.offset) {
         const [x, y] = props.offset;
+        const {
+          position
+        } = props;
+        const [offsetY, offsetX] = position.split("-");
         if (slots.default) {
-          style2.top = addUnit(y);
-          if (typeof x === "number") {
-            style2.right = addUnit(-x);
+          if (typeof y === "number") {
+            style2[offsetY] = addUnit(offsetY === "top" ? y : -y);
           } else {
-            style2.right = x.startsWith("-") ? x.replace("-", "") : `-${x}`;
+            style2[offsetY] = offsetY === "top" ? addUnit(y) : getOffsetWithMinusString(y);
+          }
+          if (typeof x === "number") {
+            style2[offsetX] = addUnit(offsetX === "left" ? x : -x);
+          } else {
+            style2[offsetX] = offsetX === "left" ? addUnit(x) : getOffsetWithMinusString(x);
           }
         } else {
           style2.marginTop = addUnit(y);
@@ -1033,17 +1067,17 @@ var stdin_default4 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/badge/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/badge/index.mjs
 var Badge = withInstall(stdin_default4);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-global-z-index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-global-z-index.mjs
 var globalZIndex = 2e3;
 var useGlobalZIndex = () => ++globalZIndex;
 var setGlobalZIndex = (val) => {
   globalZIndex = val;
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/config-provider/ConfigProvider.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/config-provider/ConfigProvider.mjs
 var [name3, bem3] = createNamespace("config-provider");
 var CONFIG_PROVIDER_KEY = Symbol(name3);
 var configProviderProps = {
@@ -1106,7 +1140,7 @@ var stdin_default5 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/icon/Icon.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/icon/Icon.mjs
 var [name4, bem4] = createNamespace("icon");
 var isImage = (name210) => name210 == null ? void 0 : name210.includes("/");
 var iconProps = {
@@ -1159,10 +1193,10 @@ var stdin_default6 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/icon/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/icon/index.mjs
 var Icon = withInstall(stdin_default6);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/loading/Loading.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/loading/Loading.mjs
 var [name5, bem5] = createNamespace("loading");
 var SpinIcon = Array(12).fill(null).map((_, index) => createVNode("i", {
   "class": bem5("line", String(index + 1))
@@ -1228,10 +1262,10 @@ var stdin_default7 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/loading/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/loading/index.mjs
 var Loading = withInstall(stdin_default7);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/button/Button.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/button/Button.mjs
 var [name6, bem6] = createNamespace("button");
 var buttonProps = extend({}, routeProps, {
   tag: makeStringProp("button"),
@@ -1372,10 +1406,10 @@ var stdin_default8 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/button/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/button/index.mjs
 var Button = withInstall(stdin_default8);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/action-bar-button/ActionBarButton.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/action-bar-button/ActionBarButton.mjs
 var [name7, bem7] = createNamespace("action-bar-button");
 var actionBarButtonProps = extend({}, routeProps, {
   type: String,
@@ -1439,10 +1473,10 @@ var stdin_default9 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/action-bar-button/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/action-bar-button/index.mjs
 var ActionBarButton = withInstall(stdin_default9);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/action-bar-icon/ActionBarIcon.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/action-bar-icon/ActionBarIcon.mjs
 var [name8, bem8] = createNamespace("action-bar-icon");
 var actionBarIconProps = extend({}, routeProps, {
   dot: Boolean,
@@ -1501,10 +1535,10 @@ var stdin_default10 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/action-bar-icon/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/action-bar-icon/index.mjs
 var ActionBarIcon = withInstall(stdin_default10);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/popup/shared.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/popup/shared.mjs
 var popupSharedProps = {
   show: Boolean,
   zIndex: numericProp,
@@ -1523,7 +1557,7 @@ var popupSharedPropKeys = Object.keys(
   popupSharedProps
 );
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-touch.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-touch.mjs
 function getDirection(x, y) {
   if (x > y) {
     return "horizontal";
@@ -1582,7 +1616,7 @@ function useTouch() {
   };
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-lock-scroll.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-lock-scroll.mjs
 var totalLockCount = 0;
 var BODY_LOCK_CLASS = "van-overflow-hidden";
 function useLockScroll(rootRef, shouldLock) {
@@ -1635,7 +1669,7 @@ function useLockScroll(rootRef, shouldLock) {
   });
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-lazy-render.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-lazy-render.mjs
 function useLazyRender(show) {
   const inited = ref(false);
   watch(
@@ -1650,7 +1684,7 @@ function useLazyRender(show) {
   return (render) => () => inited.value ? render() : null;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/overlay/Overlay.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/overlay/Overlay.mjs
 var [name9, bem9] = createNamespace("overlay");
 var overlayProps = {
   show: Boolean,
@@ -1698,10 +1732,10 @@ var stdin_default11 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/overlay/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/overlay/index.mjs
 var Overlay = withInstall(stdin_default11);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/popup/Popup.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/popup/Popup.mjs
 var popupProps = extend({}, popupSharedProps, {
   round: Boolean,
   position: makeStringProp("center"),
@@ -1894,10 +1928,10 @@ var stdin_default12 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/popup/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/popup/index.mjs
 var Popup = withInstall(stdin_default12);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/action-sheet/ActionSheet.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/action-sheet/ActionSheet.mjs
 var [name11, bem11] = createNamespace("action-sheet");
 var actionSheetProps = extend({}, popupSharedProps, {
   title: String,
@@ -2020,10 +2054,10 @@ var stdin_default13 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/action-sheet/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/action-sheet/index.mjs
 var ActionSheet = withInstall(stdin_default13);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/picker/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/picker/utils.mjs
 var [name12, bem12, t] = createNamespace("picker");
 var getFirstEnabledOption = (options) => options.find((option) => !option.disabled) || options[0];
 function getColumnsType(columns, fields) {
@@ -2091,7 +2125,7 @@ function assignDefaultFields(fields) {
   );
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/picker/PickerColumn.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/picker/PickerColumn.mjs
 var DEFAULT_DURATION = 200;
 var MOMENTUM_TIME = 300;
 var MOMENTUM_DISTANCE = 15;
@@ -2241,7 +2275,7 @@ var stdin_default14 = defineComponent({
           class: "van-ellipsis",
           [props.allowHtml ? "innerHTML" : "textContent"]: text
         };
-        return createVNode("li", data, [slots.option ? slots.option(option) : createVNode("div", childData, null)]);
+        return createVNode("li", data, [slots.option ? slots.option(option, index) : createVNode("div", childData, null)]);
       });
     };
     useParent(PICKER_KEY);
@@ -2276,7 +2310,7 @@ var stdin_default14 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/picker/PickerToolbar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/picker/PickerToolbar.mjs
 var [name14] = createNamespace("picker-toolbar");
 var pickerToolbarProps = {
   title: String,
@@ -2327,7 +2361,7 @@ var stdin_default15 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabs/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabs/utils.mjs
 function scrollLeftTo(scroller, to, duration) {
   let count = 0;
   const from = scroller.scrollLeft;
@@ -2360,7 +2394,7 @@ function scrollTopTo(scroller, to, duration, callback) {
   animate();
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-id.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-id.mjs
 var current = 0;
 function useId() {
   const vm = getCurrentInstance();
@@ -2371,7 +2405,7 @@ function useId() {
   return `${name103}-${++current}`;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-refs.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-refs.mjs
 function useRefs() {
   const refs = ref([]);
   const cache = [];
@@ -2389,7 +2423,7 @@ function useRefs() {
   return [refs, setRefs];
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-visibility-change.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-visibility-change.mjs
 function useVisibilityChange(target, onChange) {
   if (!inBrowser || !window.IntersectionObserver) {
     return;
@@ -2415,7 +2449,7 @@ function useVisibilityChange(target, onChange) {
   onMountedOrActivated(observe);
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/sticky/Sticky.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/sticky/Sticky.mjs
 var [name15, bem14] = createNamespace("sticky");
 var stickyProps = {
   zIndex: numericProp,
@@ -2529,10 +2563,10 @@ var stdin_default16 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/sticky/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/sticky/index.mjs
 var Sticky = withInstall(stdin_default16);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabs/TabsTitle.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabs/TabsTitle.mjs
 var [name16, bem15] = createNamespace("tab");
 var stdin_default17 = defineComponent({
   name: name16,
@@ -2617,7 +2651,7 @@ var stdin_default17 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/swipe/Swipe.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/swipe/Swipe.mjs
 var [name17, bem16] = createNamespace("swipe");
 var swipeProps = {
   loop: truthProp,
@@ -2637,7 +2671,7 @@ var SWIPE_KEY = Symbol(name17);
 var stdin_default18 = defineComponent({
   name: name17,
   props: swipeProps,
-  emits: ["change"],
+  emits: ["change", "dragStart", "dragEnd"],
   setup(props, {
     emit,
     slots
@@ -2652,6 +2686,7 @@ var stdin_default18 = defineComponent({
       active: 0,
       swiping: false
     });
+    let dragging = false;
     const touch = useTouch();
     const {
       children,
@@ -2801,6 +2836,9 @@ var stdin_default18 = defineComponent({
         }
         if (count.value) {
           active = Math.min(count.value - 1, active);
+          if (active === -1) {
+            active = count.value - 1;
+          }
         }
         state.active = active;
         state.swiping = true;
@@ -2819,9 +2857,10 @@ var stdin_default18 = defineComponent({
     const resize = () => initialize(state.active);
     let touchStartTime;
     const onTouchStart = (event) => {
-      if (!props.touchable)
+      if (!props.touchable || event.touches.length > 1)
         return;
       touch.start(event);
+      dragging = false;
       touchStartTime = Date.now();
       stopAutoplay();
       correctPosition();
@@ -2836,6 +2875,10 @@ var stdin_default18 = defineComponent({
             move({
               offset: delta.value
             });
+            if (!dragging) {
+              emit("dragStart");
+              dragging = true;
+            }
           }
         }
       }
@@ -2864,7 +2907,9 @@ var stdin_default18 = defineComponent({
           pace: 0
         });
       }
+      dragging = false;
       state.swiping = false;
+      emit("dragEnd");
       autoplay();
     };
     const swipeTo = (index, options = {}) => {
@@ -2968,10 +3013,10 @@ var stdin_default18 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/swipe/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/swipe/index.mjs
 var Swipe = withInstall(stdin_default18);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabs/TabsContent.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabs/TabsContent.mjs
 var [name18, bem17] = createNamespace("tabs");
 var stdin_default19 = defineComponent({
   name: name18,
@@ -3033,7 +3078,7 @@ var stdin_default19 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabs/Tabs.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabs/Tabs.mjs
 var [name19, bem18] = createNamespace("tabs");
 var tabsProps = {
   type: makeStringProp("line"),
@@ -3343,6 +3388,7 @@ var stdin_default20 = defineComponent({
     onActivated(setLine);
     onPopupReopen(setLine);
     onMountedOrActivated(init);
+    useVisibilityChange(root, setLine);
     useEventListener("scroll", onScroll, {
       target: scroller,
       passive: true
@@ -3383,11 +3429,11 @@ var stdin_default20 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-tab-status.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-tab-status.mjs
 var TAB_STATUS_KEY = Symbol();
 var useTabStatus = () => inject(TAB_STATUS_KEY, null);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/swipe-item/SwipeItem.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/swipe-item/SwipeItem.mjs
 var [name20, bem19] = createNamespace("swipe-item");
 var stdin_default21 = defineComponent({
   name: name20,
@@ -3462,10 +3508,10 @@ var stdin_default21 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/swipe-item/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/swipe-item/index.mjs
 var SwipeItem = withInstall(stdin_default21);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tab/Tab.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tab/Tab.mjs
 var [name21, bem20] = createNamespace("tab");
 var tabProps = extend({}, routeProps, {
   dot: Boolean,
@@ -3577,17 +3623,18 @@ var stdin_default22 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tab/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tab/index.mjs
 var Tab = withInstall(stdin_default22);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabs/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabs/index.mjs
 var Tabs = withInstall(stdin_default20);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/picker-group/PickerGroup.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/picker-group/PickerGroup.mjs
 var [name22, bem21] = createNamespace("picker-group");
 var PICKER_GROUP_KEY = Symbol(name22);
 var pickerGroupProps = extend({
-  tabs: makeArrayProp()
+  tabs: makeArrayProp(),
+  nextStepText: String
 }, pickerToolbarProps);
 var stdin_default23 = defineComponent({
   name: name22,
@@ -3597,27 +3644,40 @@ var stdin_default23 = defineComponent({
     emit,
     slots
   }) {
+    const activeTab = ref(0);
     const {
       children,
       linkChildren
     } = useChildren(PICKER_GROUP_KEY);
     linkChildren();
+    const showNextButton = () => activeTab.value < props.tabs.length - 1 && props.nextStepText;
     const onConfirm = () => {
-      emit("confirm", children.map((item) => item.confirm()));
+      if (showNextButton()) {
+        activeTab.value++;
+      } else {
+        emit("confirm", children.map((item) => item.confirm()));
+      }
     };
     const onCancel = () => emit("cancel");
     return () => {
       var _a;
       const childNodes = (_a = slots.default) == null ? void 0 : _a.call(slots);
+      const confirmButtonText = showNextButton() ? props.nextStepText : props.confirmButtonText;
       return createVNode("div", {
         "class": bem21()
-      }, [createVNode(stdin_default15, mergeProps(props, {
+      }, [createVNode(stdin_default15, {
+        "title": props.title,
+        "cancelButtonText": props.cancelButtonText,
+        "confirmButtonText": confirmButtonText,
         "onConfirm": onConfirm,
         "onCancel": onCancel
-      }), null), createVNode(Tabs, {
-        "shrink": true,
+      }, pick(slots, pickerToolbarSlots)), createVNode(Tabs, {
+        "active": activeTab.value,
+        "onUpdate:active": ($event) => activeTab.value = $event,
         "class": bem21("tabs"),
-        "animated": true
+        "shrink": true,
+        "animated": true,
+        "lazyRender": false
       }, {
         default: () => [props.tabs.map((title, index) => createVNode(Tab, {
           "title": title,
@@ -3630,7 +3690,7 @@ var stdin_default23 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/picker/Picker.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/picker/Picker.mjs
 var pickerSharedProps = extend({
   loading: Boolean,
   readonly: Boolean,
@@ -3705,9 +3765,11 @@ var stdin_default24 = defineComponent({
           }
         });
       }
-      emit("change", extend({
-        columnIndex
-      }, getEventParams()));
+      nextTick(() => {
+        emit("change", extend({
+          columnIndex
+        }, getEventParams()));
+      });
     };
     const onClickOption = (currentOption, columnIndex) => emit("clickOption", extend({
       columnIndex,
@@ -3816,7 +3878,7 @@ var stdin_default24 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/area/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/area/utils.mjs
 var AREA_EMPTY_CODE = "000000";
 var INHERIT_SLOTS = [
   "title",
@@ -3904,10 +3966,10 @@ function formatDataForCascade({
   return options;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/picker/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/picker/index.mjs
 var Picker = withInstall(stdin_default24);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/area/Area.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/area/Area.mjs
 var [name23, bem22] = createNamespace("area");
 var areaProps = extend({}, pickerSharedProps, {
   modelValue: String,
@@ -3975,10 +4037,10 @@ var stdin_default25 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/area/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/area/index.mjs
 var Area = withInstall(stdin_default25);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/cell/Cell.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/cell/Cell.mjs
 var [name24, bem23] = createNamespace("cell");
 var cellSharedProps = {
   tag: makeStringProp("div"),
@@ -4099,10 +4161,10 @@ var stdin_default26 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/cell/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/cell/index.mjs
 var Cell = withInstall(stdin_default26);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/form/Form.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/form/Form.mjs
 var [name25, bem24] = createNamespace("form");
 var formProps = {
   colon: Boolean,
@@ -4214,7 +4276,9 @@ var stdin_default27 = defineComponent({
       });
     };
     const getValues = () => children.reduce((form, field) => {
-      form[field.name] = field.formValue.value;
+      if (field.name !== void 0) {
+        form[field.name] = field.formValue.value;
+      }
       return form;
     }, {});
     const submit = () => {
@@ -4254,10 +4318,10 @@ var stdin_default27 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/form/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/form/index.mjs
 var Form = withInstall(stdin_default27);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/field/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/field/utils.mjs
 function isEmptyValue(value) {
   if (Array.isArray(value)) {
     return !value.length;
@@ -4347,7 +4411,7 @@ function cutString(str, maxlength) {
   return [...str].slice(0, maxlength).join("");
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/field/Field.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/field/Field.mjs
 var [name26, bem25] = createNamespace("field");
 var fieldSharedProps = {
   id: String,
@@ -4519,6 +4583,7 @@ var stdin_default28 = defineComponent({
       }
     };
     const limitValueLength = (value) => {
+      var _a;
       const {
         maxlength
       } = props;
@@ -4527,6 +4592,13 @@ var stdin_default28 = defineComponent({
         if (modelValue && getStringLength(modelValue) === +maxlength) {
           return modelValue;
         }
+        const selectionEnd = (_a = inputRef.value) == null ? void 0 : _a.selectionEnd;
+        if (state.focused && selectionEnd) {
+          const valueArr = [...value];
+          const exceededLength = valueArr.length - +maxlength;
+          valueArr.splice(selectionEnd - exceededLength, exceededLength);
+          return valueArr.join("");
+        }
         return cutString(value, +maxlength);
       }
       return value;
@@ -4534,22 +4606,47 @@ var stdin_default28 = defineComponent({
     const updateValue = (value, trigger = "onChange") => {
       const originalValue = value;
       value = limitValueLength(value);
-      const isExceedLimit = value !== originalValue;
+      const limitDiffLen = getStringLength(originalValue) - getStringLength(value);
       if (props.type === "number" || props.type === "digit") {
         const isNumber = props.type === "number";
         value = formatNumber(value, isNumber, isNumber);
       }
+      let formatterDiffLen = 0;
       if (props.formatter && trigger === props.formatTrigger) {
-        value = props.formatter(value);
+        const {
+          formatter,
+          maxlength
+        } = props;
+        value = formatter(value);
+        if (isDef(maxlength) && getStringLength(value) > maxlength) {
+          value = cutString(value, +maxlength);
+        }
+        if (inputRef.value && state.focused) {
+          const {
+            selectionEnd
+          } = inputRef.value;
+          const bcoVal = cutString(originalValue, selectionEnd);
+          formatterDiffLen = getStringLength(formatter(bcoVal)) - getStringLength(bcoVal);
+        }
       }
       if (inputRef.value && inputRef.value.value !== value) {
-        if (state.focused && isExceedLimit) {
-          const {
+        if (state.focused) {
+          let {
             selectionStart,
             selectionEnd
           } = inputRef.value;
           inputRef.value.value = value;
-          inputRef.value.setSelectionRange(selectionStart - 1, selectionEnd - 1);
+          if (isDef(selectionStart) && isDef(selectionEnd)) {
+            const valueLen = getStringLength(value);
+            if (limitDiffLen) {
+              selectionStart -= limitDiffLen;
+              selectionEnd -= limitDiffLen;
+            } else if (formatterDiffLen) {
+              selectionStart += formatterDiffLen;
+              selectionEnd += formatterDiffLen;
+            }
+            inputRef.value.setSelectionRange(Math.min(selectionStart, valueLen), Math.min(selectionEnd, valueLen));
+          }
         } else {
           inputRef.value.value = value;
         }
@@ -4811,10 +4908,10 @@ var stdin_default28 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/field/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/field/index.mjs
 var Field = withInstall(stdin_default28);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/toast/lock-click.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/toast/lock-click.mjs
 var lockCount = 0;
 function lockClick(lock) {
   if (lock) {
@@ -4830,7 +4927,7 @@ function lockClick(lock) {
   }
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/toast/Toast.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/toast/Toast.mjs
 var [name27, bem26] = createNamespace("toast");
 var popupInheritProps = ["show", "overlay", "teleport", "transition", "overlayClass", "overlayStyle", "closeOnClickOverlay"];
 var toastProps = {
@@ -4948,7 +5045,7 @@ var stdin_default29 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/utils/mount-component.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/utils/mount-component.mjs
 function usePopupState() {
   const state = reactive({
     show: false
@@ -4982,7 +5079,7 @@ function mountComponent(RootComponent) {
   };
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/toast/function-call.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/toast/function-call.mjs
 var defaultOptions = {
   icon: "",
   type: "text",
@@ -5111,10 +5208,10 @@ var allowMultipleToast = (value = true) => {
   allowMultiple = value;
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/toast/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/toast/index.mjs
 var Toast = withInstall(stdin_default29);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/switch/Switch.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/switch/Switch.mjs
 var [name28, bem27] = createNamespace("switch");
 var switchProps = {
   size: numericProp,
@@ -5193,10 +5290,10 @@ var stdin_default30 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/switch/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/switch/index.mjs
 var Switch = withInstall(stdin_default30);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/address-edit/AddressEditDetail.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/address-edit/AddressEditDetail.mjs
 var [name29, bem28] = createNamespace("address-edit-detail");
 var t2 = createNamespace("address-edit")[2];
 var stdin_default31 = defineComponent({
@@ -5266,7 +5363,7 @@ var stdin_default31 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/address-edit/AddressEdit.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/address-edit/AddressEdit.mjs
 var [name30, bem29, t3] = createNamespace("address-edit");
 var DEFAULT_DATA = {
   name: "",
@@ -5539,10 +5636,10 @@ var stdin_default32 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/address-edit/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/address-edit/index.mjs
 var AddressEdit = withInstall(stdin_default32);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/radio-group/RadioGroup.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/radio-group/RadioGroup.mjs
 var [name31, bem30] = createNamespace("radio-group");
 var radioGroupProps = {
   disabled: Boolean,
@@ -5580,10 +5677,10 @@ var stdin_default33 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/radio-group/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/radio-group/index.mjs
 var RadioGroup = withInstall(stdin_default33);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tag/Tag.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tag/Tag.mjs
 var [name32, bem31] = createNamespace("tag");
 var tagProps = {
   size: String,
@@ -5656,10 +5753,10 @@ var stdin_default34 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tag/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tag/index.mjs
 var Tag = withInstall(stdin_default34);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/checkbox/Checker.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/checkbox/Checker.mjs
 var checkerProps = {
   name: unknownProp,
   shape: makeStringProp("round"),
@@ -5760,7 +5857,7 @@ var stdin_default35 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/radio/Radio.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/radio/Radio.mjs
 var radioProps = checkerProps;
 var [name33, bem32] = createNamespace("radio");
 var stdin_default36 = defineComponent({
@@ -5795,10 +5892,10 @@ var stdin_default36 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/radio/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/radio/index.mjs
 var Radio = withInstall(stdin_default36);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/address-list/AddressListItem.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/address-list/AddressListItem.mjs
 var [name34, bem33] = createNamespace("address-item");
 var stdin_default37 = defineComponent({
   name: name34,
@@ -5886,7 +5983,7 @@ var stdin_default37 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/address-list/AddressList.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/address-list/AddressList.mjs
 var [name35, bem34, t4] = createNamespace("address-list");
 var addressListProps = {
   list: makeArrayProp(),
@@ -5961,10 +6058,10 @@ var stdin_default38 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/address-list/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/address-list/index.mjs
 var AddressList = withInstall(stdin_default38);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/lazyload/vue-lazyload/util.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/lazyload/vue-lazyload/util.mjs
 var hasIntersectionObserver = inBrowser2 && "IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype;
 var modeType = {
   event: "event",
@@ -6118,13 +6215,15 @@ var ImageCache = class {
   }
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/back-top/BackTop.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/back-top/BackTop.mjs
 var [name36, bem35] = createNamespace("back-top");
 var backTopProps = {
   right: numericProp,
   bottom: numericProp,
+  zIndex: numericProp,
   target: [String, Object],
   offset: makeNumericProp(200),
+  immediate: Boolean,
   teleport: {
     type: [String, Object],
     default: "body"
@@ -6143,7 +6242,7 @@ var stdin_default39 = defineComponent({
     const show = ref(false);
     const root = ref();
     const scrollParent = ref();
-    const style = computed(() => ({
+    const style = computed(() => extend(getZIndexStyle(props.zIndex), {
       right: addUnit(props.right),
       bottom: addUnit(props.bottom)
     }));
@@ -6152,7 +6251,7 @@ var stdin_default39 = defineComponent({
       emit("click", event);
       (_a = scrollParent.value) == null ? void 0 : _a.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: props.immediate ? "auto" : "smooth"
       });
     };
     const scroll = () => {
@@ -6211,10 +6310,10 @@ var stdin_default39 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/back-top/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/back-top/index.mjs
 var BackTop = withInstall(stdin_default39);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/calendar/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/calendar/utils.mjs
 var [name37, bem36, t5] = createNamespace("calendar");
 var formatMonthTitle = (date) => t5("monthTitle", date.getFullYear(), date.getMonth() + 1);
 function compareMonth(date1, date2) {
@@ -6256,7 +6355,7 @@ function calcDateNum(date) {
   return (day2 - day1) / (1e3 * 60 * 60 * 24) + 1;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/date-picker/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/date-picker/utils.mjs
 var sharedProps = extend({}, pickerSharedProps, {
   modelValue: makeArrayProp(),
   filter: Function,
@@ -6299,7 +6398,7 @@ var formatValueRange = (values, columns) => values.map((value, index) => {
   return value;
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/calendar/CalendarDay.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/calendar/CalendarDay.mjs
 var [name38] = createNamespace("calendar-day");
 var stdin_default40 = defineComponent({
   name: name38,
@@ -6423,7 +6522,7 @@ var stdin_default40 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/calendar/CalendarMonth.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/calendar/CalendarMonth.mjs
 var [name39] = createNamespace("calendar-month");
 var calendarMonthProps = {
   date: makeRequiredProp(Date),
@@ -6548,7 +6647,10 @@ var stdin_default41 = defineComponent({
       if (props.showMonthTitle) {
         return createVNode("div", {
           "class": bem36("month-title")
-        }, [title.value]);
+        }, [slots["month-title"] ? slots["month-title"]({
+          date: props.date,
+          text: title.value
+        }) : title.value]);
       }
     };
     const renderMark = () => {
@@ -6621,7 +6723,7 @@ var stdin_default41 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/calendar/CalendarHeader.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/calendar/CalendarHeader.mjs
 var [name40] = createNamespace("calendar-header");
 var stdin_default42 = defineComponent({
   name: name40,
@@ -6678,7 +6780,7 @@ var stdin_default42 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/calendar/Calendar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/calendar/Calendar.mjs
 var calendarProps = {
   show: Boolean,
   type: makeStringProp("single"),
@@ -6998,7 +7100,7 @@ var stdin_default43 = defineComponent({
         "firstDayOfWeek": dayOffset.value
       }, pick(props, ["type", "color", "minDate", "maxDate", "showMark", "formatter", "rowHeight", "lazyRender", "showSubtitle", "allowSameDay"]), {
         "onClick": onClickDay
-      }), pick(slots, ["top-info", "bottom-info"]));
+      }), pick(slots, ["top-info", "bottom-info", "month-title"]));
     };
     const renderFooterButton = () => {
       if (slots.footer) {
@@ -7078,10 +7180,10 @@ var stdin_default43 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/calendar/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/calendar/index.mjs
 var Calendar = withInstall(stdin_default43);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/image/Image.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/image/Image.mjs
 var [name41, bem37] = createNamespace("image");
 var imageProps = {
   src: String,
@@ -7135,6 +7237,14 @@ var stdin_default44 = defineComponent({
         loading.value = false;
         emit("load", event);
       }
+    };
+    const triggerLoad = () => {
+      const loadEvent = new Event("load");
+      Object.defineProperty(loadEvent, "target", {
+        value: imageRef.value,
+        enumerable: true
+      });
+      onLoad(loadEvent);
     };
     const onError = (event) => {
       error.value = true;
@@ -7193,7 +7303,7 @@ var stdin_default44 = defineComponent({
     }) => {
       const check = () => {
         if (el === imageRef.value && loading.value) {
-          onLoad();
+          triggerLoad();
         }
       };
       if (imageRef.value) {
@@ -7221,7 +7331,7 @@ var stdin_default44 = defineComponent({
       nextTick(() => {
         var _a;
         if ((_a = imageRef.value) == null ? void 0 : _a.complete) {
-          onLoad();
+          triggerLoad();
         }
       });
     });
@@ -7238,10 +7348,10 @@ var stdin_default44 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/image/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/image/index.mjs
 var Image2 = withInstall(stdin_default44);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/card/Card.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/card/Card.mjs
 var [name42, bem38] = createNamespace("card");
 var cardProps = {
   tag: String,
@@ -7361,10 +7471,10 @@ var stdin_default45 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/card/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/card/index.mjs
 var Card = withInstall(stdin_default45);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/cascader/Cascader.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/cascader/Cascader.mjs
 var [name43, bem39, t6] = createNamespace("cascader");
 var cascaderProps = {
   title: String,
@@ -7584,10 +7694,10 @@ var stdin_default46 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/cascader/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/cascader/index.mjs
 var Cascader = withInstall(stdin_default46);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/cell-group/CellGroup.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/cell-group/CellGroup.mjs
 var [name44, bem40] = createNamespace("cell-group");
 var cellGroupProps = {
   title: String,
@@ -7626,10 +7736,10 @@ var stdin_default47 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/cell-group/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/cell-group/index.mjs
 var CellGroup = withInstall(stdin_default47);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/checkbox-group/CheckboxGroup.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/checkbox-group/CheckboxGroup.mjs
 var [name45, bem41] = createNamespace("checkbox-group");
 var checkboxGroupProps = {
   max: numericProp,
@@ -7693,7 +7803,7 @@ var stdin_default48 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/checkbox/Checkbox.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/checkbox/Checkbox.mjs
 var [name46, bem42] = createNamespace("checkbox");
 var checkboxProps = extend({}, checkerProps, {
   bindGroup: truthProp
@@ -7766,13 +7876,13 @@ var stdin_default49 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/checkbox/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/checkbox/index.mjs
 var Checkbox = withInstall(stdin_default49);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/checkbox-group/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/checkbox-group/index.mjs
 var CheckboxGroup = withInstall(stdin_default48);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/circle/Circle.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/circle/Circle.mjs
 var [name47, bem43] = createNamespace("circle");
 var uid = 0;
 var format = (rate) => Math.min(Math.max(+rate, 0), 100);
@@ -7919,10 +8029,10 @@ var stdin_default50 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/circle/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/circle/index.mjs
 var Circle = withInstall(stdin_default50);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/row/Row.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/row/Row.mjs
 var [name48, bem44] = createNamespace("row");
 var ROW_KEY = Symbol(name48);
 var rowProps = {
@@ -8007,7 +8117,7 @@ var stdin_default51 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/col/Col.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/col/Col.mjs
 var [name49, bem45] = createNamespace("col");
 var colProps = {
   tag: makeStringProp("div"),
@@ -8064,10 +8174,10 @@ var stdin_default52 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/col/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/col/index.mjs
 var Col = withInstall(stdin_default52);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/collapse/Collapse.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/collapse/Collapse.mjs
 var [name50, bem46] = createNamespace("collapse");
 var COLLAPSE_KEY = Symbol(name50);
 var collapseProps = {
@@ -8168,10 +8278,10 @@ var stdin_default53 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/collapse/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/collapse/index.mjs
 var Collapse = withInstall(stdin_default53);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/collapse-item/CollapseItem.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/collapse-item/CollapseItem.mjs
 var [name51, bem47] = createNamespace("collapse-item");
 var CELL_SLOTS = ["icon", "title", "value", "label", "right-icon"];
 var collapseItemProps = extend({}, cellSharedProps, {
@@ -8297,13 +8407,13 @@ var stdin_default54 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/collapse-item/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/collapse-item/index.mjs
 var CollapseItem = withInstall(stdin_default54);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/config-provider/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/config-provider/index.mjs
 var ConfigProvider = withInstall(stdin_default5);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/contact-card/ContactCard.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/contact-card/ContactCard.mjs
 var [name52, bem48, t7] = createNamespace("contact-card");
 var contactCardProps = {
   tel: String,
@@ -8344,10 +8454,10 @@ var stdin_default55 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/contact-card/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/contact-card/index.mjs
 var ContactCard = withInstall(stdin_default55);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/contact-edit/ContactEdit.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/contact-edit/ContactEdit.mjs
 var [name53, bem49, t8] = createNamespace("contact-edit");
 var DEFAULT_CONTACT = {
   tel: "",
@@ -8450,10 +8560,10 @@ var stdin_default56 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/contact-edit/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/contact-edit/index.mjs
 var ContactEdit = withInstall(stdin_default56);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/contact-list/ContactList.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/contact-list/ContactList.mjs
 var [name54, bem50, t9] = createNamespace("contact-list");
 var contactListProps = {
   list: Array,
@@ -8532,10 +8642,10 @@ var stdin_default57 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/contact-list/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/contact-list/index.mjs
 var ContactList = withInstall(stdin_default57);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/count-down/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/count-down/utils.mjs
 function parseFormat(format3, currentTime) {
   const { days } = currentTime;
   let { hours, minutes, seconds, milliseconds } = currentTime;
@@ -8572,7 +8682,7 @@ function parseFormat(format3, currentTime) {
   return format3;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/count-down/CountDown.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/count-down/CountDown.mjs
 var [name55, bem51] = createNamespace("count-down");
 var countDownProps = {
   time: makeNumericProp(0),
@@ -8621,10 +8731,10 @@ var stdin_default58 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/count-down/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/count-down/index.mjs
 var CountDown = withInstall(stdin_default58);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/coupon/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/coupon/utils.mjs
 function getDate(timeStamp) {
   const date = new Date(timeStamp * 1e3);
   return `${date.getFullYear()}.${padZero(date.getMonth() + 1)}.${padZero(
@@ -8634,7 +8744,7 @@ function getDate(timeStamp) {
 var formatDiscount = (discount) => (discount / 10).toFixed(discount % 10 === 0 ? 0 : 1);
 var formatAmount = (amount) => (amount / 100).toFixed(amount % 100 === 0 ? 0 : amount % 10 === 0 ? 1 : 2);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/coupon/Coupon.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/coupon/Coupon.mjs
 var [name56, bem52, t10] = createNamespace("coupon");
 var stdin_default59 = defineComponent({
   name: name56,
@@ -8708,10 +8818,10 @@ var stdin_default59 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/coupon/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/coupon/index.mjs
 var Coupon = withInstall(stdin_default59);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/coupon-cell/CouponCell.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/coupon-cell/CouponCell.mjs
 var [name57, bem53, t11] = createNamespace("coupon-cell");
 var couponCellProps = {
   title: String,
@@ -8760,10 +8870,10 @@ var stdin_default60 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/coupon-cell/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/coupon-cell/index.mjs
 var CouponCell = withInstall(stdin_default60);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/empty/Empty.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/empty/Empty.mjs
 var [name58, bem54] = createNamespace("empty");
 var emptyProps = {
   image: makeStringProp("default"),
@@ -9080,10 +9190,10 @@ var stdin_default61 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/empty/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/empty/index.mjs
 var Empty = withInstall(stdin_default61);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/coupon-list/CouponList.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/coupon-list/CouponList.mjs
 var [name59, bem55, t12] = createNamespace("coupon-list");
 var couponListProps = {
   code: makeStringProp(""),
@@ -9257,10 +9367,10 @@ var stdin_default62 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/coupon-list/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/coupon-list/index.mjs
 var CouponList = withInstall(stdin_default62);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/date-picker/DatePicker.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/date-picker/DatePicker.mjs
 var currentYear = new Date().getFullYear();
 var [name60] = createNamespace("date-picker");
 var datePickerProps = extend({}, sharedProps, {
@@ -9371,10 +9481,10 @@ var stdin_default63 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/date-picker/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/date-picker/index.mjs
 var DatePicker = withInstall(stdin_default63);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/dialog/Dialog.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/dialog/Dialog.mjs
 var [name61, bem56, t13] = createNamespace("dialog");
 var dialogProps = extend({}, popupSharedProps, {
   title: String,
@@ -9582,7 +9692,7 @@ var stdin_default64 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/dialog/function-call.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/dialog/function-call.mjs
 var instance;
 var DEFAULT_OPTIONS = {
   title: "",
@@ -9658,10 +9768,10 @@ var closeDialog = () => {
   }
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/dialog/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/dialog/index.mjs
 var Dialog = withInstall(stdin_default64);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/divider/Divider.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/divider/Divider.mjs
 var [name62, bem57] = createNamespace("divider");
 var dividerProps = {
   dashed: Boolean,
@@ -9688,10 +9798,10 @@ var stdin_default65 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/divider/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/divider/index.mjs
 var Divider = withInstall(stdin_default65);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/dropdown-menu/DropdownMenu.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/dropdown-menu/DropdownMenu.mjs
 var [name63, bem58] = createNamespace("dropdown-menu");
 var dropdownMenuProps = {
   overlay: truthProp,
@@ -9820,7 +9930,7 @@ var stdin_default66 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/dropdown-item/DropdownItem.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/dropdown-item/DropdownItem.mjs
 var [name64, bem59] = createNamespace("dropdown-item");
 var dropdownItemProps = {
   title: String,
@@ -9992,13 +10102,13 @@ var stdin_default67 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/dropdown-item/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/dropdown-item/index.mjs
 var DropdownItem = withInstall(stdin_default67);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/dropdown-menu/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/dropdown-menu/index.mjs
 var DropdownMenu = withInstall(stdin_default66);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/grid/Grid.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/grid/Grid.mjs
 var [name65, bem60] = createNamespace("grid");
 var gridProps = {
   square: Boolean,
@@ -10038,10 +10148,10 @@ var stdin_default68 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/grid/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/grid/index.mjs
 var Grid = withInstall(stdin_default68);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/grid-item/GridItem.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/grid-item/GridItem.mjs
 var [name66, bem61] = createNamespace("grid-item");
 var gridItemProps = extend({}, routeProps, {
   dot: Boolean,
@@ -10177,10 +10287,10 @@ var stdin_default69 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/grid-item/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/grid-item/index.mjs
 var GridItem = withInstall(stdin_default69);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/image-preview/ImagePreviewItem.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/image-preview/ImagePreviewItem.mjs
 var getDistance = (touches) => Math.sqrt((touches[0].clientX - touches[1].clientX) ** 2 + (touches[0].clientY - touches[1].clientY) ** 2);
 var bem62 = createNamespace("image-preview")[1];
 var stdin_default70 = defineComponent({
@@ -10191,7 +10301,8 @@ var stdin_default70 = defineComponent({
     minZoom: makeRequiredProp(numericProp),
     maxZoom: makeRequiredProp(numericProp),
     rootWidth: makeRequiredProp(Number),
-    rootHeight: makeRequiredProp(Number)
+    rootHeight: makeRequiredProp(Number),
+    disableZoom: Boolean
   },
   emits: ["scale", "close", "longPress"],
   setup(props, {
@@ -10286,18 +10397,23 @@ var stdin_default70 = defineComponent({
     let startDistance;
     let doubleTapTimer;
     let touchStartTime;
+    let isImageMoved = false;
     const onTouchStart = (event) => {
       const {
         touches
       } = event;
+      fingerNum = touches.length;
+      if (fingerNum === 2 && props.disableZoom) {
+        return;
+      }
       const {
         offsetX
       } = touch;
       touch.start(event);
-      fingerNum = touches.length;
       startMoveX = state.moveX;
       startMoveY = state.moveY;
       touchStartTime = Date.now();
+      isImageMoved = false;
       state.moving = fingerNum === 1 && state.scale !== 1;
       state.zooming = fingerNum === 2 && !offsetX.value;
       if (state.zooming) {
@@ -10310,9 +10426,6 @@ var stdin_default70 = defineComponent({
         touches
       } = event;
       touch.move(event);
-      if (state.moving || state.zooming) {
-        preventDefault(event, true);
-      }
       if (state.moving) {
         const {
           deltaX,
@@ -10320,13 +10433,22 @@ var stdin_default70 = defineComponent({
         } = touch;
         const moveX = deltaX.value + startMoveX;
         const moveY = deltaY.value + startMoveY;
+        if ((moveX > maxMoveX.value || moveX < -maxMoveX.value) && !isImageMoved) {
+          state.moving = false;
+          return;
+        }
+        isImageMoved = true;
+        preventDefault(event, true);
         state.moveX = clamp(moveX, -maxMoveX.value, maxMoveX.value);
         state.moveY = clamp(moveY, -maxMoveY.value, maxMoveY.value);
       }
-      if (state.zooming && touches.length === 2) {
-        const distance = getDistance(touches);
-        const scale = startScale * distance / startDistance;
-        setScale(scale);
+      if (state.zooming) {
+        preventDefault(event, true);
+        if (touches.length === 2) {
+          const distance = getDistance(touches);
+          const scale = startScale * distance / startDistance;
+          setScale(scale);
+        }
       }
     };
     const checkTap = () => {
@@ -10436,9 +10558,9 @@ var stdin_default70 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/image-preview/ImagePreview.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/image-preview/ImagePreview.mjs
 var [name67, bem63] = createNamespace("image-preview");
-var popupProps2 = ["show", "transition", "overlayStyle", "closeOnPopstate"];
+var popupProps2 = ["show", "teleport", "transition", "overlayStyle", "closeOnPopstate"];
 var imagePreviewProps = {
   show: Boolean,
   loop: truthProp,
@@ -10458,7 +10580,8 @@ var imagePreviewProps = {
   startPosition: makeNumericProp(0),
   showIndicators: Boolean,
   closeOnPopstate: truthProp,
-  closeIconPosition: makeStringProp("top-right")
+  closeIconPosition: makeStringProp("top-right"),
+  teleport: [String, Object]
 };
 var stdin_default71 = defineComponent({
   name: name67,
@@ -10472,7 +10595,8 @@ var stdin_default71 = defineComponent({
     const state = reactive({
       active: 0,
       rootWidth: 0,
-      rootHeight: 0
+      rootHeight: 0,
+      disableZoom: false
     });
     const resize = () => {
       if (swipeRef.value) {
@@ -10512,6 +10636,12 @@ var stdin_default71 = defineComponent({
         }, [slots.cover()]);
       }
     };
+    const onDragStart = () => {
+      state.disableZoom = true;
+    };
+    const onDragEnd = () => {
+      state.disableZoom = false;
+    };
     const renderImages = () => createVNode(Swipe, {
       "ref": swipeRef,
       "lazyRender": true,
@@ -10521,7 +10651,9 @@ var stdin_default71 = defineComponent({
       "initialSwipe": props.startPosition,
       "showIndicators": props.showIndicators,
       "indicatorColor": "white",
-      "onChange": setActive
+      "onChange": setActive,
+      "onDragEnd": onDragEnd,
+      "onDragStart": onDragStart
     }, {
       default: () => [props.images.map((image, index) => createVNode(stdin_default70, {
         "src": image,
@@ -10531,6 +10663,7 @@ var stdin_default71 = defineComponent({
         "minZoom": props.minZoom,
         "rootWidth": state.rootWidth,
         "rootHeight": state.rootHeight,
+        "disableZoom": state.disableZoom,
         "onScale": emitScale,
         "onClose": emitClose,
         "onLongPress": () => emit("longPress", {
@@ -10592,7 +10725,7 @@ var stdin_default71 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/image-preview/function-call.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/image-preview/function-call.mjs
 var instance2;
 var defaultConfig = {
   loop: true,
@@ -10651,10 +10784,10 @@ var showImagePreview = (options, startPosition = 0) => {
   return instance2;
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/image-preview/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/image-preview/index.mjs
 var ImagePreview = withInstall(stdin_default71);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/index-bar/IndexBar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/index-bar/IndexBar.mjs
 function genAlphabet() {
   const charCodeOfA = "A".charCodeAt(0);
   const indexList = Array(26).fill("").map((_, i) => String.fromCharCode(charCodeOfA + i));
@@ -10872,7 +11005,7 @@ var stdin_default72 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/index-anchor/IndexAnchor.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/index-anchor/IndexAnchor.mjs
 var [name69, bem65] = createNamespace("index-anchor");
 var indexAnchorProps = {
   index: numericProp
@@ -10951,13 +11084,13 @@ var stdin_default73 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/index-anchor/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/index-anchor/index.mjs
 var IndexAnchor = withInstall(stdin_default73);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/index-bar/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/index-bar/index.mjs
 var IndexBar = withInstall(stdin_default72);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/list/List.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/list/List.mjs
 var [name70, bem66, t14] = createNamespace("list");
 var listProps = {
   error: Boolean,
@@ -11089,10 +11222,10 @@ var stdin_default74 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/list/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/list/index.mjs
 var List = withInstall(stdin_default74);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/nav-bar/NavBar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/nav-bar/NavBar.mjs
 var [name71, bem67] = createNamespace("nav-bar");
 var navBarProps = {
   title: String,
@@ -11177,10 +11310,10 @@ var stdin_default75 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/nav-bar/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/nav-bar/index.mjs
 var NavBar = withInstall(stdin_default75);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/notice-bar/NoticeBar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/notice-bar/NoticeBar.mjs
 var [name72, bem68] = createNamespace("notice-bar");
 var noticeBarProps = {
   text: String,
@@ -11337,10 +11470,10 @@ var stdin_default76 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/notice-bar/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/notice-bar/index.mjs
 var NoticeBar = withInstall(stdin_default76);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/notify/Notify.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/notify/Notify.mjs
 var [name73, bem69] = createNamespace("notify");
 var notifyProps = extend({}, popupSharedProps, {
   type: makeStringProp("danger"),
@@ -11379,7 +11512,7 @@ var stdin_default77 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/notify/function-call.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/notify/function-call.mjs
 var timer;
 var instance3;
 var parseOptions2 = (message) => isObject(message) ? message : {
@@ -11439,10 +11572,10 @@ var resetNotifyDefaultOptions = () => {
   currentOptions3 = getDefaultOptions();
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/notify/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/notify/index.mjs
 var Notify = withInstall(stdin_default77);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/number-keyboard/NumberKeyboardKey.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/number-keyboard/NumberKeyboardKey.mjs
 var [name74, bem70] = createNamespace("key");
 var CollapseIcon = createVNode("svg", {
   "class": bem70("collapse-icon"),
@@ -11530,7 +11663,7 @@ var stdin_default78 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/number-keyboard/NumberKeyboard.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/number-keyboard/NumberKeyboard.mjs
 var [name75, bem71] = createNamespace("number-keyboard");
 var numberKeyboardProps = {
   show: Boolean,
@@ -11754,10 +11887,10 @@ var stdin_default79 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/number-keyboard/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/number-keyboard/index.mjs
 var NumberKeyboard = withInstall(stdin_default79);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/pagination/Pagination.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/pagination/Pagination.mjs
 var [name76, bem72, t15] = createNamespace("pagination");
 var makePage = (number, text, active) => ({
   number,
@@ -11897,10 +12030,10 @@ var stdin_default80 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/pagination/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/pagination/index.mjs
 var Pagination = withInstall(stdin_default80);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/password-input/PasswordInput.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/password-input/PasswordInput.mjs
 var [name77, bem73] = createNamespace("password-input");
 var passwordInputProps = {
   info: String,
@@ -11974,10 +12107,10 @@ var stdin_default81 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/password-input/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/password-input/index.mjs
 var PasswordInput = withInstall(stdin_default81);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/picker-group/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/picker-group/index.mjs
 var PickerGroup = withInstall(stdin_default23);
 
 // ../node_modules/.pnpm/@vant+popperjs@1.3.0/node_modules/@vant/popperjs/dist/index.esm.mjs
@@ -12892,7 +13025,7 @@ var offset_default = {
   fn: offset
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/composables/use-sync-prop-ref.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/composables/use-sync-prop-ref.mjs
 var useSyncPropRef = (getProp, setProp) => {
   const propRef = ref(getProp());
   watch(getProp, (value) => {
@@ -12908,7 +13041,7 @@ var useSyncPropRef = (getProp, setProp) => {
   return propRef;
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/popover/Popover.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/popover/Popover.mjs
 var [name78, bem74] = createNamespace("popover");
 var popupProps3 = ["overlay", "duration", "teleport", "overlayStyle", "overlayClass", "closeOnClickOverlay"];
 var popoverProps = {
@@ -12976,6 +13109,10 @@ var stdin_default82 = defineComponent({
         }
         if (!popper) {
           popper = createPopperInstance();
+          if (inBrowser) {
+            window.addEventListener("animationend", updateLocation);
+            window.addEventListener("transitionend", updateLocation);
+          }
         } else {
           popper.setOptions(getPopoverOptions());
         }
@@ -13048,6 +13185,10 @@ var stdin_default82 = defineComponent({
     });
     onBeforeUnmount(() => {
       if (popper) {
+        if (inBrowser) {
+          window.removeEventListener("animationend", updateLocation);
+          window.removeEventListener("transitionend", updateLocation);
+        }
         popper.destroy();
         popper = null;
       }
@@ -13082,10 +13223,10 @@ var stdin_default82 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/popover/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/popover/index.mjs
 var Popover = withInstall(stdin_default82);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/progress/Progress.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/progress/Progress.mjs
 var [name79, bem75] = createNamespace("progress");
 var progressProps = {
   color: String,
@@ -13157,10 +13298,10 @@ var stdin_default83 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/progress/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/progress/index.mjs
 var Progress = withInstall(stdin_default83);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/pull-refresh/PullRefresh.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/pull-refresh/PullRefresh.mjs
 var [name80, bem76, t16] = createNamespace("pull-refresh");
 var DEFAULT_HEAD_HEIGHT = 50;
 var TEXT_STATUS = ["pulling", "loosing", "success"];
@@ -13346,10 +13487,10 @@ var stdin_default84 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/pull-refresh/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/pull-refresh/index.mjs
 var PullRefresh = withInstall(stdin_default84);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/rate/Rate.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/rate/Rate.mjs
 var [name81, bem77] = createNamespace("rate");
 function getRateStatus(value, index, allowHalf, readonly) {
   if (value >= index) {
@@ -13560,13 +13701,13 @@ var stdin_default85 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/rate/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/rate/index.mjs
 var Rate = withInstall(stdin_default85);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/row/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/row/index.mjs
 var Row = withInstall(stdin_default51);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/search/Search.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/search/Search.mjs
 var [name82, bem78, t17] = createNamespace("search");
 var searchProps = extend({}, fieldSharedProps, {
   label: String,
@@ -13676,10 +13817,10 @@ var stdin_default86 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/search/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/search/index.mjs
 var Search = withInstall(stdin_default86);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/share-sheet/ShareSheet.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/share-sheet/ShareSheet.mjs
 var popupInheritKeys3 = [...popupSharedPropKeys, "round", "closeOnPopstate", "safeAreaInsetBottom"];
 var iconMap = {
   qq: "qq",
@@ -13794,10 +13935,10 @@ var stdin_default87 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/share-sheet/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/share-sheet/index.mjs
 var ShareSheet = withInstall(stdin_default87);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/sidebar/Sidebar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/sidebar/Sidebar.mjs
 var [name84, bem80] = createNamespace("sidebar");
 var SIDEBAR_KEY = Symbol(name84);
 var sidebarProps = {
@@ -13835,10 +13976,10 @@ var stdin_default88 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/sidebar/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/sidebar/index.mjs
 var Sidebar = withInstall(stdin_default88);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/sidebar-item/SidebarItem.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/sidebar-item/SidebarItem.mjs
 var [name85, bem81] = createNamespace("sidebar-item");
 var sidebarItemProps = extend({}, routeProps, {
   dot: Boolean,
@@ -13902,10 +14043,10 @@ var stdin_default89 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/sidebar-item/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/sidebar-item/index.mjs
 var SidebarItem = withInstall(stdin_default89);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/skeleton/SkeletonTitle.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton-title/SkeletonTitle.mjs
 var [name86, bem82] = createNamespace("skeleton-title");
 var skeletonTitleProps = {
   round: Boolean,
@@ -13926,13 +14067,17 @@ var stdin_default90 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/skeleton/SkeletonAvatar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton-title/index.mjs
+var SkeletonTitle = withInstall(stdin_default90);
+var stdin_default91 = SkeletonTitle;
+
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton-avatar/SkeletonAvatar.mjs
 var [name87, bem83] = createNamespace("skeleton-avatar");
 var skeletonAvatarProps = {
   avatarSize: numericProp,
   avatarShape: makeStringProp("round")
 };
-var stdin_default91 = defineComponent({
+var stdin_default92 = defineComponent({
   name: name87,
   props: skeletonAvatarProps,
   setup(props) {
@@ -13943,7 +14088,11 @@ var stdin_default91 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/skeleton/SkeletonParagraph.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton-avatar/index.mjs
+var SkeletonAvatar = withInstall(stdin_default92);
+var stdin_default93 = SkeletonAvatar;
+
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton-paragraph/SkeletonParagraph.mjs
 var DEFAULT_ROW_WIDTH = "100%";
 var skeletonParagraphProps = {
   round: Boolean,
@@ -13953,7 +14102,7 @@ var skeletonParagraphProps = {
   }
 };
 var [name88, bem84] = createNamespace("skeleton-paragraph");
-var stdin_default92 = defineComponent({
+var stdin_default94 = defineComponent({
   name: name88,
   props: skeletonParagraphProps,
   setup(props) {
@@ -13968,7 +14117,11 @@ var stdin_default92 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/skeleton/Skeleton.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton-paragraph/index.mjs
+var SkeletonParagraph = withInstall(stdin_default94);
+var stdin_default95 = SkeletonParagraph;
+
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton/Skeleton.mjs
 var [name89, bem85] = createNamespace("skeleton");
 var DEFAULT_LAST_ROW_WIDTH = "60%";
 var skeletonProps = {
@@ -13986,7 +14139,7 @@ var skeletonProps = {
     default: DEFAULT_ROW_WIDTH
   }
 };
-var stdin_default93 = defineComponent({
+var stdin_default96 = defineComponent({
   name: name89,
   inheritAttrs: false,
   props: skeletonProps,
@@ -13996,7 +14149,7 @@ var stdin_default93 = defineComponent({
   }) {
     const renderAvatar = () => {
       if (props.avatar) {
-        return createVNode(stdin_default91, {
+        return createVNode(stdin_default93, {
           "avatarShape": props.avatarShape,
           "avatarSize": props.avatarSize
         }, null);
@@ -14004,7 +14157,7 @@ var stdin_default93 = defineComponent({
     };
     const renderTitle = () => {
       if (props.title) {
-        return createVNode(stdin_default90, {
+        return createVNode(stdin_default91, {
           "round": props.round,
           "titleWidth": props.titleWidth
         }, null);
@@ -14022,7 +14175,7 @@ var stdin_default93 = defineComponent({
       }
       return rowWidth;
     };
-    const renderRows = () => Array(+props.row).fill("").map((_, i) => createVNode(stdin_default92, {
+    const renderRows = () => Array(+props.row).fill("").map((_, i) => createVNode(stdin_default95, {
       "key": i,
       "round": props.round,
       "rowWidth": addUnit(getRowWidth(i))
@@ -14050,13 +14203,16 @@ var stdin_default93 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/skeleton/SkeletonImage.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton/index.mjs
+var Skeleton = withInstall(stdin_default96);
+
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton-image/SkeletonImage.mjs
 var [name90, bem86] = createNamespace("skeleton-image");
 var skeletonImageProps = {
   imageSize: numericProp,
   imageShape: makeStringProp("square")
 };
-var stdin_default94 = defineComponent({
+var stdin_default97 = defineComponent({
   name: name90,
   props: skeletonImageProps,
   setup(props) {
@@ -14070,14 +14226,10 @@ var stdin_default94 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/skeleton/index.mjs
-var SkeletonImage = withInstall(stdin_default94);
-var SkeletonTitle = withInstall(stdin_default90);
-var SkeletonAvatar = withInstall(stdin_default91);
-var SkeletonParagraph = withInstall(stdin_default92);
-var Skeleton = withInstall(stdin_default93);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/skeleton-image/index.mjs
+var SkeletonImage = withInstall(stdin_default97);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/slider/Slider.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/slider/Slider.mjs
 var [name91, bem87] = createNamespace("slider");
 var sliderProps = {
   min: makeNumericProp(0),
@@ -14097,7 +14249,7 @@ var sliderProps = {
     default: 0
   }
 };
-var stdin_default95 = defineComponent({
+var stdin_default98 = defineComponent({
   name: name91,
   props: sliderProps,
   emits: ["change", "dragEnd", "dragStart", "update:modelValue"],
@@ -14109,7 +14261,7 @@ var stdin_default95 = defineComponent({
     let current2;
     let startValue;
     const root = ref();
-    const slider = ref();
+    const slider = [ref(), ref()];
     const dragStatus = ref();
     const touch = useTouch();
     const scope = computed(() => Number(props.max) - Number(props.min));
@@ -14301,7 +14453,7 @@ var stdin_default95 = defineComponent({
     const renderButton = (index) => {
       const current22 = typeof index === "number" ? props.modelValue[index] : props.modelValue;
       return createVNode("div", {
-        "ref": slider,
+        "ref": slider[index != null ? index : 0],
         "role": "slider",
         "class": getButtonClassName(index),
         "tabindex": props.disabled ? void 0 : 0,
@@ -14324,8 +14476,10 @@ var stdin_default95 = defineComponent({
     };
     updateValue(props.modelValue);
     useCustomFieldValue(() => props.modelValue);
-    useEventListener("touchmove", onTouchMove, {
-      target: slider
+    slider.forEach((item) => {
+      useEventListener("touchmove", onTouchMove, {
+        target: item
+      });
     });
     return () => createVNode("div", {
       "ref": root,
@@ -14342,10 +14496,10 @@ var stdin_default95 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/slider/index.mjs
-var Slider = withInstall(stdin_default95);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/slider/index.mjs
+var Slider = withInstall(stdin_default98);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/space/Space.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/space/Space.mjs
 var [name92, bem88] = createNamespace("space");
 var spaceProps = {
   align: String,
@@ -14373,10 +14527,10 @@ function filterEmpty(children = []) {
   });
   return nodes.filter((c) => {
     var _a;
-    return !(c && (typeof Comment !== "undefined" && c.type === Comment || c.type === Fragment && ((_a = c.children) == null ? void 0 : _a.length) === 0 || c.type === Text && c.children.trim() === ""));
+    return !(c && (c.type === Comment || c.type === Fragment && ((_a = c.children) == null ? void 0 : _a.length) === 0 || c.type === Text && c.children.trim() === ""));
   });
 }
-var stdin_default96 = defineComponent({
+var stdin_default99 = defineComponent({
   name: name92,
   props: spaceProps,
   setup(props, {
@@ -14428,10 +14582,10 @@ var stdin_default96 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/space/index.mjs
-var Space = withInstall(stdin_default96);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/space/index.mjs
+var Space = withInstall(stdin_default99);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/steps/Steps.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/steps/Steps.mjs
 var [name93, bem89] = createNamespace("steps");
 var stepsProps = {
   active: makeNumericProp(0),
@@ -14444,7 +14598,7 @@ var stepsProps = {
   inactiveColor: String
 };
 var STEPS_KEY = Symbol(name93);
-var stdin_default97 = defineComponent({
+var stdin_default100 = defineComponent({
   name: name93,
   props: stepsProps,
   emits: ["clickStep"],
@@ -14471,9 +14625,9 @@ var stdin_default97 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/step/Step.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/step/Step.mjs
 var [name94, bem90] = createNamespace("step");
-var stdin_default98 = defineComponent({
+var stdin_default101 = defineComponent({
   name: name94,
   setup(props, {
     slots
@@ -14582,10 +14736,10 @@ var stdin_default98 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/step/index.mjs
-var Step = withInstall(stdin_default98);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/step/index.mjs
+var Step = withInstall(stdin_default101);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/stepper/Stepper.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/stepper/Stepper.mjs
 var [name95, bem91] = createNamespace("stepper");
 var LONG_PRESS_INTERVAL = 200;
 var isEqual = (value1, value2) => String(value1) === String(value2);
@@ -14614,7 +14768,7 @@ var stepperProps = {
   defaultValue: makeNumericProp(1),
   decimalLength: numericProp
 };
-var stdin_default99 = defineComponent({
+var stdin_default102 = defineComponent({
   name: name95,
   props: stepperProps,
   emits: ["plus", "blur", "minus", "focus", "change", "overlimit", "update:modelValue"],
@@ -14827,13 +14981,13 @@ var stdin_default99 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/stepper/index.mjs
-var Stepper = withInstall(stdin_default99);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/stepper/index.mjs
+var Stepper = withInstall(stdin_default102);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/steps/index.mjs
-var Steps = withInstall(stdin_default97);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/steps/index.mjs
+var Steps = withInstall(stdin_default100);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/submit-bar/SubmitBar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/submit-bar/SubmitBar.mjs
 var [name96, bem92, t19] = createNamespace("submit-bar");
 var submitBarProps = {
   tip: String,
@@ -14852,7 +15006,7 @@ var submitBarProps = {
   decimalLength: makeNumericProp(2),
   safeAreaInsetBottom: truthProp
 };
-var stdin_default100 = defineComponent({
+var stdin_default103 = defineComponent({
   name: name96,
   props: submitBarProps,
   emits: ["submit"],
@@ -14941,10 +15095,10 @@ var stdin_default100 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/submit-bar/index.mjs
-var SubmitBar = withInstall(stdin_default100);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/submit-bar/index.mjs
+var SubmitBar = withInstall(stdin_default103);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/swipe-cell/SwipeCell.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/swipe-cell/SwipeCell.mjs
 var [name97, bem93] = createNamespace("swipe-cell");
 var swipeCellProps = {
   name: makeNumericProp(""),
@@ -14954,7 +15108,7 @@ var swipeCellProps = {
   beforeClose: Function,
   stopPropagation: Boolean
 };
-var stdin_default101 = defineComponent({
+var stdin_default104 = defineComponent({
   name: name97,
   props: swipeCellProps,
   emits: ["open", "close", "click"],
@@ -15099,10 +15253,10 @@ var stdin_default101 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/swipe-cell/index.mjs
-var SwipeCell = withInstall(stdin_default101);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/swipe-cell/index.mjs
+var SwipeCell = withInstall(stdin_default104);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabbar/Tabbar.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabbar/Tabbar.mjs
 var [name98, bem94] = createNamespace("tabbar");
 var tabbarProps = {
   route: Boolean,
@@ -15120,7 +15274,7 @@ var tabbarProps = {
   }
 };
 var TABBAR_KEY = Symbol(name98);
-var stdin_default102 = defineComponent({
+var stdin_default105 = defineComponent({
   name: name98,
   props: tabbarProps,
   emits: ["change", "update:modelValue"],
@@ -15179,10 +15333,10 @@ var stdin_default102 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabbar/index.mjs
-var Tabbar = withInstall(stdin_default102);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabbar/index.mjs
+var Tabbar = withInstall(stdin_default105);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabbar-item/TabbarItem.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabbar-item/TabbarItem.mjs
 var [name99, bem95] = createNamespace("tabbar-item");
 var tabbarItemProps = extend({}, routeProps, {
   dot: Boolean,
@@ -15192,7 +15346,7 @@ var tabbarItemProps = extend({}, routeProps, {
   badgeProps: Object,
   iconPrefix: String
 });
-var stdin_default103 = defineComponent({
+var stdin_default106 = defineComponent({
   name: name99,
   props: tabbarItemProps,
   emits: ["click"],
@@ -15293,10 +15447,10 @@ var stdin_default103 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tabbar-item/index.mjs
-var TabbarItem = withInstall(stdin_default103);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tabbar-item/index.mjs
+var TabbarItem = withInstall(stdin_default106);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/time-picker/TimePicker.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/time-picker/TimePicker.mjs
 var [name100] = createNamespace("time-picker");
 var timePickerProps = extend({}, sharedProps, {
   minHour: makeNumericProp(0),
@@ -15310,7 +15464,7 @@ var timePickerProps = extend({}, sharedProps, {
     default: () => ["hour", "minute"]
   }
 });
-var stdin_default104 = defineComponent({
+var stdin_default107 = defineComponent({
   name: name100,
   props: timePickerProps,
   emits: ["confirm", "cancel", "change", "update:modelValue"],
@@ -15365,10 +15519,10 @@ var stdin_default104 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/time-picker/index.mjs
-var TimePicker = withInstall(stdin_default104);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/time-picker/index.mjs
+var TimePicker = withInstall(stdin_default107);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tree-select/TreeSelect.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tree-select/TreeSelect.mjs
 var [name101, bem96] = createNamespace("tree-select");
 var treeSelectProps = {
   max: makeNumericProp(Infinity),
@@ -15381,7 +15535,7 @@ var treeSelectProps = {
     default: 0
   }
 };
-var stdin_default105 = defineComponent({
+var stdin_default108 = defineComponent({
   name: name101,
   props: treeSelectProps,
   emits: ["clickNav", "clickItem", "update:activeId", "update:mainActiveIndex"],
@@ -15463,10 +15617,10 @@ var stdin_default105 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/tree-select/index.mjs
-var TreeSelect = withInstall(stdin_default105);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/tree-select/index.mjs
+var TreeSelect = withInstall(stdin_default108);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/uploader/utils.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/uploader/utils.mjs
 var [name102, bem97, t20] = createNamespace("uploader");
 function readFileContent(file, resultType) {
   return new Promise((resolve) => {
@@ -15526,8 +15680,8 @@ function isImageFile(item) {
   return false;
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/uploader/UploaderPreviewItem.mjs
-var stdin_default106 = defineComponent({
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/uploader/UploaderPreviewItem.mjs
+var stdin_default109 = defineComponent({
   props: {
     name: numericProp,
     item: makeRequiredProp(Object),
@@ -15646,7 +15800,7 @@ var stdin_default106 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/uploader/Uploader.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/uploader/Uploader.mjs
 var uploaderProps = {
   name: makeNumericProp(""),
   accept: makeStringProp("image/*"),
@@ -15675,7 +15829,7 @@ var uploaderProps = {
     default: Infinity
   }
 };
-var stdin_default107 = defineComponent({
+var stdin_default110 = defineComponent({
   name: name102,
   props: uploaderProps,
   emits: ["delete", "oversize", "clickUpload", "closePreview", "clickPreview", "update:modelValue"],
@@ -15814,7 +15968,7 @@ var stdin_default107 = defineComponent({
     const renderPreviewItem = (item, index) => {
       const needPickData = ["imageFit", "deletable", "previewSize", "beforeDelete"];
       const previewData = extend(pick(props, needPickData), pick(item, needPickData, true));
-      return createVNode(stdin_default106, mergeProps({
+      return createVNode(stdin_default109, mergeProps({
         "item": item,
         "index": index,
         "onClick": () => emit("clickPreview", item, getDetail(index)),
@@ -15884,10 +16038,10 @@ var stdin_default107 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/uploader/index.mjs
-var Uploader = withInstall(stdin_default107);
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/uploader/index.mjs
+var Uploader = withInstall(stdin_default110);
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/lazyload/vue-lazyload/listener.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/lazyload/vue-lazyload/listener.mjs
 var ReactiveListener = class {
   constructor({
     el,
@@ -16056,7 +16210,7 @@ var ReactiveListener = class {
   }
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/lazyload/vue-lazyload/lazy.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/lazyload/vue-lazyload/lazy.mjs
 var DEFAULT_URL = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 var DEFAULT_EVENTS = [
   "scroll",
@@ -16071,7 +16225,7 @@ var DEFAULT_OBSERVER_OPTIONS = {
   rootMargin: "0px",
   threshold: 0
 };
-function stdin_default108() {
+function stdin_default111() {
   return class Lazy {
     constructor({
       preLoad,
@@ -16403,8 +16557,8 @@ function stdin_default108() {
   };
 }
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/lazyload/vue-lazyload/lazy-component.mjs
-var stdin_default109 = (lazy) => ({
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/lazyload/vue-lazyload/lazy-component.mjs
+var stdin_default112 = (lazy) => ({
   props: {
     tag: {
       type: String,
@@ -16451,7 +16605,7 @@ var stdin_default109 = (lazy) => ({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/lazyload/vue-lazyload/lazy-container.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/lazyload/vue-lazyload/lazy-container.mjs
 var defaultOptions2 = {
   selector: "img"
 };
@@ -16523,8 +16677,8 @@ var LazyContainerManager = class {
   }
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/lazyload/vue-lazyload/lazy-image.mjs
-var stdin_default110 = (lazyManager) => ({
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/lazyload/vue-lazyload/lazy-image.mjs
+var stdin_default113 = (lazyManager) => ({
   props: {
     src: [String, Object],
     tag: {
@@ -16618,18 +16772,18 @@ var stdin_default110 = (lazyManager) => ({
   }
 });
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/lazyload/vue-lazyload/index.mjs
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/lazyload/vue-lazyload/index.mjs
 var Lazyload = {
   install(app, options = {}) {
-    const LazyClass = stdin_default108();
+    const LazyClass = stdin_default111();
     const lazy = new LazyClass(options);
     const lazyContainer = new LazyContainerManager({ lazy });
     app.config.globalProperties.$Lazyload = lazy;
     if (options.lazyComponent) {
-      app.component("LazyComponent", stdin_default109(lazy));
+      app.component("LazyComponent", stdin_default112(lazy));
     }
     if (options.lazyImage) {
-      app.component("LazyImage", stdin_default110(lazy));
+      app.component("LazyImage", stdin_default113(lazy));
     }
     app.directive("lazy", {
       beforeMount: lazy.add.bind(lazy),
@@ -16644,8 +16798,8 @@ var Lazyload = {
   }
 };
 
-// ../node_modules/.pnpm/vant@4.0.3_vue@3.2.45/node_modules/vant/es/index.mjs
-var version = "4.0.3";
+// ../node_modules/.pnpm/vant@4.0.11_vue@3.2.47/node_modules/vant/es/index.mjs
+var version = "4.0.11";
 function install(app) {
   const components = [
     ActionBar,
@@ -16717,6 +16871,10 @@ function install(app) {
     Sidebar,
     SidebarItem,
     Skeleton,
+    SkeletonAvatar,
+    SkeletonImage,
+    SkeletonParagraph,
+    SkeletonTitle,
     Slider,
     Space,
     Step,
@@ -16746,7 +16904,7 @@ function install(app) {
     }
   });
 }
-var stdin_default111 = {
+var stdin_default114 = {
   install,
   version
 };
@@ -16780,6 +16938,7 @@ export {
   Coupon,
   CouponCell,
   CouponList,
+  DEFAULT_ROW_WIDTH,
   DatePicker,
   Dialog,
   Divider,
@@ -16878,7 +17037,7 @@ export {
   couponCellProps,
   couponListProps,
   datePickerProps,
-  stdin_default111 as default,
+  stdin_default114 as default,
   dialogProps,
   dividerProps,
   dropdownItemProps,
@@ -16954,6 +17113,7 @@ export {
   toastProps,
   treeSelectProps,
   uploaderProps,
+  useCurrentLang,
   version
 };
 //# sourceMappingURL=vant.js.map

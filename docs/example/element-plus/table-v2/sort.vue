@@ -1,5 +1,6 @@
 <template>
-  <k-table
+  <k-table-v2
+    height="auto"
     :table-data="tableData" :table-column="tableColumn"
     @sort-change="sortChange"
   />
@@ -10,21 +11,23 @@ import { ref } from 'vue';
 
 const tableColumn = [
   { label: '日期', prop: 'date', sortable: true },
-  { label: '姓名', prop: 'name' },
-  { label: '地址', prop: 'address' },
+  { label: '姓名', prop: 'name', sortable: true },
+  {
+    label: '地址', prop: 'address', showOverflowTooltip: true, width: '150px',
+  },
 ];
 
 const tableData = ref([
   {
     id: 1,
     date: '2016-05-04',
-    name: 'Tom',
+    name: 'Jhon',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
     id: 2,
     date: '2016-05-03',
-    name: 'luke',
+    name: 'Luke',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
@@ -36,17 +39,16 @@ const tableData = ref([
   {
     id: 4,
     date: '2016-05-01',
-    name: 'Tom',
+    name: 'XiaoMing',
     address: 'No. 189, Grove St, Los Angeles',
   },
 ]);
 
-const sortChange = ({
-  prop, order, sortType, currentPage, column, sortColumn,
-}) => {
-  console.log('prop, order, sortType, currentPage, column, sortColumn: ', prop, order, sortType, currentPage, column, sortColumn);
+const sortChange = ({ column, sortType }) => {
+  console.log('column, sortType: ', column, sortType);
+  console.log('sortType: ', sortType);
 
-  tableData.value = sortType
+  tableData.value = sortType === 'ascending'
     ? tableData.value.sort((a, b) => b.id - a.id)
     : tableData.value.sort((a, b) => a.id - b.id);
 };

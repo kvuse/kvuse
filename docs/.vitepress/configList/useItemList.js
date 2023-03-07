@@ -37,10 +37,10 @@ export function useItemList(){
       text: 'Table 表格',
       link: '/components/element-plus/table',
     },
-    // {
-    //   text: 'Table-v2 表格',
-    //   link: '/components/element-plus/table-v2',
-    // },
+    {
+      text: 'Table-v2 表格',
+      link: '/components/element-plus/table-v2',
+    },
     {
       text: 'BatchTable 批量表格',
       link: '/components/element-plus/batch-table',
@@ -82,19 +82,23 @@ export function useItemList(){
   const directiveList = [
     {
       text: 'v-focus',
-      link: '/directives/',
+      link: '/components/element-plus/directives/',
     },
     {
       text: 'v-autofocus',
-      link: '/directives/autofocus',
+      link: '/components/element-plus/directives/autofocus',
     },
     {
       text: 'v-money',
-      link: '/directives/money',
+      link: '/components/element-plus/directives/money',
     },
     {
       text: 'v-params',
-      link: '/directives/params',
+      link: '/components/element-plus/directives/params',
+    },
+    {
+      text: 'v-keyboard',
+      link: '/components/element-plus/directives/keyboard',
     },
   ]
 

@@ -41,7 +41,7 @@ import {
   warning_filled_default,
   zoom_in_default,
   zoom_out_default
-} from "./chunk-X5XGKAPI.js";
+} from "./chunk-U7GNGBTT.js";
 import {
   computedEager,
   isBoolean,
@@ -61,7 +61,7 @@ import {
   useVModel,
   useWindowFocus,
   useWindowSize
-} from "./chunk-6RB766UK.js";
+} from "./chunk-OROFI7GK.js";
 import {
   Comment,
   Fragment,
@@ -147,11 +147,11 @@ import {
   withDirectives,
   withKeys,
   withModifiers
-} from "./chunk-HHWHORSU.js";
+} from "./chunk-Z5H376BI.js";
 import {
   __commonJS,
   __toESM
-} from "./chunk-J43GMYXM.js";
+} from "./chunk-AC2VUBZ6.js";
 
 // ../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/dayjs.min.js
 var require_dayjs_min = __commonJS({
@@ -2089,7 +2089,11 @@ var hasOwnProperty7 = objectProto9.hasOwnProperty;
 function arrayLikeKeys(value, inherited) {
   var isArr = isArray_default(value), isArg = !isArr && isArguments_default(value), isBuff = !isArr && !isArg && isBuffer_default(value), isType = !isArr && !isArg && !isBuff && isTypedArray_default(value), skipIndexes = isArr || isArg || isBuff || isType, result2 = skipIndexes ? baseTimes_default(value.length, String) : [], length = result2.length;
   for (var key in value) {
-    if ((inherited || hasOwnProperty7.call(value, key)) && !(skipIndexes && (key == "length" || isBuff && (key == "offset" || key == "parent") || isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || isIndex_default(key, length)))) {
+    if ((inherited || hasOwnProperty7.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
+    (key == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
+    isBuff && (key == "offset" || key == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
+    isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || // Skip index properties.
+    isIndex_default(key, length)))) {
       result2.push(key);
     }
   }
@@ -2827,6 +2831,7 @@ var basePropertyOf_default = basePropertyOf;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_deburrLetter.js
 var deburredLetters = {
+  // Latin-1 Supplement block.
   "À": "A",
   "Á": "A",
   "Â": "A",
@@ -2889,6 +2894,7 @@ var deburredLetters = {
   "Þ": "Th",
   "þ": "th",
   "ß": "ss",
+  // Latin Extended-A block.
   "Ā": "A",
   "Ă": "A",
   "Ą": "A",
@@ -7245,11 +7251,47 @@ var reEvaluate_default = reEvaluate;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/templateSettings.js
 var templateSettings = {
+  /**
+   * Used to detect `data` property values to be HTML-escaped.
+   *
+   * @memberOf _.templateSettings
+   * @type {RegExp}
+   */
   "escape": reEscape_default,
+  /**
+   * Used to detect code to be evaluated.
+   *
+   * @memberOf _.templateSettings
+   * @type {RegExp}
+   */
   "evaluate": reEvaluate_default,
+  /**
+   * Used to detect `data` property values to inject.
+   *
+   * @memberOf _.templateSettings
+   * @type {RegExp}
+   */
   "interpolate": reInterpolate_default,
+  /**
+   * Used to reference the data object in the template text.
+   *
+   * @memberOf _.templateSettings
+   * @type {string}
+   */
   "variable": "",
+  /**
+   * Used to import variables into the compiled template.
+   *
+   * @memberOf _.templateSettings
+   * @type {Object}
+   */
   "imports": {
+    /**
+     * A reference to the `lodash` function.
+     *
+     * @memberOf _.templateSettings.imports
+     * @type {Function}
+     */
     "_": { "escape": escape_default }
   }
 };
@@ -7672,8 +7714,8 @@ var uniqWith_default = uniqWith;
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/uniqueId.js
 var idCounter = 0;
 function uniqueId(prefix) {
-  var id2 = ++idCounter;
-  return toString_default(prefix) + id2;
+  var id = ++idCounter;
+  return toString_default(prefix) + id;
 }
 var uniqueId_default = uniqueId;
 
@@ -8829,7 +8871,7 @@ if (symIterator2) {
   wrapperLodash_default.prototype[symIterator2] = seq_default_default.toIterator;
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/dom/aria.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/dom/aria.mjs
 var FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 var isVisible = (element) => {
   if (false)
@@ -8894,7 +8936,7 @@ var focusNode = (el) => {
   !isLeaf(el) && el.click();
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/dom/event.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/dom/event.mjs
 var composeEventHandlers = (theirsHandler, oursHandler, { checkForDefaultPrevented = true } = {}) => {
   const handleEvent = (event) => {
     const shouldPrevent = theirsHandler == null ? void 0 : theirsHandler(event);
@@ -8908,7 +8950,7 @@ var whenMouse = (handler) => {
   return (e) => e.pointerType === "mouse" ? handler(e) : void 0;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/dom/position.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/dom/position.mjs
 var isInContainer = (el, container) => {
   if (!isClient || !el || !container)
     return false;
@@ -8957,7 +8999,7 @@ var getClientXY = (event) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/types.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/types.mjs
 var isUndefined2 = (val) => val === void 0;
 var isEmpty2 = (val) => !val && val !== 0 || isArray(val) && val.length === 0 || isObject(val) && !Object.keys(val).length;
 var isElement2 = (e) => {
@@ -8975,11 +9017,11 @@ var isStringNumber = (val) => {
   return !Number.isNaN(Number(val));
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/strings.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/strings.mjs
 var escapeStringRegexp = (string3 = "") => string3.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
 var capitalize3 = (str) => capitalize(str);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/objects.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/objects.mjs
 var keysOf = (arr) => Object.keys(arr);
 var entriesOf = (arr) => Object.entries(arr);
 var getProp = (obj, path, defaultValue) => {
@@ -8993,7 +9035,7 @@ var getProp = (obj, path, defaultValue) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/error.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/error.mjs
 var ElementPlusError = class extends Error {
   constructor(m2) {
     super(m2);
@@ -9010,7 +9052,7 @@ function debugWarn(scope, message2) {
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/dom/style.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/dom/style.mjs
 var SCOPE = "utils/dom/style";
 var classNameToArray = (cls = "") => cls.split(" ").filter((item) => !!item.trim());
 var hasClass = (el, cls) => {
@@ -9058,7 +9100,7 @@ function addUnit(value, defaultUnit = "px") {
   debugWarn(SCOPE, "binding value must be a string or number");
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/dom/scroll.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/dom/scroll.mjs
 var isScroll = (el, isVertical) => {
   if (!isClient)
     return false;
@@ -9131,13 +9173,13 @@ function scrollIntoView(container, selected) {
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/vue/global-node.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/vue/global-node.mjs
 var globalNodes = [];
 var target = !isClient ? void 0 : document.body;
-function createGlobalNode(id2) {
+function createGlobalNode(id) {
   const el = document.createElement("div");
-  if (id2 !== void 0) {
-    el.setAttribute("id", id2);
+  if (id !== void 0) {
+    el.setAttribute("id", id);
   }
   target.appendChild(el);
   globalNodes.push(el);
@@ -9148,7 +9190,7 @@ function removeGlobalNode(el) {
   el.remove();
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/vue/props/runtime.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/vue/props/runtime.mjs
 var epPropKey = "__epPropKey";
 var definePropType = (val) => val;
 var isEpProp = (val) => isObject(val) && !!val[epPropKey];
@@ -9189,7 +9231,7 @@ var buildProps = (props) => fromPairs_default(Object.entries(props).map(([key, o
   buildProp(option, key)
 ]));
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/vue/icon.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/vue/icon.mjs
 var iconPropType = definePropType([
   String,
   Object,
@@ -9217,7 +9259,7 @@ var ValidateComponentsMap = {
   error: circle_close_default
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/vue/install.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/vue/install.mjs
 var withInstall = (main, extra) => {
   ;
   main.install = (app) => {
@@ -9255,7 +9297,7 @@ var withNoopInstall = (component2) => {
   return component2;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/vue/refs.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/vue/refs.mjs
 var composeRefs = (...refs) => {
   return (el) => {
     refs.forEach((ref2) => {
@@ -9268,7 +9310,7 @@ var composeRefs = (...refs) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/constants/aria.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/constants/aria.mjs
 var EVENT_CODE = {
   tab: "Tab",
   enter: "Enter",
@@ -9287,7 +9329,7 @@ var EVENT_CODE = {
   end: "End"
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/constants/date.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/constants/date.mjs
 var datePickTypes = [
   "year",
   "month",
@@ -9309,15 +9351,15 @@ var WEEK_DAYS = [
   "sat"
 ];
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/constants/event.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/constants/event.mjs
 var UPDATE_MODEL_EVENT = "update:modelValue";
 var CHANGE_EVENT = "change";
 var INPUT_EVENT = "input";
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/constants/key.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/constants/key.mjs
 var INSTALLED_KEY = Symbol("INSTALLED_KEY");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/constants/size.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/constants/size.mjs
 var componentSizes = ["", "default", "small", "large"];
 var componentSizeMap = {
   large: 40,
@@ -9325,15 +9367,15 @@ var componentSizeMap = {
   small: 24
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/vue/size.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/vue/size.mjs
 var getComponentSize = (size3) => {
   return componentSizeMap[size3 || "default"];
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/vue/validator.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/vue/validator.mjs
 var isValidComponentSize = (val) => ["", ...componentSizes].includes(val);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/vue/vnode.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/vue/vnode.mjs
 var SCOPE2 = "utils/vue/vnode";
 var PatchFlags = ((PatchFlags2) => {
   PatchFlags2[PatchFlags2["TEXT"] = 1] = "TEXT";
@@ -9403,13 +9445,7 @@ var flattedChildren = (children) => {
   return result2;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/animation.mjs
-var cubic = (value) => {
-  return value ** 3;
-};
-var easeInOutCubic = (value) => value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2;
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/arrays.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/arrays.mjs
 var unique = (arr) => [...new Set(arr)];
 var castArray2 = (arr) => {
   if (!arr && arr !== 0)
@@ -9417,23 +9453,23 @@ var castArray2 = (arr) => {
   return Array.isArray(arr) ? arr : [arr];
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/browser.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/browser.mjs
 var isFirefox = () => isClient && /firefox/i.test(window.navigator.userAgent);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/i18n.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/i18n.mjs
 var isKorean = (text) => /([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(text);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/raf.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/raf.mjs
 var rAF = (fn2) => isClient ? window.requestAnimationFrame(fn2) : setTimeout(fn2, 16);
 var cAF = (handle) => isClient ? window.cancelAnimationFrame(handle) : clearTimeout(handle);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/rand.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/rand.mjs
 var generateId = () => Math.floor(Math.random() * 1e4);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/utils/typescript.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/utils/typescript.mjs
 var mutable = (val) => val;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-attrs/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-attrs/index.mjs
 var DEFAULT_EXCLUDE_KEYS = ["class", "style"];
 var LISTENER_PREFIX = /^on[A-Z]/;
 var useAttrs2 = (params = {}) => {
@@ -9452,68 +9488,68 @@ var useAttrs2 = (params = {}) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/breadcrumb.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/breadcrumb.mjs
 var breadcrumbKey = Symbol("breadcrumbKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/button.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/button.mjs
 var buttonGroupContextKey = Symbol("buttonGroupContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/carousel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/carousel.mjs
 var carouselContextKey = Symbol("carouselContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/checkbox.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/checkbox.mjs
 var checkboxGroupContextKey = Symbol("checkboxGroupContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/collapse.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/collapse.mjs
 var collapseContextKey = Symbol("collapseContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/config-provider.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/config-provider.mjs
 var configProviderContextKey = Symbol();
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/dialog.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/dialog.mjs
 var dialogInjectionKey = Symbol("dialogInjectionKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/form.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/form.mjs
 var formContextKey = Symbol("formContextKey");
 var formItemContextKey = Symbol("formItemContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/pagination.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/pagination.mjs
 var elPaginationKey = Symbol("elPaginationKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/radio.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/radio.mjs
 var radioGroupKey = Symbol("radioGroupKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/row.mjs
 var rowContextKey = Symbol("rowContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/scrollbar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/scrollbar.mjs
 var scrollbarContextKey = Symbol("scrollbarContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/slider.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/slider.mjs
 var sliderContextKey = Symbol("sliderContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/tabs.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/tabs.mjs
 var tabsRootContextKey = Symbol("tabsRootContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/upload.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/upload.mjs
 var uploadContextKey = Symbol("uploadContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/popper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/popper.mjs
 var POPPER_INJECTION_KEY = Symbol("popper");
 var POPPER_CONTENT_INJECTION_KEY = Symbol("popperContent");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/tooltip.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/tooltip.mjs
 var TOOLTIP_INJECTION_KEY = Symbol("elTooltip");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/tooltip-v2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/tooltip-v2.mjs
 var tooltipV2RootKey = Symbol("tooltipV2");
 var tooltipV2ContentKey = Symbol("tooltipV2Content");
 var TOOLTIP_V2_OPEN = "tooltip_v2.open";
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/tokens/date-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/tokens/date-picker.mjs
 var ROOT_PICKER_INJECTION_KEY = Symbol();
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-prop/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-prop/index.mjs
 var useProp = (name) => {
   const vm = getCurrentInstance();
   return computed2(() => {
@@ -9522,7 +9558,7 @@ var useProp = (name) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-global-config/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-global-config/index.mjs
 var globalConfig = ref();
 function useGlobalConfig(key, defaultValue = void 0) {
   const config = getCurrentInstance() ? inject(configProviderContextKey, globalConfig) : globalConfig;
@@ -9566,7 +9602,7 @@ var mergeConfig = (a2, b2) => {
   return obj;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-common-props/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-common-props/index.mjs
 var useSizeProp = buildProp({
   type: String,
   values: componentSizes,
@@ -9586,7 +9622,7 @@ var useDisabled = (fallback) => {
   return computed2(() => disabled.value || unref(fallback) || (form == null ? void 0 : form.disabled) || false);
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-deprecated/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-deprecated/index.mjs
 var useDeprecated = ({ from, replacement, scope, version: version3, ref: ref2, type: type4 = "API" }, condition) => {
   watch(() => unref(condition), (val) => {
     if (val) {
@@ -9599,7 +9635,7 @@ For more detail, please visit: ${ref2}
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-draggable/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-draggable/index.mjs
 var useDraggable = (targetRef, dragRef, draggable2) => {
   let transform2 = {
     offsetX: 0,
@@ -9660,7 +9696,7 @@ var useDraggable = (targetRef, dragRef, draggable2) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-focus/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-focus/index.mjs
 var useFocus = (el) => {
   return {
     focus: () => {
@@ -9670,7 +9706,7 @@ var useFocus = (el) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-namespace/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-namespace/index.mjs
 var defaultNamespace = "el";
 var statePrefix = "is-";
 var _bem = (namespace, block, blockSuffix, element, modifier) => {
@@ -9736,7 +9772,7 @@ var useNamespace = (block) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-id/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-id/index.mjs
 var defaultIdInjection = {
   prefix: Math.floor(Math.random() * 1e4),
   current: 0
@@ -9759,7 +9795,7 @@ usage: app.provide(ID_INJECTION_KEY, {
   return idRef;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-form-item/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-form-item/index.mjs
 var useFormItem = () => {
   const form = inject(formContextKey, void 0);
   const formItem = inject(formItemContextKey, void 0);
@@ -9786,8 +9822,8 @@ var useFormItemInputId = (props, {
     return !!(!props.label && formItemContext && formItemContext.inputIds && ((_a = formItemContext.inputIds) == null ? void 0 : _a.length) <= 1);
   });
   onMounted(() => {
-    idUnwatch = watch([toRef(props, "id"), disableIdGeneration], ([id2, disableIdGeneration2]) => {
-      const newId = id2 != null ? id2 : !disableIdGeneration2 ? useId().value : void 0;
+    idUnwatch = watch([toRef(props, "id"), disableIdGeneration], ([id, disableIdGeneration2]) => {
+      const newId = id != null ? id : !disableIdGeneration2 ? useId().value : void 0;
       if (newId !== inputId.value) {
         if (formItemContext == null ? void 0 : formItemContext.removeInputId) {
           inputId.value && formItemContext.removeInputId(inputId.value);
@@ -9811,7 +9847,7 @@ var useFormItemInputId = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/locale/lang/en.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/locale/lang/en.mjs
 var English = {
   name: "en",
   el: {
@@ -9969,7 +10005,7 @@ var English = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-locale/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-locale/index.mjs
 var buildTranslator = (locale) => (path, option) => translate(path, option, unref(locale));
 var translate = (path, option, locale) => get_default(locale, path, path).replace(/\{(\w+)\}/g, (_2, key) => {
   var _a;
@@ -9989,7 +10025,7 @@ var useLocale = () => {
   return buildLocaleContext(computed2(() => locale.value || English));
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-lockscreen/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-lockscreen/index.mjs
 var useLockscreen = (trigger) => {
   if (!isRef(trigger)) {
     throwError("[useLockscreen]", "You need to pass a ref param to this function");
@@ -10004,8 +10040,8 @@ var useLockscreen = (trigger) => {
   let bodyWidth = "0";
   const cleanup = () => {
     setTimeout(() => {
-      removeClass(document.body, hiddenCls.value);
-      if (withoutHiddenClass) {
+      removeClass(document == null ? void 0 : document.body, hiddenCls.value);
+      if (withoutHiddenClass && document) {
         document.body.style.width = bodyWidth;
       }
     }, 200);
@@ -10030,7 +10066,7 @@ var useLockscreen = (trigger) => {
   onScopeDispose(() => cleanup());
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-modal/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-modal/index.mjs
 var modalStack = [];
 var closeModal = (e) => {
   if (modalStack.length === 0)
@@ -10053,7 +10089,7 @@ var useModal = (instance, visibleRef) => {
 if (isClient)
   useEventListener(document, "keydown", closeModal);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-model-toggle/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-model-toggle/index.mjs
 var _prop = buildProp({
   type: definePropType(Boolean),
   default: null
@@ -10178,7 +10214,7 @@ var createModelToggleComposable = (name) => {
 };
 var { useModelToggle, useModelToggleProps, useModelToggleEmits } = createModelToggleComposable("modelValue");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-prevent-global/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-prevent-global/index.mjs
 var usePreventGlobal = (indicator, evt, cb) => {
   const prevent = (e) => {
     if (cb(e))
@@ -10193,2968 +10229,6 @@ var usePreventGlobal = (indicator, evt, cb) => {
     }
   }, { immediate: true });
 };
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-restore-active/index.mjs
-var useRestoreActive = (toggle, initialFocus) => {
-  let previousActive;
-  watch(() => toggle.value, (val) => {
-    var _a, _b;
-    if (val) {
-      previousActive = document.activeElement;
-      if (isRef(initialFocus)) {
-        (_b = (_a = initialFocus.value).focus) == null ? void 0 : _b.call(_a);
-      }
-    } else {
-      if (false) {
-        previousActive.focus.call(previousActive);
-      } else {
-        previousActive.focus();
-      }
-    }
-  });
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-same-target/index.mjs
-var useSameTarget = (handleClick) => {
-  if (!handleClick) {
-    return { onClick: NOOP, onMousedown: NOOP, onMouseup: NOOP };
-  }
-  let mousedownTarget = false;
-  let mouseupTarget = false;
-  const onClick = (e) => {
-    if (mousedownTarget && mouseupTarget) {
-      handleClick(e);
-    }
-    mousedownTarget = mouseupTarget = false;
-  };
-  const onMousedown = (e) => {
-    mousedownTarget = e.target === e.currentTarget;
-  };
-  const onMouseup = (e) => {
-    mouseupTarget = e.target === e.currentTarget;
-  };
-  return { onClick, onMousedown, onMouseup };
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-teleport/index.mjs
-var useTeleport = (contentRenderer, appendToBody) => {
-  const isTeleportVisible = ref(false);
-  if (!isClient) {
-    return {
-      isTeleportVisible,
-      showTeleport: NOOP,
-      hideTeleport: NOOP,
-      renderTeleport: NOOP
-    };
-  }
-  let $el = null;
-  const showTeleport = () => {
-    isTeleportVisible.value = true;
-    if ($el !== null)
-      return;
-    $el = createGlobalNode();
-  };
-  const hideTeleport = () => {
-    isTeleportVisible.value = false;
-    if ($el !== null) {
-      removeGlobalNode($el);
-      $el = null;
-    }
-  };
-  const renderTeleport = () => {
-    return appendToBody.value !== true ? contentRenderer() : isTeleportVisible.value ? [h(Teleport, { to: $el }, contentRenderer())] : void 0;
-  };
-  onUnmounted(hideTeleport);
-  return {
-    isTeleportVisible,
-    showTeleport,
-    hideTeleport,
-    renderTeleport
-  };
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-throttle-render/index.mjs
-var useThrottleRender = (loading, throttle2 = 0) => {
-  if (throttle2 === 0)
-    return loading;
-  const throttled = ref(false);
-  let timeoutHandle = 0;
-  const dispatchThrottling = () => {
-    if (timeoutHandle) {
-      clearTimeout(timeoutHandle);
-    }
-    timeoutHandle = window.setTimeout(() => {
-      throttled.value = loading.value;
-    }, throttle2);
-  };
-  onMounted(dispatchThrottling);
-  watch(() => loading.value, (val) => {
-    if (val) {
-      dispatchThrottling();
-    } else {
-      throttled.value = val;
-    }
-  });
-  return throttled;
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-timeout/index.mjs
-function useTimeout() {
-  let timeoutHandle;
-  const registerTimeout = (fn2, delay2) => {
-    cancelTimeout();
-    timeoutHandle = window.setTimeout(fn2, delay2);
-  };
-  const cancelTimeout = () => window.clearTimeout(timeoutHandle);
-  tryOnScopeDispose(() => cancelTimeout());
-  return {
-    registerTimeout,
-    cancelTimeout
-  };
-}
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-transition-fallthrough/index.mjs
-var AFTER_APPEAR = "after-appear";
-var AFTER_ENTER = "after-enter";
-var AFTER_LEAVE = "after-leave";
-var APPEAR = "appear";
-var APPEAR_CANCELLED = "appear-cancelled";
-var BEFORE_ENTER = "before-enter";
-var BEFORE_LEAVE = "before-leave";
-var ENTER = "enter";
-var ENTER_CANCELLED = "enter-cancelled";
-var LEAVE = "leave";
-var LEAVE_CANCELLED = "leave-cancelled";
-var useTransitionFallthroughEmits = [
-  AFTER_APPEAR,
-  AFTER_ENTER,
-  AFTER_LEAVE,
-  APPEAR,
-  APPEAR_CANCELLED,
-  BEFORE_ENTER,
-  BEFORE_LEAVE,
-  ENTER,
-  ENTER_CANCELLED,
-  LEAVE,
-  LEAVE_CANCELLED
-];
-var useTransitionFallthrough = () => {
-  const { emit } = getCurrentInstance();
-  return {
-    onAfterAppear: () => {
-      emit(AFTER_APPEAR);
-    },
-    onAfterEnter: () => {
-      emit(AFTER_ENTER);
-    },
-    onAfterLeave: () => {
-      emit(AFTER_LEAVE);
-    },
-    onAppearCancelled: () => {
-      emit(APPEAR_CANCELLED);
-    },
-    onBeforeEnter: () => {
-      emit(BEFORE_ENTER);
-    },
-    onBeforeLeave: () => {
-      emit(BEFORE_LEAVE);
-    },
-    onEnter: () => {
-      emit(ENTER);
-    },
-    onEnterCancelled: () => {
-      emit(ENTER_CANCELLED);
-    },
-    onLeave: () => {
-      emit(LEAVE);
-    },
-    onLeaveCancelled: () => {
-      emit(LEAVE_CANCELLED);
-    }
-  };
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-escape-keydown/index.mjs
-var registeredEscapeHandlers = [];
-var cachedHandler = (e) => {
-  const event = e;
-  if (event.key === EVENT_CODE.esc) {
-    registeredEscapeHandlers.forEach((registeredHandler) => registeredHandler(event));
-  }
-};
-var useEscapeKeydown = (handler) => {
-  onMounted(() => {
-    if (registeredEscapeHandlers.length === 0) {
-      document.addEventListener("keydown", cachedHandler);
-    }
-    if (isClient)
-      registeredEscapeHandlers.push(handler);
-  });
-  onBeforeUnmount(() => {
-    registeredEscapeHandlers = registeredEscapeHandlers.filter((registeredHandler) => registeredHandler !== handler);
-    if (registeredEscapeHandlers.length === 0) {
-      if (isClient)
-        document.removeEventListener("keydown", cachedHandler);
-    }
-  });
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-popper-container/index.mjs
-var cachedContainer;
-var usePopperContainerId = () => {
-  const namespace = useGlobalConfig("namespace", defaultNamespace);
-  const idInjection = useIdInjection();
-  const id2 = computed2(() => {
-    return `${namespace.value}-popper-container-${idInjection.prefix}`;
-  });
-  const selector = computed2(() => `#${id2.value}`);
-  return {
-    id: id2,
-    selector
-  };
-};
-var createContainer = (id2) => {
-  const container = document.createElement("div");
-  container.id = id2;
-  document.body.appendChild(container);
-  return container;
-};
-var usePopperContainer = () => {
-  onBeforeMount(() => {
-    if (!isClient)
-      return;
-    const { id: id2, selector } = usePopperContainerId();
-    if (!cachedContainer && !document.body.querySelector(selector.value)) {
-      cachedContainer = createContainer(id2.value);
-    }
-  });
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-intermediate-render/index.mjs
-var useDelayedRender = ({
-  indicator,
-  intermediateIndicator,
-  shouldSetIntermediate = () => true,
-  beforeShow,
-  afterShow,
-  afterHide,
-  beforeHide
-}) => {
-  watch(() => unref(indicator), (val) => {
-    if (val) {
-      beforeShow == null ? void 0 : beforeShow();
-      nextTick(() => {
-        if (!unref(indicator))
-          return;
-        if (shouldSetIntermediate("show")) {
-          intermediateIndicator.value = true;
-        }
-      });
-    } else {
-      beforeHide == null ? void 0 : beforeHide();
-      nextTick(() => {
-        if (unref(indicator))
-          return;
-        if (shouldSetIntermediate("hide")) {
-          intermediateIndicator.value = false;
-        }
-      });
-    }
-  });
-  watch(() => intermediateIndicator.value, (val) => {
-    if (val) {
-      afterShow == null ? void 0 : afterShow();
-    } else {
-      afterHide == null ? void 0 : afterHide();
-    }
-  });
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs
-var useDelayedToggleProps = buildProps({
-  showAfter: {
-    type: Number,
-    default: 0
-  },
-  hideAfter: {
-    type: Number,
-    default: 200
-  }
-});
-var useDelayedToggle = ({
-  showAfter,
-  hideAfter,
-  open,
-  close: close2
-}) => {
-  const { registerTimeout } = useTimeout();
-  const onOpen = (event) => {
-    registerTimeout(() => {
-      open(event);
-    }, unref(showAfter));
-  };
-  const onClose = (event) => {
-    registerTimeout(() => {
-      close2(event);
-    }, unref(hideAfter));
-  };
-  return {
-    onOpen,
-    onClose
-  };
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-forward-ref/index.mjs
-var FORWARD_REF_INJECTION_KEY = Symbol("elForwardRef");
-var useForwardRef = (forwardRef) => {
-  const setForwardRef = (el) => {
-    forwardRef.value = el;
-  };
-  provide(FORWARD_REF_INJECTION_KEY, {
-    setForwardRef
-  });
-};
-var useForwardRefDirective = (setForwardRef) => {
-  return {
-    mounted(el) {
-      setForwardRef(el);
-    },
-    updated(el) {
-      setForwardRef(el);
-    },
-    unmounted() {
-      setForwardRef(null);
-    }
-  };
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-z-index/index.mjs
-var zIndex = ref(0);
-var useZIndex = () => {
-  const initialZIndex = useGlobalConfig("zIndex", 2e3);
-  const currentZIndex = computed2(() => initialZIndex.value + zIndex.value);
-  const nextZIndex = () => {
-    zIndex.value++;
-    return currentZIndex.value;
-  };
-  return {
-    initialZIndex,
-    currentZIndex,
-    nextZIndex
-  };
-};
-
-// ../node_modules/.pnpm/@floating-ui+core@1.0.4/node_modules/@floating-ui/core/dist/floating-ui.core.esm.js
-function getSide(placement) {
-  return placement.split("-")[0];
-}
-function getAlignment(placement) {
-  return placement.split("-")[1];
-}
-function getMainAxisFromPlacement(placement) {
-  return ["top", "bottom"].includes(getSide(placement)) ? "x" : "y";
-}
-function getLengthFromAxis(axis) {
-  return axis === "y" ? "height" : "width";
-}
-function computeCoordsFromPlacement(_ref, placement, rtl) {
-  let {
-    reference,
-    floating
-  } = _ref;
-  const commonX = reference.x + reference.width / 2 - floating.width / 2;
-  const commonY = reference.y + reference.height / 2 - floating.height / 2;
-  const mainAxis = getMainAxisFromPlacement(placement);
-  const length = getLengthFromAxis(mainAxis);
-  const commonAlign = reference[length] / 2 - floating[length] / 2;
-  const side = getSide(placement);
-  const isVertical = mainAxis === "x";
-  let coords;
-  switch (side) {
-    case "top":
-      coords = {
-        x: commonX,
-        y: reference.y - floating.height
-      };
-      break;
-    case "bottom":
-      coords = {
-        x: commonX,
-        y: reference.y + reference.height
-      };
-      break;
-    case "right":
-      coords = {
-        x: reference.x + reference.width,
-        y: commonY
-      };
-      break;
-    case "left":
-      coords = {
-        x: reference.x - floating.width,
-        y: commonY
-      };
-      break;
-    default:
-      coords = {
-        x: reference.x,
-        y: reference.y
-      };
-  }
-  switch (getAlignment(placement)) {
-    case "start":
-      coords[mainAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
-      break;
-    case "end":
-      coords[mainAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
-      break;
-  }
-  return coords;
-}
-var computePosition = async (reference, floating, config) => {
-  const {
-    placement = "bottom",
-    strategy = "absolute",
-    middleware = [],
-    platform: platform2
-  } = config;
-  const validMiddleware = middleware.filter(Boolean);
-  const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(floating));
-  if (true) {
-    if (platform2 == null) {
-      console.error(["Floating UI: `platform` property was not passed to config. If you", "want to use Floating UI on the web, install @floating-ui/dom", "instead of the /core package. Otherwise, you can create your own", "`platform`: https://floating-ui.com/docs/platform"].join(" "));
-    }
-    if (validMiddleware.filter((_ref) => {
-      let {
-        name
-      } = _ref;
-      return name === "autoPlacement" || name === "flip";
-    }).length > 1) {
-      throw new Error(["Floating UI: duplicate `flip` and/or `autoPlacement` middleware", "detected. This will lead to an infinite loop. Ensure only one of", "either has been passed to the `middleware` array."].join(" "));
-    }
-    if (!reference || !floating) {
-      console.error(["Floating UI: The reference and/or floating element was not defined", "when `computePosition()` was called. Ensure that both elements have", "been created and can be measured."].join(" "));
-    }
-  }
-  let rects = await platform2.getElementRects({
-    reference,
-    floating,
-    strategy
-  });
-  let {
-    x: x2,
-    y
-  } = computeCoordsFromPlacement(rects, placement, rtl);
-  let statefulPlacement = placement;
-  let middlewareData = {};
-  let resetCount = 0;
-  for (let i = 0; i < validMiddleware.length; i++) {
-    const {
-      name,
-      fn: fn2
-    } = validMiddleware[i];
-    const {
-      x: nextX,
-      y: nextY,
-      data,
-      reset
-    } = await fn2({
-      x: x2,
-      y,
-      initialPlacement: placement,
-      placement: statefulPlacement,
-      strategy,
-      middlewareData,
-      rects,
-      platform: platform2,
-      elements: {
-        reference,
-        floating
-      }
-    });
-    x2 = nextX != null ? nextX : x2;
-    y = nextY != null ? nextY : y;
-    middlewareData = {
-      ...middlewareData,
-      [name]: {
-        ...middlewareData[name],
-        ...data
-      }
-    };
-    if (true) {
-      if (resetCount > 50) {
-        console.warn(["Floating UI: The middleware lifecycle appears to be running in an", "infinite loop. This is usually caused by a `reset` continually", "being returned without a break condition."].join(" "));
-      }
-    }
-    if (reset && resetCount <= 50) {
-      resetCount++;
-      if (typeof reset === "object") {
-        if (reset.placement) {
-          statefulPlacement = reset.placement;
-        }
-        if (reset.rects) {
-          rects = reset.rects === true ? await platform2.getElementRects({
-            reference,
-            floating,
-            strategy
-          }) : reset.rects;
-        }
-        ({
-          x: x2,
-          y
-        } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
-      }
-      i = -1;
-      continue;
-    }
-  }
-  return {
-    x: x2,
-    y,
-    placement: statefulPlacement,
-    strategy,
-    middlewareData
-  };
-};
-function expandPaddingObject(padding) {
-  return {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    ...padding
-  };
-}
-function getSideObjectFromPadding(padding) {
-  return typeof padding !== "number" ? expandPaddingObject(padding) : {
-    top: padding,
-    right: padding,
-    bottom: padding,
-    left: padding
-  };
-}
-function rectToClientRect(rect) {
-  return {
-    ...rect,
-    top: rect.y,
-    left: rect.x,
-    right: rect.x + rect.width,
-    bottom: rect.y + rect.height
-  };
-}
-var min2 = Math.min;
-var max2 = Math.max;
-function within(min$1, value, max$1) {
-  return max2(min$1, min2(value, max$1));
-}
-var arrow = (options) => ({
-  name: "arrow",
-  options,
-  async fn(middlewareArguments) {
-    const {
-      element,
-      padding = 0
-    } = options != null ? options : {};
-    const {
-      x: x2,
-      y,
-      placement,
-      rects,
-      platform: platform2
-    } = middlewareArguments;
-    if (element == null) {
-      if (true) {
-        console.warn("Floating UI: No `element` was passed to the `arrow` middleware.");
-      }
-      return {};
-    }
-    const paddingObject = getSideObjectFromPadding(padding);
-    const coords = {
-      x: x2,
-      y
-    };
-    const axis = getMainAxisFromPlacement(placement);
-    const alignment = getAlignment(placement);
-    const length = getLengthFromAxis(axis);
-    const arrowDimensions = await platform2.getDimensions(element);
-    const minProp = axis === "y" ? "top" : "left";
-    const maxProp = axis === "y" ? "bottom" : "right";
-    const endDiff = rects.reference[length] + rects.reference[axis] - coords[axis] - rects.floating[length];
-    const startDiff = coords[axis] - rects.reference[axis];
-    const arrowOffsetParent = await (platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(element));
-    let clientSize = arrowOffsetParent ? axis === "y" ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
-    if (clientSize === 0) {
-      clientSize = rects.floating[length];
-    }
-    const centerToReference = endDiff / 2 - startDiff / 2;
-    const min5 = paddingObject[minProp];
-    const max5 = clientSize - arrowDimensions[length] - paddingObject[maxProp];
-    const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
-    const offset2 = within(min5, center, max5);
-    const alignmentPadding = alignment === "start" ? paddingObject[minProp] : paddingObject[maxProp];
-    const shouldAddOffset = alignmentPadding > 0 && center !== offset2 && rects.reference[length] <= rects.floating[length];
-    const alignmentOffset = shouldAddOffset ? center < min5 ? min5 - center : max5 - center : 0;
-    return {
-      [axis]: coords[axis] - alignmentOffset,
-      data: {
-        [axis]: offset2,
-        centerOffset: center - offset2
-      }
-    };
-  }
-});
-var sides = ["top", "right", "bottom", "left"];
-var allPlacements = sides.reduce((acc, side) => acc.concat(side, side + "-start", side + "-end"), []);
-async function convertValueToCoords(middlewareArguments, value) {
-  const {
-    placement,
-    platform: platform2,
-    elements
-  } = middlewareArguments;
-  const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating));
-  const side = getSide(placement);
-  const alignment = getAlignment(placement);
-  const isVertical = getMainAxisFromPlacement(placement) === "x";
-  const mainAxisMulti = ["left", "top"].includes(side) ? -1 : 1;
-  const crossAxisMulti = rtl && isVertical ? -1 : 1;
-  const rawValue = typeof value === "function" ? value(middlewareArguments) : value;
-  let {
-    mainAxis,
-    crossAxis,
-    alignmentAxis
-  } = typeof rawValue === "number" ? {
-    mainAxis: rawValue,
-    crossAxis: 0,
-    alignmentAxis: null
-  } : {
-    mainAxis: 0,
-    crossAxis: 0,
-    alignmentAxis: null,
-    ...rawValue
-  };
-  if (alignment && typeof alignmentAxis === "number") {
-    crossAxis = alignment === "end" ? alignmentAxis * -1 : alignmentAxis;
-  }
-  return isVertical ? {
-    x: crossAxis * crossAxisMulti,
-    y: mainAxis * mainAxisMulti
-  } : {
-    x: mainAxis * mainAxisMulti,
-    y: crossAxis * crossAxisMulti
-  };
-}
-var offset = function(value) {
-  if (value === void 0) {
-    value = 0;
-  }
-  return {
-    name: "offset",
-    options: value,
-    async fn(middlewareArguments) {
-      const {
-        x: x2,
-        y
-      } = middlewareArguments;
-      const diffCoords = await convertValueToCoords(middlewareArguments, value);
-      return {
-        x: x2 + diffCoords.x,
-        y: y + diffCoords.y,
-        data: diffCoords
-      };
-    }
-  };
-};
-
-// ../node_modules/.pnpm/@floating-ui+dom@1.0.10/node_modules/@floating-ui/dom/dist/floating-ui.dom.esm.js
-function getWindow(node) {
-  var _node$ownerDocument;
-  return ((_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
-}
-function getComputedStyle2(element) {
-  return getWindow(element).getComputedStyle(element);
-}
-function getNodeName(node) {
-  return isNode(node) ? (node.nodeName || "").toLowerCase() : "";
-}
-var uaString;
-function getUAString() {
-  if (uaString) {
-    return uaString;
-  }
-  const uaData = navigator.userAgentData;
-  if (uaData && Array.isArray(uaData.brands)) {
-    uaString = uaData.brands.map((item) => item.brand + "/" + item.version).join(" ");
-    return uaString;
-  }
-  return navigator.userAgent;
-}
-function isHTMLElement(value) {
-  return value instanceof getWindow(value).HTMLElement;
-}
-function isElement3(value) {
-  return value instanceof getWindow(value).Element;
-}
-function isNode(value) {
-  return value instanceof getWindow(value).Node;
-}
-function isShadowRoot(node) {
-  if (typeof ShadowRoot === "undefined") {
-    return false;
-  }
-  const OwnElement = getWindow(node).ShadowRoot;
-  return node instanceof OwnElement || node instanceof ShadowRoot;
-}
-function isOverflowElement(element) {
-  const {
-    overflow,
-    overflowX,
-    overflowY,
-    display
-  } = getComputedStyle2(element);
-  return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX) && !["inline", "contents"].includes(display);
-}
-function isTableElement(element) {
-  return ["table", "td", "th"].includes(getNodeName(element));
-}
-function isContainingBlock(element) {
-  const isFirefox2 = /firefox/i.test(getUAString());
-  const css = getComputedStyle2(element);
-  const backdropFilter = css.backdropFilter || css.WebkitBackdropFilter;
-  return css.transform !== "none" || css.perspective !== "none" || (backdropFilter ? backdropFilter !== "none" : false) || isFirefox2 && css.willChange === "filter" || isFirefox2 && (css.filter ? css.filter !== "none" : false) || ["transform", "perspective"].some((value) => css.willChange.includes(value)) || ["paint", "layout", "strict", "content"].some(
-    (value) => {
-      const contain = css.contain;
-      return contain != null ? contain.includes(value) : false;
-    }
-  );
-}
-function isLayoutViewport() {
-  return !/^((?!chrome|android).)*safari/i.test(getUAString());
-}
-function isLastTraversableNode(node) {
-  return ["html", "body", "#document"].includes(getNodeName(node));
-}
-var FALLBACK_SCALE = {
-  x: 1,
-  y: 1
-};
-function getScale(element) {
-  const domElement = !isElement3(element) && element.contextElement ? element.contextElement : isElement3(element) ? element : null;
-  if (!domElement) {
-    return FALLBACK_SCALE;
-  }
-  const rect = domElement.getBoundingClientRect();
-  const css = getComputedStyle2(domElement);
-  let x2 = rect.width / parseFloat(css.width);
-  let y = rect.height / parseFloat(css.height);
-  if (!x2 || !Number.isFinite(x2)) {
-    x2 = 1;
-  }
-  if (!y || !Number.isFinite(y)) {
-    y = 1;
-  }
-  return {
-    x: x2,
-    y
-  };
-}
-function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetParent) {
-  var _win$visualViewport$o, _win$visualViewport, _win$visualViewport$o2, _win$visualViewport2;
-  if (includeScale === void 0) {
-    includeScale = false;
-  }
-  if (isFixedStrategy === void 0) {
-    isFixedStrategy = false;
-  }
-  const clientRect = element.getBoundingClientRect();
-  let scale = FALLBACK_SCALE;
-  if (includeScale) {
-    if (offsetParent) {
-      if (isElement3(offsetParent)) {
-        scale = getScale(offsetParent);
-      }
-    } else {
-      scale = getScale(element);
-    }
-  }
-  const win = isElement3(element) ? getWindow(element) : window;
-  const addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
-  const x2 = (clientRect.left + (addVisualOffsets ? (_win$visualViewport$o = (_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) != null ? _win$visualViewport$o : 0 : 0)) / scale.x;
-  const y = (clientRect.top + (addVisualOffsets ? (_win$visualViewport$o2 = (_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) != null ? _win$visualViewport$o2 : 0 : 0)) / scale.y;
-  const width = clientRect.width / scale.x;
-  const height = clientRect.height / scale.y;
-  return {
-    width,
-    height,
-    top: y,
-    right: x2 + width,
-    bottom: y + height,
-    left: x2,
-    x: x2,
-    y
-  };
-}
-function getDocumentElement(node) {
-  return ((isNode(node) ? node.ownerDocument : node.document) || window.document).documentElement;
-}
-function getNodeScroll(element) {
-  if (isElement3(element)) {
-    return {
-      scrollLeft: element.scrollLeft,
-      scrollTop: element.scrollTop
-    };
-  }
-  return {
-    scrollLeft: element.pageXOffset,
-    scrollTop: element.pageYOffset
-  };
-}
-function getWindowScrollBarX(element) {
-  return getBoundingClientRect(getDocumentElement(element)).left + getNodeScroll(element).scrollLeft;
-}
-function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
-  const isOffsetParentAnElement = isHTMLElement(offsetParent);
-  const documentElement = getDocumentElement(offsetParent);
-  const rect = getBoundingClientRect(element, true, strategy === "fixed", offsetParent);
-  let scroll = {
-    scrollLeft: 0,
-    scrollTop: 0
-  };
-  const offsets = {
-    x: 0,
-    y: 0
-  };
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
-    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
-      scroll = getNodeScroll(offsetParent);
-    }
-    if (isHTMLElement(offsetParent)) {
-      const offsetRect = getBoundingClientRect(offsetParent, true);
-      offsets.x = offsetRect.x + offsetParent.clientLeft;
-      offsets.y = offsetRect.y + offsetParent.clientTop;
-    } else if (documentElement) {
-      offsets.x = getWindowScrollBarX(documentElement);
-    }
-  }
-  return {
-    x: rect.left + scroll.scrollLeft - offsets.x,
-    y: rect.top + scroll.scrollTop - offsets.y,
-    width: rect.width,
-    height: rect.height
-  };
-}
-function getParentNode(node) {
-  if (getNodeName(node) === "html") {
-    return node;
-  }
-  const result2 = node.assignedSlot || node.parentNode || (isShadowRoot(node) ? node.host : null) || getDocumentElement(node);
-  return isShadowRoot(result2) ? result2.host : result2;
-}
-function getTrueOffsetParent(element) {
-  if (!isHTMLElement(element) || getComputedStyle2(element).position === "fixed") {
-    return null;
-  }
-  return element.offsetParent;
-}
-function getContainingBlock(element) {
-  let currentNode = getParentNode(element);
-  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
-    if (isContainingBlock(currentNode)) {
-      return currentNode;
-    } else {
-      currentNode = getParentNode(currentNode);
-    }
-  }
-  return null;
-}
-function getOffsetParent(element) {
-  const window2 = getWindow(element);
-  let offsetParent = getTrueOffsetParent(element);
-  while (offsetParent && isTableElement(offsetParent) && getComputedStyle2(offsetParent).position === "static") {
-    offsetParent = getTrueOffsetParent(offsetParent);
-  }
-  if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle2(offsetParent).position === "static" && !isContainingBlock(offsetParent))) {
-    return window2;
-  }
-  return offsetParent || getContainingBlock(element) || window2;
-}
-function getDimensions(element) {
-  if (isHTMLElement(element)) {
-    return {
-      width: element.offsetWidth,
-      height: element.offsetHeight
-    };
-  }
-  const rect = getBoundingClientRect(element);
-  return {
-    width: rect.width,
-    height: rect.height
-  };
-}
-function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
-  let {
-    rect,
-    offsetParent,
-    strategy
-  } = _ref;
-  const isOffsetParentAnElement = isHTMLElement(offsetParent);
-  const documentElement = getDocumentElement(offsetParent);
-  if (offsetParent === documentElement) {
-    return rect;
-  }
-  let scroll = {
-    scrollLeft: 0,
-    scrollTop: 0
-  };
-  let scale = {
-    x: 1,
-    y: 1
-  };
-  const offsets = {
-    x: 0,
-    y: 0
-  };
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
-    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
-      scroll = getNodeScroll(offsetParent);
-    }
-    if (isHTMLElement(offsetParent)) {
-      const offsetRect = getBoundingClientRect(offsetParent);
-      scale = getScale(offsetParent);
-      offsets.x = offsetRect.x + offsetParent.clientLeft;
-      offsets.y = offsetRect.y + offsetParent.clientTop;
-    }
-  }
-  return {
-    width: rect.width * scale.x,
-    height: rect.height * scale.y,
-    x: rect.x * scale.x - scroll.scrollLeft * scale.x + offsets.x,
-    y: rect.y * scale.y - scroll.scrollTop * scale.y + offsets.y
-  };
-}
-function getViewportRect(element, strategy) {
-  const win = getWindow(element);
-  const html = getDocumentElement(element);
-  const visualViewport = win.visualViewport;
-  let width = html.clientWidth;
-  let height = html.clientHeight;
-  let x2 = 0;
-  let y = 0;
-  if (visualViewport) {
-    width = visualViewport.width;
-    height = visualViewport.height;
-    const layoutViewport = isLayoutViewport();
-    if (layoutViewport || !layoutViewport && strategy === "fixed") {
-      x2 = visualViewport.offsetLeft;
-      y = visualViewport.offsetTop;
-    }
-  }
-  return {
-    width,
-    height,
-    x: x2,
-    y
-  };
-}
-var min3 = Math.min;
-var max3 = Math.max;
-function getDocumentRect(element) {
-  var _element$ownerDocumen;
-  const html = getDocumentElement(element);
-  const scroll = getNodeScroll(element);
-  const body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
-  const width = max3(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-  const height = max3(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
-  let x2 = -scroll.scrollLeft + getWindowScrollBarX(element);
-  const y = -scroll.scrollTop;
-  if (getComputedStyle2(body || html).direction === "rtl") {
-    x2 += max3(html.clientWidth, body ? body.clientWidth : 0) - width;
-  }
-  return {
-    width,
-    height,
-    x: x2,
-    y
-  };
-}
-function getNearestOverflowAncestor(node) {
-  const parentNode = getParentNode(node);
-  if (isLastTraversableNode(parentNode)) {
-    return node.ownerDocument.body;
-  }
-  if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
-    return parentNode;
-  }
-  return getNearestOverflowAncestor(parentNode);
-}
-function getOverflowAncestors(node, list) {
-  var _node$ownerDocument;
-  if (list === void 0) {
-    list = [];
-  }
-  const scrollableAncestor = getNearestOverflowAncestor(node);
-  const isBody = scrollableAncestor === ((_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.body);
-  const win = getWindow(scrollableAncestor);
-  if (isBody) {
-    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : []);
-  }
-  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor));
-}
-function getInnerBoundingClientRect(element, strategy) {
-  const clientRect = getBoundingClientRect(element, true, strategy === "fixed");
-  const top = clientRect.top + element.clientTop;
-  const left2 = clientRect.left + element.clientLeft;
-  const scale = isHTMLElement(element) ? getScale(element) : {
-    x: 1,
-    y: 1
-  };
-  const width = element.clientWidth * scale.x;
-  const height = element.clientHeight * scale.y;
-  const x2 = left2 * scale.x;
-  const y = top * scale.y;
-  return {
-    top: y,
-    left: x2,
-    right: x2 + width,
-    bottom: y + height,
-    x: x2,
-    y,
-    width,
-    height
-  };
-}
-function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
-  if (clippingAncestor === "viewport") {
-    return rectToClientRect(getViewportRect(element, strategy));
-  }
-  if (isElement3(clippingAncestor)) {
-    return getInnerBoundingClientRect(clippingAncestor, strategy);
-  }
-  return rectToClientRect(getDocumentRect(getDocumentElement(element)));
-}
-function getClippingElementAncestors(element, cache2) {
-  const cachedResult = cache2.get(element);
-  if (cachedResult) {
-    return cachedResult;
-  }
-  let result2 = getOverflowAncestors(element).filter((el) => isElement3(el) && getNodeName(el) !== "body");
-  let currentContainingBlockComputedStyle = null;
-  const elementIsFixed = getComputedStyle2(element).position === "fixed";
-  let currentNode = elementIsFixed ? getParentNode(element) : element;
-  while (isElement3(currentNode) && !isLastTraversableNode(currentNode)) {
-    const computedStyle = getComputedStyle2(currentNode);
-    const containingBlock = isContainingBlock(currentNode);
-    const shouldDropCurrentNode = elementIsFixed ? !containingBlock && !currentContainingBlockComputedStyle : !containingBlock && computedStyle.position === "static" && !!currentContainingBlockComputedStyle && ["absolute", "fixed"].includes(currentContainingBlockComputedStyle.position);
-    if (shouldDropCurrentNode) {
-      result2 = result2.filter((ancestor) => ancestor !== currentNode);
-    } else {
-      currentContainingBlockComputedStyle = computedStyle;
-    }
-    currentNode = getParentNode(currentNode);
-  }
-  cache2.set(element, result2);
-  return result2;
-}
-function getClippingRect(_ref) {
-  let {
-    element,
-    boundary,
-    rootBoundary,
-    strategy
-  } = _ref;
-  const elementClippingAncestors = boundary === "clippingAncestors" ? getClippingElementAncestors(element, this._c) : [].concat(boundary);
-  const clippingAncestors = [...elementClippingAncestors, rootBoundary];
-  const firstClippingAncestor = clippingAncestors[0];
-  const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor) => {
-    const rect = getClientRectFromClippingAncestor(element, clippingAncestor, strategy);
-    accRect.top = max3(rect.top, accRect.top);
-    accRect.right = min3(rect.right, accRect.right);
-    accRect.bottom = min3(rect.bottom, accRect.bottom);
-    accRect.left = max3(rect.left, accRect.left);
-    return accRect;
-  }, getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy));
-  return {
-    width: clippingRect.right - clippingRect.left,
-    height: clippingRect.bottom - clippingRect.top,
-    x: clippingRect.left,
-    y: clippingRect.top
-  };
-}
-var platform = {
-  getClippingRect,
-  convertOffsetParentRelativeRectToViewportRelativeRect,
-  isElement: isElement3,
-  getDimensions,
-  getOffsetParent,
-  getDocumentElement,
-  getScale,
-  async getElementRects(_ref) {
-    let {
-      reference,
-      floating,
-      strategy
-    } = _ref;
-    const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
-    const getDimensionsFn = this.getDimensions;
-    return {
-      reference: getRectRelativeToOffsetParent(reference, await getOffsetParentFn(floating), strategy),
-      floating: {
-        x: 0,
-        y: 0,
-        ...await getDimensionsFn(floating)
-      }
-    };
-  },
-  getClientRects: (element) => Array.from(element.getClientRects()),
-  isRTL: (element) => getComputedStyle2(element).direction === "rtl"
-};
-var computePosition2 = (reference, floating, options) => {
-  const cache2 = /* @__PURE__ */ new Map();
-  const mergedOptions = {
-    platform,
-    ...options
-  };
-  const platformWithCache = {
-    ...mergedOptions.platform,
-    _c: cache2
-  };
-  return computePosition(reference, floating, {
-    ...mergedOptions,
-    platform: platformWithCache
-  });
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-floating/index.mjs
-var useFloatingProps = buildProps({});
-var unrefReference = (elRef) => {
-  if (!isClient)
-    return;
-  if (!elRef)
-    return elRef;
-  const unrefEl = unrefElement(elRef);
-  if (unrefEl)
-    return unrefEl;
-  return isRef(elRef) ? unrefEl : elRef;
-};
-var getPositionDataWithUnit = (record, key) => {
-  const value = record == null ? void 0 : record[key];
-  return isNil_default(value) ? "" : `${value}px`;
-};
-var useFloating = ({
-  middleware,
-  placement,
-  strategy
-}) => {
-  const referenceRef = ref();
-  const contentRef = ref();
-  const x2 = ref();
-  const y = ref();
-  const middlewareData = ref({});
-  const states = {
-    x: x2,
-    y,
-    placement,
-    strategy,
-    middlewareData
-  };
-  const update2 = async () => {
-    if (!isClient)
-      return;
-    const referenceEl = unrefReference(referenceRef);
-    const contentEl = unrefElement(contentRef);
-    if (!referenceEl || !contentEl)
-      return;
-    const data = await computePosition2(referenceEl, contentEl, {
-      placement: unref(placement),
-      strategy: unref(strategy),
-      middleware: unref(middleware)
-    });
-    keysOf(states).forEach((key) => {
-      states[key].value = data[key];
-    });
-  };
-  onMounted(() => {
-    watchEffect(() => {
-      update2();
-    });
-  });
-  return {
-    ...states,
-    update: update2,
-    referenceRef,
-    contentRef
-  };
-};
-var arrowMiddleware = ({
-  arrowRef,
-  padding
-}) => {
-  return {
-    name: "arrow",
-    options: {
-      element: arrowRef,
-      padding
-    },
-    fn(args) {
-      const arrowEl = unref(arrowRef);
-      if (!arrowEl)
-        return {};
-      return arrow({
-        element: arrowEl,
-        padding
-      }).fn(args);
-    }
-  };
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-cursor/index.mjs
-function useCursor(input) {
-  const selectionRef = ref();
-  function recordCursor() {
-    if (input.value == void 0)
-      return;
-    const { selectionStart, selectionEnd, value } = input.value;
-    if (selectionStart == null || selectionEnd == null)
-      return;
-    const beforeTxt = value.slice(0, Math.max(0, selectionStart));
-    const afterTxt = value.slice(Math.max(0, selectionEnd));
-    selectionRef.value = {
-      selectionStart,
-      selectionEnd,
-      value,
-      beforeTxt,
-      afterTxt
-    };
-  }
-  function setCursor() {
-    if (input.value == void 0 || selectionRef.value == void 0)
-      return;
-    const { value } = input.value;
-    const { beforeTxt, afterTxt, selectionStart } = selectionRef.value;
-    if (beforeTxt == void 0 || afterTxt == void 0 || selectionStart == void 0)
-      return;
-    let startPos = value.length;
-    if (value.endsWith(afterTxt)) {
-      startPos = value.length - afterTxt.length;
-    } else if (value.startsWith(beforeTxt)) {
-      startPos = beforeTxt.length;
-    } else {
-      const beforeLastChar = beforeTxt[selectionStart - 1];
-      const newIndex = value.indexOf(beforeLastChar, selectionStart - 1);
-      if (newIndex !== -1) {
-        startPos = newIndex + 1;
-      }
-    }
-    input.value.setSelectionRange(startPos, startPos);
-  }
-  return [recordCursor, setCursor];
-}
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/hooks/use-ordered-children/index.mjs
-var getOrderedChildren = (vm, childComponentName, children) => {
-  const nodes = flattedChildren(vm.subTree).filter((n) => {
-    var _a;
-    return isVNode(n) && ((_a = n.type) == null ? void 0 : _a.name) === childComponentName && !!n.component;
-  });
-  const uids = nodes.map((n) => n.component.uid);
-  return uids.map((uid2) => children[uid2]).filter((p2) => !!p2);
-};
-var useOrderedChildren = (vm, childComponentName) => {
-  const children = {};
-  const orderedChildren = shallowRef([]);
-  const addChild = (child) => {
-    children[child.uid] = child;
-    orderedChildren.value = getOrderedChildren(vm, childComponentName, children);
-  };
-  const removeChild = (uid2) => {
-    delete children[uid2];
-    orderedChildren.value = orderedChildren.value.filter((children2) => children2.uid !== uid2);
-  };
-  return {
-    children: orderedChildren,
-    addChild,
-    removeChild
-  };
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/version.mjs
-var version = "2.2.26";
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/make-installer.mjs
-var makeInstaller = (components = []) => {
-  const install2 = (app, options) => {
-    if (app[INSTALLED_KEY])
-      return;
-    app[INSTALLED_KEY] = true;
-    components.forEach((c2) => app.use(c2));
-    if (options)
-      provideGlobalConfig(options, app, true);
-  };
-  return {
-    version,
-    install: install2
-  };
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/affix/src/affix.mjs
-var affixProps = buildProps({
-  zIndex: {
-    type: definePropType([Number, String]),
-    default: 100
-  },
-  target: {
-    type: String,
-    default: ""
-  },
-  offset: {
-    type: Number,
-    default: 0
-  },
-  position: {
-    type: String,
-    values: ["top", "bottom"],
-    default: "top"
-  }
-});
-var affixEmits = {
-  scroll: ({ scrollTop, fixed }) => isNumber(scrollTop) && isBoolean(fixed),
-  [CHANGE_EVENT]: (fixed) => isBoolean(fixed)
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs
-var _export_sfc = (sfc, props) => {
-  const target2 = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target2[key] = val;
-  }
-  return target2;
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/affix/src/affix2.mjs
-var COMPONENT_NAME = "ElAffix";
-var __default__ = defineComponent({
-  name: COMPONENT_NAME
-});
-var _sfc_main = defineComponent({
-  ...__default__,
-  props: affixProps,
-  emits: affixEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    const ns2 = useNamespace("affix");
-    const target2 = shallowRef();
-    const root2 = shallowRef();
-    const scrollContainer = shallowRef();
-    const { height: windowHeight } = useWindowSize();
-    const {
-      height: rootHeight,
-      width: rootWidth,
-      top: rootTop,
-      bottom: rootBottom,
-      update: updateRoot
-    } = useElementBounding(root2, { windowScroll: false });
-    const targetRect = useElementBounding(target2);
-    const fixed = ref(false);
-    const scrollTop = ref(0);
-    const transform2 = ref(0);
-    const rootStyle = computed2(() => {
-      return {
-        height: fixed.value ? `${rootHeight.value}px` : "",
-        width: fixed.value ? `${rootWidth.value}px` : ""
-      };
-    });
-    const affixStyle = computed2(() => {
-      if (!fixed.value)
-        return {};
-      const offset2 = props.offset ? addUnit(props.offset) : 0;
-      return {
-        height: `${rootHeight.value}px`,
-        width: `${rootWidth.value}px`,
-        top: props.position === "top" ? offset2 : "",
-        bottom: props.position === "bottom" ? offset2 : "",
-        transform: transform2.value ? `translateY(${transform2.value}px)` : "",
-        zIndex: props.zIndex
-      };
-    });
-    const update2 = () => {
-      if (!scrollContainer.value)
-        return;
-      scrollTop.value = scrollContainer.value instanceof Window ? document.documentElement.scrollTop : scrollContainer.value.scrollTop || 0;
-      if (props.position === "top") {
-        if (props.target) {
-          const difference2 = targetRect.bottom.value - props.offset - rootHeight.value;
-          fixed.value = props.offset > rootTop.value && targetRect.bottom.value > 0;
-          transform2.value = difference2 < 0 ? difference2 : 0;
-        } else {
-          fixed.value = props.offset > rootTop.value;
-        }
-      } else if (props.target) {
-        const difference2 = windowHeight.value - targetRect.top.value - props.offset - rootHeight.value;
-        fixed.value = windowHeight.value - props.offset < rootBottom.value && windowHeight.value > targetRect.top.value;
-        transform2.value = difference2 < 0 ? -difference2 : 0;
-      } else {
-        fixed.value = windowHeight.value - props.offset < rootBottom.value;
-      }
-    };
-    const handleScroll2 = () => {
-      updateRoot();
-      emit("scroll", {
-        scrollTop: scrollTop.value,
-        fixed: fixed.value
-      });
-    };
-    watch(fixed, (val) => emit("change", val));
-    onMounted(() => {
-      var _a;
-      if (props.target) {
-        target2.value = (_a = document.querySelector(props.target)) != null ? _a : void 0;
-        if (!target2.value)
-          throwError(COMPONENT_NAME, `Target is not existed: ${props.target}`);
-      } else {
-        target2.value = document.documentElement;
-      }
-      scrollContainer.value = getScrollContainer(root2.value, true);
-      updateRoot();
-    });
-    useEventListener(scrollContainer, "scroll", handleScroll2);
-    watchEffect(update2);
-    expose({
-      update: update2,
-      updateRoot
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        ref_key: "root",
-        ref: root2,
-        class: normalizeClass(unref(ns2).b()),
-        style: normalizeStyle(unref(rootStyle))
-      }, [
-        createBaseVNode("div", {
-          class: normalizeClass({ [unref(ns2).m("fixed")]: fixed.value }),
-          style: normalizeStyle(unref(affixStyle))
-        }, [
-          renderSlot(_ctx.$slots, "default")
-        ], 6)
-      ], 6);
-    };
-  }
-});
-var Affix = _export_sfc(_sfc_main, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/affix/src/affix.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/affix/index.mjs
-var ElAffix = withInstall(Affix);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/icon/src/icon.mjs
-var iconProps = buildProps({
-  size: {
-    type: definePropType([Number, String])
-  },
-  color: {
-    type: String
-  }
-});
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/icon/src/icon2.mjs
-var __default__2 = defineComponent({
-  name: "ElIcon",
-  inheritAttrs: false
-});
-var _sfc_main2 = defineComponent({
-  ...__default__2,
-  props: iconProps,
-  setup(__props) {
-    const props = __props;
-    const ns2 = useNamespace("icon");
-    const style = computed2(() => {
-      const { size: size3, color } = props;
-      if (!size3 && !color)
-        return {};
-      return {
-        fontSize: isUndefined2(size3) ? void 0 : addUnit(size3),
-        "--color": color
-      };
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("i", mergeProps({
-        class: unref(ns2).b(),
-        style: unref(style)
-      }, _ctx.$attrs), [
-        renderSlot(_ctx.$slots, "default")
-      ], 16);
-    };
-  }
-});
-var Icon = _export_sfc(_sfc_main2, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/icon/src/icon.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/icon/index.mjs
-var ElIcon = withInstall(Icon);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/alert/src/alert.mjs
-var alertEffects = ["light", "dark"];
-var alertProps = buildProps({
-  title: {
-    type: String,
-    default: ""
-  },
-  description: {
-    type: String,
-    default: ""
-  },
-  type: {
-    type: String,
-    values: keysOf(TypeComponentsMap),
-    default: "info"
-  },
-  closable: {
-    type: Boolean,
-    default: true
-  },
-  closeText: {
-    type: String,
-    default: ""
-  },
-  showIcon: Boolean,
-  center: Boolean,
-  effect: {
-    type: String,
-    values: alertEffects,
-    default: "light"
-  }
-});
-var alertEmits = {
-  close: (evt) => evt instanceof MouseEvent
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/alert/src/alert2.mjs
-var __default__3 = defineComponent({
-  name: "ElAlert"
-});
-var _sfc_main3 = defineComponent({
-  ...__default__3,
-  props: alertProps,
-  emits: alertEmits,
-  setup(__props, { emit }) {
-    const props = __props;
-    const { Close } = TypeComponents;
-    const slots = useSlots();
-    const ns2 = useNamespace("alert");
-    const visible = ref(true);
-    const iconComponent = computed2(() => TypeComponentsMap[props.type]);
-    const iconClass = computed2(() => [
-      ns2.e("icon"),
-      { [ns2.is("big")]: !!props.description || !!slots.default }
-    ]);
-    const isBoldTitle = computed2(() => {
-      return { [ns2.is("bold")]: props.description || slots.default };
-    });
-    const close2 = (evt) => {
-      visible.value = false;
-      emit("close", evt);
-    };
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(Transition, {
-        name: unref(ns2).b("fade"),
-        persisted: ""
-      }, {
-        default: withCtx(() => [
-          withDirectives(createBaseVNode("div", {
-            class: normalizeClass([unref(ns2).b(), unref(ns2).m(_ctx.type), unref(ns2).is("center", _ctx.center), unref(ns2).is(_ctx.effect)]),
-            role: "alert"
-          }, [
-            _ctx.showIcon && unref(iconComponent) ? (openBlock(), createBlock(unref(ElIcon), {
-              key: 0,
-              class: normalizeClass(unref(iconClass))
-            }, {
-              default: withCtx(() => [
-                (openBlock(), createBlock(resolveDynamicComponent(unref(iconComponent))))
-              ]),
-              _: 1
-            }, 8, ["class"])) : createCommentVNode("v-if", true),
-            createBaseVNode("div", {
-              class: normalizeClass(unref(ns2).e("content"))
-            }, [
-              _ctx.title || _ctx.$slots.title ? (openBlock(), createElementBlock("span", {
-                key: 0,
-                class: normalizeClass([unref(ns2).e("title"), unref(isBoldTitle)])
-              }, [
-                renderSlot(_ctx.$slots, "title", {}, () => [
-                  createTextVNode(toDisplayString(_ctx.title), 1)
-                ])
-              ], 2)) : createCommentVNode("v-if", true),
-              _ctx.$slots.default || _ctx.description ? (openBlock(), createElementBlock("p", {
-                key: 1,
-                class: normalizeClass(unref(ns2).e("description"))
-              }, [
-                renderSlot(_ctx.$slots, "default", {}, () => [
-                  createTextVNode(toDisplayString(_ctx.description), 1)
-                ])
-              ], 2)) : createCommentVNode("v-if", true),
-              _ctx.closable ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
-                _ctx.closeText ? (openBlock(), createElementBlock("div", {
-                  key: 0,
-                  class: normalizeClass([unref(ns2).e("close-btn"), unref(ns2).is("customed")]),
-                  onClick: close2
-                }, toDisplayString(_ctx.closeText), 3)) : (openBlock(), createBlock(unref(ElIcon), {
-                  key: 1,
-                  class: normalizeClass(unref(ns2).e("close-btn")),
-                  onClick: close2
-                }, {
-                  default: withCtx(() => [
-                    createVNode(unref(Close))
-                  ]),
-                  _: 1
-                }, 8, ["class"]))
-              ], 64)) : createCommentVNode("v-if", true)
-            ], 2)
-          ], 2), [
-            [vShow, visible.value]
-          ])
-        ]),
-        _: 3
-      }, 8, ["name"]);
-    };
-  }
-});
-var Alert = _export_sfc(_sfc_main3, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/alert/src/alert.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/alert/index.mjs
-var ElAlert = withInstall(Alert);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/input/src/utils.mjs
-var hiddenTextarea = void 0;
-var HIDDEN_STYLE = `
-  height:0 !important;
-  visibility:hidden !important;
-  overflow:hidden !important;
-  position:absolute !important;
-  z-index:-1000 !important;
-  top:0 !important;
-  right:0 !important;
-`;
-var CONTEXT_STYLE = [
-  "letter-spacing",
-  "line-height",
-  "padding-top",
-  "padding-bottom",
-  "font-family",
-  "font-weight",
-  "font-size",
-  "text-rendering",
-  "text-transform",
-  "width",
-  "text-indent",
-  "padding-left",
-  "padding-right",
-  "border-width",
-  "box-sizing"
-];
-function calculateNodeStyling(targetElement) {
-  const style = window.getComputedStyle(targetElement);
-  const boxSizing = style.getPropertyValue("box-sizing");
-  const paddingSize = Number.parseFloat(style.getPropertyValue("padding-bottom")) + Number.parseFloat(style.getPropertyValue("padding-top"));
-  const borderSize = Number.parseFloat(style.getPropertyValue("border-bottom-width")) + Number.parseFloat(style.getPropertyValue("border-top-width"));
-  const contextStyle = CONTEXT_STYLE.map((name) => `${name}:${style.getPropertyValue(name)}`).join(";");
-  return { contextStyle, paddingSize, borderSize, boxSizing };
-}
-function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
-  var _a;
-  if (!hiddenTextarea) {
-    hiddenTextarea = document.createElement("textarea");
-    document.body.appendChild(hiddenTextarea);
-  }
-  const { paddingSize, borderSize, boxSizing, contextStyle } = calculateNodeStyling(targetElement);
-  hiddenTextarea.setAttribute("style", `${contextStyle};${HIDDEN_STYLE}`);
-  hiddenTextarea.value = targetElement.value || targetElement.placeholder || "";
-  let height = hiddenTextarea.scrollHeight;
-  const result2 = {};
-  if (boxSizing === "border-box") {
-    height = height + borderSize;
-  } else if (boxSizing === "content-box") {
-    height = height - paddingSize;
-  }
-  hiddenTextarea.value = "";
-  const singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
-  if (isNumber(minRows)) {
-    let minHeight = singleRowHeight * minRows;
-    if (boxSizing === "border-box") {
-      minHeight = minHeight + paddingSize + borderSize;
-    }
-    height = Math.max(minHeight, height);
-    result2.minHeight = `${minHeight}px`;
-  }
-  if (isNumber(maxRows)) {
-    let maxHeight = singleRowHeight * maxRows;
-    if (boxSizing === "border-box") {
-      maxHeight = maxHeight + paddingSize + borderSize;
-    }
-    height = Math.min(maxHeight, height);
-  }
-  result2.height = `${height}px`;
-  (_a = hiddenTextarea.parentNode) == null ? void 0 : _a.removeChild(hiddenTextarea);
-  hiddenTextarea = void 0;
-  return result2;
-}
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/input/src/input.mjs
-var inputProps = buildProps({
-  id: {
-    type: String,
-    default: void 0
-  },
-  size: useSizeProp,
-  disabled: Boolean,
-  modelValue: {
-    type: definePropType([
-      String,
-      Number,
-      Object
-    ]),
-    default: ""
-  },
-  type: {
-    type: String,
-    default: "text"
-  },
-  resize: {
-    type: String,
-    values: ["none", "both", "horizontal", "vertical"]
-  },
-  autosize: {
-    type: definePropType([Boolean, Object]),
-    default: false
-  },
-  autocomplete: {
-    type: String,
-    default: "off"
-  },
-  formatter: {
-    type: Function
-  },
-  parser: {
-    type: Function
-  },
-  placeholder: {
-    type: String
-  },
-  form: {
-    type: String
-  },
-  readonly: {
-    type: Boolean,
-    default: false
-  },
-  clearable: {
-    type: Boolean,
-    default: false
-  },
-  showPassword: {
-    type: Boolean,
-    default: false
-  },
-  showWordLimit: {
-    type: Boolean,
-    default: false
-  },
-  suffixIcon: {
-    type: iconPropType
-  },
-  prefixIcon: {
-    type: iconPropType
-  },
-  containerRole: {
-    type: String,
-    default: void 0
-  },
-  label: {
-    type: String,
-    default: void 0
-  },
-  tabindex: {
-    type: [String, Number],
-    default: 0
-  },
-  validateEvent: {
-    type: Boolean,
-    default: true
-  },
-  inputStyle: {
-    type: definePropType([Object, Array, String]),
-    default: () => mutable({})
-  }
-});
-var inputEmits = {
-  [UPDATE_MODEL_EVENT]: (value) => isString(value),
-  input: (value) => isString(value),
-  change: (value) => isString(value),
-  focus: (evt) => evt instanceof FocusEvent,
-  blur: (evt) => evt instanceof FocusEvent,
-  clear: () => true,
-  mouseleave: (evt) => evt instanceof MouseEvent,
-  mouseenter: (evt) => evt instanceof MouseEvent,
-  keydown: (evt) => evt instanceof Event,
-  compositionstart: (evt) => evt instanceof CompositionEvent,
-  compositionupdate: (evt) => evt instanceof CompositionEvent,
-  compositionend: (evt) => evt instanceof CompositionEvent
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/input/src/input2.mjs
-var _hoisted_1 = ["role"];
-var _hoisted_2 = ["id", "type", "disabled", "formatter", "parser", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form"];
-var _hoisted_3 = ["id", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form"];
-var __default__4 = defineComponent({
-  name: "ElInput",
-  inheritAttrs: false
-});
-var _sfc_main4 = defineComponent({
-  ...__default__4,
-  props: inputProps,
-  emits: inputEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    const rawAttrs = useAttrs();
-    const slots = useSlots();
-    const containerAttrs = computed2(() => {
-      const comboBoxAttrs = {};
-      if (props.containerRole === "combobox") {
-        comboBoxAttrs["aria-haspopup"] = rawAttrs["aria-haspopup"];
-        comboBoxAttrs["aria-owns"] = rawAttrs["aria-owns"];
-        comboBoxAttrs["aria-expanded"] = rawAttrs["aria-expanded"];
-      }
-      return comboBoxAttrs;
-    });
-    const containerKls = computed2(() => [
-      props.type === "textarea" ? nsTextarea.b() : nsInput.b(),
-      nsInput.m(inputSize.value),
-      nsInput.is("disabled", inputDisabled.value),
-      nsInput.is("exceed", inputExceed.value),
-      {
-        [nsInput.b("group")]: slots.prepend || slots.append,
-        [nsInput.bm("group", "append")]: slots.append,
-        [nsInput.bm("group", "prepend")]: slots.prepend,
-        [nsInput.m("prefix")]: slots.prefix || props.prefixIcon,
-        [nsInput.m("suffix")]: slots.suffix || props.suffixIcon || props.clearable || props.showPassword,
-        [nsInput.bm("suffix", "password-clear")]: showClear.value && showPwdVisible.value
-      },
-      rawAttrs.class
-    ]);
-    const wrapperKls = computed2(() => [
-      nsInput.e("wrapper"),
-      nsInput.is("focus", focused.value)
-    ]);
-    const attrs = useAttrs2({
-      excludeKeys: computed2(() => {
-        return Object.keys(containerAttrs.value);
-      })
-    });
-    const { form, formItem } = useFormItem();
-    const { inputId } = useFormItemInputId(props, {
-      formItemContext: formItem
-    });
-    const inputSize = useSize();
-    const inputDisabled = useDisabled();
-    const nsInput = useNamespace("input");
-    const nsTextarea = useNamespace("textarea");
-    const input = shallowRef();
-    const textarea = shallowRef();
-    const focused = ref(false);
-    const hovering = ref(false);
-    const isComposing = ref(false);
-    const passwordVisible = ref(false);
-    const countStyle = ref();
-    const textareaCalcStyle = shallowRef(props.inputStyle);
-    const _ref = computed2(() => input.value || textarea.value);
-    const needStatusIcon = computed2(() => {
-      var _a;
-      return (_a = form == null ? void 0 : form.statusIcon) != null ? _a : false;
-    });
-    const validateState = computed2(() => (formItem == null ? void 0 : formItem.validateState) || "");
-    const validateIcon = computed2(() => validateState.value && ValidateComponentsMap[validateState.value]);
-    const passwordIcon = computed2(() => passwordVisible.value ? view_default : hide_default);
-    const containerStyle = computed2(() => [
-      rawAttrs.style,
-      props.inputStyle
-    ]);
-    const textareaStyle = computed2(() => [
-      props.inputStyle,
-      textareaCalcStyle.value,
-      { resize: props.resize }
-    ]);
-    const nativeInputValue = computed2(() => isNil_default(props.modelValue) ? "" : String(props.modelValue));
-    const showClear = computed2(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (focused.value || hovering.value));
-    const showPwdVisible = computed2(() => props.showPassword && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (!!nativeInputValue.value || focused.value));
-    const isWordLimitVisible = computed2(() => props.showWordLimit && !!attrs.value.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
-    const textLength = computed2(() => Array.from(nativeInputValue.value).length);
-    const inputExceed = computed2(() => !!isWordLimitVisible.value && textLength.value > Number(attrs.value.maxlength));
-    const suffixVisible = computed2(() => !!slots.suffix || !!props.suffixIcon || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
-    const [recordCursor, setCursor] = useCursor(input);
-    useResizeObserver(textarea, (entries) => {
-      if (!isWordLimitVisible.value || props.resize !== "both")
-        return;
-      const entry = entries[0];
-      const { width } = entry.contentRect;
-      countStyle.value = {
-        right: `calc(100% - ${width + 15 + 6}px)`
-      };
-    });
-    const resizeTextarea = () => {
-      const { type: type4, autosize } = props;
-      if (!isClient || type4 !== "textarea")
-        return;
-      if (autosize) {
-        const minRows = isObject(autosize) ? autosize.minRows : void 0;
-        const maxRows = isObject(autosize) ? autosize.maxRows : void 0;
-        textareaCalcStyle.value = {
-          ...calcTextareaHeight(textarea.value, minRows, maxRows)
-        };
-      } else {
-        textareaCalcStyle.value = {
-          minHeight: calcTextareaHeight(textarea.value).minHeight
-        };
-      }
-    };
-    const setNativeInputValue = () => {
-      const input2 = _ref.value;
-      if (!input2 || input2.value === nativeInputValue.value)
-        return;
-      input2.value = nativeInputValue.value;
-    };
-    const handleInput = async (event) => {
-      recordCursor();
-      let { value } = event.target;
-      if (props.formatter) {
-        value = props.parser ? props.parser(value) : value;
-        value = props.formatter(value);
-      }
-      if (isComposing.value)
-        return;
-      if (value === nativeInputValue.value) {
-        setNativeInputValue();
-        return;
-      }
-      emit(UPDATE_MODEL_EVENT, value);
-      emit("input", value);
-      await nextTick();
-      setNativeInputValue();
-      setCursor();
-    };
-    const handleChange = (event) => {
-      emit("change", event.target.value);
-    };
-    const handleCompositionStart = (event) => {
-      emit("compositionstart", event);
-      isComposing.value = true;
-    };
-    const handleCompositionUpdate = (event) => {
-      var _a;
-      emit("compositionupdate", event);
-      const text = (_a = event.target) == null ? void 0 : _a.value;
-      const lastCharacter = text[text.length - 1] || "";
-      isComposing.value = !isKorean(lastCharacter);
-    };
-    const handleCompositionEnd = (event) => {
-      emit("compositionend", event);
-      if (isComposing.value) {
-        isComposing.value = false;
-        handleInput(event);
-      }
-    };
-    const handlePasswordVisible = () => {
-      passwordVisible.value = !passwordVisible.value;
-      focus();
-    };
-    const focus = async () => {
-      var _a;
-      await nextTick();
-      (_a = _ref.value) == null ? void 0 : _a.focus();
-    };
-    const blur = () => {
-      var _a;
-      return (_a = _ref.value) == null ? void 0 : _a.blur();
-    };
-    const handleFocus = (event) => {
-      focused.value = true;
-      emit("focus", event);
-    };
-    const handleBlur = (event) => {
-      var _a;
-      focused.value = false;
-      emit("blur", event);
-      if (props.validateEvent) {
-        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "blur").catch((err) => debugWarn(err));
-      }
-    };
-    const handleMouseLeave = (evt) => {
-      hovering.value = false;
-      emit("mouseleave", evt);
-    };
-    const handleMouseEnter = (evt) => {
-      hovering.value = true;
-      emit("mouseenter", evt);
-    };
-    const handleKeydown = (evt) => {
-      emit("keydown", evt);
-    };
-    const select = () => {
-      var _a;
-      (_a = _ref.value) == null ? void 0 : _a.select();
-    };
-    const clear = () => {
-      emit(UPDATE_MODEL_EVENT, "");
-      emit("change", "");
-      emit("clear");
-      emit("input", "");
-    };
-    watch(() => props.modelValue, () => {
-      var _a;
-      nextTick(() => resizeTextarea());
-      if (props.validateEvent) {
-        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "change").catch((err) => debugWarn(err));
-      }
-    });
-    watch(nativeInputValue, () => setNativeInputValue());
-    watch(() => props.type, async () => {
-      await nextTick();
-      setNativeInputValue();
-      resizeTextarea();
-    });
-    onMounted(() => {
-      if (!props.formatter && props.parser) {
-        debugWarn("ElInput", "If you set the parser, you also need to set the formatter.");
-      }
-      setNativeInputValue();
-      nextTick(resizeTextarea);
-    });
-    expose({
-      input,
-      textarea,
-      ref: _ref,
-      textareaStyle,
-      autosize: toRef(props, "autosize"),
-      focus,
-      blur,
-      select,
-      clear,
-      resizeTextarea
-    });
-    return (_ctx, _cache) => {
-      return withDirectives((openBlock(), createElementBlock("div", mergeProps(unref(containerAttrs), {
-        class: unref(containerKls),
-        style: unref(containerStyle),
-        role: _ctx.containerRole,
-        onMouseenter: handleMouseEnter,
-        onMouseleave: handleMouseLeave
-      }), [
-        createCommentVNode(" input "),
-        _ctx.type !== "textarea" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-          createCommentVNode(" prepend slot "),
-          _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
-            key: 0,
-            class: normalizeClass(unref(nsInput).be("group", "prepend"))
-          }, [
-            renderSlot(_ctx.$slots, "prepend")
-          ], 2)) : createCommentVNode("v-if", true),
-          createBaseVNode("div", {
-            class: normalizeClass(unref(wrapperKls))
-          }, [
-            createCommentVNode(" prefix slot "),
-            _ctx.$slots.prefix || _ctx.prefixIcon ? (openBlock(), createElementBlock("span", {
-              key: 0,
-              class: normalizeClass(unref(nsInput).e("prefix"))
-            }, [
-              createBaseVNode("span", {
-                class: normalizeClass(unref(nsInput).e("prefix-inner")),
-                onClick: focus
-              }, [
-                renderSlot(_ctx.$slots, "prefix"),
-                _ctx.prefixIcon ? (openBlock(), createBlock(unref(ElIcon), {
-                  key: 0,
-                  class: normalizeClass(unref(nsInput).e("icon"))
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createBlock(resolveDynamicComponent(_ctx.prefixIcon)))
-                  ]),
-                  _: 1
-                }, 8, ["class"])) : createCommentVNode("v-if", true)
-              ], 2)
-            ], 2)) : createCommentVNode("v-if", true),
-            createBaseVNode("input", mergeProps({
-              id: unref(inputId),
-              ref_key: "input",
-              ref: input,
-              class: unref(nsInput).e("inner")
-            }, unref(attrs), {
-              type: _ctx.showPassword ? passwordVisible.value ? "text" : "password" : _ctx.type,
-              disabled: unref(inputDisabled),
-              formatter: _ctx.formatter,
-              parser: _ctx.parser,
-              readonly: _ctx.readonly,
-              autocomplete: _ctx.autocomplete,
-              tabindex: _ctx.tabindex,
-              "aria-label": _ctx.label,
-              placeholder: _ctx.placeholder,
-              style: _ctx.inputStyle,
-              form: props.form,
-              onCompositionstart: handleCompositionStart,
-              onCompositionupdate: handleCompositionUpdate,
-              onCompositionend: handleCompositionEnd,
-              onInput: handleInput,
-              onFocus: handleFocus,
-              onBlur: handleBlur,
-              onChange: handleChange,
-              onKeydown: handleKeydown
-            }), null, 16, _hoisted_2),
-            createCommentVNode(" suffix slot "),
-            unref(suffixVisible) ? (openBlock(), createElementBlock("span", {
-              key: 1,
-              class: normalizeClass(unref(nsInput).e("suffix"))
-            }, [
-              createBaseVNode("span", {
-                class: normalizeClass(unref(nsInput).e("suffix-inner")),
-                onClick: focus
-              }, [
-                !unref(showClear) || !unref(showPwdVisible) || !unref(isWordLimitVisible) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-                  renderSlot(_ctx.$slots, "suffix"),
-                  _ctx.suffixIcon ? (openBlock(), createBlock(unref(ElIcon), {
-                    key: 0,
-                    class: normalizeClass(unref(nsInput).e("icon"))
-                  }, {
-                    default: withCtx(() => [
-                      (openBlock(), createBlock(resolveDynamicComponent(_ctx.suffixIcon)))
-                    ]),
-                    _: 1
-                  }, 8, ["class"])) : createCommentVNode("v-if", true)
-                ], 64)) : createCommentVNode("v-if", true),
-                unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
-                  key: 1,
-                  class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("clear")]),
-                  onMousedown: withModifiers(unref(NOOP), ["prevent"]),
-                  onClick: clear
-                }, {
-                  default: withCtx(() => [
-                    createVNode(unref(circle_close_default))
-                  ]),
-                  _: 1
-                }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
-                unref(showPwdVisible) ? (openBlock(), createBlock(unref(ElIcon), {
-                  key: 2,
-                  class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("password")]),
-                  onClick: handlePasswordVisible
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createBlock(resolveDynamicComponent(unref(passwordIcon))))
-                  ]),
-                  _: 1
-                }, 8, ["class"])) : createCommentVNode("v-if", true),
-                unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
-                  key: 3,
-                  class: normalizeClass(unref(nsInput).e("count"))
-                }, [
-                  createBaseVNode("span", {
-                    class: normalizeClass(unref(nsInput).e("count-inner"))
-                  }, toDisplayString(unref(textLength)) + " / " + toDisplayString(unref(attrs).maxlength), 3)
-                ], 2)) : createCommentVNode("v-if", true),
-                unref(validateState) && unref(validateIcon) && unref(needStatusIcon) ? (openBlock(), createBlock(unref(ElIcon), {
-                  key: 4,
-                  class: normalizeClass([
-                    unref(nsInput).e("icon"),
-                    unref(nsInput).e("validateIcon"),
-                    unref(nsInput).is("loading", unref(validateState) === "validating")
-                  ])
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createBlock(resolveDynamicComponent(unref(validateIcon))))
-                  ]),
-                  _: 1
-                }, 8, ["class"])) : createCommentVNode("v-if", true)
-              ], 2)
-            ], 2)) : createCommentVNode("v-if", true)
-          ], 2),
-          createCommentVNode(" append slot "),
-          _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
-            key: 1,
-            class: normalizeClass(unref(nsInput).be("group", "append"))
-          }, [
-            renderSlot(_ctx.$slots, "append")
-          ], 2)) : createCommentVNode("v-if", true)
-        ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-          createCommentVNode(" textarea "),
-          createBaseVNode("textarea", mergeProps({
-            id: unref(inputId),
-            ref_key: "textarea",
-            ref: textarea,
-            class: unref(nsTextarea).e("inner")
-          }, unref(attrs), {
-            tabindex: _ctx.tabindex,
-            disabled: unref(inputDisabled),
-            readonly: _ctx.readonly,
-            autocomplete: _ctx.autocomplete,
-            style: unref(textareaStyle),
-            "aria-label": _ctx.label,
-            placeholder: _ctx.placeholder,
-            form: props.form,
-            onCompositionstart: handleCompositionStart,
-            onCompositionupdate: handleCompositionUpdate,
-            onCompositionend: handleCompositionEnd,
-            onInput: handleInput,
-            onFocus: handleFocus,
-            onBlur: handleBlur,
-            onChange: handleChange,
-            onKeydown: handleKeydown
-          }), null, 16, _hoisted_3),
-          unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
-            key: 0,
-            style: normalizeStyle(countStyle.value),
-            class: normalizeClass(unref(nsInput).e("count"))
-          }, toDisplayString(unref(textLength)) + " / " + toDisplayString(unref(attrs).maxlength), 7)) : createCommentVNode("v-if", true)
-        ], 64))
-      ], 16, _hoisted_1)), [
-        [vShow, _ctx.type !== "hidden"]
-      ]);
-    };
-  }
-});
-var Input = _export_sfc(_sfc_main4, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/input/src/input.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/input/index.mjs
-var ElInput = withInstall(Input);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/scrollbar/src/util.mjs
-var GAP = 4;
-var BAR_MAP = {
-  vertical: {
-    offset: "offsetHeight",
-    scroll: "scrollTop",
-    scrollSize: "scrollHeight",
-    size: "height",
-    key: "vertical",
-    axis: "Y",
-    client: "clientY",
-    direction: "top"
-  },
-  horizontal: {
-    offset: "offsetWidth",
-    scroll: "scrollLeft",
-    scrollSize: "scrollWidth",
-    size: "width",
-    key: "horizontal",
-    axis: "X",
-    client: "clientX",
-    direction: "left"
-  }
-};
-var renderThumbStyle = ({
-  move,
-  size: size3,
-  bar
-}) => ({
-  [bar.size]: size3,
-  transform: `translate${bar.axis}(${move}%)`
-});
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/scrollbar/src/thumb.mjs
-var thumbProps = buildProps({
-  vertical: Boolean,
-  size: String,
-  move: Number,
-  ratio: {
-    type: Number,
-    required: true
-  },
-  always: Boolean
-});
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/scrollbar/src/thumb2.mjs
-var COMPONENT_NAME2 = "Thumb";
-var _sfc_main5 = defineComponent({
-  __name: "thumb",
-  props: thumbProps,
-  setup(__props) {
-    const props = __props;
-    const scrollbar = inject(scrollbarContextKey);
-    const ns2 = useNamespace("scrollbar");
-    if (!scrollbar)
-      throwError(COMPONENT_NAME2, "can not inject scrollbar context");
-    const instance = ref();
-    const thumb = ref();
-    const thumbState = ref({});
-    const visible = ref(false);
-    let cursorDown = false;
-    let cursorLeave = false;
-    let originalOnSelectStart = isClient ? document.onselectstart : null;
-    const bar = computed2(() => BAR_MAP[props.vertical ? "vertical" : "horizontal"]);
-    const thumbStyle = computed2(() => renderThumbStyle({
-      size: props.size,
-      move: props.move,
-      bar: bar.value
-    }));
-    const offsetRatio = computed2(() => instance.value[bar.value.offset] ** 2 / scrollbar.wrapElement[bar.value.scrollSize] / props.ratio / thumb.value[bar.value.offset]);
-    const clickThumbHandler = (e) => {
-      var _a;
-      e.stopPropagation();
-      if (e.ctrlKey || [1, 2].includes(e.button))
-        return;
-      (_a = window.getSelection()) == null ? void 0 : _a.removeAllRanges();
-      startDrag(e);
-      const el = e.currentTarget;
-      if (!el)
-        return;
-      thumbState.value[bar.value.axis] = el[bar.value.offset] - (e[bar.value.client] - el.getBoundingClientRect()[bar.value.direction]);
-    };
-    const clickTrackHandler = (e) => {
-      if (!thumb.value || !instance.value || !scrollbar.wrapElement)
-        return;
-      const offset2 = Math.abs(e.target.getBoundingClientRect()[bar.value.direction] - e[bar.value.client]);
-      const thumbHalf = thumb.value[bar.value.offset] / 2;
-      const thumbPositionPercentage = (offset2 - thumbHalf) * 100 * offsetRatio.value / instance.value[bar.value.offset];
-      scrollbar.wrapElement[bar.value.scroll] = thumbPositionPercentage * scrollbar.wrapElement[bar.value.scrollSize] / 100;
-    };
-    const startDrag = (e) => {
-      e.stopImmediatePropagation();
-      cursorDown = true;
-      document.addEventListener("mousemove", mouseMoveDocumentHandler);
-      document.addEventListener("mouseup", mouseUpDocumentHandler);
-      originalOnSelectStart = document.onselectstart;
-      document.onselectstart = () => false;
-    };
-    const mouseMoveDocumentHandler = (e) => {
-      if (!instance.value || !thumb.value)
-        return;
-      if (cursorDown === false)
-        return;
-      const prevPage = thumbState.value[bar.value.axis];
-      if (!prevPage)
-        return;
-      const offset2 = (instance.value.getBoundingClientRect()[bar.value.direction] - e[bar.value.client]) * -1;
-      const thumbClickPosition = thumb.value[bar.value.offset] - prevPage;
-      const thumbPositionPercentage = (offset2 - thumbClickPosition) * 100 * offsetRatio.value / instance.value[bar.value.offset];
-      scrollbar.wrapElement[bar.value.scroll] = thumbPositionPercentage * scrollbar.wrapElement[bar.value.scrollSize] / 100;
-    };
-    const mouseUpDocumentHandler = () => {
-      cursorDown = false;
-      thumbState.value[bar.value.axis] = 0;
-      document.removeEventListener("mousemove", mouseMoveDocumentHandler);
-      document.removeEventListener("mouseup", mouseUpDocumentHandler);
-      restoreOnselectstart();
-      if (cursorLeave)
-        visible.value = false;
-    };
-    const mouseMoveScrollbarHandler = () => {
-      cursorLeave = false;
-      visible.value = !!props.size;
-    };
-    const mouseLeaveScrollbarHandler = () => {
-      cursorLeave = true;
-      visible.value = cursorDown;
-    };
-    onBeforeUnmount(() => {
-      restoreOnselectstart();
-      document.removeEventListener("mouseup", mouseUpDocumentHandler);
-    });
-    const restoreOnselectstart = () => {
-      if (document.onselectstart !== originalOnSelectStart)
-        document.onselectstart = originalOnSelectStart;
-    };
-    useEventListener(toRef(scrollbar, "scrollbarElement"), "mousemove", mouseMoveScrollbarHandler);
-    useEventListener(toRef(scrollbar, "scrollbarElement"), "mouseleave", mouseLeaveScrollbarHandler);
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(Transition, {
-        name: unref(ns2).b("fade"),
-        persisted: ""
-      }, {
-        default: withCtx(() => [
-          withDirectives(createBaseVNode("div", {
-            ref_key: "instance",
-            ref: instance,
-            class: normalizeClass([unref(ns2).e("bar"), unref(ns2).is(unref(bar).key)]),
-            onMousedown: clickTrackHandler
-          }, [
-            createBaseVNode("div", {
-              ref_key: "thumb",
-              ref: thumb,
-              class: normalizeClass(unref(ns2).e("thumb")),
-              style: normalizeStyle(unref(thumbStyle)),
-              onMousedown: clickThumbHandler
-            }, null, 38)
-          ], 34), [
-            [vShow, _ctx.always || visible.value]
-          ])
-        ]),
-        _: 1
-      }, 8, ["name"]);
-    };
-  }
-});
-var Thumb = _export_sfc(_sfc_main5, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/thumb.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/scrollbar/src/bar.mjs
-var barProps = buildProps({
-  always: {
-    type: Boolean,
-    default: true
-  },
-  width: String,
-  height: String,
-  ratioX: {
-    type: Number,
-    default: 1
-  },
-  ratioY: {
-    type: Number,
-    default: 1
-  }
-});
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/scrollbar/src/bar2.mjs
-var _sfc_main6 = defineComponent({
-  __name: "bar",
-  props: barProps,
-  setup(__props, { expose }) {
-    const props = __props;
-    const moveX = ref(0);
-    const moveY = ref(0);
-    const handleScroll2 = (wrap2) => {
-      if (wrap2) {
-        const offsetHeight = wrap2.offsetHeight - GAP;
-        const offsetWidth = wrap2.offsetWidth - GAP;
-        moveY.value = wrap2.scrollTop * 100 / offsetHeight * props.ratioY;
-        moveX.value = wrap2.scrollLeft * 100 / offsetWidth * props.ratioX;
-      }
-    };
-    expose({
-      handleScroll: handleScroll2
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [
-        createVNode(Thumb, {
-          move: moveX.value,
-          ratio: _ctx.ratioX,
-          size: _ctx.width,
-          always: _ctx.always
-        }, null, 8, ["move", "ratio", "size", "always"]),
-        createVNode(Thumb, {
-          move: moveY.value,
-          ratio: _ctx.ratioY,
-          size: _ctx.height,
-          vertical: "",
-          always: _ctx.always
-        }, null, 8, ["move", "ratio", "size", "always"])
-      ], 64);
-    };
-  }
-});
-var Bar = _export_sfc(_sfc_main6, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/bar.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/scrollbar/src/scrollbar.mjs
-var scrollbarProps = buildProps({
-  height: {
-    type: [String, Number],
-    default: ""
-  },
-  maxHeight: {
-    type: [String, Number],
-    default: ""
-  },
-  native: {
-    type: Boolean,
-    default: false
-  },
-  wrapStyle: {
-    type: definePropType([String, Object, Array]),
-    default: ""
-  },
-  wrapClass: {
-    type: [String, Array],
-    default: ""
-  },
-  viewClass: {
-    type: [String, Array],
-    default: ""
-  },
-  viewStyle: {
-    type: [String, Array, Object],
-    default: ""
-  },
-  noresize: Boolean,
-  tag: {
-    type: String,
-    default: "div"
-  },
-  always: Boolean,
-  minSize: {
-    type: Number,
-    default: 20
-  }
-});
-var scrollbarEmits = {
-  scroll: ({
-    scrollTop,
-    scrollLeft
-  }) => [scrollTop, scrollLeft].every(isNumber)
-};
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/scrollbar/src/scrollbar2.mjs
-var COMPONENT_NAME3 = "ElScrollbar";
-var __default__5 = defineComponent({
-  name: COMPONENT_NAME3
-});
-var _sfc_main7 = defineComponent({
-  ...__default__5,
-  props: scrollbarProps,
-  emits: scrollbarEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    const ns2 = useNamespace("scrollbar");
-    let stopResizeObserver = void 0;
-    let stopResizeListener = void 0;
-    const scrollbarRef = ref();
-    const wrapRef = ref();
-    const resizeRef = ref();
-    const sizeWidth = ref("0");
-    const sizeHeight = ref("0");
-    const barRef = ref();
-    const ratioY = ref(1);
-    const ratioX = ref(1);
-    const style = computed2(() => {
-      const style2 = {};
-      if (props.height)
-        style2.height = addUnit(props.height);
-      if (props.maxHeight)
-        style2.maxHeight = addUnit(props.maxHeight);
-      return [props.wrapStyle, style2];
-    });
-    const wrapKls = computed2(() => {
-      return [
-        props.wrapClass,
-        ns2.e("wrap"),
-        { [ns2.em("wrap", "hidden-default")]: !props.native }
-      ];
-    });
-    const resizeKls = computed2(() => {
-      return [ns2.e("view"), props.viewClass];
-    });
-    const handleScroll2 = () => {
-      var _a;
-      if (wrapRef.value) {
-        (_a = barRef.value) == null ? void 0 : _a.handleScroll(wrapRef.value);
-        emit("scroll", {
-          scrollTop: wrapRef.value.scrollTop,
-          scrollLeft: wrapRef.value.scrollLeft
-        });
-      }
-    };
-    function scrollTo(arg1, arg2) {
-      if (isObject(arg1)) {
-        wrapRef.value.scrollTo(arg1);
-      } else if (isNumber(arg1) && isNumber(arg2)) {
-        wrapRef.value.scrollTo(arg1, arg2);
-      }
-    }
-    const setScrollTop = (value) => {
-      if (!isNumber(value)) {
-        debugWarn(COMPONENT_NAME3, "value must be a number");
-        return;
-      }
-      wrapRef.value.scrollTop = value;
-    };
-    const setScrollLeft = (value) => {
-      if (!isNumber(value)) {
-        debugWarn(COMPONENT_NAME3, "value must be a number");
-        return;
-      }
-      wrapRef.value.scrollLeft = value;
-    };
-    const update2 = () => {
-      if (!wrapRef.value)
-        return;
-      const offsetHeight = wrapRef.value.offsetHeight - GAP;
-      const offsetWidth = wrapRef.value.offsetWidth - GAP;
-      const originalHeight = offsetHeight ** 2 / wrapRef.value.scrollHeight;
-      const originalWidth = offsetWidth ** 2 / wrapRef.value.scrollWidth;
-      const height = Math.max(originalHeight, props.minSize);
-      const width = Math.max(originalWidth, props.minSize);
-      ratioY.value = originalHeight / (offsetHeight - originalHeight) / (height / (offsetHeight - height));
-      ratioX.value = originalWidth / (offsetWidth - originalWidth) / (width / (offsetWidth - width));
-      sizeHeight.value = height + GAP < offsetHeight ? `${height}px` : "";
-      sizeWidth.value = width + GAP < offsetWidth ? `${width}px` : "";
-    };
-    watch(() => props.noresize, (noresize) => {
-      if (noresize) {
-        stopResizeObserver == null ? void 0 : stopResizeObserver();
-        stopResizeListener == null ? void 0 : stopResizeListener();
-      } else {
-        ;
-        ({ stop: stopResizeObserver } = useResizeObserver(resizeRef, update2));
-        stopResizeListener = useEventListener("resize", update2);
-      }
-    }, { immediate: true });
-    watch(() => [props.maxHeight, props.height], () => {
-      if (!props.native)
-        nextTick(() => {
-          var _a;
-          update2();
-          if (wrapRef.value) {
-            (_a = barRef.value) == null ? void 0 : _a.handleScroll(wrapRef.value);
-          }
-        });
-    });
-    provide(scrollbarContextKey, reactive({
-      scrollbarElement: scrollbarRef,
-      wrapElement: wrapRef
-    }));
-    onMounted(() => {
-      if (!props.native)
-        nextTick(() => {
-          update2();
-        });
-    });
-    onUpdated(() => update2());
-    expose({
-      wrapRef,
-      update: update2,
-      scrollTo,
-      setScrollTop,
-      setScrollLeft,
-      handleScroll: handleScroll2
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        ref_key: "scrollbarRef",
-        ref: scrollbarRef,
-        class: normalizeClass(unref(ns2).b())
-      }, [
-        createBaseVNode("div", {
-          ref_key: "wrapRef",
-          ref: wrapRef,
-          class: normalizeClass(unref(wrapKls)),
-          style: normalizeStyle(unref(style)),
-          onScroll: handleScroll2
-        }, [
-          (openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
-            ref_key: "resizeRef",
-            ref: resizeRef,
-            class: normalizeClass(unref(resizeKls)),
-            style: normalizeStyle(_ctx.viewStyle)
-          }, {
-            default: withCtx(() => [
-              renderSlot(_ctx.$slots, "default")
-            ]),
-            _: 3
-          }, 8, ["class", "style"]))
-        ], 38),
-        !_ctx.native ? (openBlock(), createBlock(Bar, {
-          key: 0,
-          ref_key: "barRef",
-          ref: barRef,
-          height: sizeHeight.value,
-          width: sizeWidth.value,
-          always: _ctx.always,
-          "ratio-x": ratioX.value,
-          "ratio-y": ratioY.value
-        }, null, 8, ["height", "width", "always", "ratio-x", "ratio-y"])) : createCommentVNode("v-if", true)
-      ], 2);
-    };
-  }
-});
-var Scrollbar = _export_sfc(_sfc_main7, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/scrollbar.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/scrollbar/index.mjs
-var ElScrollbar = withInstall(Scrollbar);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/popper.mjs
-var Effect = {
-  LIGHT: "light",
-  DARK: "dark"
-};
-var roleTypes = [
-  "dialog",
-  "grid",
-  "group",
-  "listbox",
-  "menu",
-  "navigation",
-  "tooltip",
-  "tree"
-];
-var popperProps = buildProps({
-  role: {
-    type: String,
-    values: roleTypes,
-    default: "tooltip"
-  }
-});
-var usePopperProps = popperProps;
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/popper2.mjs
-var __default__6 = defineComponent({
-  name: "ElPopperRoot",
-  inheritAttrs: false
-});
-var _sfc_main8 = defineComponent({
-  ...__default__6,
-  props: popperProps,
-  setup(__props, { expose }) {
-    const props = __props;
-    const triggerRef2 = ref();
-    const popperInstanceRef = ref();
-    const contentRef = ref();
-    const referenceRef = ref();
-    const role = computed2(() => props.role);
-    const popperProvides = {
-      triggerRef: triggerRef2,
-      popperInstanceRef,
-      contentRef,
-      referenceRef,
-      role
-    };
-    expose(popperProvides);
-    provide(POPPER_INJECTION_KEY, popperProvides);
-    return (_ctx, _cache) => {
-      return renderSlot(_ctx.$slots, "default");
-    };
-  }
-});
-var Popper = _export_sfc(_sfc_main8, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/popper.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/arrow.mjs
-var popperArrowProps = buildProps({
-  arrowOffset: {
-    type: Number,
-    default: 5
-  }
-});
-var usePopperArrowProps = popperArrowProps;
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/arrow2.mjs
-var __default__7 = defineComponent({
-  name: "ElPopperArrow",
-  inheritAttrs: false
-});
-var _sfc_main9 = defineComponent({
-  ...__default__7,
-  props: popperArrowProps,
-  setup(__props, { expose }) {
-    const props = __props;
-    const ns2 = useNamespace("popper");
-    const { arrowOffset, arrowRef } = inject(POPPER_CONTENT_INJECTION_KEY, void 0);
-    watch(() => props.arrowOffset, (val) => {
-      arrowOffset.value = val;
-    });
-    onBeforeUnmount(() => {
-      arrowRef.value = void 0;
-    });
-    expose({
-      arrowRef
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("span", {
-        ref_key: "arrowRef",
-        ref: arrowRef,
-        class: normalizeClass(unref(ns2).e("arrow")),
-        "data-popper-arrow": ""
-      }, null, 2);
-    };
-  }
-});
-var ElPopperArrow = _export_sfc(_sfc_main9, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/arrow.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slot/src/only-child.mjs
-var NAME = "ElOnlyChild";
-var OnlyChild = defineComponent({
-  name: NAME,
-  setup(_2, {
-    slots,
-    attrs
-  }) {
-    var _a;
-    const forwardRefInjection = inject(FORWARD_REF_INJECTION_KEY);
-    const forwardRefDirective = useForwardRefDirective((_a = forwardRefInjection == null ? void 0 : forwardRefInjection.setForwardRef) != null ? _a : NOOP);
-    return () => {
-      var _a2;
-      const defaultSlot = (_a2 = slots.default) == null ? void 0 : _a2.call(slots, attrs);
-      if (!defaultSlot)
-        return null;
-      if (defaultSlot.length > 1) {
-        debugWarn(NAME, "requires exact only one valid child.");
-        return null;
-      }
-      const firstLegitNode = findFirstLegitChild(defaultSlot);
-      if (!firstLegitNode) {
-        debugWarn(NAME, "no valid child node found");
-        return null;
-      }
-      return withDirectives(cloneVNode(firstLegitNode, attrs), [[forwardRefDirective]]);
-    };
-  }
-});
-function findFirstLegitChild(node) {
-  if (!node)
-    return null;
-  const children = node;
-  for (const child of children) {
-    if (isObject(child)) {
-      switch (child.type) {
-        case Comment:
-          continue;
-        case Text:
-        case "svg":
-          return wrapTextContent(child);
-        case Fragment:
-          return findFirstLegitChild(child.children);
-        default:
-          return child;
-      }
-    }
-    return wrapTextContent(child);
-  }
-  return null;
-}
-function wrapTextContent(s2) {
-  const ns2 = useNamespace("only-child");
-  return createVNode("span", {
-    "class": ns2.e("content")
-  }, [s2]);
-}
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/trigger.mjs
-var popperTriggerProps = buildProps({
-  virtualRef: {
-    type: definePropType(Object)
-  },
-  virtualTriggering: Boolean,
-  onMouseenter: {
-    type: definePropType(Function)
-  },
-  onMouseleave: {
-    type: definePropType(Function)
-  },
-  onClick: {
-    type: definePropType(Function)
-  },
-  onKeydown: {
-    type: definePropType(Function)
-  },
-  onFocus: {
-    type: definePropType(Function)
-  },
-  onBlur: {
-    type: definePropType(Function)
-  },
-  onContextmenu: {
-    type: definePropType(Function)
-  },
-  id: String,
-  open: Boolean
-});
-var usePopperTriggerProps = popperTriggerProps;
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/trigger2.mjs
-var __default__8 = defineComponent({
-  name: "ElPopperTrigger",
-  inheritAttrs: false
-});
-var _sfc_main10 = defineComponent({
-  ...__default__8,
-  props: popperTriggerProps,
-  setup(__props, { expose }) {
-    const props = __props;
-    const { role, triggerRef: triggerRef2 } = inject(POPPER_INJECTION_KEY, void 0);
-    useForwardRef(triggerRef2);
-    const ariaControls = computed2(() => {
-      return ariaHaspopup.value ? props.id : void 0;
-    });
-    const ariaDescribedby = computed2(() => {
-      if (role && role.value === "tooltip") {
-        return props.open && props.id ? props.id : void 0;
-      }
-      return void 0;
-    });
-    const ariaHaspopup = computed2(() => {
-      if (role && role.value !== "tooltip") {
-        return role.value;
-      }
-      return void 0;
-    });
-    const ariaExpanded = computed2(() => {
-      return ariaHaspopup.value ? `${props.open}` : void 0;
-    });
-    let virtualTriggerAriaStopWatch = void 0;
-    onMounted(() => {
-      watch(() => props.virtualRef, (virtualEl) => {
-        if (virtualEl) {
-          triggerRef2.value = unrefElement(virtualEl);
-        }
-      }, {
-        immediate: true
-      });
-      watch(triggerRef2, (el, prevEl) => {
-        virtualTriggerAriaStopWatch == null ? void 0 : virtualTriggerAriaStopWatch();
-        virtualTriggerAriaStopWatch = void 0;
-        if (isElement2(el)) {
-          ;
-          [
-            "onMouseenter",
-            "onMouseleave",
-            "onClick",
-            "onKeydown",
-            "onFocus",
-            "onBlur",
-            "onContextmenu"
-          ].forEach((eventName) => {
-            var _a;
-            const handler = props[eventName];
-            if (handler) {
-              ;
-              el.addEventListener(eventName.slice(2).toLowerCase(), handler);
-              (_a = prevEl == null ? void 0 : prevEl.removeEventListener) == null ? void 0 : _a.call(prevEl, eventName.slice(2).toLowerCase(), handler);
-            }
-          });
-          virtualTriggerAriaStopWatch = watch([ariaControls, ariaDescribedby, ariaHaspopup, ariaExpanded], (watches) => {
-            ;
-            [
-              "aria-controls",
-              "aria-describedby",
-              "aria-haspopup",
-              "aria-expanded"
-            ].forEach((key, idx) => {
-              isNil_default(watches[idx]) ? el.removeAttribute(key) : el.setAttribute(key, watches[idx]);
-            });
-          }, { immediate: true });
-        }
-        if (isElement2(prevEl)) {
-          ;
-          [
-            "aria-controls",
-            "aria-describedby",
-            "aria-haspopup",
-            "aria-expanded"
-          ].forEach((key) => prevEl.removeAttribute(key));
-        }
-      }, {
-        immediate: true
-      });
-    });
-    onBeforeUnmount(() => {
-      virtualTriggerAriaStopWatch == null ? void 0 : virtualTriggerAriaStopWatch();
-      virtualTriggerAriaStopWatch = void 0;
-    });
-    expose({
-      triggerRef: triggerRef2
-    });
-    return (_ctx, _cache) => {
-      return !_ctx.virtualTriggering ? (openBlock(), createBlock(unref(OnlyChild), mergeProps({ key: 0 }, _ctx.$attrs, {
-        "aria-controls": unref(ariaControls),
-        "aria-describedby": unref(ariaDescribedby),
-        "aria-expanded": unref(ariaExpanded),
-        "aria-haspopup": unref(ariaHaspopup)
-      }), {
-        default: withCtx(() => [
-          renderSlot(_ctx.$slots, "default")
-        ]),
-        _: 3
-      }, 16, ["aria-controls", "aria-describedby", "aria-expanded", "aria-haspopup"])) : createCommentVNode("v-if", true);
-    };
-  }
-});
-var ElPopperTrigger = _export_sfc(_sfc_main10, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/trigger.vue"]]);
 
 // ../node_modules/.pnpm/@sxzz+popperjs-es@2.11.7/node_modules/@sxzz/popperjs-es/dist/index.mjs
 var E = "top";
@@ -13736,7 +10810,3116 @@ var vn = we({ defaultModifiers: mn });
 var gn = [Re, He, Me, Ae, wt, vt, xt, pt, bt];
 var yn = we({ defaultModifiers: gn });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/focus-trap/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-popper/index.mjs
+var usePopper = (referenceElementRef, popperElementRef, opts = {}) => {
+  const stateUpdater = {
+    name: "updateState",
+    enabled: true,
+    phase: "write",
+    fn: ({ state }) => {
+      const derivedState = deriveState(state);
+      Object.assign(states.value, derivedState);
+    },
+    requires: ["computeStyles"]
+  };
+  const options = computed2(() => {
+    const { onFirstUpdate, placement, strategy, modifiers } = unref(opts);
+    return {
+      onFirstUpdate,
+      placement: placement || "bottom",
+      strategy: strategy || "absolute",
+      modifiers: [
+        ...modifiers || [],
+        stateUpdater,
+        { name: "applyStyles", enabled: false }
+      ]
+    };
+  });
+  const instanceRef = shallowRef();
+  const states = ref({
+    styles: {
+      popper: {
+        position: unref(options).strategy,
+        left: "0",
+        right: "0"
+      },
+      arrow: {
+        position: "absolute"
+      }
+    },
+    attributes: {}
+  });
+  const destroy = () => {
+    if (!instanceRef.value)
+      return;
+    instanceRef.value.destroy();
+    instanceRef.value = void 0;
+  };
+  watch(options, (newOptions) => {
+    const instance = unref(instanceRef);
+    if (instance) {
+      instance.setOptions(newOptions);
+    }
+  }, {
+    deep: true
+  });
+  watch([referenceElementRef, popperElementRef], ([referenceElement, popperElement]) => {
+    destroy();
+    if (!referenceElement || !popperElement)
+      return;
+    instanceRef.value = yn(referenceElement, popperElement, unref(options));
+  });
+  onBeforeUnmount(() => {
+    destroy();
+  });
+  return {
+    state: computed2(() => {
+      var _a;
+      return { ...((_a = unref(instanceRef)) == null ? void 0 : _a.state) || {} };
+    }),
+    styles: computed2(() => unref(states).styles),
+    attributes: computed2(() => unref(states).attributes),
+    update: () => {
+      var _a;
+      return (_a = unref(instanceRef)) == null ? void 0 : _a.update();
+    },
+    forceUpdate: () => {
+      var _a;
+      return (_a = unref(instanceRef)) == null ? void 0 : _a.forceUpdate();
+    },
+    instanceRef: computed2(() => unref(instanceRef))
+  };
+};
+function deriveState(state) {
+  const elements = Object.keys(state.elements);
+  const styles = fromPairs_default(elements.map((element) => [element, state.styles[element] || {}]));
+  const attributes2 = fromPairs_default(elements.map((element) => [element, state.attributes[element]]));
+  return {
+    styles,
+    attributes: attributes2
+  };
+}
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-restore-active/index.mjs
+var useRestoreActive = (toggle, initialFocus) => {
+  let previousActive;
+  watch(() => toggle.value, (val) => {
+    var _a, _b;
+    if (val) {
+      previousActive = document.activeElement;
+      if (isRef(initialFocus)) {
+        (_b = (_a = initialFocus.value).focus) == null ? void 0 : _b.call(_a);
+      }
+    } else {
+      if (false) {
+        previousActive.focus.call(previousActive);
+      } else {
+        previousActive.focus();
+      }
+    }
+  });
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-same-target/index.mjs
+var useSameTarget = (handleClick) => {
+  if (!handleClick) {
+    return { onClick: NOOP, onMousedown: NOOP, onMouseup: NOOP };
+  }
+  let mousedownTarget = false;
+  let mouseupTarget = false;
+  const onClick = (e) => {
+    if (mousedownTarget && mouseupTarget) {
+      handleClick(e);
+    }
+    mousedownTarget = mouseupTarget = false;
+  };
+  const onMousedown = (e) => {
+    mousedownTarget = e.target === e.currentTarget;
+  };
+  const onMouseup = (e) => {
+    mouseupTarget = e.target === e.currentTarget;
+  };
+  return { onClick, onMousedown, onMouseup };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-teleport/index.mjs
+var useTeleport = (contentRenderer, appendToBody) => {
+  const isTeleportVisible = ref(false);
+  if (!isClient) {
+    return {
+      isTeleportVisible,
+      showTeleport: NOOP,
+      hideTeleport: NOOP,
+      renderTeleport: NOOP
+    };
+  }
+  let $el = null;
+  const showTeleport = () => {
+    isTeleportVisible.value = true;
+    if ($el !== null)
+      return;
+    $el = createGlobalNode();
+  };
+  const hideTeleport = () => {
+    isTeleportVisible.value = false;
+    if ($el !== null) {
+      removeGlobalNode($el);
+      $el = null;
+    }
+  };
+  const renderTeleport = () => {
+    return appendToBody.value !== true ? contentRenderer() : isTeleportVisible.value ? [h(Teleport, { to: $el }, contentRenderer())] : void 0;
+  };
+  onUnmounted(hideTeleport);
+  return {
+    isTeleportVisible,
+    showTeleport,
+    hideTeleport,
+    renderTeleport
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-throttle-render/index.mjs
+var useThrottleRender = (loading, throttle2 = 0) => {
+  if (throttle2 === 0)
+    return loading;
+  const throttled = ref(false);
+  let timeoutHandle = 0;
+  const dispatchThrottling = () => {
+    if (timeoutHandle) {
+      clearTimeout(timeoutHandle);
+    }
+    timeoutHandle = window.setTimeout(() => {
+      throttled.value = loading.value;
+    }, throttle2);
+  };
+  onMounted(dispatchThrottling);
+  watch(() => loading.value, (val) => {
+    if (val) {
+      dispatchThrottling();
+    } else {
+      throttled.value = val;
+    }
+  });
+  return throttled;
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-timeout/index.mjs
+function useTimeout() {
+  let timeoutHandle;
+  const registerTimeout = (fn2, delay2) => {
+    cancelTimeout();
+    timeoutHandle = window.setTimeout(fn2, delay2);
+  };
+  const cancelTimeout = () => window.clearTimeout(timeoutHandle);
+  tryOnScopeDispose(() => cancelTimeout());
+  return {
+    registerTimeout,
+    cancelTimeout
+  };
+}
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-transition-fallthrough/index.mjs
+var AFTER_APPEAR = "after-appear";
+var AFTER_ENTER = "after-enter";
+var AFTER_LEAVE = "after-leave";
+var APPEAR = "appear";
+var APPEAR_CANCELLED = "appear-cancelled";
+var BEFORE_ENTER = "before-enter";
+var BEFORE_LEAVE = "before-leave";
+var ENTER = "enter";
+var ENTER_CANCELLED = "enter-cancelled";
+var LEAVE = "leave";
+var LEAVE_CANCELLED = "leave-cancelled";
+var useTransitionFallthroughEmits = [
+  AFTER_APPEAR,
+  AFTER_ENTER,
+  AFTER_LEAVE,
+  APPEAR,
+  APPEAR_CANCELLED,
+  BEFORE_ENTER,
+  BEFORE_LEAVE,
+  ENTER,
+  ENTER_CANCELLED,
+  LEAVE,
+  LEAVE_CANCELLED
+];
+var useTransitionFallthrough = () => {
+  const { emit } = getCurrentInstance();
+  return {
+    onAfterAppear: () => {
+      emit(AFTER_APPEAR);
+    },
+    onAfterEnter: () => {
+      emit(AFTER_ENTER);
+    },
+    onAfterLeave: () => {
+      emit(AFTER_LEAVE);
+    },
+    onAppearCancelled: () => {
+      emit(APPEAR_CANCELLED);
+    },
+    onBeforeEnter: () => {
+      emit(BEFORE_ENTER);
+    },
+    onBeforeLeave: () => {
+      emit(BEFORE_LEAVE);
+    },
+    onEnter: () => {
+      emit(ENTER);
+    },
+    onEnterCancelled: () => {
+      emit(ENTER_CANCELLED);
+    },
+    onLeave: () => {
+      emit(LEAVE);
+    },
+    onLeaveCancelled: () => {
+      emit(LEAVE_CANCELLED);
+    }
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-escape-keydown/index.mjs
+var registeredEscapeHandlers = [];
+var cachedHandler = (e) => {
+  const event = e;
+  if (event.key === EVENT_CODE.esc) {
+    registeredEscapeHandlers.forEach((registeredHandler) => registeredHandler(event));
+  }
+};
+var useEscapeKeydown = (handler) => {
+  onMounted(() => {
+    if (registeredEscapeHandlers.length === 0) {
+      document.addEventListener("keydown", cachedHandler);
+    }
+    if (isClient)
+      registeredEscapeHandlers.push(handler);
+  });
+  onBeforeUnmount(() => {
+    registeredEscapeHandlers = registeredEscapeHandlers.filter((registeredHandler) => registeredHandler !== handler);
+    if (registeredEscapeHandlers.length === 0) {
+      if (isClient)
+        document.removeEventListener("keydown", cachedHandler);
+    }
+  });
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-popper-container/index.mjs
+var cachedContainer;
+var usePopperContainerId = () => {
+  const namespace = useGlobalConfig("namespace", defaultNamespace);
+  const idInjection = useIdInjection();
+  const id = computed2(() => {
+    return `${namespace.value}-popper-container-${idInjection.prefix}`;
+  });
+  const selector = computed2(() => `#${id.value}`);
+  return {
+    id,
+    selector
+  };
+};
+var createContainer = (id) => {
+  const container = document.createElement("div");
+  container.id = id;
+  document.body.appendChild(container);
+  return container;
+};
+var usePopperContainer = () => {
+  onBeforeMount(() => {
+    if (!isClient)
+      return;
+    const { id, selector } = usePopperContainerId();
+    if (!cachedContainer && !document.body.querySelector(selector.value)) {
+      cachedContainer = createContainer(id.value);
+    }
+  });
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-intermediate-render/index.mjs
+var useDelayedRender = ({
+  indicator,
+  intermediateIndicator,
+  shouldSetIntermediate = () => true,
+  beforeShow,
+  afterShow,
+  afterHide,
+  beforeHide
+}) => {
+  watch(() => unref(indicator), (val) => {
+    if (val) {
+      beforeShow == null ? void 0 : beforeShow();
+      nextTick(() => {
+        if (!unref(indicator))
+          return;
+        if (shouldSetIntermediate("show")) {
+          intermediateIndicator.value = true;
+        }
+      });
+    } else {
+      beforeHide == null ? void 0 : beforeHide();
+      nextTick(() => {
+        if (unref(indicator))
+          return;
+        if (shouldSetIntermediate("hide")) {
+          intermediateIndicator.value = false;
+        }
+      });
+    }
+  });
+  watch(() => intermediateIndicator.value, (val) => {
+    if (val) {
+      afterShow == null ? void 0 : afterShow();
+    } else {
+      afterHide == null ? void 0 : afterHide();
+    }
+  });
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs
+var useDelayedToggleProps = buildProps({
+  showAfter: {
+    type: Number,
+    default: 0
+  },
+  hideAfter: {
+    type: Number,
+    default: 200
+  }
+});
+var useDelayedToggle = ({
+  showAfter,
+  hideAfter,
+  open,
+  close: close2
+}) => {
+  const { registerTimeout } = useTimeout();
+  const onOpen = (event) => {
+    registerTimeout(() => {
+      open(event);
+    }, unref(showAfter));
+  };
+  const onClose = (event) => {
+    registerTimeout(() => {
+      close2(event);
+    }, unref(hideAfter));
+  };
+  return {
+    onOpen,
+    onClose
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-forward-ref/index.mjs
+var FORWARD_REF_INJECTION_KEY = Symbol("elForwardRef");
+var useForwardRef = (forwardRef) => {
+  const setForwardRef = (el) => {
+    forwardRef.value = el;
+  };
+  provide(FORWARD_REF_INJECTION_KEY, {
+    setForwardRef
+  });
+};
+var useForwardRefDirective = (setForwardRef) => {
+  return {
+    mounted(el) {
+      setForwardRef(el);
+    },
+    updated(el) {
+      setForwardRef(el);
+    },
+    unmounted() {
+      setForwardRef(null);
+    }
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-z-index/index.mjs
+var zIndex = ref(0);
+var useZIndex = () => {
+  const initialZIndex = useGlobalConfig("zIndex", 2e3);
+  const currentZIndex = computed2(() => initialZIndex.value + zIndex.value);
+  const nextZIndex = () => {
+    zIndex.value++;
+    return currentZIndex.value;
+  };
+  return {
+    initialZIndex,
+    currentZIndex,
+    nextZIndex
+  };
+};
+
+// ../node_modules/.pnpm/@floating-ui+core@1.2.1/node_modules/@floating-ui/core/dist/floating-ui.core.browser.mjs
+function getAlignment(placement) {
+  return placement.split("-")[1];
+}
+function getLengthFromAxis(axis) {
+  return axis === "y" ? "height" : "width";
+}
+function getSide(placement) {
+  return placement.split("-")[0];
+}
+function getMainAxisFromPlacement(placement) {
+  return ["top", "bottom"].includes(getSide(placement)) ? "x" : "y";
+}
+function computeCoordsFromPlacement(_ref, placement, rtl) {
+  let {
+    reference,
+    floating
+  } = _ref;
+  const commonX = reference.x + reference.width / 2 - floating.width / 2;
+  const commonY = reference.y + reference.height / 2 - floating.height / 2;
+  const mainAxis = getMainAxisFromPlacement(placement);
+  const length = getLengthFromAxis(mainAxis);
+  const commonAlign = reference[length] / 2 - floating[length] / 2;
+  const side = getSide(placement);
+  const isVertical = mainAxis === "x";
+  let coords;
+  switch (side) {
+    case "top":
+      coords = {
+        x: commonX,
+        y: reference.y - floating.height
+      };
+      break;
+    case "bottom":
+      coords = {
+        x: commonX,
+        y: reference.y + reference.height
+      };
+      break;
+    case "right":
+      coords = {
+        x: reference.x + reference.width,
+        y: commonY
+      };
+      break;
+    case "left":
+      coords = {
+        x: reference.x - floating.width,
+        y: commonY
+      };
+      break;
+    default:
+      coords = {
+        x: reference.x,
+        y: reference.y
+      };
+  }
+  switch (getAlignment(placement)) {
+    case "start":
+      coords[mainAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+      break;
+    case "end":
+      coords[mainAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+      break;
+  }
+  return coords;
+}
+var computePosition = async (reference, floating, config) => {
+  const {
+    placement = "bottom",
+    strategy = "absolute",
+    middleware = [],
+    platform: platform2
+  } = config;
+  const validMiddleware = middleware.filter(Boolean);
+  const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(floating));
+  {
+    if (platform2 == null) {
+      console.error(["Floating UI: `platform` property was not passed to config. If you", "want to use Floating UI on the web, install @floating-ui/dom", "instead of the /core package. Otherwise, you can create your own", "`platform`: https://floating-ui.com/docs/platform"].join(" "));
+    }
+    if (validMiddleware.filter((_ref) => {
+      let {
+        name
+      } = _ref;
+      return name === "autoPlacement" || name === "flip";
+    }).length > 1) {
+      throw new Error(["Floating UI: duplicate `flip` and/or `autoPlacement` middleware", "detected. This will lead to an infinite loop. Ensure only one of", "either has been passed to the `middleware` array."].join(" "));
+    }
+    if (!reference || !floating) {
+      console.error(["Floating UI: The reference and/or floating element was not defined", "when `computePosition()` was called. Ensure that both elements have", "been created and can be measured."].join(" "));
+    }
+  }
+  let rects = await platform2.getElementRects({
+    reference,
+    floating,
+    strategy
+  });
+  let {
+    x: x2,
+    y
+  } = computeCoordsFromPlacement(rects, placement, rtl);
+  let statefulPlacement = placement;
+  let middlewareData = {};
+  let resetCount = 0;
+  for (let i = 0; i < validMiddleware.length; i++) {
+    const {
+      name,
+      fn: fn2
+    } = validMiddleware[i];
+    const {
+      x: nextX,
+      y: nextY,
+      data,
+      reset
+    } = await fn2({
+      x: x2,
+      y,
+      initialPlacement: placement,
+      placement: statefulPlacement,
+      strategy,
+      middlewareData,
+      rects,
+      platform: platform2,
+      elements: {
+        reference,
+        floating
+      }
+    });
+    x2 = nextX != null ? nextX : x2;
+    y = nextY != null ? nextY : y;
+    middlewareData = {
+      ...middlewareData,
+      [name]: {
+        ...middlewareData[name],
+        ...data
+      }
+    };
+    {
+      if (resetCount > 50) {
+        console.warn(["Floating UI: The middleware lifecycle appears to be running in an", "infinite loop. This is usually caused by a `reset` continually", "being returned without a break condition."].join(" "));
+      }
+    }
+    if (reset && resetCount <= 50) {
+      resetCount++;
+      if (typeof reset === "object") {
+        if (reset.placement) {
+          statefulPlacement = reset.placement;
+        }
+        if (reset.rects) {
+          rects = reset.rects === true ? await platform2.getElementRects({
+            reference,
+            floating,
+            strategy
+          }) : reset.rects;
+        }
+        ({
+          x: x2,
+          y
+        } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
+      }
+      i = -1;
+      continue;
+    }
+  }
+  return {
+    x: x2,
+    y,
+    placement: statefulPlacement,
+    strategy,
+    middlewareData
+  };
+};
+function expandPaddingObject(padding) {
+  return {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    ...padding
+  };
+}
+function getSideObjectFromPadding(padding) {
+  return typeof padding !== "number" ? expandPaddingObject(padding) : {
+    top: padding,
+    right: padding,
+    bottom: padding,
+    left: padding
+  };
+}
+function rectToClientRect(rect) {
+  return {
+    ...rect,
+    top: rect.y,
+    left: rect.x,
+    right: rect.x + rect.width,
+    bottom: rect.y + rect.height
+  };
+}
+var min2 = Math.min;
+var max2 = Math.max;
+function within(min$1, value, max$1) {
+  return max2(min$1, min2(value, max$1));
+}
+var arrow = (options) => ({
+  name: "arrow",
+  options,
+  async fn(state) {
+    const {
+      element,
+      padding = 0
+    } = options || {};
+    const {
+      x: x2,
+      y,
+      placement,
+      rects,
+      platform: platform2
+    } = state;
+    if (element == null) {
+      {
+        console.warn("Floating UI: No `element` was passed to the `arrow` middleware.");
+      }
+      return {};
+    }
+    const paddingObject = getSideObjectFromPadding(padding);
+    const coords = {
+      x: x2,
+      y
+    };
+    const axis = getMainAxisFromPlacement(placement);
+    const length = getLengthFromAxis(axis);
+    const arrowDimensions = await platform2.getDimensions(element);
+    const minProp = axis === "y" ? "top" : "left";
+    const maxProp = axis === "y" ? "bottom" : "right";
+    const endDiff = rects.reference[length] + rects.reference[axis] - coords[axis] - rects.floating[length];
+    const startDiff = coords[axis] - rects.reference[axis];
+    const arrowOffsetParent = await (platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(element));
+    let clientSize = arrowOffsetParent ? axis === "y" ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
+    if (clientSize === 0) {
+      clientSize = rects.floating[length];
+    }
+    const centerToReference = endDiff / 2 - startDiff / 2;
+    const min5 = paddingObject[minProp];
+    const max5 = clientSize - arrowDimensions[length] - paddingObject[maxProp];
+    const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
+    const offset2 = within(min5, center, max5);
+    const shouldAddOffset = getAlignment(placement) != null && center != offset2 && rects.reference[length] / 2 - (center < min5 ? paddingObject[minProp] : paddingObject[maxProp]) - arrowDimensions[length] / 2 < 0;
+    const alignmentOffset = shouldAddOffset ? center < min5 ? min5 - center : max5 - center : 0;
+    return {
+      [axis]: coords[axis] - alignmentOffset,
+      data: {
+        [axis]: offset2,
+        centerOffset: center - offset2
+      }
+    };
+  }
+});
+var sides = ["top", "right", "bottom", "left"];
+var allPlacements = sides.reduce((acc, side) => acc.concat(side, side + "-start", side + "-end"), []);
+async function convertValueToCoords(state, value) {
+  const {
+    placement,
+    platform: platform2,
+    elements
+  } = state;
+  const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating));
+  const side = getSide(placement);
+  const alignment = getAlignment(placement);
+  const isVertical = getMainAxisFromPlacement(placement) === "x";
+  const mainAxisMulti = ["left", "top"].includes(side) ? -1 : 1;
+  const crossAxisMulti = rtl && isVertical ? -1 : 1;
+  const rawValue = typeof value === "function" ? value(state) : value;
+  let {
+    mainAxis,
+    crossAxis,
+    alignmentAxis
+  } = typeof rawValue === "number" ? {
+    mainAxis: rawValue,
+    crossAxis: 0,
+    alignmentAxis: null
+  } : {
+    mainAxis: 0,
+    crossAxis: 0,
+    alignmentAxis: null,
+    ...rawValue
+  };
+  if (alignment && typeof alignmentAxis === "number") {
+    crossAxis = alignment === "end" ? alignmentAxis * -1 : alignmentAxis;
+  }
+  return isVertical ? {
+    x: crossAxis * crossAxisMulti,
+    y: mainAxis * mainAxisMulti
+  } : {
+    x: mainAxis * mainAxisMulti,
+    y: crossAxis * crossAxisMulti
+  };
+}
+var offset = function(value) {
+  if (value === void 0) {
+    value = 0;
+  }
+  return {
+    name: "offset",
+    options: value,
+    async fn(state) {
+      const {
+        x: x2,
+        y
+      } = state;
+      const diffCoords = await convertValueToCoords(state, value);
+      return {
+        x: x2 + diffCoords.x,
+        y: y + diffCoords.y,
+        data: diffCoords
+      };
+    }
+  };
+};
+
+// ../node_modules/.pnpm/@floating-ui+dom@1.2.1/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.mjs
+function getWindow(node) {
+  var _node$ownerDocument;
+  return ((_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+}
+function getComputedStyle$1(element) {
+  return getWindow(element).getComputedStyle(element);
+}
+var min3 = Math.min;
+var max3 = Math.max;
+var round2 = Math.round;
+function getCssDimensions(element) {
+  const css = getComputedStyle$1(element);
+  let width = parseFloat(css.width);
+  let height = parseFloat(css.height);
+  const offsetWidth = element.offsetWidth;
+  const offsetHeight = element.offsetHeight;
+  const shouldFallback = round2(width) !== offsetWidth || round2(height) !== offsetHeight;
+  if (shouldFallback) {
+    width = offsetWidth;
+    height = offsetHeight;
+  }
+  return {
+    width,
+    height,
+    fallback: shouldFallback
+  };
+}
+function getNodeName(node) {
+  return isNode(node) ? (node.nodeName || "").toLowerCase() : "";
+}
+var uaString;
+function getUAString() {
+  if (uaString) {
+    return uaString;
+  }
+  const uaData = navigator.userAgentData;
+  if (uaData && Array.isArray(uaData.brands)) {
+    uaString = uaData.brands.map((item) => item.brand + "/" + item.version).join(" ");
+    return uaString;
+  }
+  return navigator.userAgent;
+}
+function isHTMLElement(value) {
+  return value instanceof getWindow(value).HTMLElement;
+}
+function isElement3(value) {
+  return value instanceof getWindow(value).Element;
+}
+function isNode(value) {
+  return value instanceof getWindow(value).Node;
+}
+function isShadowRoot(node) {
+  if (typeof ShadowRoot === "undefined") {
+    return false;
+  }
+  const OwnElement = getWindow(node).ShadowRoot;
+  return node instanceof OwnElement || node instanceof ShadowRoot;
+}
+function isOverflowElement(element) {
+  const {
+    overflow,
+    overflowX,
+    overflowY,
+    display
+  } = getComputedStyle$1(element);
+  return /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) && !["inline", "contents"].includes(display);
+}
+function isTableElement(element) {
+  return ["table", "td", "th"].includes(getNodeName(element));
+}
+function isContainingBlock(element) {
+  const isFirefox2 = /firefox/i.test(getUAString());
+  const css = getComputedStyle$1(element);
+  const backdropFilter = css.backdropFilter || css.WebkitBackdropFilter;
+  return css.transform !== "none" || css.perspective !== "none" || (backdropFilter ? backdropFilter !== "none" : false) || isFirefox2 && css.willChange === "filter" || isFirefox2 && (css.filter ? css.filter !== "none" : false) || ["transform", "perspective"].some((value) => css.willChange.includes(value)) || ["paint", "layout", "strict", "content"].some((value) => {
+    const contain = css.contain;
+    return contain != null ? contain.includes(value) : false;
+  });
+}
+function isClientRectVisualViewportBased() {
+  return /^((?!chrome|android).)*safari/i.test(getUAString());
+}
+function isLastTraversableNode(node) {
+  return ["html", "body", "#document"].includes(getNodeName(node));
+}
+function unwrapElement(element) {
+  return !isElement3(element) ? element.contextElement : element;
+}
+var FALLBACK_SCALE = {
+  x: 1,
+  y: 1
+};
+function getScale(element) {
+  const domElement = unwrapElement(element);
+  if (!isHTMLElement(domElement)) {
+    return FALLBACK_SCALE;
+  }
+  const rect = domElement.getBoundingClientRect();
+  const {
+    width,
+    height,
+    fallback
+  } = getCssDimensions(domElement);
+  let x2 = (fallback ? round2(rect.width) : rect.width) / width;
+  let y = (fallback ? round2(rect.height) : rect.height) / height;
+  if (!x2 || !Number.isFinite(x2)) {
+    x2 = 1;
+  }
+  if (!y || !Number.isFinite(y)) {
+    y = 1;
+  }
+  return {
+    x: x2,
+    y
+  };
+}
+function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetParent) {
+  var _win$visualViewport, _win$visualViewport2;
+  if (includeScale === void 0) {
+    includeScale = false;
+  }
+  if (isFixedStrategy === void 0) {
+    isFixedStrategy = false;
+  }
+  const clientRect = element.getBoundingClientRect();
+  const domElement = unwrapElement(element);
+  let scale = FALLBACK_SCALE;
+  if (includeScale) {
+    if (offsetParent) {
+      if (isElement3(offsetParent)) {
+        scale = getScale(offsetParent);
+      }
+    } else {
+      scale = getScale(element);
+    }
+  }
+  const win = domElement ? getWindow(domElement) : window;
+  const addVisualOffsets = isClientRectVisualViewportBased() && isFixedStrategy;
+  let x2 = (clientRect.left + (addVisualOffsets ? ((_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) || 0 : 0)) / scale.x;
+  let y = (clientRect.top + (addVisualOffsets ? ((_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) || 0 : 0)) / scale.y;
+  let width = clientRect.width / scale.x;
+  let height = clientRect.height / scale.y;
+  if (domElement) {
+    const win2 = getWindow(domElement);
+    const offsetWin = offsetParent && isElement3(offsetParent) ? getWindow(offsetParent) : offsetParent;
+    let currentIFrame = win2.frameElement;
+    while (currentIFrame && offsetParent && offsetWin !== win2) {
+      const iframeScale = getScale(currentIFrame);
+      const iframeRect = currentIFrame.getBoundingClientRect();
+      const css = getComputedStyle(currentIFrame);
+      iframeRect.x += (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
+      iframeRect.y += (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
+      x2 *= iframeScale.x;
+      y *= iframeScale.y;
+      width *= iframeScale.x;
+      height *= iframeScale.y;
+      x2 += iframeRect.x;
+      y += iframeRect.y;
+      currentIFrame = getWindow(currentIFrame).frameElement;
+    }
+  }
+  return {
+    width,
+    height,
+    top: y,
+    right: x2 + width,
+    bottom: y + height,
+    left: x2,
+    x: x2,
+    y
+  };
+}
+function getDocumentElement(node) {
+  return ((isNode(node) ? node.ownerDocument : node.document) || window.document).documentElement;
+}
+function getNodeScroll(element) {
+  if (isElement3(element)) {
+    return {
+      scrollLeft: element.scrollLeft,
+      scrollTop: element.scrollTop
+    };
+  }
+  return {
+    scrollLeft: element.pageXOffset,
+    scrollTop: element.pageYOffset
+  };
+}
+function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
+  let {
+    rect,
+    offsetParent,
+    strategy
+  } = _ref;
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
+  const documentElement = getDocumentElement(offsetParent);
+  if (offsetParent === documentElement) {
+    return rect;
+  }
+  let scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  let scale = {
+    x: 1,
+    y: 1
+  };
+  const offsets = {
+    x: 0,
+    y: 0
+  };
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
+    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+    if (isHTMLElement(offsetParent)) {
+      const offsetRect = getBoundingClientRect(offsetParent);
+      scale = getScale(offsetParent);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    }
+  }
+  return {
+    width: rect.width * scale.x,
+    height: rect.height * scale.y,
+    x: rect.x * scale.x - scroll.scrollLeft * scale.x + offsets.x,
+    y: rect.y * scale.y - scroll.scrollTop * scale.y + offsets.y
+  };
+}
+function getWindowScrollBarX(element) {
+  return getBoundingClientRect(getDocumentElement(element)).left + getNodeScroll(element).scrollLeft;
+}
+function getDocumentRect(element) {
+  const html = getDocumentElement(element);
+  const scroll = getNodeScroll(element);
+  const body = element.ownerDocument.body;
+  const width = max3(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
+  const height = max3(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
+  let x2 = -scroll.scrollLeft + getWindowScrollBarX(element);
+  const y = -scroll.scrollTop;
+  if (getComputedStyle$1(body).direction === "rtl") {
+    x2 += max3(html.clientWidth, body.clientWidth) - width;
+  }
+  return {
+    width,
+    height,
+    x: x2,
+    y
+  };
+}
+function getParentNode(node) {
+  if (getNodeName(node) === "html") {
+    return node;
+  }
+  const result2 = (
+    // Step into the shadow DOM of the parent of a slotted node.
+    node.assignedSlot || // DOM Element detected.
+    node.parentNode || // ShadowRoot detected.
+    isShadowRoot(node) && node.host || // Fallback.
+    getDocumentElement(node)
+  );
+  return isShadowRoot(result2) ? result2.host : result2;
+}
+function getNearestOverflowAncestor(node) {
+  const parentNode = getParentNode(node);
+  if (isLastTraversableNode(parentNode)) {
+    return parentNode.ownerDocument.body;
+  }
+  if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
+    return parentNode;
+  }
+  return getNearestOverflowAncestor(parentNode);
+}
+function getOverflowAncestors(node, list) {
+  var _node$ownerDocument;
+  if (list === void 0) {
+    list = [];
+  }
+  const scrollableAncestor = getNearestOverflowAncestor(node);
+  const isBody = scrollableAncestor === ((_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.body);
+  const win = getWindow(scrollableAncestor);
+  if (isBody) {
+    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : []);
+  }
+  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor));
+}
+function getViewportRect(element, strategy) {
+  const win = getWindow(element);
+  const html = getDocumentElement(element);
+  const visualViewport = win.visualViewport;
+  let width = html.clientWidth;
+  let height = html.clientHeight;
+  let x2 = 0;
+  let y = 0;
+  if (visualViewport) {
+    width = visualViewport.width;
+    height = visualViewport.height;
+    const visualViewportBased = isClientRectVisualViewportBased();
+    if (!visualViewportBased || visualViewportBased && strategy === "fixed") {
+      x2 = visualViewport.offsetLeft;
+      y = visualViewport.offsetTop;
+    }
+  }
+  return {
+    width,
+    height,
+    x: x2,
+    y
+  };
+}
+function getInnerBoundingClientRect(element, strategy) {
+  const clientRect = getBoundingClientRect(element, true, strategy === "fixed");
+  const top = clientRect.top + element.clientTop;
+  const left2 = clientRect.left + element.clientLeft;
+  const scale = isHTMLElement(element) ? getScale(element) : {
+    x: 1,
+    y: 1
+  };
+  const width = element.clientWidth * scale.x;
+  const height = element.clientHeight * scale.y;
+  const x2 = left2 * scale.x;
+  const y = top * scale.y;
+  return {
+    width,
+    height,
+    x: x2,
+    y
+  };
+}
+function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
+  let rect;
+  if (clippingAncestor === "viewport") {
+    rect = getViewportRect(element, strategy);
+  } else if (clippingAncestor === "document") {
+    rect = getDocumentRect(getDocumentElement(element));
+  } else if (isElement3(clippingAncestor)) {
+    rect = getInnerBoundingClientRect(clippingAncestor, strategy);
+  } else {
+    const mutableRect = {
+      ...clippingAncestor
+    };
+    if (isClientRectVisualViewportBased()) {
+      var _win$visualViewport, _win$visualViewport2;
+      const win = getWindow(element);
+      mutableRect.x -= ((_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) || 0;
+      mutableRect.y -= ((_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) || 0;
+    }
+    rect = mutableRect;
+  }
+  return rectToClientRect(rect);
+}
+function getClippingElementAncestors(element, cache2) {
+  const cachedResult = cache2.get(element);
+  if (cachedResult) {
+    return cachedResult;
+  }
+  let result2 = getOverflowAncestors(element).filter((el) => isElement3(el) && getNodeName(el) !== "body");
+  let currentContainingBlockComputedStyle = null;
+  const elementIsFixed = getComputedStyle$1(element).position === "fixed";
+  let currentNode = elementIsFixed ? getParentNode(element) : element;
+  while (isElement3(currentNode) && !isLastTraversableNode(currentNode)) {
+    const computedStyle = getComputedStyle$1(currentNode);
+    const containingBlock = isContainingBlock(currentNode);
+    const shouldIgnoreCurrentNode = computedStyle.position === "fixed";
+    if (shouldIgnoreCurrentNode) {
+      currentContainingBlockComputedStyle = null;
+    } else {
+      const shouldDropCurrentNode = elementIsFixed ? !containingBlock && !currentContainingBlockComputedStyle : !containingBlock && computedStyle.position === "static" && !!currentContainingBlockComputedStyle && ["absolute", "fixed"].includes(currentContainingBlockComputedStyle.position);
+      if (shouldDropCurrentNode) {
+        result2 = result2.filter((ancestor) => ancestor !== currentNode);
+      } else {
+        currentContainingBlockComputedStyle = computedStyle;
+      }
+    }
+    currentNode = getParentNode(currentNode);
+  }
+  cache2.set(element, result2);
+  return result2;
+}
+function getClippingRect(_ref) {
+  let {
+    element,
+    boundary,
+    rootBoundary,
+    strategy
+  } = _ref;
+  const elementClippingAncestors = boundary === "clippingAncestors" ? getClippingElementAncestors(element, this._c) : [].concat(boundary);
+  const clippingAncestors = [...elementClippingAncestors, rootBoundary];
+  const firstClippingAncestor = clippingAncestors[0];
+  const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor) => {
+    const rect = getClientRectFromClippingAncestor(element, clippingAncestor, strategy);
+    accRect.top = max3(rect.top, accRect.top);
+    accRect.right = min3(rect.right, accRect.right);
+    accRect.bottom = min3(rect.bottom, accRect.bottom);
+    accRect.left = max3(rect.left, accRect.left);
+    return accRect;
+  }, getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy));
+  return {
+    width: clippingRect.right - clippingRect.left,
+    height: clippingRect.bottom - clippingRect.top,
+    x: clippingRect.left,
+    y: clippingRect.top
+  };
+}
+function getDimensions(element) {
+  if (isHTMLElement(element)) {
+    return getCssDimensions(element);
+  }
+  return element.getBoundingClientRect();
+}
+function getTrueOffsetParent(element, polyfill) {
+  if (!isHTMLElement(element) || getComputedStyle$1(element).position === "fixed") {
+    return null;
+  }
+  if (polyfill) {
+    return polyfill(element);
+  }
+  return element.offsetParent;
+}
+function getContainingBlock(element) {
+  let currentNode = getParentNode(element);
+  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
+    if (isContainingBlock(currentNode)) {
+      return currentNode;
+    } else {
+      currentNode = getParentNode(currentNode);
+    }
+  }
+  return null;
+}
+function getOffsetParent(element, polyfill) {
+  const window2 = getWindow(element);
+  let offsetParent = getTrueOffsetParent(element, polyfill);
+  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === "static") {
+    offsetParent = getTrueOffsetParent(offsetParent, polyfill);
+  }
+  if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle$1(offsetParent).position === "static" && !isContainingBlock(offsetParent))) {
+    return window2;
+  }
+  return offsetParent || getContainingBlock(element) || window2;
+}
+function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
+  const documentElement = getDocumentElement(offsetParent);
+  const rect = getBoundingClientRect(element, true, strategy === "fixed", offsetParent);
+  let scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  const offsets = {
+    x: 0,
+    y: 0
+  };
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
+    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+    if (isHTMLElement(offsetParent)) {
+      const offsetRect = getBoundingClientRect(offsetParent, true);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    } else if (documentElement) {
+      offsets.x = getWindowScrollBarX(documentElement);
+    }
+  }
+  return {
+    x: rect.left + scroll.scrollLeft - offsets.x,
+    y: rect.top + scroll.scrollTop - offsets.y,
+    width: rect.width,
+    height: rect.height
+  };
+}
+var platform = {
+  getClippingRect,
+  convertOffsetParentRelativeRectToViewportRelativeRect,
+  isElement: isElement3,
+  getDimensions,
+  getOffsetParent,
+  getDocumentElement,
+  getScale,
+  async getElementRects(_ref) {
+    let {
+      reference,
+      floating,
+      strategy
+    } = _ref;
+    const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
+    const getDimensionsFn = this.getDimensions;
+    return {
+      reference: getRectRelativeToOffsetParent(reference, await getOffsetParentFn(floating), strategy),
+      floating: {
+        x: 0,
+        y: 0,
+        ...await getDimensionsFn(floating)
+      }
+    };
+  },
+  getClientRects: (element) => Array.from(element.getClientRects()),
+  isRTL: (element) => getComputedStyle$1(element).direction === "rtl"
+};
+var computePosition2 = (reference, floating, options) => {
+  const cache2 = /* @__PURE__ */ new Map();
+  const mergedOptions = {
+    platform,
+    ...options
+  };
+  const platformWithCache = {
+    ...mergedOptions.platform,
+    _c: cache2
+  };
+  return computePosition(reference, floating, {
+    ...mergedOptions,
+    platform: platformWithCache
+  });
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-floating/index.mjs
+var useFloatingProps = buildProps({});
+var unrefReference = (elRef) => {
+  if (!isClient)
+    return;
+  if (!elRef)
+    return elRef;
+  const unrefEl = unrefElement(elRef);
+  if (unrefEl)
+    return unrefEl;
+  return isRef(elRef) ? unrefEl : elRef;
+};
+var getPositionDataWithUnit = (record, key) => {
+  const value = record == null ? void 0 : record[key];
+  return isNil_default(value) ? "" : `${value}px`;
+};
+var useFloating = ({
+  middleware,
+  placement,
+  strategy
+}) => {
+  const referenceRef = ref();
+  const contentRef = ref();
+  const x2 = ref();
+  const y = ref();
+  const middlewareData = ref({});
+  const states = {
+    x: x2,
+    y,
+    placement,
+    strategy,
+    middlewareData
+  };
+  const update2 = async () => {
+    if (!isClient)
+      return;
+    const referenceEl = unrefReference(referenceRef);
+    const contentEl = unrefElement(contentRef);
+    if (!referenceEl || !contentEl)
+      return;
+    const data = await computePosition2(referenceEl, contentEl, {
+      placement: unref(placement),
+      strategy: unref(strategy),
+      middleware: unref(middleware)
+    });
+    keysOf(states).forEach((key) => {
+      states[key].value = data[key];
+    });
+  };
+  onMounted(() => {
+    watchEffect(() => {
+      update2();
+    });
+  });
+  return {
+    ...states,
+    update: update2,
+    referenceRef,
+    contentRef
+  };
+};
+var arrowMiddleware = ({
+  arrowRef,
+  padding
+}) => {
+  return {
+    name: "arrow",
+    options: {
+      element: arrowRef,
+      padding
+    },
+    fn(args) {
+      const arrowEl = unref(arrowRef);
+      if (!arrowEl)
+        return {};
+      return arrow({
+        element: arrowEl,
+        padding
+      }).fn(args);
+    }
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-cursor/index.mjs
+function useCursor(input) {
+  const selectionRef = ref();
+  function recordCursor() {
+    if (input.value == void 0)
+      return;
+    const { selectionStart, selectionEnd, value } = input.value;
+    if (selectionStart == null || selectionEnd == null)
+      return;
+    const beforeTxt = value.slice(0, Math.max(0, selectionStart));
+    const afterTxt = value.slice(Math.max(0, selectionEnd));
+    selectionRef.value = {
+      selectionStart,
+      selectionEnd,
+      value,
+      beforeTxt,
+      afterTxt
+    };
+  }
+  function setCursor() {
+    if (input.value == void 0 || selectionRef.value == void 0)
+      return;
+    const { value } = input.value;
+    const { beforeTxt, afterTxt, selectionStart } = selectionRef.value;
+    if (beforeTxt == void 0 || afterTxt == void 0 || selectionStart == void 0)
+      return;
+    let startPos = value.length;
+    if (value.endsWith(afterTxt)) {
+      startPos = value.length - afterTxt.length;
+    } else if (value.startsWith(beforeTxt)) {
+      startPos = beforeTxt.length;
+    } else {
+      const beforeLastChar = beforeTxt[selectionStart - 1];
+      const newIndex = value.indexOf(beforeLastChar, selectionStart - 1);
+      if (newIndex !== -1) {
+        startPos = newIndex + 1;
+      }
+    }
+    input.value.setSelectionRange(startPos, startPos);
+  }
+  return [recordCursor, setCursor];
+}
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/hooks/use-ordered-children/index.mjs
+var getOrderedChildren = (vm, childComponentName, children) => {
+  const nodes = flattedChildren(vm.subTree).filter((n) => {
+    var _a;
+    return isVNode(n) && ((_a = n.type) == null ? void 0 : _a.name) === childComponentName && !!n.component;
+  });
+  const uids = nodes.map((n) => n.component.uid);
+  return uids.map((uid2) => children[uid2]).filter((p2) => !!p2);
+};
+var useOrderedChildren = (vm, childComponentName) => {
+  const children = {};
+  const orderedChildren = shallowRef([]);
+  const addChild = (child) => {
+    children[child.uid] = child;
+    orderedChildren.value = getOrderedChildren(vm, childComponentName, children);
+  };
+  const removeChild = (uid2) => {
+    delete children[uid2];
+    orderedChildren.value = orderedChildren.value.filter((children2) => children2.uid !== uid2);
+  };
+  return {
+    children: orderedChildren,
+    addChild,
+    removeChild
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/version.mjs
+var version = "2.2.32";
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/make-installer.mjs
+var makeInstaller = (components = []) => {
+  const install2 = (app, options) => {
+    if (app[INSTALLED_KEY])
+      return;
+    app[INSTALLED_KEY] = true;
+    components.forEach((c2) => app.use(c2));
+    if (options)
+      provideGlobalConfig(options, app, true);
+  };
+  return {
+    version,
+    install: install2
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/affix/src/affix.mjs
+var affixProps = buildProps({
+  zIndex: {
+    type: definePropType([Number, String]),
+    default: 100
+  },
+  target: {
+    type: String,
+    default: ""
+  },
+  offset: {
+    type: Number,
+    default: 0
+  },
+  position: {
+    type: String,
+    values: ["top", "bottom"],
+    default: "top"
+  }
+});
+var affixEmits = {
+  scroll: ({ scrollTop, fixed }) => isNumber(scrollTop) && isBoolean(fixed),
+  [CHANGE_EVENT]: (fixed) => isBoolean(fixed)
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs
+var _export_sfc = (sfc, props) => {
+  const target2 = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target2[key] = val;
+  }
+  return target2;
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/affix/src/affix2.mjs
+var COMPONENT_NAME = "ElAffix";
+var __default__ = defineComponent({
+  name: COMPONENT_NAME
+});
+var _sfc_main = defineComponent({
+  ...__default__,
+  props: affixProps,
+  emits: affixEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    const ns2 = useNamespace("affix");
+    const target2 = shallowRef();
+    const root2 = shallowRef();
+    const scrollContainer = shallowRef();
+    const { height: windowHeight } = useWindowSize();
+    const {
+      height: rootHeight,
+      width: rootWidth,
+      top: rootTop,
+      bottom: rootBottom,
+      update: updateRoot
+    } = useElementBounding(root2, { windowScroll: false });
+    const targetRect = useElementBounding(target2);
+    const fixed = ref(false);
+    const scrollTop = ref(0);
+    const transform2 = ref(0);
+    const rootStyle = computed2(() => {
+      return {
+        height: fixed.value ? `${rootHeight.value}px` : "",
+        width: fixed.value ? `${rootWidth.value}px` : ""
+      };
+    });
+    const affixStyle = computed2(() => {
+      if (!fixed.value)
+        return {};
+      const offset2 = props.offset ? addUnit(props.offset) : 0;
+      return {
+        height: `${rootHeight.value}px`,
+        width: `${rootWidth.value}px`,
+        top: props.position === "top" ? offset2 : "",
+        bottom: props.position === "bottom" ? offset2 : "",
+        transform: transform2.value ? `translateY(${transform2.value}px)` : "",
+        zIndex: props.zIndex
+      };
+    });
+    const update2 = () => {
+      if (!scrollContainer.value)
+        return;
+      scrollTop.value = scrollContainer.value instanceof Window ? document.documentElement.scrollTop : scrollContainer.value.scrollTop || 0;
+      if (props.position === "top") {
+        if (props.target) {
+          const difference2 = targetRect.bottom.value - props.offset - rootHeight.value;
+          fixed.value = props.offset > rootTop.value && targetRect.bottom.value > 0;
+          transform2.value = difference2 < 0 ? difference2 : 0;
+        } else {
+          fixed.value = props.offset > rootTop.value;
+        }
+      } else if (props.target) {
+        const difference2 = windowHeight.value - targetRect.top.value - props.offset - rootHeight.value;
+        fixed.value = windowHeight.value - props.offset < rootBottom.value && windowHeight.value > targetRect.top.value;
+        transform2.value = difference2 < 0 ? -difference2 : 0;
+      } else {
+        fixed.value = windowHeight.value - props.offset < rootBottom.value;
+      }
+    };
+    const handleScroll2 = () => {
+      updateRoot();
+      emit("scroll", {
+        scrollTop: scrollTop.value,
+        fixed: fixed.value
+      });
+    };
+    watch(fixed, (val) => emit("change", val));
+    onMounted(() => {
+      var _a;
+      if (props.target) {
+        target2.value = (_a = document.querySelector(props.target)) != null ? _a : void 0;
+        if (!target2.value)
+          throwError(COMPONENT_NAME, `Target is not existed: ${props.target}`);
+      } else {
+        target2.value = document.documentElement;
+      }
+      scrollContainer.value = getScrollContainer(root2.value, true);
+      updateRoot();
+    });
+    useEventListener(scrollContainer, "scroll", handleScroll2);
+    watchEffect(update2);
+    expose({
+      update: update2,
+      updateRoot
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        ref_key: "root",
+        ref: root2,
+        class: normalizeClass(unref(ns2).b()),
+        style: normalizeStyle(unref(rootStyle))
+      }, [
+        createBaseVNode("div", {
+          class: normalizeClass({ [unref(ns2).m("fixed")]: fixed.value }),
+          style: normalizeStyle(unref(affixStyle))
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 6)
+      ], 6);
+    };
+  }
+});
+var Affix = _export_sfc(_sfc_main, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/affix/src/affix.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/affix/index.mjs
+var ElAffix = withInstall(Affix);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/icon/src/icon.mjs
+var iconProps = buildProps({
+  size: {
+    type: definePropType([Number, String])
+  },
+  color: {
+    type: String
+  }
+});
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/icon/src/icon2.mjs
+var __default__2 = defineComponent({
+  name: "ElIcon",
+  inheritAttrs: false
+});
+var _sfc_main2 = defineComponent({
+  ...__default__2,
+  props: iconProps,
+  setup(__props) {
+    const props = __props;
+    const ns2 = useNamespace("icon");
+    const style = computed2(() => {
+      const { size: size3, color } = props;
+      if (!size3 && !color)
+        return {};
+      return {
+        fontSize: isUndefined2(size3) ? void 0 : addUnit(size3),
+        "--color": color
+      };
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("i", mergeProps({
+        class: unref(ns2).b(),
+        style: unref(style)
+      }, _ctx.$attrs), [
+        renderSlot(_ctx.$slots, "default")
+      ], 16);
+    };
+  }
+});
+var Icon = _export_sfc(_sfc_main2, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/icon/src/icon.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/icon/index.mjs
+var ElIcon = withInstall(Icon);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/alert/src/alert.mjs
+var alertEffects = ["light", "dark"];
+var alertProps = buildProps({
+  title: {
+    type: String,
+    default: ""
+  },
+  description: {
+    type: String,
+    default: ""
+  },
+  type: {
+    type: String,
+    values: keysOf(TypeComponentsMap),
+    default: "info"
+  },
+  closable: {
+    type: Boolean,
+    default: true
+  },
+  closeText: {
+    type: String,
+    default: ""
+  },
+  showIcon: Boolean,
+  center: Boolean,
+  effect: {
+    type: String,
+    values: alertEffects,
+    default: "light"
+  }
+});
+var alertEmits = {
+  close: (evt) => evt instanceof MouseEvent
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/alert/src/alert2.mjs
+var __default__3 = defineComponent({
+  name: "ElAlert"
+});
+var _sfc_main3 = defineComponent({
+  ...__default__3,
+  props: alertProps,
+  emits: alertEmits,
+  setup(__props, { emit }) {
+    const props = __props;
+    const { Close } = TypeComponents;
+    const slots = useSlots();
+    const ns2 = useNamespace("alert");
+    const visible = ref(true);
+    const iconComponent = computed2(() => TypeComponentsMap[props.type]);
+    const iconClass = computed2(() => [
+      ns2.e("icon"),
+      { [ns2.is("big")]: !!props.description || !!slots.default }
+    ]);
+    const isBoldTitle = computed2(() => {
+      return { [ns2.is("bold")]: props.description || slots.default };
+    });
+    const close2 = (evt) => {
+      visible.value = false;
+      emit("close", evt);
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(Transition, {
+        name: unref(ns2).b("fade"),
+        persisted: ""
+      }, {
+        default: withCtx(() => [
+          withDirectives(createBaseVNode("div", {
+            class: normalizeClass([unref(ns2).b(), unref(ns2).m(_ctx.type), unref(ns2).is("center", _ctx.center), unref(ns2).is(_ctx.effect)]),
+            role: "alert"
+          }, [
+            _ctx.showIcon && unref(iconComponent) ? (openBlock(), createBlock(unref(ElIcon), {
+              key: 0,
+              class: normalizeClass(unref(iconClass))
+            }, {
+              default: withCtx(() => [
+                (openBlock(), createBlock(resolveDynamicComponent(unref(iconComponent))))
+              ]),
+              _: 1
+            }, 8, ["class"])) : createCommentVNode("v-if", true),
+            createBaseVNode("div", {
+              class: normalizeClass(unref(ns2).e("content"))
+            }, [
+              _ctx.title || _ctx.$slots.title ? (openBlock(), createElementBlock("span", {
+                key: 0,
+                class: normalizeClass([unref(ns2).e("title"), unref(isBoldTitle)])
+              }, [
+                renderSlot(_ctx.$slots, "title", {}, () => [
+                  createTextVNode(toDisplayString(_ctx.title), 1)
+                ])
+              ], 2)) : createCommentVNode("v-if", true),
+              _ctx.$slots.default || _ctx.description ? (openBlock(), createElementBlock("p", {
+                key: 1,
+                class: normalizeClass(unref(ns2).e("description"))
+              }, [
+                renderSlot(_ctx.$slots, "default", {}, () => [
+                  createTextVNode(toDisplayString(_ctx.description), 1)
+                ])
+              ], 2)) : createCommentVNode("v-if", true),
+              _ctx.closable ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                _ctx.closeText ? (openBlock(), createElementBlock("div", {
+                  key: 0,
+                  class: normalizeClass([unref(ns2).e("close-btn"), unref(ns2).is("customed")]),
+                  onClick: close2
+                }, toDisplayString(_ctx.closeText), 3)) : (openBlock(), createBlock(unref(ElIcon), {
+                  key: 1,
+                  class: normalizeClass(unref(ns2).e("close-btn")),
+                  onClick: close2
+                }, {
+                  default: withCtx(() => [
+                    createVNode(unref(Close))
+                  ]),
+                  _: 1
+                }, 8, ["class"]))
+              ], 64)) : createCommentVNode("v-if", true)
+            ], 2)
+          ], 2), [
+            [vShow, visible.value]
+          ])
+        ]),
+        _: 3
+      }, 8, ["name"]);
+    };
+  }
+});
+var Alert = _export_sfc(_sfc_main3, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/alert/src/alert.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/alert/index.mjs
+var ElAlert = withInstall(Alert);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/input/src/utils.mjs
+var hiddenTextarea = void 0;
+var HIDDEN_STYLE = `
+  height:0 !important;
+  visibility:hidden !important;
+  ${isFirefox() ? "" : "overflow:hidden !important;"}
+  position:absolute !important;
+  z-index:-1000 !important;
+  top:0 !important;
+  right:0 !important;
+`;
+var CONTEXT_STYLE = [
+  "letter-spacing",
+  "line-height",
+  "padding-top",
+  "padding-bottom",
+  "font-family",
+  "font-weight",
+  "font-size",
+  "text-rendering",
+  "text-transform",
+  "width",
+  "text-indent",
+  "padding-left",
+  "padding-right",
+  "border-width",
+  "box-sizing"
+];
+function calculateNodeStyling(targetElement) {
+  const style = window.getComputedStyle(targetElement);
+  const boxSizing = style.getPropertyValue("box-sizing");
+  const paddingSize = Number.parseFloat(style.getPropertyValue("padding-bottom")) + Number.parseFloat(style.getPropertyValue("padding-top"));
+  const borderSize = Number.parseFloat(style.getPropertyValue("border-bottom-width")) + Number.parseFloat(style.getPropertyValue("border-top-width"));
+  const contextStyle = CONTEXT_STYLE.map((name) => `${name}:${style.getPropertyValue(name)}`).join(";");
+  return { contextStyle, paddingSize, borderSize, boxSizing };
+}
+function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
+  var _a;
+  if (!hiddenTextarea) {
+    hiddenTextarea = document.createElement("textarea");
+    document.body.appendChild(hiddenTextarea);
+  }
+  const { paddingSize, borderSize, boxSizing, contextStyle } = calculateNodeStyling(targetElement);
+  hiddenTextarea.setAttribute("style", `${contextStyle};${HIDDEN_STYLE}`);
+  hiddenTextarea.value = targetElement.value || targetElement.placeholder || "";
+  let height = hiddenTextarea.scrollHeight;
+  const result2 = {};
+  if (boxSizing === "border-box") {
+    height = height + borderSize;
+  } else if (boxSizing === "content-box") {
+    height = height - paddingSize;
+  }
+  hiddenTextarea.value = "";
+  const singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
+  if (isNumber(minRows)) {
+    let minHeight = singleRowHeight * minRows;
+    if (boxSizing === "border-box") {
+      minHeight = minHeight + paddingSize + borderSize;
+    }
+    height = Math.max(minHeight, height);
+    result2.minHeight = `${minHeight}px`;
+  }
+  if (isNumber(maxRows)) {
+    let maxHeight = singleRowHeight * maxRows;
+    if (boxSizing === "border-box") {
+      maxHeight = maxHeight + paddingSize + borderSize;
+    }
+    height = Math.min(maxHeight, height);
+  }
+  result2.height = `${height}px`;
+  (_a = hiddenTextarea.parentNode) == null ? void 0 : _a.removeChild(hiddenTextarea);
+  hiddenTextarea = void 0;
+  return result2;
+}
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/input/src/input.mjs
+var inputProps = buildProps({
+  id: {
+    type: String,
+    default: void 0
+  },
+  size: useSizeProp,
+  disabled: Boolean,
+  modelValue: {
+    type: definePropType([
+      String,
+      Number,
+      Object
+    ]),
+    default: ""
+  },
+  type: {
+    type: String,
+    default: "text"
+  },
+  resize: {
+    type: String,
+    values: ["none", "both", "horizontal", "vertical"]
+  },
+  autosize: {
+    type: definePropType([Boolean, Object]),
+    default: false
+  },
+  autocomplete: {
+    type: String,
+    default: "off"
+  },
+  formatter: {
+    type: Function
+  },
+  parser: {
+    type: Function
+  },
+  placeholder: {
+    type: String
+  },
+  form: {
+    type: String
+  },
+  readonly: {
+    type: Boolean,
+    default: false
+  },
+  clearable: {
+    type: Boolean,
+    default: false
+  },
+  showPassword: {
+    type: Boolean,
+    default: false
+  },
+  showWordLimit: {
+    type: Boolean,
+    default: false
+  },
+  suffixIcon: {
+    type: iconPropType
+  },
+  prefixIcon: {
+    type: iconPropType
+  },
+  containerRole: {
+    type: String,
+    default: void 0
+  },
+  label: {
+    type: String,
+    default: void 0
+  },
+  tabindex: {
+    type: [String, Number],
+    default: 0
+  },
+  validateEvent: {
+    type: Boolean,
+    default: true
+  },
+  inputStyle: {
+    type: definePropType([Object, Array, String]),
+    default: () => mutable({})
+  }
+});
+var inputEmits = {
+  [UPDATE_MODEL_EVENT]: (value) => isString(value),
+  input: (value) => isString(value),
+  change: (value) => isString(value),
+  focus: (evt) => evt instanceof FocusEvent,
+  blur: (evt) => evt instanceof FocusEvent,
+  clear: () => true,
+  mouseleave: (evt) => evt instanceof MouseEvent,
+  mouseenter: (evt) => evt instanceof MouseEvent,
+  keydown: (evt) => evt instanceof Event,
+  compositionstart: (evt) => evt instanceof CompositionEvent,
+  compositionupdate: (evt) => evt instanceof CompositionEvent,
+  compositionend: (evt) => evt instanceof CompositionEvent
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/input/src/input2.mjs
+var _hoisted_1 = ["role"];
+var _hoisted_2 = ["id", "type", "disabled", "formatter", "parser", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form"];
+var _hoisted_3 = ["id", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form"];
+var __default__4 = defineComponent({
+  name: "ElInput",
+  inheritAttrs: false
+});
+var _sfc_main4 = defineComponent({
+  ...__default__4,
+  props: inputProps,
+  emits: inputEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    const rawAttrs = useAttrs();
+    const slots = useSlots();
+    const containerAttrs = computed2(() => {
+      const comboBoxAttrs = {};
+      if (props.containerRole === "combobox") {
+        comboBoxAttrs["aria-haspopup"] = rawAttrs["aria-haspopup"];
+        comboBoxAttrs["aria-owns"] = rawAttrs["aria-owns"];
+        comboBoxAttrs["aria-expanded"] = rawAttrs["aria-expanded"];
+      }
+      return comboBoxAttrs;
+    });
+    const containerKls = computed2(() => [
+      props.type === "textarea" ? nsTextarea.b() : nsInput.b(),
+      nsInput.m(inputSize.value),
+      nsInput.is("disabled", inputDisabled.value),
+      nsInput.is("exceed", inputExceed.value),
+      {
+        [nsInput.b("group")]: slots.prepend || slots.append,
+        [nsInput.bm("group", "append")]: slots.append,
+        [nsInput.bm("group", "prepend")]: slots.prepend,
+        [nsInput.m("prefix")]: slots.prefix || props.prefixIcon,
+        [nsInput.m("suffix")]: slots.suffix || props.suffixIcon || props.clearable || props.showPassword,
+        [nsInput.bm("suffix", "password-clear")]: showClear.value && showPwdVisible.value
+      },
+      rawAttrs.class
+    ]);
+    const wrapperKls = computed2(() => [
+      nsInput.e("wrapper"),
+      nsInput.is("focus", focused.value)
+    ]);
+    const attrs = useAttrs2({
+      excludeKeys: computed2(() => {
+        return Object.keys(containerAttrs.value);
+      })
+    });
+    const { form, formItem } = useFormItem();
+    const { inputId } = useFormItemInputId(props, {
+      formItemContext: formItem
+    });
+    const inputSize = useSize();
+    const inputDisabled = useDisabled();
+    const nsInput = useNamespace("input");
+    const nsTextarea = useNamespace("textarea");
+    const input = shallowRef();
+    const textarea = shallowRef();
+    const focused = ref(false);
+    const hovering = ref(false);
+    const isComposing = ref(false);
+    const passwordVisible = ref(false);
+    const countStyle = ref();
+    const textareaCalcStyle = shallowRef(props.inputStyle);
+    const _ref = computed2(() => input.value || textarea.value);
+    const needStatusIcon = computed2(() => {
+      var _a;
+      return (_a = form == null ? void 0 : form.statusIcon) != null ? _a : false;
+    });
+    const validateState = computed2(() => (formItem == null ? void 0 : formItem.validateState) || "");
+    const validateIcon = computed2(() => validateState.value && ValidateComponentsMap[validateState.value]);
+    const passwordIcon = computed2(() => passwordVisible.value ? view_default : hide_default);
+    const containerStyle = computed2(() => [
+      rawAttrs.style,
+      props.inputStyle
+    ]);
+    const textareaStyle = computed2(() => [
+      props.inputStyle,
+      textareaCalcStyle.value,
+      { resize: props.resize }
+    ]);
+    const nativeInputValue = computed2(() => isNil_default(props.modelValue) ? "" : String(props.modelValue));
+    const showClear = computed2(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (focused.value || hovering.value));
+    const showPwdVisible = computed2(() => props.showPassword && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (!!nativeInputValue.value || focused.value));
+    const isWordLimitVisible = computed2(() => props.showWordLimit && !!attrs.value.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
+    const textLength = computed2(() => Array.from(nativeInputValue.value).length);
+    const inputExceed = computed2(() => !!isWordLimitVisible.value && textLength.value > Number(attrs.value.maxlength));
+    const suffixVisible = computed2(() => !!slots.suffix || !!props.suffixIcon || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
+    const [recordCursor, setCursor] = useCursor(input);
+    useResizeObserver(textarea, (entries) => {
+      if (!isWordLimitVisible.value || props.resize !== "both")
+        return;
+      const entry = entries[0];
+      const { width } = entry.contentRect;
+      countStyle.value = {
+        right: `calc(100% - ${width + 15 + 6}px)`
+      };
+    });
+    const resizeTextarea = () => {
+      const { type: type4, autosize } = props;
+      if (!isClient || type4 !== "textarea" || !textarea.value)
+        return;
+      if (autosize) {
+        const minRows = isObject(autosize) ? autosize.minRows : void 0;
+        const maxRows = isObject(autosize) ? autosize.maxRows : void 0;
+        textareaCalcStyle.value = {
+          ...calcTextareaHeight(textarea.value, minRows, maxRows)
+        };
+      } else {
+        textareaCalcStyle.value = {
+          minHeight: calcTextareaHeight(textarea.value).minHeight
+        };
+      }
+    };
+    const setNativeInputValue = () => {
+      const input2 = _ref.value;
+      if (!input2 || input2.value === nativeInputValue.value)
+        return;
+      input2.value = nativeInputValue.value;
+    };
+    const handleInput = async (event) => {
+      recordCursor();
+      let { value } = event.target;
+      if (props.formatter) {
+        value = props.parser ? props.parser(value) : value;
+        value = props.formatter(value);
+      }
+      if (isComposing.value)
+        return;
+      if (value === nativeInputValue.value) {
+        setNativeInputValue();
+        return;
+      }
+      emit(UPDATE_MODEL_EVENT, value);
+      emit("input", value);
+      await nextTick();
+      setNativeInputValue();
+      setCursor();
+    };
+    const handleChange = (event) => {
+      emit("change", event.target.value);
+    };
+    const handleCompositionStart = (event) => {
+      emit("compositionstart", event);
+      isComposing.value = true;
+    };
+    const handleCompositionUpdate = (event) => {
+      var _a;
+      emit("compositionupdate", event);
+      const text = (_a = event.target) == null ? void 0 : _a.value;
+      const lastCharacter = text[text.length - 1] || "";
+      isComposing.value = !isKorean(lastCharacter);
+    };
+    const handleCompositionEnd = (event) => {
+      emit("compositionend", event);
+      if (isComposing.value) {
+        isComposing.value = false;
+        handleInput(event);
+      }
+    };
+    const handlePasswordVisible = () => {
+      passwordVisible.value = !passwordVisible.value;
+      focus();
+    };
+    const focus = async () => {
+      var _a;
+      await nextTick();
+      (_a = _ref.value) == null ? void 0 : _a.focus();
+    };
+    const blur = () => {
+      var _a;
+      return (_a = _ref.value) == null ? void 0 : _a.blur();
+    };
+    const handleFocus = (event) => {
+      focused.value = true;
+      emit("focus", event);
+    };
+    const handleBlur = (event) => {
+      var _a;
+      focused.value = false;
+      emit("blur", event);
+      if (props.validateEvent) {
+        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "blur").catch((err) => debugWarn(err));
+      }
+    };
+    const handleMouseLeave = (evt) => {
+      hovering.value = false;
+      emit("mouseleave", evt);
+    };
+    const handleMouseEnter = (evt) => {
+      hovering.value = true;
+      emit("mouseenter", evt);
+    };
+    const handleKeydown = (evt) => {
+      emit("keydown", evt);
+    };
+    const select = () => {
+      var _a;
+      (_a = _ref.value) == null ? void 0 : _a.select();
+    };
+    const clear = () => {
+      emit(UPDATE_MODEL_EVENT, "");
+      emit("change", "");
+      emit("clear");
+      emit("input", "");
+    };
+    watch(() => props.modelValue, () => {
+      var _a;
+      nextTick(() => resizeTextarea());
+      if (props.validateEvent) {
+        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "change").catch((err) => debugWarn(err));
+      }
+    });
+    watch(nativeInputValue, () => setNativeInputValue());
+    watch(() => props.type, async () => {
+      await nextTick();
+      setNativeInputValue();
+      resizeTextarea();
+    });
+    onMounted(() => {
+      if (!props.formatter && props.parser) {
+        debugWarn("ElInput", "If you set the parser, you also need to set the formatter.");
+      }
+      setNativeInputValue();
+      nextTick(resizeTextarea);
+    });
+    expose({
+      input,
+      textarea,
+      ref: _ref,
+      textareaStyle,
+      autosize: toRef(props, "autosize"),
+      focus,
+      blur,
+      select,
+      clear,
+      resizeTextarea
+    });
+    return (_ctx, _cache) => {
+      return withDirectives((openBlock(), createElementBlock("div", mergeProps(unref(containerAttrs), {
+        class: unref(containerKls),
+        style: unref(containerStyle),
+        role: _ctx.containerRole,
+        onMouseenter: handleMouseEnter,
+        onMouseleave: handleMouseLeave
+      }), [
+        createCommentVNode(" input "),
+        _ctx.type !== "textarea" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+          createCommentVNode(" prepend slot "),
+          _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
+            key: 0,
+            class: normalizeClass(unref(nsInput).be("group", "prepend"))
+          }, [
+            renderSlot(_ctx.$slots, "prepend")
+          ], 2)) : createCommentVNode("v-if", true),
+          createBaseVNode("div", {
+            class: normalizeClass(unref(wrapperKls))
+          }, [
+            createCommentVNode(" prefix slot "),
+            _ctx.$slots.prefix || _ctx.prefixIcon ? (openBlock(), createElementBlock("span", {
+              key: 0,
+              class: normalizeClass(unref(nsInput).e("prefix"))
+            }, [
+              createBaseVNode("span", {
+                class: normalizeClass(unref(nsInput).e("prefix-inner")),
+                onClick: focus
+              }, [
+                renderSlot(_ctx.$slots, "prefix"),
+                _ctx.prefixIcon ? (openBlock(), createBlock(unref(ElIcon), {
+                  key: 0,
+                  class: normalizeClass(unref(nsInput).e("icon"))
+                }, {
+                  default: withCtx(() => [
+                    (openBlock(), createBlock(resolveDynamicComponent(_ctx.prefixIcon)))
+                  ]),
+                  _: 1
+                }, 8, ["class"])) : createCommentVNode("v-if", true)
+              ], 2)
+            ], 2)) : createCommentVNode("v-if", true),
+            createBaseVNode("input", mergeProps({
+              id: unref(inputId),
+              ref_key: "input",
+              ref: input,
+              class: unref(nsInput).e("inner")
+            }, unref(attrs), {
+              type: _ctx.showPassword ? passwordVisible.value ? "text" : "password" : _ctx.type,
+              disabled: unref(inputDisabled),
+              formatter: _ctx.formatter,
+              parser: _ctx.parser,
+              readonly: _ctx.readonly,
+              autocomplete: _ctx.autocomplete,
+              tabindex: _ctx.tabindex,
+              "aria-label": _ctx.label,
+              placeholder: _ctx.placeholder,
+              style: _ctx.inputStyle,
+              form: props.form,
+              onCompositionstart: handleCompositionStart,
+              onCompositionupdate: handleCompositionUpdate,
+              onCompositionend: handleCompositionEnd,
+              onInput: handleInput,
+              onFocus: handleFocus,
+              onBlur: handleBlur,
+              onChange: handleChange,
+              onKeydown: handleKeydown
+            }), null, 16, _hoisted_2),
+            createCommentVNode(" suffix slot "),
+            unref(suffixVisible) ? (openBlock(), createElementBlock("span", {
+              key: 1,
+              class: normalizeClass(unref(nsInput).e("suffix"))
+            }, [
+              createBaseVNode("span", {
+                class: normalizeClass(unref(nsInput).e("suffix-inner")),
+                onClick: focus
+              }, [
+                !unref(showClear) || !unref(showPwdVisible) || !unref(isWordLimitVisible) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                  renderSlot(_ctx.$slots, "suffix"),
+                  _ctx.suffixIcon ? (openBlock(), createBlock(unref(ElIcon), {
+                    key: 0,
+                    class: normalizeClass(unref(nsInput).e("icon"))
+                  }, {
+                    default: withCtx(() => [
+                      (openBlock(), createBlock(resolveDynamicComponent(_ctx.suffixIcon)))
+                    ]),
+                    _: 1
+                  }, 8, ["class"])) : createCommentVNode("v-if", true)
+                ], 64)) : createCommentVNode("v-if", true),
+                unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
+                  key: 1,
+                  class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("clear")]),
+                  onMousedown: withModifiers(unref(NOOP), ["prevent"]),
+                  onClick: clear
+                }, {
+                  default: withCtx(() => [
+                    createVNode(unref(circle_close_default))
+                  ]),
+                  _: 1
+                }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
+                unref(showPwdVisible) ? (openBlock(), createBlock(unref(ElIcon), {
+                  key: 2,
+                  class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("password")]),
+                  onClick: handlePasswordVisible
+                }, {
+                  default: withCtx(() => [
+                    (openBlock(), createBlock(resolveDynamicComponent(unref(passwordIcon))))
+                  ]),
+                  _: 1
+                }, 8, ["class"])) : createCommentVNode("v-if", true),
+                unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
+                  key: 3,
+                  class: normalizeClass(unref(nsInput).e("count"))
+                }, [
+                  createBaseVNode("span", {
+                    class: normalizeClass(unref(nsInput).e("count-inner"))
+                  }, toDisplayString(unref(textLength)) + " / " + toDisplayString(unref(attrs).maxlength), 3)
+                ], 2)) : createCommentVNode("v-if", true),
+                unref(validateState) && unref(validateIcon) && unref(needStatusIcon) ? (openBlock(), createBlock(unref(ElIcon), {
+                  key: 4,
+                  class: normalizeClass([
+                    unref(nsInput).e("icon"),
+                    unref(nsInput).e("validateIcon"),
+                    unref(nsInput).is("loading", unref(validateState) === "validating")
+                  ])
+                }, {
+                  default: withCtx(() => [
+                    (openBlock(), createBlock(resolveDynamicComponent(unref(validateIcon))))
+                  ]),
+                  _: 1
+                }, 8, ["class"])) : createCommentVNode("v-if", true)
+              ], 2)
+            ], 2)) : createCommentVNode("v-if", true)
+          ], 2),
+          createCommentVNode(" append slot "),
+          _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
+            key: 1,
+            class: normalizeClass(unref(nsInput).be("group", "append"))
+          }, [
+            renderSlot(_ctx.$slots, "append")
+          ], 2)) : createCommentVNode("v-if", true)
+        ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+          createCommentVNode(" textarea "),
+          createBaseVNode("textarea", mergeProps({
+            id: unref(inputId),
+            ref_key: "textarea",
+            ref: textarea,
+            class: unref(nsTextarea).e("inner")
+          }, unref(attrs), {
+            tabindex: _ctx.tabindex,
+            disabled: unref(inputDisabled),
+            readonly: _ctx.readonly,
+            autocomplete: _ctx.autocomplete,
+            style: unref(textareaStyle),
+            "aria-label": _ctx.label,
+            placeholder: _ctx.placeholder,
+            form: props.form,
+            onCompositionstart: handleCompositionStart,
+            onCompositionupdate: handleCompositionUpdate,
+            onCompositionend: handleCompositionEnd,
+            onInput: handleInput,
+            onFocus: handleFocus,
+            onBlur: handleBlur,
+            onChange: handleChange,
+            onKeydown: handleKeydown
+          }), null, 16, _hoisted_3),
+          unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
+            key: 0,
+            style: normalizeStyle(countStyle.value),
+            class: normalizeClass(unref(nsInput).e("count"))
+          }, toDisplayString(unref(textLength)) + " / " + toDisplayString(unref(attrs).maxlength), 7)) : createCommentVNode("v-if", true)
+        ], 64))
+      ], 16, _hoisted_1)), [
+        [vShow, _ctx.type !== "hidden"]
+      ]);
+    };
+  }
+});
+var Input = _export_sfc(_sfc_main4, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/input/src/input.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/input/index.mjs
+var ElInput = withInstall(Input);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/scrollbar/src/util.mjs
+var GAP = 4;
+var BAR_MAP = {
+  vertical: {
+    offset: "offsetHeight",
+    scroll: "scrollTop",
+    scrollSize: "scrollHeight",
+    size: "height",
+    key: "vertical",
+    axis: "Y",
+    client: "clientY",
+    direction: "top"
+  },
+  horizontal: {
+    offset: "offsetWidth",
+    scroll: "scrollLeft",
+    scrollSize: "scrollWidth",
+    size: "width",
+    key: "horizontal",
+    axis: "X",
+    client: "clientX",
+    direction: "left"
+  }
+};
+var renderThumbStyle = ({
+  move,
+  size: size3,
+  bar
+}) => ({
+  [bar.size]: size3,
+  transform: `translate${bar.axis}(${move}%)`
+});
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/scrollbar/src/thumb.mjs
+var thumbProps = buildProps({
+  vertical: Boolean,
+  size: String,
+  move: Number,
+  ratio: {
+    type: Number,
+    required: true
+  },
+  always: Boolean
+});
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/scrollbar/src/thumb2.mjs
+var COMPONENT_NAME2 = "Thumb";
+var _sfc_main5 = defineComponent({
+  __name: "thumb",
+  props: thumbProps,
+  setup(__props) {
+    const props = __props;
+    const scrollbar = inject(scrollbarContextKey);
+    const ns2 = useNamespace("scrollbar");
+    if (!scrollbar)
+      throwError(COMPONENT_NAME2, "can not inject scrollbar context");
+    const instance = ref();
+    const thumb = ref();
+    const thumbState = ref({});
+    const visible = ref(false);
+    let cursorDown = false;
+    let cursorLeave = false;
+    let originalOnSelectStart = isClient ? document.onselectstart : null;
+    const bar = computed2(() => BAR_MAP[props.vertical ? "vertical" : "horizontal"]);
+    const thumbStyle = computed2(() => renderThumbStyle({
+      size: props.size,
+      move: props.move,
+      bar: bar.value
+    }));
+    const offsetRatio = computed2(() => instance.value[bar.value.offset] ** 2 / scrollbar.wrapElement[bar.value.scrollSize] / props.ratio / thumb.value[bar.value.offset]);
+    const clickThumbHandler = (e) => {
+      var _a;
+      e.stopPropagation();
+      if (e.ctrlKey || [1, 2].includes(e.button))
+        return;
+      (_a = window.getSelection()) == null ? void 0 : _a.removeAllRanges();
+      startDrag(e);
+      const el = e.currentTarget;
+      if (!el)
+        return;
+      thumbState.value[bar.value.axis] = el[bar.value.offset] - (e[bar.value.client] - el.getBoundingClientRect()[bar.value.direction]);
+    };
+    const clickTrackHandler = (e) => {
+      if (!thumb.value || !instance.value || !scrollbar.wrapElement)
+        return;
+      const offset2 = Math.abs(e.target.getBoundingClientRect()[bar.value.direction] - e[bar.value.client]);
+      const thumbHalf = thumb.value[bar.value.offset] / 2;
+      const thumbPositionPercentage = (offset2 - thumbHalf) * 100 * offsetRatio.value / instance.value[bar.value.offset];
+      scrollbar.wrapElement[bar.value.scroll] = thumbPositionPercentage * scrollbar.wrapElement[bar.value.scrollSize] / 100;
+    };
+    const startDrag = (e) => {
+      e.stopImmediatePropagation();
+      cursorDown = true;
+      document.addEventListener("mousemove", mouseMoveDocumentHandler);
+      document.addEventListener("mouseup", mouseUpDocumentHandler);
+      originalOnSelectStart = document.onselectstart;
+      document.onselectstart = () => false;
+    };
+    const mouseMoveDocumentHandler = (e) => {
+      if (!instance.value || !thumb.value)
+        return;
+      if (cursorDown === false)
+        return;
+      const prevPage = thumbState.value[bar.value.axis];
+      if (!prevPage)
+        return;
+      const offset2 = (instance.value.getBoundingClientRect()[bar.value.direction] - e[bar.value.client]) * -1;
+      const thumbClickPosition = thumb.value[bar.value.offset] - prevPage;
+      const thumbPositionPercentage = (offset2 - thumbClickPosition) * 100 * offsetRatio.value / instance.value[bar.value.offset];
+      scrollbar.wrapElement[bar.value.scroll] = thumbPositionPercentage * scrollbar.wrapElement[bar.value.scrollSize] / 100;
+    };
+    const mouseUpDocumentHandler = () => {
+      cursorDown = false;
+      thumbState.value[bar.value.axis] = 0;
+      document.removeEventListener("mousemove", mouseMoveDocumentHandler);
+      document.removeEventListener("mouseup", mouseUpDocumentHandler);
+      restoreOnselectstart();
+      if (cursorLeave)
+        visible.value = false;
+    };
+    const mouseMoveScrollbarHandler = () => {
+      cursorLeave = false;
+      visible.value = !!props.size;
+    };
+    const mouseLeaveScrollbarHandler = () => {
+      cursorLeave = true;
+      visible.value = cursorDown;
+    };
+    onBeforeUnmount(() => {
+      restoreOnselectstart();
+      document.removeEventListener("mouseup", mouseUpDocumentHandler);
+    });
+    const restoreOnselectstart = () => {
+      if (document.onselectstart !== originalOnSelectStart)
+        document.onselectstart = originalOnSelectStart;
+    };
+    useEventListener(toRef(scrollbar, "scrollbarElement"), "mousemove", mouseMoveScrollbarHandler);
+    useEventListener(toRef(scrollbar, "scrollbarElement"), "mouseleave", mouseLeaveScrollbarHandler);
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(Transition, {
+        name: unref(ns2).b("fade"),
+        persisted: ""
+      }, {
+        default: withCtx(() => [
+          withDirectives(createBaseVNode("div", {
+            ref_key: "instance",
+            ref: instance,
+            class: normalizeClass([unref(ns2).e("bar"), unref(ns2).is(unref(bar).key)]),
+            onMousedown: clickTrackHandler
+          }, [
+            createBaseVNode("div", {
+              ref_key: "thumb",
+              ref: thumb,
+              class: normalizeClass(unref(ns2).e("thumb")),
+              style: normalizeStyle(unref(thumbStyle)),
+              onMousedown: clickThumbHandler
+            }, null, 38)
+          ], 34), [
+            [vShow, _ctx.always || visible.value]
+          ])
+        ]),
+        _: 1
+      }, 8, ["name"]);
+    };
+  }
+});
+var Thumb = _export_sfc(_sfc_main5, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/thumb.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/scrollbar/src/bar.mjs
+var barProps = buildProps({
+  always: {
+    type: Boolean,
+    default: true
+  },
+  width: String,
+  height: String,
+  ratioX: {
+    type: Number,
+    default: 1
+  },
+  ratioY: {
+    type: Number,
+    default: 1
+  }
+});
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/scrollbar/src/bar2.mjs
+var _sfc_main6 = defineComponent({
+  __name: "bar",
+  props: barProps,
+  setup(__props, { expose }) {
+    const props = __props;
+    const moveX = ref(0);
+    const moveY = ref(0);
+    const handleScroll2 = (wrap2) => {
+      if (wrap2) {
+        const offsetHeight = wrap2.offsetHeight - GAP;
+        const offsetWidth = wrap2.offsetWidth - GAP;
+        moveY.value = wrap2.scrollTop * 100 / offsetHeight * props.ratioY;
+        moveX.value = wrap2.scrollLeft * 100 / offsetWidth * props.ratioX;
+      }
+    };
+    expose({
+      handleScroll: handleScroll2
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock(Fragment, null, [
+        createVNode(Thumb, {
+          move: moveX.value,
+          ratio: _ctx.ratioX,
+          size: _ctx.width,
+          always: _ctx.always
+        }, null, 8, ["move", "ratio", "size", "always"]),
+        createVNode(Thumb, {
+          move: moveY.value,
+          ratio: _ctx.ratioY,
+          size: _ctx.height,
+          vertical: "",
+          always: _ctx.always
+        }, null, 8, ["move", "ratio", "size", "always"])
+      ], 64);
+    };
+  }
+});
+var Bar = _export_sfc(_sfc_main6, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/bar.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/scrollbar/src/scrollbar.mjs
+var scrollbarProps = buildProps({
+  height: {
+    type: [String, Number],
+    default: ""
+  },
+  maxHeight: {
+    type: [String, Number],
+    default: ""
+  },
+  native: {
+    type: Boolean,
+    default: false
+  },
+  wrapStyle: {
+    type: definePropType([String, Object, Array]),
+    default: ""
+  },
+  wrapClass: {
+    type: [String, Array],
+    default: ""
+  },
+  viewClass: {
+    type: [String, Array],
+    default: ""
+  },
+  viewStyle: {
+    type: [String, Array, Object],
+    default: ""
+  },
+  noresize: Boolean,
+  tag: {
+    type: String,
+    default: "div"
+  },
+  always: Boolean,
+  minSize: {
+    type: Number,
+    default: 20
+  }
+});
+var scrollbarEmits = {
+  scroll: ({
+    scrollTop,
+    scrollLeft
+  }) => [scrollTop, scrollLeft].every(isNumber)
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/scrollbar/src/scrollbar2.mjs
+var COMPONENT_NAME3 = "ElScrollbar";
+var __default__5 = defineComponent({
+  name: COMPONENT_NAME3
+});
+var _sfc_main7 = defineComponent({
+  ...__default__5,
+  props: scrollbarProps,
+  emits: scrollbarEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    const ns2 = useNamespace("scrollbar");
+    let stopResizeObserver = void 0;
+    let stopResizeListener = void 0;
+    const scrollbarRef = ref();
+    const wrapRef = ref();
+    const resizeRef = ref();
+    const sizeWidth = ref("0");
+    const sizeHeight = ref("0");
+    const barRef = ref();
+    const ratioY = ref(1);
+    const ratioX = ref(1);
+    const style = computed2(() => {
+      const style2 = {};
+      if (props.height)
+        style2.height = addUnit(props.height);
+      if (props.maxHeight)
+        style2.maxHeight = addUnit(props.maxHeight);
+      return [props.wrapStyle, style2];
+    });
+    const wrapKls = computed2(() => {
+      return [
+        props.wrapClass,
+        ns2.e("wrap"),
+        { [ns2.em("wrap", "hidden-default")]: !props.native }
+      ];
+    });
+    const resizeKls = computed2(() => {
+      return [ns2.e("view"), props.viewClass];
+    });
+    const handleScroll2 = () => {
+      var _a;
+      if (wrapRef.value) {
+        (_a = barRef.value) == null ? void 0 : _a.handleScroll(wrapRef.value);
+        emit("scroll", {
+          scrollTop: wrapRef.value.scrollTop,
+          scrollLeft: wrapRef.value.scrollLeft
+        });
+      }
+    };
+    function scrollTo(arg1, arg2) {
+      if (isObject(arg1)) {
+        wrapRef.value.scrollTo(arg1);
+      } else if (isNumber(arg1) && isNumber(arg2)) {
+        wrapRef.value.scrollTo(arg1, arg2);
+      }
+    }
+    const setScrollTop = (value) => {
+      if (!isNumber(value)) {
+        debugWarn(COMPONENT_NAME3, "value must be a number");
+        return;
+      }
+      wrapRef.value.scrollTop = value;
+    };
+    const setScrollLeft = (value) => {
+      if (!isNumber(value)) {
+        debugWarn(COMPONENT_NAME3, "value must be a number");
+        return;
+      }
+      wrapRef.value.scrollLeft = value;
+    };
+    const update2 = () => {
+      if (!wrapRef.value)
+        return;
+      const offsetHeight = wrapRef.value.offsetHeight - GAP;
+      const offsetWidth = wrapRef.value.offsetWidth - GAP;
+      const originalHeight = offsetHeight ** 2 / wrapRef.value.scrollHeight;
+      const originalWidth = offsetWidth ** 2 / wrapRef.value.scrollWidth;
+      const height = Math.max(originalHeight, props.minSize);
+      const width = Math.max(originalWidth, props.minSize);
+      ratioY.value = originalHeight / (offsetHeight - originalHeight) / (height / (offsetHeight - height));
+      ratioX.value = originalWidth / (offsetWidth - originalWidth) / (width / (offsetWidth - width));
+      sizeHeight.value = height + GAP < offsetHeight ? `${height}px` : "";
+      sizeWidth.value = width + GAP < offsetWidth ? `${width}px` : "";
+    };
+    watch(() => props.noresize, (noresize) => {
+      if (noresize) {
+        stopResizeObserver == null ? void 0 : stopResizeObserver();
+        stopResizeListener == null ? void 0 : stopResizeListener();
+      } else {
+        ;
+        ({ stop: stopResizeObserver } = useResizeObserver(resizeRef, update2));
+        stopResizeListener = useEventListener("resize", update2);
+      }
+    }, { immediate: true });
+    watch(() => [props.maxHeight, props.height], () => {
+      if (!props.native)
+        nextTick(() => {
+          var _a;
+          update2();
+          if (wrapRef.value) {
+            (_a = barRef.value) == null ? void 0 : _a.handleScroll(wrapRef.value);
+          }
+        });
+    });
+    provide(scrollbarContextKey, reactive({
+      scrollbarElement: scrollbarRef,
+      wrapElement: wrapRef
+    }));
+    onMounted(() => {
+      if (!props.native)
+        nextTick(() => {
+          update2();
+        });
+    });
+    onUpdated(() => update2());
+    expose({
+      wrapRef,
+      update: update2,
+      scrollTo,
+      setScrollTop,
+      setScrollLeft,
+      handleScroll: handleScroll2
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        ref_key: "scrollbarRef",
+        ref: scrollbarRef,
+        class: normalizeClass(unref(ns2).b())
+      }, [
+        createBaseVNode("div", {
+          ref_key: "wrapRef",
+          ref: wrapRef,
+          class: normalizeClass(unref(wrapKls)),
+          style: normalizeStyle(unref(style)),
+          onScroll: handleScroll2
+        }, [
+          (openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
+            ref_key: "resizeRef",
+            ref: resizeRef,
+            class: normalizeClass(unref(resizeKls)),
+            style: normalizeStyle(_ctx.viewStyle)
+          }, {
+            default: withCtx(() => [
+              renderSlot(_ctx.$slots, "default")
+            ]),
+            _: 3
+          }, 8, ["class", "style"]))
+        ], 38),
+        !_ctx.native ? (openBlock(), createBlock(Bar, {
+          key: 0,
+          ref_key: "barRef",
+          ref: barRef,
+          height: sizeHeight.value,
+          width: sizeWidth.value,
+          always: _ctx.always,
+          "ratio-x": ratioX.value,
+          "ratio-y": ratioY.value
+        }, null, 8, ["height", "width", "always", "ratio-x", "ratio-y"])) : createCommentVNode("v-if", true)
+      ], 2);
+    };
+  }
+});
+var Scrollbar = _export_sfc(_sfc_main7, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/scrollbar.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/scrollbar/index.mjs
+var ElScrollbar = withInstall(Scrollbar);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/popper.mjs
+var Effect = {
+  LIGHT: "light",
+  DARK: "dark"
+};
+var roleTypes = [
+  "dialog",
+  "grid",
+  "group",
+  "listbox",
+  "menu",
+  "navigation",
+  "tooltip",
+  "tree"
+];
+var popperProps = buildProps({
+  role: {
+    type: String,
+    values: roleTypes,
+    default: "tooltip"
+  }
+});
+var usePopperProps = popperProps;
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/popper2.mjs
+var __default__6 = defineComponent({
+  name: "ElPopper",
+  inheritAttrs: false
+});
+var _sfc_main8 = defineComponent({
+  ...__default__6,
+  props: popperProps,
+  setup(__props, { expose }) {
+    const props = __props;
+    const triggerRef2 = ref();
+    const popperInstanceRef = ref();
+    const contentRef = ref();
+    const referenceRef = ref();
+    const role = computed2(() => props.role);
+    const popperProvides = {
+      triggerRef: triggerRef2,
+      popperInstanceRef,
+      contentRef,
+      referenceRef,
+      role
+    };
+    expose(popperProvides);
+    provide(POPPER_INJECTION_KEY, popperProvides);
+    return (_ctx, _cache) => {
+      return renderSlot(_ctx.$slots, "default");
+    };
+  }
+});
+var Popper = _export_sfc(_sfc_main8, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/popper.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/arrow.mjs
+var popperArrowProps = buildProps({
+  arrowOffset: {
+    type: Number,
+    default: 5
+  }
+});
+var usePopperArrowProps = popperArrowProps;
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/arrow2.mjs
+var __default__7 = defineComponent({
+  name: "ElPopperArrow",
+  inheritAttrs: false
+});
+var _sfc_main9 = defineComponent({
+  ...__default__7,
+  props: popperArrowProps,
+  setup(__props, { expose }) {
+    const props = __props;
+    const ns2 = useNamespace("popper");
+    const { arrowOffset, arrowRef, arrowStyle } = inject(POPPER_CONTENT_INJECTION_KEY, void 0);
+    watch(() => props.arrowOffset, (val) => {
+      arrowOffset.value = val;
+    });
+    onBeforeUnmount(() => {
+      arrowRef.value = void 0;
+    });
+    expose({
+      arrowRef
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("span", {
+        ref_key: "arrowRef",
+        ref: arrowRef,
+        class: normalizeClass(unref(ns2).e("arrow")),
+        style: normalizeStyle(unref(arrowStyle)),
+        "data-popper-arrow": ""
+      }, null, 6);
+    };
+  }
+});
+var ElPopperArrow = _export_sfc(_sfc_main9, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/arrow.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slot/src/only-child.mjs
+var NAME = "ElOnlyChild";
+var OnlyChild = defineComponent({
+  name: NAME,
+  setup(_2, {
+    slots,
+    attrs
+  }) {
+    var _a;
+    const forwardRefInjection = inject(FORWARD_REF_INJECTION_KEY);
+    const forwardRefDirective = useForwardRefDirective((_a = forwardRefInjection == null ? void 0 : forwardRefInjection.setForwardRef) != null ? _a : NOOP);
+    return () => {
+      var _a2;
+      const defaultSlot = (_a2 = slots.default) == null ? void 0 : _a2.call(slots, attrs);
+      if (!defaultSlot)
+        return null;
+      if (defaultSlot.length > 1) {
+        debugWarn(NAME, "requires exact only one valid child.");
+        return null;
+      }
+      const firstLegitNode = findFirstLegitChild(defaultSlot);
+      if (!firstLegitNode) {
+        debugWarn(NAME, "no valid child node found");
+        return null;
+      }
+      return withDirectives(cloneVNode(firstLegitNode, attrs), [[forwardRefDirective]]);
+    };
+  }
+});
+function findFirstLegitChild(node) {
+  if (!node)
+    return null;
+  const children = node;
+  for (const child of children) {
+    if (isObject(child)) {
+      switch (child.type) {
+        case Comment:
+          continue;
+        case Text:
+        case "svg":
+          return wrapTextContent(child);
+        case Fragment:
+          return findFirstLegitChild(child.children);
+        default:
+          return child;
+      }
+    }
+    return wrapTextContent(child);
+  }
+  return null;
+}
+function wrapTextContent(s2) {
+  const ns2 = useNamespace("only-child");
+  return createVNode("span", {
+    "class": ns2.e("content")
+  }, [s2]);
+}
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/trigger.mjs
+var popperTriggerProps = buildProps({
+  virtualRef: {
+    type: definePropType(Object)
+  },
+  virtualTriggering: Boolean,
+  onMouseenter: {
+    type: definePropType(Function)
+  },
+  onMouseleave: {
+    type: definePropType(Function)
+  },
+  onClick: {
+    type: definePropType(Function)
+  },
+  onKeydown: {
+    type: definePropType(Function)
+  },
+  onFocus: {
+    type: definePropType(Function)
+  },
+  onBlur: {
+    type: definePropType(Function)
+  },
+  onContextmenu: {
+    type: definePropType(Function)
+  },
+  id: String,
+  open: Boolean
+});
+var usePopperTriggerProps = popperTriggerProps;
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/trigger2.mjs
+var __default__8 = defineComponent({
+  name: "ElPopperTrigger",
+  inheritAttrs: false
+});
+var _sfc_main10 = defineComponent({
+  ...__default__8,
+  props: popperTriggerProps,
+  setup(__props, { expose }) {
+    const props = __props;
+    const { role, triggerRef: triggerRef2 } = inject(POPPER_INJECTION_KEY, void 0);
+    useForwardRef(triggerRef2);
+    const ariaControls = computed2(() => {
+      return ariaHaspopup.value ? props.id : void 0;
+    });
+    const ariaDescribedby = computed2(() => {
+      if (role && role.value === "tooltip") {
+        return props.open && props.id ? props.id : void 0;
+      }
+      return void 0;
+    });
+    const ariaHaspopup = computed2(() => {
+      if (role && role.value !== "tooltip") {
+        return role.value;
+      }
+      return void 0;
+    });
+    const ariaExpanded = computed2(() => {
+      return ariaHaspopup.value ? `${props.open}` : void 0;
+    });
+    let virtualTriggerAriaStopWatch = void 0;
+    onMounted(() => {
+      watch(() => props.virtualRef, (virtualEl) => {
+        if (virtualEl) {
+          triggerRef2.value = unrefElement(virtualEl);
+        }
+      }, {
+        immediate: true
+      });
+      watch(triggerRef2, (el, prevEl) => {
+        virtualTriggerAriaStopWatch == null ? void 0 : virtualTriggerAriaStopWatch();
+        virtualTriggerAriaStopWatch = void 0;
+        if (isElement2(el)) {
+          ;
+          [
+            "onMouseenter",
+            "onMouseleave",
+            "onClick",
+            "onKeydown",
+            "onFocus",
+            "onBlur",
+            "onContextmenu"
+          ].forEach((eventName) => {
+            var _a;
+            const handler = props[eventName];
+            if (handler) {
+              ;
+              el.addEventListener(eventName.slice(2).toLowerCase(), handler);
+              (_a = prevEl == null ? void 0 : prevEl.removeEventListener) == null ? void 0 : _a.call(prevEl, eventName.slice(2).toLowerCase(), handler);
+            }
+          });
+          virtualTriggerAriaStopWatch = watch([ariaControls, ariaDescribedby, ariaHaspopup, ariaExpanded], (watches) => {
+            ;
+            [
+              "aria-controls",
+              "aria-describedby",
+              "aria-haspopup",
+              "aria-expanded"
+            ].forEach((key, idx) => {
+              isNil_default(watches[idx]) ? el.removeAttribute(key) : el.setAttribute(key, watches[idx]);
+            });
+          }, { immediate: true });
+        }
+        if (isElement2(prevEl)) {
+          ;
+          [
+            "aria-controls",
+            "aria-describedby",
+            "aria-haspopup",
+            "aria-expanded"
+          ].forEach((key) => prevEl.removeAttribute(key));
+        }
+      }, {
+        immediate: true
+      });
+    });
+    onBeforeUnmount(() => {
+      virtualTriggerAriaStopWatch == null ? void 0 : virtualTriggerAriaStopWatch();
+      virtualTriggerAriaStopWatch = void 0;
+    });
+    expose({
+      triggerRef: triggerRef2
+    });
+    return (_ctx, _cache) => {
+      return !_ctx.virtualTriggering ? (openBlock(), createBlock(unref(OnlyChild), mergeProps({ key: 0 }, _ctx.$attrs, {
+        "aria-controls": unref(ariaControls),
+        "aria-describedby": unref(ariaDescribedby),
+        "aria-expanded": unref(ariaExpanded),
+        "aria-haspopup": unref(ariaHaspopup)
+      }), {
+        default: withCtx(() => [
+          renderSlot(_ctx.$slots, "default")
+        ]),
+        _: 3
+      }, 16, ["aria-controls", "aria-describedby", "aria-expanded", "aria-haspopup"])) : createCommentVNode("v-if", true);
+    };
+  }
+});
+var ElPopperTrigger = _export_sfc(_sfc_main10, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/trigger.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/focus-trap/src/tokens.mjs
 var FOCUS_AFTER_TRAPPED = "focus-trap.focus-after-trapped";
 var FOCUS_AFTER_RELEASED = "focus-trap.focus-after-released";
 var FOCUSOUT_PREVENTED = "focus-trap.focusout-prevented";
@@ -13752,7 +13935,7 @@ var ON_TRAP_FOCUS_EVT = "focusAfterTrapped";
 var ON_RELEASE_FOCUS_EVT = "focusAfterReleased";
 var FOCUS_TRAP_INJECTION_KEY = Symbol("elFocusTrap");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/focus-trap/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/focus-trap/src/utils.mjs
 var focusReason = ref();
 var lastUserFocusTimestamp = ref(0);
 var lastAutomatedFocusTimestamp = ref(0);
@@ -13806,10 +13989,6 @@ var tryFocus = (element, shouldSelect) => {
     element.focus({ preventScroll: true });
     lastAutomatedFocusTimestamp.value = window.performance.now();
     if (element !== prevFocusedElement && isSelectable(element) && shouldSelect) {
-      if (element.tagName === "INPUT") {
-        element.setSelectionRange(element.value.length, element.value.length);
-        return;
-      }
       element.select();
     }
   }
@@ -13892,7 +14071,7 @@ var createFocusOutPreventedEvent = (detail) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/focus-trap/src/focus-trap.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/focus-trap/src/focus-trap.mjs
 var _sfc_main11 = defineComponent({
   name: "ElFocusTrap",
   inheritAttrs: false,
@@ -14100,8 +14279,8 @@ var _sfc_main11 = defineComponent({
         });
         trapContainer.addEventListener(FOCUS_AFTER_RELEASED, releaseOnFocus);
         trapContainer.dispatchEvent(releasedEvent);
-        if (!releasedEvent.defaultPrevented && (focusReason2.value == "keyboard" || !isFocusCausedByUserEvent())) {
-          tryFocus(lastFocusBeforeTrapped != null ? lastFocusBeforeTrapped : document.body, true);
+        if (!releasedEvent.defaultPrevented && (focusReason2.value == "keyboard" || !isFocusCausedByUserEvent() || trapContainer.contains(document.activeElement))) {
+          tryFocus(lastFocusBeforeTrapped != null ? lastFocusBeforeTrapped : document.body);
         }
         trapContainer.removeEventListener(FOCUS_AFTER_RELEASED, trapOnFocus);
         focusableStack.remove(focusLayer);
@@ -14134,7 +14313,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElFocusTrap = _export_sfc(_sfc_main11, [["render", _sfc_render], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/focus-trap/src/focus-trap.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/content.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/content.mjs
 var POSITIONING_STRATEGIES = ["fixed", "absolute"];
 var popperCoreConfigProps = buildProps({
   boundariesPadding: {
@@ -14229,17 +14408,16 @@ var usePopperCoreConfigProps = popperCoreConfigProps;
 var usePopperContentProps = popperContentProps;
 var usePopperContentEmits = popperContentEmits;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/utils.mjs
-var buildPopperOptions = (props, arrowProps) => {
-  const { placement, strategy, popperOptions: popperOptions2 } = props;
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/utils.mjs
+var buildPopperOptions = (props, modifiers = []) => {
+  const { placement, strategy, popperOptions } = props;
   const options = {
     placement,
     strategy,
-    ...popperOptions2,
-    modifiers: genModifiers(props)
+    ...popperOptions,
+    modifiers: [...genModifiers(props), ...modifiers]
   };
-  attachArrow(options, arrowProps);
-  deriveExtraModifiers(options, popperOptions2 == null ? void 0 : popperOptions2.modifiers);
+  deriveExtraModifiers(options, popperOptions == null ? void 0 : popperOptions.modifiers);
   return options;
 };
 var unwrapMeasurableEl = ($el) => {
@@ -14282,22 +14460,157 @@ function genModifiers(options) {
     }
   ];
 }
-function attachArrow(options, { arrowEl, arrowOffset }) {
-  options.modifiers.push({
-    name: "arrow",
-    options: {
-      element: arrowEl,
-      padding: arrowOffset != null ? arrowOffset : 5
-    }
-  });
-}
 function deriveExtraModifiers(options, modifiers) {
   if (modifiers) {
     options.modifiers = [...options.modifiers, ...modifiers != null ? modifiers : []];
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/src/content2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/composables/use-content.mjs
+var DEFAULT_ARROW_OFFSET = 0;
+var usePopperContent = (props) => {
+  const { popperInstanceRef, contentRef, triggerRef: triggerRef2, role } = inject(POPPER_INJECTION_KEY, void 0);
+  const arrowRef = ref();
+  const arrowOffset = ref();
+  const eventListenerModifier = computed2(() => {
+    return {
+      name: "eventListeners",
+      enabled: !!props.visible
+    };
+  });
+  const arrowModifier = computed2(() => {
+    var _a;
+    const arrowEl = unref(arrowRef);
+    const offset2 = (_a = unref(arrowOffset)) != null ? _a : DEFAULT_ARROW_OFFSET;
+    return {
+      name: "arrow",
+      enabled: !isUndefined_default(arrowEl),
+      options: {
+        element: arrowEl,
+        padding: offset2
+      }
+    };
+  });
+  const options = computed2(() => {
+    return {
+      onFirstUpdate: () => {
+        update2();
+      },
+      ...buildPopperOptions(props, [
+        unref(arrowModifier),
+        unref(eventListenerModifier)
+      ])
+    };
+  });
+  const computedReference = computed2(() => unwrapMeasurableEl(props.referenceEl) || unref(triggerRef2));
+  const { attributes: attributes2, state, styles, update: update2, forceUpdate, instanceRef } = usePopper(computedReference, contentRef, options);
+  watch(instanceRef, (instance) => popperInstanceRef.value = instance);
+  onMounted(() => {
+    watch(() => {
+      var _a;
+      return (_a = unref(computedReference)) == null ? void 0 : _a.getBoundingClientRect();
+    }, () => {
+      update2();
+    });
+  });
+  return {
+    attributes: attributes2,
+    arrowRef,
+    contentRef,
+    instanceRef,
+    state,
+    styles,
+    role,
+    forceUpdate,
+    update: update2
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/composables/use-content-dom.mjs
+var usePopperContentDOM = (props, {
+  attributes: attributes2,
+  styles,
+  role
+}) => {
+  const { nextZIndex } = useZIndex();
+  const ns2 = useNamespace("popper");
+  const contentAttrs = computed2(() => unref(attributes2).popper);
+  const contentZIndex = ref(props.zIndex || nextZIndex());
+  const contentClass = computed2(() => [
+    ns2.b(),
+    ns2.is("pure", props.pure),
+    ns2.is(props.effect),
+    props.popperClass
+  ]);
+  const contentStyle = computed2(() => {
+    return [
+      { zIndex: unref(contentZIndex) },
+      props.popperStyle || {},
+      unref(styles).popper
+    ];
+  });
+  const ariaModal = computed2(() => role.value === "dialog" ? "false" : void 0);
+  const arrowStyle = computed2(() => unref(styles).arrow || {});
+  const updateZIndex = () => {
+    contentZIndex.value = props.zIndex || nextZIndex();
+  };
+  return {
+    ariaModal,
+    arrowStyle,
+    contentAttrs,
+    contentClass,
+    contentStyle,
+    contentZIndex,
+    updateZIndex
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/composables/use-focus-trap.mjs
+var usePopperContentFocusTrap = (props, emit) => {
+  const trapped = ref(false);
+  const focusStartRef = ref();
+  const onFocusAfterTrapped = () => {
+    emit("focus");
+  };
+  const onFocusAfterReleased = (event) => {
+    var _a;
+    if (((_a = event.detail) == null ? void 0 : _a.focusReason) !== "pointer") {
+      focusStartRef.value = "first";
+      emit("blur");
+    }
+  };
+  const onFocusInTrap = (event) => {
+    if (props.visible && !trapped.value) {
+      if (event.target) {
+        focusStartRef.value = event.target;
+      }
+      trapped.value = true;
+    }
+  };
+  const onFocusoutPrevented = (event) => {
+    if (!props.trapping) {
+      if (event.detail.focusReason === "pointer") {
+        event.preventDefault();
+      }
+      trapped.value = false;
+    }
+  };
+  const onReleaseRequested = () => {
+    trapped.value = false;
+    emit("close");
+  };
+  return {
+    focusStartRef,
+    trapped,
+    onFocusAfterReleased,
+    onFocusAfterTrapped,
+    onFocusInTrap,
+    onFocusoutPrevented,
+    onReleaseRequested
+  };
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/src/content2.mjs
 var __default__9 = defineComponent({
   name: "ElPopperContent"
 });
@@ -14307,15 +14620,32 @@ var _sfc_main12 = defineComponent({
   emits: popperContentEmits,
   setup(__props, { expose, emit }) {
     const props = __props;
-    const { popperInstanceRef, contentRef, triggerRef: triggerRef2, role } = inject(POPPER_INJECTION_KEY, void 0);
+    const {
+      focusStartRef,
+      trapped,
+      onFocusAfterReleased,
+      onFocusAfterTrapped,
+      onFocusInTrap,
+      onFocusoutPrevented,
+      onReleaseRequested
+    } = usePopperContentFocusTrap(props, emit);
+    const { attributes: attributes2, arrowRef, contentRef, styles, instanceRef, role, update: update2 } = usePopperContent(props);
+    const {
+      ariaModal,
+      arrowStyle,
+      contentAttrs,
+      contentClass,
+      contentStyle,
+      updateZIndex
+    } = usePopperContentDOM(props, {
+      styles,
+      attributes: attributes2,
+      role
+    });
     const formItemContext = inject(formItemContextKey, void 0);
-    const { nextZIndex } = useZIndex();
-    const ns2 = useNamespace("popper");
-    const popperContentRef = ref();
-    const focusStartRef = ref("first");
-    const arrowRef = ref();
     const arrowOffset = ref();
     provide(POPPER_CONTENT_INJECTION_KEY, {
+      arrowStyle,
       arrowRef,
       arrowOffset
     });
@@ -14326,43 +14656,12 @@ var _sfc_main12 = defineComponent({
         removeInputId: NOOP
       });
     }
-    const contentZIndex = ref(props.zIndex || nextZIndex());
-    const trapped = ref(false);
     let triggerTargetAriaStopWatch = void 0;
-    const computedReference = computed2(() => unwrapMeasurableEl(props.referenceEl) || unref(triggerRef2));
-    const contentStyle = computed2(() => [{ zIndex: unref(contentZIndex) }, props.popperStyle]);
-    const contentClass = computed2(() => [
-      ns2.b(),
-      ns2.is("pure", props.pure),
-      ns2.is(props.effect),
-      props.popperClass
-    ]);
-    const ariaModal = computed2(() => {
-      return role && role.value === "dialog" ? "false" : void 0;
-    });
-    const createPopperInstance = ({
-      referenceEl,
-      popperContentEl,
-      arrowEl
-    }) => {
-      const options = buildPopperOptions(props, {
-        arrowEl,
-        arrowOffset: unref(arrowOffset)
-      });
-      return yn(referenceEl, popperContentEl, options);
-    };
     const updatePopper = (shouldUpdateZIndex = true) => {
-      var _a;
-      (_a = unref(popperInstanceRef)) == null ? void 0 : _a.update();
-      shouldUpdateZIndex && (contentZIndex.value = props.zIndex || nextZIndex());
+      update2();
+      shouldUpdateZIndex && updateZIndex();
     };
     const togglePopperAlive = () => {
-      var _a, _b;
-      const monitorable = { name: "eventListeners", enabled: props.visible };
-      (_b = (_a = unref(popperInstanceRef)) == null ? void 0 : _a.setOptions) == null ? void 0 : _b.call(_a, (options) => ({
-        ...options,
-        modifiers: [...options.modifiers || [], monitorable]
-      }));
       updatePopper(false);
       if (props.visible && props.focusOnShow) {
         trapped.value = true;
@@ -14370,65 +14669,12 @@ var _sfc_main12 = defineComponent({
         trapped.value = false;
       }
     };
-    const onFocusAfterTrapped = () => {
-      emit("focus");
-    };
-    const onFocusAfterReleased = (event) => {
-      var _a;
-      if (((_a = event.detail) == null ? void 0 : _a.focusReason) !== "pointer") {
-        focusStartRef.value = "first";
-        emit("blur");
-      }
-    };
-    const onFocusInTrap = (event) => {
-      if (props.visible && !trapped.value) {
-        if (event.target) {
-          focusStartRef.value = event.target;
-        }
-        trapped.value = true;
-      }
-    };
-    const onFocusoutPrevented = (event) => {
-      if (!props.trapping) {
-        if (event.detail.focusReason === "pointer") {
-          event.preventDefault();
-        }
-        trapped.value = false;
-      }
-    };
-    const onReleaseRequested = () => {
-      trapped.value = false;
-      emit("close");
-    };
     onMounted(() => {
-      let updateHandle;
-      watch(computedReference, (referenceEl) => {
-        var _a;
-        updateHandle == null ? void 0 : updateHandle();
-        const popperInstance = unref(popperInstanceRef);
-        (_a = popperInstance == null ? void 0 : popperInstance.destroy) == null ? void 0 : _a.call(popperInstance);
-        if (referenceEl) {
-          const popperContentEl = unref(popperContentRef);
-          contentRef.value = popperContentEl;
-          popperInstanceRef.value = createPopperInstance({
-            referenceEl,
-            popperContentEl,
-            arrowEl: unref(arrowRef)
-          });
-          updateHandle = watch(() => referenceEl.getBoundingClientRect(), () => updatePopper(), {
-            immediate: true
-          });
-        } else {
-          popperInstanceRef.value = void 0;
-        }
-      }, {
-        immediate: true
-      });
       watch(() => props.triggerTargetEl, (triggerTargetEl, prevTriggerTargetEl) => {
         triggerTargetAriaStopWatch == null ? void 0 : triggerTargetAriaStopWatch();
         triggerTargetAriaStopWatch = void 0;
-        const el = unref(triggerTargetEl || popperContentRef.value);
-        const prevEl = unref(prevTriggerTargetEl || popperContentRef.value);
+        const el = unref(triggerTargetEl || contentRef.value);
+        const prevEl = unref(prevTriggerTargetEl || contentRef.value);
         if (isElement2(el)) {
           triggerTargetAriaStopWatch = watch([role, () => props.ariaLabel, ariaModal, () => props.id], (watches) => {
             ;
@@ -14445,60 +14691,54 @@ var _sfc_main12 = defineComponent({
         }
       }, { immediate: true });
       watch(() => props.visible, togglePopperAlive, { immediate: true });
-      watch(() => buildPopperOptions(props, {
-        arrowEl: unref(arrowRef),
-        arrowOffset: unref(arrowOffset)
-      }), (option) => {
-        var _a;
-        return (_a = popperInstanceRef.value) == null ? void 0 : _a.setOptions(option);
-      });
     });
     onBeforeUnmount(() => {
       triggerTargetAriaStopWatch == null ? void 0 : triggerTargetAriaStopWatch();
       triggerTargetAriaStopWatch = void 0;
     });
     expose({
-      popperContentRef,
-      popperInstanceRef,
+      popperContentRef: contentRef,
+      popperInstanceRef: instanceRef,
       updatePopper,
       contentStyle
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        ref_key: "popperContentRef",
-        ref: popperContentRef,
-        style: normalizeStyle(unref(contentStyle)),
-        class: normalizeClass(unref(contentClass)),
+      return openBlock(), createElementBlock("div", mergeProps({
+        ref_key: "contentRef",
+        ref: contentRef
+      }, unref(contentAttrs), {
+        style: unref(contentStyle),
+        class: unref(contentClass),
         tabindex: "-1",
         onMouseenter: _cache[0] || (_cache[0] = (e) => _ctx.$emit("mouseenter", e)),
         onMouseleave: _cache[1] || (_cache[1] = (e) => _ctx.$emit("mouseleave", e))
-      }, [
+      }), [
         createVNode(unref(ElFocusTrap), {
-          trapped: trapped.value,
+          trapped: unref(trapped),
           "trap-on-focus-in": true,
-          "focus-trap-el": popperContentRef.value,
-          "focus-start-el": focusStartRef.value,
-          onFocusAfterTrapped,
-          onFocusAfterReleased,
-          onFocusin: onFocusInTrap,
-          onFocusoutPrevented,
-          onReleaseRequested
+          "focus-trap-el": unref(contentRef),
+          "focus-start-el": unref(focusStartRef),
+          onFocusAfterTrapped: unref(onFocusAfterTrapped),
+          onFocusAfterReleased: unref(onFocusAfterReleased),
+          onFocusin: unref(onFocusInTrap),
+          onFocusoutPrevented: unref(onFocusoutPrevented),
+          onReleaseRequested: unref(onReleaseRequested)
         }, {
           default: withCtx(() => [
             renderSlot(_ctx.$slots, "default")
           ]),
           _: 3
-        }, 8, ["trapped", "focus-trap-el", "focus-start-el"])
-      ], 38);
+        }, 8, ["trapped", "focus-trap-el", "focus-start-el", "onFocusAfterTrapped", "onFocusAfterReleased", "onFocusin", "onFocusoutPrevented", "onReleaseRequested"])
+      ], 16);
     };
   }
 });
 var ElPopperContent = _export_sfc(_sfc_main12, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popper/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popper/index.mjs
 var ElPopper = withInstall(Popper);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip/src/content.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip/src/content.mjs
 var ns = useNamespace("tooltip");
 var useTooltipContentProps = buildProps({
   ...useDelayedToggleProps,
@@ -14533,7 +14773,7 @@ var useTooltipContentProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip/src/trigger.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip/src/trigger.mjs
 var useTooltipTriggerProps = buildProps({
   ...popperTriggerProps,
   disabled: Boolean,
@@ -14547,7 +14787,7 @@ var useTooltipTriggerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip/src/tooltip.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip/src/tooltip.mjs
 var {
   useModelToggleProps: useTooltipModelToggleProps,
   useModelToggleEmits: useTooltipModelToggleEmits,
@@ -14574,7 +14814,7 @@ var tooltipEmits = [
   "close"
 ];
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip/src/utils.mjs
 var isTriggerType = (trigger, type4) => {
   if (isArray(trigger)) {
     return trigger.includes(type4);
@@ -14587,7 +14827,7 @@ var whenTrigger = (trigger, type4, handler) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip/src/trigger2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip/src/trigger2.mjs
 var __default__10 = defineComponent({
   name: "ElTooltipTrigger"
 });
@@ -14597,7 +14837,7 @@ var _sfc_main13 = defineComponent({
   setup(__props, { expose }) {
     const props = __props;
     const ns2 = useNamespace("tooltip");
-    const { controlled, id: id2, open, onOpen, onClose, onToggle } = inject(TOOLTIP_INJECTION_KEY, void 0);
+    const { controlled, id, open, onOpen, onClose, onToggle } = inject(TOOLTIP_INJECTION_KEY, void 0);
     const triggerRef2 = ref(null);
     const stopWhenControlledOrDisabled = () => {
       if (unref(controlled) || props.disabled) {
@@ -14630,7 +14870,7 @@ var _sfc_main13 = defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(ElPopperTrigger), {
-        id: unref(id2),
+        id: unref(id),
         "virtual-ref": _ctx.virtualRef,
         open: unref(open),
         "virtual-triggering": _ctx.virtualTriggering,
@@ -14653,7 +14893,7 @@ var _sfc_main13 = defineComponent({
 });
 var ElTooltipTrigger = _export_sfc(_sfc_main13, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/trigger.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip/src/content2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip/src/content2.mjs
 var __default__11 = defineComponent({
   name: "ElTooltipContent",
   inheritAttrs: false
@@ -14668,7 +14908,7 @@ var _sfc_main14 = defineComponent({
     const destroyed = ref(false);
     const {
       controlled,
-      id: id2,
+      id,
       open,
       trigger,
       onClose,
@@ -14775,7 +15015,7 @@ var _sfc_main14 = defineComponent({
           default: withCtx(() => [
             unref(shouldRender) ? withDirectives((openBlock(), createBlock(unref(ElPopperContent), mergeProps({
               key: 0,
-              id: unref(id2),
+              id: unref(id),
               ref_key: "contentRef",
               ref: contentRef
             }, _ctx.$attrs, {
@@ -14818,7 +15058,7 @@ var _sfc_main14 = defineComponent({
 });
 var ElTooltipContent = _export_sfc(_sfc_main14, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip/src/tooltip2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip/src/tooltip2.mjs
 var _hoisted_12 = ["innerHTML"];
 var _hoisted_22 = { key: 1 };
 var __default__12 = defineComponent({
@@ -14831,7 +15071,7 @@ var _sfc_main15 = defineComponent({
   setup(__props, { expose, emit }) {
     const props = __props;
     usePopperContainer();
-    const id2 = useId();
+    const id = useId();
     const popperRef = ref();
     const contentRef = ref();
     const updatePopper = () => {
@@ -14856,7 +15096,7 @@ var _sfc_main15 = defineComponent({
     const controlled = computed2(() => isBoolean(props.visible) && !hasUpdateHandler.value);
     provide(TOOLTIP_INJECTION_KEY, {
       controlled,
-      id: id2,
+      id,
       open: readonly(open),
       trigger: toRef(props, "trigger"),
       onOpen: (event) => {
@@ -14977,10 +15217,10 @@ var _sfc_main15 = defineComponent({
 });
 var Tooltip = _export_sfc(_sfc_main15, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/tooltip.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip/index.mjs
 var ElTooltip = withInstall(Tooltip);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/autocomplete/src/autocomplete2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/autocomplete/src/autocomplete.mjs
 var autocompleteProps = buildProps({
   valueKey: {
     type: String,
@@ -15037,7 +15277,16 @@ var autocompleteProps = buildProps({
   fitInputWidth: {
     type: Boolean,
     default: false
-  }
+  },
+  clearable: {
+    type: Boolean,
+    default: false
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  name: String
 });
 var autocompleteEmits = {
   [UPDATE_MODEL_EVENT]: (value) => isString(value),
@@ -15049,7 +15298,7 @@ var autocompleteEmits = {
   select: (item) => isObject(item)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/autocomplete/src/autocomplete.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/autocomplete/src/autocomplete2.mjs
 var _hoisted_13 = ["aria-expanded", "aria-owns"];
 var _hoisted_23 = { key: 0 };
 var _hoisted_32 = ["id", "aria-selected", "onClick"];
@@ -15387,10 +15636,10 @@ var _sfc_main16 = defineComponent({
 });
 var Autocomplete = _export_sfc(_sfc_main16, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/autocomplete/src/autocomplete.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/autocomplete/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/autocomplete/index.mjs
 var ElAutocomplete = withInstall(Autocomplete);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/avatar/src/avatar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/avatar/src/avatar.mjs
 var avatarProps = buildProps({
   size: {
     type: [Number, String],
@@ -15421,7 +15670,7 @@ var avatarEmits = {
   error: (evt) => evt instanceof Event
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/avatar/src/avatar2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/avatar/src/avatar2.mjs
 var _hoisted_14 = ["src", "alt", "srcset"];
 var __default__14 = defineComponent({
   name: "ElAvatar"
@@ -15483,10 +15732,10 @@ var _sfc_main17 = defineComponent({
 });
 var Avatar = _export_sfc(_sfc_main17, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/avatar/src/avatar.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/avatar/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/avatar/index.mjs
 var ElAvatar = withInstall(Avatar);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/backtop/src/backtop.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/backtop/src/backtop.mjs
 var backtopProps = {
   visibilityHeight: {
     type: Number,
@@ -15509,35 +15758,18 @@ var backtopEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/backtop/src/use-backtop.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/backtop/src/use-backtop.mjs
 var useBackTop = (props, emit, componentName2) => {
   const el = shallowRef();
   const container = shallowRef();
   const visible = ref(false);
-  const scrollToTop = () => {
-    if (!el.value)
-      return;
-    const beginTime = Date.now();
-    const beginValue = el.value.scrollTop;
-    const frameFunc = () => {
-      if (!el.value)
-        return;
-      const progress = (Date.now() - beginTime) / 500;
-      if (progress < 1) {
-        el.value.scrollTop = beginValue * (1 - easeInOutCubic(progress));
-        requestAnimationFrame(frameFunc);
-      } else {
-        el.value.scrollTop = 0;
-      }
-    };
-    requestAnimationFrame(frameFunc);
-  };
   const handleScroll2 = () => {
     if (el.value)
       visible.value = el.value.scrollTop >= props.visibilityHeight;
   };
   const handleClick = (event) => {
-    scrollToTop();
+    var _a;
+    (_a = el.value) == null ? void 0 : _a.scrollTo({ top: 0, behavior: "smooth" });
     emit("click", event);
   };
   const handleScrollThrottled = useThrottleFn(handleScroll2, 300, true);
@@ -15560,7 +15792,7 @@ var useBackTop = (props, emit, componentName2) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/backtop/src/backtop2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/backtop/src/backtop2.mjs
 var COMPONENT_NAME5 = "ElBacktop";
 var __default__15 = defineComponent({
   name: COMPONENT_NAME5
@@ -15607,10 +15839,10 @@ var _sfc_main18 = defineComponent({
 });
 var Backtop = _export_sfc(_sfc_main18, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/backtop/src/backtop.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/backtop/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/backtop/index.mjs
 var ElBacktop = withInstall(Backtop);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/badge/src/badge.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/badge/src/badge.mjs
 var badgeProps = buildProps({
   value: {
     type: [String, Number],
@@ -15629,7 +15861,7 @@ var badgeProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/badge/src/badge2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/badge/src/badge2.mjs
 var _hoisted_15 = ["textContent"];
 var __default__16 = defineComponent({
   name: "ElBadge"
@@ -15681,10 +15913,10 @@ var _sfc_main19 = defineComponent({
 });
 var Badge = _export_sfc(_sfc_main19, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/badge/src/badge.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/badge/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/badge/index.mjs
 var ElBadge = withInstall(Badge);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb.mjs
 var breadcrumbProps = buildProps({
   separator: {
     type: String,
@@ -15695,7 +15927,7 @@ var breadcrumbProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb2.mjs
 var __default__17 = defineComponent({
   name: "ElBreadcrumb"
 });
@@ -15728,7 +15960,7 @@ var _sfc_main20 = defineComponent({
 });
 var Breadcrumb = _export_sfc(_sfc_main20, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/breadcrumb/src/breadcrumb.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item.mjs
 var breadcrumbItemProps = buildProps({
   to: {
     type: definePropType([String, Object]),
@@ -15740,7 +15972,7 @@ var breadcrumbItemProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item2.mjs
 var __default__18 = defineComponent({
   name: "ElBreadcrumbItem"
 });
@@ -15792,13 +16024,13 @@ var _sfc_main21 = defineComponent({
 });
 var BreadcrumbItem = _export_sfc(_sfc_main21, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/breadcrumb/src/breadcrumb-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/breadcrumb/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/breadcrumb/index.mjs
 var ElBreadcrumb = withInstall(Breadcrumb, {
   BreadcrumbItem
 });
 var ElBreadcrumbItem = withNoopInstall(BreadcrumbItem);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/button/src/use-button.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/button/src/use-button.mjs
 var useButton = (props, emit) => {
   useDeprecated({
     from: "type.text",
@@ -15847,7 +16079,7 @@ var useButton = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/button/src/button.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/button/src/button.mjs
 var buttonTypes = [
   "default",
   "primary",
@@ -15898,7 +16130,7 @@ var buttonEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/@ctrl+tinycolor@3.5.0/node_modules/@ctrl/tinycolor/dist/module/util.js
+// ../node_modules/.pnpm/@ctrl+tinycolor@3.6.0/node_modules/@ctrl/tinycolor/dist/module/util.js
 function bound01(n, max5) {
   if (isOnePointZero(n)) {
     n = "100%";
@@ -15944,7 +16176,7 @@ function pad2(c2) {
   return c2.length === 1 ? "0" + c2 : String(c2);
 }
 
-// ../node_modules/.pnpm/@ctrl+tinycolor@3.5.0/node_modules/@ctrl/tinycolor/dist/module/conversion.js
+// ../node_modules/.pnpm/@ctrl+tinycolor@3.6.0/node_modules/@ctrl/tinycolor/dist/module/conversion.js
 function rgbToRgb(r, g, b2) {
   return {
     r: bound01(r, 255) * 255,
@@ -16107,7 +16339,7 @@ function numberInputToObject(color) {
   };
 }
 
-// ../node_modules/.pnpm/@ctrl+tinycolor@3.5.0/node_modules/@ctrl/tinycolor/dist/module/css-color-names.js
+// ../node_modules/.pnpm/@ctrl+tinycolor@3.6.0/node_modules/@ctrl/tinycolor/dist/module/css-color-names.js
 var names = {
   aliceblue: "#f0f8ff",
   antiquewhite: "#faebd7",
@@ -16259,7 +16491,7 @@ var names = {
   yellowgreen: "#9acd32"
 };
 
-// ../node_modules/.pnpm/@ctrl+tinycolor@3.5.0/node_modules/@ctrl/tinycolor/dist/module/format-input.js
+// ../node_modules/.pnpm/@ctrl+tinycolor@3.6.0/node_modules/@ctrl/tinycolor/dist/module/format-input.js
 function inputToRGB(color) {
   var rgb = { r: 0, g: 0, b: 0 };
   var a2 = 1;
@@ -16401,390 +16633,401 @@ function isValidCSSUnit(color) {
   return Boolean(matchers.CSS_UNIT.exec(String(color)));
 }
 
-// ../node_modules/.pnpm/@ctrl+tinycolor@3.5.0/node_modules/@ctrl/tinycolor/dist/module/index.js
-var TinyColor = function() {
-  function TinyColor2(color, opts) {
-    if (color === void 0) {
-      color = "";
+// ../node_modules/.pnpm/@ctrl+tinycolor@3.6.0/node_modules/@ctrl/tinycolor/dist/module/index.js
+var TinyColor = (
+  /** @class */
+  function() {
+    function TinyColor2(color, opts) {
+      if (color === void 0) {
+        color = "";
+      }
+      if (opts === void 0) {
+        opts = {};
+      }
+      var _a;
+      if (color instanceof TinyColor2) {
+        return color;
+      }
+      if (typeof color === "number") {
+        color = numberInputToObject(color);
+      }
+      this.originalInput = color;
+      var rgb = inputToRGB(color);
+      this.originalInput = color;
+      this.r = rgb.r;
+      this.g = rgb.g;
+      this.b = rgb.b;
+      this.a = rgb.a;
+      this.roundA = Math.round(100 * this.a) / 100;
+      this.format = (_a = opts.format) !== null && _a !== void 0 ? _a : rgb.format;
+      this.gradientType = opts.gradientType;
+      if (this.r < 1) {
+        this.r = Math.round(this.r);
+      }
+      if (this.g < 1) {
+        this.g = Math.round(this.g);
+      }
+      if (this.b < 1) {
+        this.b = Math.round(this.b);
+      }
+      this.isValid = rgb.ok;
     }
-    if (opts === void 0) {
-      opts = {};
-    }
-    var _a;
-    if (color instanceof TinyColor2) {
-      return color;
-    }
-    if (typeof color === "number") {
-      color = numberInputToObject(color);
-    }
-    this.originalInput = color;
-    var rgb = inputToRGB(color);
-    this.originalInput = color;
-    this.r = rgb.r;
-    this.g = rgb.g;
-    this.b = rgb.b;
-    this.a = rgb.a;
-    this.roundA = Math.round(100 * this.a) / 100;
-    this.format = (_a = opts.format) !== null && _a !== void 0 ? _a : rgb.format;
-    this.gradientType = opts.gradientType;
-    if (this.r < 1) {
-      this.r = Math.round(this.r);
-    }
-    if (this.g < 1) {
-      this.g = Math.round(this.g);
-    }
-    if (this.b < 1) {
-      this.b = Math.round(this.b);
-    }
-    this.isValid = rgb.ok;
-  }
-  TinyColor2.prototype.isDark = function() {
-    return this.getBrightness() < 128;
-  };
-  TinyColor2.prototype.isLight = function() {
-    return !this.isDark();
-  };
-  TinyColor2.prototype.getBrightness = function() {
-    var rgb = this.toRgb();
-    return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1e3;
-  };
-  TinyColor2.prototype.getLuminance = function() {
-    var rgb = this.toRgb();
-    var R2;
-    var G2;
-    var B2;
-    var RsRGB = rgb.r / 255;
-    var GsRGB = rgb.g / 255;
-    var BsRGB = rgb.b / 255;
-    if (RsRGB <= 0.03928) {
-      R2 = RsRGB / 12.92;
-    } else {
-      R2 = Math.pow((RsRGB + 0.055) / 1.055, 2.4);
-    }
-    if (GsRGB <= 0.03928) {
-      G2 = GsRGB / 12.92;
-    } else {
-      G2 = Math.pow((GsRGB + 0.055) / 1.055, 2.4);
-    }
-    if (BsRGB <= 0.03928) {
-      B2 = BsRGB / 12.92;
-    } else {
-      B2 = Math.pow((BsRGB + 0.055) / 1.055, 2.4);
-    }
-    return 0.2126 * R2 + 0.7152 * G2 + 0.0722 * B2;
-  };
-  TinyColor2.prototype.getAlpha = function() {
-    return this.a;
-  };
-  TinyColor2.prototype.setAlpha = function(alpha) {
-    this.a = boundAlpha(alpha);
-    this.roundA = Math.round(100 * this.a) / 100;
-    return this;
-  };
-  TinyColor2.prototype.isMonochrome = function() {
-    var s2 = this.toHsl().s;
-    return s2 === 0;
-  };
-  TinyColor2.prototype.toHsv = function() {
-    var hsv = rgbToHsv(this.r, this.g, this.b);
-    return { h: hsv.h * 360, s: hsv.s, v: hsv.v, a: this.a };
-  };
-  TinyColor2.prototype.toHsvString = function() {
-    var hsv = rgbToHsv(this.r, this.g, this.b);
-    var h3 = Math.round(hsv.h * 360);
-    var s2 = Math.round(hsv.s * 100);
-    var v2 = Math.round(hsv.v * 100);
-    return this.a === 1 ? "hsv(".concat(h3, ", ").concat(s2, "%, ").concat(v2, "%)") : "hsva(".concat(h3, ", ").concat(s2, "%, ").concat(v2, "%, ").concat(this.roundA, ")");
-  };
-  TinyColor2.prototype.toHsl = function() {
-    var hsl = rgbToHsl(this.r, this.g, this.b);
-    return { h: hsl.h * 360, s: hsl.s, l: hsl.l, a: this.a };
-  };
-  TinyColor2.prototype.toHslString = function() {
-    var hsl = rgbToHsl(this.r, this.g, this.b);
-    var h3 = Math.round(hsl.h * 360);
-    var s2 = Math.round(hsl.s * 100);
-    var l2 = Math.round(hsl.l * 100);
-    return this.a === 1 ? "hsl(".concat(h3, ", ").concat(s2, "%, ").concat(l2, "%)") : "hsla(".concat(h3, ", ").concat(s2, "%, ").concat(l2, "%, ").concat(this.roundA, ")");
-  };
-  TinyColor2.prototype.toHex = function(allow3Char) {
-    if (allow3Char === void 0) {
-      allow3Char = false;
-    }
-    return rgbToHex(this.r, this.g, this.b, allow3Char);
-  };
-  TinyColor2.prototype.toHexString = function(allow3Char) {
-    if (allow3Char === void 0) {
-      allow3Char = false;
-    }
-    return "#" + this.toHex(allow3Char);
-  };
-  TinyColor2.prototype.toHex8 = function(allow4Char) {
-    if (allow4Char === void 0) {
-      allow4Char = false;
-    }
-    return rgbaToHex(this.r, this.g, this.b, this.a, allow4Char);
-  };
-  TinyColor2.prototype.toHex8String = function(allow4Char) {
-    if (allow4Char === void 0) {
-      allow4Char = false;
-    }
-    return "#" + this.toHex8(allow4Char);
-  };
-  TinyColor2.prototype.toRgb = function() {
-    return {
-      r: Math.round(this.r),
-      g: Math.round(this.g),
-      b: Math.round(this.b),
-      a: this.a
+    TinyColor2.prototype.isDark = function() {
+      return this.getBrightness() < 128;
     };
-  };
-  TinyColor2.prototype.toRgbString = function() {
-    var r = Math.round(this.r);
-    var g = Math.round(this.g);
-    var b2 = Math.round(this.b);
-    return this.a === 1 ? "rgb(".concat(r, ", ").concat(g, ", ").concat(b2, ")") : "rgba(".concat(r, ", ").concat(g, ", ").concat(b2, ", ").concat(this.roundA, ")");
-  };
-  TinyColor2.prototype.toPercentageRgb = function() {
-    var fmt = function(x2) {
-      return "".concat(Math.round(bound01(x2, 255) * 100), "%");
+    TinyColor2.prototype.isLight = function() {
+      return !this.isDark();
     };
-    return {
-      r: fmt(this.r),
-      g: fmt(this.g),
-      b: fmt(this.b),
-      a: this.a
+    TinyColor2.prototype.getBrightness = function() {
+      var rgb = this.toRgb();
+      return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1e3;
     };
-  };
-  TinyColor2.prototype.toPercentageRgbString = function() {
-    var rnd = function(x2) {
-      return Math.round(bound01(x2, 255) * 100);
+    TinyColor2.prototype.getLuminance = function() {
+      var rgb = this.toRgb();
+      var R2;
+      var G2;
+      var B2;
+      var RsRGB = rgb.r / 255;
+      var GsRGB = rgb.g / 255;
+      var BsRGB = rgb.b / 255;
+      if (RsRGB <= 0.03928) {
+        R2 = RsRGB / 12.92;
+      } else {
+        R2 = Math.pow((RsRGB + 0.055) / 1.055, 2.4);
+      }
+      if (GsRGB <= 0.03928) {
+        G2 = GsRGB / 12.92;
+      } else {
+        G2 = Math.pow((GsRGB + 0.055) / 1.055, 2.4);
+      }
+      if (BsRGB <= 0.03928) {
+        B2 = BsRGB / 12.92;
+      } else {
+        B2 = Math.pow((BsRGB + 0.055) / 1.055, 2.4);
+      }
+      return 0.2126 * R2 + 0.7152 * G2 + 0.0722 * B2;
     };
-    return this.a === 1 ? "rgb(".concat(rnd(this.r), "%, ").concat(rnd(this.g), "%, ").concat(rnd(this.b), "%)") : "rgba(".concat(rnd(this.r), "%, ").concat(rnd(this.g), "%, ").concat(rnd(this.b), "%, ").concat(this.roundA, ")");
-  };
-  TinyColor2.prototype.toName = function() {
-    if (this.a === 0) {
-      return "transparent";
-    }
-    if (this.a < 1) {
+    TinyColor2.prototype.getAlpha = function() {
+      return this.a;
+    };
+    TinyColor2.prototype.setAlpha = function(alpha) {
+      this.a = boundAlpha(alpha);
+      this.roundA = Math.round(100 * this.a) / 100;
+      return this;
+    };
+    TinyColor2.prototype.isMonochrome = function() {
+      var s2 = this.toHsl().s;
+      return s2 === 0;
+    };
+    TinyColor2.prototype.toHsv = function() {
+      var hsv = rgbToHsv(this.r, this.g, this.b);
+      return { h: hsv.h * 360, s: hsv.s, v: hsv.v, a: this.a };
+    };
+    TinyColor2.prototype.toHsvString = function() {
+      var hsv = rgbToHsv(this.r, this.g, this.b);
+      var h3 = Math.round(hsv.h * 360);
+      var s2 = Math.round(hsv.s * 100);
+      var v2 = Math.round(hsv.v * 100);
+      return this.a === 1 ? "hsv(".concat(h3, ", ").concat(s2, "%, ").concat(v2, "%)") : "hsva(".concat(h3, ", ").concat(s2, "%, ").concat(v2, "%, ").concat(this.roundA, ")");
+    };
+    TinyColor2.prototype.toHsl = function() {
+      var hsl = rgbToHsl(this.r, this.g, this.b);
+      return { h: hsl.h * 360, s: hsl.s, l: hsl.l, a: this.a };
+    };
+    TinyColor2.prototype.toHslString = function() {
+      var hsl = rgbToHsl(this.r, this.g, this.b);
+      var h3 = Math.round(hsl.h * 360);
+      var s2 = Math.round(hsl.s * 100);
+      var l2 = Math.round(hsl.l * 100);
+      return this.a === 1 ? "hsl(".concat(h3, ", ").concat(s2, "%, ").concat(l2, "%)") : "hsla(".concat(h3, ", ").concat(s2, "%, ").concat(l2, "%, ").concat(this.roundA, ")");
+    };
+    TinyColor2.prototype.toHex = function(allow3Char) {
+      if (allow3Char === void 0) {
+        allow3Char = false;
+      }
+      return rgbToHex(this.r, this.g, this.b, allow3Char);
+    };
+    TinyColor2.prototype.toHexString = function(allow3Char) {
+      if (allow3Char === void 0) {
+        allow3Char = false;
+      }
+      return "#" + this.toHex(allow3Char);
+    };
+    TinyColor2.prototype.toHex8 = function(allow4Char) {
+      if (allow4Char === void 0) {
+        allow4Char = false;
+      }
+      return rgbaToHex(this.r, this.g, this.b, this.a, allow4Char);
+    };
+    TinyColor2.prototype.toHex8String = function(allow4Char) {
+      if (allow4Char === void 0) {
+        allow4Char = false;
+      }
+      return "#" + this.toHex8(allow4Char);
+    };
+    TinyColor2.prototype.toHexShortString = function(allowShortChar) {
+      if (allowShortChar === void 0) {
+        allowShortChar = false;
+      }
+      return this.a === 1 ? this.toHexString(allowShortChar) : this.toHex8String(allowShortChar);
+    };
+    TinyColor2.prototype.toRgb = function() {
+      return {
+        r: Math.round(this.r),
+        g: Math.round(this.g),
+        b: Math.round(this.b),
+        a: this.a
+      };
+    };
+    TinyColor2.prototype.toRgbString = function() {
+      var r = Math.round(this.r);
+      var g = Math.round(this.g);
+      var b2 = Math.round(this.b);
+      return this.a === 1 ? "rgb(".concat(r, ", ").concat(g, ", ").concat(b2, ")") : "rgba(".concat(r, ", ").concat(g, ", ").concat(b2, ", ").concat(this.roundA, ")");
+    };
+    TinyColor2.prototype.toPercentageRgb = function() {
+      var fmt = function(x2) {
+        return "".concat(Math.round(bound01(x2, 255) * 100), "%");
+      };
+      return {
+        r: fmt(this.r),
+        g: fmt(this.g),
+        b: fmt(this.b),
+        a: this.a
+      };
+    };
+    TinyColor2.prototype.toPercentageRgbString = function() {
+      var rnd = function(x2) {
+        return Math.round(bound01(x2, 255) * 100);
+      };
+      return this.a === 1 ? "rgb(".concat(rnd(this.r), "%, ").concat(rnd(this.g), "%, ").concat(rnd(this.b), "%)") : "rgba(".concat(rnd(this.r), "%, ").concat(rnd(this.g), "%, ").concat(rnd(this.b), "%, ").concat(this.roundA, ")");
+    };
+    TinyColor2.prototype.toName = function() {
+      if (this.a === 0) {
+        return "transparent";
+      }
+      if (this.a < 1) {
+        return false;
+      }
+      var hex2 = "#" + rgbToHex(this.r, this.g, this.b, false);
+      for (var _i = 0, _a = Object.entries(names); _i < _a.length; _i++) {
+        var _b = _a[_i], key = _b[0], value = _b[1];
+        if (hex2 === value) {
+          return key;
+        }
+      }
       return false;
-    }
-    var hex2 = "#" + rgbToHex(this.r, this.g, this.b, false);
-    for (var _i = 0, _a = Object.entries(names); _i < _a.length; _i++) {
-      var _b = _a[_i], key = _b[0], value = _b[1];
-      if (hex2 === value) {
-        return key;
-      }
-    }
-    return false;
-  };
-  TinyColor2.prototype.toString = function(format2) {
-    var formatSet = Boolean(format2);
-    format2 = format2 !== null && format2 !== void 0 ? format2 : this.format;
-    var formattedString = false;
-    var hasAlpha = this.a < 1 && this.a >= 0;
-    var needsAlphaFormat = !formatSet && hasAlpha && (format2.startsWith("hex") || format2 === "name");
-    if (needsAlphaFormat) {
-      if (format2 === "name" && this.a === 0) {
-        return this.toName();
-      }
-      return this.toRgbString();
-    }
-    if (format2 === "rgb") {
-      formattedString = this.toRgbString();
-    }
-    if (format2 === "prgb") {
-      formattedString = this.toPercentageRgbString();
-    }
-    if (format2 === "hex" || format2 === "hex6") {
-      formattedString = this.toHexString();
-    }
-    if (format2 === "hex3") {
-      formattedString = this.toHexString(true);
-    }
-    if (format2 === "hex4") {
-      formattedString = this.toHex8String(true);
-    }
-    if (format2 === "hex8") {
-      formattedString = this.toHex8String();
-    }
-    if (format2 === "name") {
-      formattedString = this.toName();
-    }
-    if (format2 === "hsl") {
-      formattedString = this.toHslString();
-    }
-    if (format2 === "hsv") {
-      formattedString = this.toHsvString();
-    }
-    return formattedString || this.toHexString();
-  };
-  TinyColor2.prototype.toNumber = function() {
-    return (Math.round(this.r) << 16) + (Math.round(this.g) << 8) + Math.round(this.b);
-  };
-  TinyColor2.prototype.clone = function() {
-    return new TinyColor2(this.toString());
-  };
-  TinyColor2.prototype.lighten = function(amount) {
-    if (amount === void 0) {
-      amount = 10;
-    }
-    var hsl = this.toHsl();
-    hsl.l += amount / 100;
-    hsl.l = clamp01(hsl.l);
-    return new TinyColor2(hsl);
-  };
-  TinyColor2.prototype.brighten = function(amount) {
-    if (amount === void 0) {
-      amount = 10;
-    }
-    var rgb = this.toRgb();
-    rgb.r = Math.max(0, Math.min(255, rgb.r - Math.round(255 * -(amount / 100))));
-    rgb.g = Math.max(0, Math.min(255, rgb.g - Math.round(255 * -(amount / 100))));
-    rgb.b = Math.max(0, Math.min(255, rgb.b - Math.round(255 * -(amount / 100))));
-    return new TinyColor2(rgb);
-  };
-  TinyColor2.prototype.darken = function(amount) {
-    if (amount === void 0) {
-      amount = 10;
-    }
-    var hsl = this.toHsl();
-    hsl.l -= amount / 100;
-    hsl.l = clamp01(hsl.l);
-    return new TinyColor2(hsl);
-  };
-  TinyColor2.prototype.tint = function(amount) {
-    if (amount === void 0) {
-      amount = 10;
-    }
-    return this.mix("white", amount);
-  };
-  TinyColor2.prototype.shade = function(amount) {
-    if (amount === void 0) {
-      amount = 10;
-    }
-    return this.mix("black", amount);
-  };
-  TinyColor2.prototype.desaturate = function(amount) {
-    if (amount === void 0) {
-      amount = 10;
-    }
-    var hsl = this.toHsl();
-    hsl.s -= amount / 100;
-    hsl.s = clamp01(hsl.s);
-    return new TinyColor2(hsl);
-  };
-  TinyColor2.prototype.saturate = function(amount) {
-    if (amount === void 0) {
-      amount = 10;
-    }
-    var hsl = this.toHsl();
-    hsl.s += amount / 100;
-    hsl.s = clamp01(hsl.s);
-    return new TinyColor2(hsl);
-  };
-  TinyColor2.prototype.greyscale = function() {
-    return this.desaturate(100);
-  };
-  TinyColor2.prototype.spin = function(amount) {
-    var hsl = this.toHsl();
-    var hue = (hsl.h + amount) % 360;
-    hsl.h = hue < 0 ? 360 + hue : hue;
-    return new TinyColor2(hsl);
-  };
-  TinyColor2.prototype.mix = function(color, amount) {
-    if (amount === void 0) {
-      amount = 50;
-    }
-    var rgb1 = this.toRgb();
-    var rgb2 = new TinyColor2(color).toRgb();
-    var p2 = amount / 100;
-    var rgba = {
-      r: (rgb2.r - rgb1.r) * p2 + rgb1.r,
-      g: (rgb2.g - rgb1.g) * p2 + rgb1.g,
-      b: (rgb2.b - rgb1.b) * p2 + rgb1.b,
-      a: (rgb2.a - rgb1.a) * p2 + rgb1.a
     };
-    return new TinyColor2(rgba);
-  };
-  TinyColor2.prototype.analogous = function(results, slices) {
-    if (results === void 0) {
-      results = 6;
-    }
-    if (slices === void 0) {
-      slices = 30;
-    }
-    var hsl = this.toHsl();
-    var part = 360 / slices;
-    var ret = [this];
-    for (hsl.h = (hsl.h - (part * results >> 1) + 720) % 360; --results; ) {
-      hsl.h = (hsl.h + part) % 360;
-      ret.push(new TinyColor2(hsl));
-    }
-    return ret;
-  };
-  TinyColor2.prototype.complement = function() {
-    var hsl = this.toHsl();
-    hsl.h = (hsl.h + 180) % 360;
-    return new TinyColor2(hsl);
-  };
-  TinyColor2.prototype.monochromatic = function(results) {
-    if (results === void 0) {
-      results = 6;
-    }
-    var hsv = this.toHsv();
-    var h3 = hsv.h;
-    var s2 = hsv.s;
-    var v2 = hsv.v;
-    var res = [];
-    var modification = 1 / results;
-    while (results--) {
-      res.push(new TinyColor2({ h: h3, s: s2, v: v2 }));
-      v2 = (v2 + modification) % 1;
-    }
-    return res;
-  };
-  TinyColor2.prototype.splitcomplement = function() {
-    var hsl = this.toHsl();
-    var h3 = hsl.h;
-    return [
-      this,
-      new TinyColor2({ h: (h3 + 72) % 360, s: hsl.s, l: hsl.l }),
-      new TinyColor2({ h: (h3 + 216) % 360, s: hsl.s, l: hsl.l })
-    ];
-  };
-  TinyColor2.prototype.onBackground = function(background) {
-    var fg = this.toRgb();
-    var bg = new TinyColor2(background).toRgb();
-    return new TinyColor2({
-      r: bg.r + (fg.r - bg.r) * fg.a,
-      g: bg.g + (fg.g - bg.g) * fg.a,
-      b: bg.b + (fg.b - bg.b) * fg.a
-    });
-  };
-  TinyColor2.prototype.triad = function() {
-    return this.polyad(3);
-  };
-  TinyColor2.prototype.tetrad = function() {
-    return this.polyad(4);
-  };
-  TinyColor2.prototype.polyad = function(n) {
-    var hsl = this.toHsl();
-    var h3 = hsl.h;
-    var result2 = [this];
-    var increment = 360 / n;
-    for (var i = 1; i < n; i++) {
-      result2.push(new TinyColor2({ h: (h3 + i * increment) % 360, s: hsl.s, l: hsl.l }));
-    }
-    return result2;
-  };
-  TinyColor2.prototype.equals = function(color) {
-    return this.toRgbString() === new TinyColor2(color).toRgbString();
-  };
-  return TinyColor2;
-}();
+    TinyColor2.prototype.toString = function(format2) {
+      var formatSet = Boolean(format2);
+      format2 = format2 !== null && format2 !== void 0 ? format2 : this.format;
+      var formattedString = false;
+      var hasAlpha = this.a < 1 && this.a >= 0;
+      var needsAlphaFormat = !formatSet && hasAlpha && (format2.startsWith("hex") || format2 === "name");
+      if (needsAlphaFormat) {
+        if (format2 === "name" && this.a === 0) {
+          return this.toName();
+        }
+        return this.toRgbString();
+      }
+      if (format2 === "rgb") {
+        formattedString = this.toRgbString();
+      }
+      if (format2 === "prgb") {
+        formattedString = this.toPercentageRgbString();
+      }
+      if (format2 === "hex" || format2 === "hex6") {
+        formattedString = this.toHexString();
+      }
+      if (format2 === "hex3") {
+        formattedString = this.toHexString(true);
+      }
+      if (format2 === "hex4") {
+        formattedString = this.toHex8String(true);
+      }
+      if (format2 === "hex8") {
+        formattedString = this.toHex8String();
+      }
+      if (format2 === "name") {
+        formattedString = this.toName();
+      }
+      if (format2 === "hsl") {
+        formattedString = this.toHslString();
+      }
+      if (format2 === "hsv") {
+        formattedString = this.toHsvString();
+      }
+      return formattedString || this.toHexString();
+    };
+    TinyColor2.prototype.toNumber = function() {
+      return (Math.round(this.r) << 16) + (Math.round(this.g) << 8) + Math.round(this.b);
+    };
+    TinyColor2.prototype.clone = function() {
+      return new TinyColor2(this.toString());
+    };
+    TinyColor2.prototype.lighten = function(amount) {
+      if (amount === void 0) {
+        amount = 10;
+      }
+      var hsl = this.toHsl();
+      hsl.l += amount / 100;
+      hsl.l = clamp01(hsl.l);
+      return new TinyColor2(hsl);
+    };
+    TinyColor2.prototype.brighten = function(amount) {
+      if (amount === void 0) {
+        amount = 10;
+      }
+      var rgb = this.toRgb();
+      rgb.r = Math.max(0, Math.min(255, rgb.r - Math.round(255 * -(amount / 100))));
+      rgb.g = Math.max(0, Math.min(255, rgb.g - Math.round(255 * -(amount / 100))));
+      rgb.b = Math.max(0, Math.min(255, rgb.b - Math.round(255 * -(amount / 100))));
+      return new TinyColor2(rgb);
+    };
+    TinyColor2.prototype.darken = function(amount) {
+      if (amount === void 0) {
+        amount = 10;
+      }
+      var hsl = this.toHsl();
+      hsl.l -= amount / 100;
+      hsl.l = clamp01(hsl.l);
+      return new TinyColor2(hsl);
+    };
+    TinyColor2.prototype.tint = function(amount) {
+      if (amount === void 0) {
+        amount = 10;
+      }
+      return this.mix("white", amount);
+    };
+    TinyColor2.prototype.shade = function(amount) {
+      if (amount === void 0) {
+        amount = 10;
+      }
+      return this.mix("black", amount);
+    };
+    TinyColor2.prototype.desaturate = function(amount) {
+      if (amount === void 0) {
+        amount = 10;
+      }
+      var hsl = this.toHsl();
+      hsl.s -= amount / 100;
+      hsl.s = clamp01(hsl.s);
+      return new TinyColor2(hsl);
+    };
+    TinyColor2.prototype.saturate = function(amount) {
+      if (amount === void 0) {
+        amount = 10;
+      }
+      var hsl = this.toHsl();
+      hsl.s += amount / 100;
+      hsl.s = clamp01(hsl.s);
+      return new TinyColor2(hsl);
+    };
+    TinyColor2.prototype.greyscale = function() {
+      return this.desaturate(100);
+    };
+    TinyColor2.prototype.spin = function(amount) {
+      var hsl = this.toHsl();
+      var hue = (hsl.h + amount) % 360;
+      hsl.h = hue < 0 ? 360 + hue : hue;
+      return new TinyColor2(hsl);
+    };
+    TinyColor2.prototype.mix = function(color, amount) {
+      if (amount === void 0) {
+        amount = 50;
+      }
+      var rgb1 = this.toRgb();
+      var rgb2 = new TinyColor2(color).toRgb();
+      var p2 = amount / 100;
+      var rgba = {
+        r: (rgb2.r - rgb1.r) * p2 + rgb1.r,
+        g: (rgb2.g - rgb1.g) * p2 + rgb1.g,
+        b: (rgb2.b - rgb1.b) * p2 + rgb1.b,
+        a: (rgb2.a - rgb1.a) * p2 + rgb1.a
+      };
+      return new TinyColor2(rgba);
+    };
+    TinyColor2.prototype.analogous = function(results, slices) {
+      if (results === void 0) {
+        results = 6;
+      }
+      if (slices === void 0) {
+        slices = 30;
+      }
+      var hsl = this.toHsl();
+      var part = 360 / slices;
+      var ret = [this];
+      for (hsl.h = (hsl.h - (part * results >> 1) + 720) % 360; --results; ) {
+        hsl.h = (hsl.h + part) % 360;
+        ret.push(new TinyColor2(hsl));
+      }
+      return ret;
+    };
+    TinyColor2.prototype.complement = function() {
+      var hsl = this.toHsl();
+      hsl.h = (hsl.h + 180) % 360;
+      return new TinyColor2(hsl);
+    };
+    TinyColor2.prototype.monochromatic = function(results) {
+      if (results === void 0) {
+        results = 6;
+      }
+      var hsv = this.toHsv();
+      var h3 = hsv.h;
+      var s2 = hsv.s;
+      var v2 = hsv.v;
+      var res = [];
+      var modification = 1 / results;
+      while (results--) {
+        res.push(new TinyColor2({ h: h3, s: s2, v: v2 }));
+        v2 = (v2 + modification) % 1;
+      }
+      return res;
+    };
+    TinyColor2.prototype.splitcomplement = function() {
+      var hsl = this.toHsl();
+      var h3 = hsl.h;
+      return [
+        this,
+        new TinyColor2({ h: (h3 + 72) % 360, s: hsl.s, l: hsl.l }),
+        new TinyColor2({ h: (h3 + 216) % 360, s: hsl.s, l: hsl.l })
+      ];
+    };
+    TinyColor2.prototype.onBackground = function(background) {
+      var fg = this.toRgb();
+      var bg = new TinyColor2(background).toRgb();
+      var alpha = fg.a + bg.a * (1 - fg.a);
+      return new TinyColor2({
+        r: (fg.r * fg.a + bg.r * bg.a * (1 - fg.a)) / alpha,
+        g: (fg.g * fg.a + bg.g * bg.a * (1 - fg.a)) / alpha,
+        b: (fg.b * fg.a + bg.b * bg.a * (1 - fg.a)) / alpha,
+        a: alpha
+      });
+    };
+    TinyColor2.prototype.triad = function() {
+      return this.polyad(3);
+    };
+    TinyColor2.prototype.tetrad = function() {
+      return this.polyad(4);
+    };
+    TinyColor2.prototype.polyad = function(n) {
+      var hsl = this.toHsl();
+      var h3 = hsl.h;
+      var result2 = [this];
+      var increment = 360 / n;
+      for (var i = 1; i < n; i++) {
+        result2.push(new TinyColor2({ h: (h3 + i * increment) % 360, s: hsl.s, l: hsl.l }));
+      }
+      return result2;
+    };
+    TinyColor2.prototype.equals = function(color) {
+      return this.toRgbString() === new TinyColor2(color).toRgbString();
+    };
+    return TinyColor2;
+  }()
+);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/button/src/button-custom.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/button/src/button-custom.mjs
 function darken(color, amount = 20) {
   return color.mix("#141414", amount).toString();
 }
@@ -16839,7 +17082,7 @@ function useButtonCustomStyle(props) {
   });
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/button/src/button2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/button/src/button2.mjs
 var _hoisted_16 = ["aria-disabled", "disabled", "autofocus", "type"];
 var __default__19 = defineComponent({
   name: "ElButton"
@@ -16912,13 +17155,13 @@ var _sfc_main22 = defineComponent({
 });
 var Button = _export_sfc(_sfc_main22, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/button/src/button-group.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/button/src/button-group.mjs
 var buttonGroupProps = {
   size: buttonProps.size,
   type: buttonProps.type
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/button/src/button-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/button/src/button-group2.mjs
 var __default__20 = defineComponent({
   name: "ElButtonGroup"
 });
@@ -16943,17 +17186,17 @@ var _sfc_main23 = defineComponent({
 });
 var ButtonGroup = _export_sfc(_sfc_main23, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/button/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/button/index.mjs
 var ElButton = withInstall(Button, {
   ButtonGroup
 });
 var ElButtonGroup = withNoopInstall(ButtonGroup);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
 var import_dayjs4 = __toESM(require_dayjs_min(), 1);
 var import_customParseFormat = __toESM(require_customParseFormat(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/constants.mjs
 var timeUnits = ["hours", "minutes", "seconds"];
 var DEFAULT_FORMATS_TIME = "HH:mm:ss";
 var DEFAULT_FORMATS_DATE = "YYYY-MM-DD";
@@ -16969,7 +17212,7 @@ var DEFAULT_FORMATS_DATEPICKER = {
   datetimerange: `${DEFAULT_FORMATS_DATE} ${DEFAULT_FORMATS_TIME}`
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/utils.mjs
 var import_dayjs = __toESM(require_dayjs_min(), 1);
 var buildTimeList = (value, bound) => {
   return [
@@ -17031,7 +17274,7 @@ var makeList = (total2, method5) => {
   return arr;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/props/shared.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/props/shared.mjs
 var disabledTimeListsProps = buildProps({
   disabledHours: {
     type: definePropType(Function)
@@ -17055,7 +17298,7 @@ var timePanelSharedProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/common/props.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/common/props.mjs
 var timePickerDefaultProps = buildProps({
   id: {
     type: definePropType([Array, String])
@@ -17157,7 +17400,7 @@ var timePickerDefaultProps = buildProps({
   unlinkPanels: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/common/picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/common/picker.mjs
 var _hoisted_17 = ["id", "name", "placeholder", "value", "disabled", "readonly"];
 var _hoisted_24 = ["id", "name", "placeholder", "value", "disabled", "readonly"];
 var __default__21 = defineComponent({
@@ -17790,10 +18033,10 @@ var _sfc_main24 = defineComponent({
 });
 var CommonPicker = _export_sfc(_sfc_main24, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/time-picker/src/common/picker.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
 var import_dayjs2 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/props/panel-time-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/props/panel-time-picker.mjs
 var panelTimePickerProps = buildProps({
   ...timePanelSharedProps,
   datetimeRole: String,
@@ -17802,7 +18045,7 @@ var panelTimePickerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/composables/use-time-panel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/composables/use-time-panel.mjs
 var useTimePanel = ({
   getAvailableHours,
   getAvailableMinutes,
@@ -17852,7 +18095,7 @@ var useTimePanel = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/composables/use-time-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/composables/use-time-picker.mjs
 var makeAvailableArr = (disabledList) => {
   const trueOrNumber = (isDisabled, index) => isDisabled || index;
   const getNumber = (predicate) => predicate !== true;
@@ -17901,7 +18144,7 @@ var useOldValue = (props) => {
   return oldValue;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/directives/click-outside/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/directives/click-outside/index.mjs
 var nodeList = /* @__PURE__ */ new Map();
 var startClick;
 if (isClient) {
@@ -17968,7 +18211,7 @@ var ClickOutside = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/directives/repeat-click/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/directives/repeat-click/index.mjs
 var REPEAT_INTERVAL = 100;
 var REPEAT_DELAY = 600;
 var vRepeatClick = {
@@ -18005,7 +18248,7 @@ var vRepeatClick = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/directives/trap-focus/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/directives/trap-focus/index.mjs
 var FOCUSABLE_CHILDREN = "_trap-focus-children";
 var FOCUS_STACK = [];
 var FOCUS_HANDLER = (e) => {
@@ -18161,7 +18404,7 @@ T.getEventType = function() {
 };
 var Y = T;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/directives/mousewheel/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/directives/mousewheel/index.mjs
 var mousewheel = function(element, callback) {
   if (element && element.addEventListener) {
     const fn2 = function(event) {
@@ -18177,7 +18420,7 @@ var Mousewheel = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/props/basic-time-spinner.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/props/basic-time-spinner.mjs
 var basicTimeSpinnerProps = buildProps({
   role: {
     type: String,
@@ -18199,7 +18442,7 @@ var basicTimeSpinnerProps = buildProps({
   ...disabledTimeListsProps
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/time-picker-com/basic-time-spinner.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/time-picker-com/basic-time-spinner.mjs
 var _hoisted_18 = ["onClick"];
 var _hoisted_25 = ["onMouseenter"];
 var _sfc_main25 = defineComponent({
@@ -18486,7 +18729,7 @@ var _sfc_main25 = defineComponent({
 });
 var TimeSpinner = _export_sfc(_sfc_main25, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/time-picker/src/time-picker-com/basic-time-spinner.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
 var _sfc_main26 = defineComponent({
   __name: "panel-time-pick",
   props: panelTimePickerProps,
@@ -18641,10 +18884,10 @@ var _sfc_main26 = defineComponent({
 });
 var TimePickPanel = _export_sfc(_sfc_main26, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/time-picker/src/time-picker-com/panel-time-pick.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
 var import_dayjs3 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/props/panel-time-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/props/panel-time-range.mjs
 var panelTimeRangeProps = buildProps({
   ...timePanelSharedProps,
   parsedValue: {
@@ -18652,7 +18895,7 @@ var panelTimeRangeProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
 var _hoisted_19 = ["disabled"];
 var _sfc_main27 = defineComponent({
   __name: "panel-time-range",
@@ -18922,7 +19165,7 @@ var _sfc_main27 = defineComponent({
 });
 var TimeRangePanel = _export_sfc(_sfc_main27, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/time-picker/src/time-picker-com/panel-time-range.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
 import_dayjs4.default.extend(import_customParseFormat.default);
 var TimePicker = defineComponent({
   name: "ElTimePicker",
@@ -18973,14 +19216,14 @@ var TimePicker = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-picker/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-picker/index.mjs
 var _TimePicker = TimePicker;
 _TimePicker.install = (app) => {
   app.component(_TimePicker.name, _TimePicker);
 };
 var ElTimePicker = _TimePicker;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/calendar/src/date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/calendar/src/date-table.mjs
 var getPrevMonthLastDays = (date5, count) => {
   const lastDay = date5.subtract(1, "month").endOf("month").date();
   return rangeArr(count).map((_2, index) => lastDay - (count - index - 1));
@@ -19012,7 +19255,7 @@ var dateTableEmits = {
   pick: (value) => isObject(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/calendar/src/use-date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/calendar/src/use-date-table.mjs
 var import_dayjs5 = __toESM(require_dayjs_min(), 1);
 var import_localeData = __toESM(require_localeData(), 1);
 var useDateTable = (props, emit) => {
@@ -19098,7 +19341,7 @@ var useDateTable = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/calendar/src/date-table2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/calendar/src/date-table2.mjs
 var _hoisted_110 = { key: 0 };
 var _hoisted_26 = ["onClick"];
 var __default__22 = defineComponent({
@@ -19183,7 +19426,7 @@ var _sfc_main28 = defineComponent({
 });
 var DateTable = _export_sfc(_sfc_main28, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/calendar/src/date-table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/calendar/src/use-calendar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/calendar/src/use-calendar.mjs
 var import_dayjs6 = __toESM(require_dayjs_min(), 1);
 var adjacentMonth = (start, end2) => {
   const firstMonthLastDay = start.endOf("month");
@@ -19308,7 +19551,7 @@ var useCalendar = (props, emit, componentName2) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/calendar/src/calendar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/calendar/src/calendar.mjs
 var isValidRange = (range4) => isArray(range4) && range4.length === 2 && range4.every((item) => isDate(item));
 var calendarProps = buildProps({
   modelValue: {
@@ -19324,7 +19567,7 @@ var calendarEmits = {
   [INPUT_EVENT]: (value) => isDate(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/calendar/src/calendar2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/calendar/src/calendar2.mjs
 var COMPONENT_NAME6 = "ElCalendar";
 var __default__23 = defineComponent({
   name: COMPONENT_NAME6
@@ -19449,10 +19692,10 @@ var _sfc_main29 = defineComponent({
 });
 var Calendar = _export_sfc(_sfc_main29, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/calendar/src/calendar.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/calendar/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/calendar/index.mjs
 var ElCalendar = withInstall(Calendar);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/card/src/card.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/card/src/card.mjs
 var cardProps = buildProps({
   header: {
     type: String,
@@ -19469,7 +19712,7 @@ var cardProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/card/src/card2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/card/src/card2.mjs
 var __default__24 = defineComponent({
   name: "ElCard"
 });
@@ -19502,10 +19745,10 @@ var _sfc_main30 = defineComponent({
 });
 var Card = _export_sfc(_sfc_main30, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/card/src/card.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/card/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/card/index.mjs
 var ElCard = withInstall(Card);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/carousel/src/carousel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/carousel/src/carousel.mjs
 var carouselProps = buildProps({
   initialIndex: {
     type: Number,
@@ -19532,10 +19775,6 @@ var carouselProps = buildProps({
     type: String,
     values: ["", "none", "outside"],
     default: ""
-  },
-  indicator: {
-    type: Boolean,
-    default: true
   },
   arrow: {
     type: String,
@@ -19565,7 +19804,7 @@ var carouselEmits = {
   change: (current, prev) => [current, prev].every(isNumber)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/carousel/src/use-carousel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/carousel/src/use-carousel.mjs
 var THROTTLE_TIME = 300;
 var useCarousel = (props, emit, componentName2) => {
   const {
@@ -19764,7 +20003,7 @@ var useCarousel = (props, emit, componentName2) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/carousel/src/carousel2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/carousel/src/carousel2.mjs
 var _hoisted_111 = ["onMouseenter", "onClick"];
 var _hoisted_27 = { key: 0 };
 var COMPONENT_NAME7 = "ElCarousel";
@@ -19918,7 +20157,7 @@ var _sfc_main31 = defineComponent({
 });
 var Carousel = _export_sfc(_sfc_main31, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/carousel/src/carousel.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/carousel/src/carousel-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/carousel/src/carousel-item.mjs
 var carouselItemProps = buildProps({
   name: { type: String, default: "" },
   label: {
@@ -19927,7 +20166,7 @@ var carouselItemProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/carousel/src/use-carousel-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/carousel/src/use-carousel-item.mjs
 var useCarouselItem = (props, componentName2) => {
   const carouselContext = inject(carouselContextKey);
   const instance = getCurrentInstance();
@@ -20044,7 +20283,7 @@ var useCarouselItem = (props, componentName2) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/carousel/src/carousel-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/carousel/src/carousel-item2.mjs
 var COMPONENT_NAME8 = "ElCarouselItem";
 var __default__26 = defineComponent({
   name: "ElCarouselItem"
@@ -20104,13 +20343,13 @@ var _sfc_main32 = defineComponent({
 });
 var CarouselItem = _export_sfc(_sfc_main32, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/carousel/src/carousel-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/carousel/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/carousel/index.mjs
 var ElCarousel = withInstall(Carousel, {
   CarouselItem
 });
 var ElCarouselItem = withNoopInstall(CarouselItem);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/checkbox.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/checkbox.mjs
 var checkboxProps = {
   modelValue: {
     type: [Number, String, Boolean],
@@ -20155,7 +20394,7 @@ var checkboxEmits = {
   change: (val) => isString(val) || isNumber(val) || isBoolean(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-disabled.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-disabled.mjs
 var useCheckboxDisabled = ({
   model,
   isChecked
@@ -20174,7 +20413,7 @@ var useCheckboxDisabled = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-event.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-event.mjs
 var useCheckboxEvent = (props, {
   model,
   isLimitExceeded,
@@ -20223,7 +20462,7 @@ var useCheckboxEvent = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-model.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-model.mjs
 var useCheckboxModel = (props) => {
   const selfModel = ref(false);
   const { emit } = getCurrentInstance();
@@ -20253,7 +20492,7 @@ var useCheckboxModel = (props) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-status.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-status.mjs
 var useCheckboxStatus = (props, slots, { model }) => {
   const checkboxGroup = inject(checkboxGroupContextKey, void 0);
   const isFocused = ref(false);
@@ -20295,7 +20534,7 @@ var useCheckboxStatus = (props, slots, { model }) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox.mjs
 var setStoreValue = (props, { model }) => {
   function addToStore() {
     if (isArray(model.value) && !model.value.includes(props.label)) {
@@ -20345,7 +20584,7 @@ var useCheckbox = (props, slots) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/checkbox2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/checkbox2.mjs
 var _hoisted_112 = ["tabindex", "role", "aria-checked"];
 var _hoisted_28 = ["id", "aria-hidden", "name", "tabindex", "disabled", "true-value", "false-value"];
 var _hoisted_33 = ["id", "aria-hidden", "disabled", "value", "name", "tabindex"];
@@ -20372,27 +20611,33 @@ var _sfc_main33 = defineComponent({
       onClickRoot
     } = useCheckbox(props, slots);
     const ns2 = useNamespace("checkbox");
+    const compKls = computed2(() => {
+      return [
+        ns2.b(),
+        ns2.m(checkboxSize.value),
+        ns2.is("disabled", isDisabled.value),
+        ns2.is("bordered", props.border),
+        ns2.is("checked", isChecked.value)
+      ];
+    });
+    const spanKls = computed2(() => {
+      return [
+        ns2.e("input"),
+        ns2.is("disabled", isDisabled.value),
+        ns2.is("checked", isChecked.value),
+        ns2.is("indeterminate", props.indeterminate),
+        ns2.is("focus", isFocused.value)
+      ];
+    });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(!unref(hasOwnLabel) && unref(isLabeledByFormItem) ? "span" : "label"), {
-        class: normalizeClass([
-          unref(ns2).b(),
-          unref(ns2).m(unref(checkboxSize)),
-          unref(ns2).is("disabled", unref(isDisabled)),
-          unref(ns2).is("bordered", _ctx.border),
-          unref(ns2).is("checked", unref(isChecked))
-        ]),
+        class: normalizeClass(unref(compKls)),
         "aria-controls": _ctx.indeterminate ? _ctx.controls : null,
         onClick: unref(onClickRoot)
       }, {
         default: withCtx(() => [
           createBaseVNode("span", {
-            class: normalizeClass([
-              unref(ns2).e("input"),
-              unref(ns2).is("disabled", unref(isDisabled)),
-              unref(ns2).is("checked", unref(isChecked)),
-              unref(ns2).is("indeterminate", _ctx.indeterminate),
-              unref(ns2).is("focus", unref(isFocused))
-            ]),
+            class: normalizeClass(unref(spanKls)),
             tabindex: _ctx.indeterminate ? 0 : void 0,
             role: _ctx.indeterminate ? "checkbox" : void 0,
             "aria-checked": _ctx.indeterminate ? "mixed" : void 0
@@ -20452,7 +20697,7 @@ var _sfc_main33 = defineComponent({
 });
 var Checkbox = _export_sfc(_sfc_main33, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/checkbox-button.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/checkbox-button.mjs
 var _hoisted_113 = ["name", "tabindex", "disabled", "true-value", "false-value"];
 var _hoisted_29 = ["name", "tabindex", "disabled", "value"];
 var __default__28 = defineComponent({
@@ -20485,15 +20730,18 @@ var _sfc_main34 = defineComponent({
         boxShadow: fillValue ? `-1px 0 0 0 ${fillValue}` : void 0
       };
     });
+    const labelKls = computed2(() => {
+      return [
+        ns2.b("button"),
+        ns2.bm("button", checkboxButtonSize.value),
+        ns2.is("disabled", isDisabled.value),
+        ns2.is("checked", isChecked.value),
+        ns2.is("focus", isFocused.value)
+      ];
+    });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("label", {
-        class: normalizeClass([
-          unref(ns2).b("button"),
-          unref(ns2).bm("button", unref(checkboxButtonSize)),
-          unref(ns2).is("disabled", unref(isDisabled)),
-          unref(ns2).is("checked", unref(isChecked)),
-          unref(ns2).is("focus", unref(isFocused))
-        ])
+        class: normalizeClass(unref(labelKls))
       }, [
         _ctx.trueLabel || _ctx.falseLabel ? withDirectives((openBlock(), createElementBlock("input", {
           key: 0,
@@ -20540,7 +20788,7 @@ var _sfc_main34 = defineComponent({
 });
 var CheckboxButton = _export_sfc(_sfc_main34, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox-button.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/checkbox-group.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/checkbox-group.mjs
 var checkboxGroupProps = buildProps({
   modelValue: {
     type: definePropType(Array),
@@ -20567,7 +20815,7 @@ var checkboxGroupEmits = {
   change: (val) => isArray(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/src/checkbox-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/src/checkbox-group2.mjs
 var __default__29 = defineComponent({
   name: "ElCheckboxGroup"
 });
@@ -20632,7 +20880,7 @@ var _sfc_main35 = defineComponent({
 });
 var CheckboxGroup = _export_sfc(_sfc_main35, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/checkbox/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/checkbox/index.mjs
 var ElCheckbox = withInstall(Checkbox, {
   CheckboxButton,
   CheckboxGroup
@@ -20640,7 +20888,7 @@ var ElCheckbox = withInstall(Checkbox, {
 var ElCheckboxButton = withNoopInstall(CheckboxButton);
 var ElCheckboxGroup = withNoopInstall(CheckboxGroup);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/radio/src/radio.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/radio/src/radio.mjs
 var radioPropsBase = buildProps({
   size: useSizeProp,
   disabled: Boolean,
@@ -20666,7 +20914,7 @@ var radioEmits = {
   [CHANGE_EVENT]: (val) => isString(val) || isNumber(val) || isBoolean(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/radio/src/use-radio.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/radio/src/use-radio.mjs
 var useRadio = (props, emit) => {
   const radioRef = ref();
   const radioGroup = inject(radioGroupKey, void 0);
@@ -20702,7 +20950,7 @@ var useRadio = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/radio/src/radio2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/radio/src/radio2.mjs
 var _hoisted_114 = ["value", "name", "disabled"];
 var __default__30 = defineComponent({
   name: "ElRadio"
@@ -20771,7 +21019,7 @@ var _sfc_main36 = defineComponent({
 });
 var Radio = _export_sfc(_sfc_main36, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/radio/src/radio.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/radio/src/radio-button.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/radio/src/radio-button.mjs
 var radioButtonProps = buildProps({
   ...radioPropsBase,
   name: {
@@ -20780,7 +21028,7 @@ var radioButtonProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/radio/src/radio-button2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/radio/src/radio-button2.mjs
 var _hoisted_115 = ["value", "name", "disabled"];
 var __default__31 = defineComponent({
   name: "ElRadioButton"
@@ -20841,7 +21089,7 @@ var _sfc_main37 = defineComponent({
 });
 var RadioButton = _export_sfc(_sfc_main37, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/radio/src/radio-button.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/radio/src/radio-group.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/radio/src/radio-group2.mjs
 var radioGroupProps = buildProps({
   id: {
     type: String,
@@ -20876,7 +21124,7 @@ var radioGroupProps = buildProps({
 });
 var radioGroupEmits = radioEmits;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/radio/src/radio-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/radio/src/radio-group.mjs
 var _hoisted_116 = ["id", "aria-label", "aria-labelledby"];
 var __default__32 = defineComponent({
   name: "ElRadioGroup"
@@ -20935,7 +21183,7 @@ var _sfc_main38 = defineComponent({
 });
 var RadioGroup = _export_sfc(_sfc_main38, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/radio/src/radio-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/radio/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/radio/index.mjs
 var ElRadio = withInstall(Radio, {
   RadioButton,
   RadioGroup
@@ -20943,7 +21191,7 @@ var ElRadio = withInstall(Radio, {
 var ElRadioGroup = withNoopInstall(RadioGroup);
 var ElRadioButton = withNoopInstall(RadioButton);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/node-content.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/node-content.mjs
 var NodeContent = defineComponent({
   name: "NodeContent",
   setup() {
@@ -20961,10 +21209,10 @@ var NodeContent = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/types.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/types.mjs
 var CASCADER_PANEL_INJECTION_KEY = Symbol();
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/node.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/node2.mjs
 var _sfc_main39 = defineComponent({
   name: "ElCascaderNode",
   components: {
@@ -21167,7 +21415,7 @@ function _sfc_render2(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElCascaderNode = _export_sfc(_sfc_main39, [["render", _sfc_render2], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/cascader-panel/src/node.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/menu.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/menu.mjs
 var _sfc_main40 = defineComponent({
   name: "ElCascaderMenu",
   components: {
@@ -21190,14 +21438,14 @@ var _sfc_main40 = defineComponent({
     const instance = getCurrentInstance();
     const ns2 = useNamespace("cascader-menu");
     const { t } = useLocale();
-    const id2 = generateId();
+    const id = generateId();
     let activeNode = null;
     let hoverTimer = null;
     const panel = inject(CASCADER_PANEL_INJECTION_KEY);
     const hoverZone = ref(null);
     const isEmpty3 = computed2(() => !props.nodes.length);
     const isLoading = computed2(() => !panel.initialLoaded);
-    const menuId = computed2(() => `cascader-menu-${id2}-${props.index}`);
+    const menuId = computed2(() => `cascader-menu-${id}-${props.index}`);
     const handleExpand = (e) => {
       activeNode = e.target;
     };
@@ -21301,7 +21549,7 @@ function _sfc_render3(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElCascaderMenu = _export_sfc(_sfc_main40, [["render", _sfc_render3], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/cascader-panel/src/menu.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/node2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/node.mjs
 var uid = 0;
 var calculatePathNodes = (node) => {
   const nodes = [node];
@@ -21417,7 +21665,7 @@ var Node = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/store.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/store.mjs
 var flatNodes = (nodes, leafOnly) => {
   return nodes.reduce((res, node) => {
     if (node.isLeaf) {
@@ -21467,18 +21715,20 @@ var Store = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/config.mjs
-var CommonProps = {
-  modelValue: [Number, String, Array],
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/config.mjs
+var CommonProps = buildProps({
+  modelValue: {
+    type: definePropType([Number, String, Array])
+  },
   options: {
-    type: Array,
+    type: definePropType(Array),
     default: () => []
   },
   props: {
-    type: Object,
+    type: definePropType(Object),
     default: () => ({})
   }
-};
+});
 var DefaultProps = {
   expandTrigger: "click",
   multiple: false,
@@ -21500,7 +21750,7 @@ var useCascaderConfig = (props) => {
   }));
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/utils.mjs
 var getMenuIndex = (el) => {
   if (!el)
     return 0;
@@ -21533,7 +21783,7 @@ var sortByOriginalOrder = (oldNodes, newNodes) => {
   return res;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/src/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/src/index.mjs
 var _sfc_main41 = defineComponent({
   name: "ElCascaderPanel",
   components: {
@@ -21640,6 +21890,9 @@ var _sfc_main41 = defineComponent({
     const clearCheckedNodes = () => {
       checkedNodes.value.forEach((node) => node.doCheck(false));
       calculateCheckedValue();
+      menus.value = menus.value.slice(0, 1);
+      expandingNode.value = null;
+      emit("expand-change", []);
     };
     const calculateCheckedValue = () => {
       var _a;
@@ -21795,14 +22048,14 @@ function _sfc_render4(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var CascaderPanel = _export_sfc(_sfc_main41, [["render", _sfc_render4], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/cascader-panel/src/index.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader-panel/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader-panel/index.mjs
 CascaderPanel.install = (app) => {
   app.component(CascaderPanel.name, CascaderPanel);
 };
 var _CascaderPanel = CascaderPanel;
 var ElCascaderPanel = _CascaderPanel;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tag/src/tag.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tag/src/tag.mjs
 var tagProps = buildProps({
   closable: Boolean,
   type: {
@@ -21833,7 +22086,7 @@ var tagEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tag/src/tag2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tag/src/tag2.mjs
 var __default__33 = defineComponent({
   name: "ElTag"
 });
@@ -21846,7 +22099,7 @@ var _sfc_main42 = defineComponent({
     const tagSize = useSize();
     const ns2 = useNamespace("tag");
     const classes = computed2(() => {
-      const { type: type4, hit, effect, closable, round: round2 } = props;
+      const { type: type4, hit, effect, closable, round: round3 } = props;
       return [
         ns2.b(),
         ns2.is("closable", closable),
@@ -21854,7 +22107,7 @@ var _sfc_main42 = defineComponent({
         ns2.m(tagSize.value),
         ns2.m(effect),
         ns2.is("hit", hit),
-        ns2.is("round", round2)
+        ns2.is("round", round3)
       ];
     });
     const handleClose = (event) => {
@@ -21920,101 +22173,94 @@ var _sfc_main42 = defineComponent({
 });
 var Tag = _export_sfc(_sfc_main42, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tag/src/tag.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tag/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tag/index.mjs
 var ElTag = withInstall(Tag);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader/src/index.mjs
-var popperOptions = {
-  modifiers: [
-    {
-      name: "arrowPosition",
-      enabled: true,
-      phase: "main",
-      fn: ({ state }) => {
-        const { modifiersData, placement } = state;
-        if (["right", "left", "bottom", "top"].includes(placement))
-          return;
-        modifiersData.arrow.x = 35;
-      },
-      requires: ["arrow"]
-    }
-  ]
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader/src/cascader.mjs
+var cascaderProps = buildProps({
+  ...CommonProps,
+  size: useSizeProp,
+  placeholder: String,
+  disabled: Boolean,
+  clearable: Boolean,
+  filterable: Boolean,
+  filterMethod: {
+    type: definePropType(Function),
+    default: (node, keyword) => node.text.includes(keyword)
+  },
+  separator: {
+    type: String,
+    default: " / "
+  },
+  showAllLevels: {
+    type: Boolean,
+    default: true
+  },
+  collapseTags: Boolean,
+  collapseTagsTooltip: {
+    type: Boolean,
+    default: false
+  },
+  debounce: {
+    type: Number,
+    default: 300
+  },
+  beforeFilter: {
+    type: definePropType(Function),
+    default: () => true
+  },
+  popperClass: {
+    type: String,
+    default: ""
+  },
+  teleported: useTooltipContentProps.teleported,
+  tagType: { ...tagProps.type, default: "info" },
+  validateEvent: {
+    type: Boolean,
+    default: true
+  }
+});
+var cascaderEmits = {
+  [UPDATE_MODEL_EVENT]: (val) => !!val || val === null,
+  [CHANGE_EVENT]: (val) => !!val || val === null,
+  focus: (evt) => evt instanceof FocusEvent,
+  blur: (evt) => evt instanceof FocusEvent,
+  visibleChange: (val) => isBoolean(val),
+  expandChange: (val) => !!val,
+  removeTag: (val) => !!val
 };
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader/src/cascader2.mjs
+var _hoisted_118 = { key: 0 };
+var _hoisted_211 = ["placeholder", "onKeydown"];
+var _hoisted_34 = ["onClick"];
 var COMPONENT_NAME9 = "ElCascader";
+var __default__34 = defineComponent({
+  name: COMPONENT_NAME9
+});
 var _sfc_main43 = defineComponent({
-  name: COMPONENT_NAME9,
-  components: {
-    ElCascaderPanel: _CascaderPanel,
-    ElInput,
-    ElTooltip,
-    ElScrollbar,
-    ElTag,
-    ElIcon,
-    CircleClose: circle_close_default,
-    Check: check_default,
-    ArrowDown: arrow_down_default
-  },
-  directives: {
-    Clickoutside: ClickOutside
-  },
-  props: {
-    ...CommonProps,
-    size: {
-      type: String,
-      validator: isValidComponentSize
-    },
-    placeholder: {
-      type: String
-    },
-    disabled: Boolean,
-    clearable: Boolean,
-    filterable: Boolean,
-    filterMethod: {
-      type: Function,
-      default: (node, keyword) => node.text.includes(keyword)
-    },
-    separator: {
-      type: String,
-      default: " / "
-    },
-    showAllLevels: {
-      type: Boolean,
-      default: true
-    },
-    collapseTags: Boolean,
-    collapseTagsTooltip: {
-      type: Boolean,
-      default: false
-    },
-    debounce: {
-      type: Number,
-      default: 300
-    },
-    beforeFilter: {
-      type: Function,
-      default: () => true
-    },
-    popperClass: {
-      type: String,
-      default: ""
-    },
-    teleported: useTooltipContentProps.teleported,
-    tagType: { ...tagProps.type, default: "info" },
-    validateEvent: {
-      type: Boolean,
-      default: true
-    }
-  },
-  emits: [
-    UPDATE_MODEL_EVENT,
-    CHANGE_EVENT,
-    "focus",
-    "blur",
-    "visible-change",
-    "expand-change",
-    "remove-tag"
-  ],
-  setup(props, { emit }) {
+  ...__default__34,
+  props: cascaderProps,
+  emits: cascaderEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    const popperOptions = {
+      modifiers: [
+        {
+          name: "arrowPosition",
+          enabled: true,
+          phase: "main",
+          fn: ({ state }) => {
+            const { modifiersData, placement } = state;
+            if (["right", "left", "bottom", "top"].includes(placement))
+              return;
+            modifiersData.arrow.x = 35;
+          },
+          requires: ["arrow"]
+        }
+      ]
+    };
+    const attrs = useAttrs();
     let inputInitialHeight = 0;
     let pressDeleteCount = 0;
     const nsCascader = useNamespace("cascader");
@@ -22029,15 +22275,19 @@ var _sfc_main43 = defineComponent({
     const popperVisible = ref(false);
     const inputHover = ref(false);
     const filtering = ref(false);
+    const filterFocus = ref(false);
     const inputValue = ref("");
     const searchInputValue = ref("");
     const presentTags = ref([]);
     const allPresentTags = ref([]);
     const suggestions = ref([]);
     const isOnComposition = ref(false);
+    const cascaderStyle = computed2(() => {
+      return attrs.style;
+    });
     const isDisabled = computed2(() => props.disabled || (form == null ? void 0 : form.disabled));
     const inputPlaceholder = computed2(() => props.placeholder || t("el.cascader.placeholder"));
-    const currentPlaceholder = computed2(() => searchInputValue.value || presentTags.value.length > 0 ? "" : inputPlaceholder.value);
+    const currentPlaceholder = computed2(() => searchInputValue.value || presentTags.value.length > 0 || isOnComposition.value ? "" : inputPlaceholder.value);
     const realSize = useSize();
     const tagSize = computed2(() => ["small"].includes(realSize.value) ? "small" : "default");
     const multiple = computed2(() => !!props.props.multiple);
@@ -22069,9 +22319,27 @@ var _sfc_main43 = defineComponent({
         }
       }
     });
-    const popperPaneRef = computed2(() => {
+    const cascaderPanelRef = computed2(() => {
       var _a, _b;
       return (_b = (_a = tooltipRef.value) == null ? void 0 : _a.popperRef) == null ? void 0 : _b.contentRef;
+    });
+    const cascaderKls = computed2(() => {
+      return [
+        nsCascader.b(),
+        nsCascader.m(realSize.value),
+        nsCascader.is("disabled", isDisabled.value),
+        attrs.class
+      ];
+    });
+    const cascaderIconKls = computed2(() => {
+      return [
+        nsInput.e("icon"),
+        "icon-arrow-down",
+        nsCascader.is("reverse", popperVisible.value)
+      ];
+    });
+    const inputClass = computed2(() => {
+      return nsCascader.is("focus", popperVisible.value || filterFocus.value);
     });
     const togglePopperVisible = (visible) => {
       var _a, _b, _c;
@@ -22087,7 +22355,7 @@ var _sfc_main43 = defineComponent({
         } else if (props.filterable) {
           syncPresentTextValue();
         }
-        emit("visible-change", visible);
+        emit("visibleChange", visible);
       }
     };
     const updatePopperPosition = () => {
@@ -22115,7 +22383,7 @@ var _sfc_main43 = defineComponent({
       const node = tag.node;
       node.doCheck(false);
       (_a = panel.value) == null ? void 0 : _a.calculateCheckedValue();
-      emit("remove-tag", node.valueByOption);
+      emit("removeTag", node.valueByOption);
     };
     const calculatePresentTags = () => {
       if (!multiple.value)
@@ -22202,7 +22470,7 @@ var _sfc_main43 = defineComponent({
     };
     const handleExpandChange = (value) => {
       updatePopperPosition();
-      emit("expand-change", value);
+      emit("expandChange", value);
     };
     const handleComposition = (event) => {
       var _a;
@@ -22289,6 +22557,18 @@ var _sfc_main43 = defineComponent({
         lastTag.hitState = true;
       }
     };
+    const handleFocus = (e) => {
+      const el = e.target;
+      const name = nsCascader.e("search-input");
+      if (el.className === name) {
+        filterFocus.value = true;
+      }
+      emit("focus", e);
+    };
+    const handleBlur = (e) => {
+      filterFocus.value = false;
+      emit("blur", e);
+    };
     const handleFilter = debounce_default(() => {
       const { value } = searchKeyword;
       if (!value)
@@ -22321,292 +22601,239 @@ var _sfc_main43 = defineComponent({
       inputInitialHeight = inputInner.offsetHeight || inputInnerHeight;
       useResizeObserver(inputInner, updateStyle);
     });
-    return {
-      popperOptions,
-      tooltipRef,
-      popperPaneRef,
-      input,
-      tagWrapper,
-      panel,
-      suggestionPanel,
-      popperVisible,
-      inputHover,
-      inputPlaceholder,
-      currentPlaceholder,
-      filtering,
-      presentText,
-      checkedValue,
-      inputValue,
-      searchInputValue,
-      presentTags,
-      allPresentTags,
-      suggestions,
-      isDisabled,
-      isOnComposition,
-      realSize,
-      tagSize,
-      multiple,
-      readonly: readonly2,
-      clearBtnVisible,
-      nsCascader,
-      nsInput,
-      t,
-      togglePopperVisible,
-      hideSuggestionPanel,
-      deleteTag,
-      focusFirstNode,
+    expose({
       getCheckedNodes,
-      handleExpandChange,
-      handleKeyDown,
-      handleComposition,
-      handleClear,
-      handleSuggestionClick,
-      handleSuggestionKeyDown,
-      handleDelete,
-      handleInput
+      cascaderPanelRef,
+      togglePopperVisible
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(ElTooltip), {
+        ref_key: "tooltipRef",
+        ref: tooltipRef,
+        visible: popperVisible.value,
+        teleported: _ctx.teleported,
+        "popper-class": [unref(nsCascader).e("dropdown"), _ctx.popperClass],
+        "popper-options": popperOptions,
+        "fallback-placements": [
+          "bottom-start",
+          "bottom",
+          "top-start",
+          "top",
+          "right",
+          "left"
+        ],
+        "stop-popper-mouse-event": false,
+        "gpu-acceleration": false,
+        placement: "bottom-start",
+        transition: `${unref(nsCascader).namespace.value}-zoom-in-top`,
+        effect: "light",
+        pure: "",
+        persistent: "",
+        onHide: hideSuggestionPanel
+      }, {
+        default: withCtx(() => [
+          withDirectives((openBlock(), createElementBlock("div", {
+            class: normalizeClass(unref(cascaderKls)),
+            style: normalizeStyle(unref(cascaderStyle)),
+            onClick: _cache[5] || (_cache[5] = () => togglePopperVisible(unref(readonly2) ? void 0 : true)),
+            onKeydown: handleKeyDown,
+            onMouseenter: _cache[6] || (_cache[6] = ($event) => inputHover.value = true),
+            onMouseleave: _cache[7] || (_cache[7] = ($event) => inputHover.value = false)
+          }, [
+            createVNode(unref(ElInput), {
+              ref_key: "input",
+              ref: input,
+              modelValue: inputValue.value,
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => inputValue.value = $event),
+              placeholder: unref(currentPlaceholder),
+              readonly: unref(readonly2),
+              disabled: unref(isDisabled),
+              "validate-event": false,
+              size: unref(realSize),
+              class: normalizeClass(unref(inputClass)),
+              tabindex: unref(multiple) && _ctx.filterable && !unref(isDisabled) ? -1 : void 0,
+              onCompositionstart: handleComposition,
+              onCompositionupdate: handleComposition,
+              onCompositionend: handleComposition,
+              onFocus: handleFocus,
+              onBlur: handleBlur,
+              onInput: handleInput
+            }, {
+              suffix: withCtx(() => [
+                unref(clearBtnVisible) ? (openBlock(), createBlock(unref(ElIcon), {
+                  key: "clear",
+                  class: normalizeClass([unref(nsInput).e("icon"), "icon-circle-close"]),
+                  onClick: withModifiers(handleClear, ["stop"])
+                }, {
+                  default: withCtx(() => [
+                    createVNode(unref(circle_close_default))
+                  ]),
+                  _: 1
+                }, 8, ["class", "onClick"])) : (openBlock(), createBlock(unref(ElIcon), {
+                  key: "arrow-down",
+                  class: normalizeClass(unref(cascaderIconKls)),
+                  onClick: _cache[0] || (_cache[0] = withModifiers(($event) => togglePopperVisible(), ["stop"]))
+                }, {
+                  default: withCtx(() => [
+                    createVNode(unref(arrow_down_default))
+                  ]),
+                  _: 1
+                }, 8, ["class"]))
+              ]),
+              _: 1
+            }, 8, ["modelValue", "placeholder", "readonly", "disabled", "size", "class", "tabindex"]),
+            unref(multiple) ? (openBlock(), createElementBlock("div", {
+              key: 0,
+              ref_key: "tagWrapper",
+              ref: tagWrapper,
+              class: normalizeClass(unref(nsCascader).e("tags"))
+            }, [
+              (openBlock(true), createElementBlock(Fragment, null, renderList(presentTags.value, (tag) => {
+                return openBlock(), createBlock(unref(ElTag), {
+                  key: tag.key,
+                  type: _ctx.tagType,
+                  size: unref(tagSize),
+                  hit: tag.hitState,
+                  closable: tag.closable,
+                  "disable-transitions": "",
+                  onClose: ($event) => deleteTag(tag)
+                }, {
+                  default: withCtx(() => [
+                    tag.isCollapseTag === false ? (openBlock(), createElementBlock("span", _hoisted_118, toDisplayString(tag.text), 1)) : (openBlock(), createBlock(unref(ElTooltip), {
+                      key: 1,
+                      disabled: popperVisible.value || !_ctx.collapseTagsTooltip,
+                      "fallback-placements": ["bottom", "top", "right", "left"],
+                      placement: "bottom",
+                      effect: "light"
+                    }, {
+                      default: withCtx(() => [
+                        createBaseVNode("span", null, toDisplayString(tag.text), 1)
+                      ]),
+                      content: withCtx(() => [
+                        createBaseVNode("div", {
+                          class: normalizeClass(unref(nsCascader).e("collapse-tags"))
+                        }, [
+                          (openBlock(true), createElementBlock(Fragment, null, renderList(allPresentTags.value.slice(1), (tag2, idx) => {
+                            return openBlock(), createElementBlock("div", {
+                              key: idx,
+                              class: normalizeClass(unref(nsCascader).e("collapse-tag"))
+                            }, [
+                              (openBlock(), createBlock(unref(ElTag), {
+                                key: tag2.key,
+                                class: "in-tooltip",
+                                type: _ctx.tagType,
+                                size: unref(tagSize),
+                                hit: tag2.hitState,
+                                closable: tag2.closable,
+                                "disable-transitions": "",
+                                onClose: ($event) => deleteTag(tag2)
+                              }, {
+                                default: withCtx(() => [
+                                  createBaseVNode("span", null, toDisplayString(tag2.text), 1)
+                                ]),
+                                _: 2
+                              }, 1032, ["type", "size", "hit", "closable", "onClose"]))
+                            ], 2);
+                          }), 128))
+                        ], 2)
+                      ]),
+                      _: 2
+                    }, 1032, ["disabled"]))
+                  ]),
+                  _: 2
+                }, 1032, ["type", "size", "hit", "closable", "onClose"]);
+              }), 128)),
+              _ctx.filterable && !unref(isDisabled) ? withDirectives((openBlock(), createElementBlock("input", {
+                key: 0,
+                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => searchInputValue.value = $event),
+                type: "text",
+                class: normalizeClass(unref(nsCascader).e("search-input")),
+                placeholder: unref(presentText) ? "" : unref(inputPlaceholder),
+                onInput: _cache[3] || (_cache[3] = (e) => handleInput(searchInputValue.value, e)),
+                onClick: _cache[4] || (_cache[4] = withModifiers(($event) => togglePopperVisible(true), ["stop"])),
+                onKeydown: withKeys(handleDelete, ["delete"]),
+                onCompositionstart: handleComposition,
+                onCompositionupdate: handleComposition,
+                onCompositionend: handleComposition,
+                onFocus: handleFocus,
+                onBlur: handleBlur
+              }, null, 42, _hoisted_211)), [
+                [vModelText, searchInputValue.value]
+              ]) : createCommentVNode("v-if", true)
+            ], 2)) : createCommentVNode("v-if", true)
+          ], 38)), [
+            [unref(ClickOutside), () => togglePopperVisible(false), unref(cascaderPanelRef)]
+          ])
+        ]),
+        content: withCtx(() => [
+          withDirectives(createVNode(unref(_CascaderPanel), {
+            ref_key: "panel",
+            ref: panel,
+            modelValue: unref(checkedValue),
+            "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => isRef(checkedValue) ? checkedValue.value = $event : null),
+            options: _ctx.options,
+            props: props.props,
+            border: false,
+            "render-label": _ctx.$slots.default,
+            onExpandChange: handleExpandChange,
+            onClose: _cache[9] || (_cache[9] = ($event) => _ctx.$nextTick(() => togglePopperVisible(false)))
+          }, null, 8, ["modelValue", "options", "props", "render-label"]), [
+            [vShow, !filtering.value]
+          ]),
+          _ctx.filterable ? withDirectives((openBlock(), createBlock(unref(ElScrollbar), {
+            key: 0,
+            ref_key: "suggestionPanel",
+            ref: suggestionPanel,
+            tag: "ul",
+            class: normalizeClass(unref(nsCascader).e("suggestion-panel")),
+            "view-class": unref(nsCascader).e("suggestion-list"),
+            onKeydown: handleSuggestionKeyDown
+          }, {
+            default: withCtx(() => [
+              suggestions.value.length ? (openBlock(true), createElementBlock(Fragment, { key: 0 }, renderList(suggestions.value, (item) => {
+                return openBlock(), createElementBlock("li", {
+                  key: item.uid,
+                  class: normalizeClass([
+                    unref(nsCascader).e("suggestion-item"),
+                    unref(nsCascader).is("checked", item.checked)
+                  ]),
+                  tabindex: -1,
+                  onClick: ($event) => handleSuggestionClick(item)
+                }, [
+                  createBaseVNode("span", null, toDisplayString(item.text), 1),
+                  item.checked ? (openBlock(), createBlock(unref(ElIcon), { key: 0 }, {
+                    default: withCtx(() => [
+                      createVNode(unref(check_default))
+                    ]),
+                    _: 1
+                  })) : createCommentVNode("v-if", true)
+                ], 10, _hoisted_34);
+              }), 128)) : renderSlot(_ctx.$slots, "empty", { key: 1 }, () => [
+                createBaseVNode("li", {
+                  class: normalizeClass(unref(nsCascader).e("empty-text"))
+                }, toDisplayString(unref(t)("el.cascader.noMatch")), 3)
+              ])
+            ]),
+            _: 3
+          }, 8, ["class", "view-class"])), [
+            [vShow, filtering.value]
+          ]) : createCommentVNode("v-if", true)
+        ]),
+        _: 3
+      }, 8, ["visible", "teleported", "popper-class", "transition"]);
     };
   }
 });
-var _hoisted_118 = { key: 0 };
-var _hoisted_211 = ["placeholder"];
-var _hoisted_34 = ["onClick"];
-function _sfc_render5(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_circle_close = resolveComponent("circle-close");
-  const _component_el_icon = resolveComponent("el-icon");
-  const _component_arrow_down = resolveComponent("arrow-down");
-  const _component_el_input = resolveComponent("el-input");
-  const _component_el_tag = resolveComponent("el-tag");
-  const _component_el_tooltip = resolveComponent("el-tooltip");
-  const _component_el_cascader_panel = resolveComponent("el-cascader-panel");
-  const _component_check = resolveComponent("check");
-  const _component_el_scrollbar = resolveComponent("el-scrollbar");
-  const _directive_clickoutside = resolveDirective("clickoutside");
-  return openBlock(), createBlock(_component_el_tooltip, {
-    ref: "tooltipRef",
-    visible: _ctx.popperVisible,
-    teleported: _ctx.teleported,
-    "popper-class": [_ctx.nsCascader.e("dropdown"), _ctx.popperClass],
-    "popper-options": _ctx.popperOptions,
-    "fallback-placements": [
-      "bottom-start",
-      "bottom",
-      "top-start",
-      "top",
-      "right",
-      "left"
-    ],
-    "stop-popper-mouse-event": false,
-    "gpu-acceleration": false,
-    placement: "bottom-start",
-    transition: `${_ctx.nsCascader.namespace.value}-zoom-in-top`,
-    effect: "light",
-    pure: "",
-    persistent: "",
-    onHide: _ctx.hideSuggestionPanel
-  }, {
-    default: withCtx(() => [
-      withDirectives((openBlock(), createElementBlock("div", {
-        class: normalizeClass([
-          _ctx.nsCascader.b(),
-          _ctx.nsCascader.m(_ctx.realSize),
-          _ctx.nsCascader.is("disabled", _ctx.isDisabled),
-          _ctx.$attrs.class
-        ]),
-        style: normalizeStyle(_ctx.$attrs.style),
-        onClick: _cache[11] || (_cache[11] = () => _ctx.togglePopperVisible(_ctx.readonly ? void 0 : true)),
-        onKeydown: _cache[12] || (_cache[12] = (...args) => _ctx.handleKeyDown && _ctx.handleKeyDown(...args)),
-        onMouseenter: _cache[13] || (_cache[13] = ($event) => _ctx.inputHover = true),
-        onMouseleave: _cache[14] || (_cache[14] = ($event) => _ctx.inputHover = false)
-      }, [
-        createVNode(_component_el_input, {
-          ref: "input",
-          modelValue: _ctx.inputValue,
-          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.inputValue = $event),
-          placeholder: _ctx.currentPlaceholder,
-          readonly: _ctx.readonly,
-          disabled: _ctx.isDisabled,
-          "validate-event": false,
-          size: _ctx.realSize,
-          class: normalizeClass(_ctx.nsCascader.is("focus", _ctx.popperVisible)),
-          onCompositionstart: _ctx.handleComposition,
-          onCompositionupdate: _ctx.handleComposition,
-          onCompositionend: _ctx.handleComposition,
-          onFocus: _cache[2] || (_cache[2] = (e) => _ctx.$emit("focus", e)),
-          onBlur: _cache[3] || (_cache[3] = (e) => _ctx.$emit("blur", e)),
-          onInput: _ctx.handleInput
-        }, {
-          suffix: withCtx(() => [
-            _ctx.clearBtnVisible ? (openBlock(), createBlock(_component_el_icon, {
-              key: "clear",
-              class: normalizeClass([_ctx.nsInput.e("icon"), "icon-circle-close"]),
-              onClick: withModifiers(_ctx.handleClear, ["stop"])
-            }, {
-              default: withCtx(() => [
-                createVNode(_component_circle_close)
-              ]),
-              _: 1
-            }, 8, ["class", "onClick"])) : (openBlock(), createBlock(_component_el_icon, {
-              key: "arrow-down",
-              class: normalizeClass([
-                _ctx.nsInput.e("icon"),
-                "icon-arrow-down",
-                _ctx.nsCascader.is("reverse", _ctx.popperVisible)
-              ]),
-              onClick: _cache[0] || (_cache[0] = withModifiers(($event) => _ctx.togglePopperVisible(), ["stop"]))
-            }, {
-              default: withCtx(() => [
-                createVNode(_component_arrow_down)
-              ]),
-              _: 1
-            }, 8, ["class"]))
-          ]),
-          _: 1
-        }, 8, ["modelValue", "placeholder", "readonly", "disabled", "size", "class", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput"]),
-        _ctx.multiple ? (openBlock(), createElementBlock("div", {
-          key: 0,
-          ref: "tagWrapper",
-          class: normalizeClass(_ctx.nsCascader.e("tags"))
-        }, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.presentTags, (tag) => {
-            return openBlock(), createBlock(_component_el_tag, {
-              key: tag.key,
-              type: _ctx.tagType,
-              size: _ctx.tagSize,
-              hit: tag.hitState,
-              closable: tag.closable,
-              "disable-transitions": "",
-              onClose: ($event) => _ctx.deleteTag(tag)
-            }, {
-              default: withCtx(() => [
-                tag.isCollapseTag === false ? (openBlock(), createElementBlock("span", _hoisted_118, toDisplayString(tag.text), 1)) : (openBlock(), createBlock(_component_el_tooltip, {
-                  key: 1,
-                  disabled: _ctx.popperVisible || !_ctx.collapseTagsTooltip,
-                  "fallback-placements": ["bottom", "top", "right", "left"],
-                  placement: "bottom",
-                  effect: "light"
-                }, {
-                  default: withCtx(() => [
-                    createBaseVNode("span", null, toDisplayString(tag.text), 1)
-                  ]),
-                  content: withCtx(() => [
-                    createBaseVNode("div", {
-                      class: normalizeClass(_ctx.nsCascader.e("collapse-tags"))
-                    }, [
-                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.allPresentTags.slice(1), (tag2, idx) => {
-                        return openBlock(), createElementBlock("div", {
-                          key: idx,
-                          class: normalizeClass(_ctx.nsCascader.e("collapse-tag"))
-                        }, [
-                          (openBlock(), createBlock(_component_el_tag, {
-                            key: tag2.key,
-                            class: "in-tooltip",
-                            type: _ctx.tagType,
-                            size: _ctx.tagSize,
-                            hit: tag2.hitState,
-                            closable: tag2.closable,
-                            "disable-transitions": "",
-                            onClose: ($event) => _ctx.deleteTag(tag2)
-                          }, {
-                            default: withCtx(() => [
-                              createBaseVNode("span", null, toDisplayString(tag2.text), 1)
-                            ]),
-                            _: 2
-                          }, 1032, ["type", "size", "hit", "closable", "onClose"]))
-                        ], 2);
-                      }), 128))
-                    ], 2)
-                  ]),
-                  _: 2
-                }, 1032, ["disabled"]))
-              ]),
-              _: 2
-            }, 1032, ["type", "size", "hit", "closable", "onClose"]);
-          }), 128)),
-          _ctx.filterable && !_ctx.isDisabled ? withDirectives((openBlock(), createElementBlock("input", {
-            key: 0,
-            "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.searchInputValue = $event),
-            type: "text",
-            class: normalizeClass(_ctx.nsCascader.e("search-input")),
-            placeholder: _ctx.presentText ? "" : _ctx.inputPlaceholder,
-            onInput: _cache[5] || (_cache[5] = (e) => _ctx.handleInput(_ctx.searchInputValue, e)),
-            onClick: _cache[6] || (_cache[6] = withModifiers(($event) => _ctx.togglePopperVisible(true), ["stop"])),
-            onKeydown: _cache[7] || (_cache[7] = withKeys((...args) => _ctx.handleDelete && _ctx.handleDelete(...args), ["delete"])),
-            onCompositionstart: _cache[8] || (_cache[8] = (...args) => _ctx.handleComposition && _ctx.handleComposition(...args)),
-            onCompositionupdate: _cache[9] || (_cache[9] = (...args) => _ctx.handleComposition && _ctx.handleComposition(...args)),
-            onCompositionend: _cache[10] || (_cache[10] = (...args) => _ctx.handleComposition && _ctx.handleComposition(...args))
-          }, null, 42, _hoisted_211)), [
-            [vModelText, _ctx.searchInputValue]
-          ]) : createCommentVNode("v-if", true)
-        ], 2)) : createCommentVNode("v-if", true)
-      ], 38)), [
-        [_directive_clickoutside, () => _ctx.togglePopperVisible(false), _ctx.popperPaneRef]
-      ])
-    ]),
-    content: withCtx(() => [
-      withDirectives(createVNode(_component_el_cascader_panel, {
-        ref: "panel",
-        modelValue: _ctx.checkedValue,
-        "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => _ctx.checkedValue = $event),
-        options: _ctx.options,
-        props: _ctx.props,
-        border: false,
-        "render-label": _ctx.$slots.default,
-        onExpandChange: _ctx.handleExpandChange,
-        onClose: _cache[16] || (_cache[16] = ($event) => _ctx.$nextTick(() => _ctx.togglePopperVisible(false)))
-      }, null, 8, ["modelValue", "options", "props", "render-label", "onExpandChange"]), [
-        [vShow, !_ctx.filtering]
-      ]),
-      _ctx.filterable ? withDirectives((openBlock(), createBlock(_component_el_scrollbar, {
-        key: 0,
-        ref: "suggestionPanel",
-        tag: "ul",
-        class: normalizeClass(_ctx.nsCascader.e("suggestion-panel")),
-        "view-class": _ctx.nsCascader.e("suggestion-list"),
-        onKeydown: _ctx.handleSuggestionKeyDown
-      }, {
-        default: withCtx(() => [
-          _ctx.suggestions.length ? (openBlock(true), createElementBlock(Fragment, { key: 0 }, renderList(_ctx.suggestions, (item) => {
-            return openBlock(), createElementBlock("li", {
-              key: item.uid,
-              class: normalizeClass([
-                _ctx.nsCascader.e("suggestion-item"),
-                _ctx.nsCascader.is("checked", item.checked)
-              ]),
-              tabindex: -1,
-              onClick: ($event) => _ctx.handleSuggestionClick(item)
-            }, [
-              createBaseVNode("span", null, toDisplayString(item.text), 1),
-              item.checked ? (openBlock(), createBlock(_component_el_icon, { key: 0 }, {
-                default: withCtx(() => [
-                  createVNode(_component_check)
-                ]),
-                _: 1
-              })) : createCommentVNode("v-if", true)
-            ], 10, _hoisted_34);
-          }), 128)) : renderSlot(_ctx.$slots, "empty", { key: 1 }, () => [
-            createBaseVNode("li", {
-              class: normalizeClass(_ctx.nsCascader.e("empty-text"))
-            }, toDisplayString(_ctx.t("el.cascader.noMatch")), 3)
-          ])
-        ]),
-        _: 3
-      }, 8, ["class", "view-class", "onKeydown"])), [
-        [vShow, _ctx.filtering]
-      ]) : createCommentVNode("v-if", true)
-    ]),
-    _: 3
-  }, 8, ["visible", "teleported", "popper-class", "popper-options", "transition", "onHide"]);
-}
-var Cascader = _export_sfc(_sfc_main43, [["render", _sfc_render5], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/cascader/src/index.vue"]]);
+var Cascader = _export_sfc(_sfc_main43, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/cascader/src/cascader.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/cascader/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/cascader/index.mjs
 Cascader.install = (app) => {
   app.component(Cascader.name, Cascader);
 };
 var _Cascader = Cascader;
 var ElCascader = _Cascader;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/check-tag/src/check-tag.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/check-tag/src/check-tag.mjs
 var checkTagProps = buildProps({
   checked: {
     type: Boolean,
@@ -22618,12 +22845,12 @@ var checkTagEmits = {
   [CHANGE_EVENT]: (value) => isBoolean(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/check-tag/src/check-tag2.mjs
-var __default__34 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/check-tag/src/check-tag2.mjs
+var __default__35 = defineComponent({
   name: "ElCheckTag"
 });
 var _sfc_main44 = defineComponent({
-  ...__default__34,
+  ...__default__35,
   props: checkTagProps,
   emits: checkTagEmits,
   setup(__props, { emit }) {
@@ -22646,10 +22873,10 @@ var _sfc_main44 = defineComponent({
 });
 var CheckTag = _export_sfc(_sfc_main44, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/check-tag/src/check-tag.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/check-tag/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/check-tag/index.mjs
 var ElCheckTag = withInstall(CheckTag);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/col/src/col.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/col/src/col.mjs
 var colProps = buildProps({
   tag: {
     type: String,
@@ -22693,12 +22920,12 @@ var colProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/col/src/col2.mjs
-var __default__35 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/col/src/col2.mjs
+var __default__36 = defineComponent({
   name: "ElCol"
 });
 var _sfc_main45 = defineComponent({
-  ...__default__35,
+  ...__default__36,
   props: colProps,
   setup(__props) {
     const props = __props;
@@ -22753,10 +22980,10 @@ var _sfc_main45 = defineComponent({
 });
 var Col = _export_sfc(_sfc_main45, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/col/src/col.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/col/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/col/index.mjs
 var ElCol = withInstall(Col);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse/src/collapse.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse/src/collapse.mjs
 var emitChangeFn = (value) => typeof isNumber(value);
 var collapseProps = buildProps({
   accordion: Boolean,
@@ -22770,7 +22997,7 @@ var collapseEmits = {
   [CHANGE_EVENT]: emitChangeFn
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse/src/use-collapse.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse/src/use-collapse.mjs
 var useCollapse = (props, emit) => {
   const activeNames = ref(castArray_default(props.modelValue));
   const setActiveNames = (_activeNames) => {
@@ -22811,12 +23038,12 @@ var useCollapseDOM = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse/src/collapse2.mjs
-var __default__36 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse/src/collapse2.mjs
+var __default__37 = defineComponent({
   name: "ElCollapse"
 });
 var _sfc_main46 = defineComponent({
-  ...__default__36,
+  ...__default__37,
   props: collapseProps,
   emits: collapseEmits,
   setup(__props, { expose, emit }) {
@@ -22840,12 +23067,12 @@ var _sfc_main46 = defineComponent({
 });
 var Collapse = _export_sfc(_sfc_main46, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/collapse/src/collapse.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse-transition/src/collapse-transition.mjs
-var __default__37 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse-transition/src/collapse-transition.mjs
+var __default__38 = defineComponent({
   name: "ElCollapseTransition"
 });
 var _sfc_main47 = defineComponent({
-  ...__default__37,
+  ...__default__38,
   setup(__props) {
     const ns2 = useNamespace("collapse-transition");
     const on2 = {
@@ -22912,14 +23139,14 @@ var _sfc_main47 = defineComponent({
 });
 var CollapseTransition = _export_sfc(_sfc_main47, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/collapse-transition/src/collapse-transition.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse-transition/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse-transition/index.mjs
 CollapseTransition.install = (app) => {
   app.component(CollapseTransition.name, CollapseTransition);
 };
 var _CollapseTransition = CollapseTransition;
 var ElCollapseTransition = _CollapseTransition;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse/src/collapse-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse/src/collapse-item.mjs
 var collapseItemProps = buildProps({
   title: {
     type: String,
@@ -22932,12 +23159,12 @@ var collapseItemProps = buildProps({
   disabled: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse/src/use-collapse-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse/src/use-collapse-item.mjs
 var useCollapseItem = (props) => {
   const collapse = inject(collapseContextKey);
   const focusing = ref(false);
   const isClick = ref(false);
-  const id2 = ref(generateId());
+  const id = ref(generateId());
   const isActive = computed2(() => collapse == null ? void 0 : collapse.activeNames.value.includes(props.name));
   const handleFocus = () => {
     setTimeout(() => {
@@ -22960,14 +23187,14 @@ var useCollapseItem = (props) => {
   };
   return {
     focusing,
-    id: id2,
+    id,
     isActive,
     handleFocus,
     handleHeaderClick,
     handleEnterClick
   };
 };
-var useCollapseItemDOM = (props, { focusing, isActive, id: id2 }) => {
+var useCollapseItemDOM = (props, { focusing, isActive, id }) => {
   const ns2 = useNamespace("collapse");
   const rootKls = computed2(() => [
     ns2.b("item"),
@@ -22985,8 +23212,8 @@ var useCollapseItemDOM = (props, { focusing, isActive, id: id2 }) => {
   ]);
   const itemWrapperKls = computed2(() => ns2.be("item", "wrap"));
   const itemContentKls = computed2(() => ns2.be("item", "content"));
-  const scopedContentId = computed2(() => ns2.b(`content-${unref(id2)}`));
-  const scopedHeadId = computed2(() => ns2.b(`head-${unref(id2)}`));
+  const scopedContentId = computed2(() => ns2.b(`content-${unref(id)}`));
+  const scopedHeadId = computed2(() => ns2.b(`head-${unref(id)}`));
   return {
     arrowKls,
     headKls,
@@ -22998,21 +23225,21 @@ var useCollapseItemDOM = (props, { focusing, isActive, id: id2 }) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse/src/collapse-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse/src/collapse-item2.mjs
 var _hoisted_119 = ["aria-expanded", "aria-controls", "aria-describedby"];
 var _hoisted_212 = ["id", "tabindex"];
 var _hoisted_35 = ["id", "aria-hidden", "aria-labelledby"];
-var __default__38 = defineComponent({
+var __default__39 = defineComponent({
   name: "ElCollapseItem"
 });
 var _sfc_main48 = defineComponent({
-  ...__default__38,
+  ...__default__39,
   props: collapseItemProps,
   setup(__props, { expose }) {
     const props = __props;
     const {
       focusing,
-      id: id2,
+      id,
       isActive,
       handleFocus,
       handleHeaderClick,
@@ -23026,7 +23253,7 @@ var _sfc_main48 = defineComponent({
       itemContentKls,
       scopedContentId,
       scopedHeadId
-    } = useCollapseItemDOM(props, { focusing, isActive, id: id2 });
+    } = useCollapseItemDOM(props, { focusing, isActive, id });
     expose({
       isActive
     });
@@ -23089,13 +23316,13 @@ var _sfc_main48 = defineComponent({
 });
 var CollapseItem = _export_sfc(_sfc_main48, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/collapse/src/collapse-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collapse/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collapse/index.mjs
 var ElCollapse = withInstall(Collapse, {
   CollapseItem
 });
 var ElCollapseItem = withNoopInstall(CollapseItem);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/src/utils/draggable.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/src/utils/draggable.mjs
 var isDragging = false;
 function draggable(element, options) {
   if (!isClient)
@@ -23133,7 +23360,7 @@ function draggable(element, options) {
   element.addEventListener("touchstart", downFn);
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/src/components/alpha-slider.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/src/components/alpha-slider.mjs
 var _sfc_main49 = defineComponent({
   name: "ElColorAlphaSlider",
   props: {
@@ -23245,7 +23472,7 @@ var _sfc_main49 = defineComponent({
     };
   }
 });
-function _sfc_render6(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render5(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass([_ctx.ns.b(), _ctx.ns.is("vertical", _ctx.vertical)])
   }, [
@@ -23267,9 +23494,9 @@ function _sfc_render6(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 6)
   ], 2);
 }
-var AlphaSlider = _export_sfc(_sfc_main49, [["render", _sfc_render6], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/components/alpha-slider.vue"]]);
+var AlphaSlider = _export_sfc(_sfc_main49, [["render", _sfc_render5], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/components/alpha-slider.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/src/components/hue-slider.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/src/components/hue-slider.mjs
 var _sfc_main50 = defineComponent({
   name: "ElColorHueSlider",
   props: {
@@ -23371,7 +23598,7 @@ var _sfc_main50 = defineComponent({
     };
   }
 });
-function _sfc_render7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render6(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass([_ctx.ns.b(), _ctx.ns.is("vertical", _ctx.vertical)])
   }, [
@@ -23390,9 +23617,9 @@ function _sfc_render7(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 6)
   ], 2);
 }
-var HueSlider = _export_sfc(_sfc_main50, [["render", _sfc_render7], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/components/hue-slider.vue"]]);
+var HueSlider = _export_sfc(_sfc_main50, [["render", _sfc_render6], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/components/hue-slider.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/src/color-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/src/color-picker.mjs
 var colorPickerProps = buildProps({
   modelValue: String,
   id: String,
@@ -23427,7 +23654,7 @@ var colorPickerEmits = {
 };
 var colorPickerContextKey = Symbol("colorPickerContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/src/utils/color.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/src/utils/color.mjs
 var hsv2hsl = function(hue, sat, val) {
   return [
     hue,
@@ -23713,7 +23940,7 @@ var Color = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/src/components/predefine.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/src/components/predefine.mjs
 var _sfc_main51 = defineComponent({
   props: {
     colors: {
@@ -23760,7 +23987,7 @@ var _sfc_main51 = defineComponent({
   }
 });
 var _hoisted_120 = ["onClick"];
-function _sfc_render8(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render7(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.ns.b())
   }, [
@@ -23785,9 +24012,9 @@ function _sfc_render8(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ], 2);
 }
-var Predefine = _export_sfc(_sfc_main51, [["render", _sfc_render8], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/components/predefine.vue"]]);
+var Predefine = _export_sfc(_sfc_main51, [["render", _sfc_render7], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/components/predefine.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/src/components/sv-panel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/src/components/sv-panel.mjs
 var _sfc_main52 = defineComponent({
   name: "ElSlPanel",
   props: {
@@ -23862,7 +24089,7 @@ var _hoisted_121 = createBaseVNode("div", null, null, -1);
 var _hoisted_213 = [
   _hoisted_121
 ];
-function _sfc_render9(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render8(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.ns.b()),
     style: normalizeStyle({
@@ -23884,15 +24111,15 @@ function _sfc_render9(_ctx, _cache, $props, $setup, $data, $options) {
     }, _hoisted_213, 6)
   ], 6);
 }
-var SvPanel = _export_sfc(_sfc_main52, [["render", _sfc_render9], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/components/sv-panel.vue"]]);
+var SvPanel = _export_sfc(_sfc_main52, [["render", _sfc_render8], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/components/sv-panel.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/src/color-picker2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/src/color-picker2.mjs
 var _hoisted_122 = ["id", "aria-label", "aria-labelledby", "aria-description", "tabindex", "onKeydown"];
-var __default__39 = defineComponent({
+var __default__40 = defineComponent({
   name: "ElColorPicker"
 });
 var _sfc_main53 = defineComponent({
-  ...__default__39,
+  ...__default__40,
   props: colorPickerProps,
   emits: colorPickerEmits,
   setup(__props, { expose, emit }) {
@@ -23932,6 +24159,13 @@ var _sfc_main53 = defineComponent({
     });
     const buttonAriaLabelledby = computed2(() => {
       return isLabeledByFormItem.value ? formItem == null ? void 0 : formItem.labelId : void 0;
+    });
+    const btnKls = computed2(() => {
+      return [
+        ns2.b("picker"),
+        ns2.is("disabled", colorDisabled.value),
+        ns2.bm("picker", colorSize.value)
+      ];
     });
     function displayedRgb(color2, showAlpha) {
       if (!(color2 instanceof Color)) {
@@ -24123,11 +24357,7 @@ var _sfc_main53 = defineComponent({
         default: withCtx(() => [
           createBaseVNode("div", {
             id: unref(buttonId),
-            class: normalizeClass([
-              unref(ns2).b("picker"),
-              unref(ns2).is("disabled", unref(colorDisabled)),
-              unref(ns2).bm("picker", unref(colorSize))
-            ]),
+            class: normalizeClass(unref(btnKls)),
             role: "button",
             "aria-label": unref(buttonAriaLabel),
             "aria-labelledby": unref(buttonAriaLabelledby),
@@ -24183,10 +24413,10 @@ var _sfc_main53 = defineComponent({
 });
 var ColorPicker = _export_sfc(_sfc_main53, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/color-picker/src/color-picker.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/color-picker/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/color-picker/index.mjs
 var ElColorPicker = withInstall(ColorPicker);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/config-provider/src/config-provider.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/config-provider/src/config-provider.mjs
 var messageConfig = {};
 var configProviderProps = buildProps({
   a11y: {
@@ -24228,15 +24458,15 @@ var ConfigProvider = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/config-provider/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/config-provider/index.mjs
 var ElConfigProvider = withInstall(ConfigProvider);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/container/src/container.mjs
-var __default__40 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/container/src/container.mjs
+var __default__41 = defineComponent({
   name: "ElContainer"
 });
 var _sfc_main54 = defineComponent({
-  ...__default__40,
+  ...__default__41,
   props: {
     direction: {
       type: String
@@ -24273,12 +24503,12 @@ var _sfc_main54 = defineComponent({
 });
 var Container = _export_sfc(_sfc_main54, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/container.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/container/src/aside.mjs
-var __default__41 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/container/src/aside.mjs
+var __default__42 = defineComponent({
   name: "ElAside"
 });
 var _sfc_main55 = defineComponent({
-  ...__default__41,
+  ...__default__42,
   props: {
     width: {
       type: String,
@@ -24301,12 +24531,12 @@ var _sfc_main55 = defineComponent({
 });
 var Aside = _export_sfc(_sfc_main55, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/aside.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/container/src/footer.mjs
-var __default__42 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/container/src/footer.mjs
+var __default__43 = defineComponent({
   name: "ElFooter"
 });
 var _sfc_main56 = defineComponent({
-  ...__default__42,
+  ...__default__43,
   props: {
     height: {
       type: String,
@@ -24329,12 +24559,12 @@ var _sfc_main56 = defineComponent({
 });
 var Footer = _export_sfc(_sfc_main56, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/footer.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/container/src/header.mjs
-var __default__43 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/container/src/header.mjs
+var __default__44 = defineComponent({
   name: "ElHeader"
 });
 var _sfc_main57 = defineComponent({
-  ...__default__43,
+  ...__default__44,
   props: {
     height: {
       type: String,
@@ -24361,12 +24591,12 @@ var _sfc_main57 = defineComponent({
 });
 var Header = _export_sfc(_sfc_main57, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/header.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/container/src/main.mjs
-var __default__44 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/container/src/main.mjs
+var __default__45 = defineComponent({
   name: "ElMain"
 });
 var _sfc_main58 = defineComponent({
-  ...__default__44,
+  ...__default__45,
   setup(__props) {
     const ns2 = useNamespace("main");
     return (_ctx, _cache) => {
@@ -24380,7 +24610,7 @@ var _sfc_main58 = defineComponent({
 });
 var Main = _export_sfc(_sfc_main58, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/main.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/container/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/container/index.mjs
 var ElContainer = withInstall(Container, {
   Aside,
   Footer,
@@ -24392,7 +24622,7 @@ var ElFooter = withNoopInstall(Footer);
 var ElHeader = withNoopInstall(Header);
 var ElMain = withNoopInstall(Main);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
 var import_dayjs15 = __toESM(require_dayjs_min(), 1);
 var import_customParseFormat2 = __toESM(require_customParseFormat(), 1);
 var import_advancedFormat = __toESM(require_advancedFormat(), 1);
@@ -24403,7 +24633,7 @@ var import_dayOfYear = __toESM(require_dayOfYear(), 1);
 var import_isSameOrAfter = __toESM(require_isSameOrAfter(), 1);
 var import_isSameOrBefore = __toESM(require_isSameOrBefore(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/date-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/date-picker.mjs
 var datePickerProps = buildProps({
   type: {
     type: definePropType(String),
@@ -24411,10 +24641,10 @@ var datePickerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
 var import_dayjs11 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/shared.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/shared.mjs
 var selectionModes = ["date", "dates", "year", "month", "week", "range"];
 var datePickerSharedProps = buildProps({
   disabledDate: {
@@ -24462,7 +24692,7 @@ var selectionModeWithDefault = (mode) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/panel-date-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/panel-date-pick.mjs
 var panelDatePickProps = buildProps({
   ...panelSharedProps,
   parsedValue: {
@@ -24477,10 +24707,10 @@ var panelDatePickProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-date-table.mjs
 var import_dayjs8 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/basic-date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/basic-date-table.mjs
 var basicDateTableProps = buildProps({
   ...datePickerSharedProps,
   cellClassName: {
@@ -24490,7 +24720,7 @@ var basicDateTableProps = buildProps({
   selectionMode: selectionModeWithDefault("date")
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/utils.mjs
 var import_dayjs7 = __toESM(require_dayjs_min(), 1);
 var isValidRange2 = (range4) => {
   if (!isArray(range4))
@@ -24563,14 +24793,14 @@ var buildPickerTable = (dimension, rows, {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/basic-cell.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/basic-cell.mjs
 var basicCellProps = buildProps({
   cell: {
     type: definePropType(Object)
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-cell-render.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-cell-render.mjs
 var ElDatePickerCell = defineComponent({
   name: "ElDatePickerCell",
   props: basicCellProps,
@@ -24600,8 +24830,8 @@ var ElDatePickerCell = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-date-table.mjs
-var _hoisted_123 = ["aria-label"];
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-date-table.mjs
+var _hoisted_123 = ["aria-label", "onMousedown"];
 var _hoisted_214 = {
   key: 0,
   scope: "col"
@@ -24910,7 +25140,7 @@ var _sfc_main59 = defineComponent({
         class: normalizeClass([unref(ns2).b(), { "is-week-mode": _ctx.selectionMode === "week" }]),
         onClick: handlePickDate,
         onMousemove: handleMouseMove,
-        onMousedown: handleMouseDown,
+        onMousedown: withModifiers(handleMouseDown, ["prevent"]),
         onMouseup: handleMouseUp
       }, [
         createBaseVNode("tbody", {
@@ -24955,16 +25185,16 @@ var _sfc_main59 = defineComponent({
 });
 var DateTable2 = _export_sfc(_sfc_main59, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/date-picker/src/date-picker-com/basic-date-table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
 var import_dayjs9 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/basic-month-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/basic-month-table.mjs
 var basicMonthTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("month")
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
 var _hoisted_124 = ["aria-label"];
 var _hoisted_215 = ["aria-selected", "aria-label", "tabindex", "onKeydown"];
 var _hoisted_37 = { class: "cell" };
@@ -25163,10 +25393,10 @@ var _sfc_main60 = defineComponent({
 });
 var MonthTable = _export_sfc(_sfc_main60, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/date-picker/src/date-picker-com/basic-month-table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
 var import_dayjs10 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/basic-year-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/basic-year-table.mjs
 var { date, disabledDate, parsedValue } = datePickerSharedProps;
 var basicYearTableProps = buildProps({
   date,
@@ -25174,7 +25404,7 @@ var basicYearTableProps = buildProps({
   parsedValue
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
 var _hoisted_125 = ["aria-label"];
 var _hoisted_216 = ["aria-selected", "tabindex", "onKeydown"];
 var _hoisted_38 = { class: "cell" };
@@ -25275,7 +25505,7 @@ var _sfc_main61 = defineComponent({
 });
 var YearTable = _export_sfc(_sfc_main61, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/date-picker/src/date-picker-com/basic-year-table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
 var _hoisted_126 = ["onClick"];
 var _hoisted_217 = ["aria-label"];
 var _hoisted_39 = ["aria-label"];
@@ -25901,16 +26131,16 @@ var _sfc_main62 = defineComponent({
 });
 var DatePickPanel = _export_sfc(_sfc_main62, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/date-picker/src/date-picker-com/panel-date-pick.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
 var import_dayjs13 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/panel-date-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/panel-date-range.mjs
 var panelDateRangeProps = buildProps({
   ...panelSharedProps,
   ...panelRangeSharedProps
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/composables/use-shortcut.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/composables/use-shortcut.mjs
 var import_dayjs12 = __toESM(require_dayjs_min(), 1);
 var useShortcut = (lang) => {
   const { emit } = getCurrentInstance();
@@ -25936,7 +26166,7 @@ var useShortcut = (lang) => {
   return handleShortcutClick;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/composables/use-range-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/composables/use-range-picker.mjs
 var useRangePicker = (props, {
   defaultValue,
   leftDate,
@@ -26013,7 +26243,7 @@ var useRangePicker = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
 var _hoisted_127 = ["onClick"];
 var _hoisted_218 = ["disabled"];
 var _hoisted_310 = ["disabled"];
@@ -26661,16 +26891,16 @@ var _sfc_main63 = defineComponent({
 });
 var DateRangePickPanel = _export_sfc(_sfc_main63, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/date-picker/src/date-picker-com/panel-date-range.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
 var import_dayjs14 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs
 var panelMonthRangeProps = buildProps({
   ...panelRangeSharedProps
 });
 var panelMonthRangeEmits = ["pick", "set-picker-option"];
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/composables/use-month-range-header.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/composables/use-month-range-header.mjs
 var useMonthRangeHeader = ({
   unlinkPanels,
   leftDate,
@@ -26719,16 +26949,16 @@ var useMonthRangeHeader = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
 var _hoisted_128 = ["onClick"];
 var _hoisted_219 = ["disabled"];
 var _hoisted_311 = ["disabled"];
 var unit2 = "year";
-var __default__45 = defineComponent({
+var __default__46 = defineComponent({
   name: "DatePickerMonthRange"
 });
 var _sfc_main64 = defineComponent({
-  ...__default__45,
+  ...__default__46,
   props: panelMonthRangeProps,
   emits: panelMonthRangeEmits,
   setup(__props, { emit }) {
@@ -26934,7 +27164,7 @@ var _sfc_main64 = defineComponent({
 });
 var MonthRangePickPanel = _export_sfc(_sfc_main64, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/date-picker/src/date-picker-com/panel-month-range.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/panel-utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/panel-utils.mjs
 var getPanel = function(type4) {
   switch (type4) {
     case "daterange":
@@ -26950,7 +27180,7 @@ var getPanel = function(type4) {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
 import_dayjs15.default.extend(import_localeData2.default);
 import_dayjs15.default.extend(import_advancedFormat.default);
 import_dayjs15.default.extend(import_customParseFormat2.default);
@@ -27014,17 +27244,17 @@ var DatePicker = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/date-picker/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/date-picker/index.mjs
 var _DatePicker = DatePicker;
 _DatePicker.install = (app) => {
   app.component(_DatePicker.name, _DatePicker);
 };
 var ElDatePicker = _DatePicker;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/descriptions/src/token.mjs
-var descriptionsKey = "elDescriptions";
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/descriptions/src/token.mjs
+var descriptionsKey = Symbol("elDescriptions");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/descriptions/src/descriptions-cell.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/descriptions/src/descriptions-cell.mjs
 var ElDescriptionsCell = defineComponent({
   name: "ElDescriptionsCell",
   props: {
@@ -27094,9 +27324,9 @@ var ElDescriptionsCell = defineComponent({
           class: [ns2.e("cell"), align],
           colSpan: span
         }, [
-          h("span", {
+          !isNil_default(label) ? h("span", {
             class: [ns2.e("label"), labelClassName]
-          }, label),
+          }, label) : void 0,
           h("span", {
             class: [ns2.e("content"), className]
           }, content)
@@ -27105,7 +27335,7 @@ var ElDescriptionsCell = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/descriptions/src/descriptions-row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/descriptions/src/descriptions-row.mjs
 var descriptionsRowProps = buildProps({
   row: {
     type: Array,
@@ -27113,13 +27343,13 @@ var descriptionsRowProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/descriptions/src/descriptions-row2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/descriptions/src/descriptions-row2.mjs
 var _hoisted_129 = { key: 1 };
-var __default__46 = defineComponent({
+var __default__47 = defineComponent({
   name: "ElDescriptionsRow"
 });
 var _sfc_main65 = defineComponent({
-  ...__default__46,
+  ...__default__47,
   props: descriptionsRowProps,
   setup(__props) {
     const descriptions = inject(descriptionsKey, {});
@@ -27175,7 +27405,7 @@ var _sfc_main65 = defineComponent({
 });
 var ElDescriptionsRow = _export_sfc(_sfc_main65, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/descriptions/src/descriptions-row.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/descriptions/src/description.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/descriptions/src/description.mjs
 var descriptionProps = buildProps({
   border: {
     type: Boolean,
@@ -27201,12 +27431,12 @@ var descriptionProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/descriptions/src/description2.mjs
-var __default__47 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/descriptions/src/description2.mjs
+var __default__48 = defineComponent({
   name: "ElDescriptions"
 });
 var _sfc_main66 = defineComponent({
-  ...__default__47,
+  ...__default__48,
   props: descriptionProps,
   setup(__props) {
     const props = __props;
@@ -27306,7 +27536,7 @@ var _sfc_main66 = defineComponent({
 });
 var Descriptions = _export_sfc(_sfc_main66, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/descriptions/src/description.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/descriptions/src/description-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/descriptions/src/description-item.mjs
 var DescriptionsItem = defineComponent({
   name: "ElDescriptionsItem",
   props: {
@@ -27345,13 +27575,13 @@ var DescriptionsItem = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/descriptions/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/descriptions/index.mjs
 var ElDescriptions = withInstall(Descriptions, {
   DescriptionsItem
 });
 var ElDescriptionsItem = withNoopInstall(DescriptionsItem);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/overlay/src/overlay.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/overlay/src/overlay.mjs
 var overlayProps = buildProps({
   mask: {
     type: Boolean,
@@ -27409,10 +27639,10 @@ var Overlay = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/overlay/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/overlay/index.mjs
 var ElOverlay = Overlay;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dialog/src/dialog-content.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dialog/src/dialog-content.mjs
 var dialogContentProps = buildProps({
   center: {
     type: Boolean,
@@ -27450,12 +27680,12 @@ var dialogContentEmits = {
   close: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs
 var _hoisted_130 = ["aria-label"];
 var _hoisted_220 = ["id"];
-var __default__48 = defineComponent({ name: "ElDialogContent" });
+var __default__49 = defineComponent({ name: "ElDialogContent" });
 var _sfc_main67 = defineComponent({
-  ...__default__48,
+  ...__default__49,
   props: dialogContentProps,
   emits: dialogContentEmits,
   setup(__props) {
@@ -27527,7 +27757,7 @@ var _sfc_main67 = defineComponent({
 });
 var ElDialogContent = _export_sfc(_sfc_main67, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/dialog/src/dialog-content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dialog/src/dialog.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dialog/src/dialog.mjs
 var dialogProps = buildProps({
   ...dialogContentProps,
   appendToBody: {
@@ -27594,7 +27824,7 @@ var dialogEmits = {
   closeAutoFocus: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dialog/src/use-dialog.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dialog/src/use-dialog.mjs
 var useDialog = (props, targetRef) => {
   const instance = getCurrentInstance();
   const emit = instance.emit;
@@ -27765,14 +27995,14 @@ var useDialog = (props, targetRef) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dialog/src/dialog2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dialog/src/dialog2.mjs
 var _hoisted_131 = ["aria-label", "aria-labelledby", "aria-describedby"];
-var __default__49 = defineComponent({
+var __default__50 = defineComponent({
   name: "ElDialog",
   inheritAttrs: false
 });
 var _sfc_main68 = defineComponent({
-  ...__default__49,
+  ...__default__50,
   props: dialogProps,
   emits: dialogEmits,
   setup(__props, { expose }) {
@@ -27924,10 +28154,10 @@ var _sfc_main68 = defineComponent({
 });
 var Dialog = _export_sfc(_sfc_main68, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/dialog/src/dialog.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dialog/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dialog/index.mjs
 var ElDialog = withInstall(Dialog);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/divider/src/divider.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/divider/src/divider.mjs
 var dividerProps = buildProps({
   direction: {
     type: String,
@@ -27945,12 +28175,12 @@ var dividerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/divider/src/divider2.mjs
-var __default__50 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/divider/src/divider2.mjs
+var __default__51 = defineComponent({
   name: "ElDivider"
 });
 var _sfc_main69 = defineComponent({
-  ...__default__50,
+  ...__default__51,
   props: dividerProps,
   setup(__props) {
     const props = __props;
@@ -27978,10 +28208,10 @@ var _sfc_main69 = defineComponent({
 });
 var Divider = _export_sfc(_sfc_main69, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/divider/src/divider.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/divider/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/divider/index.mjs
 var ElDivider = withInstall(Divider);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/drawer/src/drawer.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/drawer/src/drawer.mjs
 var drawerProps = buildProps({
   ...dialogProps,
   direction: {
@@ -28004,7 +28234,7 @@ var drawerProps = buildProps({
 });
 var drawerEmits = dialogEmits;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/drawer/src/drawer2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/drawer/src/drawer2.mjs
 var _sfc_main70 = defineComponent({
   name: "ElDrawer",
   components: {
@@ -28053,7 +28283,7 @@ var _hoisted_132 = ["aria-label", "aria-labelledby", "aria-describedby"];
 var _hoisted_221 = ["id"];
 var _hoisted_312 = ["aria-label"];
 var _hoisted_45 = ["id"];
-function _sfc_render10(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_close = resolveComponent("close");
   const _component_el_icon = resolveComponent("el-icon");
   const _component_el_focus_trap = resolveComponent("el-focus-trap");
@@ -28166,31 +28396,31 @@ function _sfc_render10(_ctx, _cache, $props, $setup, $data, $options) {
     }, 8, ["name", "onAfterEnter", "onAfterLeave", "onBeforeLeave"])
   ], 8, ["disabled"]);
 }
-var Drawer = _export_sfc(_sfc_main70, [["render", _sfc_render10], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/drawer/src/drawer.vue"]]);
+var Drawer = _export_sfc(_sfc_main70, [["render", _sfc_render9], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/drawer/src/drawer.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/drawer/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/drawer/index.mjs
 var ElDrawer = withInstall(Drawer);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collection/src/collection2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collection/src/collection2.mjs
 var _sfc_main71 = defineComponent({
+  inheritAttrs: false
+});
+function _sfc_render10(_ctx, _cache, $props, $setup, $data, $options) {
+  return renderSlot(_ctx.$slots, "default");
+}
+var Collection = _export_sfc(_sfc_main71, [["render", _sfc_render10], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/collection/src/collection.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collection/src/collection-item.mjs
+var _sfc_main72 = defineComponent({
+  name: "ElCollectionItem",
   inheritAttrs: false
 });
 function _sfc_render11(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var Collection = _export_sfc(_sfc_main71, [["render", _sfc_render11], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/collection/src/collection.vue"]]);
+var CollectionItem = _export_sfc(_sfc_main72, [["render", _sfc_render11], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/collection/src/collection-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collection/src/collection-item.mjs
-var _sfc_main72 = defineComponent({
-  name: "ElCollectionItem",
-  inheritAttrs: false
-});
-function _sfc_render12(_ctx, _cache, $props, $setup, $data, $options) {
-  return renderSlot(_ctx.$slots, "default");
-}
-var CollectionItem = _export_sfc(_sfc_main72, [["render", _sfc_render12], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/collection/src/collection-item.vue"]]);
-
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/collection/src/collection.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/collection/src/collection.mjs
 var COLLECTION_ITEM_SIGN = `data-el-collection-item`;
 var createCollectionWithScope = (name) => {
   const COLLECTION_NAME = `El${name}Collection`;
@@ -28250,7 +28480,7 @@ var createCollectionWithScope = (name) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group.mjs
 var rovingFocusGroupProps = buildProps({
   style: { type: definePropType([String, Array, Object]) },
   currentTabId: {
@@ -28277,11 +28507,11 @@ var {
   COLLECTION_ITEM_INJECTION_KEY
 } = createCollectionWithScope("RovingFocusGroup");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/roving-focus-group/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/roving-focus-group/src/tokens.mjs
 var ROVING_FOCUS_GROUP_INJECTION_KEY = Symbol("elRovingFocusGroup");
 var ROVING_FOCUS_GROUP_ITEM_INJECTION_KEY = Symbol("elRovingFocusGroupItem");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/roving-focus-group/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/roving-focus-group/src/utils.mjs
 var MAP_KEY_TO_FOCUS_INTENT = {
   ArrowLeft: "prev",
   ArrowUp: "prev",
@@ -28326,7 +28556,7 @@ var focusFirst = (elements) => {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group-impl.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group-impl.mjs
 var CURRENT_TAB_ID_CHANGE_EVT = "currentTabIdChange";
 var ENTRY_FOCUS_EVT = "rovingFocusGroup.entryFocus";
 var EVT_OPTS = { bubbles: false, cancelable: true };
@@ -28413,12 +28643,12 @@ var _sfc_main73 = defineComponent({
     useEventListener(rovingFocusGroupRef, ENTRY_FOCUS_EVT, handleEntryFocus);
   }
 });
-function _sfc_render13(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render12(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var ElRovingFocusGroupImpl = _export_sfc(_sfc_main73, [["render", _sfc_render13], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/roving-focus-group/src/roving-focus-group-impl.vue"]]);
+var ElRovingFocusGroupImpl = _export_sfc(_sfc_main73, [["render", _sfc_render12], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/roving-focus-group/src/roving-focus-group-impl.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group2.mjs
 var _sfc_main74 = defineComponent({
   name: "ElRovingFocusGroup",
   components: {
@@ -28426,7 +28656,7 @@ var _sfc_main74 = defineComponent({
     ElRovingFocusGroupImpl
   }
 });
-function _sfc_render14(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render13(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_roving_focus_group_impl = resolveComponent("el-roving-focus-group-impl");
   const _component_el_focus_group_collection = resolveComponent("el-focus-group-collection");
   return openBlock(), createBlock(_component_el_focus_group_collection, null, {
@@ -28441,9 +28671,9 @@ function _sfc_render14(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   });
 }
-var ElRovingFocusGroup = _export_sfc(_sfc_main74, [["render", _sfc_render14], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/roving-focus-group/src/roving-focus-group.vue"]]);
+var ElRovingFocusGroup = _export_sfc(_sfc_main74, [["render", _sfc_render13], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/roving-focus-group/src/roving-focus-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-item.mjs
 var _sfc_main75 = defineComponent({
   components: {
     ElRovingFocusCollectionItem: ElCollectionItem
@@ -28462,7 +28692,7 @@ var _sfc_main75 = defineComponent({
   setup(props, { emit }) {
     const { currentTabbedId, loop, onItemFocus, onItemShiftTab } = inject(ROVING_FOCUS_GROUP_INJECTION_KEY, void 0);
     const { getItems } = inject(COLLECTION_INJECTION_KEY, void 0);
-    const id2 = useId();
+    const id = useId();
     const rovingFocusGroupItemRef = ref(null);
     const handleMousedown = composeEventHandlers((e) => {
       emit("mousedown", e);
@@ -28470,13 +28700,13 @@ var _sfc_main75 = defineComponent({
       if (!props.focusable) {
         e.preventDefault();
       } else {
-        onItemFocus(unref(id2));
+        onItemFocus(unref(id));
       }
     });
     const handleFocus = composeEventHandlers((e) => {
       emit("focus", e);
     }, () => {
-      onItemFocus(unref(id2));
+      onItemFocus(unref(id));
     });
     const handleKeydown = composeEventHandlers((e) => {
       emit("keydown", e);
@@ -28516,7 +28746,7 @@ var _sfc_main75 = defineComponent({
         });
       }
     });
-    const isCurrentTab = computed2(() => currentTabbedId.value === unref(id2));
+    const isCurrentTab = computed2(() => currentTabbedId.value === unref(id));
     provide(ROVING_FOCUS_GROUP_ITEM_INJECTION_KEY, {
       rovingFocusGroupItemRef,
       tabIndex: computed2(() => unref(isCurrentTab) ? 0 : -1),
@@ -28525,14 +28755,14 @@ var _sfc_main75 = defineComponent({
       handleKeydown
     });
     return {
-      id: id2,
+      id,
       handleKeydown,
       handleFocus,
       handleMousedown
     };
   }
 });
-function _sfc_render15(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render14(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_roving_focus_collection_item = resolveComponent("el-roving-focus-collection-item");
   return openBlock(), createBlock(_component_el_roving_focus_collection_item, {
     id: _ctx.id,
@@ -28545,9 +28775,9 @@ function _sfc_render15(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["id", "focusable", "active"]);
 }
-var ElRovingFocusItem = _export_sfc(_sfc_main75, [["render", _sfc_render15], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/roving-focus-group/src/roving-focus-item.vue"]]);
+var ElRovingFocusItem = _export_sfc(_sfc_main75, [["render", _sfc_render14], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/roving-focus-group/src/roving-focus-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dropdown/src/dropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dropdown/src/dropdown.mjs
 var dropdownProps = buildProps({
   trigger: useTooltipTriggerProps.trigger,
   effect: {
@@ -28641,10 +28871,10 @@ var {
   COLLECTION_ITEM_INJECTION_KEY: COLLECTION_ITEM_INJECTION_KEY2
 } = createCollectionWithScope("Dropdown");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dropdown/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dropdown/src/tokens.mjs
 var DROPDOWN_INJECTION_KEY = Symbol("elDropdown");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs
 var { ButtonGroup: ElButtonGroup2 } = ElButton;
 var _sfc_main76 = defineComponent({
   name: "ElDropdown",
@@ -28681,6 +28911,25 @@ var _sfc_main76 = defineComponent({
     const triggerId = computed2(() => {
       return props.id || defaultTriggerId;
     });
+    watch([triggeringElementRef, toRef(props, "trigger")], ([triggeringElement, trigger], [prevTriggeringElement]) => {
+      var _a, _b, _c;
+      const triggerArray = isArray(trigger) ? trigger : [trigger];
+      if ((_a = prevTriggeringElement == null ? void 0 : prevTriggeringElement.$el) == null ? void 0 : _a.removeEventListener) {
+        prevTriggeringElement.$el.removeEventListener("pointerenter", onAutofocusTriggerEnter);
+      }
+      if ((_b = triggeringElement == null ? void 0 : triggeringElement.$el) == null ? void 0 : _b.removeEventListener) {
+        triggeringElement.$el.removeEventListener("pointerenter", onAutofocusTriggerEnter);
+      }
+      if (((_c = triggeringElement == null ? void 0 : triggeringElement.$el) == null ? void 0 : _c.addEventListener) && triggerArray.includes("hover")) {
+        triggeringElement.$el.addEventListener("pointerenter", onAutofocusTriggerEnter);
+      }
+    }, { immediate: true });
+    onBeforeUnmount(() => {
+      var _a, _b;
+      if ((_b = (_a = triggeringElementRef.value) == null ? void 0 : _a.$el) == null ? void 0 : _b.removeEventListener) {
+        triggeringElementRef.value.$el.removeEventListener("pointerenter", onAutofocusTriggerEnter);
+      }
+    });
     function handleClick() {
       handleClose();
     }
@@ -28696,6 +28945,10 @@ var _sfc_main76 = defineComponent({
     function commandHandler(...args) {
       emit("command", ...args);
     }
+    function onAutofocusTriggerEnter() {
+      var _a, _b;
+      (_b = (_a = triggeringElementRef.value) == null ? void 0 : _a.$el) == null ? void 0 : _b.focus();
+    }
     function onItemEnter() {
     }
     function onItemLeave() {
@@ -28703,8 +28956,8 @@ var _sfc_main76 = defineComponent({
       contentEl == null ? void 0 : contentEl.focus();
       currentTabId.value = null;
     }
-    function handleCurrentTabIdChange(id2) {
-      currentTabId.value = id2;
+    function handleCurrentTabIdChange(id) {
+      currentTabId.value = id;
     }
     function handleEntryFocus(e) {
       if (!isUsingKeyboard.value) {
@@ -28775,7 +29028,7 @@ var _sfc_main76 = defineComponent({
     };
   }
 });
-function _sfc_render16(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render15(_ctx, _cache, $props, $setup, $data, $options) {
   var _a;
   const _component_el_dropdown_collection = resolveComponent("el-dropdown-collection");
   const _component_el_roving_focus_group = resolveComponent("el-roving-focus-group");
@@ -28853,6 +29106,7 @@ function _sfc_render16(_ctx, _cache, $props, $setup, $data, $options) {
         fn: withCtx(() => [
           createVNode(_component_el_only_child, {
             id: _ctx.triggerId,
+            ref: "triggeringElementRef",
             role: "button",
             tabindex: _ctx.tabindex
           }, {
@@ -28907,9 +29161,9 @@ function _sfc_render16(_ctx, _cache, $props, $setup, $data, $options) {
     })) : createCommentVNode("v-if", true)
   ], 2);
 }
-var Dropdown = _export_sfc(_sfc_main76, [["render", _sfc_render16], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/dropdown/src/dropdown.vue"]]);
+var Dropdown = _export_sfc(_sfc_main76, [["render", _sfc_render15], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/dropdown/src/dropdown.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dropdown/src/dropdown-item-impl.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dropdown/src/dropdown-item-impl.mjs
 var _sfc_main77 = defineComponent({
   name: "DropdownItemImpl",
   components: {
@@ -28962,7 +29216,7 @@ var _sfc_main77 = defineComponent({
   }
 });
 var _hoisted_133 = ["aria-disabled", "tabindex", "role"];
-function _sfc_render17(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render16(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_icon = resolveComponent("el-icon");
   return openBlock(), createElementBlock(Fragment, null, [
     _ctx.divided ? (openBlock(), createElementBlock("li", mergeProps({
@@ -28977,7 +29231,7 @@ function _sfc_render17(_ctx, _cache, $props, $setup, $data, $options) {
       role: _ctx.role,
       onClick: _cache[0] || (_cache[0] = (e) => _ctx.$emit("clickimpl", e)),
       onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.handleFocus && _ctx.handleFocus(...args)),
-      onKeydown: _cache[2] || (_cache[2] = (...args) => _ctx.handleKeydown && _ctx.handleKeydown(...args)),
+      onKeydown: _cache[2] || (_cache[2] = withModifiers((...args) => _ctx.handleKeydown && _ctx.handleKeydown(...args), ["self"])),
       onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.handleMousedown && _ctx.handleMousedown(...args)),
       onPointermove: _cache[4] || (_cache[4] = (e) => _ctx.$emit("pointermove", e)),
       onPointerleave: _cache[5] || (_cache[5] = (e) => _ctx.$emit("pointerleave", e))
@@ -28992,9 +29246,9 @@ function _sfc_render17(_ctx, _cache, $props, $setup, $data, $options) {
     ], 16, _hoisted_133)
   ], 64);
 }
-var ElDropdownItemImpl = _export_sfc(_sfc_main77, [["render", _sfc_render17], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/dropdown/src/dropdown-item-impl.vue"]]);
+var ElDropdownItemImpl = _export_sfc(_sfc_main77, [["render", _sfc_render16], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/dropdown/src/dropdown-item-impl.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dropdown/src/useDropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dropdown/src/useDropdown.mjs
 var useDropdown = () => {
   const elDropdown = inject("elDropdown", {});
   const _elDropdownSize = computed2(() => elDropdown == null ? void 0 : elDropdown.dropdownSize);
@@ -29004,7 +29258,7 @@ var useDropdown = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dropdown/src/dropdown-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dropdown/src/dropdown-item.mjs
 var _sfc_main78 = defineComponent({
   name: "ElDropdownItem",
   components: {
@@ -29028,15 +29282,17 @@ var _sfc_main78 = defineComponent({
       emit("pointermove", e);
       return e.defaultPrevented;
     }, whenMouse((e) => {
-      var _a;
       if (props.disabled) {
         onItemLeave(e);
-      } else {
-        onItemEnter(e);
-        if (!e.defaultPrevented) {
-          ;
-          (_a = e.currentTarget) == null ? void 0 : _a.focus();
-        }
+        return;
+      }
+      const target2 = e.currentTarget;
+      if (target2 === document.activeElement || target2.contains(document.activeElement)) {
+        return;
+      }
+      onItemEnter(e);
+      if (!e.defaultPrevented) {
+        target2 == null ? void 0 : target2.focus();
       }
     }));
     const handlePointerLeave = composeEventHandlers((e) => {
@@ -29074,7 +29330,7 @@ var _sfc_main78 = defineComponent({
     };
   }
 });
-function _sfc_render18(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render17(_ctx, _cache, $props, $setup, $data, $options) {
   var _a;
   const _component_el_dropdown_item_impl = resolveComponent("el-dropdown-item-impl");
   const _component_el_roving_focus_item = resolveComponent("el-roving-focus-item");
@@ -29105,9 +29361,9 @@ function _sfc_render18(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["disabled", "text-value"]);
 }
-var DropdownItem = _export_sfc(_sfc_main78, [["render", _sfc_render18], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/dropdown/src/dropdown-item.vue"]]);
+var DropdownItem = _export_sfc(_sfc_main78, [["render", _sfc_render17], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/dropdown/src/dropdown-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dropdown/src/dropdown-menu.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dropdown/src/dropdown-menu.mjs
 var _sfc_main79 = defineComponent({
   name: "ElDropdownMenu",
   props: dropdownMenuProps,
@@ -29174,7 +29430,7 @@ var _sfc_main79 = defineComponent({
   }
 });
 var _hoisted_134 = ["role", "aria-labelledby"];
-function _sfc_render19(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render18(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("ul", {
     ref: _ctx.dropdownListWrapperRef,
     class: normalizeClass(_ctx.dropdownKls),
@@ -29184,15 +29440,15 @@ function _sfc_render19(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-labelledby": _ctx.triggerId,
     onBlur: _cache[0] || (_cache[0] = (...args) => _ctx.onBlur && _ctx.onBlur(...args)),
     onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.onFocus && _ctx.onFocus(...args)),
-    onKeydown: _cache[2] || (_cache[2] = (...args) => _ctx.handleKeydown && _ctx.handleKeydown(...args)),
-    onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.onMousedown && _ctx.onMousedown(...args))
+    onKeydown: _cache[2] || (_cache[2] = withModifiers((...args) => _ctx.handleKeydown && _ctx.handleKeydown(...args), ["self"])),
+    onMousedown: _cache[3] || (_cache[3] = withModifiers((...args) => _ctx.onMousedown && _ctx.onMousedown(...args), ["self"]))
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 46, _hoisted_134);
 }
-var DropdownMenu = _export_sfc(_sfc_main79, [["render", _sfc_render19], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/dropdown/src/dropdown-menu.vue"]]);
+var DropdownMenu = _export_sfc(_sfc_main79, [["render", _sfc_render18], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/dropdown/src/dropdown-menu.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/dropdown/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/dropdown/index.mjs
 var ElDropdown = withInstall(Dropdown, {
   DropdownItem,
   DropdownMenu
@@ -29200,18 +29456,7 @@ var ElDropdown = withInstall(Dropdown, {
 var ElDropdownItem = withNoopInstall(DropdownItem);
 var ElDropdownMenu = withNoopInstall(DropdownMenu);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/empty/src/img-empty.mjs
-var id = 0;
-var _sfc_main80 = defineComponent({
-  name: "ImgEmpty",
-  setup() {
-    const ns2 = useNamespace("empty");
-    return {
-      ns: ns2,
-      id: ++id
-    };
-  }
-});
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/empty/src/img-empty.mjs
 var _hoisted_135 = {
   viewBox: "0 0 79 86",
   version: "1.1",
@@ -29258,129 +29503,139 @@ var _hoisted_20 = {
 var _hoisted_21 = ["fill", "xlink:href"];
 var _hoisted_223 = ["fill", "mask"];
 var _hoisted_232 = ["fill"];
-function _sfc_render20(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", _hoisted_135, [
-    createBaseVNode("defs", null, [
-      createBaseVNode("linearGradient", {
-        id: `linearGradient-1-${_ctx.id}`,
-        x1: "38.8503086%",
-        y1: "0%",
-        x2: "61.1496914%",
-        y2: "100%"
-      }, [
-        createBaseVNode("stop", {
-          "stop-color": `var(${_ctx.ns.cssVarBlockName("fill-color-1")})`,
-          offset: "0%"
-        }, null, 8, _hoisted_313),
-        createBaseVNode("stop", {
-          "stop-color": `var(${_ctx.ns.cssVarBlockName("fill-color-4")})`,
-          offset: "100%"
-        }, null, 8, _hoisted_46)
-      ], 8, _hoisted_222),
-      createBaseVNode("linearGradient", {
-        id: `linearGradient-2-${_ctx.id}`,
-        x1: "0%",
-        y1: "9.5%",
-        x2: "100%",
-        y2: "90.5%"
-      }, [
-        createBaseVNode("stop", {
-          "stop-color": `var(${_ctx.ns.cssVarBlockName("fill-color-1")})`,
-          offset: "0%"
-        }, null, 8, _hoisted_6),
-        createBaseVNode("stop", {
-          "stop-color": `var(${_ctx.ns.cssVarBlockName("fill-color-6")})`,
-          offset: "100%"
-        }, null, 8, _hoisted_7)
-      ], 8, _hoisted_53),
-      createBaseVNode("rect", {
-        id: `path-3-${_ctx.id}`,
-        x: "0",
-        y: "0",
-        width: "17",
-        height: "36"
-      }, null, 8, _hoisted_8)
-    ]),
-    createBaseVNode("g", _hoisted_9, [
-      createBaseVNode("g", _hoisted_10, [
-        createBaseVNode("g", _hoisted_11, [
-          createBaseVNode("path", {
-            id: "Oval-Copy-2",
-            d: "M39.5,86 C61.3152476,86 79,83.9106622 79,81.3333333 C79,78.7560045 57.3152476,78 35.5,78 C13.6847524,78 0,78.7560045 0,81.3333333 C0,83.9106622 17.6847524,86 39.5,86 Z",
-            fill: `var(${_ctx.ns.cssVarBlockName("fill-color-3")})`
-          }, null, 8, _hoisted_1210),
-          createBaseVNode("polygon", {
-            id: "Rectangle-Copy-14",
-            fill: `var(${_ctx.ns.cssVarBlockName("fill-color-7")})`,
-            transform: "translate(27.500000, 51.500000) scale(1, -1) translate(-27.500000, -51.500000) ",
-            points: "13 58 53 58 42 45 2 45"
-          }, null, 8, _hoisted_136),
-          createBaseVNode("g", _hoisted_142, [
-            createBaseVNode("polygon", {
-              id: "Rectangle-Copy-10",
-              fill: `var(${_ctx.ns.cssVarBlockName("fill-color-7")})`,
-              transform: "translate(11.500000, 5.000000) scale(1, -1) translate(-11.500000, -5.000000) ",
-              points: "2.84078316e-14 3 18 3 23 7 5 7"
-            }, null, 8, _hoisted_152),
-            createBaseVNode("polygon", {
-              id: "Rectangle-Copy-11",
-              fill: `var(${_ctx.ns.cssVarBlockName("fill-color-5")})`,
-              points: "-3.69149156e-15 7 38 7 38 43 -3.69149156e-15 43"
-            }, null, 8, _hoisted_162),
-            createBaseVNode("rect", {
-              id: "Rectangle-Copy-12",
-              fill: `url(#linearGradient-1-${_ctx.id})`,
-              transform: "translate(46.500000, 25.000000) scale(-1, 1) translate(-46.500000, -25.000000) ",
-              x: "38",
-              y: "7",
-              width: "17",
-              height: "36"
-            }, null, 8, _hoisted_172),
-            createBaseVNode("polygon", {
-              id: "Rectangle-Copy-13",
-              fill: `var(${_ctx.ns.cssVarBlockName("fill-color-2")})`,
-              transform: "translate(39.500000, 3.500000) scale(-1, 1) translate(-39.500000, -3.500000) ",
-              points: "24 7 41 7 55 -3.63806207e-12 38 -3.63806207e-12"
-            }, null, 8, _hoisted_182)
-          ]),
+var __default__52 = defineComponent({
+  name: "ImgEmpty"
+});
+var _sfc_main80 = defineComponent({
+  ...__default__52,
+  setup(__props) {
+    const ns2 = useNamespace("empty");
+    const id = useId();
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("svg", _hoisted_135, [
+        createBaseVNode("defs", null, [
+          createBaseVNode("linearGradient", {
+            id: `linearGradient-1-${unref(id)}`,
+            x1: "38.8503086%",
+            y1: "0%",
+            x2: "61.1496914%",
+            y2: "100%"
+          }, [
+            createBaseVNode("stop", {
+              "stop-color": `var(${unref(ns2).cssVarBlockName("fill-color-1")})`,
+              offset: "0%"
+            }, null, 8, _hoisted_313),
+            createBaseVNode("stop", {
+              "stop-color": `var(${unref(ns2).cssVarBlockName("fill-color-4")})`,
+              offset: "100%"
+            }, null, 8, _hoisted_46)
+          ], 8, _hoisted_222),
+          createBaseVNode("linearGradient", {
+            id: `linearGradient-2-${unref(id)}`,
+            x1: "0%",
+            y1: "9.5%",
+            x2: "100%",
+            y2: "90.5%"
+          }, [
+            createBaseVNode("stop", {
+              "stop-color": `var(${unref(ns2).cssVarBlockName("fill-color-1")})`,
+              offset: "0%"
+            }, null, 8, _hoisted_6),
+            createBaseVNode("stop", {
+              "stop-color": `var(${unref(ns2).cssVarBlockName("fill-color-6")})`,
+              offset: "100%"
+            }, null, 8, _hoisted_7)
+          ], 8, _hoisted_53),
           createBaseVNode("rect", {
-            id: "Rectangle-Copy-15",
-            fill: `url(#linearGradient-2-${_ctx.id})`,
-            x: "13",
-            y: "45",
-            width: "40",
+            id: `path-3-${unref(id)}`,
+            x: "0",
+            y: "0",
+            width: "17",
             height: "36"
-          }, null, 8, _hoisted_192),
-          createBaseVNode("g", _hoisted_20, [
-            createBaseVNode("use", {
-              id: "Mask",
-              fill: `var(${_ctx.ns.cssVarBlockName("fill-color-8")})`,
-              transform: "translate(8.500000, 18.000000) scale(-1, 1) translate(-8.500000, -18.000000) ",
-              "xlink:href": `#path-3-${_ctx.id}`
-            }, null, 8, _hoisted_21),
-            createBaseVNode("polygon", {
-              id: "Rectangle-Copy",
-              fill: `var(${_ctx.ns.cssVarBlockName("fill-color-9")})`,
-              mask: `url(#mask-4-${_ctx.id})`,
-              transform: "translate(12.000000, 9.000000) scale(-1, 1) translate(-12.000000, -9.000000) ",
-              points: "7 0 24 0 20 18 7 16.5"
-            }, null, 8, _hoisted_223)
-          ]),
-          createBaseVNode("polygon", {
-            id: "Rectangle-Copy-18",
-            fill: `var(${_ctx.ns.cssVarBlockName("fill-color-2")})`,
-            transform: "translate(66.000000, 51.500000) scale(-1, 1) translate(-66.000000, -51.500000) ",
-            points: "62 45 79 45 70 58 53 58"
-          }, null, 8, _hoisted_232)
+          }, null, 8, _hoisted_8)
+        ]),
+        createBaseVNode("g", _hoisted_9, [
+          createBaseVNode("g", _hoisted_10, [
+            createBaseVNode("g", _hoisted_11, [
+              createBaseVNode("path", {
+                id: "Oval-Copy-2",
+                d: "M39.5,86 C61.3152476,86 79,83.9106622 79,81.3333333 C79,78.7560045 57.3152476,78 35.5,78 C13.6847524,78 0,78.7560045 0,81.3333333 C0,83.9106622 17.6847524,86 39.5,86 Z",
+                fill: `var(${unref(ns2).cssVarBlockName("fill-color-3")})`
+              }, null, 8, _hoisted_1210),
+              createBaseVNode("polygon", {
+                id: "Rectangle-Copy-14",
+                fill: `var(${unref(ns2).cssVarBlockName("fill-color-7")})`,
+                transform: "translate(27.500000, 51.500000) scale(1, -1) translate(-27.500000, -51.500000) ",
+                points: "13 58 53 58 42 45 2 45"
+              }, null, 8, _hoisted_136),
+              createBaseVNode("g", _hoisted_142, [
+                createBaseVNode("polygon", {
+                  id: "Rectangle-Copy-10",
+                  fill: `var(${unref(ns2).cssVarBlockName("fill-color-7")})`,
+                  transform: "translate(11.500000, 5.000000) scale(1, -1) translate(-11.500000, -5.000000) ",
+                  points: "2.84078316e-14 3 18 3 23 7 5 7"
+                }, null, 8, _hoisted_152),
+                createBaseVNode("polygon", {
+                  id: "Rectangle-Copy-11",
+                  fill: `var(${unref(ns2).cssVarBlockName("fill-color-5")})`,
+                  points: "-3.69149156e-15 7 38 7 38 43 -3.69149156e-15 43"
+                }, null, 8, _hoisted_162),
+                createBaseVNode("rect", {
+                  id: "Rectangle-Copy-12",
+                  fill: `url(#linearGradient-1-${unref(id)})`,
+                  transform: "translate(46.500000, 25.000000) scale(-1, 1) translate(-46.500000, -25.000000) ",
+                  x: "38",
+                  y: "7",
+                  width: "17",
+                  height: "36"
+                }, null, 8, _hoisted_172),
+                createBaseVNode("polygon", {
+                  id: "Rectangle-Copy-13",
+                  fill: `var(${unref(ns2).cssVarBlockName("fill-color-2")})`,
+                  transform: "translate(39.500000, 3.500000) scale(-1, 1) translate(-39.500000, -3.500000) ",
+                  points: "24 7 41 7 55 -3.63806207e-12 38 -3.63806207e-12"
+                }, null, 8, _hoisted_182)
+              ]),
+              createBaseVNode("rect", {
+                id: "Rectangle-Copy-15",
+                fill: `url(#linearGradient-2-${unref(id)})`,
+                x: "13",
+                y: "45",
+                width: "40",
+                height: "36"
+              }, null, 8, _hoisted_192),
+              createBaseVNode("g", _hoisted_20, [
+                createBaseVNode("use", {
+                  id: "Mask",
+                  fill: `var(${unref(ns2).cssVarBlockName("fill-color-8")})`,
+                  transform: "translate(8.500000, 18.000000) scale(-1, 1) translate(-8.500000, -18.000000) ",
+                  "xlink:href": `#path-3-${unref(id)}`
+                }, null, 8, _hoisted_21),
+                createBaseVNode("polygon", {
+                  id: "Rectangle-Copy",
+                  fill: `var(${unref(ns2).cssVarBlockName("fill-color-9")})`,
+                  mask: `url(#mask-4-${unref(id)})`,
+                  transform: "translate(12.000000, 9.000000) scale(-1, 1) translate(-12.000000, -9.000000) ",
+                  points: "7 0 24 0 20 18 7 16.5"
+                }, null, 8, _hoisted_223)
+              ]),
+              createBaseVNode("polygon", {
+                id: "Rectangle-Copy-18",
+                fill: `var(${unref(ns2).cssVarBlockName("fill-color-2")})`,
+                transform: "translate(66.000000, 51.500000) scale(-1, 1) translate(-66.000000, -51.500000) ",
+                points: "62 45 79 45 70 58 53 58"
+              }, null, 8, _hoisted_232)
+            ])
+          ])
         ])
-      ])
-    ])
-  ]);
-}
-var ImgEmpty = _export_sfc(_sfc_main80, [["render", _sfc_render20], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/empty/src/img-empty.vue"]]);
+      ]);
+    };
+  }
+});
+var ImgEmpty = _export_sfc(_sfc_main80, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/empty/src/img-empty.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/empty/src/empty.mjs
-var emptyProps = {
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/empty/src/empty.mjs
+var emptyProps = buildProps({
   image: {
     type: String,
     default: ""
@@ -29390,16 +29645,16 @@ var emptyProps = {
     type: String,
     default: ""
   }
-};
+});
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/empty/src/empty2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/empty/src/empty2.mjs
 var _hoisted_137 = ["src"];
 var _hoisted_224 = { key: 1 };
-var __default__51 = defineComponent({
+var __default__53 = defineComponent({
   name: "ElEmpty"
 });
 var _sfc_main81 = defineComponent({
-  ...__default__51,
+  ...__default__53,
   props: emptyProps,
   setup(__props) {
     const props = __props;
@@ -29407,7 +29662,7 @@ var _sfc_main81 = defineComponent({
     const ns2 = useNamespace("empty");
     const emptyDescription = computed2(() => props.description || t("el.table.emptyText"));
     const imageStyle = computed2(() => ({
-      width: props.imageSize ? `${props.imageSize}px` : ""
+      width: addUnit(props.imageSize)
     }));
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
@@ -29442,10 +29697,10 @@ var _sfc_main81 = defineComponent({
 });
 var Empty = _export_sfc(_sfc_main81, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/empty/src/empty.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/empty/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/empty/index.mjs
 var ElEmpty = withInstall(Empty);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/form/src/form.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/form/src/form.mjs
 var formProps = buildProps({
   model: Object,
   rules: {
@@ -29495,7 +29750,7 @@ var formEmits = {
   validate: (prop, isValid, message2) => (isArray(prop) || isString(prop)) && isBoolean(isValid) && isString(message2)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/form/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/form/src/utils.mjs
 var SCOPE3 = "ElForm";
 function useFormLabelWidth() {
   const potentialLabelWidthArr = ref([]);
@@ -29537,13 +29792,13 @@ var filterFields = (fields, props) => {
   return normalized.length > 0 ? fields.filter((field) => field.prop && normalized.includes(field.prop)) : fields;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/form/src/form2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/form/src/form2.mjs
 var COMPONENT_NAME10 = "ElForm";
-var __default__52 = defineComponent({
+var __default__54 = defineComponent({
   name: COMPONENT_NAME10
 });
 var _sfc_main82 = defineComponent({
-  ...__default__52,
+  ...__default__54,
   props: formProps,
   emits: formEmits,
   setup(__props, { expose, emit }) {
@@ -30044,7 +30299,12 @@ var getUrlRegex = function() {
   return urlReg;
 };
 var pattern$2 = {
+  // http://emailregex.com/
   email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+\.)+[a-zA-Z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}))$/,
+  // url: new RegExp(
+  //   '^(?!mailto:)(?:(?:http|https|ftp)://|//)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$',
+  //   'i',
+  // ),
   hex: /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i
 };
 var types = {
@@ -30728,7 +30988,7 @@ Schema.warning = warning;
 Schema.messages = messages;
 Schema.validators = validators;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/form/src/form-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/form/src/form-item.mjs
 var formItemValidateStates = [
   "",
   "error",
@@ -30771,7 +31031,7 @@ var formItemProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/form/src/form-label-wrap.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/form/src/form-label-wrap.mjs
 var COMPONENT_NAME11 = "ElLabelWrap";
 var FormLabelWrap = defineComponent({
   name: COMPONENT_NAME11,
@@ -30858,13 +31118,13 @@ var FormLabelWrap = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/form/src/form-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/form/src/form-item2.mjs
 var _hoisted_138 = ["role", "aria-labelledby"];
-var __default__53 = defineComponent({
+var __default__55 = defineComponent({
   name: "ElFormItem"
 });
 var _sfc_main83 = defineComponent({
-  ...__default__53,
+  ...__default__55,
   props: formItemProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -31057,13 +31317,13 @@ var _sfc_main83 = defineComponent({
       clearValidate();
       isResettingField = false;
     };
-    const addInputId = (id2) => {
-      if (!inputIds.value.includes(id2)) {
-        inputIds.value.push(id2);
+    const addInputId = (id) => {
+      if (!inputIds.value.includes(id)) {
+        inputIds.value.push(id);
       }
     };
-    const removeInputId = (id2) => {
-      inputIds.value = inputIds.value.filter((listId) => listId !== id2);
+    const removeInputId = (id) => {
+      inputIds.value = inputIds.value.filter((listId) => listId !== id);
     };
     watch(() => props.error, (val) => {
       validateMessage.value = val || "";
@@ -31139,7 +31399,7 @@ var _sfc_main83 = defineComponent({
           style: normalizeStyle(unref(contentStyle))
         }, [
           renderSlot(_ctx.$slots, "default"),
-          createVNode(Transition, {
+          createVNode(TransitionGroup, {
             name: `${unref(ns2).namespace.value}-zoom-in-top`
           }, {
             default: withCtx(() => [
@@ -31161,13 +31421,13 @@ var _sfc_main83 = defineComponent({
 });
 var FormItem = _export_sfc(_sfc_main83, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/form/src/form-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/form/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/form/index.mjs
 var ElForm = withInstall(Form, {
   FormItem
 });
 var ElFormItem = withNoopInstall(FormItem);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/image-viewer/src/image-viewer.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/image-viewer/src/image-viewer.mjs
 var imageViewerProps = buildProps({
   urlList: {
     type: definePropType(Array),
@@ -31195,6 +31455,10 @@ var imageViewerProps = buildProps({
   closeOnPressEscape: {
     type: Boolean,
     default: true
+  },
+  zoomRate: {
+    type: Number,
+    default: 1.2
   }
 });
 var imageViewerEmits = {
@@ -31202,13 +31466,13 @@ var imageViewerEmits = {
   switch: (index) => isNumber(index)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/image-viewer/src/image-viewer2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/image-viewer/src/image-viewer2.mjs
 var _hoisted_139 = ["src"];
-var __default__54 = defineComponent({
+var __default__56 = defineComponent({
   name: "ElImageViewer"
 });
 var _sfc_main84 = defineComponent({
-  ...__default__54,
+  ...__default__56,
   props: imageViewerProps,
   emits: imageViewerEmits,
   setup(__props, { expose, emit }) {
@@ -31223,7 +31487,6 @@ var _sfc_main84 = defineComponent({
         icon: markRaw(scale_to_original_default)
       }
     };
-    const mousewheelEventName = isFirefox() ? "DOMMouseScroll" : "mousewheel";
     const { t } = useLocale();
     const ns2 = useNamespace("image-viewer");
     const { nextZIndex } = useZIndex();
@@ -31314,22 +31577,15 @@ var _sfc_main84 = defineComponent({
         }
       });
       const mousewheelHandler = throttle_default((e) => {
-        const delta = e.wheelDelta ? e.wheelDelta : -e.detail;
-        if (delta > 0) {
-          handleActions("zoomIn", {
-            zoomRate: 1.2,
-            enableTransition: false
-          });
-        } else {
-          handleActions("zoomOut", {
-            zoomRate: 1.2,
-            enableTransition: false
-          });
-        }
+        const delta = e.deltaY || e.deltaX;
+        handleActions(delta < 0 ? "zoomIn" : "zoomOut", {
+          zoomRate: props.zoomRate,
+          enableTransition: false
+        });
       });
       scopeEventListener.run(() => {
         useEventListener(document, "keydown", keydownHandler);
-        useEventListener(document, mousewheelEventName, mousewheelHandler);
+        useEventListener(document, "wheel", mousewheelHandler);
       });
     }
     function unregisterEventListener() {
@@ -31400,7 +31656,7 @@ var _sfc_main84 = defineComponent({
       if (loading.value)
         return;
       const { zoomRate, rotateDeg, enableTransition } = {
-        zoomRate: 1.4,
+        zoomRate: props.zoomRate,
         rotateDeg: 90,
         enableTransition: true,
         ...options
@@ -31595,10 +31851,10 @@ var _sfc_main84 = defineComponent({
 });
 var ImageViewer = _export_sfc(_sfc_main84, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/image-viewer/src/image-viewer.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/image-viewer/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/image-viewer/index.mjs
 var ElImageViewer = withInstall(ImageViewer);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/image/src/image.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/image/src/image.mjs
 var imageProps = buildProps({
   hideOnClickModal: {
     type: Boolean,
@@ -31646,6 +31902,10 @@ var imageProps = buildProps({
   closeOnPressEscape: {
     type: Boolean,
     default: true
+  },
+  zoomRate: {
+    type: Number,
+    default: 1.2
   }
 });
 var imageEmits = {
@@ -31656,15 +31916,15 @@ var imageEmits = {
   show: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/image/src/image2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/image/src/image2.mjs
 var _hoisted_140 = ["src", "loading"];
 var _hoisted_225 = { key: 0 };
-var __default__55 = defineComponent({
+var __default__57 = defineComponent({
   name: "ElImage",
   inheritAttrs: false
 });
 var _sfc_main85 = defineComponent({
-  ...__default__55,
+  ...__default__57,
   props: imageProps,
   emits: imageEmits,
   setup(__props, { emit }) {
@@ -31844,6 +32104,7 @@ var _sfc_main85 = defineComponent({
             "z-index": _ctx.zIndex,
             "initial-index": unref(imageIndex),
             infinite: _ctx.infinite,
+            "zoom-rate": _ctx.zoomRate,
             "url-list": _ctx.previewSrcList,
             "hide-on-click-modal": _ctx.hideOnClickModal,
             teleported: _ctx.previewTeleported,
@@ -31857,7 +32118,7 @@ var _sfc_main85 = defineComponent({
               ])) : createCommentVNode("v-if", true)
             ]),
             _: 3
-          }, 8, ["z-index", "initial-index", "infinite", "url-list", "hide-on-click-modal", "teleported", "close-on-press-escape"])) : createCommentVNode("v-if", true)
+          }, 8, ["z-index", "initial-index", "infinite", "zoom-rate", "url-list", "hide-on-click-modal", "teleported", "close-on-press-escape"])) : createCommentVNode("v-if", true)
         ], 64)) : createCommentVNode("v-if", true)
       ], 6);
     };
@@ -31865,10 +32126,10 @@ var _sfc_main85 = defineComponent({
 });
 var Image = _export_sfc(_sfc_main85, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/image/src/image.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/image/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/image/index.mjs
 var ElImage = withInstall(Image);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/input-number/src/input-number.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/input-number/src/input-number.mjs
 var inputNumberProps = buildProps({
   id: {
     type: String,
@@ -31918,21 +32179,21 @@ var inputNumberProps = buildProps({
   }
 });
 var inputNumberEmits = {
-  [CHANGE_EVENT]: (prev, cur) => prev !== cur,
+  [CHANGE_EVENT]: (cur, prev) => prev !== cur,
   blur: (e) => e instanceof FocusEvent,
   focus: (e) => e instanceof FocusEvent,
   [INPUT_EVENT]: (val) => isNumber(val) || isNil_default(val),
   [UPDATE_MODEL_EVENT]: (val) => isNumber(val) || isNil_default(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/input-number/src/input-number2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/input-number/src/input-number2.mjs
 var _hoisted_141 = ["aria-label", "onKeydown"];
 var _hoisted_226 = ["aria-label", "onKeydown"];
-var __default__56 = defineComponent({
+var __default__58 = defineComponent({
   name: "ElInputNumber"
 });
 var _sfc_main86 = defineComponent({
-  ...__default__56,
+  ...__default__58,
   props: inputNumberProps,
   emits: inputNumberEmits,
   setup(__props, { expose, emit }) {
@@ -32106,7 +32367,7 @@ var _sfc_main86 = defineComponent({
     watch(() => props.modelValue, (value) => {
       const userInput = verifyValue(data.userInput);
       const newValue = verifyValue(value, true);
-      if (!userInput || userInput !== newValue) {
+      if (!isNumber(userInput) && (!userInput || userInput !== newValue)) {
         data.currentValue = newValue;
         data.userInput = null;
       }
@@ -32220,10 +32481,10 @@ var _sfc_main86 = defineComponent({
 });
 var InputNumber = _export_sfc(_sfc_main86, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/input-number/src/input-number.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/input-number/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/input-number/index.mjs
 var ElInputNumber = withInstall(InputNumber);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/link/src/link2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/link/src/link.mjs
 var linkProps = buildProps({
   type: {
     type: String,
@@ -32244,13 +32505,13 @@ var linkEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/link/src/link.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/link/src/link2.mjs
 var _hoisted_143 = ["href"];
-var __default__57 = defineComponent({
+var __default__59 = defineComponent({
   name: "ElLink"
 });
 var _sfc_main87 = defineComponent({
-  ...__default__57,
+  ...__default__59,
   props: linkProps,
   emits: linkEmits,
   setup(__props, { emit }) {
@@ -32291,10 +32552,10 @@ var _sfc_main87 = defineComponent({
 });
 var Link = _export_sfc(_sfc_main87, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/link/src/link.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/link/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/link/index.mjs
 var ElLink = withInstall(Link);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/utils/submenu.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/utils/submenu.mjs
 var SubMenu = class {
   constructor(parent2, domNode) {
     this.parent = parent2;
@@ -32354,7 +32615,7 @@ var SubMenu = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/utils/menu-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/utils/menu-item.mjs
 var MenuItem = class {
   constructor(domNode, namespace) {
     this.domNode = domNode;
@@ -32404,7 +32665,7 @@ var MenuItem = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/utils/menu-bar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/utils/menu-bar.mjs
 var Menu = class {
   constructor(domNode, namespace) {
     this.domNode = domNode;
@@ -32420,7 +32681,7 @@ var Menu = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/menu-collapse-transition.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/menu-collapse-transition.mjs
 var _sfc_main88 = defineComponent({
   name: "ElMenuCollapseTransition",
   setup() {
@@ -32465,7 +32726,7 @@ var _sfc_main88 = defineComponent({
     };
   }
 });
-function _sfc_render21(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render19(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Transition, mergeProps({ mode: "out-in" }, _ctx.listeners), {
     default: withCtx(() => [
       renderSlot(_ctx.$slots, "default")
@@ -32473,9 +32734,9 @@ function _sfc_render21(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 16);
 }
-var ElMenuCollapseTransition = _export_sfc(_sfc_main88, [["render", _sfc_render21], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-collapse-transition.vue"]]);
+var ElMenuCollapseTransition = _export_sfc(_sfc_main88, [["render", _sfc_render19], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-collapse-transition.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/use-menu.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/use-menu.mjs
 function useMenu(instance, currentIndex) {
   const indexPath = computed2(() => {
     let parent2 = instance.parent;
@@ -32501,7 +32762,7 @@ function useMenu(instance, currentIndex) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/use-menu-color.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/use-menu-color.mjs
 function useMenuColor(props) {
   const menuBarColor = computed2(() => {
     const color = props.backgroundColor;
@@ -32514,7 +32775,7 @@ function useMenuColor(props) {
   return menuBarColor;
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/use-menu-css-var.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/use-menu-css-var.mjs
 var useMenuCssVar = (props, level) => {
   const ns2 = useNamespace("menu");
   return computed2(() => {
@@ -32529,7 +32790,7 @@ var useMenuCssVar = (props, level) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/sub-menu.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/sub-menu.mjs
 var subMenuProps = buildProps({
   index: {
     type: String,
@@ -32546,6 +32807,10 @@ var subMenuProps = buildProps({
   popperClass: String,
   disabled: Boolean,
   popperAppendToBody: {
+    type: Boolean,
+    default: void 0
+  },
+  teleported: {
     type: Boolean,
     default: void 0
   },
@@ -32571,6 +32836,13 @@ var SubMenu2 = defineComponent({
   name: COMPONENT_NAME12,
   props: subMenuProps,
   setup(props, { slots, expose }) {
+    useDeprecated({
+      from: "popper-append-to-body",
+      replacement: "teleported",
+      scope: COMPONENT_NAME12,
+      version: "2.3.0",
+      ref: "https://element-plus.org/en-US/component/menu.html#submenu-attributes"
+    }, computed2(() => props.popperAppendToBody !== void 0));
     const instance = getCurrentInstance();
     const { indexPath, parentMenu } = useMenu(instance, computed2(() => props.index));
     const nsMenu = useNamespace("menu");
@@ -32595,7 +32867,9 @@ var SubMenu2 = defineComponent({
       return subMenu.level === 0;
     });
     const appendToBody = computed2(() => {
-      return props.popperAppendToBody === void 0 ? isFirstLevel.value : Boolean(props.popperAppendToBody);
+      var _a;
+      const value = (_a = props.teleported) != null ? _a : props.popperAppendToBody;
+      return value === void 0 ? isFirstLevel.value : value;
     });
     const menuTransitionName = computed2(() => rootMenu.props.collapse ? `${nsMenu.namespace.value}-zoom-in-left` : `${nsMenu.namespace.value}-zoom-in-top`);
     const fallbackPlacements = computed2(() => mode.value === "horizontal" && isFirstLevel.value ? [
@@ -32822,7 +33096,7 @@ var SubMenu2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/menu.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/menu.mjs
 var menuProps = buildProps({
   mode: {
     type: String,
@@ -33102,7 +33376,7 @@ var Menu2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/menu-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/menu-item.mjs
 var menuItemProps = buildProps({
   index: {
     type: definePropType([String, null]),
@@ -33117,7 +33391,7 @@ var menuItemEmits = {
   click: (item) => isString(item.index) && Array.isArray(item.indexPath)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/menu-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/menu-item2.mjs
 var COMPONENT_NAME13 = "ElMenuItem";
 var _sfc_main89 = defineComponent({
   name: COMPONENT_NAME13,
@@ -33171,7 +33445,7 @@ var _sfc_main89 = defineComponent({
     };
   }
 });
-function _sfc_render22(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render20(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tooltip = resolveComponent("el-tooltip");
   return openBlock(), createElementBlock("li", {
     class: normalizeClass([
@@ -33207,14 +33481,14 @@ function _sfc_render22(_ctx, _cache, $props, $setup, $data, $options) {
     ], 64))
   ], 2);
 }
-var MenuItem2 = _export_sfc(_sfc_main89, [["render", _sfc_render22], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-item.vue"]]);
+var MenuItem2 = _export_sfc(_sfc_main89, [["render", _sfc_render20], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/menu-item-group.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/menu-item-group.mjs
 var menuItemGroupProps = {
   title: String
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs
 var COMPONENT_NAME14 = "ElMenuItemGroup";
 var _sfc_main90 = defineComponent({
   name: COMPONENT_NAME14,
@@ -33226,7 +33500,7 @@ var _sfc_main90 = defineComponent({
     };
   }
 });
-function _sfc_render23(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render21(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("li", {
     class: normalizeClass(_ctx.ns.b())
   }, [
@@ -33242,9 +33516,9 @@ function _sfc_render23(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 2);
 }
-var MenuItemGroup = _export_sfc(_sfc_main90, [["render", _sfc_render23], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-item-group.vue"]]);
+var MenuItemGroup = _export_sfc(_sfc_main90, [["render", _sfc_render21], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-item-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/menu/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/menu/index.mjs
 var ElMenu = withInstall(Menu2, {
   MenuItem: MenuItem2,
   MenuItemGroup,
@@ -33254,7 +33528,7 @@ var ElMenuItem = withNoopInstall(MenuItem2);
 var ElMenuItemGroup = withNoopInstall(MenuItemGroup);
 var ElSubMenu = withNoopInstall(SubMenu2);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/page-header/src/page-header.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/page-header/src/page-header.mjs
 var pageHeaderProps = buildProps({
   icon: {
     type: iconPropType,
@@ -33270,13 +33544,13 @@ var pageHeaderEmits = {
   back: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/page-header/src/page-header2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/page-header/src/page-header2.mjs
 var _hoisted_144 = ["aria-label"];
-var __default__58 = defineComponent({
+var __default__60 = defineComponent({
   name: "ElPageHeader"
 });
 var _sfc_main91 = defineComponent({
-  ...__default__58,
+  ...__default__60,
   props: pageHeaderProps,
   emits: pageHeaderEmits,
   setup(__props, { emit }) {
@@ -33368,10 +33642,10 @@ var _sfc_main91 = defineComponent({
 });
 var PageHeader = _export_sfc(_sfc_main91, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/page-header/src/page-header.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/page-header/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/page-header/index.mjs
 var ElPageHeader = withInstall(PageHeader);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/prev.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/prev.mjs
 var paginationPrevProps = buildProps({
   disabled: Boolean,
   currentPage: {
@@ -33389,14 +33663,14 @@ var paginationPrevEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/prev2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/prev2.mjs
 var _hoisted_145 = ["disabled", "aria-disabled"];
 var _hoisted_227 = { key: 0 };
-var __default__59 = defineComponent({
+var __default__61 = defineComponent({
   name: "ElPaginationPrev"
 });
 var _sfc_main92 = defineComponent({
-  ...__default__59,
+  ...__default__61,
   props: paginationPrevProps,
   emits: paginationPrevEmits,
   setup(__props) {
@@ -33422,7 +33696,7 @@ var _sfc_main92 = defineComponent({
 });
 var Prev = _export_sfc(_sfc_main92, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/prev.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/next.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/next.mjs
 var paginationNextProps = buildProps({
   disabled: Boolean,
   currentPage: {
@@ -33441,14 +33715,14 @@ var paginationNextProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/next2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/next2.mjs
 var _hoisted_146 = ["disabled", "aria-disabled"];
 var _hoisted_228 = { key: 0 };
-var __default__60 = defineComponent({
+var __default__62 = defineComponent({
   name: "ElPaginationNext"
 });
 var _sfc_main93 = defineComponent({
-  ...__default__60,
+  ...__default__62,
   props: paginationNextProps,
   emits: ["click"],
   setup(__props) {
@@ -33474,15 +33748,15 @@ var _sfc_main93 = defineComponent({
 });
 var Next = _export_sfc(_sfc_main93, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/next.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select/src/token.mjs
-var selectGroupKey = "ElSelectGroup";
-var selectKey = "ElSelect";
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select/src/token.mjs
+var selectGroupKey = Symbol("ElSelectGroup");
+var selectKey = Symbol("ElSelect");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select/src/useOption.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select/src/useOption.mjs
 function useOption(props, states) {
   const select = inject(selectKey);
   const selectGroup = inject(selectGroupKey, { disabled: false });
-  const isObject4 = computed2(() => {
+  const isObject3 = computed2(() => {
     return Object.prototype.toString.call(props.value).toLowerCase() === "[object object]";
   });
   const itemSelected = computed2(() => {
@@ -33501,7 +33775,7 @@ function useOption(props, states) {
     }
   });
   const currentLabel = computed2(() => {
-    return props.label || (isObject4.value ? "" : props.value);
+    return props.label || (isObject3.value ? "" : props.value);
   });
   const currentValue = computed2(() => {
     return props.value || props.label || "";
@@ -33511,7 +33785,7 @@ function useOption(props, states) {
   });
   const instance = getCurrentInstance();
   const contains = (arr = [], target2) => {
-    if (!isObject4.value) {
+    if (!isObject3.value) {
       return arr && arr.includes(target2);
     } else {
       const valueKey = select.props.valueKey;
@@ -33521,7 +33795,7 @@ function useOption(props, states) {
     }
   };
   const isEqual3 = (a2, b2) => {
-    if (!isObject4.value) {
+    if (!isObject3.value) {
       return a2 === b2;
     } else {
       const { valueKey } = select.props;
@@ -33561,7 +33835,7 @@ function useOption(props, states) {
     if (!states.visible) {
       select.filteredOptionsCount--;
     }
-  });
+  }, { immediate: true });
   return {
     select,
     currentLabel,
@@ -33572,7 +33846,7 @@ function useOption(props, states) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select/src/option.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select/src/option.mjs
 var _sfc_main94 = defineComponent({
   name: "ElOption",
   componentName: "ElOption",
@@ -33634,7 +33908,7 @@ var _sfc_main94 = defineComponent({
     };
   }
 });
-function _sfc_render24(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render22(_ctx, _cache, $props, $setup, $data, $options) {
   return withDirectives((openBlock(), createElementBlock("li", {
     class: normalizeClass([
       _ctx.ns.be("dropdown", "item"),
@@ -33654,9 +33928,9 @@ function _sfc_render24(_ctx, _cache, $props, $setup, $data, $options) {
     [vShow, _ctx.visible]
   ]);
 }
-var Option = _export_sfc(_sfc_main94, [["render", _sfc_render24], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/option.vue"]]);
+var Option = _export_sfc(_sfc_main94, [["render", _sfc_render22], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/option.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select/src/select-dropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select/src/select-dropdown.mjs
 var _sfc_main95 = defineComponent({
   name: "ElSelectDropdown",
   componentName: "ElSelectDropdown",
@@ -33684,7 +33958,7 @@ var _sfc_main95 = defineComponent({
     };
   }
 });
-function _sfc_render25(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render23(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass([_ctx.ns.b("dropdown"), _ctx.ns.is("multiple", _ctx.isMultiple), _ctx.popperClass]),
     style: normalizeStyle({ [_ctx.isFitInputWidth ? "width" : "minWidth"]: _ctx.minWidth })
@@ -33692,9 +33966,9 @@ function _sfc_render25(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default")
   ], 6);
 }
-var ElSelectMenu = _export_sfc(_sfc_main95, [["render", _sfc_render25], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/select-dropdown.vue"]]);
+var ElSelectMenu = _export_sfc(_sfc_main95, [["render", _sfc_render23], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/select-dropdown.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select/src/useSelect.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select/src/useSelect.mjs
 function useSelectStates(props) {
   const { t } = useLocale();
   return reactive({
@@ -34059,12 +34333,12 @@ var useSelect = (props, states, ctx) => {
     var _a, _b;
     resetInputWidth();
     (_b = (_a = tooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
-    if (props.multiple && !props.filterable)
+    if (props.multiple)
       resetInputHeight();
   };
   const resetInputWidth = () => {
     var _a;
-    states.inputWidth = (_a = reference.value) == null ? void 0 : _a.$el.getBoundingClientRect().width;
+    states.inputWidth = (_a = reference.value) == null ? void 0 : _a.$el.offsetWidth;
   };
   const onInputChange = () => {
     if (props.filterable && states.query !== states.selectedLabel) {
@@ -34395,7 +34669,7 @@ var useSelect = (props, states, ctx) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select/src/select.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select/src/select.mjs
 var COMPONENT_NAME15 = "ElSelect";
 var _sfc_main96 = defineComponent({
   name: COMPONENT_NAME15,
@@ -34626,7 +34900,7 @@ var _sfc_main96 = defineComponent({
       groupQueryChange
     }));
     onMounted(() => {
-      states.cachedPlaceHolder = currentPlaceholder.value = props.placeholder || t("el.select.placeholder");
+      states.cachedPlaceHolder = currentPlaceholder.value = props.placeholder || (() => t("el.select.placeholder"));
       if (props.multiple && Array.isArray(props.modelValue) && props.modelValue.length > 0) {
         currentPlaceholder.value = "";
       }
@@ -34727,7 +35001,7 @@ var _sfc_main96 = defineComponent({
 });
 var _hoisted_147 = ["disabled", "autocomplete"];
 var _hoisted_229 = { style: { "height": "100%", "display": "flex", "justify-content": "center", "align-items": "center" } };
-function _sfc_render26(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render24(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -34934,7 +35208,7 @@ function _sfc_render26(_ctx, _cache, $props, $setup, $data, $options) {
             modelValue: _ctx.selectedLabel,
             "onUpdate:modelValue": _cache[16] || (_cache[16] = ($event) => _ctx.selectedLabel = $event),
             type: "text",
-            placeholder: _ctx.currentPlaceholder,
+            placeholder: typeof _ctx.currentPlaceholder === "function" ? _ctx.currentPlaceholder() : _ctx.currentPlaceholder,
             name: _ctx.name,
             autocomplete: _ctx.autocomplete,
             size: _ctx.selectSize,
@@ -35032,9 +35306,9 @@ function _sfc_render26(_ctx, _cache, $props, $setup, $data, $options) {
     [_directive_click_outside, _ctx.handleClose, _ctx.popperPaneRef]
   ]);
 }
-var Select = _export_sfc(_sfc_main96, [["render", _sfc_render26], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/select.vue"]]);
+var Select = _export_sfc(_sfc_main96, [["render", _sfc_render24], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/select.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select/src/option-group.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select/src/option-group.mjs
 var _sfc_main97 = defineComponent({
   name: "ElOptionGroup",
   componentName: "ElOptionGroup",
@@ -35081,7 +35355,7 @@ var _sfc_main97 = defineComponent({
     };
   }
 });
-function _sfc_render27(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render25(_ctx, _cache, $props, $setup, $data, $options) {
   return withDirectives((openBlock(), createElementBlock("ul", {
     class: normalizeClass(_ctx.ns.be("group", "wrap"))
   }, [
@@ -35099,9 +35373,9 @@ function _sfc_render27(_ctx, _cache, $props, $setup, $data, $options) {
     [vShow, _ctx.visible]
   ]);
 }
-var OptionGroup = _export_sfc(_sfc_main97, [["render", _sfc_render27], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/option-group.vue"]]);
+var OptionGroup = _export_sfc(_sfc_main97, [["render", _sfc_render25], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/option-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select/index.mjs
 var ElSelect = withInstall(Select, {
   Option,
   OptionGroup
@@ -35109,10 +35383,10 @@ var ElSelect = withInstall(Select, {
 var ElOption = withNoopInstall(Option);
 var ElOptionGroup = withNoopInstall(OptionGroup);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/usePagination.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/usePagination.mjs
 var usePagination = () => inject(elPaginationKey, {});
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/sizes.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/sizes.mjs
 var paginationSizesProps = buildProps({
   pageSize: {
     type: Number,
@@ -35132,12 +35406,12 @@ var paginationSizesProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/sizes2.mjs
-var __default__61 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/sizes2.mjs
+var __default__63 = defineComponent({
   name: "ElPaginationSizes"
 });
 var _sfc_main98 = defineComponent({
-  ...__default__61,
+  ...__default__63,
   props: paginationSizesProps,
   emits: ["page-size-change"],
   setup(__props, { emit }) {
@@ -35194,7 +35468,7 @@ var _sfc_main98 = defineComponent({
 });
 var Sizes = _export_sfc(_sfc_main98, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/sizes.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/jumper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/jumper.mjs
 var paginationJumperProps = buildProps({
   size: {
     type: String,
@@ -35202,13 +35476,13 @@ var paginationJumperProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/jumper2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/jumper2.mjs
 var _hoisted_148 = ["disabled"];
-var __default__62 = defineComponent({
+var __default__64 = defineComponent({
   name: "ElPaginationJumper"
 });
 var _sfc_main99 = defineComponent({
-  ...__default__62,
+  ...__default__64,
   props: paginationJumperProps,
   setup(__props) {
     const { t } = useLocale();
@@ -35256,7 +35530,7 @@ var _sfc_main99 = defineComponent({
 });
 var Jumper = _export_sfc(_sfc_main99, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/jumper.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/total.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/total.mjs
 var paginationTotalProps = buildProps({
   total: {
     type: Number,
@@ -35264,13 +35538,13 @@ var paginationTotalProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/total2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/total2.mjs
 var _hoisted_149 = ["disabled"];
-var __default__63 = defineComponent({
+var __default__65 = defineComponent({
   name: "ElPaginationTotal"
 });
 var _sfc_main100 = defineComponent({
-  ...__default__63,
+  ...__default__65,
   props: paginationTotalProps,
   setup(__props) {
     const { t } = useLocale();
@@ -35288,7 +35562,7 @@ var _sfc_main100 = defineComponent({
 });
 var Total = _export_sfc(_sfc_main100, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/total.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/pager.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/pager.mjs
 var paginationPagerProps = buildProps({
   currentPage: {
     type: Number,
@@ -35305,18 +35579,18 @@ var paginationPagerProps = buildProps({
   disabled: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/components/pager2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/components/pager2.mjs
 var _hoisted_150 = ["onKeyup"];
 var _hoisted_230 = ["aria-current", "tabindex"];
 var _hoisted_314 = ["tabindex"];
 var _hoisted_47 = ["aria-current", "tabindex"];
 var _hoisted_54 = ["tabindex"];
 var _hoisted_62 = ["aria-current", "tabindex"];
-var __default__64 = defineComponent({
+var __default__66 = defineComponent({
   name: "ElPaginationPager"
 });
 var _sfc_main101 = defineComponent({
-  ...__default__64,
+  ...__default__66,
   props: paginationPagerProps,
   emits: ["change"],
   setup(__props, { emit }) {
@@ -35508,7 +35782,7 @@ var _sfc_main101 = defineComponent({
 });
 var Pager = _export_sfc(_sfc_main101, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/pager.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/src/pagination.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/src/pagination.mjs
 var isAbsent = (v2) => typeof v2 !== "number";
 var paginationProps = buildProps({
   total: Number,
@@ -35520,7 +35794,7 @@ var paginationProps = buildProps({
   pagerCount: {
     type: Number,
     validator: (value) => {
-      return typeof value === "number" && Math.trunc(value) === value && value > 4 && value < 22 && value % 2 === 1;
+      return isNumber(value) && Math.trunc(value) === value && value > 4 && value < 22 && value % 2 === 1;
     },
     default: 7
   },
@@ -35558,12 +35832,12 @@ var paginationProps = buildProps({
   hideOnSinglePage: Boolean
 });
 var paginationEmits = {
-  "update:current-page": (val) => typeof val === "number",
-  "update:page-size": (val) => typeof val === "number",
-  "size-change": (val) => typeof val === "number",
-  "current-change": (val) => typeof val === "number",
-  "prev-click": (val) => typeof val === "number",
-  "next-click": (val) => typeof val === "number"
+  "update:current-page": (val) => isNumber(val),
+  "update:page-size": (val) => isNumber(val),
+  "size-change": (val) => isNumber(val),
+  "current-change": (val) => isNumber(val),
+  "prev-click": (val) => isNumber(val),
+  "next-click": (val) => isNumber(val)
 };
 var componentName = "ElPagination";
 var Pagination = defineComponent({
@@ -35766,10 +36040,10 @@ var Pagination = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/pagination/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/pagination/index.mjs
 var ElPagination = withInstall(Pagination);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popconfirm/src/popconfirm.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popconfirm/src/popconfirm.mjs
 var popconfirmProps = buildProps({
   title: String,
   confirmButtonText: String,
@@ -35814,12 +36088,12 @@ var popconfirmProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popconfirm/src/popconfirm2.mjs
-var __default__65 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popconfirm/src/popconfirm2.mjs
+var __default__67 = defineComponent({
   name: "ElPopconfirm"
 });
 var _sfc_main102 = defineComponent({
-  ...__default__65,
+  ...__default__67,
   props: popconfirmProps,
   setup(__props) {
     const props = __props;
@@ -35918,10 +36192,10 @@ var _sfc_main102 = defineComponent({
 });
 var Popconfirm = _export_sfc(_sfc_main102, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popconfirm/src/popconfirm.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popconfirm/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popconfirm/index.mjs
 var ElPopconfirm = withInstall(Popconfirm);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popover/src/popover.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popover/src/popover.mjs
 var popoverProps = buildProps({
   trigger: useTooltipTriggerProps.trigger,
   placement: dropdownProps.placement,
@@ -35983,13 +36257,13 @@ var popoverEmits = {
   "after-leave": () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popover/src/popover2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popover/src/popover2.mjs
 var updateEventKeyRaw = `onUpdate:visible`;
-var __default__66 = defineComponent({
+var __default__68 = defineComponent({
   name: "ElPopover"
 });
 var _sfc_main103 = defineComponent({
-  ...__default__66,
+  ...__default__68,
   props: popoverProps,
   emits: popoverEmits,
   setup(__props, { expose, emit }) {
@@ -36090,7 +36364,7 @@ var _sfc_main103 = defineComponent({
 });
 var Popover = _export_sfc(_sfc_main103, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popover/src/popover.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popover/src/directive.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popover/src/directive.mjs
 var attachEvents = (el, binding) => {
   const popperComponent = binding.arg || binding.value;
   const popover = popperComponent == null ? void 0 : popperComponent.popperRef;
@@ -36108,13 +36382,13 @@ var PopoverDirective = {
 };
 var VPopover = "popover";
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/popover/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/popover/index.mjs
 var ElPopoverDirective = withInstallDirective(PopoverDirective, VPopover);
 var ElPopover = withInstall(Popover, {
   directive: ElPopoverDirective
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/progress/src/progress.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/progress/src/progress.mjs
 var progressProps = buildProps({
   type: {
     type: String,
@@ -36173,17 +36447,17 @@ var progressProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/progress/src/progress2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/progress/src/progress2.mjs
 var _hoisted_151 = ["aria-valuenow"];
 var _hoisted_231 = { viewBox: "0 0 100 100" };
 var _hoisted_315 = ["d", "stroke", "stroke-width"];
 var _hoisted_48 = ["d", "stroke", "opacity", "stroke-linecap", "stroke-width"];
 var _hoisted_55 = { key: 0 };
-var __default__67 = defineComponent({
+var __default__69 = defineComponent({
   name: "ElProgress"
 });
 var _sfc_main104 = defineComponent({
-  ...__default__67,
+  ...__default__69,
   props: progressProps,
   setup(__props) {
     const props = __props;
@@ -36370,10 +36644,10 @@ var _sfc_main104 = defineComponent({
 });
 var Progress = _export_sfc(_sfc_main104, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/progress/src/progress.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/progress/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/progress/index.mjs
 var ElProgress = withInstall(Progress);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/rate/src/rate.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/rate/src/rate.mjs
 var rateProps = buildProps({
   modelValue: {
     type: Number,
@@ -36419,18 +36693,10 @@ var rateProps = buildProps({
     type: iconPropType,
     default: () => star_filled_default
   },
-  disabled: {
-    type: Boolean
-  },
-  allowHalf: {
-    type: Boolean
-  },
-  showText: {
-    type: Boolean
-  },
-  showScore: {
-    type: Boolean
-  },
+  disabled: Boolean,
+  allowHalf: Boolean,
+  showText: Boolean,
+  showScore: Boolean,
   textColor: {
     type: String,
     default: ""
@@ -36449,10 +36715,7 @@ var rateProps = buildProps({
     type: String,
     default: "{value}"
   },
-  size: {
-    type: String,
-    validator: isValidComponentSize
-  },
+  size: useSizeProp,
   label: {
     type: String,
     default: void 0
@@ -36467,14 +36730,14 @@ var rateEmits = {
   [UPDATE_MODEL_EVENT]: (value) => isNumber(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/rate/src/rate2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/rate/src/rate2.mjs
 var _hoisted_153 = ["id", "aria-label", "aria-labelledby", "aria-valuenow", "aria-valuetext", "aria-valuemax"];
 var _hoisted_233 = ["onMousemove", "onClick"];
-var __default__68 = defineComponent({
+var __default__70 = defineComponent({
   name: "ElRate"
 });
 var _sfc_main105 = defineComponent({
-  ...__default__68,
+  ...__default__70,
   props: rateProps,
   emits: rateEmits,
   setup(__props, { expose, emit }) {
@@ -36611,7 +36874,7 @@ var _sfc_main105 = defineComponent({
       if (rateDisabled.value) {
         return;
       }
-      if (props.allowHalf) {
+      if (props.allowHalf && event) {
         let target2 = event.target;
         if (hasClass(target2, ns2.e("item"))) {
           target2 = target2.querySelector(`.${ns2.e("icon")}`);
@@ -36712,10 +36975,10 @@ var _sfc_main105 = defineComponent({
 });
 var Rate = _export_sfc(_sfc_main105, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/rate/src/rate.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/rate/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/rate/index.mjs
 var ElRate = withInstall(Rate);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/result/src/result.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/result/src/result.mjs
 var IconMap = {
   success: "icon-success",
   warning: "icon-warning",
@@ -36744,12 +37007,12 @@ var resultProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/result/src/result2.mjs
-var __default__69 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/result/src/result2.mjs
+var __default__71 = defineComponent({
   name: "ElResult"
 });
 var _sfc_main106 = defineComponent({
-  ...__default__69,
+  ...__default__71,
   props: resultProps,
   setup(__props) {
     const props = __props;
@@ -36805,10 +37068,10 @@ var _sfc_main106 = defineComponent({
 });
 var Result = _export_sfc(_sfc_main106, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/result/src/result.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/result/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/result/index.mjs
 var ElResult = withInstall(Result);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/row/src/row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/row/src/row.mjs
 var RowJustify = [
   "start",
   "center",
@@ -36839,12 +37102,12 @@ var rowProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/row/src/row2.mjs
-var __default__70 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/row/src/row2.mjs
+var __default__72 = defineComponent({
   name: "ElRow"
 });
 var _sfc_main107 = defineComponent({
-  ...__default__70,
+  ...__default__72,
   props: rowProps,
   setup(__props) {
     const props = __props;
@@ -36881,7 +37144,7 @@ var _sfc_main107 = defineComponent({
 });
 var Row = _export_sfc(_sfc_main107, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/row/src/row.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/row/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/row/index.mjs
 var ElRow = withInstall(Row);
 
 // ../node_modules/.pnpm/memoize-one@6.0.0/node_modules/memoize-one/dist/memoize-one.esm.js
@@ -36935,7 +37198,7 @@ function memoizeOne(resultFn, isEqual3) {
   return memoized;
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/hooks/use-cache.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/hooks/use-cache.mjs
 var useCache = () => {
   const vm = getCurrentInstance();
   const props = vm.proxy.$props;
@@ -36945,7 +37208,7 @@ var useCache = () => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/defaults.mjs
 var DEFAULT_DYNAMIC_LIST_ITEM_SIZE = 50;
 var ITEM_RENDER_EVT = "itemRendered";
 var SCROLL_EVT = "scroll";
@@ -36977,7 +37240,7 @@ var ScrollbarDirKey = {
 };
 var SCROLLBAR_MIN_SIZE = 20;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/hooks/use-wheel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/hooks/use-wheel.mjs
 var LayoutKeys = {
   [HORIZONTAL]: "deltaX",
   [VERTICAL]: "deltaY"
@@ -37009,7 +37272,7 @@ var useWheel = ({ atEndEdge, atStartEdge, layout: layout2 }, onWheelDelta) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/props.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/props.mjs
 var itemSize = buildProp({
   type: definePropType([Number, Function]),
   required: true
@@ -37143,7 +37406,7 @@ var virtualizedScrollbarProps = buildProps({
   visible: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/utils.mjs
 var getScrollDir = (prev, cur) => prev < cur ? FORWARD : BACKWARD;
 var isHorizontal = (dir) => dir === LTR || dir === RTL || dir === HORIZONTAL;
 var isRTL = (dir) => dir === RTL;
@@ -37192,7 +37455,7 @@ function renderThumbStyle2({ move, size: size3, bar }, layout2) {
   return style;
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/components/scrollbar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/components/scrollbar.mjs
 var ScrollBar = defineComponent({
   name: "ElVirtualScrollBar",
   props: virtualizedScrollbarProps,
@@ -37340,7 +37603,7 @@ var ScrollBar = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/builders/build-list.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/builders/build-list.mjs
 var createList = ({
   name,
   getOffset: getOffset3,
@@ -37687,7 +37950,7 @@ var createList = ({
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-list.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-list.mjs
 var FixedSizeList = createList({
   name: "ElFixedSizeList",
   getItemOffset: ({ itemSize: itemSize3 }, index) => index * itemSize3,
@@ -37757,7 +38020,7 @@ var FixedSizeList = createList({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-list.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-list.mjs
 var SCOPE4 = "ElDynamicSizeList";
 var getItemFromCache = (props, index, listCache) => {
   const { itemSize: itemSize3 } = props;
@@ -37907,14 +38170,14 @@ var DynamicSizeList = createList({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/hooks/use-grid-wheel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/hooks/use-grid-wheel.mjs
 var useGridWheel = ({ atXEndEdge, atXStartEdge, atYEndEdge, atYStartEdge }, onWheelDelta) => {
   let frameHandle = null;
   let xOffset = 0;
   let yOffset = 0;
   const hasReachedEdge = (x2, y) => {
-    const xEdgeReached = x2 < 0 && atXStartEdge.value || x2 > 0 && atXEndEdge.value;
-    const yEdgeReached = y < 0 && atYStartEdge.value || y > 0 && atYEndEdge.value;
+    const xEdgeReached = x2 <= 0 && atXStartEdge.value || x2 >= 0 && atXEndEdge.value;
+    const yEdgeReached = y <= 0 && atYStartEdge.value || y >= 0 && atYEndEdge.value;
     return xEdgeReached && yEdgeReached;
   };
   const onWheel = (e) => {
@@ -37934,9 +38197,7 @@ var useGridWheel = ({ atXEndEdge, atXStartEdge, atYEndEdge, atYStartEdge }, onWh
       return;
     xOffset += x2;
     yOffset += y;
-    if (!isFirefox()) {
-      e.preventDefault();
-    }
+    e.preventDefault();
     frameHandle = rAF(() => {
       onWheelDelta(xOffset, yOffset);
       xOffset = 0;
@@ -37949,7 +38210,7 @@ var useGridWheel = ({ atXEndEdge, atXStartEdge, atYEndEdge, atYStartEdge }, onWh
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/builders/build-grid.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/builders/build-grid.mjs
 var createGrid = ({
   name,
   clearCache,
@@ -38143,9 +38404,9 @@ var createGrid = ({
       };
       const { onWheel } = useGridWheel({
         atXStartEdge: computed2(() => states.value.scrollLeft <= 0),
-        atXEndEdge: computed2(() => states.value.scrollLeft >= estimatedTotalWidth.value),
+        atXEndEdge: computed2(() => states.value.scrollLeft >= estimatedTotalWidth.value - unref(parsedWidth)),
         atYStartEdge: computed2(() => states.value.scrollTop <= 0),
-        atYEndEdge: computed2(() => states.value.scrollTop >= estimatedTotalHeight.value)
+        atYEndEdge: computed2(() => states.value.scrollTop >= estimatedTotalHeight.value - unref(parsedHeight))
       }, (x2, y) => {
         var _a, _b, _c, _d;
         (_b = (_a = hScrollbar.value) == null ? void 0 : _a.onMouseUp) == null ? void 0 : _b.call(_a);
@@ -38379,7 +38640,7 @@ var createGrid = ({
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-grid.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-grid.mjs
 var SCOPE5 = "ElFixedSizeGrid";
 var FixedSizeGrid = createGrid({
   name: "ElFixedSizeGrid",
@@ -38505,7 +38766,7 @@ var FixedSizeGrid = createGrid({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-grid.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-grid.mjs
 var { max: max4, min: min4, floor: floor2 } = Math;
 var SCOPE6 = "ElDynamicSizeGrid";
 var ACCESS_SIZER_KEY_MAP = {
@@ -38746,7 +39007,7 @@ var DynamicSizeGrid = createGrid({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/group-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/group-item.mjs
 var _sfc_main108 = defineComponent({
   props: {
     item: {
@@ -38763,7 +39024,7 @@ var _sfc_main108 = defineComponent({
     };
   }
 });
-function _sfc_render28(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render26(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.item.isTitle ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(_ctx.ns.be("group", "title")),
@@ -38779,9 +39040,9 @@ function _sfc_render28(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 6)
   ], 6));
 }
-var GroupItem = _export_sfc(_sfc_main108, [["render", _sfc_render28], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select-v2/src/group-item.vue"]]);
+var GroupItem = _export_sfc(_sfc_main108, [["render", _sfc_render26], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select-v2/src/group-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/useOption.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/useOption.mjs
 function useOption2(props, { emit }) {
   return {
     hoverItem: () => {
@@ -38797,7 +39058,7 @@ function useOption2(props, { emit }) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/defaults.mjs
 var SelectProps = {
   allowCreate: Boolean,
   autocomplete: {
@@ -38907,7 +39168,7 @@ var OptionProps = {
   created: Boolean
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/option-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/option-item.mjs
 var _sfc_main109 = defineComponent({
   props: OptionProps,
   emits: ["select", "hover"],
@@ -38922,7 +39183,7 @@ var _sfc_main109 = defineComponent({
   }
 });
 var _hoisted_154 = ["aria-selected"];
-function _sfc_render29(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render27(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("li", {
     "aria-selected": _ctx.selected,
     style: normalizeStyle(_ctx.style),
@@ -38945,12 +39206,12 @@ function _sfc_render29(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 46, _hoisted_154);
 }
-var OptionItem = _export_sfc(_sfc_main109, [["render", _sfc_render29], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select-v2/src/option-item.vue"]]);
+var OptionItem = _export_sfc(_sfc_main109, [["render", _sfc_render27], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select-v2/src/option-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/token.mjs
-var selectV2InjectionKey = "ElSelectV2Injection";
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/token.mjs
+var selectV2InjectionKey = Symbol("ElSelectV2Injection");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/select-dropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/select-dropdown.mjs
 var ElSelectMenu2 = defineComponent({
   name: "ElSelectDropdown",
   props: {
@@ -39179,7 +39440,7 @@ var ElSelectMenu2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/useAllowCreate.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/useAllowCreate.mjs
 function useAllowCreate(props, states) {
   const createOptionCount = ref(0);
   const cachedSelectedOption = ref(null);
@@ -39251,7 +39512,7 @@ function useAllowCreate(props, states) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/util.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/util.mjs
 var flattenOptions = (options) => {
   const flattened = [];
   options.forEach((option) => {
@@ -39274,7 +39535,7 @@ var flattenOptions = (options) => {
   return flattened;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/useInput.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/useInput.mjs
 function useInput(handleInput) {
   const isComposing = ref(false);
   const handleCompositionStart = () => {
@@ -39300,7 +39561,7 @@ function useInput(handleInput) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/useSelect.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/useSelect.mjs
 var DEFAULT_INPUT_PLACEHOLDER = "";
 var MINIMUM_INPUT_WIDTH = 11;
 var TAG_BASE_WIDTH = {
@@ -39923,7 +40184,7 @@ var useSelect2 = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/src/select.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/src/select.mjs
 var _sfc_main110 = defineComponent({
   name: "ElSelectV2",
   components: {
@@ -39979,7 +40240,7 @@ var _hoisted_234 = ["id", "autocomplete", "aria-expanded", "aria-labelledby", "d
 var _hoisted_316 = ["textContent"];
 var _hoisted_49 = ["id", "aria-labelledby", "aria-expanded", "autocomplete", "disabled", "name", "readonly", "unselectable"];
 var _hoisted_56 = ["textContent"];
-function _sfc_render30(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render28(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -40322,16 +40583,16 @@ function _sfc_render30(_ctx, _cache, $props, $setup, $data, $options) {
     [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
   ]);
 }
-var Select2 = _export_sfc(_sfc_main110, [["render", _sfc_render30], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select-v2/src/select.vue"]]);
+var Select2 = _export_sfc(_sfc_main110, [["render", _sfc_render28], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select-v2/src/select.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/select-v2/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/select-v2/index.mjs
 Select2.install = (app) => {
   app.component(Select2.name, Select2);
 };
 var _Select = Select2;
 var ElSelectV2 = _Select;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/skeleton/src/skeleton.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/skeleton/src/skeleton.mjs
 var skeletonProps = buildProps({
   animated: {
     type: Boolean,
@@ -40354,7 +40615,7 @@ var skeletonProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/skeleton/src/skeleton-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/skeleton/src/skeleton-item.mjs
 var skeletonItemProps = buildProps({
   variant: {
     type: String,
@@ -40373,12 +40634,12 @@ var skeletonItemProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/skeleton/src/skeleton-item2.mjs
-var __default__71 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/skeleton/src/skeleton-item2.mjs
+var __default__73 = defineComponent({
   name: "ElSkeletonItem"
 });
 var _sfc_main111 = defineComponent({
-  ...__default__71,
+  ...__default__73,
   props: skeletonItemProps,
   setup(__props) {
     const ns2 = useNamespace("skeleton");
@@ -40393,12 +40654,12 @@ var _sfc_main111 = defineComponent({
 });
 var SkeletonItem = _export_sfc(_sfc_main111, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/skeleton/src/skeleton-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/skeleton/src/skeleton2.mjs
-var __default__72 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/skeleton/src/skeleton2.mjs
+var __default__74 = defineComponent({
   name: "ElSkeleton"
 });
 var _sfc_main112 = defineComponent({
-  ...__default__72,
+  ...__default__74,
   props: skeletonProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -40438,13 +40699,13 @@ var _sfc_main112 = defineComponent({
 });
 var Skeleton = _export_sfc(_sfc_main112, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/skeleton/src/skeleton.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/skeleton/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/skeleton/index.mjs
 var ElSkeleton = withInstall(Skeleton, {
   SkeletonItem
 });
 var ElSkeletonItem = withNoopInstall(SkeletonItem);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/slider.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/slider.mjs
 var sliderProps = buildProps({
   modelValue: {
     type: definePropType([Number, Array]),
@@ -40530,7 +40791,7 @@ var sliderEmits = {
   [CHANGE_EVENT]: isValidValue
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/composables/use-lifecycle.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/composables/use-lifecycle.mjs
 var useLifecycle = (props, initData, resetSize) => {
   const sliderWrapper = ref();
   onMounted(async () => {
@@ -40560,7 +40821,7 @@ var useLifecycle = (props, initData, resetSize) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/composables/use-marks.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/composables/use-marks.mjs
 var useMarks = (props) => {
   return computed2(() => {
     if (!props.marks) {
@@ -40575,7 +40836,7 @@ var useMarks = (props) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/composables/use-slide.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/composables/use-slide.mjs
 var useSlide = (props, initData, emit) => {
   const { form: elForm, formItem: elFormItem } = useFormItem();
   const slider = shallowRef();
@@ -40712,7 +40973,7 @@ var useSlide = (props, initData, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/composables/use-slider-button.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/composables/use-slider-button.mjs
 var { left, down, right, up, home, end, pageUp, pageDown } = EVENT_CODE;
 var useTooltip = (props, formatTooltip, showTooltip) => {
   const tooltip = ref();
@@ -40936,7 +41197,7 @@ var useSliderButton = (props, initData, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/composables/use-stops.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/composables/use-stops.mjs
 var useStops = (props, initData, minValue, maxValue) => {
   const stops = computed2(() => {
     if (!props.showStops || props.min > props.max)
@@ -40965,7 +41226,7 @@ var useStops = (props, initData, minValue, maxValue) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/composables/use-watch.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/composables/use-watch.mjs
 var useWatch = (props, initData, minValue, maxValue, emit, elFormItem) => {
   const _emit = (val) => {
     emit(UPDATE_MODEL_EVENT, val);
@@ -41039,7 +41300,7 @@ var useWatch = (props, initData, minValue, maxValue, emit, elFormItem) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/button.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/button.mjs
 var sliderButtonProps = buildProps({
   modelValue: {
     type: Number,
@@ -41057,13 +41318,13 @@ var sliderButtonEmits = {
   [UPDATE_MODEL_EVENT]: (value) => isNumber(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/button2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/button2.mjs
 var _hoisted_156 = ["tabindex"];
-var __default__73 = defineComponent({
+var __default__75 = defineComponent({
   name: "ElSliderButton"
 });
 var _sfc_main113 = defineComponent({
-  ...__default__73,
+  ...__default__75,
   props: sliderButtonProps,
   emits: sliderButtonEmits,
   setup(__props, { expose, emit }) {
@@ -41145,7 +41406,7 @@ var _sfc_main113 = defineComponent({
 });
 var SliderButton = _export_sfc(_sfc_main113, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/slider/src/button.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/marker.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/marker.mjs
 var sliderMarkerProps = buildProps({
   mark: {
     type: definePropType([String, Object]),
@@ -41168,14 +41429,14 @@ var SliderMarker = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/src/slider2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/src/slider2.mjs
 var _hoisted_157 = ["id", "role", "aria-label", "aria-labelledby"];
 var _hoisted_235 = { key: 1 };
-var __default__74 = defineComponent({
+var __default__76 = defineComponent({
   name: "ElSlider"
 });
 var _sfc_main114 = defineComponent({
-  ...__default__74,
+  ...__default__76,
   props: sliderProps,
   emits: sliderEmits,
   setup(__props, { expose, emit }) {
@@ -41386,10 +41647,10 @@ var _sfc_main114 = defineComponent({
 });
 var Slider = _export_sfc(_sfc_main114, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/slider/src/slider.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/slider/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/slider/index.mjs
 var ElSlider = withInstall(Slider);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/space/src/item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/space/src/item.mjs
 var spaceItemProps = buildProps({
   prefixCls: {
     type: String
@@ -41405,7 +41666,7 @@ var SpaceItem = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/space/src/use-space.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/space/src/use-space.mjs
 var SIZE_MAP = {
   small: 8,
   default: 12,
@@ -41464,7 +41725,7 @@ function useSpace(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/space/src/space.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/space/src/space.mjs
 var spaceProps = buildProps({
   direction: {
     type: String,
@@ -41581,10 +41842,230 @@ var Space = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/space/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/space/index.mjs
 var ElSpace = withInstall(Space);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/steps/src/steps.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/statistic/src/statistic.mjs
+var statisticProps = buildProps({
+  decimalSeparator: {
+    type: String,
+    default: "."
+  },
+  groupSeparator: {
+    type: String,
+    default: ","
+  },
+  precision: {
+    type: Number,
+    default: 0
+  },
+  formatter: Function,
+  value: {
+    type: definePropType([Number, Object]),
+    default: 0
+  },
+  prefix: String,
+  suffix: String,
+  title: String,
+  valueStyle: {
+    type: definePropType([String, Object, Array])
+  }
+});
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/statistic/src/statistic2.mjs
+var __default__77 = defineComponent({
+  name: "ElStatistic"
+});
+var _sfc_main115 = defineComponent({
+  ...__default__77,
+  props: statisticProps,
+  setup(__props, { expose }) {
+    const props = __props;
+    const ns2 = useNamespace("statistic");
+    const displayValue = computed2(() => {
+      const { value, formatter: formatter2, precision, decimalSeparator, groupSeparator } = props;
+      if (isFunction(formatter2))
+        return formatter2(value);
+      if (!isNumber(value))
+        return value;
+      let [integer4, decimal = ""] = String(value).split(".");
+      decimal = decimal.padEnd(precision, "0").slice(0, precision > 0 ? precision : 0);
+      integer4 = integer4.replace(/\B(?=(\d{3})+(?!\d))/g, groupSeparator);
+      return [integer4, decimal].join(decimal ? decimalSeparator : "");
+    });
+    expose({
+      displayValue
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(unref(ns2).b())
+      }, [
+        _ctx.$slots.title || _ctx.title ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: normalizeClass(unref(ns2).e("head"))
+        }, [
+          renderSlot(_ctx.$slots, "title", {}, () => [
+            createTextVNode(toDisplayString(_ctx.title), 1)
+          ])
+        ], 2)) : createCommentVNode("v-if", true),
+        createBaseVNode("div", {
+          class: normalizeClass(unref(ns2).e("content"))
+        }, [
+          _ctx.$slots.prefix || _ctx.prefix ? (openBlock(), createElementBlock("div", {
+            key: 0,
+            class: normalizeClass(unref(ns2).e("prefix"))
+          }, [
+            renderSlot(_ctx.$slots, "prefix", {}, () => [
+              createBaseVNode("span", null, toDisplayString(_ctx.prefix), 1)
+            ])
+          ], 2)) : createCommentVNode("v-if", true),
+          createBaseVNode("span", {
+            class: normalizeClass(unref(ns2).e("number")),
+            style: normalizeStyle(_ctx.valueStyle)
+          }, toDisplayString(unref(displayValue)), 7),
+          _ctx.$slots.suffix || _ctx.suffix ? (openBlock(), createElementBlock("div", {
+            key: 1,
+            class: normalizeClass(unref(ns2).e("suffix"))
+          }, [
+            renderSlot(_ctx.$slots, "suffix", {}, () => [
+              createBaseVNode("span", null, toDisplayString(_ctx.suffix), 1)
+            ])
+          ], 2)) : createCommentVNode("v-if", true)
+        ], 2)
+      ], 2);
+    };
+  }
+});
+var Statistic = _export_sfc(_sfc_main115, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/statistic/src/statistic.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/statistic/index.mjs
+var ElStatistic = withInstall(Statistic);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/countdown/src/countdown.mjs
+var countdownProps = buildProps({
+  format: {
+    type: String,
+    default: "HH:mm:ss"
+  },
+  prefix: String,
+  suffix: String,
+  title: String,
+  value: {
+    type: definePropType([Number, Object]),
+    default: 0
+  },
+  valueStyle: {
+    type: definePropType([String, Object, Array])
+  }
+});
+var countdownEmits = {
+  finish: () => true,
+  [CHANGE_EVENT]: (value) => isNumber(value)
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/countdown/src/utils.mjs
+var timeUnits2 = [
+  ["Y", 1e3 * 60 * 60 * 24 * 365],
+  ["M", 1e3 * 60 * 60 * 24 * 30],
+  ["D", 1e3 * 60 * 60 * 24],
+  ["H", 1e3 * 60 * 60],
+  ["m", 1e3 * 60],
+  ["s", 1e3],
+  ["S", 1]
+];
+var getTime = (value) => {
+  return isNumber(value) ? new Date(value).getTime() : value.valueOf();
+};
+var formatTime = (timestamp, format2) => {
+  let timeLeft = timestamp;
+  const escapeRegex = /\[([^\]]*)]/g;
+  const replacedText = timeUnits2.reduce((current, [name, unit3]) => {
+    const replaceRegex = new RegExp(`${name}+(?![^\\[\\]]*\\])`, "g");
+    if (replaceRegex.test(current)) {
+      const value = Math.floor(timeLeft / unit3);
+      timeLeft -= value * unit3;
+      return current.replace(replaceRegex, (match) => String(value).padStart(match.length, "0"));
+    }
+    return current;
+  }, format2);
+  return replacedText.replace(escapeRegex, "$1");
+};
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/countdown/src/countdown2.mjs
+var __default__78 = defineComponent({
+  name: "ElCountdown"
+});
+var _sfc_main116 = defineComponent({
+  ...__default__78,
+  props: countdownProps,
+  emits: countdownEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    let timer;
+    const rawValue = ref(getTime(props.value) - Date.now());
+    const displayValue = computed2(() => formatTime(rawValue.value, props.format));
+    const formatter2 = (val) => formatTime(val, props.format);
+    const stopTimer = () => {
+      if (timer) {
+        cAF(timer);
+        timer = void 0;
+      }
+    };
+    const startTimer = () => {
+      const timestamp = getTime(props.value);
+      const frameFunc = () => {
+        let diff = timestamp - Date.now();
+        emit("change", diff);
+        if (diff <= 0) {
+          diff = 0;
+          stopTimer();
+          emit("finish");
+        } else {
+          timer = rAF(frameFunc);
+        }
+        rawValue.value = diff;
+      };
+      timer = rAF(frameFunc);
+    };
+    watch(() => [props.value, props.format], () => {
+      stopTimer();
+      startTimer();
+    }, {
+      immediate: true
+    });
+    onBeforeUnmount(() => {
+      stopTimer();
+    });
+    expose({
+      displayValue
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(ElStatistic), {
+        value: rawValue.value,
+        title: _ctx.title,
+        prefix: _ctx.prefix,
+        suffix: _ctx.suffix,
+        "value-style": _ctx.valueStyle,
+        formatter: formatter2
+      }, createSlots({ _: 2 }, [
+        renderList(_ctx.$slots, (_2, name) => {
+          return {
+            name,
+            fn: withCtx(() => [
+              renderSlot(_ctx.$slots, name)
+            ])
+          };
+        })
+      ]), 1032, ["value", "title", "prefix", "suffix", "value-style"]);
+    };
+  }
+});
+var Countdown = _export_sfc(_sfc_main116, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/countdown/src/countdown.vue"]]);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/countdown/index.mjs
+var ElCountdown = withInstall(Countdown);
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/steps/src/steps.mjs
 var stepsProps = buildProps({
   space: {
     type: [Number, String],
@@ -41620,12 +42101,12 @@ var stepsEmits = {
   [CHANGE_EVENT]: (newVal, oldVal) => [newVal, oldVal].every(isNumber)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/steps/src/steps2.mjs
-var __default__75 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/steps/src/steps2.mjs
+var __default__79 = defineComponent({
   name: "ElSteps"
 });
-var _sfc_main115 = defineComponent({
-  ...__default__75,
+var _sfc_main117 = defineComponent({
+  ...__default__79,
   props: stepsProps,
   emits: stepsEmits,
   setup(__props, { emit }) {
@@ -41650,9 +42131,9 @@ var _sfc_main115 = defineComponent({
     };
   }
 });
-var Steps = _export_sfc(_sfc_main115, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/steps/src/steps.vue"]]);
+var Steps = _export_sfc(_sfc_main117, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/steps/src/steps.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/steps/src/item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/steps/src/item.mjs
 var stepProps = buildProps({
   title: {
     type: String,
@@ -41672,12 +42153,12 @@ var stepProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/steps/src/item2.mjs
-var __default__76 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/steps/src/item2.mjs
+var __default__80 = defineComponent({
   name: "ElStep"
 });
-var _sfc_main116 = defineComponent({
-  ...__default__76,
+var _sfc_main118 = defineComponent({
+  ...__default__80,
   props: stepProps,
   setup(__props) {
     const props = __props;
@@ -41857,15 +42338,15 @@ var _sfc_main116 = defineComponent({
     };
   }
 });
-var Step = _export_sfc(_sfc_main116, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/steps/src/item.vue"]]);
+var Step = _export_sfc(_sfc_main118, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/steps/src/item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/steps/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/steps/index.mjs
 var ElSteps = withInstall(Steps, {
   Step
 });
 var ElStep = withNoopInstall(Step);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/switch/src/switch.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/switch/src/switch.mjs
 var switchProps = buildProps({
   modelValue: {
     type: [Boolean, String, Number],
@@ -41951,18 +42432,18 @@ var switchEmits = {
   [INPUT_EVENT]: (val) => isBoolean(val) || isString(val) || isNumber(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/switch/src/switch2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/switch/src/switch2.mjs
 var _hoisted_158 = ["onClick"];
 var _hoisted_236 = ["id", "aria-checked", "aria-disabled", "name", "true-value", "false-value", "disabled", "tabindex", "onKeydown"];
 var _hoisted_317 = ["aria-hidden"];
 var _hoisted_410 = ["aria-hidden"];
 var _hoisted_57 = ["aria-hidden"];
 var COMPONENT_NAME16 = "ElSwitch";
-var __default__77 = defineComponent({
+var __default__81 = defineComponent({
   name: COMPONENT_NAME16
 });
-var _sfc_main117 = defineComponent({
-  ...__default__77,
+var _sfc_main119 = defineComponent({
+  ...__default__81,
   props: switchProps,
   emits: switchEmits,
   setup(__props, { expose, emit }) {
@@ -42178,19 +42659,16 @@ var _sfc_main117 = defineComponent({
     };
   }
 });
-var Switch = _export_sfc(_sfc_main117, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/switch/src/switch.vue"]]);
+var Switch = _export_sfc(_sfc_main119, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/switch/src/switch.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/switch/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/switch/index.mjs
 var ElSwitch = withInstall(Switch);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/util.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/util.mjs
 var import_escape_html = __toESM(require_escape_html(), 1);
 var getCell = function(event) {
   var _a;
   return (_a = event.target) == null ? void 0 : _a.closest("td");
-};
-var isObject3 = function(obj) {
-  return obj !== null && typeof obj === "object";
 };
 var orderBy2 = function(array4, sortKey, reverse2, sortMethod, sortBy2) {
   if (!sortKey && !sortMethod && (!sortBy2 || Array.isArray(sortBy2) && !sortBy2.length)) {
@@ -42215,10 +42693,10 @@ var orderBy2 = function(array4, sortKey, reverse2, sortMethod, sortBy2) {
       });
     }
     if (sortKey !== "$key") {
-      if (isObject3(value) && "$value" in value)
+      if (isObject(value) && "$value" in value)
         value = value.$value;
     }
-    return [isObject3(value) ? get_default(value, sortKey) : value];
+    return [isObject(value) ? get_default(value, sortKey) : value];
   };
   const compare = function(a2, b2) {
     if (sortMethod) {
@@ -42416,14 +42894,22 @@ function walkTreeNode(root2, cb, childrenKey = "children", lazyKey = "hasChildre
   });
 }
 var removePopper;
-function createTablePopper(parentNode, trigger, popperContent, popperOptions2, tooltipEffect) {
+function createTablePopper(parentNode, trigger, popperContent, tooltipOptions) {
+  tooltipOptions = merge_default({
+    enterable: true,
+    showArrow: true
+  }, tooltipOptions);
   const { nextZIndex } = useZIndex();
   const ns2 = parentNode == null ? void 0 : parentNode.dataset.prefix;
   const scrollContainer = parentNode == null ? void 0 : parentNode.querySelector(`.${ns2}-scrollbar__wrap`);
   function renderContent() {
-    const isLight = tooltipEffect === "light";
+    const isLight = tooltipOptions.effect === "light";
     const content2 = document.createElement("div");
-    content2.className = `${ns2}-popper ${isLight ? "is-light" : "is-dark"}`;
+    content2.className = [
+      `${ns2}-popper`,
+      isLight ? "is-light" : "is-dark",
+      tooltipOptions.popperClass || ""
+    ].join(" ");
     popperContent = (0, import_escape_html.default)(popperContent);
     content2.innerHTML = popperContent;
     content2.style.zIndex = String(nextZIndex());
@@ -42431,9 +42917,9 @@ function createTablePopper(parentNode, trigger, popperContent, popperOptions2, t
     return content2;
   }
   function renderArrow() {
-    const arrow22 = document.createElement("div");
-    arrow22.className = `${ns2}-popper__arrow`;
-    return arrow22;
+    const arrow2 = document.createElement("div");
+    arrow2.className = `${ns2}-popper__arrow`;
+    return arrow2;
   }
   function showPopper() {
     popperInstance && popperInstance.update();
@@ -42443,38 +42929,56 @@ function createTablePopper(parentNode, trigger, popperContent, popperOptions2, t
     try {
       popperInstance && popperInstance.destroy();
       content && (parentNode == null ? void 0 : parentNode.removeChild(content));
-      trigger.removeEventListener("mouseenter", showPopper);
-      trigger.removeEventListener("mouseleave", removePopper);
+      trigger.removeEventListener("mouseenter", onOpen);
+      trigger.removeEventListener("mouseleave", onClose);
       scrollContainer == null ? void 0 : scrollContainer.removeEventListener("scroll", removePopper);
       removePopper = void 0;
     } catch (e) {
     }
   };
   let popperInstance = null;
+  let onOpen = showPopper;
+  let onClose = removePopper;
+  if (tooltipOptions.enterable) {
+    ;
+    ({ onOpen, onClose } = useDelayedToggle({
+      showAfter: tooltipOptions.showAfter,
+      hideAfter: tooltipOptions.hideAfter,
+      open: showPopper,
+      close: removePopper
+    }));
+  }
   const content = renderContent();
-  const arrow2 = renderArrow();
-  content.appendChild(arrow2);
-  popperInstance = yn(trigger, content, {
-    strategy: "absolute",
-    modifiers: [
-      {
-        name: "offset",
-        options: {
-          offset: [0, 8]
-        }
-      },
-      {
-        name: "arrow",
-        options: {
-          element: arrow2,
-          padding: 10
-        }
+  content.onmouseenter = onOpen;
+  content.onmouseleave = onClose;
+  const modifiers = [];
+  if (tooltipOptions.offset) {
+    modifiers.push({
+      name: "offset",
+      options: {
+        offset: [0, tooltipOptions.offset]
       }
-    ],
-    ...popperOptions2
+    });
+  }
+  if (tooltipOptions.showArrow) {
+    const arrow2 = content.appendChild(renderArrow());
+    modifiers.push({
+      name: "arrow",
+      options: {
+        element: arrow2,
+        padding: 10
+      }
+    });
+  }
+  const popperOptions = tooltipOptions.popperOptions || {};
+  popperInstance = yn(trigger, content, {
+    placement: tooltipOptions.placement || "top",
+    strategy: "fixed",
+    ...popperOptions,
+    modifiers: popperOptions.modifiers ? modifiers.concat(popperOptions.modifiers) : modifiers
   });
-  trigger.addEventListener("mouseenter", showPopper);
-  trigger.addEventListener("mouseleave", removePopper);
+  trigger.addEventListener("mouseenter", onOpen);
+  trigger.addEventListener("mouseleave", onClose);
   scrollContainer == null ? void 0 : scrollContainer.addEventListener("scroll", removePopper);
   return popperInstance;
 }
@@ -42569,7 +43073,7 @@ var ensurePosition = (style, key) => {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/store/expand.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/store/expand.mjs
 function useExpand(watcherData) {
   const instance = getCurrentInstance();
   const defaultExpandAll = ref(false);
@@ -42632,7 +43136,7 @@ function useExpand(watcherData) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/store/current.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/store/current.mjs
 function useCurrent(watcherData) {
   const instance = getCurrentInstance();
   const _currentRowKey = ref(null);
@@ -42698,7 +43202,7 @@ function useCurrent(watcherData) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/store/tree.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/store/tree.mjs
 function useTree(watcherData) {
   const expandRowKeys = ref([]);
   const treeData = ref({});
@@ -42831,12 +43335,12 @@ function useTree(watcherData) {
   const toggleTreeExpansion = (row, expanded) => {
     instance.store.assertRowKey();
     const rowKey2 = watcherData.rowKey.value;
-    const id2 = getRowIdentity(row, rowKey2);
-    const data = id2 && treeData.value[id2];
-    if (id2 && data && "expanded" in data) {
+    const id = getRowIdentity(row, rowKey2);
+    const data = id && treeData.value[id];
+    if (id && data && "expanded" in data) {
       const oldExpanded = data.expanded;
       expanded = typeof expanded === "undefined" ? !data.expanded : expanded;
-      treeData.value[id2].expanded = expanded;
+      treeData.value[id].expanded = expanded;
       if (oldExpanded !== expanded) {
         instance.emit("expand-change", row, expanded);
       }
@@ -42846,10 +43350,10 @@ function useTree(watcherData) {
   const loadOrToggle = (row) => {
     instance.store.assertRowKey();
     const rowKey2 = watcherData.rowKey.value;
-    const id2 = getRowIdentity(row, rowKey2);
-    const data = treeData.value[id2];
+    const id = getRowIdentity(row, rowKey2);
+    const data = treeData.value[id];
     if (lazy.value && data && "loaded" in data && !data.loaded) {
-      loadData(row, id2, data);
+      loadData(row, id, data);
     } else {
       toggleTreeExpansion(row, void 0);
     }
@@ -42891,7 +43395,7 @@ function useTree(watcherData) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/store/watcher.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/store/watcher.mjs
 var sortData = (data, states) => {
   const sortingColumn = states.sortingColumn;
   if (!sortingColumn || typeof sortingColumn.sortable === "string") {
@@ -42926,6 +43430,7 @@ function useWatcher() {
   const leafColumns = ref([]);
   const fixedLeafColumns = ref([]);
   const rightFixedLeafColumns = ref([]);
+  const updateOrderFns = [];
   const leafColumnsLength = ref(0);
   const fixedLeafColumnsLength = ref(0);
   const rightFixedLeafColumnsLength = ref(0);
@@ -43302,6 +43807,7 @@ function useWatcher() {
       leafColumns,
       fixedLeafColumns,
       rightFixedLeafColumns,
+      updateOrderFns,
       leafColumnsLength,
       fixedLeafColumnsLength,
       rightFixedLeafColumnsLength,
@@ -43323,7 +43829,7 @@ function useWatcher() {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/store/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/store/index.mjs
 function replaceColumn(array4, column2) {
   return array4.map((item) => {
     var _a;
@@ -43373,7 +43879,7 @@ function useStore() {
         instance.store.scheduleLayout();
       }
     },
-    insertColumn(states, column2, parent2) {
+    insertColumn(states, column2, parent2, updateColumnOrder) {
       const array4 = unref(states._columns);
       let newColumns = [];
       if (!parent2) {
@@ -43388,6 +43894,7 @@ function useStore() {
       }
       sortColumn(newColumns);
       states._columns.value = newColumns;
+      states.updateOrderFns.push(updateColumnOrder);
       if (column2.type === "selection") {
         states.selectable.value = column2.selectable;
         states.reserveSelection.value = column2.reserveSelection;
@@ -43397,7 +43904,17 @@ function useStore() {
         instance.store.scheduleLayout();
       }
     },
-    removeColumn(states, column2, parent2) {
+    updateColumnOrder(states, column2) {
+      var _a;
+      const newColumnIndex = (_a = column2.getColumnIndex) == null ? void 0 : _a.call(column2);
+      if (newColumnIndex === column2.no)
+        return;
+      sortColumn(states._columns.value);
+      if (instance.$ready) {
+        instance.store.updateColumns();
+      }
+    },
+    removeColumn(states, column2, parent2, updateColumnOrder) {
       const array4 = unref(states._columns) || [];
       if (parent2) {
         parent2.children.splice(parent2.children.findIndex((item) => item.id === column2.id), 1);
@@ -43415,6 +43932,8 @@ function useStore() {
           states._columns.value = array4;
         }
       }
+      const updateFnIndex = states.updateOrderFns.indexOf(updateColumnOrder);
+      updateFnIndex > -1 && states.updateOrderFns.splice(updateFnIndex, 1);
       if (instance.$ready) {
         instance.store.updateColumns();
         instance.store.scheduleLayout();
@@ -43492,7 +44011,7 @@ function useStore() {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/store/helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/store/helper.mjs
 var InitialStateMap = {
   rowKey: "rowKey",
   defaultExpandAll: "defaultExpandAll",
@@ -43550,7 +44069,7 @@ function getArrKeysValue(props, keys2) {
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-layout.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-layout.mjs
 var TableLayout = class {
   constructor(options) {
     this.observers = [];
@@ -43587,7 +44106,7 @@ var TableLayout = class {
     if (height === null)
       return false;
     const scrollBarRef = this.table.refs.scrollBarRef;
-    if (this.table.vnode.el && scrollBarRef) {
+    if (this.table.vnode.el && (scrollBarRef == null ? void 0 : scrollBarRef.wrapRef)) {
       let scrollY = true;
       const prevScrollY = this.scrollY.value;
       scrollY = scrollBarRef.wrapRef.scrollHeight > scrollBarRef.wrapRef.clientHeight;
@@ -43742,9 +44261,9 @@ var TableLayout = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/filter-panel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/filter-panel.mjs
 var { CheckboxGroup: ElCheckboxGroup2 } = ElCheckbox;
-var _sfc_main118 = defineComponent({
+var _sfc_main120 = defineComponent({
   name: "ElTableFilterPanel",
   components: {
     ElCheckbox,
@@ -43889,7 +44408,7 @@ var _sfc_main118 = defineComponent({
 var _hoisted_159 = { key: 0 };
 var _hoisted_237 = ["disabled"];
 var _hoisted_318 = ["label", "onClick"];
-function _sfc_render31(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render29(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_checkbox_group = resolveComponent("el-checkbox-group");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
@@ -44002,9 +44521,9 @@ function _sfc_render31(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   }, 8, ["visible", "placement", "popper-class"]);
 }
-var FilterPanel = _export_sfc(_sfc_main118, [["render", _sfc_render31], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/table/src/filter-panel.vue"]]);
+var FilterPanel = _export_sfc(_sfc_main120, [["render", _sfc_render29], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/table/src/filter-panel.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/layout-observer.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/layout-observer.mjs
 function useLayoutObserver(root2) {
   const instance = getCurrentInstance();
   onBeforeMount(() => {
@@ -44068,10 +44587,10 @@ function useLayoutObserver(root2) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/tokens.mjs
 var TABLE_INJECTION_KEY = Symbol("ElTable");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-header/event-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-header/event-helper.mjs
 function useEvent(props, emit) {
   const instance = getCurrentInstance();
   const parent2 = inject(TABLE_INJECTION_KEY);
@@ -44235,7 +44754,7 @@ function useEvent(props, emit) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-header/style.helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-header/style.helper.mjs
 function useStyle(props) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns2 = useNamespace("table");
@@ -44310,7 +44829,7 @@ function useStyle(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-header/utils-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-header/utils-helper.mjs
 var getAllColumns = (columns2) => {
   const result2 = [];
   columns2.forEach((column2) => {
@@ -44386,7 +44905,7 @@ function useUtils(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-header/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-header/index.mjs
 var TableHeader = defineComponent({
   name: "ElTableHeader",
   components: {
@@ -44546,7 +45065,7 @@ var TableHeader = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-body/events-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-body/events-helper.mjs
 function useEvents(props) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const tooltipContent = ref("");
@@ -44583,7 +45102,7 @@ function useEvents(props) {
   const handleMouseLeave = debounce_default(() => {
     props.store.commit("setHoverRow", null);
   }, 30);
-  const handleCellMouseEnter = (event, row, tooltipEffect) => {
+  const handleCellMouseEnter = (event, row, tooltipOptions) => {
     var _a;
     const table = parent2;
     const cell = getCell(event);
@@ -44595,6 +45114,9 @@ function useEvents(props) {
       const hoverState = table.hoverState = { cell, column: column2, row };
       table == null ? void 0 : table.emit("cell-mouse-enter", hoverState.row, hoverState.column, hoverState.cell, event);
     }
+    if (!tooltipOptions) {
+      return;
+    }
     const cellChild = event.target.querySelector(".cell");
     if (!(hasClass(cellChild, `${namespace}-tooltip`) && cellChild.childNodes.length)) {
       return;
@@ -44605,10 +45127,7 @@ function useEvents(props) {
     const rangeWidth = Math.round(range4.getBoundingClientRect().width);
     const padding = (Number.parseInt(getStyle(cellChild, "paddingLeft"), 10) || 0) + (Number.parseInt(getStyle(cellChild, "paddingRight"), 10) || 0);
     if (rangeWidth + padding > cellChild.offsetWidth || cellChild.scrollWidth > cellChild.offsetWidth) {
-      createTablePopper(parent2 == null ? void 0 : parent2.refs.tableWrapper, cell, cell.innerText || cell.textContent, {
-        placement: "top",
-        strategy: "fixed"
-      }, tooltipEffect);
+      createTablePopper(parent2 == null ? void 0 : parent2.refs.tableWrapper, cell, cell.innerText || cell.textContent, tooltipOptions);
     }
   };
   const handleCellMouseLeave = (event) => {
@@ -44631,7 +45150,7 @@ function useEvents(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-body/styles-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-body/styles-helper.mjs
 function useStyles(props) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns2 = useNamespace("table");
@@ -44735,7 +45254,7 @@ function useStyles(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-body/render-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-body/render-helper.mjs
 function useRender(props) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns2 = useNamespace("table");
@@ -44769,7 +45288,7 @@ function useRender(props) {
     return index;
   };
   const rowRender = (row, $index, treeRowData, expanded = false) => {
-    const { tooltipEffect, store } = props;
+    const { tooltipEffect, tooltipOptions, store } = props;
     const { indent, columns: columns2 } = store.states;
     const rowClasses = getRowClass(row, $index);
     let display = true;
@@ -44823,13 +45342,16 @@ function useRender(props) {
       const baseKey = `${$index},${cellIndex}`;
       const patchKey = columnData.columnKey || columnData.rawColumnKey || "";
       const tdChildren = cellChildren(cellIndex, column2, data);
+      const mergedTooltipOptions = column2.showOverflowTooltip && merge_default({
+        effect: tooltipEffect
+      }, tooltipOptions, column2.showOverflowTooltip);
       return h("td", {
         style: getCellStyle($index, cellIndex, row, column2),
         class: getCellClass($index, cellIndex, row, column2, colspan - 1),
         key: `${patchKey}${baseKey}`,
         rowspan,
         colspan,
-        onMouseenter: ($event) => handleCellMouseEnter($event, row, tooltipEffect),
+        onMouseenter: ($event) => handleCellMouseEnter($event, row, mergedTooltipOptions),
         onMouseleave: handleCellMouseLeave
       }, [tdChildren]);
     }));
@@ -44940,7 +45462,7 @@ function useRender(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-body/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-body/defaults.mjs
 var defaultProps = {
   store: {
     required: true,
@@ -44948,6 +45470,9 @@ var defaultProps = {
   },
   stripe: Boolean,
   tooltipEffect: String,
+  tooltipOptions: {
+    type: Object
+  },
   context: {
     default: () => ({}),
     type: Object
@@ -44961,7 +45486,7 @@ var defaultProps = {
   highlight: Boolean
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-body/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-body/index.mjs
 var TableBody = defineComponent({
   name: "ElTableBody",
   props: defaultProps,
@@ -45015,7 +45540,7 @@ var TableBody = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/h-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/h-helper.mjs
 function hColgroup(props) {
   const isAuto = props.tableLayout === "auto";
   let columns2 = props.columns || [];
@@ -45043,7 +45568,7 @@ function hColgroup(props) {
 }
 hColgroup.props = ["columns", "tableLayout"];
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-footer/mapState-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-footer/mapState-helper.mjs
 function useMapState() {
   const table = inject(TABLE_INJECTION_KEY);
   const store = table == null ? void 0 : table.store;
@@ -45072,7 +45597,7 @@ function useMapState() {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-footer/style-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-footer/style-helper.mjs
 function useStyle2(props) {
   const { columns: columns2 } = useMapState();
   const ns2 = useNamespace("table");
@@ -45106,7 +45631,7 @@ function useStyle2(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-footer/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-footer/index.mjs
 var TableFooter = defineComponent({
   name: "ElTableFooter",
   props: {
@@ -45216,7 +45741,7 @@ var TableFooter = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table/utils-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table/utils-helper.mjs
 function useUtils2(store) {
   const setCurrentRow = (row) => {
     store.commit("setCurrentRow", row);
@@ -45259,7 +45784,7 @@ function useUtils2(store) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table/style-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table/style-helper.mjs
 function useStyle3(props, layout2, store, table) {
   const isHidden2 = ref(false);
   const renderExpanded = ref(null);
@@ -45552,13 +46077,35 @@ function useStyle3(props, layout2, store, table) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table/key-render-helper.mjs
+function useKeyRender(table) {
+  const observer = ref();
+  const initWatchDom = () => {
+    const el = table.vnode.el;
+    const columnsWrapper = el.querySelector(".hidden-columns");
+    const config = { childList: true, subtree: true };
+    const updateOrderFns = table.store.states.updateOrderFns;
+    observer.value = new MutationObserver(() => {
+      updateOrderFns.forEach((fn2) => fn2());
+    });
+    observer.value.observe(columnsWrapper, config);
+  };
+  onMounted(() => {
+    initWatchDom();
+  });
+  onUnmounted(() => {
+    var _a;
+    (_a = observer.value) == null ? void 0 : _a.disconnect();
+  });
+}
+
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table/defaults.mjs
 var defaultProps2 = {
   data: {
     type: Array,
     default: () => []
   },
-  size: String,
+  size: useSizeProp,
   width: [String, Number],
   height: [String, Number],
   maxHeight: [String, Number],
@@ -45591,6 +46138,7 @@ var defaultProps2 = {
   defaultExpandAll: Boolean,
   defaultSort: Object,
   tooltipEffect: String,
+  tooltipOptions: Object,
   spanMethod: Function,
   selectOnIndeterminate: {
     type: Boolean,
@@ -45630,7 +46178,7 @@ var defaultProps2 = {
   flexible: Boolean
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/composables/use-scrollbar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/composables/use-scrollbar.mjs
 var useScrollbar = () => {
   const scrollBarRef = ref();
   const scrollTo = (options, yCoord) => {
@@ -45655,9 +46203,9 @@ var useScrollbar = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table.mjs
 var tableIdSeed = 1;
-var _sfc_main119 = defineComponent({
+var _sfc_main121 = defineComponent({
   name: "ElTable",
   directives: {
     Mousewheel
@@ -45750,6 +46298,7 @@ var _sfc_main119 = defineComponent({
     const computedEmptyText = computed2(() => {
       return props.emptyText || t("el.table.emptyText");
     });
+    useKeyRender(table);
     return {
       ns: ns2,
       layout: layout2,
@@ -45800,7 +46349,7 @@ var _hoisted_238 = {
   ref: "hiddenColumns",
   class: "hidden-columns"
 };
-function _sfc_render32(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render30(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_hColgroup = resolveComponent("hColgroup");
   const _component_table_header = resolveComponent("table-header");
   const _component_table_body = resolveComponent("table-body");
@@ -45906,10 +46455,11 @@ function _sfc_render32(_ctx, _cache, $props, $setup, $data, $options) {
                 highlight: _ctx.highlightCurrentRow,
                 "row-class-name": _ctx.rowClassName,
                 "tooltip-effect": _ctx.tooltipEffect,
+                "tooltip-options": _ctx.tooltipOptions,
                 "row-style": _ctx.rowStyle,
                 store: _ctx.store,
                 stripe: _ctx.stripe
-              }, null, 8, ["context", "highlight", "row-class-name", "tooltip-effect", "row-style", "store", "stripe"])
+              }, null, 8, ["context", "highlight", "row-class-name", "tooltip-effect", "tooltip-options", "row-style", "store", "stripe"])
             ], 6),
             _ctx.isEmpty ? (openBlock(), createElementBlock("div", {
               key: 0,
@@ -45966,9 +46516,9 @@ function _sfc_render32(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 46, _hoisted_160);
 }
-var Table = _export_sfc(_sfc_main119, [["render", _sfc_render32], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/table/src/table.vue"]]);
+var Table = _export_sfc(_sfc_main121, [["render", _sfc_render30], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/table/src/table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/config.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/config.mjs
 var defaultClassNames = {
   selection: "table-column--selection",
   expand: "table__expand-column"
@@ -46160,7 +46710,7 @@ function treeCellPrefix({
   return ele;
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-column/watcher-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-column/watcher-helper.mjs
 function getAllAliases(props, aliases) {
   return props.reduce((prev, cur) => {
     prev[cur] = cur;
@@ -46228,7 +46778,7 @@ function useWatcher2(owner, props_) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-column/render-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-column/render-helper.mjs
 function useRender2(props, slots, owner) {
   const instance = getCurrentInstance();
   const columnId = ref("");
@@ -46364,6 +46914,9 @@ function useRender2(props, slots, owner) {
   const getColumnElIndex = (children, child) => {
     return Array.prototype.indexOf.call(children, child);
   };
+  const updateColumnOrder = () => {
+    owner.value.store.commit("updateColumnOrder", instance.columnConfig.value);
+  };
   return {
     columnId,
     realAlign,
@@ -46374,11 +46927,12 @@ function useRender2(props, slots, owner) {
     setColumnForcedProps,
     setColumnRenders,
     getPropsData,
-    getColumnElIndex
+    getColumnElIndex,
+    updateColumnOrder
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-column/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-column/defaults.mjs
 var defaultProps3 = {
   type: {
     type: String,
@@ -46411,8 +46965,7 @@ var defaultProps3 = {
   columnKey: String,
   align: String,
   headerAlign: String,
-  showTooltipWhenOverflow: Boolean,
-  showOverflowTooltip: Boolean,
+  showOverflowTooltip: [Boolean, Object],
   fixed: [Boolean, String],
   formatter: Function,
   selectable: Function,
@@ -46437,7 +46990,7 @@ var defaultProps3 = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/src/table-column/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/src/table-column/index.mjs
 var columnIdSeed = 1;
 var ElTableColumn = defineComponent({
   name: "ElTableColumn",
@@ -46466,7 +47019,8 @@ var ElTableColumn = defineComponent({
       setColumnRenders,
       getPropsData,
       getColumnElIndex,
-      realAlign
+      realAlign,
+      updateColumnOrder
     } = useRender2(props, slots, owner);
     const parent2 = columnOrTableParent.value;
     columnId.value = `${parent2.tableId || parent2.columnId}_column_${columnIdSeed++}`;
@@ -46481,7 +47035,7 @@ var ElTableColumn = defineComponent({
         property: props.prop || props.property,
         align: realAlign,
         headerAlign: realHeaderAlign,
-        showOverflowTooltip: props.showOverflowTooltip || props.showTooltipWhenOverflow,
+        showOverflowTooltip: props.showOverflowTooltip,
         filterable: props.filters || props.filterMethod,
         filteredValue: [],
         filterPlacement: "",
@@ -46528,10 +47082,10 @@ var ElTableColumn = defineComponent({
       const getColumnIndex = () => getColumnElIndex(children || [], instance.vnode.el);
       columnConfig.value.getColumnIndex = getColumnIndex;
       const columnIndex = getColumnIndex();
-      columnIndex > -1 && owner.value.store.commit("insertColumn", columnConfig.value, isSubColumn.value ? parent22.columnConfig.value : null);
+      columnIndex > -1 && owner.value.store.commit("insertColumn", columnConfig.value, isSubColumn.value ? parent22.columnConfig.value : null, updateColumnOrder);
     });
     onBeforeUnmount(() => {
-      owner.value.store.commit("removeColumn", columnConfig.value, isSubColumn.value ? parent2.columnConfig.value : null);
+      owner.value.store.commit("removeColumn", columnConfig.value, isSubColumn.value ? parent2.columnConfig.value : null, updateColumnOrder);
     });
     instance.columnId = columnId.value;
     instance.columnConfig = columnConfig;
@@ -46567,13 +47121,13 @@ var ElTableColumn = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table/index.mjs
 var ElTable = withInstall(Table, {
   TableColumn: ElTableColumn
 });
 var ElTableColumn2 = withNoopInstall(ElTableColumn);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/constants.mjs
 var SortOrder = ((SortOrder2) => {
   SortOrder2["ASC"] = "asc";
   SortOrder2["DESC"] = "desc";
@@ -46590,14 +47144,21 @@ var FixedDir = ((FixedDir2) => {
   return FixedDir2;
 })(FixedDir || {});
 var oppositeOrderMap = {
-  ["asc"]: "desc",
-  ["desc"]: "asc"
+  [
+    "asc"
+    /* ASC */
+  ]: "desc",
+  [
+    "desc"
+    /* DESC */
+  ]: "asc"
+  /* ASC */
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/private.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/private.mjs
 var placeholderSign = Symbol("placeholder");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/composables/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/composables/utils.mjs
 var calcColumnStyle = (column2, fixedColumn, fixed) => {
   var _a;
   const flex = {
@@ -46626,7 +47187,7 @@ var calcColumnStyle = (column2, fixedColumn, fixed) => {
   return style;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/composables/use-columns.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/composables/use-columns.mjs
 function useColumns(props, columns2, fixed) {
   const visibleColumns = computed2(() => {
     return unref(columns2).filter((column2) => !column2.hidden);
@@ -46706,7 +47267,7 @@ function useColumns(props, columns2, fixed) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/composables/use-scrollbar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/composables/use-scrollbar.mjs
 var useScrollbar2 = (props, {
   mainTableRef,
   leftTableRef,
@@ -46763,7 +47324,7 @@ var useScrollbar2 = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/composables/use-row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/composables/use-row.mjs
 var useRow = (props, { mainTableRef, leftTableRef, rightTableRef, onMaybeEndReached }) => {
   const vm = getCurrentInstance();
   const { emit } = vm;
@@ -46879,7 +47440,7 @@ var useRow = (props, { mainTableRef, leftTableRef, rightTableRef, onMaybeEndReac
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/composables/use-data.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/composables/use-data.mjs
 var useData = (props, { expandedRowKeys, lastRenderedRowIndex, resetAfterIndex }) => {
   const depthMap = ref({});
   const flattenedData = computed2(() => {
@@ -46920,7 +47481,7 @@ var useData = (props, { expandedRowKeys, lastRenderedRowIndex, resetAfterIndex }
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/utils.mjs
 var sumReducer = (sum22, num) => sum22 + num;
 var sum2 = (listLike) => {
   return isArray(listLike) ? listLike.reduce(sumReducer, 0) : listLike;
@@ -46937,7 +47498,7 @@ var enforceUnit = (style) => {
 };
 var componentToSlot = (ComponentLike) => isVNode(ComponentLike) ? (props) => h(ComponentLike, props) : ComponentLike;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/composables/use-styles.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/composables/use-styles.mjs
 var useStyles2 = (props, {
   columnsTotalWidth,
   data,
@@ -47018,7 +47579,7 @@ var useStyles2 = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/composables/use-auto-resize.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/composables/use-auto-resize.mjs
 var useAutoResize = (props) => {
   const sizer = ref();
   const width$ = ref(0);
@@ -47053,7 +47614,7 @@ var useAutoResize = (props) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/use-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/use-table.mjs
 function useTable(props) {
   const mainTableRef = ref();
   const leftTableRef = ref();
@@ -47195,10 +47756,10 @@ function useTable(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/tokens.mjs
 var TableV2InjectionKey = Symbol("tableV2");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/common.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/common.mjs
 var classType = String;
 var columns = {
   type: definePropType(Array),
@@ -47231,7 +47792,7 @@ var styleType = {
   type: definePropType(Object)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/row.mjs
 var tableV2RowProps = buildProps({
   class: String,
   columns,
@@ -47272,7 +47833,7 @@ var tableV2RowProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/header.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/header.mjs
 var requiredNumberType = {
   type: Number,
   required: true
@@ -47300,7 +47861,7 @@ var tableV2HeaderProps = buildProps({
   width: requiredNumberType
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/grid.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/grid.mjs
 var tableV2GridProps = buildProps({
   columns,
   data: dataType,
@@ -47333,7 +47894,7 @@ var tableV2GridProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/table.mjs
 var tableV2Props = buildProps({
   cache: tableV2GridProps.cache,
   estimatedRowHeight: tableV2RowProps.estimatedRowHeight,
@@ -47429,7 +47990,7 @@ var tableV2Props = buildProps({
   rowEventHandlers: tableV2RowProps.rowEventHandlers
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/components/cell.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/components/cell.mjs
 var TableV2Cell = (props, {
   slots
 }) => {
@@ -47448,7 +48009,7 @@ var TableV2Cell = (props, {
 TableV2Cell.displayName = "ElTableV2Cell";
 TableV2Cell.inheritAttrs = false;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/components/header-cell.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/components/header-cell.mjs
 var HeaderCell = (props, {
   slots
 }) => {
@@ -47461,7 +48022,7 @@ var HeaderCell = (props, {
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/header-row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/header-row.mjs
 var tableV2HeaderRowProps = buildProps({
   class: String,
   columns,
@@ -47473,7 +48034,7 @@ var tableV2HeaderRowProps = buildProps({
   style: { type: definePropType(Object) }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/components/header-row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/components/header-row.mjs
 var TableV2HeaderRow = defineComponent({
   name: "ElTableV2HeaderRow",
   props: tableV2HeaderRowProps,
@@ -47516,7 +48077,7 @@ var TableV2HeaderRow = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/components/header.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/components/header.mjs
 var COMPONENT_NAME17 = "ElTableV2Header";
 var TableV2Header = defineComponent({
   name: COMPONENT_NAME17,
@@ -47603,7 +48164,7 @@ var TableV2Header = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/components/row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/components/row.mjs
 var useTableRow = (props) => {
   const {
     isScrolling
@@ -47801,7 +48362,7 @@ var TableV2Row = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/components/sort-icon.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/components/sort-icon.mjs
 var SortIcon = (props) => {
   const {
     sortOrder
@@ -47814,7 +48375,7 @@ var SortIcon = (props) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/components/expand-icon.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/components/expand-icon.mjs
 var ExpandIcon = (props) => {
   const {
     expanded,
@@ -47835,7 +48396,7 @@ var ExpandIcon = (props) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/table-grid.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/table-grid.mjs
 var COMPONENT_NAME19 = "ElTableV2Grid";
 var useTableGrid = (props) => {
   const headerRef = ref();
@@ -48049,7 +48610,7 @@ var TableGrid = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/main-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/main-table.mjs
 function _isSlot(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
@@ -48067,7 +48628,7 @@ var MainTable = (props, {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/left-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/left-table.mjs
 function _isSlot2(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
@@ -48087,7 +48648,7 @@ var LeftTable = (props, {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/right-table.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/right-table.mjs
 function _isSlot3(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
@@ -48107,7 +48668,7 @@ var LeftTable2 = (props, {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/row.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/row.mjs
 function _isSlot4(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
@@ -48180,7 +48741,7 @@ var RowRenderer = (props, {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/cell.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/cell.mjs
 var CellRenderer = ({
   columns: columns2,
   column: column2,
@@ -48268,7 +48829,7 @@ var CellRenderer = ({
 };
 CellRenderer.inheritAttrs = false;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/header.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/header.mjs
 function _isSlot5(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
@@ -48303,7 +48864,7 @@ var HeaderRenderer = ({
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/header-cell.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/header-cell.mjs
 var HeaderCellRenderer = (props, {
   slots
 }) => {
@@ -48359,7 +48920,7 @@ var HeaderCellRenderer = (props, {
   }, null)]);
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/footer.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/footer.mjs
 var Footer2 = (props, {
   slots
 }) => {
@@ -48371,7 +48932,7 @@ var Footer2 = (props, {
 };
 Footer2.displayName = "ElTableV2Footer";
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/empty.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/empty.mjs
 var Footer3 = (props, {
   slots
 }) => {
@@ -48382,7 +48943,7 @@ var Footer3 = (props, {
 };
 Footer3.displayName = "ElTableV2Empty";
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/renderers/overlay.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/renderers/overlay.mjs
 var Overlay2 = (props, {
   slots
 }) => {
@@ -48394,7 +48955,7 @@ var Overlay2 = (props, {
 };
 Overlay2.displayName = "ElTableV2Overlay";
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/table-v2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/table-v2.mjs
 function _isSlot6(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
@@ -48654,7 +49215,7 @@ var TableV2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/auto-resizer.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/auto-resizer.mjs
 var autoResizerProps = buildProps({
   disableWidth: Boolean,
   disableHeight: Boolean,
@@ -48663,7 +49224,7 @@ var autoResizerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/src/components/auto-resizer.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/src/components/auto-resizer.mjs
 var AutoResizer = defineComponent({
   name: "ElAutoResizer",
   props: autoResizerProps,
@@ -48694,11 +49255,11 @@ var AutoResizer = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/table-v2/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/table-v2/index.mjs
 var ElTableV2 = withInstall(TableV2);
 var ElAutoResizer = withInstall(AutoResizer);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tabs/src/tab-bar.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tabs/src/tab-bar.mjs
 var tabBarProps = buildProps({
   tabs: {
     type: definePropType(Array),
@@ -48706,13 +49267,13 @@ var tabBarProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tabs/src/tab-bar2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tabs/src/tab-bar2.mjs
 var COMPONENT_NAME21 = "ElTabBar";
-var __default__78 = defineComponent({
+var __default__82 = defineComponent({
   name: COMPONENT_NAME21
 });
-var _sfc_main120 = defineComponent({
-  ...__default__78,
+var _sfc_main122 = defineComponent({
+  ...__default__82,
   props: tabBarProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -48728,22 +49289,17 @@ var _sfc_main120 = defineComponent({
       let tabSize = 0;
       const sizeName = ["top", "bottom"].includes(rootTabs.props.tabPosition) ? "width" : "height";
       const sizeDir = sizeName === "width" ? "x" : "y";
+      const position = sizeDir === "x" ? "left" : "top";
       props.tabs.every((tab) => {
-        var _a, _b, _c, _d;
+        var _a, _b;
         const $el = (_b = (_a = instance.parent) == null ? void 0 : _a.refs) == null ? void 0 : _b[`tab-${tab.uid}`];
         if (!$el)
           return false;
         if (!tab.active) {
           return true;
         }
+        offset2 = $el[`offset${capitalize3(position)}`];
         tabSize = $el[`client${capitalize3(sizeName)}`];
-        const position = sizeDir === "x" ? "left" : "top";
-        offset2 = $el[`offset${capitalize3(position)}`] - ((_d = (_c = $el.parentElement) == null ? void 0 : _c[`offset${capitalize3(position)}`]) != null ? _d : 0);
-        const scrollwrapEl = $el.closest(".is-scrollable");
-        if (scrollwrapEl) {
-          const scrollWrapStyle = window.getComputedStyle(scrollwrapEl);
-          offset2 += Number.parseFloat(scrollWrapStyle[`padding${capitalize3(position)}`]);
-        }
         const tabStyles = window.getComputedStyle($el);
         if (sizeName === "width") {
           if (props.tabs.length > 1) {
@@ -48778,9 +49334,9 @@ var _sfc_main120 = defineComponent({
     };
   }
 });
-var TabBar = _export_sfc(_sfc_main120, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tabs/src/tab-bar.vue"]]);
+var TabBar = _export_sfc(_sfc_main122, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tabs/src/tab-bar.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tabs/src/tab-nav.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tabs/src/tab-nav.mjs
 var tabNavProps = buildProps({
   panes: {
     type: definePropType(Array),
@@ -48893,11 +49449,10 @@ var TabNav = defineComponent({
       const containerSize = navScroll$.value[`offset${capitalize3(sizeName.value)}`];
       const currentOffset = navOffset.value;
       if (containerSize < navSize) {
-        const currentOffset2 = navOffset.value;
         scrollable.value = scrollable.value || {};
-        scrollable.value.prev = currentOffset2;
-        scrollable.value.next = currentOffset2 + containerSize < navSize;
-        if (navSize - currentOffset2 < containerSize) {
+        scrollable.value.prev = currentOffset;
+        scrollable.value.next = currentOffset + containerSize < navSize;
+        if (navSize - currentOffset < containerSize) {
           navOffset.value = navSize - containerSize;
         }
       } else {
@@ -49036,7 +49591,7 @@ var TabNav = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tabs/src/tabs.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tabs/src/tabs.mjs
 var tabsProps = buildProps({
   type: {
     type: String,
@@ -49188,7 +49743,7 @@ var Tabs = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tabs/src/tab-pane.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tabs/src/tab-pane.mjs
 var tabPaneProps = buildProps({
   label: {
     type: String,
@@ -49202,14 +49757,14 @@ var tabPaneProps = buildProps({
   lazy: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tabs/src/tab-pane2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tabs/src/tab-pane2.mjs
 var _hoisted_161 = ["id", "aria-hidden", "aria-labelledby"];
 var COMPONENT_NAME23 = "ElTabPane";
-var __default__79 = defineComponent({
+var __default__83 = defineComponent({
   name: COMPONENT_NAME23
 });
-var _sfc_main121 = defineComponent({
-  ...__default__79,
+var _sfc_main123 = defineComponent({
+  ...__default__83,
   props: tabPaneProps,
   setup(__props) {
     const props = __props;
@@ -49266,19 +49821,19 @@ var _sfc_main121 = defineComponent({
     };
   }
 });
-var TabPane = _export_sfc(_sfc_main121, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tabs/src/tab-pane.vue"]]);
+var TabPane = _export_sfc(_sfc_main123, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tabs/src/tab-pane.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tabs/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tabs/index.mjs
 var ElTabs = withInstall(Tabs, {
   TabPane
 });
 var ElTabPane = withNoopInstall(TabPane);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
 var import_dayjs16 = __toESM(require_dayjs_min(), 1);
 var import_customParseFormat3 = __toESM(require_customParseFormat(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-select/src/time-select.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-select/src/time-select.mjs
 var timeSelectProps = buildProps({
   format: {
     type: String,
@@ -49325,7 +49880,7 @@ var timeSelectProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-select/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-select/src/utils.mjs
 var parseTime = (time) => {
   const values2 = (time || "").split(":");
   if (values2.length >= 2) {
@@ -49361,7 +49916,7 @@ var compareTime = (time1, time2) => {
 var padTime = (time) => {
   return `${time}`.padStart(2, "0");
 };
-var formatTime = (time) => {
+var formatTime2 = (time) => {
   return `${padTime(time.hours)}:${padTime(time.minutes)}`;
 };
 var nextTime = (time, step) => {
@@ -49379,15 +49934,15 @@ var nextTime = (time, step) => {
   next.hours += stepValue.hours;
   next.hours += Math.floor(next.minutes / 60);
   next.minutes = next.minutes % 60;
-  return formatTime(next);
+  return formatTime2(next);
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
-var __default__80 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
+var __default__84 = defineComponent({
   name: "ElTimeSelect"
 });
-var _sfc_main122 = defineComponent({
-  ...__default__80,
+var _sfc_main124 = defineComponent({
+  ...__default__84,
   props: timeSelectProps,
   emits: ["change", "blur", "focus", "update:modelValue"],
   setup(__props, { expose }) {
@@ -49400,23 +49955,23 @@ var _sfc_main122 = defineComponent({
     const value = computed2(() => props.modelValue);
     const start = computed2(() => {
       const time = parseTime(props.start);
-      return time ? formatTime(time) : null;
+      return time ? formatTime2(time) : null;
     });
     const end2 = computed2(() => {
       const time = parseTime(props.end);
-      return time ? formatTime(time) : null;
+      return time ? formatTime2(time) : null;
     });
     const step = computed2(() => {
       const time = parseTime(props.step);
-      return time ? formatTime(time) : null;
+      return time ? formatTime2(time) : null;
     });
     const minTime = computed2(() => {
       const time = parseTime(props.minTime || "");
-      return time ? formatTime(time) : null;
+      return time ? formatTime2(time) : null;
     });
     const maxTime = computed2(() => {
       const time = parseTime(props.maxTime || "");
-      return time ? formatTime(time) : null;
+      return time ? formatTime2(time) : null;
     });
     const items = computed2(() => {
       const result2 = [];
@@ -49490,16 +50045,16 @@ var _sfc_main122 = defineComponent({
     };
   }
 });
-var TimeSelect = _export_sfc(_sfc_main122, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/time-select/src/time-select.vue"]]);
+var TimeSelect = _export_sfc(_sfc_main124, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/time-select/src/time-select.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/time-select/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/time-select/index.mjs
 TimeSelect.install = (app) => {
   app.component(TimeSelect.name, TimeSelect);
 };
 var _TimeSelect = TimeSelect;
 var ElTimeSelect = _TimeSelect;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/timeline/src/timeline.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/timeline/src/timeline.mjs
 var Timeline = defineComponent({
   name: "ElTimeline",
   setup(_2, { slots }) {
@@ -49511,7 +50066,7 @@ var Timeline = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/timeline/src/timeline-item.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/timeline/src/timeline-item.mjs
 var timelineItemProps = buildProps({
   timestamp: {
     type: String,
@@ -49553,12 +50108,12 @@ var timelineItemProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/timeline/src/timeline-item2.mjs
-var __default__81 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/timeline/src/timeline-item2.mjs
+var __default__85 = defineComponent({
   name: "ElTimelineItem"
 });
-var _sfc_main123 = defineComponent({
-  ...__default__81,
+var _sfc_main125 = defineComponent({
+  ...__default__85,
   props: timelineItemProps,
   setup(__props) {
     const ns2 = useNamespace("timeline-item");
@@ -49618,15 +50173,15 @@ var _sfc_main123 = defineComponent({
     };
   }
 });
-var TimelineItem = _export_sfc(_sfc_main123, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/timeline/src/timeline-item.vue"]]);
+var TimelineItem = _export_sfc(_sfc_main125, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/timeline/src/timeline-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/timeline/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/timeline/index.mjs
 var ElTimeline = withInstall(Timeline, {
   TimelineItem
 });
 var ElTimelineItem = withNoopInstall(TimelineItem);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/common.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/common.mjs
 var tooltipV2CommonProps = buildProps({
   nowrap: Boolean
 });
@@ -49639,7 +50194,7 @@ var TooltipV2Sides = ((TooltipV2Sides2) => {
 })(TooltipV2Sides || {});
 var tooltipV2Sides = Object.values(TooltipV2Sides);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/arrow.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/arrow.mjs
 var tooltipV2ArrowProps = buildProps({
   width: {
     type: Number,
@@ -49662,7 +50217,7 @@ var tooltipV2ArrowSpecialProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/content.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/content.mjs
 var tooltipV2Strategies = ["absolute", "fixed"];
 var tooltipV2Placements = [
   "top-start",
@@ -49713,7 +50268,7 @@ var tooltipV2ContentProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/root.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/root.mjs
 var tooltipV2RootProps = buildProps({
   delayDuration: {
     type: Number,
@@ -49732,7 +50287,7 @@ var tooltipV2RootProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/trigger.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/trigger.mjs
 var EventHandler = {
   type: definePropType(Function)
 };
@@ -49745,7 +50300,7 @@ var tooltipV2TriggerProps = buildProps({
   onMouseLeave: EventHandler
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/tooltip.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/tooltip.mjs
 var tooltipV2Props = buildProps({
   ...tooltipV2RootProps,
   ...tooltipV2ArrowProps,
@@ -49764,12 +50319,12 @@ var tooltipV2Props = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/root2.mjs
-var __default__82 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/root2.mjs
+var __default__86 = defineComponent({
   name: "ElTooltipV2Root"
 });
-var _sfc_main124 = defineComponent({
-  ...__default__82,
+var _sfc_main126 = defineComponent({
+  ...__default__86,
   props: tooltipV2RootProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -49836,14 +50391,14 @@ var _sfc_main124 = defineComponent({
     };
   }
 });
-var TooltipV2Root = _export_sfc(_sfc_main124, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/root.vue"]]);
+var TooltipV2Root = _export_sfc(_sfc_main126, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/root.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/arrow2.mjs
-var __default__83 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/arrow2.mjs
+var __default__87 = defineComponent({
   name: "ElTooltipV2Arrow"
 });
-var _sfc_main125 = defineComponent({
-  ...__default__83,
+var _sfc_main127 = defineComponent({
+  ...__default__87,
   props: {
     ...tooltipV2ArrowProps,
     ...tooltipV2ArrowSpecialProps
@@ -49873,9 +50428,9 @@ var _sfc_main125 = defineComponent({
     };
   }
 });
-var TooltipV2Arrow = _export_sfc(_sfc_main125, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/arrow.vue"]]);
+var TooltipV2Arrow = _export_sfc(_sfc_main127, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/arrow.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden.mjs
 var visualHiddenProps = buildProps({
   style: {
     type: definePropType([String, Object, Array]),
@@ -49883,12 +50438,12 @@ var visualHiddenProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden2.mjs
-var __default__84 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden2.mjs
+var __default__88 = defineComponent({
   name: "ElVisuallyHidden"
 });
-var _sfc_main126 = defineComponent({
-  ...__default__84,
+var _sfc_main128 = defineComponent({
+  ...__default__88,
   props: visualHiddenProps,
   setup(__props) {
     const props = __props;
@@ -49916,15 +50471,15 @@ var _sfc_main126 = defineComponent({
     };
   }
 });
-var ElVisuallyHidden = _export_sfc(_sfc_main126, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/visual-hidden/src/visual-hidden.vue"]]);
+var ElVisuallyHidden = _export_sfc(_sfc_main128, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/visual-hidden/src/visual-hidden.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/content2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/content2.mjs
 var _hoisted_163 = ["data-side"];
-var __default__85 = defineComponent({
+var __default__89 = defineComponent({
   name: "ElTooltipV2Content"
 });
-var _sfc_main127 = defineComponent({
-  ...__default__85,
+var _sfc_main129 = defineComponent({
+  ...__default__89,
   props: { ...tooltipV2ContentProps, ...tooltipV2CommonProps },
   setup(__props) {
     const props = __props;
@@ -50019,9 +50574,9 @@ var _sfc_main127 = defineComponent({
     };
   }
 });
-var TooltipV2Content = _export_sfc(_sfc_main127, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/content.vue"]]);
+var TooltipV2Content = _export_sfc(_sfc_main129, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/forward-ref.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/forward-ref.mjs
 var forwardRefProps = buildProps({
   setRef: {
     type: definePropType(Function),
@@ -50053,12 +50608,12 @@ var ForwardRef = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/trigger2.mjs
-var __default__86 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/trigger2.mjs
+var __default__90 = defineComponent({
   name: "ElTooltipV2Trigger"
 });
-var _sfc_main128 = defineComponent({
-  ...__default__86,
+var _sfc_main130 = defineComponent({
+  ...__default__90,
   props: {
     ...tooltipV2CommonProps,
     ...tooltipV2TriggerProps
@@ -50135,14 +50690,14 @@ var _sfc_main128 = defineComponent({
     };
   }
 });
-var TooltipV2Trigger = _export_sfc(_sfc_main128, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/trigger.vue"]]);
+var TooltipV2Trigger = _export_sfc(_sfc_main130, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/trigger.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/src/tooltip2.mjs
-var __default__87 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/src/tooltip2.mjs
+var __default__91 = defineComponent({
   name: "ElTooltipV2"
 });
-var _sfc_main129 = defineComponent({
-  ...__default__87,
+var _sfc_main131 = defineComponent({
+  ...__default__91,
   props: tooltipV2Props,
   setup(__props) {
     const props = __props;
@@ -50201,12 +50756,12 @@ var _sfc_main129 = defineComponent({
     };
   }
 });
-var TooltipV2 = _export_sfc(_sfc_main129, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/tooltip.vue"]]);
+var TooltipV2 = _export_sfc(_sfc_main131, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip-v2/src/tooltip.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tooltip-v2/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tooltip-v2/index.mjs
 var ElTooltipV2 = withInstall(TooltipV2);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/transfer.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/transfer.mjs
 var LEFT_CHECK_CHANGE_EVENT = "left-check-change";
 var RIGHT_CHECK_CHANGE_EVENT = "right-check-change";
 var transferProps = buildProps({
@@ -50272,7 +50827,7 @@ var transferEmits = {
   [RIGHT_CHECK_CHANGE_EVENT]: transferCheckedChangeFn
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/transfer-panel.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/transfer-panel.mjs
 var CHECKED_CHANGE_EVENT = "checked-change";
 var transferPanelProps = buildProps({
   data: transferProps.data,
@@ -50291,7 +50846,7 @@ var transferPanelEmits = {
   [CHECKED_CHANGE_EVENT]: transferCheckedChangeFn
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/composables/use-props-alias.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/composables/use-props-alias.mjs
 var usePropsAlias = (props) => {
   const initProps = {
     label: "label",
@@ -50304,7 +50859,7 @@ var usePropsAlias = (props) => {
   }));
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/composables/use-check.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/composables/use-check.mjs
 var useCheck = (props, panelState, emit) => {
   const propsAlias = usePropsAlias(props);
   const filteredData = computed2(() => {
@@ -50388,7 +50943,7 @@ var useCheck = (props, panelState, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/composables/use-checked-change.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/composables/use-checked-change.mjs
 var useCheckedChange = (checkedState, emit) => {
   const onSourceCheckedChange = (val, movedKeys) => {
     checkedState.leftChecked = val;
@@ -50408,7 +50963,7 @@ var useCheckedChange = (checkedState, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/composables/use-computed-data.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/composables/use-computed-data.mjs
 var useComputedData = (props) => {
   const propsAlias = usePropsAlias(props);
   const dataObj = computed2(() => props.data.reduce((o2, cur) => (o2[cur[propsAlias.value.key]] = cur) && o2, {}));
@@ -50432,7 +50987,7 @@ var useComputedData = (props) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/composables/use-move.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/composables/use-move.mjs
 var useMove = (props, checkedState, emit) => {
   const propsAlias = usePropsAlias(props);
   const _emit = (value, direction2, movedKeys) => {
@@ -50467,12 +51022,12 @@ var useMove = (props, checkedState, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/transfer-panel2.mjs
-var __default__88 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/transfer-panel2.mjs
+var __default__92 = defineComponent({
   name: "ElTransferPanel"
 });
-var _sfc_main130 = defineComponent({
-  ...__default__88,
+var _sfc_main132 = defineComponent({
+  ...__default__92,
   props: transferPanelProps,
   emits: transferPanelEmits,
   setup(__props, { expose, emit }) {
@@ -50485,7 +51040,6 @@ var _sfc_main130 = defineComponent({
       checked: [],
       allChecked: false,
       query: "",
-      inputHover: false,
       checkChangeByUser: true
     });
     const propsAlias = usePropsAlias(props);
@@ -50497,7 +51051,7 @@ var _sfc_main130 = defineComponent({
     } = useCheck(props, panelState, emit);
     const hasNoMatch = computed2(() => !isEmpty2(panelState.query) && isEmpty2(filteredData.value));
     const hasFooter = computed2(() => !isEmpty2(slots.default()[0].children));
-    const { checked, allChecked, query, inputHover } = toRefs(panelState);
+    const { checked, allChecked, query } = toRefs(panelState);
     expose({
       query
     });
@@ -50534,13 +51088,11 @@ var _sfc_main130 = defineComponent({
             placeholder: _ctx.placeholder,
             "prefix-icon": unref(search_default),
             clearable: "",
-            "validate-event": false,
-            onMouseenter: _cache[2] || (_cache[2] = ($event) => inputHover.value = true),
-            onMouseleave: _cache[3] || (_cache[3] = ($event) => inputHover.value = false)
+            "validate-event": false
           }, null, 8, ["modelValue", "class", "placeholder", "prefix-icon"])) : createCommentVNode("v-if", true),
           withDirectives(createVNode(unref(ElCheckboxGroup), {
             modelValue: unref(checked),
-            "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => isRef(checked) ? checked.value = $event : null),
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => isRef(checked) ? checked.value = $event : null),
             "validate-event": false,
             class: normalizeClass([unref(ns2).is("filterable", _ctx.filterable), unref(ns2).be("panel", "list")])
           }, {
@@ -50585,16 +51137,16 @@ var _sfc_main130 = defineComponent({
     };
   }
 });
-var TransferPanel = _export_sfc(_sfc_main130, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/transfer/src/transfer-panel.vue"]]);
+var TransferPanel = _export_sfc(_sfc_main132, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/transfer/src/transfer-panel.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/src/transfer2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/src/transfer2.mjs
 var _hoisted_164 = { key: 0 };
 var _hoisted_239 = { key: 0 };
-var __default__89 = defineComponent({
+var __default__93 = defineComponent({
   name: "ElTransfer"
 });
-var _sfc_main131 = defineComponent({
-  ...__default__89,
+var _sfc_main133 = defineComponent({
+  ...__default__93,
   props: transferProps,
   emits: transferEmits,
   setup(__props, { expose, emit }) {
@@ -50729,12 +51281,12 @@ var _sfc_main131 = defineComponent({
     };
   }
 });
-var Transfer = _export_sfc(_sfc_main131, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/transfer/src/transfer.vue"]]);
+var Transfer = _export_sfc(_sfc_main133, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/transfer/src/transfer.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/transfer/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/transfer/index.mjs
 var ElTransfer = withInstall(Transfer);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/model/util.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/model/util.mjs
 var NODE_KEY = "$treeNodeId";
 var markNodeData = function(node, data) {
   if (!data || data[NODE_KEY])
@@ -50760,7 +51312,7 @@ var handleCurrentChange = (store, emit, setCurrent) => {
   emit("current-change", currentNode ? currentNode.data : null, currentNode);
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/model/node.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/model/node.mjs
 var getChildState = (node) => {
   let all = true;
   let none = true;
@@ -51182,7 +51734,7 @@ var Node2 = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/model/tree-store.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/model/tree-store.mjs
 var TreeStore = class {
   constructor(options) {
     this.currentNode = null;
@@ -51483,8 +52035,8 @@ var TreeStore = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/tree-node-content.mjs
-var _sfc_main132 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/tree-node-content.mjs
+var _sfc_main134 = defineComponent({
   name: "ElTreeNodeContent",
   props: {
     node: {
@@ -51504,9 +52056,9 @@ var _sfc_main132 = defineComponent({
     };
   }
 });
-var NodeContent2 = _export_sfc(_sfc_main132, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree/src/tree-node-content.vue"]]);
+var NodeContent2 = _export_sfc(_sfc_main134, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree/src/tree-node-content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/model/useNodeExpandEventBroadcast.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/model/useNodeExpandEventBroadcast.mjs
 function useNodeExpandEventBroadcast(props) {
   const parentNodeMap = inject("TreeNodeMap", null);
   const currentNodeMap = {
@@ -51532,7 +52084,7 @@ function useNodeExpandEventBroadcast(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/model/useDragNode.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/model/useDragNode.mjs
 var dragEventsKey = Symbol("dragEvents");
 function useDragNodeHandler({ props, ctx, el$, dropIndicator$, store }) {
   const ns2 = useNamespace("tree");
@@ -51676,8 +52228,8 @@ function useDragNodeHandler({ props, ctx, el$, dropIndicator$, store }) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/tree-node.mjs
-var _sfc_main133 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/tree-node.mjs
+var _sfc_main135 = defineComponent({
   name: "ElTreeNode",
   components: {
     ElCollapseTransition: _CollapseTransition,
@@ -51865,7 +52417,7 @@ var _sfc_main133 = defineComponent({
 });
 var _hoisted_165 = ["aria-expanded", "aria-disabled", "aria-checked", "draggable", "data-key"];
 var _hoisted_240 = ["aria-expanded"];
-function _sfc_render33(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render31(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_icon = resolveComponent("el-icon");
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_loading = resolveComponent("loading");
@@ -51970,9 +52522,9 @@ function _sfc_render33(_ctx, _cache, $props, $setup, $data, $options) {
     [vShow, _ctx.node.visible]
   ]);
 }
-var ElTreeNode = _export_sfc(_sfc_main133, [["render", _sfc_render33], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree/src/tree-node.vue"]]);
+var ElTreeNode = _export_sfc(_sfc_main135, [["render", _sfc_render31], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree/src/tree-node.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/model/useKeydown.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/model/useKeydown.mjs
 function useKeydown({ el$ }, store) {
   const ns2 = useNamespace("tree");
   const treeItems = shallowRef([]);
@@ -52056,8 +52608,8 @@ function useKeydown({ el$ }, store) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/src/tree.mjs
-var _sfc_main134 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/src/tree.mjs
+var _sfc_main136 = defineComponent({
   name: "ElTree",
   components: { ElTreeNode },
   props: {
@@ -52326,7 +52878,7 @@ var _sfc_main134 = defineComponent({
     };
   }
 });
-function _sfc_render34(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render32(_ctx, _cache, $props, $setup, $data, $options) {
   var _a;
   const _component_el_tree_node = resolveComponent("el-tree-node");
   return openBlock(), createElementBlock("div", {
@@ -52368,16 +52920,16 @@ function _sfc_render34(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 2);
 }
-var Tree = _export_sfc(_sfc_main134, [["render", _sfc_render34], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree/src/tree.vue"]]);
+var Tree = _export_sfc(_sfc_main136, [["render", _sfc_render32], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree/src/tree.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree/index.mjs
 Tree.install = (app) => {
   app.component(Tree.name, Tree);
 };
 var _Tree = Tree;
 var ElTree = _Tree;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-select/src/select.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-select/src/select.mjs
 var useSelect3 = (props, { attrs }, {
   tree,
   key
@@ -52412,7 +52964,7 @@ var useSelect3 = (props, { attrs }, {
   return result2;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-select/src/tree-select-option.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-select/src/tree-select-option.mjs
 var component = defineComponent({
   extends: ElOption,
   setup(props, ctx) {
@@ -52433,7 +52985,7 @@ var component = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-select/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-select/src/utils.mjs
 function isValidValue2(val) {
   return val || val === 0;
 }
@@ -52469,7 +53021,7 @@ function treeEach(treeData, callback, getChildren, parent2) {
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-select/src/tree.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-select/src/tree.mjs
 var useTree2 = (props, { attrs, slots, emit }, {
   select,
   tree,
@@ -52490,6 +53042,10 @@ var useTree2 = (props, { attrs, slots, emit }, {
   });
   const propsMap = computed2(() => ({
     value: key.value,
+    label: "label",
+    children: "children",
+    disabled: "disabled",
+    isLeaf: "isLeaf",
     ...props.props
   }));
   const getNodeValByProp = (prop, data) => {
@@ -52578,7 +53134,7 @@ var useTree2 = (props, { attrs, slots, emit }, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-select/src/cache-options.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-select/src/cache-options.mjs
 var CacheOptions = defineComponent({
   props: {
     data: {
@@ -52588,13 +53144,20 @@ var CacheOptions = defineComponent({
   },
   setup(props) {
     const select = inject(selectKey);
-    props.data.forEach((item) => select.cachedOptions.set(item.value, item));
+    watch(() => props.data, () => {
+      props.data.forEach((item) => {
+        if (!select.cachedOptions.has(item.value)) {
+          select.cachedOptions.set(item.value, item);
+        }
+      });
+      select.setSelected();
+    }, { immediate: true, deep: true });
     return () => void 0;
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-select/src/tree-select.mjs
-var _sfc_main135 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-select/src/tree-select.mjs
+var _sfc_main137 = defineComponent({
   name: "ElTreeSelect",
   inheritAttrs: false,
   props: {
@@ -52658,16 +53221,16 @@ var _sfc_main135 = defineComponent({
     });
   }
 });
-var TreeSelect = _export_sfc(_sfc_main135, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree-select/src/tree-select.vue"]]);
+var TreeSelect = _export_sfc(_sfc_main137, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree-select/src/tree-select.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-select/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-select/index.mjs
 TreeSelect.install = (app) => {
   app.component(TreeSelect.name, TreeSelect);
 };
 var _TreeSelect = TreeSelect;
 var ElTreeSelect = _TreeSelect;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-v2/src/virtual-tree.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-v2/src/virtual-tree.mjs
 var ROOT_TREE_INJECTION_KEY = Symbol();
 var EMPTY_NODE = {
   key: -1,
@@ -52705,6 +53268,7 @@ var treeProps = buildProps({
       label: "label",
       disabled: "disabled",
       value: "id"
+      /* KEY */
     })
   },
   highlightCurrent: {
@@ -52819,7 +53383,7 @@ var treeNodeEmits = {
   check: (node, checked) => node && typeof checked === "boolean"
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-v2/src/composables/useCheck.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-v2/src/composables/useCheck.mjs
 function useCheck2(props, tree) {
   const checkedKeys = ref(/* @__PURE__ */ new Set());
   const indeterminateKeys = ref(/* @__PURE__ */ new Set());
@@ -52993,7 +53557,7 @@ function useCheck2(props, tree) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-v2/src/composables/useFilter.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-v2/src/composables/useFilter.mjs
 function useFilter(props, tree) {
   const hiddenNodeKeySet = ref(/* @__PURE__ */ new Set([]));
   const hiddenExpandIconKeySet = ref(/* @__PURE__ */ new Set([]));
@@ -53061,7 +53625,7 @@ function useFilter(props, tree) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-v2/src/composables/useTree.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-v2/src/composables/useTree.mjs
 function useTree3(props, emit) {
   const expandedKeySet = ref(new Set(props.defaultExpandedKeys));
   const currentKey = ref();
@@ -53313,7 +53877,7 @@ function useTree3(props, emit) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-v2/src/tree-node-content.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-v2/src/tree-node-content.mjs
 var ElNodeContent = defineComponent({
   name: "ElTreeNodeContent",
   props: treeNodeContentProps,
@@ -53328,13 +53892,13 @@ var ElNodeContent = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-v2/src/tree-node.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-v2/src/tree-node.mjs
 var _hoisted_166 = ["aria-expanded", "aria-disabled", "aria-checked", "data-key", "onClick"];
-var __default__90 = defineComponent({
+var __default__94 = defineComponent({
   name: "ElTreeNode"
 });
-var _sfc_main136 = defineComponent({
-  ...__default__90,
+var _sfc_main138 = defineComponent({
+  ...__default__94,
   props: treeNodeProps,
   emits: treeNodeEmits,
   setup(__props, { emit }) {
@@ -53422,15 +53986,15 @@ var _sfc_main136 = defineComponent({
     };
   }
 });
-var ElTreeNode2 = _export_sfc(_sfc_main136, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree-v2/src/tree-node.vue"]]);
+var ElTreeNode2 = _export_sfc(_sfc_main138, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree-v2/src/tree-node.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-v2/src/tree.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-v2/src/tree.mjs
 var itemSize2 = 26;
-var __default__91 = defineComponent({
+var __default__95 = defineComponent({
   name: "ElTreeV2"
 });
-var _sfc_main137 = defineComponent({
-  ...__default__91,
+var _sfc_main139 = defineComponent({
+  ...__default__95,
   props: treeProps,
   emits: treeEmits,
   setup(__props, { expose, emit }) {
@@ -53539,12 +54103,12 @@ var _sfc_main137 = defineComponent({
     };
   }
 });
-var TreeV2 = _export_sfc(_sfc_main137, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree-v2/src/tree.vue"]]);
+var TreeV2 = _export_sfc(_sfc_main139, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tree-v2/src/tree.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/tree-v2/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/tree-v2/index.mjs
 var ElTreeV2 = withInstall(TreeV2);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/ajax.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/ajax.mjs
 var SCOPE7 = "ElUpload";
 var UploadAjaxError = class extends Error {
   constructor(message2, status, method5, url2) {
@@ -53626,7 +54190,7 @@ var ajaxUpload = (option) => {
   return xhr;
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/upload.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/upload.mjs
 var uploadListTypes = ["text", "picture", "picture-card"];
 var fileId = 1;
 var genFileId = () => Date.now() + fileId++;
@@ -53730,7 +54294,7 @@ var uploadProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/upload-list.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/upload-list.mjs
 var uploadListProps = buildProps({
   files: {
     type: definePropType(Array),
@@ -53754,17 +54318,17 @@ var uploadListEmits = {
   remove: (file) => !!file
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/upload-list2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/upload-list2.mjs
 var _hoisted_167 = ["onKeydown"];
 var _hoisted_241 = ["src"];
 var _hoisted_319 = ["onClick"];
 var _hoisted_411 = ["onClick"];
 var _hoisted_58 = ["onClick"];
-var __default__92 = defineComponent({
+var __default__96 = defineComponent({
   name: "ElUploadList"
 });
-var _sfc_main138 = defineComponent({
-  ...__default__92,
+var _sfc_main140 = defineComponent({
+  ...__default__96,
   props: uploadListProps,
   emits: uploadListEmits,
   setup(__props, { emit }) {
@@ -53917,9 +54481,9 @@ var _sfc_main138 = defineComponent({
     };
   }
 });
-var UploadList = _export_sfc(_sfc_main138, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/upload/src/upload-list.vue"]]);
+var UploadList = _export_sfc(_sfc_main140, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/upload/src/upload-list.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/upload-dragger.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/upload-dragger.mjs
 var uploadDraggerProps = buildProps({
   disabled: {
     type: Boolean,
@@ -53930,14 +54494,14 @@ var uploadDraggerEmits = {
   file: (file) => isArray(file)
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/upload-dragger2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/upload-dragger2.mjs
 var _hoisted_168 = ["onDrop", "onDragover"];
 var COMPONENT_NAME24 = "ElUploadDrag";
-var __default__93 = defineComponent({
+var __default__97 = defineComponent({
   name: COMPONENT_NAME24
 });
-var _sfc_main139 = defineComponent({
-  ...__default__93,
+var _sfc_main141 = defineComponent({
+  ...__default__97,
   props: uploadDraggerProps,
   emits: uploadDraggerEmits,
   setup(__props, { emit }) {
@@ -53952,6 +54516,7 @@ var _sfc_main139 = defineComponent({
       if (disabled.value)
         return;
       dragover.value = false;
+      e.stopPropagation();
       const files = Array.from(e.dataTransfer.files);
       const accept = uploaderContext.accept.value;
       if (!accept) {
@@ -53993,9 +54558,9 @@ var _sfc_main139 = defineComponent({
     };
   }
 });
-var UploadDragger = _export_sfc(_sfc_main139, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/upload/src/upload-dragger.vue"]]);
+var UploadDragger = _export_sfc(_sfc_main141, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/upload/src/upload-dragger.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/upload-content.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/upload-content.mjs
 var uploadContentProps = buildProps({
   ...uploadBaseProps,
   beforeUpload: {
@@ -54028,15 +54593,15 @@ var uploadContentProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/upload-content2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/upload-content2.mjs
 var _hoisted_169 = ["onKeydown"];
 var _hoisted_242 = ["name", "multiple", "accept"];
-var __default__94 = defineComponent({
+var __default__98 = defineComponent({
   name: "ElUploadContent",
   inheritAttrs: false
 });
-var _sfc_main140 = defineComponent({
-  ...__default__94,
+var _sfc_main142 = defineComponent({
+  ...__default__98,
   props: uploadContentProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -54192,9 +54757,9 @@ var _sfc_main140 = defineComponent({
     };
   }
 });
-var UploadContent = _export_sfc(_sfc_main140, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/upload/src/upload-content.vue"]]);
+var UploadContent = _export_sfc(_sfc_main142, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/upload/src/upload-content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/use-handlers.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/use-handlers.mjs
 var SCOPE8 = "ElUpload";
 var revokeObjectURL = (file) => {
   var _a;
@@ -54321,12 +54886,12 @@ var useHandlers = (props, uploadRef) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/src/upload2.mjs
-var __default__95 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/src/upload2.mjs
+var __default__99 = defineComponent({
   name: "ElUpload"
 });
-var _sfc_main141 = defineComponent({
-  ...__default__95,
+var _sfc_main143 = defineComponent({
+  ...__default__99,
   props: uploadProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -54433,12 +54998,12 @@ var _sfc_main141 = defineComponent({
     };
   }
 });
-var Upload = _export_sfc(_sfc_main141, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/upload/src/upload.vue"]]);
+var Upload = _export_sfc(_sfc_main143, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/upload/src/upload.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/upload/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/upload/index.mjs
 var ElUpload = withInstall(Upload);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/component.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/component.mjs
 var Components = [
   ElAffix,
   ElAlert,
@@ -54493,6 +55058,7 @@ var Components = [
   ElMenu,
   ElMenuItem,
   ElMenuItemGroup,
+  ElSubMenu,
   ElPageHeader,
   ElPagination,
   ElPopconfirm,
@@ -54514,6 +55080,8 @@ var Components = [
   ElSkeletonItem,
   ElSlider,
   ElSpace,
+  ElStatistic,
+  ElCountdown,
   ElSteps,
   ElStep,
   ElSwitch,
@@ -54536,7 +55104,7 @@ var Components = [
   ElUpload
 ];
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/infinite-scroll/src/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/infinite-scroll/src/index.mjs
 var SCOPE9 = "ElInfiniteScroll";
 var CHECK_INTERVAL = 50;
 var DEFAULT_DELAY = 200;
@@ -54647,22 +55215,23 @@ var InfiniteScroll = {
   async updated(el) {
     if (!el[SCOPE9]) {
       await nextTick();
-    }
-    const { containerEl, cb, observer } = el[SCOPE9];
-    if (containerEl.clientHeight && observer) {
-      checkFull(el, cb);
+    } else {
+      const { containerEl, cb, observer } = el[SCOPE9];
+      if (containerEl.clientHeight && observer) {
+        checkFull(el, cb);
+      }
     }
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/infinite-scroll/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/infinite-scroll/index.mjs
 var _InfiniteScroll = InfiniteScroll;
 _InfiniteScroll.install = (app) => {
   app.directive("InfiniteScroll", _InfiniteScroll);
 };
 var ElInfiniteScroll = _InfiniteScroll;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/loading/src/loading.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/loading/src/loading.mjs
 function createLoadingComponent(options) {
   let afterLeaveTimer;
   const ns2 = useNamespace("loading");
@@ -54772,7 +55341,7 @@ function createLoadingComponent(options) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/loading/src/service.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/loading/src/service.mjs
 var fullscreenInstance = void 0;
 var Loading = function(options = {}) {
   if (!isClient)
@@ -54867,7 +55436,7 @@ var addClassList = (options, parent2, instance) => {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/loading/src/directive.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/loading/src/directive.mjs
 var INSTANCE_KEY = Symbol("ElLoading");
 var createInstance = (el, binding) => {
   var _a, _b, _c, _d;
@@ -54930,7 +55499,7 @@ var vLoading = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/loading/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/loading/index.mjs
 var ElLoading = {
   install(app) {
     app.directive("loading", vLoading);
@@ -54940,7 +55509,7 @@ var ElLoading = {
   service: Loading
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/message/src/message.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/message/src/message.mjs
 var messageTypes = ["success", "info", "warning", "error"];
 var messageDefaults = mutable({
   customClass: "",
@@ -55026,10 +55595,10 @@ var messageEmits = {
   destroy: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/message/src/instance.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/message/src/instance.mjs
 var instances = shallowReactive([]);
-var getInstance = (id2) => {
-  const idx = instances.findIndex((instance) => instance.id === id2);
+var getInstance = (id) => {
+  const idx = instances.findIndex((instance) => instance.id === id);
   const current = instances[idx];
   let prev;
   if (idx > 0) {
@@ -55037,21 +55606,25 @@ var getInstance = (id2) => {
   }
   return { current, prev };
 };
-var getLastOffset = (id2) => {
-  const { prev } = getInstance(id2);
+var getLastOffset = (id) => {
+  const { prev } = getInstance(id);
   if (!prev)
     return 0;
   return prev.vm.exposed.bottom.value;
 };
+var getOffsetOrSpace = (id, offset2) => {
+  const idx = instances.findIndex((instance) => instance.id === id);
+  return idx > 0 ? 20 : offset2;
+};
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/message/src/message2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/message/src/message2.mjs
 var _hoisted_170 = ["id"];
 var _hoisted_243 = ["innerHTML"];
-var __default__96 = defineComponent({
+var __default__100 = defineComponent({
   name: "ElMessage"
 });
-var _sfc_main142 = defineComponent({
-  ...__default__96,
+var _sfc_main144 = defineComponent({
+  ...__default__100,
   props: messageProps,
   emits: messageEmits,
   setup(__props, { expose }) {
@@ -55069,7 +55642,7 @@ var _sfc_main142 = defineComponent({
     });
     const iconComponent = computed2(() => props.icon || TypeComponentsMap[props.type] || "");
     const lastOffset = computed2(() => getLastOffset(props.id));
-    const offset2 = computed2(() => props.offset + lastOffset.value);
+    const offset2 = computed2(() => getOffsetOrSpace(props.id, props.offset) + lastOffset.value);
     const bottom = computed2(() => height.value + offset2.value);
     const customStyle = computed2(() => ({
       top: `${offset2.value}px`,
@@ -55180,9 +55753,9 @@ var _sfc_main142 = defineComponent({
     };
   }
 });
-var MessageConstructor = _export_sfc(_sfc_main142, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/message/src/message.vue"]]);
+var MessageConstructor = _export_sfc(_sfc_main144, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/message/src/message.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/message/src/method.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/message/src/method.mjs
 var seed = 1;
 var normalizeOptions = (params) => {
   const options = !params || isString(params) || isVNode(params) || isFunction(params) ? { message: params } : params;
@@ -55212,13 +55785,13 @@ var closeMessage = (instance) => {
 };
 var createMessage = ({ appendTo, ...options }, context) => {
   const { nextZIndex } = useZIndex();
-  const id2 = `message_${seed++}`;
+  const id = `message_${seed++}`;
   const userOnClose = options.onClose;
   const container = document.createElement("div");
   const props = {
     ...options,
     zIndex: nextZIndex() + options.zIndex,
-    id: id2,
+    id,
     onClose: () => {
       userOnClose == null ? void 0 : userOnClose();
       closeMessage(instance);
@@ -55240,7 +55813,7 @@ var createMessage = ({ appendTo, ...options }, context) => {
     }
   };
   const instance = {
-    id: id2,
+    id,
     vnode,
     vm,
     handler,
@@ -55286,11 +55859,11 @@ function closeAll(type4) {
 message.closeAll = closeAll;
 message._context = null;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/message/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/message/index.mjs
 var ElMessage = withInstallFunction(message, "$message");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/message-box/src/index.mjs
-var _sfc_main143 = defineComponent({
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/message-box/src/index.mjs
+var _sfc_main145 = defineComponent({
   name: "ElMessageBox",
   directives: {
     TrapFocus
@@ -55559,7 +56132,7 @@ var _sfc_main143 = defineComponent({
 var _hoisted_171 = ["aria-label", "aria-describedby"];
 var _hoisted_244 = ["aria-label"];
 var _hoisted_320 = ["id"];
-function _sfc_render35(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render33(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_icon = resolveComponent("el-icon");
   const _component_close = resolveComponent("close");
   const _component_el_input = resolveComponent("el-input");
@@ -55757,9 +56330,9 @@ function _sfc_render35(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   });
 }
-var MessageBoxConstructor = _export_sfc(_sfc_main143, [["render", _sfc_render35], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/message-box/src/index.vue"]]);
+var MessageBoxConstructor = _export_sfc(_sfc_main145, [["render", _sfc_render33], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/message-box/src/index.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/message-box/src/messageBox.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/message-box/src/messageBox.mjs
 var messageInstance = /* @__PURE__ */ new Map();
 var getAppendToElement = (props) => {
   let appendTo = document.body;
@@ -55887,7 +56460,7 @@ MessageBox.close = () => {
 };
 MessageBox._context = null;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/message-box/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/message-box/index.mjs
 var _MessageBox = MessageBox;
 _MessageBox.install = (app) => {
   _MessageBox._context = app._context;
@@ -55899,7 +56472,7 @@ _MessageBox.install = (app) => {
 };
 var ElMessageBox = _MessageBox;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/notification/src/notification.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/notification/src/notification.mjs
 var notificationTypes = [
   "success",
   "info",
@@ -55969,16 +56542,16 @@ var notificationEmits = {
   destroy: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/notification/src/notification2.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/notification/src/notification2.mjs
 var _hoisted_173 = ["id"];
 var _hoisted_245 = ["textContent"];
 var _hoisted_321 = { key: 0 };
 var _hoisted_412 = ["innerHTML"];
-var __default__97 = defineComponent({
+var __default__101 = defineComponent({
   name: "ElNotification"
 });
-var _sfc_main144 = defineComponent({
-  ...__default__97,
+var _sfc_main146 = defineComponent({
+  ...__default__101,
   props: notificationProps,
   emits: notificationEmits,
   setup(__props, { expose }) {
@@ -56105,9 +56678,9 @@ var _sfc_main144 = defineComponent({
     };
   }
 });
-var NotificationConstructor = _export_sfc(_sfc_main144, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/notification/src/notification.vue"]]);
+var NotificationConstructor = _export_sfc(_sfc_main146, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/notification/src/notification.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/notification/src/notify.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/notification/src/notify.mjs
 var notifications = {
   "top-left": [],
   "top-right": [],
@@ -56130,15 +56703,15 @@ var notify = function(options = {}, context = null) {
   });
   verticalOffset += GAP_SIZE;
   const { nextZIndex } = useZIndex();
-  const id2 = `notification_${seed2++}`;
+  const id = `notification_${seed2++}`;
   const userOnClose = options.onClose;
   const props = {
-    ...options,
     zIndex: nextZIndex(),
+    ...options,
     offset: verticalOffset,
-    id: id2,
+    id,
     onClose: () => {
-      close(id2, position, userOnClose);
+      close(id, position, userOnClose);
     }
   };
   let appendTo = document.body;
@@ -56182,11 +56755,11 @@ notificationTypes.forEach((type4) => {
     });
   };
 });
-function close(id2, position, userOnClose) {
+function close(id, position, userOnClose) {
   const orientedNotifications = notifications[position];
   const idx = orientedNotifications.findIndex(({ vm: vm2 }) => {
     var _a;
-    return ((_a = vm2.component) == null ? void 0 : _a.props.id) === id2;
+    return ((_a = vm2.component) == null ? void 0 : _a.props.id) === id;
   });
   if (idx === -1)
     return;
@@ -56217,10 +56790,10 @@ function closeAll2() {
 notify.closeAll = closeAll2;
 notify._context = null;
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/components/notification/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/components/notification/index.mjs
 var ElNotification = withInstallFunction(notify, "$notify");
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/plugin.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/plugin.mjs
 var Plugins = [
   ElInfiniteScroll,
   ElLoading,
@@ -56230,10 +56803,10 @@ var Plugins = [
   ElPopoverDirective
 ];
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/defaults.mjs
 var installer = makeInstaller([...Components, ...Plugins]);
 
-// ../node_modules/.pnpm/element-plus@2.2.26_vue@3.2.45/node_modules/element-plus/es/index.mjs
+// ../node_modules/.pnpm/element-plus@2.2.32_vue@3.2.47/node_modules/element-plus/es/index.mjs
 var import_dayjs17 = __toESM(require_dayjs_min(), 1);
 var install = installer.install;
 var version2 = installer.version;
@@ -56287,6 +56860,7 @@ export {
   ElColorPicker,
   ElConfigProvider,
   ElContainer,
+  ElCountdown,
   ElDatePicker,
   ElDescriptions,
   ElDescriptionsItem,
@@ -56344,6 +56918,7 @@ export {
   ElSkeletonItem,
   ElSlider,
   ElSpace,
+  ElStatistic,
   ElStep,
   ElSteps,
   ElSubMenu,
@@ -56427,6 +57002,8 @@ export {
   carouselEmits,
   carouselItemProps,
   carouselProps,
+  cascaderEmits,
+  cascaderProps,
   checkTagEmits,
   checkTagProps,
   checkboxEmits,
@@ -56446,6 +57023,8 @@ export {
   componentSizes,
   configProviderContextKey,
   configProviderProps,
+  countdownEmits,
+  countdownProps,
   createModelToggleComposable,
   dateEquals,
   datePickTypes,
@@ -56548,6 +57127,7 @@ export {
   sliderEmits,
   sliderProps,
   spaceProps,
+  statisticProps,
   stepProps,
   stepsEmits,
   stepsProps,
@@ -56614,6 +57194,7 @@ export {
   useModelToggleProps,
   useNamespace,
   useOrderedChildren,
+  usePopper,
   usePopperArrowProps,
   usePopperContainer,
   usePopperContainerId,

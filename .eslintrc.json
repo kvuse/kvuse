@@ -1,0 +1,11 @@
+{
+  "extends": ["@kvuse/eslint-config", "./.eslintrc-auto-import.json"],
+  "rules": {
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "import/extensions": "off",
+    "vue/multi-word-component-names": "off"
+  },
+  "globals": {
+    "defineOptions": true
+  }
+}
