@@ -100,12 +100,15 @@ const me = {
       }, document.addEventListener("keydown", e.handler);
     },
     updated(e) {
-      document.addEventListener("click", e.handler);
+      document.addEventListener("keydown", e.handler);
     },
     unmounted: (e) => {
       document.removeEventListener("keydown", e.handler);
     }
   },
+  /**
+   * 按钮点击防抖
+   */
   button: {
     mounted: (e, t) => {
       e.handler = function() {

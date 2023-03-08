@@ -111,12 +111,15 @@ export const directives = {
       document.addEventListener('keydown', el.handler);
     },
     updated(el) {
-      document.addEventListener('click', el.handler);
+      document.addEventListener('keydown', el.handler);
     },
     unmounted: (el) => {
       document.removeEventListener('keydown', el.handler);
     },
   },
+  /**
+   * 按钮点击防抖
+   */
   button: {
     mounted: (el, binding) => {
       el.handler = function () {
