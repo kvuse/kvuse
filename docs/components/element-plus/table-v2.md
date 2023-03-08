@@ -39,20 +39,18 @@
   { attr :'prop', dec: '对应列的数据', type: 'string', optional: '-', default: '' },
   { attr :'width', dec: '对应列的宽度', type: 'string', optional: '-', default: '' },
   { attr :'minWidth', dec: '对应列的最小宽度', type: 'string', optional: '-', default: '' },
-  { attr :'type', dec: '对应列的类型。 如果设置了selection则显示多选框, 如果设置了 expand 则显示为一个可展开的按钮', type: 'string', optional: 'selection / expand', default: '' },
   { attr :'sortable', dec: '对应列是否可以排序', type: 'boolean', optional: '-', default: 'false' },
   { attr :'show-overflow-tooltip', dec: '当内容过长被隐藏时显示 tooltip', type: 'boolean', optional: '-', default: 'true' },
   { attr :'fixed', dec: '列是否固定在左侧`left`或者右侧`right`, true 表示固定在左侧', type: 'string / boolean', optional: 'left / right /true', default: '' },
 ]" />
 
-## Table 事件
+## Table-v2 事件
 
 <v-table type="event" :data="[
-  { event :'current-change', dec: '当用户切换分页的触发该事件', callback: 'currengPage' },
-  { event :'sort-change', dec: '点击排序触发', callback: '{ prop, order, sortType, currentPage, column, sortColumn }' },
+  { event :'sort-change', dec: '点击排序触发', callback: '{  sortType, column }' },
 ]" />
 
-## Table-column slots
+## Table-column 插槽
 
 <v-table type="slot" :data="[
   { name :'default', dec: '默认插槽', child: '-' },
