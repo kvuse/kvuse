@@ -21,28 +21,42 @@ yarn add @kvuse/components
 import {
   KButton,
   KInput,
+  KInputNumber,
   KTable,
+  KTableV2,
   KPage,
   KBatchTable,
   KDialog,
   KBreadcrumb,
   KTabs,
   KPicker,
-  KNumberKeyboard
+  KTooltip,
+  KDatePicker,
+  KNumberKeyboard,
+  KVirtualList,
+  KAutoCounter,
+  KCollapseButton,
 } from '@kvuse/components';
 
 export default {
   components: {
     KButton,
     KInput,
+    KInputNumber,
     KTable,
+    KTableV2,
     KPage,
     KBatchTable,
     KDialog,
     KBreadcrumb,
     KTabs,
     KPicker,
+    KTooltip,
+    KDatePicker,
     KNumberKeyboard,
+    KVirtualList,
+    KAutoCounter,
+    KCollapseButton,
   },
 };
 ```
