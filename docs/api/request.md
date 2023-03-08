@@ -10,7 +10,7 @@ import { useRequest } from '@kvuse/core';
 const { $api } = useRequest();
 
 const getList = async () => {
-  const result = await $api.get('接口地址');
+  const result = await $api.get('接口地址','参数对象');
   console.log('result: ', result);
 };
 
@@ -100,7 +100,7 @@ const { $http } = useRequest({
 });
 
 const getList = async () => {
-  const { code, data, message } = await $http.get('接口地址');
+  const { code, data, message } = await $http.get('接口地址','参数对象');
   console.log('code, data, message: ', code, data, message);
 };
 
@@ -136,6 +136,30 @@ const getList = async () => {
 </script>
 ```
 
+## 排除去重
+
+:::warning
+请求默认接口连续请求会去重处理，如果业务不去重，可以设置排除去重的list  
+
+*排除接口添加请求方式，例如：`/order&get`*
+:::
+
+```js
+<script setup>
+import { useRequest } from '@kvuse/core';
+
+const { $api } = useRequest({
+  excludePeddings: ['/erp/order&post'],
+});
+
+const getList = async () => {
+  const result = await $api.get('/erp/order', '参数');
+  console.log('result: ', result);
+};
+
+</script>
+```
+
 ## 参数说明
 
 <v-table type="event" :data="[
@@ -145,4 +169,5 @@ const getList = async () => {
   { event :'responseHandler', dec: '响应处理', callback: 'response' },
   { event :'errorResponse', dec: '响应报错处理', callback: 'error, config' },
   { event :'errorHandler', dec: '报错信息处理, 默认message.error提示报错信息', callback: 'error' },
+  { event :'excludePeddings', dec: '不去重连续请求的接口列表 url&get', callback: '-' },
 ]" />

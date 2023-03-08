@@ -8,9 +8,10 @@ import { ElMessage } from 'element-plus';
  * @param {function} beforeResponse // 响应拦截
  * @param {function} responseHandler // 响应处理
  * @param {function} errorHandler 报错信息处理
+ * @param {array} excludePeddings  不去重连续请求的接口列表 url&get
  */
 export function useRequest({
-  instance = axios, beforeRequest, beforeResponse, responseHandler, errorHandler, errorResponse,
+  instance = axios, beforeRequest, beforeResponse, responseHandler, errorHandler, errorResponse, excludePeddings = [],
 } = {}) {
   let axiosInstance = instance;
   if (!axiosInstance) {
@@ -37,7 +38,7 @@ export function useRequest({
     const resUrl = `${config.url}&${config.method}`;
     // eslint-disable-next-line no-restricted-syntax
     for (const p in pending) {
-      if (pending[p].url === resUrl) { // 当当前请求在数组中存在时执行函数体
+      if (pending[p].url === resUrl && !excludePeddings.includes(resUrl)) { // 当当前请求在数组中存在时执行函数体
         pending[p].fn(); // 执行取消操作
         pending.splice(p, 1); // 把这条记录从数组中移除
       }
