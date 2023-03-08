@@ -1,4 +1,4 @@
-import { defineComponent as N, ref as k, computed as $, resolveComponent as S, openBlock as v, createBlock as M, mergeProps as I, withModifiers as Gt, withCtx as w, renderSlot as E, createElementBlock as _, createCommentVNode as R, withKeys as Ct, createSlots as ie, createElementVNode as C, watchEffect as Re, watch as U, nextTick as oe, normalizeClass as x, createVNode as T, unref as y, getCurrentScope as qt, onScopeDispose as Qt, getCurrentInstance as ce, onMounted as _e, warn as Xt, provide as at, inject as J, onBeforeUnmount as Zt, toRef as Oe, Transition as Jt, withDirectives as en, normalizeStyle as Y, vShow as tn, Fragment as A, reactive as Et, onUpdated as Vt, resolveDynamicComponent as We, useSlots as nn, Text as an, renderList as W, toDisplayString as L, createTextVNode as q, toRefs as on, isRef as Ge, normalizeProps as it, useCssVars as ln } from "vue";
+import { defineComponent as N, ref as k, computed as $, resolveComponent as S, openBlock as v, createBlock as M, mergeProps as I, withModifiers as Gt, withCtx as w, renderSlot as E, createElementBlock as _, createCommentVNode as R, withKeys as Ct, createSlots as ie, createElementVNode as C, watchEffect as Re, watch as U, nextTick as oe, normalizeClass as x, createVNode as T, unref as y, getCurrentScope as qt, onScopeDispose as Qt, getCurrentInstance as ce, onMounted as _e, warn as Xt, provide as at, inject as J, onBeforeUnmount as Zt, toRef as Oe, Transition as Jt, withDirectives as en, normalizeStyle as Y, vShow as tn, Fragment as A, reactive as Et, onUpdated as Vt, resolveDynamicComponent as We, useSlots as nn, Text as an, renderList as W, toDisplayString as K, createTextVNode as q, toRefs as on, isRef as Ge, normalizeProps as it, useCssVars as ln } from "vue";
 const me = {
   /**
    * 输入框得到焦点
@@ -99,8 +99,33 @@ const me = {
         (!c || f) && g && h && t.arg && t.arg(a);
       }, document.addEventListener("keydown", e.handler);
     },
+    updated(e) {
+      document.addEventListener("click", e.handler);
+    },
     unmounted: (e) => {
       document.removeEventListener("keydown", e.handler);
+    }
+  },
+  button: {
+    mounted: (e, t) => {
+      e.handler = function() {
+        const { delay: n = 800 } = t.value || {};
+        if (!document.contains(e)) {
+          document.removeEventListener("click", e.handler);
+          return;
+        }
+        e.classList.add("is-disabled"), e.disabled = !0;
+        const { once: o } = t.modifiers;
+        o || (e.timer = setTimeout(() => {
+          e.classList.remove("is-disabled"), e.disabled = !1, clearTimeout(e.timer);
+        }, n));
+      }, document.addEventListener("click", e.handler);
+    },
+    updated(e) {
+      document.addEventListener("click", e.handler);
+    },
+    unmounted: (e) => {
+      document.removeEventListener("click", e.handler);
     }
   }
 };
@@ -336,9 +361,9 @@ var Pn = /* @__PURE__ */ le(Nn, [["render", Hn], ["__file", "loading.vue"]]), Dn
 function Rn(e, t, n, a, o, l) {
   return v(), _("svg", An, In);
 }
-var Fn = /* @__PURE__ */ le(Dn, [["render", Rn], ["__file", "minus.vue"]]), Kn = {
+var Fn = /* @__PURE__ */ le(Dn, [["render", Rn], ["__file", "minus.vue"]]), Ln = {
   name: "Plus"
-}, Ln = {
+}, Kn = {
   viewBox: "0 0 1024 1024",
   xmlns: "http://www.w3.org/2000/svg"
 }, jn = /* @__PURE__ */ C("path", {
@@ -348,9 +373,9 @@ var Fn = /* @__PURE__ */ le(Dn, [["render", Rn], ["__file", "minus.vue"]]), Kn =
   jn
 ];
 function Un(e, t, n, a, o, l) {
-  return v(), _("svg", Ln, Yn);
+  return v(), _("svg", Kn, Yn);
 }
-var Wn = /* @__PURE__ */ le(Kn, [["render", Un], ["__file", "plus.vue"]]), Gn = {
+var Wn = /* @__PURE__ */ le(Ln, [["render", Un], ["__file", "plus.vue"]]), Gn = {
   name: "Warning"
 }, qn = {
   viewBox: "0 0 1024 1024",
@@ -403,8 +428,8 @@ const ea = N({
       const V = g === "increase", B = V ? r.value : l.value;
       if (e.disabled || B)
         return;
-      const Q = o.value ? 0 : s.value, F = a.value ? n.value : Q, K = V ? F + e.step : F - e.step;
-      p(K);
+      const Q = o.value ? 0 : s.value, F = a.value ? n.value : Q, L = V ? F + e.step : F - e.step;
+      p(L);
     }, p = (g) => {
       a.value = g;
       let V = g;
@@ -656,7 +681,7 @@ const xt = "__epPropKey", ne = (e) => e, ka = (e) => rt(e) && !!e[xt], Ht = (e, 
     return (a = ((n = t.proxy) == null ? void 0 : n.$props)[e]) != null ? a : void 0;
   });
 }, Ie = k();
-function Ke(e, t = void 0) {
+function Le(e, t = void 0) {
   const n = ce() ? J(Dt, Ie) : Ie;
   return e ? $(() => {
     var a, o;
@@ -665,7 +690,7 @@ function Ke(e, t = void 0) {
 }
 const Ea = (e, t, n = !1) => {
   var a;
-  const o = !!ce(), l = o ? Ke() : void 0, r = (a = t == null ? void 0 : t.provide) != null ? a : o ? at : void 0;
+  const o = !!ce(), l = o ? Le() : void 0, r = (a = t == null ? void 0 : t.provide) != null ? a : o ? at : void 0;
   if (!r) {
     ye("provideGlobalConfig", "provideGlobalConfig() can only be used inside setup().");
     return;
@@ -686,7 +711,7 @@ const Ea = (e, t, n = !1) => {
   values: Ca,
   required: !1
 }), Ta = (e, t = {}) => {
-  const n = k(void 0), a = t.prop ? n : It("size"), o = t.global ? n : Ke("size"), l = t.form ? { size: void 0 } : J(st, void 0), r = t.formItem ? { size: void 0 } : J(At, void 0);
+  const n = k(void 0), a = t.prop ? n : It("size"), o = t.global ? n : Le("size"), l = t.form ? { size: void 0 } : J(st, void 0), r = t.formItem ? { size: void 0 } : J(At, void 0);
   return $(() => a.value || y(e) || (r == null ? void 0 : r.size) || (l == null ? void 0 : l.size) || o.value || "");
 }, Ft = (e) => {
   const t = It("disabled"), n = J(st, void 0);
@@ -703,7 +728,7 @@ For more detail, please visit: ${o}
   let l = `${e}-${t}`;
   return n && (l += `-${n}`), a && (l += `__${a}`), o && (l += `--${o}`), l;
 }, fe = (e) => {
-  const t = Ke("namespace", Na);
+  const t = Le("namespace", Na);
   return {
     namespace: t,
     b: (i = "") => te(t.value, e, i, "", ""),
@@ -847,16 +872,16 @@ const Je = Fe(Da), se = 4, Aa = {
       const D = (o.value.getBoundingClientRect()[f.value.direction] - z[f.value.client]) * -1, ee = l.value[f.value.offset] - b, he = (D - ee) * 100 * h.value / o.value[f.value.offset];
       n.wrapElement[f.value.scroll] = he * n.wrapElement[f.value.scrollSize] / 100;
     }, B = () => {
-      u = !1, r.value[f.value.axis] = 0, document.removeEventListener("mousemove", V), document.removeEventListener("mouseup", B), K(), c && (s.value = !1);
+      u = !1, r.value[f.value.axis] = 0, document.removeEventListener("mousemove", V), document.removeEventListener("mouseup", B), L(), c && (s.value = !1);
     }, Q = () => {
       c = !1, s.value = !!t.size;
     }, F = () => {
       c = !0, s.value = u;
     };
     Zt(() => {
-      K(), document.removeEventListener("mouseup", B);
+      L(), document.removeEventListener("mouseup", B);
     });
-    const K = () => {
+    const L = () => {
       document.onselectstart !== d && (document.onselectstart = d);
     };
     return qe(Oe(n, "scrollbarElement"), "mousemove", Q), qe(Oe(n, "scrollbarElement"), "mouseleave", F), (z, b) => (v(), M(Jt, {
@@ -886,7 +911,7 @@ const Je = Fe(Da), se = 4, Aa = {
   }
 });
 var bt = /* @__PURE__ */ pe(Fa, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/thumb.vue"]]);
-const Ka = de({
+const La = de({
   always: {
     type: Boolean,
     default: !0
@@ -901,9 +926,9 @@ const Ka = de({
     type: Number,
     default: 1
   }
-}), La = /* @__PURE__ */ N({
+}), Ka = /* @__PURE__ */ N({
   __name: "bar",
-  props: Ka,
+  props: La,
   setup(e, { expose: t }) {
     const n = e, a = k(0), o = k(0);
     return t({
@@ -930,7 +955,7 @@ const Ka = de({
     ], 64));
   }
 });
-var ja = /* @__PURE__ */ pe(La, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/bar.vue"]]);
+var ja = /* @__PURE__ */ pe(Ka, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/bar.vue"]]);
 const Ya = de({
   height: {
     type: [String, Number],
@@ -1007,7 +1032,7 @@ const Ya = de({
         return;
       }
       u.value.scrollTop = b;
-    }, K = (b) => {
+    }, L = (b) => {
       if (!re(b)) {
         ye(et, "value must be a number");
         return;
@@ -1038,7 +1063,7 @@ const Ya = de({
       update: z,
       scrollTo: Q,
       setScrollTop: F,
-      setScrollLeft: K,
+      setScrollLeft: L,
       handleScroll: B
     }), (b, D) => (v(), _("div", {
       ref_key: "scrollbarRef",
@@ -1086,7 +1111,7 @@ const Qa = Fe(qa), Xa = (e, t) => {
     scope: "props",
     ref: "https://element-plus.org/en-US/component/button.html#button-attributes"
   }, $(() => e.type === "text"));
-  const n = J(Pt, void 0), a = Ke("button"), { form: o } = za(), l = Ta($(() => n == null ? void 0 : n.size)), r = Ft(), s = k(), u = nn(), c = $(() => e.type || (n == null ? void 0 : n.type) || ""), d = $(() => {
+  const n = J(Pt, void 0), a = Le("button"), { form: o } = za(), l = Ta($(() => n == null ? void 0 : n.size)), r = Ft(), s = k(), u = nn(), c = $(() => e.type || (n == null ? void 0 : n.type) || ""), d = $(() => {
     var h, i, p;
     return (p = (i = e.autoInsertSpace) != null ? i : (h = a.value) == null ? void 0 : h.autoInsertSpace) != null ? p : !1;
   }), f = $(() => {
@@ -1171,7 +1196,7 @@ function to(e) {
 function no(e) {
   return typeof e == "string" && e.indexOf("%") !== -1;
 }
-function Kt(e) {
+function Lt(e) {
   return e = parseFloat(e), (isNaN(e) || e < 0 || e > 1) && (e = 1), e;
 }
 function Se(e) {
@@ -1209,7 +1234,7 @@ function yt(e, t, n) {
   }
   return { h: l, s: r, l: s };
 }
-function Le(e, t, n) {
+function Ke(e, t, n) {
   return n < 0 && (n += 1), n > 1 && (n -= 1), n < 1 / 6 ? e + (t - e) * (6 * n) : n < 1 / 2 ? t : n < 2 / 3 ? e + (t - e) * (2 / 3 - n) * 6 : e;
 }
 function oo(e, t, n) {
@@ -1218,7 +1243,7 @@ function oo(e, t, n) {
     o = n, l = n, a = n;
   else {
     var r = n < 0.5 ? n * (1 + t) : n + t - n * t, s = 2 * n - r;
-    a = Le(s, r, e + 1 / 3), o = Le(s, r, e), l = Le(s, r, e - 1 / 3);
+    a = Ke(s, r, e + 1 / 3), o = Ke(s, r, e), l = Ke(s, r, e - 1 / 3);
   }
   return { r: a * 255, g: o * 255, b: l * 255 };
 }
@@ -1433,7 +1458,7 @@ var nt = {
 };
 function io(e) {
   var t = { r: 0, g: 0, b: 0 }, n = 1, a = null, o = null, l = null, r = !1, s = !1;
-  return typeof e == "string" && (e = po(e)), typeof e == "object" && (G(e.r) && G(e.g) && G(e.b) ? (t = ao(e.r, e.g, e.b), r = !0, s = String(e.r).substr(-1) === "%" ? "prgb" : "rgb") : G(e.h) && G(e.s) && G(e.v) ? (a = Se(e.s), o = Se(e.v), t = lo(e.h, a, o), r = !0, s = "hsv") : G(e.h) && G(e.s) && G(e.l) && (a = Se(e.s), l = Se(e.l), t = oo(e.h, a, l), r = !0, s = "hsl"), Object.prototype.hasOwnProperty.call(e, "a") && (n = e.a)), n = Kt(n), {
+  return typeof e == "string" && (e = po(e)), typeof e == "object" && (G(e.r) && G(e.g) && G(e.b) ? (t = ao(e.r, e.g, e.b), r = !0, s = String(e.r).substr(-1) === "%" ? "prgb" : "rgb") : G(e.h) && G(e.s) && G(e.v) ? (a = Se(e.s), o = Se(e.v), t = lo(e.h, a, o), r = !0, s = "hsv") : G(e.h) && G(e.s) && G(e.l) && (a = Se(e.s), l = Se(e.l), t = oo(e.h, a, l), r = !0, s = "hsl"), Object.prototype.hasOwnProperty.call(e, "a") && (n = e.a)), n = Lt(n), {
     ok: r,
     format: e.format || s,
     r: Math.min(255, Math.max(t.r, 0)),
@@ -1516,7 +1541,7 @@ var ho = (
     }, e.prototype.getAlpha = function() {
       return this.a;
     }, e.prototype.setAlpha = function(t) {
-      return this.a = Kt(t), this.roundA = Math.round(100 * this.a) / 100, this;
+      return this.a = Lt(t), this.roundA = Math.round(100 * this.a) / 100, this;
     }, e.prototype.isMonochrome = function() {
       var t = this.toHsl().s;
       return t === 0;
@@ -1794,11 +1819,11 @@ const _o = {
     ], 2));
   }
 });
-var Lt = /* @__PURE__ */ pe(wo, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button-group.vue"]]);
+var Kt = /* @__PURE__ */ pe(wo, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button-group.vue"]]);
 const ko = Fe(yo, {
-  ButtonGroup: Lt
+  ButtonGroup: Kt
 });
-Sa(Lt);
+Sa(Kt);
 function So(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
@@ -2125,7 +2150,7 @@ function xo(e, t, n, a, o, l) {
               item: d.row,
               row: d.row,
               index: d.$index
-            }) : (v(), _("span", zo, L(d.row[c.prop] ?? "-"), 1))
+            }) : (v(), _("span", zo, K(d.row[c.prop] ?? "-"), 1))
           ]),
           _: 2
         }, [
@@ -2234,7 +2259,7 @@ function Ao(e, t, n, a, o, l) {
               row: s,
               index: u
             }, () => [
-              q(L(s.name), 1)
+              q(K(s.name), 1)
             ], !0)
           ], 14, Do))), 128))
         ], 4)
@@ -2292,12 +2317,12 @@ const Io = N({
           "z-index": 5
         }, h === "left") {
           const F = (i = e.tableColumn.filter((b) => b.fixed === "left")) == null ? void 0 : i.length;
-          let K = 0;
-          B > 0 && B < Q - 1 && F > 1 && (K = (p = n.value) == null ? void 0 : p.at(B - 1).clientWidth), d.left = `${K}px`, e.tableColumn.findLastIndex((b) => b.fixed === "left") === B && (d["box-shadow"] = "3px 0px 4px #b0a8a836");
+          let L = 0;
+          B > 0 && B < Q - 1 && F > 1 && (L = (p = n.value) == null ? void 0 : p.at(B - 1).clientWidth), d.left = `${L}px`, e.tableColumn.findLastIndex((b) => b.fixed === "left") === B && (d["box-shadow"] = "3px 0px 4px #b0a8a836");
         } else {
           const F = (g = e.tableColumn.filter((b) => b.fixed && b.fixed !== "left")) == null ? void 0 : g.length;
-          let K = 0;
-          B < Q - 1 && F > 1 && (K = (V = n.value) == null ? void 0 : V.at(B + 1).clientWidth), e.tableColumn.findIndex((b) => b.fixed && b.fixed !== "left") === B && (d["box-shadow"] = "-3px 0 4px #b0a8a836"), d.right = `${K}px`;
+          let L = 0;
+          B < Q - 1 && F > 1 && (L = (V = n.value) == null ? void 0 : V.at(B + 1).clientWidth), e.tableColumn.findIndex((b) => b.fixed && b.fixed !== "left") === B && (d["box-shadow"] = "-3px 0 4px #b0a8a836"), d.right = `${L}px`;
         }
       }
       return d;
@@ -2320,7 +2345,7 @@ const Io = N({
 }), Ro = { class: "table-v2 el-table" }, Fo = {
   class: "table-header overflow",
   ref: "tableHeader"
-}, Ko = { class: "flex table-border-bottom header-content" }, Lo = {
+}, Lo = { class: "flex table-border-bottom header-content" }, Ko = {
   key: 0,
   class: "table-header-sort flex-column flex-center"
 }, jo = { class: "sort-wrapper" }, Yo = ["onClick"], Uo = ["onClick"], Wo = { class: "flex table-body" };
@@ -2328,7 +2353,7 @@ function Go(e, t, n, a, o, l) {
   const r = S("virtualList");
   return v(), _("div", Ro, [
     C("div", Fo, [
-      C("div", Ko, [
+      C("div", Lo, [
         (v(!0), _(A, null, W(e.tableColumn, (s, u) => (v(), _("div", {
           key: u,
           class: "header-column cell flex-align-center",
@@ -2337,9 +2362,9 @@ function Go(e, t, n, a, o, l) {
           style: Y([e.headerClass(s), e.headerCellStyle])
         }, [
           E(e.$slots, (s == null ? void 0 : s.header) ?? "default", {}, () => [
-            q(L(s.label), 1)
+            q(K(s.label), 1)
           ], !0),
-          s.sortable ? (v(), _("div", Lo, [
+          s.sortable ? (v(), _("div", Ko, [
             C("span", jo, [
               C("i", {
                 class: x(["sort-caret ascending", { "bottom-caret": e.sortType === "ascending" && e.selectedRow.prop == s.prop }]),
@@ -2376,7 +2401,7 @@ function Go(e, t, n, a, o, l) {
                   row: u,
                   index: c
                 }, () => [
-                  q(L(s[u.prop]), 1)
+                  q(K(s[u.prop]), 1)
                 ], !0)
               ], 2)
             ], 4))), 128))
@@ -2525,7 +2550,7 @@ function el(e, t, n, a, o, l) {
               column: c,
               row: d.row,
               index: d.$index
-            }) : (v(), _("span", Xo, L(d.row[c.prop] ?? "-"), 1))
+            }) : (v(), _("span", Xo, K(d.row[c.prop] ?? "-"), 1))
           ]),
           _: 2
         }, [
@@ -2680,7 +2705,7 @@ function il(e, t, n, a, o, l) {
             key: u,
             class: x({ "crumb-item": u !== e.list.length - 1 }),
             onClick: (c) => e.clickHandle(s, u)
-          }, L(s.title), 11, ul))), 128))
+          }, K(s.title), 11, ul))), 128))
         ]),
         _: 1
       })
@@ -2838,7 +2863,7 @@ function $l(e, t, n, a, o, l) {
               C("div", gl, [
                 C("span", null, [
                   q("已选择"),
-                  C("span", null, "(" + L(e.multipleSelection.length) + ")", 1)
+                  C("span", null, "(" + K(e.multipleSelection.length) + ")", 1)
                 ]),
                 T(d, {
                   text: "",
@@ -2869,7 +2894,7 @@ function $l(e, t, n, a, o, l) {
                       placement: "top"
                     }, {
                       default: w(() => [
-                        C("span", _l, L(e.getName(i)), 1)
+                        C("span", _l, K(e.getName(i)), 1)
                       ]),
                       _: 2
                     }, 1032, ["content"])
@@ -3207,7 +3232,7 @@ function zl(e, t, n, a, o, l) {
           onClick: (c) => e.clickHandleBtn(s)
         }, {
           default: w(() => [
-            q(L(s.name), 1)
+            q(K(s.name), 1)
           ]),
           _: 2
         }, 1032, ["type", "color", "onClick"])
@@ -3260,12 +3285,12 @@ const xl = N({
 }), Hl = { class: "auto-counter" }, Pl = { class: "mr5" }, Dl = { class: "ml5" };
 function Al(e, t, n, a, o, l) {
   return v(), _("div", Hl, [
-    C("span", Pl, L(e.prefix), 1),
+    C("span", Pl, K(e.prefix), 1),
     C("span", {
       class: "span-text",
       ref: "spanText"
-    }, L(e.autoinit ? e.setDeimals(e.start) : e.setDeimals(e.textValue)), 513),
-    C("span", Dl, L(e.suffix), 1)
+    }, K(e.autoinit ? e.setDeimals(e.start) : e.setDeimals(e.textValue)), 513),
+    C("span", Dl, K(e.suffix), 1)
   ]);
 }
 const De = /* @__PURE__ */ P(xl, [["render", Al]]);

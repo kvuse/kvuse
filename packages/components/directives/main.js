@@ -110,8 +110,36 @@ export const directives = {
       };
       document.addEventListener('keydown', el.handler);
     },
+    updated(el) {
+      document.addEventListener('click', el.handler);
+    },
     unmounted: (el) => {
       document.removeEventListener('keydown', el.handler);
+    },
+  },
+  button: {
+    mounted: (el, binding) => {
+      el.handler = function () {
+        const { delay = 800 } = binding.value || {};
+        const isHasEl = document.contains(el);
+        if (!isHasEl) { document.removeEventListener('click', el.handler); return; }
+        el.classList.add('is-disabled');
+        el.disabled = true;
+        const { once } = binding.modifiers;
+        if (once) return;
+        el.timer = setTimeout(() => {
+          el.classList.remove('is-disabled');
+          el.disabled = false;
+          clearTimeout(el.timer);
+        }, delay);
+      };
+      document.addEventListener('click', el.handler);
+    },
+    updated(el) {
+      document.addEventListener('click', el.handler);
+    },
+    unmounted: (el) => {
+      document.removeEventListener('click', el.handler);
     },
   },
 };

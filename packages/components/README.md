@@ -19,6 +19,7 @@ yarn add @kvuse/components
 
 ```js
 import {
+  directives,
   KButton,
   KInput,
   KInputNumber,
@@ -40,6 +41,7 @@ import {
 
 export default {
   components: {
+    directives,
     KButton,
     KInput,
     KInputNumber,
@@ -59,6 +61,23 @@ export default {
     KCollapseButton,
   },
 };
+```
+
+## 按需引入自定义指令
+
+```js
+import { directives } from '@kvuse/components';
+import { directive } from 'vue';
+
+export default {
+  name: 'MyComponent',
+  directives,
+  // 组件选项
+  setup() {
+    // 组件代码
+  }
+};
+
 ```
 
 ## 全局components
