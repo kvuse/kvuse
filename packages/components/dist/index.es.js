@@ -96,7 +96,7 @@ const me = {
         if (n = o, i && !d)
           return;
         const p = a.ctrlKey || a.metaKey, g = s === +p && r === l;
-        (!c || f) && g && h && t.arg && t.arg(a);
+        (!c || f || s) && g && h && t.arg && t.arg(a);
       }, document.addEventListener("keydown", e.handler);
     },
     updated(e) {

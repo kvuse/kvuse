@@ -26,6 +26,17 @@
 <<< @/example/element-plus/directives-keyboard/more.vue
 </demo>
 
+## 组合键监听
+
+:::tip
+组合键不受焦点限制
+:::
+
+<demo src="directives-keyboard/combination">
+
+<<< @/example/element-plus/directives-keyboard/combination.vue
+</demo>
+
 ## 焦点下可监听
 
 :::warning
@@ -47,3 +58,7 @@
 
 <<< @/example/element-plus/directives-keyboard/dialog.vue
 </demo>
+
+## 参数说明
+
+![参数说明](./keyboard.png)

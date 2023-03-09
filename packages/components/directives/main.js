@@ -106,7 +106,7 @@ export const directives = {
         if (isDialogVisible && !dialog) return;
         const modifierPressed = event.ctrlKey || event.metaKey;
         const isEqualKey = isCombination === +modifierPressed && buttonKey === currentKey;
-        if ((!isFocused || focus) && isEqualKey && isFast) binding.arg && binding.arg(event);
+        if ((!isFocused || focus || isCombination) && isEqualKey && isFast) binding.arg && binding.arg(event);
       };
       document.addEventListener('keydown', el.handler);
     },
