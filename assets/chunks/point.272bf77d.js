@@ -1,0 +1,1 @@
+import{h as a,r as l,o as s,c as p,b as r}from"../app.f022eeb2.js";const u={class:"width-240"},m={__name:"point",setup(c){const e=a("");return(_,o)=>{const t=l("k-input");return s(),p("div",u,[r(t,{point:3,placeholder:"可输入小数点后3位",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=n=>e.value=n)},null,8,["modelValue"])])}}};export{m as default};
