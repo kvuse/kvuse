@@ -81,14 +81,14 @@ const me = {
   keyboard: {
     mounted: (e, t) => {
       let n = 0;
-      e.binding = t, e.handler = function(a) {
-        const o = Date.now(), l = /^[a-zA-Z]{2,}/.test(a.key) ? a.key : a.key.toLocaleUpperCase(), { buttonKey: r, isCombination: s = 0 } = e.binding.value || {}, u = document.contains(e), c = a.target.tagName === "TEXTAREA" || a.target.tagName === "INPUT", {
+      e.handler = function(a) {
+        const o = Date.now(), l = /^[a-zA-Z]{2,}/.test(a.key) ? a.key : a.key.toLocaleUpperCase(), { buttonKey: r, isCombination: s = 0 } = t.value || e.valueKeys || {}, u = document.contains(e), c = a.target.tagName === "TEXTAREA" || a.target.tagName === "INPUT", {
           dialog: d,
           focus: f,
           long: m,
           any: h,
           fast: i
-        } = e.binding.modifiers;
+        } = t.modifiers;
         if (!u && !m) {
           document.removeEventListener("keydown", e.handler);
           return;
@@ -105,7 +105,7 @@ const me = {
       }, document.addEventListener("keydown", e.handler);
     },
     updated(e, t) {
-      e.binding = t, document.addEventListener("keydown", e.handler);
+      e.valueKeys = t.value, document.addEventListener("keydown", e.handler);
     },
     unmounted: (e) => {
       document.removeEventListener("keydown", e.handler);

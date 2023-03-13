@@ -90,16 +90,15 @@ export const directives = {
   keyboard: {
     mounted: (el, binding) => {
       let lastTime = 0;
-      el.binding = binding;
       el.handler = function (event) {
         const nowTime = Date.now();
         const currentKey = /^[a-zA-Z]{2,}/.test(event.key) ? event.key : event.key.toLocaleUpperCase();
-        const { buttonKey, isCombination = 0 } = el.binding.value || {};
+        const { buttonKey, isCombination = 0 } = binding.value || el.valueKeys || {};
         const isHasEl = document.contains(el);
         const isFocused = event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT';
         const {
           dialog, focus, long, any, fast,
-        } = el.binding.modifiers;
+        } = binding.modifiers;
         if (!isHasEl && !long) { document.removeEventListener('keydown', el.handler); return; }
         // any
         if (any && binding.arg) { binding.arg(event); return; }
@@ -114,7 +113,7 @@ export const directives = {
       document.addEventListener('keydown', el.handler);
     },
     updated(el, binding) {
-      el.binding = binding;
+      el.valueKeys = binding.value;
       document.addEventListener('keydown', el.handler);
     },
     unmounted: (el) => {
