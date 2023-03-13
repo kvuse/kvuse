@@ -1,1 +1,0 @@
-import{_ as o,r as c,f as a,o as e,c as n,g as r,i as _,w as i,e as l,F as d,d as m}from"../app.f44f3305.js";const u={},f=m("div",{class:"mb10"},"点击后设置不可点击，800ms后恢复",-1);function p(b,v){const t=c("el-button"),s=a("button");return e(),n(d,null,[f,r((e(),_(t,{type:"primary"},{default:i(()=>[l("防抖点击")]),_:1})),[[s]])],64)}const B=o(u,[["render",p]]);export{B as default};
