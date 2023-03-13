@@ -85,22 +85,25 @@ export const directives = {
    * @example
    * <div v-keyboard:[fn].focus="object"><div>  fn：执行的方法  object:{ buttonKey:'Enter' }
    * modifiers: { focus, dialog, any }
-   * focus：输入框焦点下是否可用 dialog：是否是弹框可用 any: 监听所有键值
+   * focus：输入框焦点下是否可用 dialog：是否是弹框可用 long:不主动断开，长监听 any: 监听所有键值 fast: 是否快速扫码
    */
   keyboard: {
     mounted: (el, binding) => {
       let lastTime = 0;
+      el.binding = binding;
       el.handler = function (event) {
         const nowTime = Date.now();
         const currentKey = /^[a-zA-Z]{2,}/.test(event.key) ? event.key : event.key.toLocaleUpperCase();
-        const { buttonKey, isCombination = 0 } = binding.value || {};
+        const { buttonKey, isCombination = 0 } = el.binding.value || {};
         const isHasEl = document.contains(el);
         const isFocused = event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT';
-        if (!isHasEl) { document.removeEventListener('keydown', el.handler); return; }
-        const { dialog, focus, any } = binding.modifiers;
+        const {
+          dialog, focus, long, any, fast,
+        } = el.binding.modifiers;
+        if (!isHasEl && !long) { document.removeEventListener('keydown', el.handler); return; }
         // any
         if (any && binding.arg) { binding.arg(event); return; }
-        const isFast = nowTime - lastTime > 30; // 解决扫码枪回车和单键回车冲突
+        const isFast = fast ? nowTime - lastTime > 30 : true; // 解决扫码枪回车和单键回车冲突
         const isDialogVisible = document.querySelector('.el-popup-parent--hidden') || document.querySelector('.is-message-box');
         lastTime = nowTime;
         if (isDialogVisible && !dialog) return;
@@ -110,7 +113,8 @@ export const directives = {
       };
       document.addEventListener('keydown', el.handler);
     },
-    updated(el) {
+    updated(el, binding) {
+      el.binding = binding;
       document.addEventListener('keydown', el.handler);
     },
     unmounted: (el) => {
@@ -123,26 +127,31 @@ export const directives = {
   button: {
     mounted: (el, binding) => {
       el.handler = function () {
-        const { delay = 800 } = binding.value || {};
-        const isHasEl = document.contains(el);
-        if (!isHasEl) { document.removeEventListener('click', el.handler); return; }
+        const { delay = 800, content } = binding.value || {};
         el.classList.add('is-disabled');
         el.disabled = true;
+        if (content) {
+          el.beforeText = el.textContent;
+          el.innerHTML = content;
+        }
         const { once } = binding.modifiers;
         if (once) return;
         el.timer = setTimeout(() => {
           el.classList.remove('is-disabled');
           el.disabled = false;
+          if (content) el.innerHTML = el.beforeText;
+          el.beforeText = null;
           clearTimeout(el.timer);
+          el.timer = null;
         }, delay);
       };
-      document.addEventListener('click', el.handler);
+      el.addEventListener('click', el.handler);
     },
     updated(el) {
-      document.addEventListener('click', el.handler);
+      el.addEventListener('click', el.handler);
     },
     unmounted: (el) => {
-      document.removeEventListener('click', el.handler);
+      el.removeEventListener('click', el.handler);
     },
   },
 };

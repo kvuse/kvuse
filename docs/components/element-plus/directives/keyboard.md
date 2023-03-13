@@ -59,6 +59,25 @@
 <<< @/example/element-plus/directives-keyboard/dialog.vue
 </demo>
 
+## 长监听
+
+:::warning
+设置`long`修饰符，处理组件缓存(`keepAlive`)状态下，切换组件监听不到问题
+:::
+
+<demo src="directives-keyboard/long">
+
+<<< @/example/element-plus/directives-keyboard/long.vue
+</demo>
+
 ## 参数说明
 
 ![参数说明](./keyboard.png)
+
+## 修饰符说明
+
+<v-table type="dec" :data="[
+  { name :'focus', dec: '焦状态下可监听' },
+  { name :'dialog', dec: '弹框状态下可监听' },
+  { name :'long', dec: '长监听，keep-alive下使用' },
+]" />

@@ -97,6 +97,10 @@ export function useItemList(){
       link: '/components/element-plus/directives/params',
     },
     {
+      text: 'v-button',
+      link: '/components/element-plus/directives/button',
+    },
+    {
       text: 'v-keyboard',
       link: '/components/element-plus/directives/keyboard',
     },

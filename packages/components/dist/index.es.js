@@ -76,31 +76,36 @@ const me = {
    * @example
    * <div v-keyboard:[fn].focus="object"><div>  fn：执行的方法  object:{ buttonKey:'Enter' }
    * modifiers: { focus, dialog, any }
-   * focus：输入框焦点下是否可用 dialog：是否是弹框可用 any: 监听所有键值
+   * focus：输入框焦点下是否可用 dialog：是否是弹框可用 long:不主动断开，长监听 any: 监听所有键值 fast: 是否快速扫码
    */
   keyboard: {
     mounted: (e, t) => {
       let n = 0;
-      e.handler = function(a) {
-        const o = Date.now(), l = /^[a-zA-Z]{2,}/.test(a.key) ? a.key : a.key.toLocaleUpperCase(), { buttonKey: r, isCombination: s = 0 } = t.value || {}, u = document.contains(e), c = a.target.tagName === "TEXTAREA" || a.target.tagName === "INPUT";
-        if (!u) {
+      e.binding = t, e.handler = function(a) {
+        const o = Date.now(), l = /^[a-zA-Z]{2,}/.test(a.key) ? a.key : a.key.toLocaleUpperCase(), { buttonKey: r, isCombination: s = 0 } = e.binding.value || {}, u = document.contains(e), c = a.target.tagName === "TEXTAREA" || a.target.tagName === "INPUT", {
+          dialog: d,
+          focus: f,
+          long: m,
+          any: h,
+          fast: i
+        } = e.binding.modifiers;
+        if (!u && !m) {
           document.removeEventListener("keydown", e.handler);
           return;
         }
-        const { dialog: d, focus: f, any: m } = t.modifiers;
-        if (m && t.arg) {
+        if (h && t.arg) {
           t.arg(a);
           return;
         }
-        const h = o - n > 30, i = document.querySelector(".el-popup-parent--hidden") || document.querySelector(".is-message-box");
-        if (n = o, i && !d)
+        const p = i ? o - n > 30 : !0, g = document.querySelector(".el-popup-parent--hidden") || document.querySelector(".is-message-box");
+        if (n = o, g && !d)
           return;
-        const p = a.ctrlKey || a.metaKey, g = s === +p && r === l;
-        (!c || f || s) && g && h && t.arg && t.arg(a);
+        const V = a.ctrlKey || a.metaKey, B = s === +V && r === l;
+        (!c || f || s) && B && p && t.arg && t.arg(a);
       }, document.addEventListener("keydown", e.handler);
     },
-    updated(e) {
-      document.addEventListener("keydown", e.handler);
+    updated(e, t) {
+      e.binding = t, document.addEventListener("keydown", e.handler);
     },
     unmounted: (e) => {
       document.removeEventListener("keydown", e.handler);
@@ -112,23 +117,19 @@ const me = {
   button: {
     mounted: (e, t) => {
       e.handler = function() {
-        const { delay: n = 800 } = t.value || {};
-        if (!document.contains(e)) {
-          document.removeEventListener("click", e.handler);
-          return;
-        }
-        e.classList.add("is-disabled"), e.disabled = !0;
+        const { delay: n = 800, content: a } = t.value || {};
+        e.classList.add("is-disabled"), e.disabled = !0, a && (e.beforeText = e.textContent, e.innerHTML = a);
         const { once: o } = t.modifiers;
         o || (e.timer = setTimeout(() => {
-          e.classList.remove("is-disabled"), e.disabled = !1, clearTimeout(e.timer);
+          e.classList.remove("is-disabled"), e.disabled = !1, a && (e.innerHTML = e.beforeText), e.beforeText = null, clearTimeout(e.timer), e.timer = null;
         }, n));
-      }, document.addEventListener("click", e.handler);
+      }, e.addEventListener("click", e.handler);
     },
     updated(e) {
-      document.addEventListener("click", e.handler);
+      e.addEventListener("click", e.handler);
     },
     unmounted: (e) => {
-      document.removeEventListener("click", e.handler);
+      e.removeEventListener("click", e.handler);
     }
   }
 };

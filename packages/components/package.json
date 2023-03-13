@@ -1,6 +1,6 @@
 {
   "name": "@kvuse/components",
-  "version": "1.2.10",
+  "version": "1.2.13",
   "description": "vue3 + elementPlus 常用组件",
   "homepage": "https://kvuse.github.io/kvuse/components/element-plus/",
   "keywords": [
@@ -10,7 +10,8 @@
     "elementPlus"
   ],
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
