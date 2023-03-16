@@ -1,5 +1,5 @@
 <template>
-  <k-table-v2 :table-data="tableData" :table-column="tableColumn" />
+  <k-table-v2 :table-data="tableData" :table-column="tableColumn" height="500px" />
 </template>
 
 <script setup>

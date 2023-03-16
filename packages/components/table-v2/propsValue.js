@@ -1,6 +1,8 @@
 export default {
   modelValue: { type: Array, default: () => [] },
   keyId: { type: String, default: 'id' },
+  rowStyle: { type: Object, default: () => ({}) },
+  rowClassName: { type: [Function, String, Object], default: '' },
   tableData: { type: Array, default: () => [] },
   tableColumn: {
     type: Array,
@@ -16,5 +18,5 @@ export default {
       background: '#f5f7fa', color: '#909399',
     }),
   },
-  height: { type: String, default: '500px' },
+  height: { type: String, default: '100%' },
 };

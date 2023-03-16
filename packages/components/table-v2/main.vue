@@ -1,5 +1,5 @@
 <template>
-  <div class="table-v2 el-table">
+  <div class="table-v2 el-table flex-column">
     <div class="table-header overflow" ref="tableHeader">
       <div class="flex table-border-bottom header-content">
         <template v-for="(item, index) in tableColumn" :key="index">
@@ -17,14 +17,14 @@
         </template>
       </div>
     </div>
-    <virtualList :data="tableData" :height="height" @scroll="scrollHandle">
-      <template #default="{ row }">
+    <virtualList :data="tableData" always ref="virtualRef" :row-class-name="rowClassName" v-bind="$attrs" :height="height" @scroll="scrollHandle">
+      <template #default="{ row, index:rowIndex }">
         <slot name="content">
           <div class="flex table-body">
-            <template v-for="(item, index) in tableColumn" :key="index">
-              <div class="cell header-column table-border-bottom flex-align-center" ref="bodyCell" :style="headerClass(item)">
-                <div :class="{'text-overflow':item.showOverflowTooltip}">
-                  <slot :name="item?.custom ?? 'default'" :row="item" :index="index">
+            <template v-for="item in tableColumn" :key="item.id">
+              <div class="cell table-row table-border-bottom flex-align-center" ref="bodyCell" :style="headerClass(item)">
+                <div :class="{'text-overflow':item.showOverflowTooltip ?? true }">
+                  <slot :name="item?.custom ?? 'default'" :row="row" :index="rowIndex">
                     {{ row[item.prop] }}
                   </slot>
                 </div>
@@ -53,8 +53,11 @@ export default defineComponent({
     const headerColmn = ref(null);
     const headerClass = (row) => {
       let classStyles = {};
-      const { align, width, fixed } = row;
+      const {
+        align, width, fixed, minWidth,
+      } = row;
       if (align) classStyles['text-center'] = `${align}`;
+      if (minWidth) classStyles['min-width'] = `${minWidth}`;
       if (width) {
         classStyles = {
           ...classStyles, width: `${width}`, flex: 'inherit', 'flex-shrink': 0,
@@ -72,7 +75,11 @@ export default defineComponent({
           let left = 0;
           if (rowIndex > 0 && rowIndex < tableLength - 1 && leftNum > 1) left = headerColmn.value?.at(rowIndex - 1).clientWidth;
           classStyles.left = `${left}px`;
-          const fixedEndIndex = props.tableColumn.findLastIndex((item) => item.fixed === 'left');
+          let fixedEndIndex = 0;
+          props.tableColumn.forEach((item, index) => {
+            if (item.fixed === 'left') fixedEndIndex = index;
+          });
+          // const fixedEndIndex = props.tableColumn?.findIndex((item) => item.fixed === 'left');
           if (fixedEndIndex === rowIndex) classStyles['box-shadow'] = '3px 0px 4px #b0a8a836';
         } else {
           const rightNum = props.tableColumn.filter((item) => item.fixed && item.fixed !== 'left')?.length;
@@ -104,8 +111,12 @@ export default defineComponent({
       emit('sort-change', ({ column, sortType: sortType.value }));
     };
 
+    const virtualRef = ref(null);
+
+    const setScrollTop = (num) => virtualRef.value?.viewport.setScrollTop(num);
+
     return {
-      ...toRefs(props), headerClass, tableHeader, scrollHandle, headerColmn, sortType, clickSortCaret, selectedRow,
+      ...toRefs(props), headerClass, tableHeader, scrollHandle, headerColmn, sortType, clickSortCaret, selectedRow, virtualRef, setScrollTop,
     };
   },
 });
@@ -114,18 +125,21 @@ export default defineComponent({
 <style lang="scss" scoped>
 .table-v2 {
   position: relative;
+  height: 100%;
 
   .table-border-bottom {
     border-bottom: 1px solid var(--el-border-color-lighter);
   }
 
   .cell {
-    padding: 0 12px;
+    padding: 8px 12px;
     flex: 1;
   }
 
-  .header-column {
-    padding: 8px 12px;
+  .table-body {
+    &:hover {
+      background-color: #f5f7fa;
+    }
   }
 
   .table-header {

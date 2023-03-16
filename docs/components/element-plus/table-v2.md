@@ -29,10 +29,12 @@
   { attr :'table-column', dec: '表格列表', type: 'array', optional: '-', default: '[]' },
   { attr :'table-data', dec: '表格数据', type: 'array', optional: '-', default: '[]' },
   { attr :'modelValue / v-model', dec: '绑定的当前页数', type: 'number', optional: '-', default: 1 },
-  { attr :'header-cell-style', dec: '表格头部样式', type: 'object', optional: '-', default: `{ background:'#f5f7fa', color:'#909399'}` }, { attr :'height', dec: '表格列表高度', type: 'string', optional: 'auto/string', default: '500px' }
+  { attr :'header-cell-style', dec: '表格头部样式', type: 'object', optional: '-', default: `{ background:'#f5f7fa', color:'#909399'}` }, { attr :'height', dec: '表格列表高度', type: 'string', optional: 'auto/string', default: '100%' },
+  { attr :'rowStyle', dec: 'row行的样式设置', type: 'object', optional: '-', default: {} },
+  { attr :'rowClassName', dec: '行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className', type: 'function({ row, rowIndex }) / string / object', optional: '-', default: '-' },
 ]" />
 
-## Table-column 属性
+## TableV2-column 属性
 
 <v-table type="attrs" :data="[
   { attr :'label', dec: '对应列的名字', type: 'string', optional: '-', default: '' },
@@ -47,13 +49,21 @@
 ## Table-v2 事件
 
 <v-table type="event" :data="[
+  { event :'row-click', dec: '当用户点击行触发该事件', callback: 'row,index' },
+  { event :'scroll', dec: '滚动条滚动触发，distance：滚动条到底部的距离，scrollTop：滚动条上滚的高度', callback: '{ distance, scrollTop }' },
   { event :'sort-change', dec: '点击排序触发', callback: '{  sortType, column }' },
 ]" />
 
-## Table-column 插槽
+## TableV2-column 插槽
 
 <v-table type="slot" :data="[
   { name :'default', dec: '默认插槽', child: '-' },
   { name :'custom', dec: '自定义内容插槽', child: '-' },
   { name :'header', dec: '自定义表头插槽', child: '-' },
+]" />
+
+## Exposes
+
+<v-table type="event" :data="[
+  { event :'setScrollTop', dec: '设置滚动条到顶部的距离', callback: '-' },
 ]" />

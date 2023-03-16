@@ -18,7 +18,9 @@ const tableColumn = [
   {
     label: '日期', prop: 'date', header: 'dateHeader', width: '200px', fixed: 'left',
   },
-  { label: '姓名', prop: 'name', width: '200px' },
+  {
+    label: '姓名', prop: 'name', width: '200px', fixed: 'left',
+  },
   { label: '地址', prop: 'address', width: '200px' },
   { label: '姓名', prop: 'name', width: '200px' },
   { label: '地址', prop: 'address', width: '200px' },

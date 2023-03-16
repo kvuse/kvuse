@@ -4,8 +4,8 @@
       <div class="list-contain" :style="{height:`${containHeight}px`}" />
       <div class="list-content" :style="{ transform: `translate3d(0,${startOffset}px,0)` }">
         <template v-for="(item, index) in listRanges" :key="index">
-          <div class="list-item" :class="rowClass" :style="rowStyle" @click="rowClick(item, index)">
-            <slot :row="item" :index="index">
+          <div class="list-item" :class="rowClassHandle(item, item.rowIndex)" :style="rowStyle" @click="rowClick(item, item.rowIndex)">
+            <slot :row="item" :index="item.rowIndex">
               {{ item.name }}
             </slot>
           </div>
@@ -26,8 +26,8 @@ export default defineComponent({
   components: { ElScrollbar },
   props: {
     height: { type: String, default: '500px' },
-    rowClass: { type: [String, Object], default: '' },
     rowStyle: { type: Object, default: () => ({}) },
+    rowClassName: { type: [Function, String, Object], default: '' },
     data: { type: Array, default: () => [] },
   },
   emits: ['scroll', 'row-click'],
@@ -43,7 +43,7 @@ export default defineComponent({
 
     const getEndIndex = () => {
       const { clientHeight = 100 } = viewport.value.wrapRef || {};
-      return Math.floor(clientHeight / itemHeight()) + startIndex.value;
+      return Math.ceil(clientHeight / itemHeight()) + startIndex.value;
     };
 
     // 列表总高度
@@ -58,13 +58,20 @@ export default defineComponent({
     const getStartIndex = (scrollTop) => Math.floor(scrollTop / itemHeight());
 
     // 获取startOffset
-    const getStartOffset = (index) => index * itemHeight();
+    const getStartOffset = (index) => Math.ceil(index * itemHeight());
 
     const showViewRanges = (index) => index >= startIndex.value && index <= endIndex.value;
 
     const listRanges = computed(() => props.data.filter((item, index) => showViewRanges(index)));
 
-    watch(() => props.data, () => {
+    watch(() => props.data, (val) => {
+      if (!val.length) {
+        startIndex.value = 0;
+        startOffset.value = 0;
+      }
+      props.data.forEach((item, index) => {
+        item.rowIndex = index;
+      });
       containHeight.value = props.data.length * itemHeight();
     });
 
@@ -81,8 +88,16 @@ export default defineComponent({
       emit('row-click', item, index);
     };
 
+    const rowClassHandle = (row, rowIndex) => {
+      if (typeof props.rowClassName === 'function') {
+        const data = props.rowClassName({ row, rowIndex });
+        return data;
+      }
+      return props.rowClassName;
+    };
+
     return {
-      startIndex, endIndex, startOffset, viewport, onScroll, showViewRanges, containHeight, listRanges, rowClick,
+      startIndex, endIndex, startOffset, viewport, onScroll, showViewRanges, containHeight, listRanges, rowClick, rowClassHandle,
     };
   },
 });
@@ -103,4 +118,5 @@ export default defineComponent({
 .list-item {
   box-sizing: border-box;
 }
+
 </style>

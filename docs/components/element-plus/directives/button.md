@@ -1,10 +1,6 @@
 
 # Button 按钮点击
 
-:::tip
-设置`v-keyboard`,可监听键盘事件，进行事件处理
-:::
-
 ## 基础使用
 
 <demo src="directives-button/b-basic">

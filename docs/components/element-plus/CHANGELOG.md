@@ -1,4 +1,16 @@
 
+# 1.2.15 (2023-03-16)
+
+### Features
+
+- 组件`table-v2`，添加`rowClassName`属性
+- 组件`table-v2`，添加`setScrollTop`事件, 可设置滚动条到顶部的距离
+- 组件`virtual-list`，加载列表性能的优化
+
+### Change
+
+- 组件`virtual-list`，修改`props`中的`rowClass`为`rowClassName`
+
 # 1.2.12 (2023-03-09)
 
 ### Add
@@ -17,11 +29,6 @@
 ### Add
 
 - 添加`collapse-button`组件，折叠按钮
-
-### Features
-
-- `collapse-button`添加`type = selection / expand`
-- 如果设置了selection则显示多选框, 如果设置了 expand 则显示为一个可展开的按钮
 
 # 1.2.5 (2023-02-16)
 
