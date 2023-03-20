@@ -21,7 +21,7 @@
       <template #default="{ row, index:rowIndex }">
         <slot name="content">
           <div class="flex table-body">
-            <template v-for="item in tableColumn" :key="item.id">
+            <template v-for="item in columnList" :key="item.keyId">
               <div class="cell table-row table-border-bottom flex-align-center" ref="bodyCell" :style="headerClass(item)">
                 <div :class="{'text-overflow':item.showOverflowTooltip ?? true }">
                   <slot :name="item?.custom ?? 'default'" :row="row" :index="rowIndex">
@@ -50,6 +50,7 @@ export default defineComponent({
   props: propsValue,
   emits: ['sort-change'],
   setup(props, { emit }) {
+    const columnList = computed(() => props.tableColumn.map((item, index) => ({ ...item, keyId: index })));
     const headerColmn = ref(null);
     const headerClass = (row) => {
       let classStyles = {};
@@ -116,7 +117,7 @@ export default defineComponent({
     const setScrollTop = (num) => virtualRef.value?.viewport.setScrollTop(num);
 
     return {
-      ...toRefs(props), headerClass, tableHeader, scrollHandle, headerColmn, sortType, clickSortCaret, selectedRow, virtualRef, setScrollTop,
+      ...toRefs(props), columnList, headerClass, tableHeader, scrollHandle, headerColmn, sortType, clickSortCaret, selectedRow, virtualRef, setScrollTop,
     };
   },
 });
