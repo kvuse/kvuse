@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress';
 import { useItemList, useApiList,useVantList } from './configList';
 
 const { componentsList, directiveList, otherList  } = useItemList();
-const { apiList } = useApiList();
+const { apiList,apiDirectiveList } = useApiList();
 const {vantComponets} = useVantList()
 
 export default defineConfig({
@@ -61,6 +61,10 @@ export default defineConfig({
         {
           text: 'API',
           items: apiList,
+        },
+        {
+          text: '自定义指令',
+          items: apiDirectiveList,
         },
       ],
       '/components/element-plus/': [

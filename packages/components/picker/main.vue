@@ -15,29 +15,33 @@
         </div>
       </el-col>
       <el-col :span="9">
-        <div class="col-right">
-          <div class="selete-header flex-between">
-            <span>已选择<span>({{ multipleSelection.length }})</span>
-            </span>
+        <slot name="right">
+          <div class="col-right">
+            <div class="selete-header flex-between">
+              <slot name="right-header">
+                <span>已选择<span>({{ multipleSelection.length }})</span>
+                </span>
 
-            <el-button text :disabled="!multipleSelection.length" @click="emptyHandler">
-              <el-icon><delete /></el-icon> 清空
-            </el-button>
-          </div>
-          <div class="selete-content">
-            <div class="flex-between pl10 pr10" :class="{'mt10':showCount}" v-for="item in multipleSelection" :key="getId(item)">
-              <div class="flex flex1 mr20 overflow">
-                <el-tooltip effect="dark" :content="getName(item)" placement="top">
-                  <span class="text-overflow">{{ getName(item) }}</span>
-                </el-tooltip>
+                <el-button text :disabled="!multipleSelection.length" @click="emptyHandler">
+                  <el-icon><delete /></el-icon> 清空
+                </el-button>
+              </slot>
+            </div>
+            <div class="selete-content">
+              <div class="flex-between pl10 pr10" :class="{'mt10':showCount}" v-for="item in multipleSelection" :key="getId(item)">
+                <div class="flex flex1 mr20 overflow">
+                  <el-tooltip effect="dark" :content="getName(item)" placement="top">
+                    <span class="text-overflow">{{ getName(item) }}</span>
+                  </el-tooltip>
+                </div>
+                <el-input-number v-model="item.num" :min="1" class="width-100 flex-shrink mr10" v-if="showCount" />
+                <el-button text @click="deleteHandler(item)">
+                  删除
+                </el-button>
               </div>
-              <el-input-number v-model="item.num" :min="1" class="width-100 flex-shrink mr10" v-if="showCount" />
-              <el-button text @click="deleteHandler(item)">
-                删除
-              </el-button>
             </div>
           </div>
-        </div>
+        </slot>
       </el-col>
     </el-row>
     <slot name="footer" />

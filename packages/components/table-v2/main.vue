@@ -39,7 +39,7 @@
 
 <script>
 import {
-  defineComponent, toRefs, ref,
+  defineComponent, toRefs, ref, computed,
 } from 'vue';
 import virtualList from '../virtual-list';
 import propsValue from './propsValue';

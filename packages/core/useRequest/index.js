@@ -75,6 +75,7 @@ export function useRequest({
       return checkCode(response.message);
     },
     async (error) => {
+      if (error.code === 'ERR_CANCELED') return '';
       if (error && error.response) {
         const { data, status, config } = error.response;
         if (status && errorResponse) {
@@ -93,6 +94,7 @@ export function useRequest({
       if (error.message && error.message.includes('timeout of')) error.message = '网络超时, 请检查网络！';
       // 对返回的错误处理
       if (error.message) return Promise.reject(error);
+
       return error;
     },
   );

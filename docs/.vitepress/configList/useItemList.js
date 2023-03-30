@@ -77,6 +77,10 @@ export function useItemList(){
       text: 'CollapseButton 折叠按钮',
       link: '/components/element-plus/collapse-button',
     },
+    {
+      text: 'CardList 卡片列表',
+      link: '/components/element-plus/card-list',
+    },
   ]
 
   const directiveList = [

@@ -15,11 +15,11 @@ describe('Virtual-list.vue', () => {
     });
     expect(wrapper.findAll('.list-item')).toHaveLength(6);
   });
-  it('props rowClass', () => {
+  it('props rowClassName', () => {
     const wrapper = mount(VirtualList, {
       props: {
         data: [1, 2],
-        rowClass: 'row-class',
+        rowClassName: 'row-class',
       },
     });
     expect(wrapper.findAll('.row-class')).toHaveLength(2);

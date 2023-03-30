@@ -36,7 +36,7 @@
 <<< @/example/element-plus/picker/show-count.vue
 </demo>
 
-## Pagination 属性
+## Picker 属性
 
 <v-table type="attrs" :data="[
   { attr :'modelValue / v-model', dec: '勾选的列表', type: 'array', optional: '-', default: [] },
@@ -51,9 +51,11 @@
 
 [查看TableColumn属性](/components/element-plus/batch-table)
 
-## Table-column slots
+## Picker slots
 
 <v-table type="slot" :data="[
   { name :'header', dec: '自定义表头插槽', child: '{  column }' },
   { name :'custom', dec: '自定义内容插槽', child: '{ row, column, index }' },
+  { name :'right', dec: '右侧插槽', child: '-' },
+  { name :'right-header', dec: '右侧表头插槽', child: '-' },
 ]" />

@@ -24,9 +24,9 @@ describe('table-v2.vue', () => {
         headerCellStyle: { background: '#f5f7fa', color: '#909399' },
       },
     });
-    expect(wrapper.find('.table-header').element.style.background).toBeTruthy();
+    expect(wrapper.find('.header-column').element.style.background).toBeTruthy();
   });
-  it('table text algin', () => {
+  it('table text align', () => {
     const wrapper = mount(TableV2, {
       props: {
         tableColumn: [
@@ -35,6 +35,6 @@ describe('table-v2.vue', () => {
         ],
       },
     });
-    expect(wrapper.find('.header-column').classes()).toContain('text-center');
+    expect(wrapper.find('.header-column').element.style['text-center']).toBe('left');
   });
 });

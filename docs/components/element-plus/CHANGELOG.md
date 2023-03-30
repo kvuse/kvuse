@@ -1,4 +1,19 @@
 
+# 1.2.21 (2023-03-30)
+
+### Add
+
+- 添加`KCardList`组件，自适应卡片组件
+
+### Change
+
+- 组件`picker`，添加`right-header`以及`right`插槽
+
+### Bug Fixes
+
+- 修复`VirtualList`组件，优化异步添加数据
+- 修复一些已知问题
+
 # 1.2.15 (2023-03-16)
 
 ### Features

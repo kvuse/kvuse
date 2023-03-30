@@ -16,6 +16,9 @@
         </k-button>
       </div>
     </template>
+    <template #right-header>
+      <el-tag>自定义右侧表头</el-tag>
+    </template>
   </k-picker>
 </template>
 

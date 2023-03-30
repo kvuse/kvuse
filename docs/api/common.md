@@ -9,18 +9,23 @@
 import { useCommon } from '@kvuse/core';
 
 const {
-  route, router, nextTick, ref, reactive, computed, watch, watchEffect, onMounted, onUnmounted, 
-  routerName, loadPage, isDev, replacePage, pinia, store, globalProperties
+   route, router, routeQuery, routeParams, routerName, loadPage, isDev, replacePage, globalProperties,
+   resetParams, store, pinia, nextTick, ref, watch, onMounted, 
+   onUnmounted, watchEffect, getCurrentInstance, toRefs,
 } = useCommon();
 </script>
 ```
 
 ## 路由名称
 
+- `routeQuery`: 路由query  
+- `routeParams`: 路由params
+- `routerName`: 路由名字
+
 ```js
 import { useCommon } from '@kvuse/core';
-const { routerName } = useCommon();
-console.log('当前路由名称:', routerName);
+const { routerName, routeQuery, routeParams } = useCommon();
+console.log('当前路由名称:', routerName.value);
 ```
 
 ## 跳转页面
@@ -56,4 +61,23 @@ console.log('isDev: ', isDev);
 import { useCommon } from '@kvuse/core';
 const { globalProperties } = useCommon();
 console.log('globalProperties: ', globalProperties);
+```
+
+## 重置参数
+
+可以获取初始化参数，重置参数
+
+```js
+import { reactive } from 'vue';
+import { useCommon } from '@kvuse/core';
+const { resetParams } = useCommon();
+
+const data = reactive({
+  index: 1,
+  page: 2
+})
+
+data.index = 3
+
+console.log('resetParams data: ', resetParams(data));
 ```

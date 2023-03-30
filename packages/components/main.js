@@ -18,6 +18,7 @@ import KNumberKeyboard from './number-keyboard';
 import KVirtualList from './virtual-list';
 import KAutoCounter from './auto-counter';
 import KCollapseButton from './collapse-button';
+import KCardList from './card-list';
 
 const KUI = {
   KButton,
@@ -37,6 +38,7 @@ const KUI = {
   KVirtualList,
   KAutoCounter,
   KCollapseButton,
+  KCardList,
   install: () => {},
 };
 
@@ -60,5 +62,5 @@ KUI.install = function (app) {
 // export default KUI;
 
 export {
-  directives, KButton, KInput, KInputNumber, KTable, KTableV2, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker, KTooltip, KDatePicker, KNumberKeyboard, KVirtualList, KAutoCounter, KCollapseButton, KUI,
+  directives, KButton, KInput, KInputNumber, KTable, KTableV2, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker, KTooltip, KDatePicker, KNumberKeyboard, KVirtualList, KAutoCounter, KCollapseButton, KCardList, KUI,
 };

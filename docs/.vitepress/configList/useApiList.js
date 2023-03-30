@@ -33,5 +33,12 @@ export function useApiList(){
     },
   ]
 
-  return { apiList }
+  const apiDirectiveList = [
+    {
+      text: 'onClickActive',
+      link: '/api/click-active',
+    },
+  ]
+
+  return { apiList,apiDirectiveList }
 }

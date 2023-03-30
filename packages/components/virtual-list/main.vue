@@ -72,7 +72,7 @@ export default defineComponent({
       props.data.forEach((item, index) => {
         item.rowIndex = index;
       });
-      containHeight.value = props.data.length * itemHeight();
+      nextTick(() => { containHeight.value = props.data.length * itemHeight(); });
     });
 
     const onScroll = (event) => {

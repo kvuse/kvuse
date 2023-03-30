@@ -1,10 +1,11 @@
 {
   "name": "@kvuse/core",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "vue3一些常用的API",
   "homepage": "https://kvuse.github.io/docs/api/",
   "files": [
-    "lib"
+    "lib",
+    "index.d.ts"
   ],
   "main": "./lib/k-use.umd.js",
   "module": "./lib/k-use.es.js",
@@ -25,5 +26,8 @@
     "axios": "^1.2.1",
     "element-plus": "^2.2.26",
     "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "vue-router": "^4.1.6"
   }
 }

@@ -1,17 +1,30 @@
 import {
-  ref, reactive, computed, watch, watchEffect, onMounted, nextTick, onUnmounted, getCurrentInstance,
+  reactive, computed, watchEffect, getCurrentInstance, toRefs, nextTick, ref, watch, onMounted, onUnmounted,
 } from 'vue';
 
 export function useCommon() {
   const instance = getCurrentInstance();
   const { globalProperties } = instance.appContext.config;
-  const {
-    $route, $router, $pinia, $store,
-  } = globalProperties;
-  const route = $route;
-  const router = $router;
 
-  const routerName = computed(() => route.name);
+  const {
+    $route, $pinia, $store, $router,
+  } = globalProperties;
+
+  const router = $router;
+  const route = $route;
+
+  const globalParams = reactive({
+    routeRef: $route,
+  });
+
+  watchEffect(() => {
+    const { $route: _route } = globalProperties;
+    globalParams.routeRef = _route;
+  });
+
+  const routerName = computed(() => globalParams.routeRef.name);
+  const routeQuery = computed(() => globalParams.routeRef.query);
+  const routeParams = computed(() => globalParams.routeRef.params);
 
   const loadPage = (name, params) => {
     if (params) router.push({ path: name, ...params });
@@ -35,6 +48,6 @@ export function useCommon() {
   const resetParams = (params) => instance.proxy[params];
 
   return {
-    route, router, nextTick, ref, reactive, computed, watch, watchEffect, onMounted, onUnmounted, routerName, loadPage, isDev, replacePage, pinia: $pinia, store: $store, globalProperties, resetParams,
+    ...toRefs(globalParams), route, router, routeQuery, routeParams, routerName, loadPage, isDev, replacePage, globalProperties, resetParams, store: $store, pinia: $pinia, nextTick, ref, watch, onMounted, onUnmounted, watchEffect, getCurrentInstance, toRefs,
   };
 }
