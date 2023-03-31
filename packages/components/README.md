@@ -37,6 +37,7 @@ import {
   KVirtualList,
   KAutoCounter,
   KCollapseButton,
+  KCardList,
 } from '@kvuse/components';
 
 export default {
@@ -59,6 +60,7 @@ export default {
     KVirtualList,
     KAutoCounter,
     KCollapseButton,
+    KCardList,
   },
 };
 ```

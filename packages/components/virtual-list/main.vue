@@ -17,7 +17,7 @@
 
 <script>
 import {
-  defineComponent, ref, onMounted, computed, watch,
+  defineComponent, ref, onMounted, computed, watch, nextTick,
 } from 'vue';
 import { ElScrollbar } from 'element-plus';
 
@@ -39,7 +39,7 @@ export default defineComponent({
     // 可视区最后一个元素标识
     const endIndex = ref(10);
     // get endIndex
-    const itemHeight = () => document.querySelector('.list-item')?.offsetHeight ?? 10;
+    const itemHeight = () => document.querySelector('.table-row')?.offsetHeight ?? document.querySelector('.list-item')?.offsetHeight ?? 10;
 
     const getEndIndex = () => {
       const { clientHeight = 100 } = viewport.value.wrapRef || {};
