@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as n,O as e}from"./chunks/framework.55e9dc06.js";const i=JSON.parse('{"title":"useMessage","description":"","frontmatter":{},"headers":[],"relativePath":"api/message.md","lastUpdated":1658907249000}'),l={name:"api/message.md"},p=e("",4),o=[p];function t(c,r,D,y,C,A){return a(),n("div",null,o)}const g=s(l,[["render",t]]);export{i as __pageData,g as default};

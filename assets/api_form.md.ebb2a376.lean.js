@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,V as o}from"./chunks/framework.7732671b.js";const C=JSON.parse('{"title":"useForm","description":"","frontmatter":{},"headers":[],"relativePath":"api/form.md","lastUpdated":1658907249000}'),l={name:"api/form.md"},p=o("",4),e=[p];function t(r,c,D,F,i,A){return a(),n("div",null,e)}const m=s(l,[["render",t]]);export{C as __pageData,m as default};
