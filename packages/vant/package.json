@@ -29,10 +29,10 @@
     "access": "public"
   },
   "dependencies": {
-    "vant": "^4.0.3"
+    "vant": "^4.1.2"
   },
   "devDependencies": {
     "kucss": "^1.0.7",
-    "vue": "^3.2.45"
+    "vue": "^3.2.47"
   }
 }

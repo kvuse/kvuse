@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import { defineConfig } from 'vite';
 import Components from 'unplugin-vue-components/vite';
+import { SearchPlugin } from "vitepress-plugin-search";
 
 const { resolve } = require('path');
 
@@ -10,6 +11,11 @@ export default defineConfig({
       include: [/\.vue/, /\.md/],
       dirs: 'example',
       allowOverrides: true,
+    }),
+    SearchPlugin({
+      placeholder: "搜索内容!",
+      buttonLabel: "搜索",
+      previewLength: 62,
     }),
   ],
   resolve: {
@@ -21,7 +27,7 @@ export default defineConfig({
   },
   server: {
     fs: {
-      allow: ['..'],
+      allow: ['../..'],
     },
   },
 });

@@ -3,7 +3,7 @@ import { useItemList, useApiList,useVantList } from './configList';
 
 const { componentsList, directiveList, otherList  } = useItemList();
 const { apiList,apiDirectiveList } = useApiList();
-const {vantComponets} = useVantList()
+const { vantComponets } = useVantList()
 
 export default defineConfig({
   lang: 'en-CN',

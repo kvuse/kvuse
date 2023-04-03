@@ -33,8 +33,8 @@
   "author": "wenxin",
   "license": "ISC",
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.10",
-    "element-plus": "^2.2.26"
+    "@element-plus/icons-vue": "^2.1.0",
+    "element-plus": "^2.3.2"
   },
   "devDependencies": {
     "vue": "^3.2.47",

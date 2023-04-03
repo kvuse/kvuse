@@ -17,17 +17,17 @@
   "devDependencies": {
     "@kvuse/eslint-config": "^1.0.2",
     "@kvuse/stylelint-config": "^1.0.0",
-    "@testing-library/vue": "^6.6.1",
-    "@vitejs/plugin-vue": "^4.0.0",
+    "@testing-library/vue": "^7.0.0",
+    "@vitejs/plugin-vue": "^4.1.0",
     "@vue/compiler-sfc": "^3.2.47",
-    "@vue/test-utils": "^2.3.0",
-    "eslint": "^8.29.0",
-    "happy-dom": "^8.6.0",
-    "stylelint": "^15.2.0",
-    "unplugin-auto-import": "^0.14.3",
-    "unplugin-vue-components": "^0.24.0",
-    "unplugin-vue-macros": "^1.8.2",
-    "vite": "^4.1.2",
-    "vitest": "^0.28.5"
+    "@vue/test-utils": "^2.3.2",
+    "eslint": "^8.37.0",
+    "happy-dom": "^9.1.0",
+    "stylelint": "^15.4.0",
+    "unplugin-auto-import": "^0.15.2",
+    "unplugin-vue-components": "^0.24.1",
+    "unplugin-vue-macros": "^1.11.2",
+    "vite": "^4.2.1",
+    "vitest": "^0.29.8"
   }
 }

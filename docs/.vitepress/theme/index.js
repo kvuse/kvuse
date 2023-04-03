@@ -17,7 +17,7 @@ import Demo from '../components/Demo.vue';
 import HomePage from '../components/HomePage.vue';
 
 export default {
-  ...Theme,
+  extends: Theme,
   Layout() {
     return h(Theme.Layout, null, {
       'home-features-after': () => h(HomePage),
