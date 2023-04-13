@@ -1,1 +1,0 @@
-import{b as t,D as u,o as c,A as p}from"./framework.7732671b.js";const _={__name:"pager-count",setup(g){const n=t(500),e=t(1),l=o=>{console.log("page: ",o)};return(o,a)=>{const r=u("k-page");return c(),p(r,{total:n.value,"pager-count":5,modelValue:e.value,"onUpdate:modelValue":a[0]||(a[0]=s=>e.value=s),onCurrentChange:l},null,8,["total","modelValue"])}}};export{_ as default};
