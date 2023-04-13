@@ -22,7 +22,7 @@ const list = [
 <style lang="scss" scoped>
 .default-item {
   border: 1px solid #eaeefb;
-  padding: 10px 20px;
+  padding: 6px 15px;
 }
 
 .active-default {

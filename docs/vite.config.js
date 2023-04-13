@@ -1,10 +1,9 @@
 /* eslint-disable import/no-unresolved */
 import { defineConfig } from 'vite';
 import Components from 'unplugin-vue-components/vite';
-import { SearchPlugin } from "vitepress-plugin-search";
 
-const { resolve } = require('path');
-
+import path from 'path';
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     Components({
@@ -12,22 +11,26 @@ export default defineConfig({
       dirs: 'example',
       allowOverrides: true,
     }),
-    SearchPlugin({
-      placeholder: "搜索内容!",
-      buttonLabel: "搜索",
-      previewLength: 62,
-    }),
   ],
   resolve: {
     // 设置别名
     alias: {
-      '@/example/element-plus': resolve(__dirname, 'example/element-plus/'),
-      '@/vant': resolve(__dirname, 'vant/'),
+      '@/example/element-plus': path.resolve(__dirname, 'example/element-plus/'),
+      '@/vant': path.resolve(__dirname, 'vant/'),
+      '@/components': path.resolve(__dirname, '../packages/components/'),
+      '@/core': path.resolve(__dirname, '../packages/core/'),
+      '@/kvant': path.resolve(__dirname, '../packages/vant/'),
     },
+  },
+  build: {
+    rollupOptions: {
+      external: ['vue/server-renderer'],
+    },
+    chunkSizeWarningLimit: 1500,
   },
   server: {
     fs: {
-      allow: ['../..'],
+      allow: ['..'],
     },
   },
 });

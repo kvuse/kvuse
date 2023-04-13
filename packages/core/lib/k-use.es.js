@@ -497,7 +497,7 @@ const pt = xr, nn = {
   let e;
   return typeof navigator < "u" && ((e = navigator.product) === "ReactNative" || e === "NativeScript" || e === "NS") ? !1 : typeof window < "u" && typeof document < "u";
 })(), Fr = (() => typeof WorkerGlobalScope < "u" && // eslint-disable-next-line no-undef
-self instanceof WorkerGlobalScope && typeof self.importScripts == "function")(), $ = {
+self instanceof WorkerGlobalScope && typeof self.importScripts == "function")(), R = {
   isBrowser: !0,
   classes: {
     URLSearchParams: Nr,
@@ -509,9 +509,9 @@ self instanceof WorkerGlobalScope && typeof self.importScripts == "function")(),
   protocols: ["http", "https", "file", "blob", "url", "data"]
 };
 function Ir(e, t) {
-  return Ee(e, new $.classes.URLSearchParams(), Object.assign({
+  return Ee(e, new R.classes.URLSearchParams(), Object.assign({
     visitor: function(n, r, o, s) {
-      return $.isNode && l.isBuffer(n) ? (this.append(r, n.toString("base64")), !1) : s.defaultVisitor.apply(this, arguments);
+      return R.isNode && l.isBuffer(n) ? (this.append(r, n.toString("base64")), !1) : s.defaultVisitor.apply(this, arguments);
     }
   }, t));
 }
@@ -605,8 +605,8 @@ const Oe = {
   maxContentLength: -1,
   maxBodyLength: -1,
   env: {
-    FormData: $.classes.FormData,
-    Blob: $.classes.Blob
+    FormData: R.classes.FormData,
+    Blob: R.classes.Blob
   },
   validateStatus: function(t) {
     return t >= 200 && t < 300;
@@ -828,7 +828,7 @@ function Vr(e, t, n) {
     n
   ));
 }
-const Jr = $.isStandardBrowserEnv ? (
+const Jr = R.isStandardBrowserEnv ? (
   // Standard browser envs support document.cookie
   function() {
     return {
@@ -868,7 +868,7 @@ function Wr(e, t) {
 function sn(e, t) {
   return e && !Kr(t) ? Wr(e, t) : t;
 }
-const Gr = $.isStandardBrowserEnv ? (
+const Gr = R.isStandardBrowserEnv ? (
   // Standard browser envs have full support of the APIs needed to test
   // whether the request URL is of the same origin as current location.
   function() {
@@ -946,7 +946,7 @@ const Xr = typeof XMLHttpRequest < "u", Yr = Xr && function(e) {
     function f() {
       e.cancelToken && e.cancelToken.unsubscribe(a), e.signal && e.signal.removeEventListener("abort", a);
     }
-    l.isFormData(o) && ($.isStandardBrowserEnv || $.isStandardBrowserWebWorkerEnv) && s.setContentType(!1);
+    l.isFormData(o) && (R.isStandardBrowserEnv || R.isStandardBrowserWebWorkerEnv) && s.setContentType(!1);
     let c = new XMLHttpRequest();
     if (e.auth) {
       const y = e.auth.username || "", g = e.auth.password ? unescape(encodeURIComponent(e.auth.password)) : "";
@@ -988,7 +988,7 @@ const Xr = typeof XMLHttpRequest < "u", Yr = Xr && function(e) {
         e,
         c
       )), c = null;
-    }, $.isStandardBrowserEnv) {
+    }, R.isStandardBrowserEnv) {
       const y = (e.withCredentials || Gr(d)) && e.xsrfCookieName && Jr.read(e.xsrfCookieName);
       y && s.set(e.xsrfHeaderName, y);
     }
@@ -998,7 +998,7 @@ const Xr = typeof XMLHttpRequest < "u", Yr = Xr && function(e) {
       c && (r(!y || y.type ? new ae(null, e, c) : y), c.abort(), c = null);
     }, e.cancelToken && e.cancelToken.subscribe(a), e.signal && (e.signal.aborted ? a() : e.signal.addEventListener("abort", a)));
     const _ = Qr(d);
-    if (_ && $.protocols.indexOf(_) === -1) {
+    if (_ && R.protocols.indexOf(_) === -1) {
       r(new v("Unsupported protocol " + _ + ":", v.ERR_BAD_REQUEST, e));
       return;
     }
@@ -2566,17 +2566,17 @@ const sa = On(oa), Rn = ["success", "info", "warning", "error"], P = Li({
     }));
     function C() {
       n.duration !== 0 && ({ stop: m } = uo(() => {
-        R();
+        $();
       }, n.duration));
     }
     function N() {
       m == null || m();
     }
-    function R() {
+    function $() {
       c.value = !1;
     }
     function xe({ code: O }) {
-      O === Ii.esc && R();
+      O === Ii.esc && $();
     }
     return Ue(() => {
       C(), a(), c.value = !0;
@@ -2587,7 +2587,7 @@ const sa = On(oa), Rn = ["success", "info", "warning", "error"], P = Li({
     }), t({
       visible: c,
       bottom: p,
-      close: R
+      close: $
     }), (O, F) => (x(), X(Bt, {
       name: w(o).b("fade"),
       onBeforeLeave: O.onClose,
@@ -2641,7 +2641,7 @@ const sa = On(oa), Rn = ["success", "info", "warning", "error"], P = Li({
           O.showClose ? (x(), X(w(It), {
             key: 2,
             class: j(w(o).e("closeBtn")),
-            onClick: Jn(R, ["stop"])
+            onClick: Jn($, ["stop"])
           }, {
             default: de(() => [
               He(w(r))
@@ -2750,8 +2750,8 @@ function Ea({
     "X-Requested-With": "XMLHttpRequest",
     "Content-Type": "application/json; charset=UTF-8"
   });
-  const f = (u) => {
-    o ? o(u) : (Dt.closeAll(), Dt.error(u));
+  const f = (u, p) => {
+    o ? o(u, p) : (Dt.closeAll(), Dt.error(u));
   }, c = [], d = Fe.CancelToken, m = (u) => {
     const p = `${u.url}&${u.method}`;
     for (const b in c)
@@ -2769,7 +2769,7 @@ function Ea({
       if (r)
         return await r(u);
       const { data: p, data: { code: b }, config: C } = u || {};
-      return [0, 1001].includes(b) ? p : (p && s(p, C), f(u.message));
+      return [0, 1001].includes(b) ? p : (p && s(p, C), f(u.message, p));
     },
     async (u) => {
       if (u.code === "ERR_CANCELED")
@@ -2798,18 +2798,18 @@ function Ea({
           };
           u.message = N[b];
         }
-        f(u.message);
+        f(u.message, p);
       }
       return u.message && u.message.includes("timeout of") && (u.message = "网络超时, 请检查网络！"), u.message ? Promise.reject(u) : u;
     }
   );
   const _ = (u, p = !1) => p ? u : typeof u.data < "u" && u.data, y = async (u, p, b = {}, C = "get", N = !1) => {
     try {
-      const R = {};
+      const $ = {};
       if (p) {
         const O = (F) => /\[|\]/g.test(F);
         Object.keys(p).forEach((F) => {
-          R[F] = p[F] && O ? [...p[F].toString()].map((ue) => O(ue) ? encodeURIComponent(ue) : ue).join("") : p[F];
+          $[F] = p[F] && O ? [...p[F].toString()].map((ue) => O(ue) ? encodeURIComponent(ue) : ue).join("") : p[F];
         });
       }
       const xe = ["post", "put"].includes(C) ? await a({
@@ -2817,11 +2817,11 @@ function Ea({
         url: u,
         data: p,
         ...b
-      }) : await a[C](u, { params: R, ...b });
+      }) : await a[C](u, { params: $, ...b });
       return _(xe, N);
-    } catch (R) {
-      if (f(R.message), N)
-        return R;
+    } catch ($) {
+      if (N)
+        return $;
     }
   };
   return {

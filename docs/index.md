@@ -1,24 +1,21 @@
 ---
+# https://vitepress.dev/reference/default-theme-home-page
 layout: home
-sidebar: false
-
-title: kvuse
-titleTemplate: vue3常用的组件以及API
 
 hero:
-  name: kvuse 
-  text: vue3
-  tagline: vue3常用的组件以及常用的API
+  name: "kvuse"
+  text: "vite vue3"
+  tagline: vue3常用的组件以及API
   image:
     src: /logo-view.svg
     alt: kvuse
   actions:
     - theme: brand
-      text: 开始
-      link: /components/element-plus/guide
+      text: 组件
+      link: /element-plus/button
     - theme: alt
-      text: GitHub
-      link: https://github.com/kvuse/kvuse
+      text: API 
+      link: /api/guide
 
 features:
   - title: component
@@ -30,3 +27,4 @@ features:
   - title: 配置
     details: vscode配置，开发更流畅
 ---
+

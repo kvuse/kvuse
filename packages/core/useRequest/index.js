@@ -24,8 +24,8 @@ export function useRequest({
     };
   }
 
-  const checkCode = (msg) => {
-    if (errorHandler) errorHandler(msg);
+  const checkCode = (msg, data) => {
+    if (errorHandler) errorHandler(msg, data);
     else {
       ElMessage.closeAll();
       ElMessage.error(msg);
@@ -72,7 +72,7 @@ export function useRequest({
       const { data, data: { code }, config } = response || {};
       if ([0, 1001].includes(code)) return data;
       if (data) errorResponse(data, config);
-      return checkCode(response.message);
+      return checkCode(response.message, data);
     },
     async (error) => {
       if (error.code === 'ERR_CANCELED') return '';
@@ -89,7 +89,7 @@ export function useRequest({
           };
           error.message = errorStatus[status];
         }
-        checkCode(error.message);
+        checkCode(error.message, data);
       }
       if (error.message && error.message.includes('timeout of')) error.message = '网络超时, 请检查网络！';
       // 对返回的错误处理
@@ -139,7 +139,7 @@ export function useRequest({
         : await axiosInstance[method](url, { params: encodeParams, ...arg });
       return setResult(res, isObject);
     } catch (err) {
-      checkCode(err.message);
+      // checkCode(err.message, err.response?.data);
       if (isObject) return err;
     }
   };

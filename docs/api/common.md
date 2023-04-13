@@ -1,6 +1,6 @@
 # useCommon
 
-使用vue，vue-roter，vuex，pinia等一些公共的api
+使用vue，vue-router，vuex，pinia等一些公共的api
 
 ## Usage
 
@@ -17,6 +17,12 @@ const {
 ```
 
 ## 路由名称
+
+:::warning
+ `useCommon`中的`route`是从实例中获取的，非响应式的，如果监听是不会变换的
+
+ 如果监听变化，可以使用响应式对象`routeQuery`,`routeParams`,`routerName`获取响应的路由信息，
+:::
 
 - `routeQuery`: 路由query  
 - `routeParams`: 路由params

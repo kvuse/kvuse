@@ -1,33 +1,37 @@
 {
   "name": "docs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.1.0",
+  "type": "module",
+  "keywords": [
+    "element-plus",
+    "vite",
+    "vite3",
+    "vitepress",
+    "vue3",
+    "@kvuse/component",
+    "@kvuse/core",
+    "components"
+  ],
   "scripts": {
-    "dev": "vitepress --port 3334 --open",
-    "build": "vitepress build",
-    "serve": "vitepress serve"
+    "dev": "vitepress dev",
+    "build": "vitepress build --no-analyze",
+    "serve": "vitepress preview",
+    "debug": "vite --debug",
+    "clean": "rm -rf node_modules"
   },
-  "keywords": [],
-  "author": "wenxin",
-  "license": "ISC",
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "@kvuse/components": "workspace:*",
     "@kvuse/core": "workspace:*",
     "@kvuse/vant": "workspace:*",
-    "element-plus": "^2.3.2",
+    "@vueuse/core": "^9.13.0",
+    "element-plus": "^2.3.3",
     "vant": "^4.1.2",
-    "vue": "^3.2.47"
+    "vitepress": "1.0.0-alpha.65",
+    "vitepress-plugin-pagefind": "^0.2.2"
   },
   "devDependencies": {
-    "@vue/theme": "^2.2.1",
-    "@vueuse/core": "^9.13.0",
-    "flexsearch": "^0.7.31",
-    "markdown-it": "^13.0.1",
-    "markdown-it-container": "^3.0.0",
-    "unplugin-vue-components": "^0.24.1",
-    "vitepress": "1.0.0-alpha.64",
-    "vitepress-plugin-search": "1.0.4-alpha.19"
+    "picocolors": "^1.0.0",
+    "unplugin-vue-components": "^0.24.1"
   }
 }

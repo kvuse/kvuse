@@ -3,7 +3,7 @@
   "MD007": { "indent": 4 },
   "no-hard-tabs": false,
   "MD033": {
-    "allowed_elements": ["demo", "v-table", "div", "k-input"]
+    "allowed_elements": ["demo", "v-table", "div", "k-input", "script"]
   },
   "MD024": false,
   "MD013": false,

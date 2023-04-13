@@ -4,7 +4,15 @@
   "description": "vue3常用组件",
   "homepage": "https://kvuse.github.io/kvuse/components/vant/",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "vite",
+    "vue3",
+    "@kvuse/vant",
+    "vant",
+    "components"
   ],
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
