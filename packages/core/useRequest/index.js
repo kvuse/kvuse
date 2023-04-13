@@ -107,7 +107,7 @@ export function useRequest({
    */
   const setResult = (res, isObject = false) => {
     if (isObject) return res;
-    return typeof res.data !== 'undefined' && res.data;
+    return res.data ?? true;
   };
 
   /**

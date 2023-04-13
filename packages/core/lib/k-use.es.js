@@ -2803,7 +2803,7 @@ function Ea({
       return u.message && u.message.includes("timeout of") && (u.message = "网络超时, 请检查网络！"), u.message ? Promise.reject(u) : u;
     }
   );
-  const _ = (u, p = !1) => p ? u : typeof u.data < "u" && u.data, y = async (u, p, b = {}, C = "get", N = !1) => {
+  const _ = (u, p = !1) => p ? u : u.data ?? !0, y = async (u, p, b = {}, C = "get", N = !1) => {
     try {
       const $ = {};
       if (p) {

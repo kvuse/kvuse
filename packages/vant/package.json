@@ -2,7 +2,7 @@
   "name": "@kvuse/vant",
   "version": "1.0.0",
   "description": "vue3常用组件",
-  "homepage": "https://kvuse.github.io/kvuse/components/vant/",
+  "homepage": "https://kvuse.github.io/kvuse/vant/button",
   "files": [
     "dist",
     "index.d.ts"
