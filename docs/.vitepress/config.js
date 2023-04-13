@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress';
-import { pagefindPlugin } from 'vitepress-plugin-pagefind';
 import { sidebar, nav } from './configs';
 
 // https://vitepress.dev/reference/site-config
@@ -15,7 +14,6 @@ export default defineConfig({
   base: '/kvuse/',
   lastUpdated: true,
   cleanUrls: true,
-  outDir: './.vitepress/dist2',
   themeConfig: {
     logo: '/logo.svg',
     localSearch: true,
@@ -27,8 +25,5 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/kvuse/kvuse' },
     ],
-  },
-  vite: {
-    plugins: [pagefindPlugin()],
   },
 });

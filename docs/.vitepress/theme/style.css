@@ -159,3 +159,10 @@ body {
 .vp-doc ul {
   margin: 0;
 }
+
+@media (min-width: 768px) {
+  .VPNavBarSearch {
+    flex-grow: 1;
+    padding-left: 24px;
+  }
+}

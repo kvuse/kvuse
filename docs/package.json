@@ -27,11 +27,12 @@
     "@vueuse/core": "^9.13.0",
     "element-plus": "^2.3.3",
     "vant": "^4.1.2",
-    "vitepress": "1.0.0-alpha.65",
-    "vitepress-plugin-pagefind": "^0.2.2"
+    "vitepress": "1.0.0-alpha.65"
   },
   "devDependencies": {
+    "flexsearch": "^0.7.31",
     "picocolors": "^1.0.0",
-    "unplugin-vue-components": "^0.24.1"
+    "unplugin-vue-components": "^0.24.1",
+    "vitepress-plugin-search": "1.0.4-alpha.20"
   }
 }
