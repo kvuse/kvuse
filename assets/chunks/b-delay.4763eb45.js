@@ -1,0 +1,1 @@
+import{_ as a,D as o,a7 as c,h as e,i as n,J as r,A as _,B as i,k as l,F as d,z as m}from"./framework.c803e405.js";const u={},p=m("div",{class:"mb10"},"设置1s后可点击",-1);function f(b,v){const t=o("el-button"),s=c("button");return e(),n(d,null,[p,r((e(),_(t,{type:"primary"},{default:i(()=>[l("延迟1s")]),_:1})),[[s,{delay:1e3}]])],64)}const x=a(u,[["render",f]]);export{x as default};

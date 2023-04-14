@@ -1,0 +1,1 @@
+import{_ as s,h as a,i as n,V as o}from"./chunks/framework.c803e405.js";const i=JSON.parse('{"title":"useCommon","description":"","frontmatter":{},"headers":[],"relativePath":"api/common.md","lastUpdated":1681352261000}'),l={name:"api/common.md"},p=o("",19),e=[p];function t(c,r,D,y,F,C){return a(),n("div",null,e)}const m=s(l,[["render",t]]);export{i as __pageData,m as default};

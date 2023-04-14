@@ -1,1 +1,0 @@
-import{_ as a,D as o,a5 as c,h as e,i as n,a6 as r,A as _,B as i,k as l,F as m,z as d}from"./framework.540dc43f.js";const u={},p=d("div",{class:"mb10"},"点击后设置不可点击，800ms后恢复",-1);function f(b,v){const t=o("el-button"),s=c("button");return e(),n(m,null,[p,r((e(),_(t,{type:"primary"},{default:i(()=>[l("防抖点击")]),_:1})),[[s]])],64)}const h=a(u,[["render",f]]);export{h as default};

@@ -1,1 +1,0 @@
-import{r as n,D as t,h as r,A as c,B as e,G as _,k as l}from"./framework.540dc43f.js";const d={__name:"layout",setup(u){const o=n([{title:"首页",path:"home"},{title:"前台"}]);return(m,p)=>{const a=t("k-button"),s=t("k-breadcrumb");return r(),c(s,{list:o.value},{default:e(()=>[_(a,null,{default:e(()=>[l("设置")]),_:1})]),_:1},8,["list"])}}};export{d as default};
