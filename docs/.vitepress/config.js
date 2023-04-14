@@ -20,11 +20,11 @@ export default defineConfig({
     editLink: {
       pattern: 'https://kvuse.github.io/kvuse/element-plus/',
     },
-    algolia: {
-      appId: 'F786GM8AJ3',
-      apiKey: 'caf674fbca0e9544b683d6722aae708f',
-      indexName: 'kvuse',
-    },
+    // algolia: {
+    //   appId: 'F786GM8AJ3',
+    //   apiKey: 'caf674fbca0e9544b683d6722aae708f',
+    //   indexName: 'kvuse',
+    // },
     nav,
     sidebar,
     socialLinks: [
