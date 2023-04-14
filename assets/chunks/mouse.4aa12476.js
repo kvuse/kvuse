@@ -1,0 +1,1 @@
+import{_ as e,h as o,i as t,z as s}from"./framework.540dc43f.js";const n={},c=s("span",{class:"line-through"},"中划线",-1),a=s("span",{class:"pointer ml10"},"光标手指指针",-1),_=s("span",{class:"not-allowed ml10"},"禁用样式",-1),l=[c,a,_];function r(i,d){return o(),t("div",null,l)}const p=e(n,[["render",r]]);export{p as default};

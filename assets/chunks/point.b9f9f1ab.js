@@ -1,0 +1,1 @@
+import{r as a,D as l,h as s,i as p,G as r}from"./framework.540dc43f.js";const u={class:"width-240"},i={__name:"point",setup(c){const e=a("");return(_,o)=>{const t=l("kv-input");return s(),p("div",u,[r(t,{point:3,placeholder:"可输入小数点后3位",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=n=>e.value=n)},null,8,["modelValue"])])}}};export{i as default};
