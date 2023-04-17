@@ -54,7 +54,7 @@
 <v-table type="attrs" :data="[
   { attr :'table-column', dec: '表格列表', type: 'array', optional: '-', default: '[]' },
   { attr :'table-data', dec: '表格数据', type: 'array', optional: '-', default: '[]' },
-  { attr :'modelValue / v-model', dec: '绑定的当前页数', type: 'number', optional: '-', default: 1 },
+  { attr :'modelValue / v-model', dec: '绑定的选中的数据', type: 'number', optional: '-', default: '[]' },
   { attr :'header-cell-style', dec: '表格头部样式', type: 'object', optional: '-', default: `{ background:'#f5f7fa', color:'#909399'}` },
   { attr :'total', dec: '数据的总条数', type: 'number', optional: '-', default: 9 },
   { attr :'size', dec: '每页显示的条数', type: 'number', optional: '-', default: 10 },

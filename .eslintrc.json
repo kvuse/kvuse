@@ -3,7 +3,8 @@
   "rules": {
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
     "import/extensions": "off",
-    "vue/multi-word-component-names": "off"
+    "vue/multi-word-component-names": "off",
+    "no-use-before-define": "off"
   },
   "globals": {
     "defineOptions": true

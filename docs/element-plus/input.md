@@ -1,4 +1,4 @@
-# Input
+# Input 输入框
 
 ::: tip
 默认数字类型，一般用于金额类型，默认小数点后两位
@@ -32,7 +32,7 @@
 ## Input 属性
 
 <v-table type="attrs" :data="[
-  { attr :'type', dec: 'integer 只能输入整数', type: 'String', optional: '-', default: '-' },
+  { attr :'type', dec: 'integer 只能输入整数, number: 数字小数点后两位, text: 内容输入框, intText: 整数或者text类型', type: 'String', optional: 'integer / number / text / intText', default: 'number' },
   { attr :'modelValue / v-model', dec: '绑定值', type: 'String / Number', optional: '-', default: '-' },
   { attr :'point', dec: '小数点后几位', type: 'Number', optional: '-', default: 2 },
 ]" />

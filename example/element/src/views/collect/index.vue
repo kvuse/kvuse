@@ -3,15 +3,27 @@
     Collect
     <test />
     <k-input v-model="num" placeholder="测试输入框" class="mt20" />
+    <!-- ￥1.88 -->
+    <span v-params="text" />
   </div>
 </template>
 
 <script setup>
-import { useMessage, useRequest } from '@kvuse/core';
+import {
+  useMessage, useRequest, VParams,
+} from '@kvuse/core';
 import axios from 'axios';
 import test from './test.vue';
 
 console.log('useCommon: ', useMessage());
+
+const text = ref('test');
+
+onMounted(() => {
+  setTimeout(() => {
+    text.value = 'changeText';
+  }, 1000);
+});
 
 const num = ref('');
 // console.log('useRequest: ', useRequest);

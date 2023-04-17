@@ -5,3 +5,5 @@ export * from './useForm';
 export * from './usePage';
 export * from './useFilters';
 export * from './useDirectives';
+export * from './useImage';
+export * from './useUtils';
