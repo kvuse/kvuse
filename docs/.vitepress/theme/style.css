@@ -108,6 +108,10 @@
   color: var(--vp-c-text-1) !important;
 }
 
+.dark .el-table tr:hover > td.el-table__cell {
+  background-color: var(--vp-c-bg-soft) !important;
+}
+
 .vp-doc table {
   margin: 0;
 }
