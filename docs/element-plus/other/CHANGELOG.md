@@ -4,11 +4,11 @@
 
 ### Add
 
-- 添加`KCardList`组件，自适应卡片组件
+- 添加[`KCardList`组件](../card-list.md)，自适应卡片组件
 
 ### Change
 
-- 组件`picker`，添加`right-header`以及`right`插槽
+- 组件`picker`，[添加`right-header`以及`right`插槽](../picker#picker-slots)
 
 ### Bug Fixes
 
@@ -32,20 +32,20 @@
 
 ### Add
 
-- 添加`keyboard`指令，监听键盘事件
-- 添加`button`指令，点击防抖
+- 添加[`keyboard`指令](../directives/keyboard.md)，监听键盘事件
+- 添加[`button`指令](../directives/button.md)，点击防抖
 
 ## 1.2.8 (2023-02-17)
 
 ### Add
 
-- 添加`tableV2`组件，虚拟列表
+- 添加[`tableV2`组件](../table-v2.md)，虚拟列表
 
 ## 1.2.7 (2023-02-17)
 
 ### Add
 
-- 添加`collapse-button`组件，折叠按钮
+- 添加[`collapse-button`组件](../collapse-button.md)，折叠按钮
 
 ## 1.2.5 (2023-02-16)
 
@@ -58,8 +58,8 @@
 
 ### Add
 
-- 新增`auto-counter`组件，数字动效
-- 新增`VirtualList`组件，虚拟列表
+- 新增[`auto-counter`组件](../auto-counter.md)，数字动效
+- 新增[`VirtualList`组件](../virtual-list.md)，虚拟列表
 
 ## 1.2.3 (2022-12-07)
 
@@ -83,7 +83,7 @@
 
 ### Add
 
-- 新增`number-keyboard`组件
+- 新增[`number-keyboard`组件](../number-keyboard.md)
 
 ### Features
 

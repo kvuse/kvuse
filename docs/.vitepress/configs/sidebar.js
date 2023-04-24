@@ -30,6 +30,7 @@ const getMapItem = (parentFile, childFile, file = '') => {
 };
 
 const sidebarItems = {};
+const ingoreFile = ['formatParams']; // 忽略文件列表
 const getItemsList = (parentFile, childFile = '') => {
   const currentPath = join(process.cwd(), parentFile, childFile);
   const currentItem = sidebarItems[`/${getFileName(parentFile)}`];
@@ -38,14 +39,14 @@ const getItemsList = (parentFile, childFile = '') => {
     const nodeList = readdirSync(currentPath);
     const filterNodeList = nodeList.filter((file) => /\.md$/.test(file));
     filterNodeList.forEach((child) => {
-      itemLinks.push(getMapItem(parentFile, childFile, child));
+      if (!ingoreFile.includes(getFileName(child))) itemLinks.push(getMapItem(parentFile, childFile, child));
     });
     currentItem.push({
       text: customTitle[childFile],
       sort: `${childFile}`,
       items: itemLinks,
     });
-  } else {
+  } else if (!ingoreFile.includes(getFileName(childFile))) {
     currentItem.push(getMapItem(parentFile, childFile));
   }
 };

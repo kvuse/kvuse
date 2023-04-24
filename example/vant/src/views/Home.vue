@@ -1,15 +1,13 @@
 <template>
   <div class="home">
     <van-tabs v-model:active="active" @click-tab="handleSelect">
-      <van-tab :title="item.path" v-for="item in menuList" :key="item.path">
-      </van-tab>
+      <van-tab :title="item.path" v-for="item in menuList" :key="item.path" />
     </van-tabs>
     <router-view />
   </div>
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router';
 
 // 使用router
 const route = useRoute();

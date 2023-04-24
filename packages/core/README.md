@@ -8,6 +8,7 @@
 - useMessage ElMessage提示的方法，取消上次提示，防止重复多次提示
 - useForm elForm表单验证
 - useFilter 一些常用的数据格式处理
+- useFormatParams 格式参数对象
 
 ## 安装
 

@@ -5,7 +5,8 @@
   "homepage": "https://kvuse.github.io/kvuse/vant/button",
   "files": [
     "dist",
-    "index.d.ts"
+    "index.d.ts",
+    "global.d.ts"
   ],
   "keywords": [
     "vite",

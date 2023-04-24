@@ -5,6 +5,28 @@
   总结一些常用的布局模式
 :::
 
+:::info
+  可以查看最新的`kucss`,一些常用的class名 [查看详情](https://www.npmjs.com/package/kucss)
+:::
+
+::: details 查看详情
+
+- 安装
+
+```bash
+# PNPM
+pnpm install kucss
+```
+
+- 使用
+
+```js
+// main.js
+ import 'kucss/src/index.css'
+```
+
+:::
+
 ## 基础用法
 
 > 常用的外边距设置  
@@ -46,7 +68,7 @@
 
 ## 样式属性class
 
-+ Font 字体
+- Font 字体
 
   |  class名  | 类型  | 大小  |
   |  :----:  | :----: | :----: |
@@ -59,7 +81,7 @@
   | font-24  | font-size | 12px |
   | font-28  | font-size | 12px |
 
-+ Color 颜色
+- Color 颜色
 
   |  class名   | 类型  | 颜色  |
   |  :----:  | :----: | :----: |
@@ -73,7 +95,7 @@
   | color-66  | #666666 | #666666 |
   | color-99  | #999999 | #999999 |
 
-+ BackgroundColor 背景颜色
+- BackgroundColor 背景颜色
 
   |  class名   | 类型  | 颜色  |
   |  :----  | :----: | :----: |
@@ -84,7 +106,7 @@
   | bg-gray  | 灰色 | #97a8be |
   | bg-white  | 白色 | #ffffff |
   
-+ margin 外边距
+- margin 外边距
 
   |  class名   | 类型  | 大小  |
   |  :----:  | :----: | :----: |
@@ -97,7 +119,7 @@
   | ml5, ml10, ml15, ml20, ml25, ml30 | margin-left | 5px, 10px, 15px, 20px, 25px, 30px |
   |ml35, ml40, ml45, ml50, ml55, ml60  | margin-left | 35px, 40px, 45px, 50px, 55px, 60px |
 
-+ padding 内边距
+- padding 内边距
 
   |  class名   | 类型  | 大小  |
   |  :----:  | :----: | :----: |
@@ -110,13 +132,13 @@
   | pl5, pl10, pl15, pl20, pl25, pl30 | padding-left | 5px, 10px, 15px, 20px, 25px, 30px|
   | pl35, pl40, pl45, pl50, pl55, pl60  | padding-left | 35px, 40px, 45px, 50px, 55px, 60px |
 
-+ padding 其他内边距
+- padding 其他内边距
 
   |  class名   | 类型  | 大小  |
   |  :----:  | :----: | :----: |
   | p5, p10, p15, p20, p25, p30  | padding | 5px, 10px, 15px, 20px, 25px, 30px|
 
-+ Width 宽度
+- Width 宽度
 
   |  class名  | 类型  | 大小  |
   |  :----:  | :----: | :----: |
@@ -134,7 +156,7 @@
   | width-280  | width | 280px |
   | width-300  | width | 300px |
 
-+ Border 边框
+- Border 边框
 
   |  class名  | 类型  | 大小  |
   |  :----:  | :----: | :----: |
@@ -144,7 +166,7 @@
   | border-bottom  | border-bottom | 1px solid #d8dce5 |
   | border-radius  | border-radius | 8px |
 
-+ Text-decoration 文本修饰
+- Text-decoration 文本修饰
 
   |  class名  | 类型  | 说明 |
   |  :----:  | :----: | :----: |
@@ -152,14 +174,14 @@
   | over-line  | text-decoration: overline | 上划线 |
   | under-line  | text-decoration: underline | 下划线 |
 
-+ Cursor 鼠标样式
+- Cursor 鼠标样式
 
   |  class名  | 类型  | 说明  |
   |  :----:  | :----: | :----: |
   | pointer  | cursor: pointer | 光标手指指针 |
   | not-allowed  | cursor: not-allowed | 禁用样式 |
 
-+ Overflow 文本超出
+- Overflow 文本超出
 
   |  class名  | 类型  | 说明  |
   |  :----  | :---- | :---- |
@@ -167,7 +189,7 @@
   | overflow-y  | overflow-y: auto | 设置y轴: auto |
   | text-overflow |  | 超出显示... |
 
-+ Text 文本
+- Text 文本
   
   |  class名  | 类型  | 说明  |
   |  :----  | :---- | :---- |
@@ -176,7 +198,7 @@
   | text-center | text-align: center | 居中显示 |
   | word-wrap | word-wrap: break-word | 文字中断换货显示 |
 
-+ Flex
+- Flex
   
   |  class名  | 类型  | 说明  |
   |  :----  | :---- | :---- |
