@@ -1,5 +1,16 @@
 # 更新日志
 
+## 1.1.6 (2023-04-25)
+
+### Add
+
+- 添加[`useFormatParams`](../formatParams.md), 格式化参数对象
+
+### Change
+
+- `useRequest`请求，[添加单个接口排除去重](/api/request#排除去重)
+- `useImage`和`VImageUrl`使用图片路径，[设置其他路径](/api/image-url#其他路径)
+
 ## 1.1.5 (2023-04-17)
 
 ### Add

@@ -1,6 +1,6 @@
 {
   "name": "@kvuse/vant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "vue3常用组件",
   "homepage": "https://kvuse.github.io/kvuse/vant/button",
   "files": [
@@ -38,7 +38,7 @@
     "access": "public"
   },
   "dependencies": {
-    "vant": "^4.1.2"
+    "vant": "^4.2.0"
   },
   "devDependencies": {
     "kucss": "^1.0.7",

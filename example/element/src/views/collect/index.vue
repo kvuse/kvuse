@@ -5,12 +5,13 @@
     <k-input v-model="num" placeholder="测试输入框" class="mt20" />
     <!-- ￥1.88 -->
     <span v-params="text" />
+    <img v-image-url="{ name: 'fail.png'}">
   </div>
 </template>
 
 <script setup>
 import {
-  useMessage, useRequest, VParams,
+  useMessage, useRequest, VParams, VImageUrl,
 } from '@kvuse/core';
 import axios from 'axios';
 import test from './test.vue';

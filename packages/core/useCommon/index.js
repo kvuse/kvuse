@@ -4,7 +4,7 @@ import {
 
 export function useCommon() {
   const instance = getCurrentInstance();
-  const { globalProperties } = instance.appContext.config;
+  const { globalProperties } = instance ? instance.appContext.config : {};
 
   const {
     $route, $pinia, $store, $router,

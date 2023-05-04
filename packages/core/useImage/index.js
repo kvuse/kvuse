@@ -11,7 +11,8 @@ export function useImage() {
   const getImageUrl = (name, floderName = 'images', instance = getCurrentInstance()) => {
     const currentFile = instance.type.__file.split('src')?.[1];
     const metaUrl = `${window.location.origin}/src${currentFile}`;
-    return new URL(`../../assets/${floderName}/${name}`, metaUrl).href;
+    const currentPath = /^(\.{1,2}\/)/.test(floderName) ? floderName : `../../assets/${floderName}`;
+    return new URL(`${currentPath}/${name}`, metaUrl).href;
   };
 
   return { getImageUrl };

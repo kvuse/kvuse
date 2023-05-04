@@ -35,10 +35,11 @@ export function useRequest({
   const pending = []; // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
   const cancelToken = axios.CancelToken;
   const removePending = (config) => {
-    const resUrl = `${config.url}&${config.method}`;
+    const { url, method, cancelable = true } = config;
+    const resUrl = `${url}&${method}`;
     // eslint-disable-next-line no-restricted-syntax
     for (const p in pending) {
-      if (pending[p].url === resUrl && !excludePeddings.includes(resUrl)) { // 当当前请求在数组中存在时执行函数体
+      if (pending[p].url === resUrl && !excludePeddings.includes(resUrl) && cancelable) { // 当当前请求在数组中存在时执行函数体
         pending[p].fn(); // 执行取消操作
         pending.splice(p, 1); // 把这条记录从数组中移除
       }

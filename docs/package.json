@@ -24,10 +24,11 @@
     "@kvuse/components": "workspace:*",
     "@kvuse/core": "workspace:*",
     "@kvuse/vant": "workspace:*",
-    "@vueuse/core": "^9.13.0",
-    "element-plus": "^2.3.3",
-    "vant": "^4.1.2",
-    "vitepress": "1.0.0-alpha.71"
+    "@vant/touch-emulator": "^1.4.0",
+    "@vueuse/core": "^10.1.0",
+    "element-plus": "^2.3.4",
+    "vant": "^4.2.0",
+    "vitepress": "1.0.0-alpha.73"
   },
   "devDependencies": {
     "flexsearch": "^0.7.31",

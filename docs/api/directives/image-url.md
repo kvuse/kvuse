@@ -3,7 +3,9 @@
 ##### 获取图片路径展示图片
 
 :::warning
-获取`assets`文件夹下的文件
+默认获取`assets`文件夹下`images`的文件
+
+可设置`floder`参数，使用其他的路径
 :::
 
 ## 基础使用
@@ -14,7 +16,7 @@
 </template>
 
 <script setup>
-import { vImageUrl } from '@kvuse/core';
+import { VImageUrl } from '@kvuse/core';
 </script>
 ```
 
@@ -26,7 +28,7 @@ import { vImageUrl } from '@kvuse/core';
 </template>
 
 <script setup>
-import { vImageUrl } from '@kvuse/core';
+import { VImageUrl } from '@kvuse/core';
 
 const name = ref('fail.png');
 onMounted(() => {
@@ -34,6 +36,20 @@ onMounted(() => {
     name.value = 'success.png';
   }, 1000);
 });
+</script>
+```
+
+## 其他路径
+
+如果设置其他路径，可设置`floder`参数，设置相对路径, 例如：`./image`
+
+```vue
+<template>
+  <img v-image-url="{ name: 'name.png', floder:'./images'}">
+</template>
+
+<script setup>
+import { VImageUrl } from '@kvuse/core';
 </script>
 ```
 

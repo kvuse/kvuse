@@ -30,7 +30,7 @@ const getMapItem = (parentFile, childFile, file = '') => {
 };
 
 const sidebarItems = {};
-const ingoreFile = ['formatParams']; // 忽略文件列表
+const ingoreFile = []; // 忽略文件列表
 const getItemsList = (parentFile, childFile = '') => {
   const currentPath = join(process.cwd(), parentFile, childFile);
   const currentItem = sidebarItems[`/${getFileName(parentFile)}`];

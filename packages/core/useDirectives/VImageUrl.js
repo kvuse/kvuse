@@ -7,7 +7,7 @@ const setImageSrc = (el, binding, vnode) => {
   el.setAttribute('src', srcUrl);
 };
 
-export const vImageUrl = {
+export const VImageUrl = {
   mounted: (el, binding, vnode) => setImageSrc(el, binding, vnode),
   updated: (el, binding, vnode) => setImageSrc(el, binding, vnode),
 };

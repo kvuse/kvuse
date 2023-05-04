@@ -1,7 +1,12 @@
 <template>
   <div class="vue-code">
     <div class="vue-component">
-      <component :is="comp" />
+      <div class="flex-center" v-if="isView">
+        <div class="mobile-view border-radius flex-column">
+          <component :is="comp" />
+        </div>
+      </div>
+      <component :is="comp" v-else />
     </div>
     <div class="btn-control">
       <el-tooltip content="复制代码" placement="bottom">
@@ -48,16 +53,19 @@ import { ref, defineAsyncComponent } from 'vue';
 import { CopyDocument, CaretTop } from '@element-plus/icons-vue';
 import { useClipboard } from '@vueuse/core';
 import { ElMessage } from 'element-plus';
+import '@vant/touch-emulator';
 
 /**
  * @param {boolean} md 是否是md
  * @param {string} src 组件的路径
  * @param {string} explain 解释说明
+ * @param {boolean} isView 是否移动端视图
  */
 const props = defineProps({
   md: { type: Boolean, default: false },
   src: { type: String, default: '' },
   dir: { type: String, default: 'element-plus' },
+  isView: { type: Boolean, default: false },
   explain: { type: String, default: '' },
 });
 
@@ -81,6 +89,7 @@ const copyCode = () => {
   ElMessage.closeAll();
   ElMessage({ message: '已复制', type: 'success' });
 };
+
 </script>
 
 <style lang="scss" scoped>
@@ -142,5 +151,11 @@ const copyCode = () => {
     .pre-code {
       background-color: #0003;
     }
+  }
+
+  .mobile-view {
+    width: 414px;
+    height: 700px;
+    border: 1px solid #ebedf0;
   }
 </style>

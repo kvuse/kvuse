@@ -23,6 +23,8 @@ import {
   KvInput,
   KvTable,
   KvTree,
+  KvList,
+  KvStatus,
 } from '@kvuse/vant';
 
 export default {
@@ -31,6 +33,8 @@ export default {
     KvInput,
     KvTable,
     KvTree,
+    KvList,
+    KvStatus,
   },
 };
 ```

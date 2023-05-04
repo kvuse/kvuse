@@ -9,9 +9,11 @@
         </template>
       </div>
       <div class="table-body">
-        <div v-for="(item,index) in data" :key="index" class="flex table-column flex-align-center" :style="alignStyle">
+        <div v-for="(item,index) in data" :key="index" class="flex table-column column-item flex-align-center" :style="alignStyle">
           <template v-for="column in columns" :key="column.prop">
-            <div class="flex1" :class="{'text-overflow':showOverflowTooltip}">{{ item[column.prop] }}</div>
+            <div class="flex1" :class="{'text-overflow':showOverflowTooltip}">
+              <slot>{{ item[column.prop] }}</slot>
+            </div>
           </template>
         </div>
       </div>

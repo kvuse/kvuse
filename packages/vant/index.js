@@ -3,12 +3,16 @@ import KvButton from './button';
 import KvInput from './input';
 import KvTable from './table';
 import KvTree from './tree';
+import KvList from './list';
+import KvStatus from './status';
 
 const KVant = {
   KvButton,
   KvInput,
   KvTable,
   KvTree,
+  KvList,
+  KvStatus,
   install: () => {},
 };
 
@@ -32,5 +36,5 @@ KVant.install = function (app) {
 // export default KUI;
 
 export {
-  KvButton, KvInput, KvTree, KVant,
+  KvButton, KvInput, KvTree, KVant, KvList, KvStatus,
 };

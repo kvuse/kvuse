@@ -8,7 +8,7 @@
 
 ### Change
 
-- 组件`picker`，[添加`right-header`以及`right`插槽](../picker#picker-slots)
+- 组件`picker`，[添加`right-header`以及`right`插槽](/element-plus/picker#picker-slots)
 
 ### Bug Fixes
 
