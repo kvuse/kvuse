@@ -24,6 +24,7 @@ const getMapItem = (parentFile, childFile, file = '') => {
   const item = {
     text: match[1] || customTitle[childFile],
     link: `/${parentFile}${filePath}/${text}`,
+    title: `${match[1] || customTitle[childFile]} ${parentFile}`,
   };
 
   return item;

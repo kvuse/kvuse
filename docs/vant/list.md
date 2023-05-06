@@ -54,3 +54,9 @@
   { name :'loading', dec: '加载中图片插槽', child: '-' },
   { name :'empty', dec: '没有数据图片插槽', child: '-' },
 ]" />
+
+## Exposes
+
+<v-table type="event" :data="[
+  { event :'reset', dec: '重置状态', callback: '-' },
+]" />

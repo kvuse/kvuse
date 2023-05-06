@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import { defineConfig } from 'vite';
 import Components from 'unplugin-vue-components/vite';
-import { SearchPlugin } from 'vitepress-plugin-search';
+// import { SearchPlugin } from 'vitepress-plugin-search';
 
 import path from 'path';
 // https://vitejs.dev/config/
@@ -12,7 +12,7 @@ export default defineConfig({
       dirs: 'example',
       allowOverrides: true,
     }),
-    SearchPlugin(),
+    // SearchPlugin(),
   ],
   resolve: {
     // 设置别名
