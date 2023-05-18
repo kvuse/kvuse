@@ -1,5 +1,12 @@
 # 更新日志
 
+## 1.3.0 (2023-05-18)
+
+### Change
+
+- [`Dialog`组件](../dialog#dialog-属性.md)，添加`confirmDisabled`属性，控制确认按钮是否点击
+- [`table`组件](../table#table-属性)，添加`size`属性，可控制每页显示的条数
+
 ## 1.2.22 (2023-03-31)
 
 ### Add

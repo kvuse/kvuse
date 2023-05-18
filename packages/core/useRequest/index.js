@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { ElMessage } from 'element-plus';
+import { message } from './message';
+
 /**
  * 请求封装
  * @auth liukai
@@ -26,10 +27,7 @@ export function useRequest({
 
   const checkCode = (msg, data) => {
     if (errorHandler) errorHandler(msg, data);
-    else {
-      ElMessage.closeAll();
-      ElMessage.error(msg);
-    }
+    else message.error(msg);
   };
 
   const pending = []; // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识

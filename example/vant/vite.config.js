@@ -36,8 +36,8 @@ export default ({ mode }) => defineConfig({
     open: true,
     port: 8088, // 配置启用的端口号
     proxy: {
-      '/api': {
-        // target: 'http://xxxx.com.cn', // 测试
+      '/erp': {
+        target: 'https://retail.deeptel.com.cn', // 测试
         changeOrigin: true,
       },
     },

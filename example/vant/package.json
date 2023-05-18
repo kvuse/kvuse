@@ -9,28 +9,28 @@
     "stylelint": "stylelint **/*.vue --fix"
   },
   "dependencies": {
-    "@kvuse/core": "workspace:^1.0.9",
+    "@kvuse/core": "workspace:*",
     "@kvuse/vant": "workspace:*",
-    "pinia": "^2.0.35",
+    "pinia": "^2.1.1",
     "pinia-plugin-persistedstate": "^3.1.0",
     "postcss-px-to-viewport": "^1.1.1",
-    "vant": "^4.2.0",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vant": "^4.3.2",
+    "vue": "^3.3.3",
+    "vue-router": "^4.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.1.0",
-    "@vue/compiler-sfc": "^3.2.47",
-    "eslint": "^8.39.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/compiler-sfc": "^3.3.3",
+    "eslint": "^8.40.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-vue": "^9.11.0",
+    "eslint-plugin-vue": "^9.13.0",
     "postcss-html": "^1.5.0",
-    "sass": "^1.62.0",
-    "stylelint": "^15.6.0",
-    "stylelint-config-standard-scss": "^8.0.0",
-    "unplugin-auto-import": "^0.15.3",
+    "sass": "^1.62.1",
+    "stylelint": "^15.6.2",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "unplugin-auto-import": "^0.16.0",
     "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.3.1"
+    "vite": "^4.3.7"
   }
 }

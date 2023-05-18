@@ -22,14 +22,14 @@ export function usePage() {
 
   const setListAndPage = (result) => {
     const {
-      records = [], totalPage: totalPages = 1, pageNo = 1, pageIndex, totalRecord: totalElements = 1,
+      records = [], totalPage: totalPages = 1, pageNo = 1, pageIndex, totalRecord: totalElements = 1, content, total, size,
     } = result || {};
-    listData.value = records;
+    listData.value = content ?? records;
     loading.value = false;
-    totalPage.value = totalPages;
+    totalPage.value = total ?? totalPages;
     totalRecord.value = totalElements;
-    currentPage.value = pageIndex ?? pageNo;
-    isNullData.value = !records.length;
+    currentPage.value = size ?? pageIndex ?? pageNo;
+    isNullData.value = !listData.value.length;
   };
 
   return {

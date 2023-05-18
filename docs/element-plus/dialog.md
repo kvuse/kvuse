@@ -46,6 +46,7 @@
   { attr :'showFooter', dec: '是否显示footer', type: 'boolean', optional: '-', default: true },
   { attr :'append-to-body', dec: '自身是否插入至 body 元素上', type: 'boolean', optional: '-', default: false },
   { attr :'destroy-on-close', dec: '当关闭时，销毁其中的元素', type: 'boolean', optional: '-', default: false },
+  { attr :'confirm-disabled', dec: '确认按钮是否可以点击', type: 'boolean', optional: '-', default: false },
 ]" />
 
 ## Dialog 事件

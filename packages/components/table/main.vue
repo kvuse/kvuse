@@ -14,7 +14,7 @@
       <slot name="empty" />
     </template>
   </el-table>
-  <pagination :total="total" :show-size="showSize" v-model="currentPage" @current-change="changePage" />
+  <pagination :total="total" :size="size" :show-size="showSize" v-model="currentPage" @current-change="changePage" />
 </template>
 
 <script>

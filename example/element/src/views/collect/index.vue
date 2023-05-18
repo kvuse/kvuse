@@ -20,12 +20,6 @@ console.log('useCommon: ', useMessage());
 
 const text = ref('test');
 
-onMounted(() => {
-  setTimeout(() => {
-    text.value = 'changeText';
-  }, 1000);
-});
-
 const num = ref('');
 // console.log('useRequest: ', useRequest);
 
@@ -49,9 +43,14 @@ const getData = async () => {
   const { code, data, message } = await $http.get('/erp/global/list');
   console.log('code,data,message: ', code, data, message);
 };
+
 onMounted(() => {
   getData();
+  setTimeout(() => {
+    text.value = 'changeText';
+  }, 1000);
 });
+
 </script>
 
 <style lang="scss" scoped>

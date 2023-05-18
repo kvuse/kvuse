@@ -7,7 +7,7 @@
       <slot name="footer">
         <span class="dialog-footer">
           <el-button size="large" @click="dialogVisible = false">取 消</el-button>
-          <el-button size="large" type="primary" @click="confirmHandler">确 定</el-button>
+          <el-button size="large" type="primary" :disabled="confirmDisabled" @click="confirmHandler">确 定</el-button>
         </span>
       </slot>
     </template>
@@ -25,6 +25,7 @@ export default defineComponent({
     showFooter: { type: Boolean, default: true },
     customClass: { type: String, default: '' },
     class: { type: String, default: '' },
+    confirmDisabled: { type: Boolean, default: false },
   },
   emits: ['update:modelValue', 'confirm', 'open', 'close'],
   setup(props, { emit }) {

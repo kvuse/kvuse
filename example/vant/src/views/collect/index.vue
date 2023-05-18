@@ -21,11 +21,21 @@
 </template>
 
 <script setup>
+import $api from '@/utils/request';
+
 const username = ref('');
 const password = ref('');
 const onSubmit = (values) => {
   console.log('submit', values);
 };
+
+const getData = async () => {
+  const result = await $api.get('/erp/global/list');
+  console.log('result: ', result);
+};
+onMounted(() => {
+  getData();
+});
 </script>
 
 <style lang="scss" scoped>
