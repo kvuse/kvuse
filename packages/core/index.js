@@ -7,3 +7,4 @@ export * from './useFilters';
 export * from './useDirectives';
 export * from './useImage';
 export * from './useUtils';
+export * from './useExport';

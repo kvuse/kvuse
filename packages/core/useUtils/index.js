@@ -19,5 +19,19 @@ export function useUtils() {
     return value;
   };
 
-  return { getFormatParams, formatRadixPoint };
+  /**
+   * 设置Url参数
+   * @param {object} params 链接参数
+   * @returns string
+   */
+
+  const setUrlParams = (params = {}) => {
+    let stringUrl = '';
+    Object.keys(params).forEach((key) => {
+      if (params[key] !== undefined && key !== 'pageSize') stringUrl += `&${key}=${params[key]}`;
+    });
+    return stringUrl.replace(/^&/, '?');
+  };
+
+  return { getFormatParams, formatRadixPoint, setUrlParams };
 }

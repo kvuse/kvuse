@@ -79,3 +79,9 @@
   { name :'custom', dec: '自定义内容插槽', child: '-' },
   { name :'header', dec: '自定义表头插槽', child: '-' },
 ]" />
+
+## table Expose
+
+<v-table type="slot" :data="[
+  { name :'instance', dec: '可以调用table方法', child: '-' },
+]" />

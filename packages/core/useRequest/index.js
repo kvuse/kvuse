@@ -106,7 +106,7 @@ export function useRequest({
    */
   const setResult = (res, isObject = false) => {
     if (isObject) return res;
-    return res.data ?? true;
+    return res ? res.data ?? true : false;
   };
 
   /**

@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="tableDataList" style="width: 100%;" class="mt20" :header-cell-style="headerCellStyle" v-bind="$attrs" :empty-text="emptyText" @sort-change="sortChange">
+  <el-table :data="tableDataList" style="width: 100%;" class="mt20" :header-cell-style="headerCellStyle" v-bind="$attrs" :empty-text="emptyText" @sort-change="sortChange" ref="elTable">
     <el-table-column v-for="item in tableColumn" :key="item.prop" :label="item.label" :name="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.fixed" :sortable="item.sortable" :type="item.type" :show-overflow-tooltip="showOverflowTooltip">
       <template #header v-if="item.header">
         <slot :name="item.header" />
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, ref } from 'vue';
 import pagination from '../pagination';
 
 export default defineComponent({
@@ -71,8 +71,10 @@ export default defineComponent({
       });
     };
 
+    const elTable = ref(null);
+
     return {
-      currentPage, tableDataList, changePage, sortChange,
+      currentPage, tableDataList, changePage, sortChange, instance: elTable, elTable,
     };
   },
 });

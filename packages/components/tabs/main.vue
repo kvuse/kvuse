@@ -34,9 +34,9 @@ export default defineComponent({
   emits: ['tab-click', 'change', 'update:modelValue'],
   setup(props, { emit }) {
     const instance = getCurrentInstance();
-    const route = instance.appContext.config.globalProperties.$route;
+    const route = computed(() => instance.appContext.config.globalProperties.$route);
     const router = instance.appContext.config.globalProperties.$router;
-    const active = computed(() => route?.params.type || route?.name);
+    const active = computed(() => route.value?.params.type || route.value?.name);
 
     const activeName = ref(active.value);
 
@@ -45,7 +45,7 @@ export default defineComponent({
       emit('update:modelValue', activeName.value);
     });
 
-    const query = computed(() => route.query);
+    const query = computed(() => route.value.query);
     const handleClick = (tab) => {
       if (props.isRouter) {
         const pathParams = { path: `${tab.paneName}`, query: query.value };
@@ -53,6 +53,7 @@ export default defineComponent({
         else router.push(pathParams);
       }
       emit('tab-click', tab.paneName);
+      emit('change', tab.paneName);
       emit('update:modelValue', tab.paneName);
     };
     return { activeName, handleClick };
