@@ -36,5 +36,5 @@ KVant.install = function (app) {
 // export default KUI;
 
 export {
-  KvButton, KvInput, KvTree, KVant, KvList, KvStatus,
+  KvButton, KvInput, KvTree, KVant, KvList, KvStatus, KvTable,
 };
