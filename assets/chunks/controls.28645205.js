@@ -1,0 +1,1 @@
+import{r as n,E as a,j as s,k as r,H as u}from"./framework.4fc8d094.js";const c={class:"width-240"},d={__name:"controls",setup(m){const e=n(1);return(p,o)=>{const t=a("k-input-number");return s(),r("div",c,[u(t,{controls:!1,placeholder:"请输入金额",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=l=>e.value=l)},null,8,["modelValue"])])}}};export{d as default};

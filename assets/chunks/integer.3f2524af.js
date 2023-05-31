@@ -1,0 +1,1 @@
+import{r as a,E as l,j as s,k as r,H as p}from"./framework.4fc8d094.js";const u={class:"width-240"},m={__name:"integer",setup(c){const e=a("");return(_,t)=>{const o=l("k-input");return s(),r("div",u,[p(o,{type:"integer",placeholder:"请输入整数类型",modelValue:e.value,"onUpdate:modelValue":t[0]||(t[0]=n=>e.value=n)},null,8,["modelValue"])])}}};export{m as default};

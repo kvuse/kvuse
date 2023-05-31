@@ -1,0 +1,1 @@
+import{r as n,E as r,j as l,B as s}from"./framework.4fc8d094.js";const u={__name:"basic",setup(m){const e=n({startTime:new Date,endTime:new Date});return(p,a)=>{const t=r("kv-date-picker");return l(),s(t,{modelValue:e.value,"onUpdate:modelValue":a[0]||(a[0]=o=>e.value=o)},null,8,["modelValue"])}}};export{u as default};

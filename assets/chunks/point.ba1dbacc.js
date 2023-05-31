@@ -1,0 +1,1 @@
+import{r as n,a7 as o,j as e,k as t,a8 as r,m as c,n as i,A as l}from"./framework.4fc8d094.js";const p=l("span",null,"金额处理：",-1),d={__name:"point",setup(_){const a=n(88.88888);return(u,m)=>{const s=o("money");return e(),t("span",null,[p,r((e(),t("span",null,[c(i(a.value),1)])),[[s,4,void 0,{point:!0}]])])}}};export{d as default};

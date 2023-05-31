@@ -1,0 +1,1 @@
+import{r as t,E as c,j as u,B as p}from"./framework.4fc8d094.js";const g={__name:"basic",setup(m){const n=t(50),e=t(1),l=o=>{console.log("page: ",o)};return(o,a)=>{const r=c("k-page");return u(),p(r,{total:n.value,modelValue:e.value,"onUpdate:modelValue":a[0]||(a[0]=s=>e.value=s),onCurrentChange:l},null,8,["total","modelValue"])}}};export{g as default};
