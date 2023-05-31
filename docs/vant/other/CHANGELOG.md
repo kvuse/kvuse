@@ -1,5 +1,15 @@
 # 更新日志
 
+## 1.0.2 (2023-05-30)
+
+### Features
+
+- 新增[`Date Picker`状态组件](../date-picker.md)
+  
+### Change
+
+- `Table`组件的优化，以及添加`width`宽度设置。
+
 ## 1.0.1 (2023-05-04)
 
 ### Features

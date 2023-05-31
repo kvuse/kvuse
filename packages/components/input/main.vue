@@ -43,7 +43,6 @@ export default defineComponent({
         changeInput(value);
       },
     });
-    const formatNumber = (str) => (!str && str !== '0' ? str : Number(str));
     const changeInput = (val) => {
       let value = val;
       if (props.type === 'number') {
@@ -66,7 +65,7 @@ export default defineComponent({
           } else if (value === '.') value = '';
         }
       } else if (props.type === 'integer') { // 只能输入整数
-        value = formatNumber(value.replace(/[^\d]/g, ''));
+        value = value.replace(/[^\d]/g, '');
       } else if (props.type === 'intText') { // 只能输入整数或者字母
         value = value.replace(/[^\w]/g, '');
       }

@@ -55,7 +55,7 @@ export default defineComponent({
       const widthProps = Number(row.width) ? `${row.width}px` : row.width;
       return [
         `text-align:${props.align}`,
-        props.border ? 'border-bottom: 1px solid #ebedf0;' : '',
+        props.border ? 'border-bottom: 1px solid #ebedf0;padding-bottom: 6px' : '',
         props.rowStyle,
         row.width ? `width: ${widthProps}` : 'flex: 1',
       ];

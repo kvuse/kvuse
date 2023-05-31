@@ -5,6 +5,7 @@ import KvTable from './table';
 import KvTree from './tree';
 import KvList from './list';
 import KvStatus from './status';
+import KvDatePicker from './date-picker';
 
 const KVant = {
   KvButton,
@@ -13,6 +14,7 @@ const KVant = {
   KvTree,
   KvList,
   KvStatus,
+  KvDatePicker,
   install: () => {},
 };
 
@@ -33,8 +35,8 @@ KVant.install = function (app) {
   // });
 };
 
-// export default KUI;
+// export default KVant;
 
 export {
-  KvButton, KvInput, KvTree, KVant, KvList, KvStatus, KvTable,
+  KvButton, KvInput, KvTree, KVant, KvList, KvStatus, KvTable, KvDatePicker,
 };
