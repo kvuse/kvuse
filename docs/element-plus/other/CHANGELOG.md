@@ -1,5 +1,17 @@
 # 更新日志
 
+## 1.3.4 (2023-06-08)
+
+### Change
+
+- [`tableV2`组件](../table-v2#table-属性)，添加`show-summary`属性，显示合计行功能，以及可以自定义显示合计功能
+- [`tableV2`组件](../table-v2#tablev2-column-插槽)，添加`footer`插槽
+
+### Features
+
+- [`CardList`虚拟列表组件](../card-list)，下拉的优化
+- [`CollapseButton`组件](../collapse-button#按钮位置)，按钮位置的优化
+
 ## 1.3.0 (2023-05-18)
 
 ### Change

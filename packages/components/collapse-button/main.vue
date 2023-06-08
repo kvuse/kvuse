@@ -50,8 +50,9 @@ export default defineComponent({
         left: {
           top: top ?? '50%',
           left: left ?? `-${clientWidth}px`,
-          borderRadius: '5px 0 0 5px',
+          borderRadius: '0 5px 5px 0',
           marginTop: top ? '0px' : `-${Math.ceil(clientHeight / 2)}px`,
+          transform: slots?.default ? '' : 'rotate(180deg)',
         },
         top: {
           left: left ?? '50%',

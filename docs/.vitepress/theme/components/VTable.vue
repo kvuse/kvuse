@@ -18,9 +18,9 @@ const props = defineProps({
 const tableColumn = computed(() => {
   if (props.type === 'attrs') {
     return [
-      { label: '属性', prop: 'attr', minWidth: 120 },
-      { label: '类型', prop: 'type', width: 80 },
-      { label: '说明', prop: 'dec', minWidth: 180 },
+      { label: '属性', prop: 'attr' },
+      { label: '类型', prop: 'type' },
+      { label: '说明', prop: 'dec' },
       { label: '可选值', prop: 'optional' },
       { label: '默认', prop: 'default' },
     ];

@@ -23,6 +23,29 @@
 <<< @/example/element-plus/table-v2/slots.vue
 </demo>
 
+## 固定行表格
+
+<demo md src="table-v2/fixed">
+
+<<< @/example/element-plus/table-v2/fixed.vue
+</demo>
+
+## 显示合计行
+
+将 `show-summary` 设置为`true`就会在表格尾部展示合计行
+
+<demo md src="table-v2/show-summary">
+
+<<< @/example/element-plus/table-v2/show-summary.vue
+</demo>
+
+## 自定义页脚
+
+<demo md src="table-v2/footer">
+
+<<< @/example/element-plus/table-v2/footer.vue
+</demo>
+
 ## TableV2 属性
 
 <v-table type="attrs" :data="[
@@ -32,6 +55,9 @@
   { attr :'header-cell-style', dec: '表格头部样式', type: 'object', optional: '-', default: `{ background:'#f5f7fa', color:'#909399'}` }, { attr :'height', dec: '表格列表高度', type: 'string', optional: 'auto/string', default: '100%' },
   { attr :'rowStyle', dec: 'row行的样式设置', type: 'object', optional: '-', default: {} },
   { attr :'rowClassName', dec: '行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className', type: 'function({ row, rowIndex }) / string / object', optional: '-', default: '-' },
+  { attr :'show-summary', dec: '是否在表尾显示合计行', type: 'boolean', optional: '-', default: 'false' },
+  { attr :'sum-text', dec: '显示摘要行第一列的文本', type: 'string', optional: '-', default: '合计' },
+  { attr :'summary-method', dec: '自定义的合计计算方法', type: 'function({ row, index })', optional: '-', default: '-' },
 ]" />
 
 ## TableV2-column 属性
@@ -60,6 +86,7 @@
   { name :'default', dec: '默认插槽', child: '-' },
   { name :'custom', dec: '自定义内容插槽', child: '-' },
   { name :'header', dec: '自定义表头插槽', child: '-' },
+  { name :'footer', dec: '自定义页脚插槽', child: '-' },
 ]" />
 
 ## Exposes

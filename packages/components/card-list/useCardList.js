@@ -29,18 +29,18 @@ export function useCardList(props, emit) {
   const viewListRanges = computed(() => list.value.filter((item, index) => index >= startIndex.value * rowCellNum.value && index < endIndex.value * rowCellNum.value));
 
   const setContainHeight = () => {
-    const { clientHeight = 100 } = scrollbarRef.value.wrapRef || {};
-    const gridGapHeight = (clientHeight / rowHeight()) * props.gridGap;
-    containHeight.value = Math.floor((props.data.length / rowCellNum.value) * rowHeight() + gridGapHeight);
+    const gridColumnHeight = rowCellNum.value * props.gridGap;
+    containHeight.value = Math.ceil((props.data.length / rowCellNum.value) * rowHeight()) + gridColumnHeight;
   };
 
   const onScroll = (event) => {
     const { scrollTop, clientHeight } = scrollbarRef.value.wrapRef;
     const distance = containHeight.value - clientHeight - scrollTop;
     emit('scroll', { distance, ...event });
+
     startIndex.value = getStartIndex(scrollTop);
-    startOffset.value = scrollTop + props.gridGap;
     endIndex.value = getEndIndex();
+    startOffset.value = scrollTop;
   };
 
   watch(() => props.data, () => {

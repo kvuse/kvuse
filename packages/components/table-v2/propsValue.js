@@ -19,4 +19,7 @@ export default {
     }),
   },
   height: { type: String, default: '100%' },
+  showSummary: { type: Boolean, default: false },
+  sumText: { type: String, default: '合计' },
+  summaryMethod: { type: [String, Function], default: '' },
 };
