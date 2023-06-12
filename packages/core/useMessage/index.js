@@ -38,16 +38,22 @@ export function useMessage() {
           window.top.postMessage('closeMask()', '*');
         });
     }),
-    alert: ({ msg, title = '提示', type = 'warning' }, callback) => {
+    alert: ({
+      msg, title = '提示', type = 'warning', ...arg
+    }, callback) => {
+      getMessage('$messageBox')?.close();
       getMessage('$messageBox')?.alert(msg, title, {
         confirmButtonText: '确认',
         type,
+        ...arg,
         callback: (action) => callback(action),
       });
     },
   };
 
+  const closeMessageBox = () => getMessage('$messageBox')?.close();
+
   return {
-    message, messageBox,
+    message, messageBox, closeMessageBox,
   };
 }
