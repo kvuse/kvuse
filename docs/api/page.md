@@ -7,6 +7,15 @@
   import { usePage } from '@kvuse/core';
   const { totalPage, totalRecord, currentPage, listData, getNowPage, setListAndPage, nullData } = usePage();
 
+  const getResult = async () => {
+    const result = await getApi();
+    setListAndPage(result); // 设置totalPage和listData....
+
+    // 如果获得数组是累加的话，可以添加第二个参数
+    // setListAndPage(result, true); 
+    // 返回的数组合并 listData.value = [...listData.value, ...result]
+  }
+
 </script>
 ```
 

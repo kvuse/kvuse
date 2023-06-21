@@ -20,11 +20,12 @@ export function usePage() {
     return currentPage.value;
   };
 
-  const setListAndPage = (result) => {
+  const setListAndPage = (result, isMerge = false) => {
     const {
       records = [], totalPage: totalPages = 1, pageNo = 1, pageIndex, totalRecord: totalElements = 1, content, total, size,
     } = result || {};
-    listData.value = content ?? records;
+    const listTmp = content ?? records;
+    listData.value = isMerge ? [...listData.value, ...listTmp] : listTmp;
     loading.value = false;
     totalPage.value = total ?? totalPages;
     totalRecord.value = totalElements;
