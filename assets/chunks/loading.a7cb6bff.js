@@ -1,1 +1,0 @@
-import{_ as e,E as s,j as o,B as a,C as n,A as c}from"./framework.4fc8d094.js";const _={},r=c("span",null,"加载中...",-1);function l(d,p){const t=s("kv-status");return o(),a(t,{type:"loading"},{default:n(()=>[r]),_:1})}const i=e(_,[["render",l]]);export{i as default};
