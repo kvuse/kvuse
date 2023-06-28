@@ -1,9 +1,9 @@
 <template>
-  <div class="kv-status">
+  <div class="kv-status flex-column">
     <div class="error-type flex-center">
       <slot name="image">
         <div class="status-svg">
-          <img :src="imgUrl">
+          <img :src="imgUrl" class="status-image">
         </div>
       </slot>
     </div>
@@ -22,7 +22,7 @@ export default defineComponent({
     type: { type: String, default: 'data' },
   },
   setup(props) {
-    const imgUrl = computed(() => new URL(`./svgs/${props.type}.svg`, import.meta.url).href);
+    const imgUrl = computed(() => new URL(`./images/${props.type}.png`, import.meta.url).href);
 
     return { imgUrl };
   },
@@ -41,7 +41,11 @@ export default defineComponent({
 
     .status-svg {
       width: 100%;
-      margin-bottom: -100px;
+      height: 100%;
+
+      .status-image {
+        width: 100%;
+      }
     }
   }
 }

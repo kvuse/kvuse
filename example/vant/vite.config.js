@@ -13,9 +13,6 @@ const { resolve } = require('path');
 export default ({ mode }) => defineConfig({
   plugins: [
     vue(),
-    Components({
-      resolvers: [VantResolver()],
-    }),
     AutoImport({
       imports: [
         'vue', 'vue-router', 'pinia',
@@ -25,6 +22,9 @@ export default ({ mode }) => defineConfig({
         filepath: './.eslintrc-auto-import.json',
         globalsPropValue: true,
       },
+    }),
+    Components({
+      resolvers: [VantResolver()],
     }),
   ],
   base: mode === 'production' ? '/static/' : '/',

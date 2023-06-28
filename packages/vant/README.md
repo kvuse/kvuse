@@ -25,6 +25,7 @@ import {
   KvTree,
   KvList,
   KvStatus,
+  KvDatePicker,
 } from '@kvuse/vant';
 
 export default {
@@ -35,6 +36,7 @@ export default {
     KvTree,
     KvList,
     KvStatus,
+    KvDatePicker,
   },
 };
 ```

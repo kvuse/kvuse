@@ -1,5 +1,12 @@
 <template>
-  <kv-date-picker v-model="dateTime" shape="round-border" :shortcuts-value="1" show-shortcuts @confirm="confirmHandle"></kv-date-picker>
+  <kv-date-picker
+    v-model="dateTime"
+    shape="round-border"
+    :shortcuts-value="0"
+    show-shortcuts
+    @confirm="confirmHandle"
+  >
+  </kv-date-picker>
 </template>
 
 <script setup>

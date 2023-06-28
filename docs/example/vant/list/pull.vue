@@ -1,35 +1,25 @@
 <template>
-  <kv-list :load-change="loadChange" :refresh-change="refreshChange" ref="listRef">
-    <template v-for="(item, index) in tableData" :key="index">
-      <div class="flex-center list-item van-hairline--bottom">
-        {{ index }}
-      </div>
+  <kv-list :load-request="loadChange" ref="listRef">
+    <template #default="{ list }">
+      <template v-for="(item, index) in list" :key="index">
+        <div class="flex-center list-item van-hairline--bottom">
+          {{ index }}
+        </div>
+      </template>
     </template>
   </kv-list>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-
-const tableData = ref([]);
+import { ref } from 'vue';
 
 const listRef = ref(null);
-
-const result = reactive({
-  pageIndex: 1,
-  isNullData: false,
-  isFinished: false,
-});
-
-const fetchData = () => new Promise((resolve) => {
+const pageIndex = ref(1);
+const fetchData = (pageNo = pageIndex.value) => new Promise((resolve) => {
   setTimeout(() => {
-    tableData.value = [...tableData.value, ...new Array(30).fill({ name: 11 })];
-    if (result.pageIndex === 3) {
-      result.isNullData = false;
-      result.isFinished = true;
-    } else {
-      result.pageIndex++;
-    }
+    const result = { records: [], pageNo, totalPage: 4 };
+    pageIndex.value++;
+    result.records = [...result.records, ...new Array(30).fill({ name: 11 })];
     resolve(result);
   }, 2000); // 等待2秒
 });
@@ -39,16 +29,6 @@ const loadChange = async () => {
   return data;
 };
 
-const refreshChange = () => {
-  result.pageIndex = 1;
-  result.isNullData = false;
-  result.isFinished = false;
-  tableData.value = [];
-};
-
-onMounted(() => {
-  listRef.value.reset();
-});
 </script>
 
 <style lang="scss" scoped>

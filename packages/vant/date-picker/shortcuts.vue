@@ -1,5 +1,5 @@
 <template>
-  <div class="date-shortcuts mr10">
+  <div class="date-shortcuts mr10 flex-shrink">
     <van-button :round="round" @click="show = true" :class="{'bg-button':bgButton}">{{ current }}</van-button>
     <van-popup v-model:show="show" position="bottom" safe-area-inset-bottom>
       <van-picker :columns="columns" @confirm="onConfirm" @cancel="show = false" />
@@ -52,7 +52,7 @@ const onConfirm = ({ selectedValues, selectedOptions }) => {
   const [select] = selectedValues;
   const date = new Date();
   const dataTime = date.getTime() - 3600 * 1000 * 24 * select;
-  emit('confirm', dataTime);
+  emit('confirm', { value: dataTime, select });
 };
 
 </script>

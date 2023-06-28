@@ -30,7 +30,7 @@ pnpm install @kvuse/vant
 ```js
 import { createApp } from 'vue';
 import { KUI } from '@kvuse/vant';
-import '@kvuse/components/dist/index.css'
+import '@kvuse/vant/dist/index.css'
 
 Vue.use(KUI)
 ```

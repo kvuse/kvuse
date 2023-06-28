@@ -6,7 +6,7 @@
 import { ref } from 'vue';
 
 const dateTime = ref({
-  startTime: new Date(),
+  startTime: new Date('2023-06-20 12:00:00'),
   endTime: new Date(),
 });
 </script>

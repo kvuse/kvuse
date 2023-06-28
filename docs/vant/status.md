@@ -9,7 +9,7 @@
 
 ## 图片类型
 
-可设置`type`属性来使用图片类型。内置了三种图片类型：`data`, `search`, `loading`
+可设置`type`属性来使用图片类型。内置了三种图片类型：`data`, `fail`, `loading`
 
 <demo md src="status/loading" dir="vant" is-view>
 

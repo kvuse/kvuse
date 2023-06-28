@@ -15,6 +15,11 @@
     <kv-button type="primary" link>
       测试
     </kv-button>
+    <div class="bg-white">
+      <kv-date-picker v-model="dateTime" shape="round" :shortcuts-value="0" show-shortcuts @confirm="confirmHandle" />
+    </div>
+
+    <van-search v-model="value" placeholder="请输入搜索关键词" />
   </div>
 </template>
 
@@ -32,6 +37,17 @@ const setDetailsHandle = () => {
   const num = Math.random();
   setDetails(num);
 };
+
+const dateTime = ref({
+  startTime: '',
+  endTime: '',
+});
+
+const confirmHandle = (value) => {
+  console.log('value: ', value);
+};
+
+const value = ref('');
 </script>
 
 <style lang="scss" scoped>

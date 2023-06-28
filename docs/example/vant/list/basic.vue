@@ -1,5 +1,5 @@
 <template>
-  <kv-list :load-change="loadChange" ref="listRef">
+  <kv-list :load-request="loadChange" :response-names="{pageNo:'pageIndex'}" ref="listRef">
     <template v-for="(item, index) in tableData" :key="index">
       <div class="flex-center list-item van-hairline--bottom">
         {{ index }}
@@ -19,9 +19,9 @@ const fetchData = () => new Promise((resolve) => {
   setTimeout(() => {
     tableData.value = new Array(30).fill({ name: 11 });
     resolve({
-      pageIndex: 1,
-      isNullData: false,
-      isFinished: true,
+      pageNo: 2,
+      records: tableData.value,
+      totalPage: 1,
     });
   }, 2000); // 等待2秒
 });

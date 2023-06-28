@@ -1,7 +1,5 @@
 <template>
-  <kv-status>
-    <span>暂无数据</span>
-  </kv-status>
+  <kv-status></kv-status>
 </template>
 
 <style lang="scss" scoped>

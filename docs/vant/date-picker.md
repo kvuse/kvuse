@@ -20,12 +20,11 @@
 
 </demo>
 
-## 日历类型
+## 日期类型
 
 设置 `type` 属性，选择日期类型
 
 可选值包括 single 表示选择单个日期，
-multiple 表示选择多个日期，
 range 表示选择日期区间
 
 <demo md src="date-picker/single" dir="vant" >
@@ -36,14 +35,14 @@ range 表示选择日期区间
 
 ## 快捷选项
 
-设置 `shortcuts` 属性，设置快捷选项 只有`type="range"`显示
+设置 `show-shortcuts` 属性，设置快捷选项 只有`type="range"`显示
 
 设置`shortcutsValue`属性，可以设置默认值
 
 可选值：
 1:昨天  0:今天  7:近7天  30:近一个月  90:近3个月
 
-<demo md src="date-picker/shortcuts" dir="vant" >
+<demo md src="date-picker/shortcuts" dir="vant">
 
 <<< @/example/vant/date-picker/shortcuts.vue
 
@@ -57,7 +56,7 @@ range 表示选择日期区间
 
 <v-table type="attrs" :data="[
   { attr :'shape', dec: '搜索框形状', type: 'String', optional: 'default / round / border', default: 'default' },
-  { attr :'type', dec: '日历类型,  single 表示选择单个日期，multiple 表示选择多个日期，range 表示选择日期区间', type: 'String', optional: 'single / multiple / range', default: 'range' },
+  { attr :'type', dec: '日期类型,  single 表示选择单个日期，range 表示选择日期区间', type: 'String', optional: 'single / range', default: 'range' },
    { attr :'show-format', dec: '显示数据格式化', type: 'string', optional: '', default: 'YYYY-MM-DD' },
    { attr :'value-format', dec: '绑定值数据格式化', type: 'string', optional: '', default: 'YYYY-MM-DD HH:mm:ss' },
    { attr :'show-icon', dec: '是否显示图标', type: 'boolean', optional: '', default: 'true' },

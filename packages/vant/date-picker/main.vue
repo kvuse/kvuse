@@ -1,7 +1,7 @@
 <template>
   <div class="k-date-picker flex-align-center">
     <shortcuts v-bind="$attrs" v-if="showShortcuts && type === 'range'" :shortcuts-value="shortcutsValue" @confirm="confirmShortcuts" />
-    <pickerEdit v-bind="$attrs" v-model="pickerData" @click="show = true" v-if="$attrs.type==='single'" />
+    <pickerEdit v-bind="$attrs" v-model="pickerData" @click="show = true" v-if="['single'].includes($attrs.type)" />
     <van-row justify="space-between" v-else>
       <van-col span="11" class="calendar-col" @click="show = true">
         <pickerEdit v-bind="$attrs" v-model="pickerData.startTime" />
@@ -47,8 +47,10 @@ const attrs = useAttrs();
 const type = computed(() => attrs.type ?? 'range');
 
 const {
-  minDate, maxDate, defaultDate, formarData, formatter,
-} = useCalendar(attrs);
+  minDate, maxDate, initalDate, formarData, formatter, setStringToDate,
+} = useCalendar(attrs, pickerData);
+
+const defaultDate = ref(initalDate.value);
 
 const onConfirm = (data) => {
   const propsType = type.value;
@@ -57,17 +59,23 @@ const onConfirm = (data) => {
     const startTime = formarData(data[0], valueFormat);
     const endTime = valueFormat === 'YYYY-MM-DD HH:mm:ss' ? `${formarData(data[1], 'YYYY-MM-DD')} 23:59:59` : `${formarData(data[1], valueFormat)}`;
     pickerData.value = { startTime, endTime };
+    defaultDate.value = [new Date(startTime), new Date(endTime)];
   } else if (propsType === 'multiple') {
     const list = data.map((item) => `${formarData(item, valueFormat)}`);
     pickerData.value = list;
-  } else pickerData.value = formarData(data, valueFormat);
+    defaultDate.value = list;
+  } else {
+    pickerData.value = formarData(data, valueFormat);
+    defaultDate.value = setStringToDate(pickerData.value);
+  }
   show.value = false;
   nextTick(() => emit('confirm', pickerData.value));
 };
 
-const confirmShortcuts = (value) => {
+const confirmShortcuts = ({ value, select }) => {
   const startTime = `${formarData(value, 'YYYY-MM-DD')} 00:00:00`;
-  const endTime = `${formarData(new Date(), 'YYYY-MM-DD')} 23:59:00`;
+  const endTime = select === 1 ? startTime : `${formarData(new Date(), 'YYYY-MM-DD')} 23:59:00`;
+  pickerData.value = { startTime, endTime };
   onConfirm([startTime, endTime]);
 };
 

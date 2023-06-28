@@ -5,7 +5,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const dateTime = ref(new Date());
+const dateTime = ref('2023-06-20');
 
 const confirmHandle = (value) => {
   console.log('value: ', value);

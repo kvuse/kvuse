@@ -1,16 +1,17 @@
 <template>
-  <van-config-provider :theme-vars="themeVars">
-    <van-search :class="[borderClasses,'picker-edit']" v-model="dateTime" placeholder="开始时间" disabled v-bind="$attrs">
-      <template #left-icon>
+  <div class="picker-edit flex-align-center flex" :class="[borderClasses]" v-bind="$attrs">
+    <div class="edit-content">
+      <div class="left-icon">
         <van-icon name="underway-o" v-if="$attrs.showIcon || true" />
-      </template>
-    </van-search>
-  </van-config-provider>
+      </div>
+    </div>
+    <input class="edit-control" :value="dateTime" disabled placeholder="开始时间" />
+  </div>
 </template>
 
 <script setup>
 import { computed, useAttrs } from 'vue';
-import { Search as VanSearch, Icon as VanIcon } from 'vant';
+import { Icon as VanIcon } from 'vant';
 import { useCalendar } from './useCalendar';
 
 const props = defineProps({
@@ -18,23 +19,19 @@ const props = defineProps({
   showFormat: { type: String, default: 'YYYY-MM-DD' },
 });
 
-const themeVars = {
-  searchPadding: '10px 0px',
-};
-
 const emit = defineEmits(['update:modelValue']);
 
-const { formarData } = useCalendar();
+const { formarData, setStringToDate } = useCalendar();
 
 const attrs = useAttrs();
 const dateTime = computed({
-  get: () => (props.modelValue ? formarData(props.modelValue, attrs.showFormat ?? props.showFormat) : ''),
+  get: () => (props.modelValue ? formarData(setStringToDate(props.modelValue), attrs.showFormat ?? props.showFormat) : ''),
   set: (value) => emit('update:modelValue', value),
 });
 
 const borderClasses = computed(() => ({
-  'van-search-border': ['round-border', 'border'].includes(attrs.shape),
-  'van-search-border-round': attrs.shape === 'round-border',
+  'picker-border': ['round-border', 'border'].includes(attrs.shape),
+  'picker-border-round': ['round-border', 'round'].includes(attrs.shape),
 }));
 
 </script>
@@ -46,31 +43,44 @@ const borderClasses = computed(() => ({
   align-self: center;
 }
 
-.van-search-border {
-  .van-search__content {
-    border: var(--van-button-border-width) solid var(--van-button-default-border-color);
-    background: none;
-    border-radius: var(--van-radius-md);
-  }
-
-  .van-field__control:disabled {
-    cursor: pointer;
-  }
-}
-
-.van-search-border-round {
-  .van-search__content {
-    border-radius: var(--van-radius-max);
-  }
-}
-
 .picker-edit {
-  .van-field__control:disabled {
-    -webkit-text-fill-color: var(--van-text-color);
+  padding: 0 var(--van-padding-xs) 0 0;
+  height: var(--van-search-input-height);
+  background: var(--van-search-content-background);
+  font-size: var(--van-font-size-md);
+
+  .edit-content {
+    padding-left: var(--van-padding-sm);
+    border-radius: var(--van-radius-sm);
+    color: var(--van-search-left-icon-color);
+    margin-right: var(--van-padding-base);
   }
 
-  .van-field__control::placeholder {
-    -webkit-text-fill-color: var(--van-field-input-disabled-text-color);
+  .edit-control {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    color: var(--van-field-input-text-color);
+    line-height: inherit;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+    user-select: auto;
   }
 }
+
+.picker-border {
+  border: var(--van-button-border-width) solid var(--van-button-default-border-color);
+  background: #fff;
+  border-radius: var(--van-radius-md);
+}
+
+.picker-border-round {
+  border-radius: var(--van-radius-max);
+}
+
 </style>
