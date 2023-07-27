@@ -1,0 +1,1 @@
+import{r as n,a7 as o,j as a,k as t,a8 as r,m as l,n as c,A as u}from"./framework.1690a9bd.js";const i=u("span",null,"金额处理：",-1),d={__name:"update",setup(_){const e=n(88.88888);return setTimeout(()=>{e.value=188.66666},1e3),(p,m)=>{const s=o("money");return a(),t("span",null,[i,r((a(),t("span",null,[l(c(e.value),1)])),[[s,e.value,"value"]])])}}};export{d as default};

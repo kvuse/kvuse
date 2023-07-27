@@ -1,0 +1,1 @@
+import{r as l,H as o,j as n,q as r}from"./framework.1690a9bd.js";const b={__name:"empty",setup(p){const a=[{label:"日期",prop:"date",align:"right"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}],e=l([]);return(s,c)=>{const t=o("k-table-v2");return n(),r(t,{"table-data":e.value,"table-column":a},null,8,["table-data"])}}};export{b as default};

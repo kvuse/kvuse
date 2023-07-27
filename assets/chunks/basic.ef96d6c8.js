@@ -1,0 +1,1 @@
+import{r as o,H as r,j as s,q as a}from"./framework.1690a9bd.js";const m={__name:"basic",setup(c){const e=o([{title:"首页",path:"home"},{title:"前台"}]);return(n,l)=>{const t=r("k-breadcrumb");return s(),a(t,{list:e.value},null,8,["list"])}}};export{m as default};

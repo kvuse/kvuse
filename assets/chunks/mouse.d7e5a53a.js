@@ -1,0 +1,1 @@
+import{_ as e,j as o,k as t,A as s}from"./framework.1690a9bd.js";const n={},c=s("span",{class:"line-through"},"中划线",-1),a=s("span",{class:"pointer ml10"},"光标手指指针",-1),_=s("span",{class:"not-allowed ml10"},"禁用样式",-1),l=[c,a,_];function r(d,i){return o(),t("div",null,l)}const h=e(n,[["render",r]]);export{h as default};

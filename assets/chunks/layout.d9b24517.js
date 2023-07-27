@@ -1,0 +1,1 @@
+import{r as n,H as t,j as r,q as c,s as e,M as _,m as l}from"./framework.1690a9bd.js";const d={__name:"layout",setup(u){const o=n([{title:"首页",path:"home"},{title:"前台"}]);return(m,p)=>{const a=t("k-button"),s=t("k-breadcrumb");return r(),c(s,{list:o.value},{default:e(()=>[_(a,null,{default:e(()=>[l("设置")]),_:1})]),_:1},8,["list"])}}};export{d as default};

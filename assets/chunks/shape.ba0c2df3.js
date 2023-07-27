@@ -1,1 +1,0 @@
-import{r as l,E as s,j as m,B as p}from"./framework.4fc8d094.js";const u={__name:"shape",setup(c){const e=l({startTime:"",endTime:""}),n=o=>{console.log("value: ",o)};return(o,a)=>{const r=s("kv-date-picker");return m(),p(r,{modelValue:e.value,"onUpdate:modelValue":a[0]||(a[0]=t=>e.value=t),shape:"round-border",onConfirm:n},null,8,["modelValue"])}}};export{u as default};

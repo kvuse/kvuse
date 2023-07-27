@@ -1,0 +1,1 @@
+import{r as n,a7 as o,j as e,k as a,a8 as r,m as c,n as l,A as i}from"./framework.1690a9bd.js";const _=i("span",null,"金额处理：",-1),d={__name:"basic",setup(p){const s=n(88.8888);return(u,m)=>{const t=o("money");return e(),a("span",null,[_,r((e(),a("span",null,[c(l(s.value),1)])),[[t]])])}}};export{d as default};
