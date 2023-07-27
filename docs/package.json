@@ -25,15 +25,15 @@
     "@kvuse/core": "workspace:*",
     "@kvuse/vant": "workspace:*",
     "@vant/touch-emulator": "^1.4.0",
-    "@vueuse/core": "^10.1.2",
-    "element-plus": "^2.3.5",
-    "vant": "^4.4.0",
-    "vitepress": "1.0.0-beta.1"
+    "@vueuse/core": "^10.2.1",
+    "element-plus": "^2.3.8",
+    "vant": "^4.6.3",
+    "vitepress": "1.0.0-beta.6"
   },
   "devDependencies": {
     "flexsearch": "^0.7.31",
     "picocolors": "^1.0.0",
-    "unplugin-vue-components": "^0.24.1",
+    "unplugin-vue-components": "^0.25.1",
     "vitepress-plugin-search": "1.0.4-alpha.20"
   }
 }

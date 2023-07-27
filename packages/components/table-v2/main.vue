@@ -7,7 +7,7 @@
         </slot>
       </template>
     </headerFooter>
-    <virtualList :data="tableData" always ref="virtualRef" :row-class-name="rowClassName" v-bind="$attrs" :height="height" @scroll="scrollHandle">
+    <virtualList :data="tableData" always ref="virtualRef" :row-class-name="rowClassName" v-bind="$attrs" :height="height" @scroll="scrollHandle" v-if="tableData.length">
       <template #default="{ row, index:rowIndex }">
         <slot name="content">
           <div class="flex table-body">
@@ -24,6 +24,9 @@
         </slot>
       </template>
     </virtualList>
+    <div class="flex-center pt20 pb20" :style="{height:height}" v-else>
+      <slot name="empty">{{ emptyText }}</slot>
+    </div>
     <slot name="footer">
       <headerFooter ref="tableBottom" :table-column="tableColumn" is-footer v-if="showSummary || $slots.footer">
         <template #default="{ row, index }">

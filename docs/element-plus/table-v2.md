@@ -46,12 +46,20 @@
 <<< @/example/element-plus/table-v2/footer.vue
 </demo>
 
+## 没有数据
+
+<demo md src="table-v2/empty">
+
+<<< @/example/element-plus/table-v2/empty.vue
+</demo>
+
 ## TableV2 属性
 
 <v-table type="attrs" :data="[
   { attr :'table-column', dec: '表格列表', type: 'array', optional: '-', default: '[]' },
   { attr :'table-data', dec: '表格数据', type: 'array', optional: '-', default: '[]' },
   { attr :'modelValue / v-model', dec: '绑定的当前页数', type: 'number', optional: '-', default: 1 },
+  { attr :'empty-text', dec: '空数据时显示的文本内容， 也可以通过 #empty 设置', type: 'string', optional: '-', default: '暂无数据' },
   { attr :'header-cell-style', dec: '表格头部样式', type: 'object', optional: '-', default: `{ background:'#f5f7fa', color:'#909399'}` }, { attr :'height', dec: '表格列表高度', type: 'string', optional: 'auto/string', default: '100%' },
   { attr :'rowStyle', dec: 'row行的样式设置', type: 'object', optional: '-', default: {} },
   { attr :'rowClassName', dec: '行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className', type: 'function({ row, rowIndex }) / string / object', optional: '-', default: '-' },
@@ -87,6 +95,7 @@
   { name :'custom', dec: '自定义内容插槽', child: '-' },
   { name :'header', dec: '自定义表头插槽', child: '-' },
   { name :'footer', dec: '自定义页脚插槽', child: '-' },
+  { name :'empty', dec: '自定义空数据内容', child: '-' },
 ]" />
 
 ## Exposes

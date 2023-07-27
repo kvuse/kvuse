@@ -38,11 +38,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@vueuse/core": "^10.1.2",
-    "vant": "^4.4.0"
+    "@vueuse/core": "^10.2.1",
+    "vant": "^4.6.3"
   },
   "devDependencies": {
-    "kucss": "^1.1.0",
+    "kucss": "^1.1.2",
     "vue": "^3.3.4"
   }
 }

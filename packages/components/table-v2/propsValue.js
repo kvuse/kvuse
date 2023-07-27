@@ -22,4 +22,5 @@ export default {
   showSummary: { type: Boolean, default: false },
   sumText: { type: String, default: '合计' },
   summaryMethod: { type: [String, Function], default: '' },
+  emptyText: { type: String, default: '暂无数据' },
 };
