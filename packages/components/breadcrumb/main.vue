@@ -34,8 +34,9 @@ export default defineComponent({
         window.location.href = item.url;
         return;
       }
+      const pathIndex = (index - props.list.length) + 1;
       if (item.path) router?.push(item.path);
-      else router?.go((index - props.list.length) + 1);
+      else if (pathIndex) router?.go(pathIndex);
     };
     return { clickHandle };
   },

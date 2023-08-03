@@ -1,8 +1,12 @@
 {
   "name": "@kvuse/components",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "vue3 + elementPlus 常用组件",
   "homepage": "https://kvuse.github.io/kvuse/element-plus/button",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kvuse/kvuse/blob/master/packages/components/"
+  },
   "keywords": [
     "vite",
     "vue3",

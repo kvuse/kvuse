@@ -2863,7 +2863,8 @@ const ml = B({
         window.location.href = o.url;
         return;
       }
-      o.path ? t == null || t.push(o.path) : t == null || t.go(l - e.list.length + 1);
+      const s = l - e.list.length + 1;
+      o.path ? t == null || t.push(o.path) : s && (t == null || t.go(s));
     } };
   }
 }), hl = { class: "crumb-header flex-between" }, vl = { class: "crumb-contain" }, gl = ["onClick"];
@@ -2885,7 +2886,7 @@ function bl(e, n, t, a, o, l) {
     S(e.$slots, "default", {}, void 0, !0)
   ]);
 }
-const Me = /* @__PURE__ */ I(ml, [["render", bl], ["__scopeId", "data-v-4520378f"]]);
+const Me = /* @__PURE__ */ I(ml, [["render", bl], ["__scopeId", "data-v-b570be29"]]);
 Me.install = function(e) {
   e.component(Me.name, Me);
 };
