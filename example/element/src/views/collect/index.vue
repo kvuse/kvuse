@@ -35,6 +35,10 @@ const { $api, $http } = useRequest({
     // 报错处理
     return data;
   },
+  beforeResponse(response) {
+    console.log('response.config.method: ', response.config.method);
+    return response.data;
+  },
 });
 
 const getData = async () => {

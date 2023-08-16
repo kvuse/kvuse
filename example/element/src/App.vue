@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import locale from 'element-plus/lib/locale/lang/zh-cn';
+import locale from 'element-plus/dist/locale/zh-cn.mjs';
 </script>
 
 <style lang="scss">

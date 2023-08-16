@@ -52,6 +52,10 @@ import { useRequest } from '@kvuse/core';
 const { $api } = useRequest({
   beforeResponse(response){
     console.log(response);
+    const { data, data: { code } } = response || {};
+    if (code === 0) return data;
+    // 返回请求结果
+    return data;
   }
 });
 
@@ -94,7 +98,7 @@ const { $http } = useRequest({
   responseHandler(response) {
     const { data, data: { code } } = response || {};
     if (code === 0) return data;
-    // 执行报错处理
+    // 返回请求结果
     return data;
   },
 });

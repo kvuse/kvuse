@@ -1,6 +1,6 @@
 {
   "name": "@kvuse/components",
-  "version": "1.3.7",
+  "version": "1.3.9",
   "description": "vue3 + elementPlus 常用组件",
   "homepage": "https://kvuse.github.io/kvuse/element-plus/button",
   "repository": {
@@ -14,10 +14,6 @@
     "@kvuse/component",
     "element-plus",
     "components"
-  ],
-  "files": [
-    "dist",
-    "index.d.ts"
   ],
   "main": "main.js",
   "module": "./dist/index.es.js",
