@@ -1,4 +1,4 @@
-# NumberKeyboard 数字输入框
+# NumberKeyboard 数字键盘
 
 ## 基础使用
 
