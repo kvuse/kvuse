@@ -1,1 +1,0 @@
-import{r as a,H as l,j as s,k as r,M as p}from"./framework.1690a9bd.js";const u={class:"width-240"},m={__name:"integer",setup(c){const e=a("");return(_,t)=>{const o=l("k-input");return s(),r("div",u,[p(o,{type:"integer",placeholder:"请输入整数类型",modelValue:e.value,"onUpdate:modelValue":t[0]||(t[0]=n=>e.value=n)},null,8,["modelValue"])])}}};export{m as default};
