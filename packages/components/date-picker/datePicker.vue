@@ -1,5 +1,5 @@
 <template>
-  <el-date-picker v-model="dateTime" :type="type" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :shortcuts="shortcuts" :format="pickerFormat" value-format="YYYY-MM-DD HH:mm:ss" :disabled-date="disabledDate" :default-time="defaultTime" :editable="false" :clearable="false" @change="changeHandle" />
+  <el-date-picker v-model="dateTime" :type="type" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :shortcuts="shortcuts" :format="pickerFormat" value-format="YYYY-MM-DD HH:mm:ss" :disabled-date="disabledDate" :default-time="defaultTime" :editable="false" v-bind="$attrs" @change="changeHandle" />
 </template>
 
 <script setup>
@@ -19,6 +19,8 @@ const getDateResult = (day) => {
   const start = new Date();
   const end = new Date();
   start.setTime(start.getTime() - 3600 * 1000 * 24 * day);
+  start.setHours(0, 0, 0, 0);
+  end.setHours(23, 59, 59, 999);
   return props.type === 'date' ? start : [start, end];
 };
 

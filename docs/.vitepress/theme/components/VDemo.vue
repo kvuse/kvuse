@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import { ref, defineAsyncComponent } from 'vue';
+import { ref, onMounted, defineAsyncComponent } from 'vue';
 import { CopyDocument, CaretTop } from '@element-plus/icons-vue';
 import { useClipboard } from '@vueuse/core';
 import { ElMessage } from 'element-plus';
@@ -89,6 +89,12 @@ const copyCode = () => {
   ElMessage.closeAll();
   ElMessage({ message: '已复制', type: 'success' });
 };
+
+onMounted(() => {
+  if (props.isView) {
+    delete document.body.dataset.noTouchSimulate;
+  } else document.body.dataset.noTouchSimulate = true;
+});
 
 </script>
 

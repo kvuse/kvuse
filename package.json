@@ -15,19 +15,21 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@kvuse/eslint-config": "^1.0.2",
-    "@kvuse/stylelint-config": "^1.0.0",
+    "@commitlint/cli": "^17.7.1",
+    "@kvuse/commitlint-config": "^1.1.7",
+    "@kvuse/eslint-config": "^1.0.4",
+    "@kvuse/stylelint-config": "^1.0.2",
     "@testing-library/vue": "^7.0.0",
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue": "^4.3.4",
     "@vue/compiler-sfc": "^3.3.4",
     "@vue/test-utils": "^2.4.1",
-    "eslint": "^8.45.0",
-    "happy-dom": "^10.5.2",
-    "stylelint": "^15.10.2",
+    "eslint": "^8.48.0",
+    "happy-dom": "^10.11.2",
+    "stylelint": "^15.10.3",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",
-    "unplugin-vue-macros": "^2.4.0",
-    "vite": "^4.4.7",
-    "vitest": "^0.33.0"
+    "unplugin-vue-macros": "^2.4.14",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.3"
   }
 }

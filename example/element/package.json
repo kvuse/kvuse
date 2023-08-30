@@ -13,27 +13,27 @@
     "@element-plus/icons-vue": "^2.1.0",
     "@kvuse/components": "workspace:*",
     "@kvuse/core": "workspace:*",
-    "@vueuse/core": "^10.2.1",
-    "axios": "^1.4.0",
-    "element-plus": "^2.3.8",
+    "@vueuse/core": "^10.4.1",
+    "axios": "^1.5.0",
+    "element-plus": "^2.3.12",
     "pinia": "^2.1.6",
     "pinia-persistedstate": "^0.1.2",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue": "^4.3.4",
     "@vue/compiler-sfc": "^3.3.4",
-    "eslint": "^8.45.0",
+    "eslint": "^8.48.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-vue": "^9.15.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-vue": "^9.17.0",
     "postcss-html": "^1.5.0",
-    "sass": "^1.64.1",
-    "stylelint": "^15.10.2",
+    "sass": "^1.66.1",
+    "stylelint": "^15.10.3",
     "stylelint-config-standard-scss": "^10.0.0",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",
-    "vite": "^4.4.7"
+    "vite": "^4.4.9"
   }
 }

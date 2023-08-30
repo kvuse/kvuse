@@ -4,6 +4,7 @@ import Theme from 'vitepress/theme';
 import ElementPlus from 'element-plus';
 import { KUI } from '@kvuse/components';
 import 'element-plus/dist/index.css';
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
 import '@kvuse/components/dist/index.css';
 import { KVant } from '@kvuse/vant';
 import '@kvuse/vant/dist/index.css';
@@ -16,7 +17,7 @@ export default {
   ...Theme,
   Layout,
   enhanceApp({ app }) {
-    app.use(ElementPlus);
+    app.use(ElementPlus, { locale: zhCn });
     app.use(KUI);
     app.use(Vant);
     app.use(KVant);

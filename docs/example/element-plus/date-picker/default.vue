@@ -3,7 +3,7 @@
   <div class="mt20 mb10">
     时间日期类型
   </div>
-  <k-date-picker type="datetimerange" v-model="time" @change="changeHandle" />
+  <k-date-picker type="datetimerange" v-model="time" :clearable="false" @change="changeHandle" />
   <div class="mt20 mb20">
     选择类型模式
   </div>
