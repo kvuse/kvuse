@@ -80,7 +80,7 @@
   { attr :'fixed', dec: '列是否固定在左侧`left`或者右侧`right`, true 表示固定在左侧', type: 'string / boolean', optional: 'left / right /true', default: '' },
 ]" />
 
-## Table-v2 事件
+## TableV2 事件
 
 <v-table type="event" :data="[
   { event :'row-click', dec: '当用户点击行触发该事件', callback: 'row,index' },
@@ -88,17 +88,22 @@
   { event :'sort-change', dec: '点击排序触发', callback: '{  sortType, column }' },
 ]" />
 
-## TableV2-column 插槽
+## TableV2-column Slots
 
 <v-table type="slot" :data="[
-  { name :'default', dec: '默认插槽', child: '-' },
-  { name :'custom', dec: '自定义内容插槽', child: '-' },
-  { name :'header', dec: '自定义表头插槽', child: '-' },
+  { name :'default', dec: '默认插槽', child: '{ row, index }' },
+  { name :'custom', dec: '自定义内容插槽', child: '{ row, index }' },
+  { name :'header', dec: '自定义表头插槽', child: '{ row, index }' },
+]" />
+
+## TableV2 Slots
+
+<v-table type="slot" :data="[
   { name :'footer', dec: '自定义页脚插槽', child: '-' },
   { name :'empty', dec: '自定义空数据内容', child: '-' },
 ]" />
 
-## Exposes
+## TableV2 Exposes
 
 <v-table type="event" :data="[
   { event :'setScrollTop', dec: '设置滚动条到顶部的距离', callback: '-' },

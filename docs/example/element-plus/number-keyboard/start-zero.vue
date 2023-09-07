@@ -1,7 +1,9 @@
 <template>
-  <div class="keyborad-content">
-    <k-input placeholder="请输入金额" v-model="value" />
-    <k-number-keyboard v-model="value" :maxlength="6" :start-zero="false" @confirm="confirmHandle" @change="changeHandle" />
+  <div class="flex-center">
+    <div class="keyborad-content">
+      <k-input placeholder="请输入金额" v-model="value" />
+      <k-number-keyboard v-model="value" :maxlength="6" :start-zero="false" @confirm="confirmHandle" @change="changeHandle" />
+    </div>
   </div>
 </template>
 

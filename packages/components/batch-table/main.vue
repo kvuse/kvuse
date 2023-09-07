@@ -1,7 +1,7 @@
 <template>
-  <el-table ref="multipleTable" v-bind="$attrs" empty-text="暂无数据" :data="tableData" :header-cell-style="headerCellStyle" @select="handleSelect" @select-all="selectAll" @row-click="handleRowClick">
+  <el-table ref="multipleTableRef" v-bind="$attrs" :data="tableData" :header-cell-style="headerCellStyle" @select="handleSelect" @select-all="selectAll" @row-click="handleRowClick">
     <el-table-column type="selection" width="55" :selectable="checkSelection" />
-    <el-table-column v-for="item in tableColumn" :label="item.label" :key="item.prop" :width="item.width" :fixed="item.fixed" :min-width="item.minWidth" show-overflow-tooltip>
+    <el-table-column v-for="item in tableColumn" :label="item.label" :key="item.prop" :width="item.width" :fixed="item.fixed" :min-width="item.minWidth" :show-overflow-tooltip="item.showOverflowTooltip ?? true">
       <template #header v-if="item.header">
         <slot name="header" :column="item" />
         <slot :name="item.header" :column="item" />
@@ -16,124 +16,118 @@
       <slot name="empty" />
     </template>
   </el-table>
-  <div class="mt20 flex-between">
-    <div class="flex1">
+  <div class="flex-between">
+    <div class="flex1 mr20 mt20">
       <slot name="footer" v-if="$slots.footer" />
     </div>
-    <pagination :total="total" :show-size="showSize" class="mt0 ml20" v-model="currentPage" @current-change="changePage" />
+    <pagination :total="total" :show-size="showSize" v-bind="$attrs" v-model="currentPage" @current-change="changePage" />
   </div>
 </template>
 
-<script>
+<script  setup>
 import {
-  ref, computed, watch, defineComponent, nextTick,
+  ref, computed, watch, nextTick,
 } from 'vue';
-import pagination from '../pagination';
+import { ElTable } from 'element-plus';
+
 import propsValue from './propsValue';
+import pagination from '../pagination';
 
-export default defineComponent({
+defineOptions({
   name: 'KBatchTable',
-  components: { pagination },
-  props: propsValue,
-  emits: ['update:modelValue', 'update:page', 'current-change', 'row-click'],
-  setup(props, { emit }) {
-    const multipleTable = ref(null);
+});
 
-    const clear = () => multipleTable.value.clearSelection();
+const props = defineProps(propsValue);
 
-    const toggleSelection = (rows) => {
-      if (rows) {
-        props.tableData.forEach((item) => {
-          rows.forEach((row) => {
-            if (getId(item) === getId(row)) {
-              nextTick(() => multipleTable.value && multipleTable.value.toggleRowSelection(item));
-            }
-          });
-        });
-      } else {
-        multipleSelection.value = [];
-        multipleTable.value.clearSelection();
-      }
-    };
-    const multipleSelection = computed({
-      get: () => props.modelValue,
-      set: (value) => emit('update:modelValue', value),
+const emit = defineEmits(['update:modelValue', 'update:page', 'current-change', 'row-click']);
+
+const multipleTableRef = ref(null);
+const multipleSelection = ref([]);
+const toggleSelectionHandle = (rows) => {
+  if (rows) {
+    rows.forEach((row) => {
+      multipleTableRef.value.toggleRowSelection(row);
     });
+  } else {
+    multipleTableRef.value.clearSelection();
+  }
+};
 
-    watch(() => props.modelValue, (list) => {
-      if (!list.length && multipleTable.value) multipleTable.value.clearSelection();
-    });
+const setMultipleSelection = (row, isAdd = true) => {
+  if (isAdd) multipleSelection.value.push(row);
+  else {
+    multipleSelection.value = multipleSelection.value
+      .filter((item) => item[props.keyId] !== row?.[props.keyId]);
+  }
+};
 
-    const setSelectable = () => {
-      setTimeout(() => {
-        if (props.selectList.length) {
-          props.tableData.forEach((item) => {
-            item[props.checkKey] = item[props.checkKey] ?? 1;
-          });
-          props.selectList.forEach((item) => {
-            props.tableData.forEach((type) => {
-              if (getId(item) === getId(type)) type[props.checkKey] = 0;
-            });
-          });
-          toggleSelection(multipleSelection.value);
-        }
-      }, 200);
-    };
+const checkSelection = (row) => row[props.checkKey] ?? !row[props.checkKey];
 
-    watch(() => props.tableData, (val) => {
-      nextTick(() => {
-        val.length && setSelectable();
-        val.length && toggleSelection(multipleSelection.value);
+const handleSelect = (selection, row) => {
+  const hasRow = selection.some((item) => item[props.keyId] === row?.[props.keyId]);
+  setMultipleSelection(row, hasRow);
+};
+
+const selectAll = (selection) => toggleSelection(selection);
+
+const handleRowClick = (row) => {
+  if (!checkSelection(row)) return;
+  toggleSelectionHandle([row]);
+  const hasRowSelection = multipleSelection.value.some((item) => item[props.keyId] === row[props.keyId]);
+  setMultipleSelection(row, !hasRowSelection);
+  emit('row-click', row);
+};
+
+watch(() => multipleSelection.value, (val, oldVal) => {
+  if (oldVal) emit('update:modelValue', val);
+}, { immediate: true, deep: true });
+
+const toggleSelection = (rows = []) => {
+  toggleSelectionHandle();
+  rows.forEach((row) => {
+    multipleTableRef.value.toggleRowSelection(row, !!checkSelection(row));
+  });
+  multipleSelection.value = rows;
+};
+
+const clear = () => toggleSelection();
+
+watch(() => props.modelValue, (val, oldVal) => {
+  if (!val.length && oldVal.length) toggleSelection();
+});
+
+const getId = (item) => item[props.keyId];
+
+const setSelectable = () => {
+  if (props.selectList.length) {
+    props.selectList.forEach((item) => {
+      props.tableData.forEach((type) => {
+        type[props.checkKey] = type[props.checkKey] ?? 1;
+        if (getId(item) === getId(type)) type[props.checkKey] = 0;
       });
-    }, { immediate: true });
-
-    const handleSelect = (selection, row) => {
-      const bitHas = selection.some((item) => getId(item) === getId(row));
-      if (bitHas) {
-        multipleSelection.value = [...multipleSelection.value, row];
-      } else {
-        multipleSelection.value = multipleSelection.value.filter((item) => getId(item) !== getId(row));
-      }
-    };
-    const selectAll = (selection) => {
-      if (multipleSelection.value.length) {
-        if (selection.length) {
-          const list = selection.filter((select) => multipleSelection.value.every((item) => getId(item) !== getId(select)));
-          multipleSelection.value = [...multipleSelection.value, ...list];
-        } else {
-          multipleSelection.value = multipleSelection.value.filter((item) => props.tableData.every((row) => getId(item) !== getId(row)));
-        }
-      } else multipleSelection.value = selection;
-    };
-
-    const handleRowClick = (row) => {
-      if (!checkSelection(row)) return;
-      const bitHas = multipleSelection.value.some((item) => getId(item) === getId(row));
-      toggleSelection([row]);
-      if (bitHas) {
-        multipleSelection.value = multipleSelection.value.filter((item) => getId(item) !== getId(row));
-      } else {
-        multipleSelection.value = [...multipleSelection.value, row];
-      }
-      emit('row-click', row);
-    };
-
-    const checkSelection = (row) => row[props.checkKey] ?? !row[props.checkKey];
-
-    const currentPage = computed({
-      get: () => props.page,
-      set: (value) => emit('update:page', value),
     });
-    const changePage = (value) => {
-      emit('current-change', value);
-    };
+  }
+};
 
-    const getId = (item) => item[props.keyId];
+watch(() => props.tableData, (val) => {
+  nextTick(() => {
+    val.length && setSelectable();
+    val.length && toggleSelection(props.modelValue);
+  });
+}, { immediate: true });
 
-    return {
-      multipleTable, handleSelect, selectAll, handleRowClick, checkSelection, toggleSelection, currentPage, changePage, clear,
-    };
-  },
+const currentPage = computed({
+  get: () => props.page,
+  set: (value) => emit('update:page', value),
+});
+const changePage = (value) => {
+  emit('current-change', value);
+};
+
+defineExpose({
+  toggleSelection,
+  handleRowClick,
+  clear,
 });
 
 </script>

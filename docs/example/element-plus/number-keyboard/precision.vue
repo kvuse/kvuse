@@ -1,7 +1,9 @@
 <template>
-  <div class="keyborad-content">
-    <k-input :point="2" placeholder="可输入小数点后2位" v-model="value" />
-    <k-number-keyboard decimal-point v-model="value" @confirm="confirmHandle" />
+  <div class="flex-center">
+    <div class="keyborad-content">
+      <k-input :point="2" placeholder="可输入小数点后2位" v-model="value" />
+      <k-number-keyboard decimal-point v-model="value" @confirm="confirmHandle" />
+    </div>
   </div>
 </template>
 

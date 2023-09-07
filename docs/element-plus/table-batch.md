@@ -57,7 +57,7 @@
   { attr :'modelValue / v-model', dec: '绑定的选中的数据', type: 'number', optional: '-', default: '[]' },
   { attr :'header-cell-style', dec: '表格头部样式', type: 'object', optional: '-', default: `{ background:'#f5f7fa', color:'#909399'}` },
   { attr :'total', dec: '数据的总条数', type: 'number', optional: '-', default: 9 },
-  { attr :'size', dec: '每页显示的条数', type: 'number', optional: '-', default: 10 },
+  { attr :'v-model:size', dec: '每页显示的条数', type: 'number', optional: '-', default: 10 },
   { attr :'show-size', dec: '是否显示切换页码', type: 'boolean', optional: '-', default: false },
   { attr :'key-id', dec: '唯一标识', type: 'string', optional: '-', default: 'id' },
   { attr :'select-list', dec: '设置选中的数组', type: 'array', optional: '-', default: [] },

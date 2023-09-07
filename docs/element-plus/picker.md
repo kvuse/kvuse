@@ -16,6 +16,14 @@
 
 </demo>
 
+## 自定义右侧
+
+<demo md src="picker/custom-right">
+
+<<< @/example/element-plus/picker/custom-right.vue
+
+</demo>
+
 ## 弹框模式
 
 :::tip
@@ -58,4 +66,11 @@
   { name :'custom', dec: '自定义内容插槽', child: '{ row, column, index }' },
   { name :'right', dec: '右侧插槽', child: '-' },
   { name :'right-header', dec: '右侧表头插槽', child: '-' },
+]" />
+
+## Picker Expose
+
+<v-table type="slot" :data="[
+  { name :'resetData', dec: '清空以及重置数据', child: '-' },
+  { name :'deleteHandler', dec: '删除选中的某一个', child: 'row' },
 ]" />

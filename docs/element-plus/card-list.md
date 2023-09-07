@@ -45,8 +45,6 @@
 
 ## CardList 事件
 
-'click', 'mouseenter', 'mouseleave', 'update:modelValue', 'scroll'
-
 <v-table type="event" :data="[
   { event :'click', dec: '元素点击的时候触发', callback: 'row' },
   { event :'mouseenter', dec: '鼠标进入元素的时候触发', callback: 'row' },

@@ -10,6 +10,10 @@
 
 ## 切换页码
 
+:::warning
+如果使用切换页码`show-size`，需要配合 `v-model:size` 使用
+:::
+
 <demo md src="pagination/change-size">
 
 <<< @/example/element-plus/pagination/change-size.vue

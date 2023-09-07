@@ -22,7 +22,7 @@
                 <span>已选择<span>({{ multipleSelection.length }})</span>
                 </span>
 
-                <el-button text :disabled="!multipleSelection.length" @click="emptyHandler">
+                <el-button type="primary" text :disabled="!multipleSelection.length" @click="emptyHandler">
                   <el-icon><delete /></el-icon> 清空
                 </el-button>
               </slot>
@@ -35,7 +35,7 @@
                   </el-tooltip>
                 </div>
                 <el-input-number v-model="item.num" :min="1" class="width-100 flex-shrink mr10" v-if="showCount" />
-                <el-button text @click="deleteHandler(item)">
+                <el-button type="primary" text @click="deleteHandler(item)">
                   删除
                 </el-button>
               </div>

@@ -17,7 +17,7 @@ import { ref } from 'vue';
 const tableColumn = [
   { label: '日期', prop: 'date', header: 'dateHeader' },
   { label: '姓名', prop: 'name' },
-  { label: '地址', prop: 'address' },
+  { label: '地址', prop: 'address', showOverflowTooltip: false },
   { label: '操作', custom: 'set' },
 ];
 

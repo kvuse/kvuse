@@ -1,14 +1,14 @@
 <template>
   <div class="page-right mt20" v-if="showPage">
     <el-config-provider :locale="locale">
-      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" v-model:currentPage="currentPage" :page-sizes="[10, 20, 50, 100]" :page-size="size" :layout="layoutList" :total="total" :small="small" :pager-count="pagerCount" />
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" v-model:currentPage="currentPage" :page-sizes="[10, 20, 50, 100]" v-model:page-size="pageSize" :layout="layoutList" :total="total" :small="small" :pager-count="pagerCount" v-bind="$attrs" />
     </el-config-provider>
   </div>
 </template>
 
 <script>
 import { computed, defineComponent } from 'vue';
-import { ElConfigProvider } from 'element-plus';
+import { ElConfigProvider, ElPagination } from 'element-plus';
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
 
 export default defineComponent({
@@ -21,7 +21,7 @@ export default defineComponent({
     small: { type: Boolean, default: false },
     pagerCount: { type: Number, default: 7 },
   },
-  components: { ElConfigProvider },
+  components: { ElConfigProvider, ElPagination },
   emits: ['update:modelValue', 'update:size', 'current-change', 'size-change', 'change'],
   setup(props, { emit }) {
     const locale = zhCn;
@@ -37,6 +37,12 @@ export default defineComponent({
         emit('update:modelValue', value);
       },
     });
+
+    const pageSize = computed({
+      get: () => props.size,
+      set: (value) => emit('update:size', value),
+    });
+
     const layoutList = computed(() => {
       const list = ['total', 'sizes', 'prev', 'pager', 'next', 'jumper'];
       if (!props.showSize) list.splice(1, 1);
@@ -53,7 +59,7 @@ export default defineComponent({
       emit('change', { page: val, size: props.size });
     };
     return {
-      locale, currentPage, layoutList, handleSizeChange, handleCurrentChange, showPage,
+      locale, currentPage, layoutList, handleSizeChange, handleCurrentChange, showPage, pageSize,
     };
   },
 });

@@ -1,5 +1,18 @@
 # 更新日志
 
+## 1.4.1 (2023-09-07)
+
+### Change
+
+- 重构[`Picker`](../picker.md)选择器组件，修复一些体验问题
+- [`Pagination`](../pagination#切换页码)组件，切换页码的优化
+- [`tableV2`](../table-v2#tablev2-slots)组件，添加`empty`插槽
+
+### Bug Fixes
+
+- 修复`breadcrumb`组件跳转的优化
+- 修复一些已知问题
+
 ## 1.3.4 (2023-06-08)
 
 ### Change

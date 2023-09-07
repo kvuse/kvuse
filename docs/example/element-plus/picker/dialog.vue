@@ -52,13 +52,13 @@ const tableData = ref([
   {
     id: 3,
     date: '2016-05-02',
-    name: 'Tom',
+    name: 'xiaoMing',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
     id: 4,
     date: '2016-05-01',
-    name: 'Tom',
+    name: 'xiaoHong',
     address: 'No. 189, Grove St, Los Angeles',
   },
 ]);
