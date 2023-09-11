@@ -216,19 +216,20 @@ const Qu = D({
         s(c);
       }
     }), s = (c) => {
-      let d = c;
+      let d = c, v = n.max;
       if (e.type === "number") {
         if (d = d.replace(/[^\d.]/g, ""), d = d.replace(/^\./g, ""), d = d.replace(/\.{2,}/g, "."), d = d.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."), d.indexOf(".") < 0 && d !== "" && d.substr(0, 1) === "0" && d.length === 2 && (d = d.substr(1, d.length)), d !== "")
           if (d.indexOf(".") > 0) {
             if (e.point) {
-              const v = new RegExp(`^\\d+(\\.\\d{0,${e.point}})?`, "g");
-              d = d.match(v)[0] || null;
+              const h = new RegExp(`^\\d+(\\.\\d{0,${e.point}})?`, "g");
+              d = d.match(h)[0] || null;
             }
           } else
             d === "." && (d = "");
+        v = n.max ?? 999999.99;
       } else
-        e.type === "integer" ? d = d.replace(/[^\d]/g, "") : e.type === "intText" && (d = d.replace(/[^\w]/g, ""));
-      n.max !== void 0 && d && Number(d) > Number(n.max) && (d = n.max), n.min !== void 0 && d && Number(d) < Number(n.min) && (d = n.min), t("update:modelValue", d);
+        e.type === "integer" ? (d = d.replace(/[^\d]/g, ""), v = n.max ?? 999999) : e.type === "intText" && (d = d.replace(/[^\w]/g, ""));
+      v !== void 0 && d && Number(d) > Number(v) && (d = v), n.min !== void 0 && d && Number(d) < Number(n.min) && (d = n.min), t("update:modelValue", d);
     }, a = () => {
       r.value && (r.value = !1, l.value && t("enter")), u();
     }, i = (c) => {
@@ -12498,7 +12499,7 @@ const OC = D({
   }
 }), xC = { class: "k-picker" }, PC = { class: "col-left" }, AC = { class: "col-right" }, MC = { class: "selete-header flex-between" }, IC = { class: "selete-content" }, LC = { class: "flex flex1 mr20 overflow" }, NC = { class: "text-overflow" };
 function RC(e, t, n, o, r, l) {
-  const s = G("batchTable"), a = G("el-col"), i = G("delete"), u = G("el-icon"), c = G("el-button"), d = G("el-tooltip"), v = G("el-input-number"), h = G("el-row");
+  const s = G("batchTable"), a = G("el-col"), i = G("delete"), u = G("el-icon"), c = G("el-button"), d = G("el-tooltip"), v = G("k-input-number"), h = G("el-row");
   return E(), P("div", xC, [
     U(e.$slots, "top", {}, void 0, !0),
     Z(h, { gutter: 10 }, {
@@ -12610,7 +12611,7 @@ function RC(e, t, n, o, r, l) {
     U(e.$slots, "footer", {}, void 0, !0)
   ]);
 }
-const Zo = /* @__PURE__ */ He(OC, [["render", RC], ["__scopeId", "data-v-ce1b76c3"]]);
+const Zo = /* @__PURE__ */ He(OC, [["render", RC], ["__scopeId", "data-v-52b9e7a8"]]);
 Zo.install = function(e) {
   e.component(Zo.name, Zo);
 };

@@ -1,6 +1,6 @@
 # VParams
 
-#### 参数处理
+##### 参数处理
 
 ## 基础使用
 
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { vParams } from '@kvuse/core';
+import { vParams } from '@kvuse/directives';
 
 const text = ref('test');
 </script>
@@ -28,7 +28,7 @@ const text = ref('test');
 </template>
 
 <script setup>
-import { vParams } from '@kvuse/core';
+import { vParams } from '@kvuse/directives';
 
 const text = ref(10);
 </script>
@@ -45,7 +45,7 @@ const text = ref(10);
 </template>
 
 <script setup>
-import { vParams } from '@kvuse/core';
+import { vParams } from '@kvuse/directives';
 
 const text = ref('1.88');
 </script>
@@ -53,7 +53,7 @@ const text = ref('1.88');
 
 ## modifier参数
 
-<v-table type="dec" :data="[
-  { name :'number', dec: '数字类型，如果为空默认返回0' },
-  { name :'money', dec: '金额类型，参数前面加￥，如果为空默认返回￥0' },
-]" />
+| 名称        |      说明      |
+| ------------- | :-----------: |
+| number      | 数字类型，如果为空默认返回0 |
+| money      | 金额类型，参数前面加￥，如果为空默认返回￥0.00 |

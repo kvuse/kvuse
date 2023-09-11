@@ -43,8 +43,10 @@ export default defineComponent({
         changeInput(value);
       },
     });
+
     const changeInput = (val) => {
       let value = val;
+      let maxLimit = attrs.max;
       if (props.type === 'number') {
         value = value.replace(/[^\d.]/g, ''); // 清除“数字”和“.”以外的字符
         value = value.replace(/^\./g, ''); // 验证第一个字符是数字而不是.
@@ -64,12 +66,14 @@ export default defineComponent({
             }
           } else if (value === '.') value = '';
         }
+        maxLimit = attrs.max ?? 999999.99;
       } else if (props.type === 'integer') { // 只能输入整数
         value = value.replace(/[^\d]/g, '');
+        maxLimit = attrs.max ?? 999999;
       } else if (props.type === 'intText') { // 只能输入整数或者字母
         value = value.replace(/[^\w]/g, '');
       }
-      if (attrs.max !== undefined && value && Number(value) > Number(attrs.max)) value = attrs.max;
+      if (maxLimit !== undefined && value && Number(value) > Number(maxLimit)) value = maxLimit;
       if (attrs.min !== undefined && value && Number(value) < Number(attrs.min)) value = attrs.min;
       emit('update:modelValue', value);
     };
@@ -91,6 +95,7 @@ export default defineComponent({
         keyupStatus.value = true;
       }, 800);
     };
+
     return {
       inputValue, changeValue, searchContent,
     };

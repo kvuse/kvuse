@@ -21,7 +21,6 @@ declare module 'vue' {
     Color: typeof import('./example/element-plus/layout/color.vue')['default']
     Combination: typeof import('./example/element-plus/directives-keyboard/combination.vue')['default']
     Controls: typeof import('./example/element-plus/input-number/controls.vue')['default']
-    copy: typeof import('./example/element-plus/picker/slots copy.vue')['default']
     CustomRight: typeof import('./example/element-plus/picker/custom-right.vue')['default']
     Decimals: typeof import('./example/element-plus/auto-counter/decimals.vue')['default']
     Default: typeof import('./example/element-plus/date-picker/default.vue')['default']

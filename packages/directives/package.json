@@ -1,0 +1,30 @@
+{
+  "name": "@kvuse/directives",
+  "version": "1.0.1",
+  "description": "自定义指令",
+  "homepage": "https://kvuse.github.io/kvuse/directives/aguide",
+  "files": [
+    "lib",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "vue3",
+    "@kvuse/directives",
+    "directives"
+  ],
+  "main": "./lib/index.umd.js",
+  "module": "./lib/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./lib/index.es.js",
+      "require": "./lib/index.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "test": "vitest"
+  },
+  "author": "wenxin",
+  "license": "ISC"
+}

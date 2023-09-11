@@ -21,6 +21,7 @@ export default defineConfig({
       '@/vant': path.resolve(__dirname, 'vant/'),
       '@/components': path.resolve(__dirname, '../packages/components/'),
       '@/core': path.resolve(__dirname, '../packages/core/'),
+      '@/directives': path.resolve(__dirname, '../packages/directives/'),
       '@/kvant': path.resolve(__dirname, '../packages/vant/'),
     },
   },

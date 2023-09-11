@@ -34,7 +34,7 @@
                     <span class="text-overflow">{{ getName(item) }}</span>
                   </el-tooltip>
                 </div>
-                <el-input-number v-model="item.num" :min="1" class="width-100 flex-shrink mr10" v-if="showCount" />
+                <k-input-number v-model="item.num" :min="1" class="width-100 flex-shrink mr10" v-if="showCount" />
                 <el-button type="primary" text @click="deleteHandler(item)">
                   删除
                 </el-button>
