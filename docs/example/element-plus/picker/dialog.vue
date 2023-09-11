@@ -3,12 +3,12 @@
     添加商品
   </k-button>
   <k-dialog
-    title="添加商品" v-model="showPicker"
-    width="800px" :show-footer="false"
+    title="添加商品" v-model="showPicker" destroy-on-close
+    width="800px" :show-footer="false" @close="closeHandler"
   >
     <k-picker
       :table-column="tableColumn" :table-data="tableData"
-      v-model="multipleSelection"
+      v-model="multipleSelection" :select-list="[tableData[0],tableData[1]]"
     >
       <template #footer>
         <div class="flex-between">
@@ -69,6 +69,10 @@ const showPicker = ref(false);
 
 const openHandler = () => {
   showPicker.value = true;
+};
+
+const closeHandler = () => {
+  multipleSelection.value = [];
 };
 
 const total = ref(100);

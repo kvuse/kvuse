@@ -46,7 +46,8 @@ const multipleSelection = ref([]);
 const toggleSelectionHandle = (rows) => {
   if (rows) {
     rows.forEach((row) => {
-      multipleTableRef.value.toggleRowSelection(row);
+      const selectedRow = props.tableData.find((item) => item[props.keyId] === row[props.keyId]);
+      multipleTableRef.value.toggleRowSelection(selectedRow ?? row);
     });
   } else {
     multipleTableRef.value.clearSelection();
@@ -85,7 +86,8 @@ watch(() => multipleSelection.value, (val, oldVal) => {
 const toggleSelection = (rows = []) => {
   toggleSelectionHandle();
   rows.forEach((row) => {
-    multipleTableRef.value.toggleRowSelection(row, !!checkSelection(row));
+    const selectedRow = props.tableData.find((item) => item[props.keyId] === row[props.keyId]);
+    multipleTableRef.value.toggleRowSelection(selectedRow ?? row, !!checkSelection(row));
   });
   multipleSelection.value = rows;
 };
