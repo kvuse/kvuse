@@ -1,8 +1,12 @@
 {
   "name": "@kvuse/directives",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "自定义指令",
-  "homepage": "https://kvuse.github.io/kvuse/directives/aguide",
+  "homepage": "https://kvuse.github.io/kvuse/api/directives/aguide",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kvuse/kvuse/blob/master/packages/directives/"
+  },
   "files": [
     "lib",
     "index.d.ts"

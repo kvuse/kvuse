@@ -229,7 +229,7 @@ const Qu = D({
         v = n.max ?? 999999.99;
       } else
         e.type === "integer" ? (d = d.replace(/[^\d]/g, ""), v = n.max ?? 999999) : e.type === "intText" && (d = d.replace(/[^\w]/g, ""));
-      v !== void 0 && d && Number(d) > Number(v) && (d = v), n.min !== void 0 && d && Number(d) < Number(n.min) && (d = n.min), t("update:modelValue", d);
+      !n.maxlength && v !== void 0 && d && Number(d) > Number(v) && (d = v), n.min !== void 0 && d && Number(d) < Number(n.min) && (d = n.min), t("update:modelValue", d);
     }, a = () => {
       r.value && (r.value = !1, l.value && t("enter")), u();
     }, i = (c) => {
@@ -12121,7 +12121,7 @@ const fC = {
     type: Object,
     default: () => ({
       background: "#f5f7fa",
-      color: "#909366"
+      color: "#909399"
     })
   }
 }, pC = { key: 2 }, vC = { class: "flex-between" }, hC = { class: "flex1 mr20 mt20" }, mo = /* @__PURE__ */ Object.assign({
@@ -12187,7 +12187,8 @@ const fC = {
       return E(), P($e, null, [
         Z(g(W2), Oe({
           ref_key: "multipleTableRef",
-          ref: r
+          ref: r,
+          "empty-text": "暂无数据"
         }, w.$attrs, {
           data: w.tableData,
           "header-cell-style": w.headerCellStyle,

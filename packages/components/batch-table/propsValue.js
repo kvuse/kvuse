@@ -19,7 +19,7 @@ export default {
   headerCellStyle: {
     type: Object,
     default: () => ({
-      background: '#f5f7fa', color: '#909366',
+      background: '#f5f7fa', color: '#909399',
     }),
   },
 };

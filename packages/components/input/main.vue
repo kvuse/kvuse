@@ -73,7 +73,7 @@ export default defineComponent({
       } else if (props.type === 'intText') { // 只能输入整数或者字母
         value = value.replace(/[^\w]/g, '');
       }
-      if (maxLimit !== undefined && value && Number(value) > Number(maxLimit)) value = maxLimit;
+      if (!attrs.maxlength && maxLimit !== undefined && value && Number(value) > Number(maxLimit)) value = maxLimit;
       if (attrs.min !== undefined && value && Number(value) < Number(attrs.min)) value = attrs.min;
       emit('update:modelValue', value);
     };

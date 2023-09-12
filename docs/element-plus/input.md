@@ -13,6 +13,15 @@
 <<< @/example/element-plus/input/basic.vue
 </demo>
 
+## 最大输入长度
+
+如果设置`maxlength`属性，可限制输入长度, 如果不设置默认`999999`
+
+<demo md src="input/maxlength">
+
+<<< @/example/element-plus/input/maxlength.vue
+</demo>
+
 ## 整数类型
 
 如果设置`type`为`integer`类型，输入框只能输入整数
