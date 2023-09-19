@@ -1,10 +1,10 @@
 <template>
-  <div class="k-picker">
+  <div class="k-picker flex-column">
     <slot name="top" />
-    <el-row :gutter="10">
-      <el-col :span="15">
-        <div class="col-left">
-          <batchTable ref="batchTableRef" height="440px" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage">
+    <el-row :gutter="10" class="height-auto" :class="{'custom-right':rightWidth}">
+      <el-col :span="15" class="height-auto flex1">
+        <div class="col-left height-auto flex-column">
+          <batchTable ref="batchTableRef" :height="height" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage" :scrollbar-always-on="scrollbarAlwaysOn">
             <template #header="{column}">
               <slot :name="column.header" :column="column" />
             </template>
@@ -14,9 +14,9 @@
           </batchTable>
         </div>
       </el-col>
-      <el-col :span="9">
+      <el-col :span="9" class="height-auto flex-column">
         <slot name="right">
-          <div class="col-right">
+          <div class="col-right flex-column height-auto">
             <div class="selete-header flex-between">
               <slot name="right-header">
                 <span>已选择<span>({{ multipleSelection.length }})</span>
@@ -27,18 +27,20 @@
                 </el-button>
               </slot>
             </div>
-            <div class="selete-content">
-              <div class="flex-between pl10 pr10" :class="{'mt10':showCount}" v-for="item in multipleSelection" :key="getId(item)">
-                <div class="flex flex1 mr20 overflow">
-                  <el-tooltip effect="dark" :content="getName(item)" placement="top">
-                    <span class="text-overflow">{{ getName(item) }}</span>
-                  </el-tooltip>
+            <div class="selete-content flex1">
+              <el-scrollbar always>
+                <div class="flex-between pl10 pr10" :class="{'mt10':showCount}" v-for="item in multipleSelection" :key="getId(item)">
+                  <div class="flex flex1 mr20 overflow">
+                    <el-tooltip effect="dark" :content="getName(item)" placement="top">
+                      <span class="text-overflow">{{ getName(item) }}</span>
+                    </el-tooltip>
+                  </div>
+                  <k-input-number v-model="item.num" :min="1" class="width-120 flex-shrink mr10" v-if="showCount" />
+                  <el-button type="primary" text @click="deleteHandler(item)">
+                    删除
+                  </el-button>
                 </div>
-                <k-input-number v-model="item.num" :min="1" class="width-100 flex-shrink mr10" v-if="showCount" />
-                <el-button type="primary" text @click="deleteHandler(item)">
-                  删除
-                </el-button>
-              </div>
+              </el-scrollbar>
             </div>
           </div>
         </slot>
@@ -53,11 +55,16 @@ import {
   ref, computed, defineComponent, watchEffect,
 } from 'vue';
 import { Delete } from '@element-plus/icons-vue';
+import {
+  ElRow, ElCol, ElButton, ElIcon,
+} from 'element-plus';
 import batchTable from '../batch-table/main.vue';
 
 export default defineComponent({
   name: 'KPicker',
-  components: { batchTable, Delete },
+  components: {
+    batchTable, Delete, ElRow, ElCol, ElButton, ElIcon,
+  },
   emits: ['update:modelValue', 'update:page'],
   props: {
     modelValue: { type: Array, default: () => [] },
@@ -68,6 +75,9 @@ export default defineComponent({
     keyId: { type: String, default: 'id' },
     keyName: { type: String, default: 'name' },
     showCount: { type: Boolean, default: false },
+    height: { type: String, default: '468px' },
+    scrollbarAlwaysOn: { type: Boolean, default: false },
+    rightWidth: { type: String, default: '' },
   },
   setup(props, { emit }) {
     const multipleSelection = computed({
@@ -97,8 +107,10 @@ export default defineComponent({
     const getName = (item) => item[props.keyName];
     const getId = (item) => item[props.keyId];
 
+    const rightwidth = computed(() => props.rightWidth);
+
     return {
-      multipleSelection, batchTableRef, currentPage, emptyHandler, resetData, deleteHandler, getName, getId,
+      multipleSelection, batchTableRef, currentPage, emptyHandler, resetData, deleteHandler, getName, getId, rightwidth,
     };
   },
 });
@@ -106,6 +118,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .k-picker {
+  .height-auto {
+    height: 100%;
+    overflow: hidden;
+  }
+
   .col-left {
     min-height: 430px;
   }
@@ -113,20 +130,35 @@ export default defineComponent({
   .col-right {
     border: 1px solid #d8dce5;
     border-radius: 6px;
+    min-height: 468px;
+    height: calc(100% - 20px);
 
     .selete-header {
       background: #f5f5f5;
-      height: 46.38px;
+      height: 42px;
       padding: 0 10px;
     }
 
     .selete-content {
-      height: 392px;
       overflow-y: auto;
     }
 
-    .width-100 {
-      width: 100px;
+    .width-120 {
+      width: 120px;
+    }
+  }
+
+  .custom-right {
+    flex: 1;
+
+    .el-col-15 {
+      flex: 1;
+      max-width: none;
+    }
+
+    .el-col-9 {
+      flex: none;
+      width: v-bind(rightwidth);
     }
   }
 }

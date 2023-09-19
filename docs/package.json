@@ -27,9 +27,9 @@
     "@kvuse/vant": "workspace:*",
     "@vant/touch-emulator": "^1.4.0",
     "@vueuse/core": "^10.4.1",
-    "element-plus": "^2.3.12",
-    "vant": "^4.6.7",
-    "vitepress": "1.0.0-rc.10"
+    "element-plus": "^2.3.14",
+    "vant": "^4.6.8",
+    "vitepress": "1.0.0-rc.14"
   },
   "devDependencies": {
     "flexsearch": "^0.7.31",

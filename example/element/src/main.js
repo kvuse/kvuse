@@ -5,7 +5,7 @@ import * as ElIconModules from '@element-plus/icons-vue';
 import router from './router';
 import store from './store';
 import App from './App.vue';
-import './styles/normalize.css';
+import 'kucss/src/index.css';
 import 'element-plus/dist/index.css';
 import '@kvuse/components/dist/index.css';
 

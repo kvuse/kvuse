@@ -95,7 +95,7 @@ const emptyHandler = () => pickerRef.value.resetData();
 .custom-right {
   border: 1px solid #d8dce5;
   border-radius: 6px;
-  height: 440px;
+  height: 468px;
 }
 
 .custom-conent {
