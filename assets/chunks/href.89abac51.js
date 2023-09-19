@@ -1,1 +1,0 @@
-import{h as r,C as o,o as s,b as c}from"./framework.2a76f7fa.js";const _={__name:"href",setup(l){const t=r([{title:"百度",url:"https://www.baidu.com/"},{title:"掘金",url:"https://juejin.cn/"},{title:"其他"}]);return(n,a)=>{const e=o("k-breadcrumb");return s(),c(e,{list:t.value},null,8,["list"])}}};export{_ as default};

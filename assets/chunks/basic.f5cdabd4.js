@@ -1,1 +1,0 @@
-import{h as o,C as s,o as a,b as r}from"./framework.2a76f7fa.js";const m={__name:"basic",setup(c){const e=o([{title:"首页",path:"home"},{title:"前台"}]);return(n,l)=>{const t=s("k-breadcrumb");return a(),r(t,{list:e.value},null,8,["list"])}}};export{m as default};
