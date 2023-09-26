@@ -1,5 +1,16 @@
 # 更新日志
 
+## 1.2.2 (2023-09-26)
+
+### Add
+
+- 添加[`urlSearchParams`](../urlSearchParams.md), 获取url参数
+- 添加[`useUtils`](../utils.md), 常用的工具函数
+
+### Change
+
+- 一些函数的优化
+
 ## 1.1.7 (2023-05-18)
 
 ### Change

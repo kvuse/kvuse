@@ -8,7 +8,6 @@
 ## Usage
 
 ```js
-<script setup>
   import { useForm } from '@kvuse/core';
   const { ruleFormRef, submitForm, resetForm } = useForm();
 
@@ -20,5 +19,5 @@
   const resetFormHandler = () => {
     resetForm();
   };
-</script>
+
 ```

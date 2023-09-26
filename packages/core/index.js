@@ -8,3 +8,4 @@ export * from './useDirectives';
 export * from './useImage';
 export * from './useUtils';
 export * from './useExport';
+export * from './useUrlSearchParams';

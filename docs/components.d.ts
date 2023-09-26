@@ -37,6 +37,7 @@ declare module 'vue' {
     Href: typeof import('./example/element-plus/breadcrumb/href.vue')['default']
     Icon: typeof import('./example/element-plus/tooltip/icon.vue')['default']
     Image: typeof import('./example/vant/status/image.vue')['default']
+    InputBasic: typeof import('./example/api/utils/input-basic.vue')['default']
     Integer: typeof import('./example/vant/input/integer.vue')['default']
     Layout: typeof import('./example/element-plus/tabs/layout.vue')['default']
     Link: typeof import('./example/vant/button/link.vue')['default']

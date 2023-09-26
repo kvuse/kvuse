@@ -22,16 +22,19 @@ export function useUtils() {
   /**
    * 设置Url参数
    * @param {object} params 链接参数
+   * @param {hasParams} params 是否有参数
    * @returns string
    */
 
-  const setUrlParams = (params = {}) => {
+  const setUrlParams = (params = {}, hasParams = false) => {
     let stringUrl = '';
     Object.keys(params).forEach((key) => {
-      if (params[key] !== undefined && key !== 'pageSize') stringUrl += `&${key}=${params[key]}`;
+      if (![undefined, '', null].includes(params[key]) && key !== 'pageSize') stringUrl += `&${key}=${params[key]}`;
     });
-    return stringUrl.replace(/^&/, '?');
+    return hasParams ? stringUrl : stringUrl.replace(/^&/, '?');
   };
 
-  return { getFormatParams, formatRadixPoint, setUrlParams };
+  return {
+    getFormatParams, formatRadixPoint, setUrlParams,
+  };
 }

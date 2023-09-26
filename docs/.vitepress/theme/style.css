@@ -178,3 +178,7 @@ body {
     padding-left: 24px;
   }
 }
+
+[class*="_CHANGELOG"] ul li {
+  list-style: disc;
+}
