@@ -1,1 +1,0 @@
-import{h as l,C as n,o as s,c,H as r}from"./framework.6c428c33.js";const u={class:"width-240"},m={__name:"basic",setup(p){const e=l("");return(_,o)=>{const t=n("kv-input");return s(),c("div",u,[r(t,{placeholder:"请输入金额",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=a=>e.value=a)},null,8,["modelValue"])])}}};export{m as default};
