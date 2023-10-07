@@ -29,10 +29,10 @@ pnpm install @kvuse/vant
 
 ```js
 import { createApp } from 'vue';
-import { KUI } from '@kvuse/vant';
-import '@kvuse/vant/dist/index.css'
+import { KVant } from '@kvuse/vant';
+import '@kvuse/vant/dist/index.css';
 
-Vue.use(KUI)
+Vue.use(KVant)
 ```
 
 ## 按需引入
@@ -52,7 +52,7 @@ const objectMap = (num = 2) => `${list.map(item => ' '.repeat(num) + item).join(
 ```js-vue
 import {
 {{ objectMap() }}
-} from '@kvuse/core';
+} from '@kvuse/vant';
 
 export default {
   components: {

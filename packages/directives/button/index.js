@@ -28,3 +28,28 @@ export const vButton = {
     el.removeEventListener('click', el.handler);
   },
 };
+
+export const vButtonRequest = {
+  mounted: (el, binding) => {
+    el.handler = async function () {
+      const { content = '请求中...' } = binding.value || {};
+      el.classList.add('is-disabled');
+      el.disabled = true;
+      if (content) {
+        el.beforeText = el.textContent;
+        el.innerHTML = content;
+      }
+      await binding.arg();
+      el.innerHTML = el.beforeText;
+      el.classList.remove('is-disabled');
+      el.disabled = false;
+    };
+    el.addEventListener('click', el.handler);
+  },
+  updated(el) {
+    el.addEventListener('click', el.handler);
+  },
+  unmounted: (el) => {
+    el.removeEventListener('click', el.handler);
+  },
+};
