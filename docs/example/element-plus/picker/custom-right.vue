@@ -92,12 +92,6 @@ const emptyHandler = () => pickerRef.value.resetData();
   text-align: right;
 }
 
-.custom-right {
-  border: 1px solid #d8dce5;
-  border-radius: 6px;
-  height: 468px;
-}
-
 .custom-conent {
   padding: 0 10px;
 }

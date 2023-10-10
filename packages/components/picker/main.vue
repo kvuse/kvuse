@@ -15,8 +15,8 @@
         </div>
       </el-col>
       <el-col :span="9" class="height-auto flex-column">
-        <slot name="right">
-          <div class="col-right flex-column height-auto">
+        <div class="col-right flex-column height-auto">
+          <slot name="right">
             <div class="selete-header flex-between">
               <slot name="right-header">
                 <span>已选择<span>({{ multipleSelection.length }})</span>
@@ -42,8 +42,8 @@
                 </div>
               </el-scrollbar>
             </div>
-          </div>
-        </slot>
+          </slot>
+        </div>
       </el-col>
     </el-row>
     <slot name="footer" />
@@ -75,7 +75,7 @@ export default defineComponent({
     keyId: { type: String, default: 'id' },
     keyName: { type: String, default: 'name' },
     showCount: { type: Boolean, default: false },
-    height: { type: String, default: '468px' },
+    height: { type: String, default: '442px' },
     scrollbarAlwaysOn: { type: Boolean, default: false },
     rightWidth: { type: String, default: '' },
   },
@@ -108,9 +108,10 @@ export default defineComponent({
     const getId = (item) => item[props.keyId];
 
     const rightwidth = computed(() => props.rightWidth);
+    const autoheight = computed(() => props.height);
 
     return {
-      multipleSelection, batchTableRef, currentPage, emptyHandler, resetData, deleteHandler, getName, getId, rightwidth,
+      multipleSelection, batchTableRef, currentPage, emptyHandler, resetData, deleteHandler, getName, getId, rightwidth, autoheight,
     };
   },
 });
@@ -124,13 +125,13 @@ export default defineComponent({
   }
 
   .col-left {
-    min-height: 430px;
+    min-height: v-bind(autoheight);
   }
 
   .col-right {
     border: 1px solid #d8dce5;
     border-radius: 6px;
-    min-height: 468px;
+    min-height: v-bind(autoheight);
     height: calc(100% - 20px);
 
     .selete-header {
@@ -161,9 +162,14 @@ export default defineComponent({
       width: v-bind(rightwidth);
     }
   }
+
+  :deep(.el-table th) {
+    height: 42px;
+  }
 }
 
 :deep(.el-button--text.is-disabled) {
   background-color: #f5f5f5;
 }
+
 </style>

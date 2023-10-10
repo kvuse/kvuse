@@ -12610,23 +12610,23 @@ const oa = H({
     keyId: { type: String, default: "id" },
     keyName: { type: String, default: "name" },
     showCount: { type: Boolean, default: !1 },
-    height: { type: String, default: "468px" },
+    height: { type: String, default: "442px" },
     scrollbarAlwaysOn: { type: Boolean, default: !1 },
     rightWidth: { type: String, default: "" }
   },
   setup(e, { emit: t }) {
     const n = _({
       get: () => e.modelValue,
-      set: (d) => t("update:modelValue", d)
+      set: (v) => t("update:modelValue", v)
     });
     Nt(() => {
-      e.showCount && n.value.forEach((d) => {
-        d.num = d.num ?? 1;
+      e.showCount && n.value.forEach((v) => {
+        v.num = v.num ?? 1;
       });
     });
-    const o = k(null), l = () => o.value.toggleSelection(), r = (d) => o.value.handleRowClick(d), s = k(1), a = () => {
+    const o = k(null), l = () => o.value.toggleSelection(), r = (v) => o.value.handleRowClick(v), s = k(1), a = () => {
       s.value = 1, l();
-    }, i = (d) => d[e.keyName], u = (d) => d[e.keyId], c = _(() => e.rightWidth);
+    }, i = (v) => v[e.keyName], u = (v) => v[e.keyId], c = _(() => e.rightWidth), d = _(() => e.height);
     return {
       multipleSelection: n,
       batchTableRef: o,
@@ -12636,12 +12636,14 @@ const oa = H({
       deleteHandler: r,
       getName: i,
       getId: u,
-      rightwidth: c
+      rightwidth: c,
+      autoheight: d
     };
   }
 }), Ms = () => {
   br((e) => ({
-    "61c30288": e.rightwidth
+    "5d7f46b5": e.autoheight,
+    "0031176e": e.rightwidth
   }));
 }, Is = oa.setup;
 oa.setup = Is ? (e, t) => (Ms(), Is(e, t)) : Ms;
@@ -12695,8 +12697,8 @@ function QC(e, t, n, o, l, r) {
           class: "height-auto flex-column"
         }, {
           default: R(() => [
-            K(e.$slots, "right", {}, () => [
-              N("div", UC, [
+            N("div", UC, [
+              K(e.$slots, "right", {}, () => [
                 N("div", qC, [
                   K(e.$slots, "right-header", {}, () => [
                     N("span", null, [
@@ -12763,8 +12765,8 @@ function QC(e, t, n, o, l, r) {
                     _: 1
                   })
                 ])
-              ])
-            ], !0)
+              ], !0)
+            ])
           ]),
           _: 3
         })
@@ -12774,7 +12776,7 @@ function QC(e, t, n, o, l, r) {
     K(e.$slots, "footer", {}, void 0, !0)
   ]);
 }
-const Jo = /* @__PURE__ */ He(oa, [["render", QC], ["__scopeId", "data-v-7326e01b"]]);
+const Jo = /* @__PURE__ */ He(oa, [["render", QC], ["__scopeId", "data-v-ba9c4774"]]);
 Jo.install = function(e) {
   e.component(Jo.name, Jo);
 };
