@@ -1,6 +1,6 @@
 {
   "name": "@kvuse/components",
-  "version": "1.4.10",
+  "version": "1.4.12",
   "description": "vue3 + elementPlus 常用组件",
   "homepage": "https://kvuse.github.io/kvuse/element-plus/button",
   "repository": {
@@ -36,11 +36,11 @@
   "license": "ISC",
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
-    "element-plus": "^2.3.12"
+    "element-plus": "^2.4.1"
   },
   "devDependencies": {
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "vue": "^3.3.7",
+    "vue-router": "^4.2.5"
   },
   "publishConfig": {
     "access": "public"

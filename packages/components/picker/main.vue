@@ -1,7 +1,7 @@
 <template>
   <div class="k-picker flex-column">
     <slot name="top" />
-    <el-row :gutter="10" class="height-auto" :class="{'custom-right':rightWidth}">
+    <el-row :gutter="10" class="height-auto mb20" :class="{'custom-right':rightWidth}">
       <el-col :span="15" class="height-auto flex1">
         <div class="col-left height-auto flex-column">
           <batchTable ref="batchTableRef" :show-footer="false" :height="height" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage" :scrollbar-always-on="scrollbarAlwaysOn">
