@@ -4,6 +4,7 @@
     shape="round-border"
     :shortcuts-value="0"
     show-shortcuts
+    :show-icon="false"
     @confirm="confirmHandle"
   >
   </kv-date-picker>

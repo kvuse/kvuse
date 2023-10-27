@@ -1,4 +1,4 @@
-import { defineComponent as H, ref as k, computed as _, resolveComponent as q, openBlock as E, createBlock as V, mergeProps as xe, withModifiers as Xe, withCtx as R, renderSlot as K, createElementBlock as P, createCommentVNode as G, withKeys as at, createSlots as $n, createElementVNode as N, watchEffect as Nt, watch as Y, nextTick as he, normalizeClass as M, createVNode as Z, unref as h, getCurrentScope as Wu, onScopeDispose as ju, getCurrentInstance as Ce, onMounted as Me, warn as Uu, inject as ve, isRef as Rn, shallowRef as Sn, onBeforeUnmount as Rt, onBeforeMount as hr, provide as lt, toRef as Lt, onUnmounted as To, useAttrs as qu, useSlots as gl, withDirectives as We, Fragment as $e, resolveDynamicComponent as Ze, toDisplayString as ie, normalizeStyle as we, vShow as fn, Transition as yo, reactive as Qn, onUpdated as gr, cloneVNode as Gu, Text as Bs, Comment as zs, Teleport as Yu, readonly as Xu, onDeactivated as Qu, toRaw as Fn, vModelCheckbox as al, createTextVNode as Ke, toRefs as Zn, triggerRef as ao, resolveDirective as mr, renderList as ze, vModelText as Zu, h as ae, useCssVars as br, normalizeProps as aa } from "vue";
+import { defineComponent as H, ref as k, computed as _, resolveComponent as G, openBlock as E, createBlock as V, mergeProps as xe, withModifiers as Xe, withCtx as N, renderSlot as K, createElementBlock as P, createCommentVNode as q, withKeys as at, createSlots as $n, createElementVNode as R, watchEffect as Nt, watch as Y, nextTick as he, normalizeClass as M, createVNode as Z, unref as h, getCurrentScope as Wu, onScopeDispose as ju, getCurrentInstance as Ce, onMounted as Me, warn as Uu, inject as ve, isRef as Rn, shallowRef as Sn, onBeforeUnmount as Rt, onBeforeMount as hr, provide as lt, toRef as Lt, onUnmounted as To, useAttrs as qu, useSlots as gl, withDirectives as We, Fragment as $e, resolveDynamicComponent as Ze, toDisplayString as ie, normalizeStyle as ye, vShow as fn, Transition as yo, reactive as Qn, onUpdated as gr, cloneVNode as Gu, Text as Bs, Comment as zs, Teleport as Yu, readonly as Xu, onDeactivated as Qu, toRaw as Fn, vModelCheckbox as al, createTextVNode as Ke, toRefs as Zn, triggerRef as ao, resolveDirective as mr, renderList as ze, vModelText as Zu, h as ae, useCssVars as br, normalizeProps as aa } from "vue";
 const uo = {
   /**
    * 输入框得到焦点
@@ -175,7 +175,7 @@ const He = (e, t) => {
   class: "el-icon-lock el-icon--right"
 };
 function tc(e, t, n, o, l, r) {
-  const s = q("el-button");
+  const s = G("el-button");
   return E(), V(s, xe({
     disabled: !e.buttonStatus || e.disabled,
     style: e.buttonStyle,
@@ -183,9 +183,9 @@ function tc(e, t, n, o, l, r) {
   }, e.$attrs, {
     onClick: Xe(e.onclick, ["stop"])
   }), {
-    default: R(() => [
+    default: N(() => [
       K(e.$slots, "default"),
-      e.iconLock ? (E(), P("i", ec)) : G("", !0)
+      e.iconLock ? (E(), P("i", ec)) : q("", !0)
     ]),
     _: 3
   }, 16, ["disabled", "style", "click-state", "onClick"]);
@@ -247,7 +247,7 @@ const nc = H({
   }
 });
 function oc(e, t, n, o, l, r) {
-  const s = q("el-input");
+  const s = G("el-input");
   return E(), V(s, xe({
     modelValue: e.inputValue,
     "onUpdate:modelValue": t[0] || (t[0] = (a) => e.inputValue = a),
@@ -258,28 +258,28 @@ function oc(e, t, n, o, l, r) {
   }), $n({ _: 2 }, [
     e.$slots.append ? {
       name: "append",
-      fn: R(() => [
+      fn: N(() => [
         K(e.$slots, "append")
       ]),
       key: "0"
     } : void 0,
     e.$slots.prepend ? {
       name: "prepend",
-      fn: R(() => [
+      fn: N(() => [
         K(e.$slots, "prepend")
       ]),
       key: "1"
     } : void 0,
     e.$slots.prefix ? {
       name: "prefix",
-      fn: R(() => [
+      fn: N(() => [
         K(e.$slots, "prefix")
       ]),
       key: "2"
     } : void 0,
     e.$slots.suffix ? {
       name: "suffix",
-      fn: R(() => [
+      fn: N(() => [
         K(e.$slots, "suffix")
       ]),
       key: "3"
@@ -301,7 +301,7 @@ var Fe = (e, t) => {
 }, rc = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, ac = /* @__PURE__ */ N(
+}, ac = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -321,7 +321,7 @@ var Hs = /* @__PURE__ */ Fe(lc, [["render", ic], ["__file", "arrow-down.vue"]]),
 }, cc = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, dc = /* @__PURE__ */ N(
+}, dc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -341,7 +341,7 @@ var vc = /* @__PURE__ */ Fe(uc, [["render", pc], ["__file", "arrow-left.vue"]]),
 }, gc = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, mc = /* @__PURE__ */ N(
+}, mc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -361,7 +361,7 @@ var yr = /* @__PURE__ */ Fe(hc, [["render", yc], ["__file", "arrow-right.vue"]])
 }, Cc = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Sc = /* @__PURE__ */ N(
+}, Sc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -381,7 +381,7 @@ var Ec = /* @__PURE__ */ Fe(wc, [["render", $c], ["__file", "arrow-up.vue"]]), T
 }, kc = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Oc = /* @__PURE__ */ N(
+}, Oc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -401,7 +401,7 @@ var Ac = /* @__PURE__ */ Fe(Tc, [["render", Pc], ["__file", "caret-left.vue"]]),
 }, Ic = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Lc = /* @__PURE__ */ N(
+}, Lc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -421,7 +421,7 @@ var Fc = /* @__PURE__ */ Fe(Mc, [["render", Rc], ["__file", "caret-right.vue"]])
 }, zc = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Hc = /* @__PURE__ */ N(
+}, Hc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -430,7 +430,7 @@ var Fc = /* @__PURE__ */ Fe(Mc, [["render", Rc], ["__file", "caret-right.vue"]])
   null,
   -1
   /* HOISTED */
-), Dc = /* @__PURE__ */ N(
+), Dc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -451,7 +451,7 @@ var Wc = /* @__PURE__ */ Fe(Bc, [["render", Kc], ["__file", "circle-check.vue"]]
 }, Uc = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, qc = /* @__PURE__ */ N(
+}, qc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -460,7 +460,7 @@ var Wc = /* @__PURE__ */ Fe(Bc, [["render", Kc], ["__file", "circle-check.vue"]]
   null,
   -1
   /* HOISTED */
-), Gc = /* @__PURE__ */ N(
+), Gc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -481,7 +481,7 @@ var wr = /* @__PURE__ */ Fe(jc, [["render", Xc], ["__file", "circle-close.vue"]]
 }, Zc = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Jc = /* @__PURE__ */ N(
+}, Jc = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -501,7 +501,7 @@ var sa = /* @__PURE__ */ Fe(Qc, [["render", td], ["__file", "close.vue"]]), nd =
 }, od = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, ld = /* @__PURE__ */ N(
+}, ld = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -521,7 +521,7 @@ var sd = /* @__PURE__ */ Fe(nd, [["render", ad], ["__file", "d-arrow-left.vue"]]
 }, ud = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, cd = /* @__PURE__ */ N(
+}, cd = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -541,7 +541,7 @@ var pd = /* @__PURE__ */ Fe(id, [["render", fd], ["__file", "d-arrow-right.vue"]
 }, hd = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, gd = /* @__PURE__ */ N(
+}, gd = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -561,7 +561,7 @@ var yd = /* @__PURE__ */ Fe(vd, [["render", bd], ["__file", "delete.vue"]]), wd 
 }, Cd = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Sd = /* @__PURE__ */ N(
+}, Sd = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -570,7 +570,7 @@ var yd = /* @__PURE__ */ Fe(vd, [["render", bd], ["__file", "delete.vue"]]), wd 
   null,
   -1
   /* HOISTED */
-), _d = /* @__PURE__ */ N(
+), _d = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -591,7 +591,7 @@ var Td = /* @__PURE__ */ Fe(wd, [["render", Ed], ["__file", "hide.vue"]]), kd = 
 }, Od = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, xd = /* @__PURE__ */ N(
+}, xd = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -611,7 +611,7 @@ var Cr = /* @__PURE__ */ Fe(kd, [["render", Ad], ["__file", "loading.vue"]]), Md
 }, Id = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Ld = /* @__PURE__ */ N(
+}, Ld = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -631,7 +631,7 @@ var Fd = /* @__PURE__ */ Fe(Md, [["render", Rd], ["__file", "minus.vue"]]), Bd =
 }, zd = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Hd = /* @__PURE__ */ N(
+}, Hd = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -651,7 +651,7 @@ var ia = /* @__PURE__ */ Fe(Bd, [["render", Vd], ["__file", "more-filled.vue"]])
 }, Wd = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, jd = /* @__PURE__ */ N(
+}, jd = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -671,7 +671,7 @@ var Gd = /* @__PURE__ */ Fe(Kd, [["render", qd], ["__file", "plus.vue"]]), Yd = 
 }, Xd = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, Qd = /* @__PURE__ */ N(
+}, Qd = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -691,7 +691,7 @@ var ef = /* @__PURE__ */ Fe(Yd, [["render", Jd], ["__file", "view.vue"]]), tf = 
 }, nf = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024"
-}, of = /* @__PURE__ */ N(
+}, of = /* @__PURE__ */ R(
   "path",
   {
     fill: "currentColor",
@@ -766,7 +766,7 @@ const sf = H({
   }
 });
 function uf(e, t, n, o, l, r) {
-  const s = q("minus"), a = q("el-icon"), i = q("plus"), u = q("k-input");
+  const s = G("minus"), a = G("el-icon"), i = G("plus"), u = G("k-input");
   return E(), P("div", {
     class: M(["el-input-number", { "is-disabled": e.disabled }, { "is-without-controls": !e.controls }, e.size ? "el-input-number--" + e.size : ""])
   }, [
@@ -777,12 +777,12 @@ function uf(e, t, n, o, l, r) {
       onClick: t[0] || (t[0] = (c) => e.clickBtnHandle("decrease"))
     }, [
       Z(a, { class: "el-input__icon" }, {
-        default: R(() => [
+        default: N(() => [
           Z(s)
         ]),
         _: 1
       })
-    ], 2)) : G("", !0),
+    ], 2)) : q("", !0),
     e.controls ? (E(), P("span", {
       key: 1,
       class: M(["el-input-number__increase", { "is-disabled": e.maxDisabled }]),
@@ -790,12 +790,12 @@ function uf(e, t, n, o, l, r) {
       onClick: t[1] || (t[1] = (c) => e.clickBtnHandle("increase"))
     }, [
       Z(a, { class: "el-input__icon" }, {
-        default: R(() => [
+        default: N(() => [
           Z(i)
         ]),
         _: 1
       })
-    ], 2)) : G("", !0),
+    ], 2)) : q("", !0),
     Z(u, xe({
       ref: "input",
       modelValue: e.currentValue,
@@ -3379,7 +3379,7 @@ const Z0 = (e, t, n = !1) => {
     return () => K(t, "default", { config: n == null ? void 0 : n.value });
   }
 }), Qi = ut(nb);
-var ye = (e, t) => {
+var we = (e, t) => {
   const n = e.__vccOpts || e;
   for (const [o, l] of t)
     n[o] = l;
@@ -3414,7 +3414,7 @@ const ob = Te({
     ], 16));
   }
 });
-var ab = /* @__PURE__ */ ye(rb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/icon/src/icon.vue"]]);
+var ab = /* @__PURE__ */ we(rb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/icon/src/icon.vue"]]);
 const De = ut(ab), Wr = Symbol("formContextKey"), hl = Symbol("formItemContextKey"), On = (e, t = {}) => {
   const n = k(void 0), o = t.prop ? n : Oi("size"), l = t.global ? n : X0(), r = t.form ? { size: void 0 } : ve(Wr, void 0), s = t.formItem ? { size: void 0 } : ve(hl, void 0);
   return _(() => o.value || h(e) || (s == null ? void 0 : s.size) || (r == null ? void 0 : r.size) || l.value || "");
@@ -3746,26 +3746,26 @@ const cb = Te({
       onMouseenter: Ct,
       onMouseleave: Je
     }), [
-      G(" input "),
+      q(" input "),
       z.type !== "textarea" ? (E(), P($e, { key: 0 }, [
-        G(" prepend slot "),
+        q(" prepend slot "),
         z.$slots.prepend ? (E(), P("div", {
           key: 0,
           class: M(h(f).be("group", "prepend"))
         }, [
           K(z.$slots, "prepend")
-        ], 2)) : G("v-if", !0),
-        N("div", {
+        ], 2)) : q("v-if", !0),
+        R("div", {
           ref_key: "wrapperRef",
           ref: F,
           class: M(h(i))
         }, [
-          G(" prefix slot "),
+          q(" prefix slot "),
           z.$slots.prefix || z.prefixIcon ? (E(), P("span", {
             key: 0,
             class: M(h(f).e("prefix"))
           }, [
-            N("span", {
+            R("span", {
               class: M(h(f).e("prefix-inner"))
             }, [
               K(z.$slots, "prefix"),
@@ -3773,14 +3773,14 @@ const cb = Te({
                 key: 0,
                 class: M(h(f).e("icon"))
               }, {
-                default: R(() => [
+                default: N(() => [
                   (E(), V(Ze(z.prefixIcon)))
                 ]),
                 _: 1
-              }, 8, ["class"])) : G("v-if", !0)
+              }, 8, ["class"])) : q("v-if", !0)
             ], 2)
-          ], 2)) : G("v-if", !0),
-          N("input", xe({
+          ], 2)) : q("v-if", !0),
+          R("input", xe({
             id: h(v),
             ref_key: "input",
             ref: b,
@@ -3806,12 +3806,12 @@ const cb = Te({
             onChange: gt,
             onKeydown: dt
           }), null, 16, pb),
-          G(" suffix slot "),
+          q(" suffix slot "),
           h(_e) ? (E(), P("span", {
             key: 1,
             class: M(h(f).e("suffix"))
           }, [
-            N("span", {
+            R("span", {
               class: M(h(f).e("suffix-inner"))
             }, [
               !h(U) || !h(re) || !h(ue) ? (E(), P($e, { key: 0 }, [
@@ -3820,41 +3820,41 @@ const cb = Te({
                   key: 0,
                   class: M(h(f).e("icon"))
                 }, {
-                  default: R(() => [
+                  default: N(() => [
                     (E(), V(Ze(z.suffixIcon)))
                   ]),
                   _: 1
-                }, 8, ["class"])) : G("v-if", !0)
-              ], 64)) : G("v-if", !0),
+                }, 8, ["class"])) : q("v-if", !0)
+              ], 64)) : q("v-if", !0),
               h(U) ? (E(), V(h(De), {
                 key: 1,
                 class: M([h(f).e("icon"), h(f).e("clear")]),
                 onMousedown: Xe(h(wo), ["prevent"]),
                 onClick: St
               }, {
-                default: R(() => [
+                default: N(() => [
                   Z(h(wr))
                 ]),
                 _: 1
-              }, 8, ["class", "onMousedown"])) : G("v-if", !0),
+              }, 8, ["class", "onMousedown"])) : q("v-if", !0),
               h(re) ? (E(), V(h(De), {
                 key: 2,
                 class: M([h(f).e("icon"), h(f).e("password")]),
                 onClick: wt
               }, {
-                default: R(() => [
+                default: N(() => [
                   (E(), V(Ze(h(le))))
                 ]),
                 _: 1
-              }, 8, ["class"])) : G("v-if", !0),
+              }, 8, ["class"])) : q("v-if", !0),
               h(ue) ? (E(), P("span", {
                 key: 3,
                 class: M(h(f).e("count"))
               }, [
-                N("span", {
+                R("span", {
                   class: M(h(f).e("count-inner"))
                 }, ie(h(ge)) + " / " + ie(h(u).maxlength), 3)
-              ], 2)) : G("v-if", !0),
+              ], 2)) : q("v-if", !0),
               h(ee) && h(oe) && h(Q) ? (E(), V(h(De), {
                 key: 4,
                 class: M([
@@ -3863,24 +3863,24 @@ const cb = Te({
                   h(f).is("loading", h(ee) === "validating")
                 ])
               }, {
-                default: R(() => [
+                default: N(() => [
                   (E(), V(Ze(h(oe))))
                 ]),
                 _: 1
-              }, 8, ["class"])) : G("v-if", !0)
+              }, 8, ["class"])) : q("v-if", !0)
             ], 2)
-          ], 2)) : G("v-if", !0)
+          ], 2)) : q("v-if", !0)
         ], 2),
-        G(" append slot "),
+        q(" append slot "),
         z.$slots.append ? (E(), P("div", {
           key: 1,
           class: M(h(f).be("group", "append"))
         }, [
           K(z.$slots, "append")
-        ], 2)) : G("v-if", !0)
+        ], 2)) : q("v-if", !0)
       ], 64)) : (E(), P($e, { key: 1 }, [
-        G(" textarea "),
-        N("textarea", xe({
+        q(" textarea "),
+        R("textarea", xe({
           id: h(v),
           ref_key: "textarea",
           ref: w,
@@ -3905,16 +3905,16 @@ const cb = Te({
         }), null, 16, vb),
         h(ue) ? (E(), P("span", {
           key: 0,
-          style: we(T.value),
+          style: ye(T.value),
           class: M(h(f).e("count"))
-        }, ie(h(ge)) + " / " + ie(h(u).maxlength), 7)) : G("v-if", !0)
+        }, ie(h(ge)) + " / " + ie(h(u).maxlength), 7)) : q("v-if", !0)
       ], 64))
     ], 16, fb)), [
       [fn, z.type !== "hidden"]
     ]);
   }
 });
-var mb = /* @__PURE__ */ ye(gb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/input/src/input.vue"]]);
+var mb = /* @__PURE__ */ we(gb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/input/src/input.vue"]]);
 const Zi = ut(mb), Ln = 4, bb = {
   vertical: {
     offset: "offsetHeight",
@@ -4003,18 +4003,18 @@ const Zi = ut(mb), Ln = 4, bb = {
       name: h(o).b("fade"),
       persisted: ""
     }, {
-      default: R(() => [
-        We(N("div", {
+      default: N(() => [
+        We(R("div", {
           ref_key: "instance",
           ref: l,
           class: M([h(o).e("bar"), h(o).is(h(d).key)]),
           onMousedown: f
         }, [
-          N("div", {
+          R("div", {
             ref_key: "thumb",
             ref: r,
             class: M(h(o).e("thumb")),
-            style: we(h(v)),
+            style: ye(h(v)),
             onMousedown: p
           }, null, 38)
         ], 34), [
@@ -4025,7 +4025,7 @@ const Zi = ut(mb), Ln = 4, bb = {
     }, 8, ["name"]));
   }
 });
-var ss = /* @__PURE__ */ ye(Sb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/thumb.vue"]]);
+var ss = /* @__PURE__ */ we(Sb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/thumb.vue"]]);
 const _b = Te({
   always: {
     type: Boolean,
@@ -4070,7 +4070,7 @@ const _b = Te({
     ], 64));
   }
 });
-var Eb = /* @__PURE__ */ ye($b, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/bar.vue"]]);
+var Eb = /* @__PURE__ */ we($b, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/bar.vue"]]);
 const Tb = Te({
   height: {
     type: [String, Number],
@@ -4185,26 +4185,26 @@ const Tb = Te({
       ref: a,
       class: M(h(l).b())
     }, [
-      N("div", {
+      R("div", {
         ref_key: "wrapRef",
         ref: i,
         class: M(h(m)),
-        style: we(h(f)),
+        style: ye(h(f)),
         onScroll: w
       }, [
         (E(), V(Ze($.tag), {
           ref_key: "resizeRef",
           ref: u,
           class: M(h(b)),
-          style: we($.viewStyle)
+          style: ye($.viewStyle)
         }, {
-          default: R(() => [
+          default: N(() => [
             K($.$slots, "default")
           ]),
           _: 3
         }, 8, ["class", "style"]))
       ], 38),
-      $.native ? G("v-if", !0) : (E(), V(Eb, {
+      $.native ? q("v-if", !0) : (E(), V(Eb, {
         key: 0,
         ref_key: "barRef",
         ref: v,
@@ -4217,7 +4217,7 @@ const Tb = Te({
     ], 2));
   }
 });
-var Pb = /* @__PURE__ */ ye(xb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/scrollbar.vue"]]);
+var Pb = /* @__PURE__ */ we(xb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/scrollbar/src/scrollbar.vue"]]);
 const Ol = ut(Pb), Ur = Symbol("popper"), eu = Symbol("popperContent"), Ab = [
   "dialog",
   "grid",
@@ -4250,7 +4250,7 @@ const Ol = ut(Pb), Ur = Symbol("popper"), eu = Symbol("popperContent"), Ab = [
     return t(i), lt(Ur, i), (u, c) => K(u.$slots, "default");
   }
 });
-var Lb = /* @__PURE__ */ ye(Ib, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/popper.vue"]]);
+var Lb = /* @__PURE__ */ we(Ib, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/popper.vue"]]);
 const nu = Te({
   arrowOffset: {
     type: Number,
@@ -4274,12 +4274,12 @@ const nu = Te({
       ref_key: "arrowRef",
       ref: r,
       class: M(h(o).e("arrow")),
-      style: we(h(s)),
+      style: ye(h(s)),
       "data-popper-arrow": ""
     }, null, 6));
   }
 });
-var Fb = /* @__PURE__ */ ye(Rb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/arrow.vue"]]);
+var Fb = /* @__PURE__ */ we(Rb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/arrow.vue"]]);
 const Fl = "ElOnlyChild", Bb = H({
   name: Fl,
   setup(e, {
@@ -4412,20 +4412,20 @@ const lu = Te({
       u == null || u(), u = void 0;
     }), t({
       triggerRef: l
-    }), (c, d) => c.virtualTriggering ? G("v-if", !0) : (E(), V(h(Bb), xe({ key: 0 }, c.$attrs, {
+    }), (c, d) => c.virtualTriggering ? q("v-if", !0) : (E(), V(h(Bb), xe({ key: 0 }, c.$attrs, {
       "aria-controls": h(r),
       "aria-describedby": h(s),
       "aria-expanded": h(i),
       "aria-haspopup": h(a)
     }), {
-      default: R(() => [
+      default: N(() => [
         K(c.$slots, "default")
       ]),
       _: 3
     }, 16, ["aria-controls", "aria-describedby", "aria-expanded", "aria-haspopup"]));
   }
 });
-var Db = /* @__PURE__ */ ye(Hb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/trigger.vue"]]);
+var Db = /* @__PURE__ */ we(Hb, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/trigger.vue"]]);
 const Bl = "focus-trap.focus-after-trapped", zl = "focus-trap.focus-after-released", Vb = "focus-trap.focusout-prevented", us = {
   cancelable: !0,
   bubbles: !1
@@ -4643,7 +4643,7 @@ const Gb = () => {
 function Jb(e, t, n, o, l, r) {
   return K(e.$slots, "default", { handleKeydown: e.onKeydown });
 }
-var ey = /* @__PURE__ */ ye(Zb, [["render", Jb], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/focus-trap/src/focus-trap.vue"]]);
+var ey = /* @__PURE__ */ we(Zb, [["render", Jb], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/focus-trap/src/focus-trap.vue"]]);
 const ty = ["fixed", "absolute"], ny = Te({
   boundariesPadding: {
     type: Number,
@@ -4952,7 +4952,7 @@ const iy = 0, uy = (e) => {
         onFocusoutPrevented: h(u),
         onReleaseRequested: h(c)
       }, {
-        default: R(() => [
+        default: N(() => [
           K(Q.$slots, "default")
         ]),
         _: 3
@@ -4960,7 +4960,7 @@ const iy = 0, uy = (e) => {
     ], 16));
   }
 });
-var vy = /* @__PURE__ */ ye(py, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/content.vue"]]);
+var vy = /* @__PURE__ */ we(py, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/popper/src/content.vue"]]);
 const hy = ut(Lb), Yr = Symbol("elTooltip"), Xr = Te({
   ...j0,
   ...au,
@@ -5055,14 +5055,14 @@ const hy = ut(Lb), Yr = Symbol("elTooltip"), Xr = Te({
       onMouseleave: h(p),
       onKeydown: h(C)
     }, {
-      default: R(() => [
+      default: N(() => [
         K(y.$slots, "default")
       ]),
       _: 3
     }, 8, ["id", "virtual-ref", "open", "virtual-triggering", "class", "onBlur", "onClick", "onContextmenu", "onFocus", "onMouseenter", "onMouseleave", "onKeydown"]));
   }
 });
-var $y = /* @__PURE__ */ ye(_y, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/trigger.vue"]]);
+var $y = /* @__PURE__ */ we(_y, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/trigger.vue"]]);
 const Ey = H({
   name: "ElTooltipContent",
   inheritAttrs: !1
@@ -5135,7 +5135,7 @@ const Ey = H({
         onAfterEnter: ee,
         onBeforeLeave: Q
       }, {
-        default: R(() => [
+        default: N(() => [
           h(C) ? We((E(), V(h(vy), xe({
             key: 0,
             id: h(i),
@@ -5165,20 +5165,20 @@ const Ey = H({
             onBlur: oe,
             onClose: h(d)
           }), {
-            default: R(() => [
-              s.value ? G("v-if", !0) : K(j.$slots, "default", { key: 0 })
+            default: N(() => [
+              s.value ? q("v-if", !0) : K(j.$slots, "default", { key: 0 })
             ]),
             _: 3
           }, 16, ["id", "aria-label", "aria-hidden", "boundaries-padding", "fallback-placements", "gpu-acceleration", "offset", "placement", "popper-options", "strategy", "effect", "enterable", "pure", "popper-class", "popper-style", "reference-el", "trigger-target-el", "visible", "z-index", "onMouseenter", "onMouseleave", "onClose"])), [
             [fn, h(y)]
-          ]) : G("v-if", !0)
+          ]) : q("v-if", !0)
         ]),
         _: 3
       }, 8, ["name"])
     ], 8, ["disabled", "to"]));
   }
 });
-var ky = /* @__PURE__ */ ye(Ty, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/content.vue"]]);
+var ky = /* @__PURE__ */ we(Ty, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/content.vue"]]);
 const Oy = ["innerHTML"], xy = { key: 1 }, Py = H({
   name: "ElTooltip"
 }), Ay = /* @__PURE__ */ H({
@@ -5250,7 +5250,7 @@ const Oy = ["innerHTML"], xy = { key: 1 }, Py = H({
       ref: r,
       role: b.role
     }, {
-      default: R(() => [
+      default: N(() => [
         Z($y, {
           disabled: b.disabled,
           trigger: b.trigger,
@@ -5258,8 +5258,8 @@ const Oy = ["innerHTML"], xy = { key: 1 }, Py = H({
           "virtual-ref": b.virtualRef,
           "virtual-triggering": b.virtualTriggering
         }, {
-          default: R(() => [
-            b.$slots.default ? K(b.$slots, "default", { key: 0 }) : G("v-if", !0)
+          default: N(() => [
+            b.$slots.default ? K(b.$slots, "default", { key: 0 }) : q("v-if", !0)
           ]),
           _: 3
         }, 8, ["disabled", "trigger", "trigger-keys", "virtual-ref", "virtual-triggering"]),
@@ -5293,7 +5293,7 @@ const Oy = ["innerHTML"], xy = { key: 1 }, Py = H({
           "z-index": b.zIndex,
           "append-to": b.appendTo
         }, {
-          default: R(() => [
+          default: N(() => [
             K(b.$slots, "content", {}, () => [
               b.rawContent ? (E(), P("span", {
                 key: 0,
@@ -5303,7 +5303,7 @@ const Oy = ["innerHTML"], xy = { key: 1 }, Py = H({
             b.showArrow ? (E(), V(h(Fb), {
               key: 0,
               "arrow-offset": b.arrowOffset
-            }, null, 8, ["arrow-offset"])) : G("v-if", !0)
+            }, null, 8, ["arrow-offset"])) : q("v-if", !0)
           ]),
           _: 3
         }, 8, ["aria-label", "boundaries-padding", "content", "disabled", "effect", "enterable", "fallback-placements", "hide-after", "gpu-acceleration", "offset", "persistent", "popper-class", "popper-style", "placement", "popper-options", "pure", "raw-content", "reference-el", "trigger-target-el", "show-after", "strategy", "teleported", "transition", "virtual-triggering", "z-index", "append-to"])
@@ -5312,7 +5312,7 @@ const Oy = ["innerHTML"], xy = { key: 1 }, Py = H({
     }, 8, ["role"]));
   }
 });
-var My = /* @__PURE__ */ ye(Ay, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/tooltip.vue"]]);
+var My = /* @__PURE__ */ we(Ay, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tooltip/src/tooltip.vue"]]);
 const iu = ut(My), uu = Symbol("buttonGroupContextKey"), Iy = (e, t) => {
   $i({
     from: "type.text",
@@ -5988,35 +5988,35 @@ const Qy = H({
       style: h(l),
       onClick: h(v)
     }), {
-      default: R(() => [
+      default: N(() => [
         g.loading ? (E(), P($e, { key: 0 }, [
           g.$slots.loading ? K(g.$slots, "loading", { key: 0 }) : (E(), V(h(De), {
             key: 1,
             class: M(h(r).is("loading"))
           }, {
-            default: R(() => [
+            default: N(() => [
               (E(), V(Ze(g.loadingIcon)))
             ]),
             _: 1
           }, 8, ["class"]))
         ], 64)) : g.icon || g.$slots.icon ? (E(), V(h(De), { key: 1 }, {
-          default: R(() => [
+          default: N(() => [
             g.icon ? (E(), V(Ze(g.icon), { key: 0 })) : K(g.$slots, "icon", { key: 1 })
           ]),
           _: 3
-        })) : G("v-if", !0),
+        })) : q("v-if", !0),
         g.$slots.default ? (E(), P("span", {
           key: 2,
           class: M({ [h(r).em("text", "expand")]: h(d) })
         }, [
           K(g.$slots, "default")
-        ], 2)) : G("v-if", !0)
+        ], 2)) : q("v-if", !0)
       ]),
       _: 3
     }, 16, ["class", "style", "onClick"]));
   }
 });
-var Jy = /* @__PURE__ */ ye(Zy, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button.vue"]]);
+var Jy = /* @__PURE__ */ we(Zy, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button.vue"]]);
 const e1 = {
   size: or.size,
   type: or.type
@@ -6039,7 +6039,7 @@ const e1 = {
     ], 2));
   }
 });
-var du = /* @__PURE__ */ ye(n1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button-group.vue"]]);
+var du = /* @__PURE__ */ we(n1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/button/src/button-group.vue"]]);
 const fu = ut(Jy, {
   ButtonGroup: du
 });
@@ -6374,8 +6374,8 @@ const u1 = function(e, t) {
       "aria-controls": m.indeterminate ? m.controls : null,
       onClick: h(v)
     }, {
-      default: R(() => [
-        N("span", {
+      default: N(() => [
+        R("span", {
           class: M(h(f)),
           tabindex: m.indeterminate ? 0 : void 0,
           role: m.indeterminate ? "checkbox" : void 0,
@@ -6419,7 +6419,7 @@ const u1 = function(e, t) {
           }, null, 42, b1)), [
             [al, h(c)]
           ]),
-          N("span", {
+          R("span", {
             class: M(h(g).e("inner"))
           }, null, 2)
         ], 10, g1),
@@ -6428,16 +6428,16 @@ const u1 = function(e, t) {
           class: M(h(g).e("label"))
         }, [
           K(m.$slots, "default"),
-          m.$slots.default ? G("v-if", !0) : (E(), P($e, { key: 0 }, [
+          m.$slots.default ? q("v-if", !0) : (E(), P($e, { key: 0 }, [
             Ke(ie(m.label), 1)
           ], 64))
-        ], 2)) : G("v-if", !0)
+        ], 2)) : q("v-if", !0)
       ]),
       _: 3
     }, 8, ["class", "aria-controls", "onClick"]));
   }
 });
-var C1 = /* @__PURE__ */ ye(w1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox.vue"]]);
+var C1 = /* @__PURE__ */ we(w1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox.vue"]]);
 const S1 = ["name", "tabindex", "disabled", "true-value", "false-value"], _1 = ["name", "tabindex", "disabled", "value"], $1 = H({
   name: "ElCheckboxButton"
 }), E1 = /* @__PURE__ */ H({
@@ -6508,16 +6508,16 @@ const S1 = ["name", "tabindex", "disabled", "true-value", "false-value"], _1 = [
       g.$slots.default || g.label ? (E(), P("span", {
         key: 2,
         class: M(h(c).be("button", "inner")),
-        style: we(h(l) ? h(d) : void 0)
+        style: ye(h(l) ? h(d) : void 0)
       }, [
         K(g.$slots, "default", {}, () => [
           Ke(ie(g.label), 1)
         ])
-      ], 6)) : G("v-if", !0)
+      ], 6)) : q("v-if", !0)
     ], 2));
   }
 });
-var $u = /* @__PURE__ */ ye(E1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox-button.vue"]]);
+var $u = /* @__PURE__ */ we(E1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox-button.vue"]]);
 const T1 = Te({
   modelValue: {
     type: fe(Array),
@@ -6583,7 +6583,7 @@ const T1 = Te({
         "aria-label": h(s) ? void 0 : u.label || "checkbox-group",
         "aria-labelledby": h(s) ? (d = h(l)) == null ? void 0 : d.labelId : void 0
       }, {
-        default: R(() => [
+        default: N(() => [
           K(u.$slots, "default")
         ]),
         _: 3
@@ -6591,7 +6591,7 @@ const T1 = Te({
     };
   }
 });
-var Eu = /* @__PURE__ */ ye(x1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox-group.vue"]]);
+var Eu = /* @__PURE__ */ we(x1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/checkbox/src/checkbox-group.vue"]]);
 const Yn = ut(C1, {
   CheckboxButton: $u,
   CheckboxGroup: Eu
@@ -6651,10 +6651,10 @@ const Tu = Te({
     return (i, u) => i.disableTransitions ? (E(), P("span", {
       key: 0,
       class: M(h(r)),
-      style: we({ backgroundColor: i.color }),
+      style: ye({ backgroundColor: i.color }),
       onClick: a
     }, [
-      N("span", {
+      R("span", {
         class: M(h(l).e("content"))
       }, [
         K(i.$slots, "default")
@@ -6664,23 +6664,23 @@ const Tu = Te({
         class: M(h(l).e("close")),
         onClick: Xe(s, ["stop"])
       }, {
-        default: R(() => [
+        default: N(() => [
           Z(h(sa))
         ]),
         _: 1
-      }, 8, ["class", "onClick"])) : G("v-if", !0)
+      }, 8, ["class", "onClick"])) : q("v-if", !0)
     ], 6)) : (E(), V(yo, {
       key: 1,
       name: `${h(l).namespace.value}-zoom-in-center`,
       appear: ""
     }, {
-      default: R(() => [
-        N("span", {
+      default: N(() => [
+        R("span", {
           class: M(h(r)),
-          style: we({ backgroundColor: i.color }),
+          style: ye({ backgroundColor: i.color }),
           onClick: a
         }, [
-          N("span", {
+          R("span", {
             class: M(h(l).e("content"))
           }, [
             K(i.$slots, "default")
@@ -6690,18 +6690,18 @@ const Tu = Te({
             class: M(h(l).e("close")),
             onClick: Xe(s, ["stop"])
           }, {
-            default: R(() => [
+            default: N(() => [
               Z(h(sa))
             ]),
             _: 1
-          }, 8, ["class", "onClick"])) : G("v-if", !0)
+          }, 8, ["class", "onClick"])) : q("v-if", !0)
         ], 6)
       ]),
       _: 3
     }, 8, ["name"]));
   }
 });
-var I1 = /* @__PURE__ */ ye(M1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tag/src/tag.vue"]]);
+var I1 = /* @__PURE__ */ we(M1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/tag/src/tag.vue"]]);
 const L1 = ut(I1), ku = Symbol("rowContextKey"), N1 = [
   "start",
   "center",
@@ -6747,16 +6747,16 @@ const L1 = ut(I1), ku = Symbol("rowContextKey"), N1 = [
     ]);
     return (s, a) => (E(), V(Ze(s.tag), {
       class: M(h(r)),
-      style: we(h(l))
+      style: ye(h(l))
     }, {
-      default: R(() => [
+      default: N(() => [
         K(s.$slots, "default")
       ]),
       _: 3
     }, 8, ["class", "style"]));
   }
 });
-var H1 = /* @__PURE__ */ ye(z1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/row/src/row.vue"]]);
+var H1 = /* @__PURE__ */ we(z1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/row/src/row.vue"]]);
 const D1 = ut(H1), V1 = Te({
   tag: {
     type: String,
@@ -6820,16 +6820,16 @@ const D1 = ut(H1), V1 = Te({
     });
     return (s, a) => (E(), V(Ze(s.tag), {
       class: M(h(r)),
-      style: we(h(l))
+      style: ye(h(l))
     }, {
-      default: R(() => [
+      default: N(() => [
         K(s.$slots, "default")
       ]),
       _: 3
     }, 8, ["class", "style"]));
   }
 });
-var j1 = /* @__PURE__ */ ye(W1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/col/src/col.vue"]]);
+var j1 = /* @__PURE__ */ we(W1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/col/src/col.vue"]]);
 const U1 = ut(j1), Ou = Symbol("elPaginationKey"), q1 = Te({
   disabled: Boolean,
   currentPage: {
@@ -6861,7 +6861,7 @@ const U1 = ut(j1), Ou = Symbol("elPaginationKey"), q1 = Te({
       onClick: r[0] || (r[0] = (s) => l.$emit("click", s))
     }, [
       l.prevText ? (E(), P("span", X1, ie(l.prevText), 1)) : (E(), V(h(De), { key: 1 }, {
-        default: R(() => [
+        default: N(() => [
           (E(), V(Ze(l.prevIcon)))
         ]),
         _: 1
@@ -6869,7 +6869,7 @@ const U1 = ut(j1), Ou = Symbol("elPaginationKey"), q1 = Te({
     ], 8, Y1));
   }
 });
-var J1 = /* @__PURE__ */ ye(Z1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/prev.vue"]]);
+var J1 = /* @__PURE__ */ we(Z1, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/prev.vue"]]);
 const ew = Te({
   disabled: Boolean,
   currentPage: {
@@ -6903,7 +6903,7 @@ const ew = Te({
       onClick: r[0] || (r[0] = (s) => l.$emit("click", s))
     }, [
       l.nextText ? (E(), P("span", nw, ie(l.nextText), 1)) : (E(), V(h(De), { key: 1 }, {
-        default: R(() => [
+        default: N(() => [
           (E(), V(Ze(l.nextIcon)))
         ]),
         _: 1
@@ -6911,7 +6911,7 @@ const ew = Te({
     ], 8, tw));
   }
 });
-var rw = /* @__PURE__ */ ye(lw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/next.vue"]]);
+var rw = /* @__PURE__ */ we(lw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/next.vue"]]);
 const xu = Symbol("ElSelectGroup"), Pl = Symbol("ElSelect");
 function aw(e, t) {
   const n = ve(Pl), o = ve(xu, { disabled: !1 }), l = _(() => Object.prototype.toString.call(e.value).toLowerCase() === "[object object]"), r = _(() => n.props.multiple ? d(n.props.modelValue, e.value) : v(e.value, n.props.modelValue)), s = _(() => {
@@ -7018,13 +7018,13 @@ function iw(e, t, n, o, l, r) {
     onClick: t[1] || (t[1] = Xe((...s) => e.selectOptionClick && e.selectOptionClick(...s), ["stop"]))
   }, [
     K(e.$slots, "default", {}, () => [
-      N("span", null, ie(e.currentLabel), 1)
+      R("span", null, ie(e.currentLabel), 1)
     ])
   ], 34)), [
     [fn, e.visible]
   ]);
 }
-var Qr = /* @__PURE__ */ ye(sw, [["render", iw], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/option.vue"]]);
+var Qr = /* @__PURE__ */ we(sw, [["render", iw], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/option.vue"]]);
 const uw = H({
   name: "ElSelectDropdown",
   componentName: "ElSelectDropdown",
@@ -7048,12 +7048,12 @@ const uw = H({
 function cw(e, t, n, o, l, r) {
   return E(), P("div", {
     class: M([e.ns.b("dropdown"), e.ns.is("multiple", e.isMultiple), e.popperClass]),
-    style: we({ [e.isFitInputWidth ? "width" : "minWidth"]: e.minWidth })
+    style: ye({ [e.isFitInputWidth ? "width" : "minWidth"]: e.minWidth })
   }, [
     K(e.$slots, "default")
   ], 6);
 }
-var dw = /* @__PURE__ */ ye(uw, [["render", cw], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/select-dropdown.vue"]]);
+var dw = /* @__PURE__ */ we(uw, [["render", cw], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/select-dropdown.vue"]]);
 function fw(e) {
   const { t } = Ot();
   return Qn({
@@ -7766,7 +7766,7 @@ const Ts = "ElSelect", hw = H({
   }
 }), gw = ["disabled", "autocomplete", "aria-label"], mw = ["disabled"], bw = { style: { height: "100%", display: "flex", "justify-content": "center", "align-items": "center" } };
 function yw(e, t, n, o, l, r) {
-  const s = q("el-tag"), a = q("el-tooltip"), i = q("el-icon"), u = q("el-input"), c = q("el-option"), d = q("el-options"), v = q("el-scrollbar"), g = q("el-select-menu"), p = mr("click-outside");
+  const s = G("el-tag"), a = G("el-tooltip"), i = G("el-icon"), u = G("el-input"), c = G("el-option"), d = G("el-options"), v = G("el-scrollbar"), g = G("el-select-menu"), p = mr("click-outside");
   return We((E(), P("div", {
     ref: "selectWrapper",
     class: M(e.wrapperKls),
@@ -7791,8 +7791,8 @@ function yw(e, t, n, o, l, r) {
       persistent: e.persistent,
       onShow: e.handleMenuEnter
     }, {
-      default: R(() => [
-        N("div", {
+      default: N(() => [
+        R("div", {
           class: "select-trigger",
           onMouseenter: t[20] || (t[20] = (f) => e.inputHovering = !0),
           onMouseleave: t[21] || (t[21] = (f) => e.inputHovering = !1)
@@ -7802,15 +7802,15 @@ function yw(e, t, n, o, l, r) {
             ref: "tags",
             tabindex: "-1",
             class: M(e.tagsKls),
-            style: we(e.selectTagsStyle),
+            style: ye(e.selectTagsStyle),
             onClick: t[15] || (t[15] = (...f) => e.focus && e.focus(...f))
           }, [
             e.collapseTags && e.selected.length ? (E(), V(yo, {
               key: 0,
               onAfterLeave: e.resetInputHeight
             }, {
-              default: R(() => [
-                N("span", {
+              default: N(() => [
+                R("span", {
                   class: M(e.tagWrapperKls)
                 }, [
                   (E(!0), P($e, null, ze(e.showTagList, (f) => (E(), V(s, {
@@ -7822,10 +7822,10 @@ function yw(e, t, n, o, l, r) {
                     "disable-transitions": "",
                     onClose: (m) => e.deleteTag(m, f)
                   }, {
-                    default: R(() => [
-                      N("span", {
+                    default: N(() => [
+                      R("span", {
                         class: M(e.nsSelect.e("tags-text")),
-                        style: we(e.tagTextStyle)
+                        style: ye(e.tagTextStyle)
                       }, ie(f.currentLabel), 7)
                     ]),
                     _: 2
@@ -7837,7 +7837,7 @@ function yw(e, t, n, o, l, r) {
                     type: e.tagType,
                     "disable-transitions": ""
                   }, {
-                    default: R(() => [
+                    default: N(() => [
                       e.collapseTagsTooltip ? (E(), V(a, {
                         key: 0,
                         ref: "tagTooltipRef",
@@ -7847,13 +7847,13 @@ function yw(e, t, n, o, l, r) {
                         placement: "bottom",
                         teleported: e.teleported
                       }, {
-                        default: R(() => [
-                          N("span", {
+                        default: N(() => [
+                          R("span", {
                             class: M(e.nsSelect.e("tags-text"))
                           }, "+ " + ie(e.selected.length - e.maxCollapseTags), 3)
                         ]),
-                        content: R(() => [
-                          N("div", {
+                        content: N(() => [
+                          R("div", {
                             class: M(e.nsSelect.e("collapse-tags"))
                           }, [
                             (E(!0), P($e, null, ze(e.collapseTagList, (f) => (E(), P("div", {
@@ -7870,10 +7870,10 @@ function yw(e, t, n, o, l, r) {
                                 style: { margin: "2px" },
                                 onClose: (m) => e.handleDeleteTooltipTag(m, f)
                               }, {
-                                default: R(() => [
-                                  N("span", {
+                                default: N(() => [
+                                  R("span", {
                                     class: M(e.nsSelect.e("tags-text")),
-                                    style: we({
+                                    style: ye({
                                       maxWidth: e.inputWidth - 75 + "px"
                                     })
                                   }, ie(f.currentLabel), 7)
@@ -7890,19 +7890,19 @@ function yw(e, t, n, o, l, r) {
                       }, "+ " + ie(e.selected.length - e.maxCollapseTags), 3))
                     ]),
                     _: 1
-                  }, 8, ["size", "type"])) : G("v-if", !0)
+                  }, 8, ["size", "type"])) : q("v-if", !0)
                 ], 2)
               ]),
               _: 1
-            }, 8, ["onAfterLeave"])) : G("v-if", !0),
-            e.collapseTags ? G("v-if", !0) : (E(), V(yo, {
+            }, 8, ["onAfterLeave"])) : q("v-if", !0),
+            e.collapseTags ? q("v-if", !0) : (E(), V(yo, {
               key: 1,
               onAfterLeave: e.resetInputHeight
             }, {
-              default: R(() => [
-                N("span", {
+              default: N(() => [
+                R("span", {
                   class: M(e.tagWrapperKls),
-                  style: we(e.prefixWidth && e.selected.length ? { marginLeft: `${e.prefixWidth}px` } : "")
+                  style: ye(e.prefixWidth && e.selected.length ? { marginLeft: `${e.prefixWidth}px` } : "")
                 }, [
                   (E(!0), P($e, null, ze(e.selected, (f) => (E(), V(s, {
                     key: e.getValueKey(f),
@@ -7913,10 +7913,10 @@ function yw(e, t, n, o, l, r) {
                     "disable-transitions": "",
                     onClose: (m) => e.deleteTag(m, f)
                   }, {
-                    default: R(() => [
-                      N("span", {
+                    default: N(() => [
+                      R("span", {
                         class: M(e.nsSelect.e("tags-text")),
-                        style: we({ maxWidth: e.inputWidth - 75 + "px" })
+                        style: ye({ maxWidth: e.inputWidth - 75 + "px" })
                       }, ie(f.currentLabel), 7)
                     ]),
                     _: 2
@@ -7933,7 +7933,7 @@ function yw(e, t, n, o, l, r) {
               class: M(e.inputKls),
               disabled: e.selectDisabled,
               autocomplete: e.autocomplete,
-              style: we(e.inputStyle),
+              style: ye(e.inputStyle),
               "aria-label": e.ariaLabel,
               onFocus: t[1] || (t[1] = (...f) => e.handleFocus && e.handleFocus(...f)),
               onBlur: t[2] || (t[2] = (...f) => e.handleBlur && e.handleBlur(...f)),
@@ -7953,16 +7953,16 @@ function yw(e, t, n, o, l, r) {
               onInput: t[14] || (t[14] = (...f) => e.debouncedQueryChange && e.debouncedQueryChange(...f))
             }, null, 46, gw)), [
               [Zu, e.query]
-            ]) : G("v-if", !0)
-          ], 6)) : G("v-if", !0),
-          G(" fix: https://github.com/element-plus/element-plus/issues/11415 "),
+            ]) : q("v-if", !0)
+          ], 6)) : q("v-if", !0),
+          q(" fix: https://github.com/element-plus/element-plus/issues/11415 "),
           e.isIOS && !e.multiple && e.filterable && e.readonly ? (E(), P("input", {
             key: 1,
             ref: "iOSInput",
             class: M(e.iOSInputKls),
             disabled: e.selectDisabled,
             type: "text"
-          }, null, 10, mw)) : G("v-if", !0),
+          }, null, 10, mw)) : q("v-if", !0),
           Z(u, {
             id: e.id,
             ref: "reference",
@@ -7994,33 +7994,33 @@ function yw(e, t, n, o, l, r) {
               t[19] || (t[19] = at((f) => e.visible = !1, ["tab"]))
             ]
           }, $n({
-            suffix: R(() => [
+            suffix: N(() => [
               e.iconComponent && !e.showClose ? (E(), V(i, {
                 key: 0,
                 class: M([e.nsSelect.e("caret"), e.nsSelect.e("icon"), e.iconReverse])
               }, {
-                default: R(() => [
+                default: N(() => [
                   (E(), V(Ze(e.iconComponent)))
                 ]),
                 _: 1
-              }, 8, ["class"])) : G("v-if", !0),
+              }, 8, ["class"])) : q("v-if", !0),
               e.showClose && e.clearIcon ? (E(), V(i, {
                 key: 1,
                 class: M([e.nsSelect.e("caret"), e.nsSelect.e("icon")]),
                 onClick: e.handleClearClick
               }, {
-                default: R(() => [
+                default: N(() => [
                   (E(), V(Ze(e.clearIcon)))
                 ]),
                 _: 1
-              }, 8, ["class", "onClick"])) : G("v-if", !0)
+              }, 8, ["class", "onClick"])) : q("v-if", !0)
             ]),
             _: 2
           }, [
             e.$slots.prefix ? {
               name: "prefix",
-              fn: R(() => [
-                N("div", bw, [
+              fn: N(() => [
+                R("div", bw, [
                   K(e.$slots, "prefix")
                 ])
               ])
@@ -8028,9 +8028,9 @@ function yw(e, t, n, o, l, r) {
           ]), 1032, ["id", "modelValue", "placeholder", "name", "autocomplete", "size", "disabled", "readonly", "class", "tabindex", "label", "onFocus", "onBlur", "onInput", "onPaste", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onKeydown"])
         ], 32)
       ]),
-      content: R(() => [
+      content: N(() => [
         Z(g, null, {
-          default: R(() => [
+          default: N(() => [
             We(Z(v, {
               ref: "scrollbar",
               tag: "ul",
@@ -8038,14 +8038,14 @@ function yw(e, t, n, o, l, r) {
               "view-class": e.nsSelect.be("dropdown", "list"),
               class: M(e.scrollbarKls)
             }, {
-              default: R(() => [
+              default: N(() => [
                 e.showNewOption ? (E(), V(c, {
                   key: 0,
                   value: e.query,
                   created: !0
-                }, null, 8, ["value"])) : G("v-if", !0),
+                }, null, 8, ["value"])) : q("v-if", !0),
                 Z(d, { onUpdateOptions: e.onOptionsRendered }, {
-                  default: R(() => [
+                  default: N(() => [
                     K(e.$slots, "default")
                   ]),
                   _: 3
@@ -8060,7 +8060,7 @@ function yw(e, t, n, o, l, r) {
                 key: 1,
                 class: M(e.nsSelect.be("dropdown", "empty"))
               }, ie(e.emptyText), 3))
-            ], 64)) : G("v-if", !0)
+            ], 64)) : q("v-if", !0)
           ]),
           _: 3
         })
@@ -8071,7 +8071,7 @@ function yw(e, t, n, o, l, r) {
     [p, e.handleClose, e.popperPaneRef]
   ]);
 }
-var ww = /* @__PURE__ */ ye(hw, [["render", yw], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/select.vue"]]);
+var ww = /* @__PURE__ */ we(hw, [["render", yw], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/select.vue"]]);
 const Cw = H({
   name: "ElOptionGroup",
   componentName: "ElOptionGroup",
@@ -8107,11 +8107,11 @@ function Sw(e, t, n, o, l, r) {
   return We((E(), P("ul", {
     class: M(e.ns.be("group", "wrap"))
   }, [
-    N("li", {
+    R("li", {
       class: M(e.ns.be("group", "title"))
     }, ie(e.label), 3),
-    N("li", null, [
-      N("ul", {
+    R("li", null, [
+      R("ul", {
         class: M(e.ns.b("group"))
       }, [
         K(e.$slots, "default")
@@ -8121,7 +8121,7 @@ function Sw(e, t, n, o, l, r) {
     [fn, e.visible]
   ]);
 }
-var Pu = /* @__PURE__ */ ye(Cw, [["render", Sw], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/option-group.vue"]]);
+var Pu = /* @__PURE__ */ we(Cw, [["render", Sw], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/select/src/option-group.vue"]]);
 const _w = ut(ww, {
   Option: Qr,
   OptionGroup: Pu
@@ -8176,7 +8176,7 @@ const Zr = () => ve(Ou, {}), Ew = Te({
         "validate-event": !1,
         onChange: i
       }, {
-        default: R(() => [
+        default: N(() => [
           (E(!0), P($e, null, ze(h(a), (d) => (E(), V(h($w), {
             key: d,
             value: d,
@@ -8188,7 +8188,7 @@ const Zr = () => ve(Ou, {}), Ew = Te({
     ], 2));
   }
 });
-var Ow = /* @__PURE__ */ ye(kw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/sizes.vue"]]);
+var Ow = /* @__PURE__ */ we(kw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/sizes.vue"]]);
 const xw = Te({
   size: {
     type: String,
@@ -8214,7 +8214,7 @@ const xw = Te({
       class: M(h(n).e("jump")),
       disabled: h(l)
     }, [
-      N("span", {
+      R("span", {
         class: M([h(n).e("goto")])
       }, ie(h(t)("el.pagination.goto")), 3),
       Z(h(Zi), {
@@ -8230,13 +8230,13 @@ const xw = Te({
         "onUpdate:modelValue": u,
         onChange: c
       }, null, 8, ["size", "class", "max", "disabled", "model-value", "label"]),
-      N("span", {
+      R("span", {
         class: M([h(n).e("classifier")])
       }, ie(h(t)("el.pagination.pageClassifier")), 3)
     ], 10, Pw));
   }
 });
-var Iw = /* @__PURE__ */ ye(Mw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/jumper.vue"]]);
+var Iw = /* @__PURE__ */ we(Mw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/jumper.vue"]]);
 const Lw = Te({
   total: {
     type: Number,
@@ -8257,7 +8257,7 @@ const Lw = Te({
     })), 11, Nw));
   }
 });
-var Bw = /* @__PURE__ */ ye(Fw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/total.vue"]]);
+var Bw = /* @__PURE__ */ we(Fw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/total.vue"]]);
 const zw = Te({
   currentPage: {
     type: Number,
@@ -8350,7 +8350,7 @@ const zw = Te({
         "aria-current": y.currentPage === 1,
         "aria-label": h(r)("el.pagination.currentPage", { pager: 1 }),
         tabindex: h(f)
-      }, " 1 ", 10, Dw)) : G("v-if", !0),
+      }, " 1 ", 10, Dw)) : q("v-if", !0),
       s.value ? (E(), P("li", {
         key: 1,
         class: M(h(g)),
@@ -8362,7 +8362,7 @@ const zw = Te({
         onBlur: S[3] || (S[3] = (T) => c.value = !1)
       }, [
         (i.value || c.value) && !y.disabled ? (E(), V(h(sd), { key: 0 })) : (E(), V(h(ia), { key: 1 }))
-      ], 42, Vw)) : G("v-if", !0),
+      ], 42, Vw)) : q("v-if", !0),
       (E(!0), P($e, null, ze(h(v), (T) => (E(), P("li", {
         key: T,
         class: M([[
@@ -8384,7 +8384,7 @@ const zw = Te({
         onBlur: S[7] || (S[7] = (T) => d.value = !1)
       }, [
         (u.value || d.value) && !y.disabled ? (E(), V(h(pd), { key: 0 })) : (E(), V(h(ia), { key: 1 }))
-      ], 42, Ww)) : G("v-if", !0),
+      ], 42, Ww)) : q("v-if", !0),
       y.pageCount > 1 ? (E(), P("li", {
         key: 3,
         class: M([[
@@ -8394,11 +8394,11 @@ const zw = Te({
         "aria-current": y.currentPage === y.pageCount,
         "aria-label": h(r)("el.pagination.currentPage", { pager: y.pageCount }),
         tabindex: h(f)
-      }, ie(y.pageCount), 11, jw)) : G("v-if", !0)
+      }, ie(y.pageCount), 11, jw)) : q("v-if", !0)
     ], 42, Hw));
   }
 });
-var Gw = /* @__PURE__ */ ye(qw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/pager.vue"]]);
+var Gw = /* @__PURE__ */ we(qw, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/pagination/src/components/pager.vue"]]);
 const nt = (e) => typeof e != "number", Yw = Te({
   pageSize: Number,
   defaultPageSize: Number,
@@ -9651,7 +9651,7 @@ const { CheckboxGroup: y2 } = Yn, w2 = H({
   }
 }), C2 = { key: 0 }, S2 = ["disabled"], _2 = ["label", "onClick"];
 function $2(e, t, n, o, l, r) {
-  const s = q("el-checkbox"), a = q("el-checkbox-group"), i = q("el-scrollbar"), u = q("arrow-up"), c = q("arrow-down"), d = q("el-icon"), v = q("el-tooltip"), g = mr("click-outside");
+  const s = G("el-checkbox"), a = G("el-checkbox-group"), i = G("el-scrollbar"), u = G("arrow-up"), c = G("arrow-down"), d = G("el-icon"), v = G("el-tooltip"), g = mr("click-outside");
   return E(), V(v, {
     ref: "tooltip",
     visible: e.tooltipVisible,
@@ -9665,26 +9665,26 @@ function $2(e, t, n, o, l, r) {
     "popper-class": e.ns.b(),
     persistent: ""
   }, {
-    content: R(() => [
+    content: N(() => [
       e.multiple ? (E(), P("div", C2, [
-        N("div", {
+        R("div", {
           class: M(e.ns.e("content"))
         }, [
           Z(i, {
             "wrap-class": e.ns.e("wrap")
           }, {
-            default: R(() => [
+            default: N(() => [
               Z(a, {
                 modelValue: e.filteredValue,
                 "onUpdate:modelValue": t[0] || (t[0] = (p) => e.filteredValue = p),
                 class: M(e.ns.e("checkbox-group"))
               }, {
-                default: R(() => [
+                default: N(() => [
                   (E(!0), P($e, null, ze(e.filters, (p) => (E(), V(s, {
                     key: p.value,
                     label: p.value
                   }, {
-                    default: R(() => [
+                    default: N(() => [
                       Ke(ie(p.text), 1)
                     ]),
                     _: 2
@@ -9696,16 +9696,16 @@ function $2(e, t, n, o, l, r) {
             _: 1
           }, 8, ["wrap-class"])
         ], 2),
-        N("div", {
+        R("div", {
           class: M(e.ns.e("bottom"))
         }, [
-          N("button", {
+          R("button", {
             class: M({ [e.ns.is("disabled")]: e.filteredValue.length === 0 }),
             disabled: e.filteredValue.length === 0,
             type: "button",
             onClick: t[1] || (t[1] = (...p) => e.handleConfirm && e.handleConfirm(...p))
           }, ie(e.t("el.table.confirmFilter")), 11, S2),
-          N("button", {
+          R("button", {
             type: "button",
             onClick: t[2] || (t[2] = (...p) => e.handleReset && e.handleReset(...p))
           }, ie(e.t("el.table.resetFilter")), 1)
@@ -9714,7 +9714,7 @@ function $2(e, t, n, o, l, r) {
         key: 1,
         class: M(e.ns.e("list"))
       }, [
-        N("li", {
+        R("li", {
           class: M([
             e.ns.e("list-item"),
             {
@@ -9731,7 +9731,7 @@ function $2(e, t, n, o, l, r) {
         }, ie(p.text), 11, _2))), 128))
       ], 2))
     ]),
-    default: R(() => [
+    default: N(() => [
       We((E(), P("span", {
         class: M([
           `${e.ns.namespace.value}-table__column-filter-trigger`,
@@ -9740,7 +9740,7 @@ function $2(e, t, n, o, l, r) {
         onClick: t[4] || (t[4] = (...p) => e.showFilterPanel && e.showFilterPanel(...p))
       }, [
         Z(d, null, {
-          default: R(() => [
+          default: N(() => [
             e.column.filterOpened ? (E(), V(u, { key: 0 })) : (E(), V(c, { key: 1 }))
           ]),
           _: 1
@@ -9752,7 +9752,7 @@ function $2(e, t, n, o, l, r) {
     _: 1
   }, 8, ["visible", "placement", "popper-class"]);
 }
-var E2 = /* @__PURE__ */ ye(w2, [["render", $2], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/table/src/filter-panel.vue"]]);
+var E2 = /* @__PURE__ */ we(w2, [["render", $2], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/table/src/filter-panel.vue"]]);
 function Fu(e) {
   const t = Ce();
   hr(() => {
@@ -10974,7 +10974,7 @@ const j2 = H({
   class: "hidden-columns"
 };
 function G2(e, t, n, o, l, r) {
-  const s = q("hColgroup"), a = q("table-header"), i = q("table-body"), u = q("el-scrollbar"), c = q("table-footer"), d = mr("mousewheel");
+  const s = G("hColgroup"), a = G("table-header"), i = G("table-body"), u = G("el-scrollbar"), c = G("table-footer"), d = mr("mousewheel");
   return E(), P("div", {
     ref: "tableWrapper",
     class: M([
@@ -10996,15 +10996,15 @@ function G2(e, t, n, o, l, r) {
       e.ns.b(),
       e.ns.m(`layout-${e.tableLayout}`)
     ]),
-    style: we(e.style),
+    style: ye(e.style),
     "data-prefix": e.ns.namespace.value,
     onMouseleave: t[0] || (t[0] = (...v) => e.handleMouseLeave && e.handleMouseLeave(...v))
   }, [
-    N("div", {
+    R("div", {
       class: M(e.ns.e("inner-wrapper")),
-      style: we(e.tableInnerStyle)
+      style: ye(e.tableInnerStyle)
     }, [
-      N("div", q2, [
+      R("div", q2, [
         K(e.$slots, "default")
       ], 512),
       e.showHeader && e.tableLayout === "fixed" ? We((E(), P("div", {
@@ -11012,10 +11012,10 @@ function G2(e, t, n, o, l, r) {
         ref: "headerWrapper",
         class: M(e.ns.e("header-wrapper"))
       }, [
-        N("table", {
+        R("table", {
           ref: "tableHeader",
           class: M(e.ns.e("header")),
-          style: we(e.tableBodyStyles),
+          style: ye(e.tableBodyStyles),
           border: "0",
           cellpadding: "0",
           cellspacing: "0"
@@ -11034,8 +11034,8 @@ function G2(e, t, n, o, l, r) {
         ], 6)
       ], 2)), [
         [d, e.handleHeaderFooterMousewheel]
-      ]) : G("v-if", !0),
-      N("div", {
+      ]) : q("v-if", !0),
+      R("div", {
         ref: "bodyWrapper",
         class: M(e.ns.e("body-wrapper"))
       }, [
@@ -11045,14 +11045,14 @@ function G2(e, t, n, o, l, r) {
           "wrap-style": e.scrollbarStyle,
           always: e.scrollbarAlwaysOn
         }, {
-          default: R(() => [
-            N("table", {
+          default: N(() => [
+            R("table", {
               ref: "tableBody",
               class: M(e.ns.e("body")),
               cellspacing: "0",
               cellpadding: "0",
               border: "0",
-              style: we({
+              style: ye({
                 width: e.bodyWidth,
                 tableLayout: e.tableLayout
               })
@@ -11068,7 +11068,7 @@ function G2(e, t, n, o, l, r) {
                 "default-sort": e.defaultSort,
                 store: e.store,
                 onSetDragVisible: e.setDragVisible
-              }, null, 8, ["border", "default-sort", "store", "onSetDragVisible"])) : G("v-if", !0),
+              }, null, 8, ["border", "default-sort", "store", "onSetDragVisible"])) : q("v-if", !0),
               Z(i, {
                 context: e.context,
                 highlight: e.highlightCurrentRow,
@@ -11083,24 +11083,24 @@ function G2(e, t, n, o, l, r) {
             e.isEmpty ? (E(), P("div", {
               key: 0,
               ref: "emptyBlock",
-              style: we(e.emptyBlockStyle),
+              style: ye(e.emptyBlockStyle),
               class: M(e.ns.e("empty-block"))
             }, [
-              N("span", {
+              R("span", {
                 class: M(e.ns.e("empty-text"))
               }, [
                 K(e.$slots, "empty", {}, () => [
                   Ke(ie(e.computedEmptyText), 1)
                 ])
               ], 2)
-            ], 6)) : G("v-if", !0),
+            ], 6)) : q("v-if", !0),
             e.$slots.append ? (E(), P("div", {
               key: 1,
               ref: "appendWrapper",
               class: M(e.ns.e("append-wrapper"))
             }, [
               K(e.$slots, "append")
-            ], 2)) : G("v-if", !0)
+            ], 2)) : q("v-if", !0)
           ]),
           _: 3
         }, 8, ["view-style", "wrap-style", "always"])
@@ -11114,20 +11114,20 @@ function G2(e, t, n, o, l, r) {
           border: e.border,
           "default-sort": e.defaultSort,
           store: e.store,
-          style: we(e.tableBodyStyles),
+          style: ye(e.tableBodyStyles),
           "sum-text": e.computedSumText,
           "summary-method": e.summaryMethod
         }, null, 8, ["border", "default-sort", "store", "style", "sum-text", "summary-method"])
       ], 2)), [
         [fn, !e.isEmpty],
         [d, e.handleHeaderFooterMousewheel]
-      ]) : G("v-if", !0),
+      ]) : q("v-if", !0),
       e.border || e.isGroup ? (E(), P("div", {
         key: 2,
         class: M(e.ns.e("border-left-patch"))
-      }, null, 2)) : G("v-if", !0)
+      }, null, 2)) : q("v-if", !0)
     ], 6),
-    We(N("div", {
+    We(R("div", {
       ref: "resizeProxy",
       class: M(e.ns.e("column-resize-proxy"))
     }, null, 2), [
@@ -11135,7 +11135,7 @@ function G2(e, t, n, o, l, r) {
     ])
   ], 46, U2);
 }
-var Y2 = /* @__PURE__ */ ye(j2, [["render", G2], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/table/src/table.vue"]]);
+var Y2 = /* @__PURE__ */ we(j2, [["render", G2], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/table/src/table.vue"]]);
 const X2 = {
   selection: "table-column--selection",
   expand: "table__expand-column"
@@ -11740,10 +11740,10 @@ const sC = H({
   class: "page-right mt20"
 };
 function uC(e, t, n, o, l, r) {
-  const s = q("el-pagination"), a = q("el-config-provider");
+  const s = G("el-pagination"), a = G("el-config-provider");
   return e.showPage ? (E(), P("div", iC, [
     Z(a, { locale: e.locale }, {
-      default: R(() => [
+      default: N(() => [
         Z(s, xe({
           onSizeChange: e.handleSizeChange,
           onCurrentChange: e.handleCurrentChange,
@@ -11760,7 +11760,7 @@ function uC(e, t, n, o, l, r) {
       ]),
       _: 1
     }, 8, ["locale"])
-  ])) : G("", !0);
+  ])) : q("", !0);
 }
 const Nn = /* @__PURE__ */ He(sC, [["render", uC], ["__scopeId", "data-v-30359b33"]]);
 Nn.install = function(e) {
@@ -11822,7 +11822,7 @@ const cC = H({
   }
 }), dC = { key: 2 };
 function fC(e, t, n, o, l, r) {
-  const s = q("el-table-column"), a = q("el-table"), i = q("pagination");
+  const s = G("el-table-column"), a = G("el-table"), i = G("pagination");
   return E(), P($e, null, [
     Z(a, xe({
       data: e.tableDataList,
@@ -11834,7 +11834,7 @@ function fC(e, t, n, o, l, r) {
       onSortChange: e.sortChange,
       ref: "elTable"
     }), $n({
-      default: R(() => [
+      default: N(() => [
         (E(!0), P($e, null, ze(e.tableColumn, (u) => (E(), V(s, {
           key: u.prop,
           label: u.label,
@@ -11846,7 +11846,7 @@ function fC(e, t, n, o, l, r) {
           type: u.type,
           "show-overflow-tooltip": u.showOverflowTooltip ?? !0
         }, $n({
-          default: R((c) => [
+          default: N((c) => [
             e.$slots.default ? K(e.$slots, "default", {
               key: 0,
               item: c.row,
@@ -11863,7 +11863,7 @@ function fC(e, t, n, o, l, r) {
         }, [
           u.header ? {
             name: "header",
-            fn: R(() => [
+            fn: N(() => [
               K(e.$slots, u.header)
             ]),
             key: "0"
@@ -11874,7 +11874,7 @@ function fC(e, t, n, o, l, r) {
     }, [
       e.$slots.empty ? {
         name: "empty",
-        fn: R(() => [
+        fn: N(() => [
           K(e.$slots, "empty")
         ]),
         key: "0"
@@ -11947,25 +11947,25 @@ const pC = H({
   "data-testid": "virtual-list"
 }, hC = ["onClick"];
 function gC(e, t, n, o, l, r) {
-  const s = q("el-scrollbar");
+  const s = G("el-scrollbar");
   return E(), V(s, xe({
     height: e.height,
     ref: "viewport"
   }, e.$attrs, { onScroll: e.onScroll }), {
-    default: R(() => [
-      N("div", vC, [
-        N("div", {
+    default: N(() => [
+      R("div", vC, [
+        R("div", {
           class: "list-contain",
-          style: we({ height: `${e.containHeight}px` })
+          style: ye({ height: `${e.containHeight}px` })
         }, null, 4),
-        N("div", {
+        R("div", {
           class: "list-content",
-          style: we({ transform: `translate3d(0,${e.startOffset}px,0)` })
+          style: ye({ transform: `translate3d(0,${e.startOffset}px,0)` })
         }, [
           (E(!0), P($e, null, ze(e.listRanges, (a, i) => (E(), P("div", {
             key: i,
             class: M(["list-item", e.rowClassHandle(a, a.rowIndex)]),
-            style: we(e.rowStyle),
+            style: ye(e.rowStyle),
             onClick: (u) => e.rowClick(a, a.rowIndex)
           }, [
             K(e.$slots, "default", {
@@ -12082,13 +12082,13 @@ const mC = { class: "flex table-border-bottom header-content" }, bC = {
       ref_key: "tableHeader",
       ref: r
     }, [
-      N("div", mC, [
+      R("div", mC, [
         (E(!0), P($e, null, ze(c.tableColumn, (v, g) => (E(), P("div", {
           key: g,
           class: "header-column cell flex-align-center",
           ref_for: !0,
           ref: "headerColmn",
-          style: we([c.headerCellStyle, h(l)(v)])
+          style: ye([c.headerCellStyle, h(l)(v)])
         }, [
           K(c.$slots, "default", {
             row: v,
@@ -12097,17 +12097,17 @@ const mC = { class: "flex table-border-bottom header-content" }, bC = {
             Ke(ie(v.label), 1)
           ], !0),
           v.sortable && !e.isFooter ? (E(), P("div", bC, [
-            N("span", yC, [
-              N("i", {
+            R("span", yC, [
+              R("i", {
                 class: M(["sort-caret ascending", { "bottom-caret": s.value === "ascending" && a.value.prop == v.prop }]),
                 onClick: (p) => i("ascending", v)
               }, null, 10, wC),
-              N("i", {
+              R("i", {
                 class: M(["sort-caret descending", { "top-caret": s.value === "descending" && a.value.prop == v.prop }]),
                 onClick: (p) => i("descending", v)
               }, null, 10, CC)
             ])
-          ])) : G("", !0)
+          ])) : q("", !0)
         ], 4))), 128))
       ])
     ], 512));
@@ -12147,14 +12147,14 @@ const $C = H({
   }
 }), EC = { class: "table-v2 el-table flex-column" }, TC = { class: "flex table-body" };
 function kC(e, t, n, o, l, r) {
-  const s = q("headerFooter"), a = q("virtualList");
+  const s = G("headerFooter"), a = G("virtualList");
   return E(), P("div", EC, [
     Z(s, {
       ref: "tableHeader",
       "table-column": e.tableColumn,
       onSortChange: e.clickSortCaret
     }, {
-      default: R(({ row: i, index: u }) => [
+      default: N(({ row: i, index: u }) => [
         K(e.$slots, i == null ? void 0 : i.header, {
           row: i,
           index: u
@@ -12174,17 +12174,17 @@ function kC(e, t, n, o, l, r) {
       height: e.height,
       onScroll: e.scrollHandle
     }), {
-      default: R(({ row: i, index: u }) => [
+      default: N(({ row: i, index: u }) => [
         K(e.$slots, "content", {}, () => [
-          N("div", TC, [
+          R("div", TC, [
             (E(!0), P($e, null, ze(e.columnList, (c) => (E(), P("div", {
               key: c.keyId,
               class: M(["cell table-row table-border-bottom flex-align-center", { "fixed-cell": c.fixed }]),
               ref_for: !0,
               ref: "bodyCell",
-              style: we(e.headerClass(c))
+              style: ye(e.headerClass(c))
             }, [
-              N("div", {
+              R("div", {
                 class: M({ "text-overflow": c.showOverflowTooltip ?? !0 })
               }, [
                 K(e.$slots, (c == null ? void 0 : c.custom) ?? "default", {
@@ -12202,7 +12202,7 @@ function kC(e, t, n, o, l, r) {
     }, 16, ["data", "row-class-name", "height", "onScroll"])) : (E(), P("div", {
       key: 1,
       class: "flex-center pt20 pb20",
-      style: we({ height: e.height })
+      style: ye({ height: e.height })
     }, [
       K(e.$slots, "empty", {}, () => [
         Ke(ie(e.emptyText), 1)
@@ -12215,11 +12215,11 @@ function kC(e, t, n, o, l, r) {
         "table-column": e.tableColumn,
         "is-footer": ""
       }, {
-        default: R(({ row: i, index: u }) => [
+        default: N(({ row: i, index: u }) => [
           Ke(ie(e.getSummaries(i, u)), 1)
         ]),
         _: 1
-      }, 8, ["table-column"])) : G("", !0)
+      }, 8, ["table-column"])) : q("", !0)
     ], !0)
   ]);
 }
@@ -12237,6 +12237,7 @@ const OC = {
   checkKey: { type: String, default: "isSelect" },
   tableData: { type: Array, default: () => [] },
   selectList: { type: Array, default: () => [] },
+  showFooter: { type: Boolean, default: !0 },
   tableColumn: {
     type: Array,
     default: () => [
@@ -12252,7 +12253,10 @@ const OC = {
       color: "#909399"
     })
   }
-}, xC = { key: 2 }, PC = { class: "flex-between" }, AC = { class: "flex1 mr20 mt20" }, bo = /* @__PURE__ */ Object.assign({
+}, xC = { key: 2 }, PC = {
+  key: 0,
+  class: "flex-between"
+}, AC = { class: "flex1 mr20 mt20" }, bo = /* @__PURE__ */ Object.assign({
   name: "KBatchTable"
 }, {
   __name: "main",
@@ -12311,7 +12315,7 @@ const OC = {
       handleRowClick: d,
       clear: g
     }), (w, C) => {
-      const y = q("el-table-column");
+      const y = G("el-table-column");
       return E(), P($e, null, [
         Z(h(aC), xe({
           ref_key: "multipleTableRef",
@@ -12324,7 +12328,7 @@ const OC = {
           onSelectAll: c,
           onRowClick: d
         }), $n({
-          default: R(() => [
+          default: N(() => [
             Z(y, {
               type: "selection",
               width: "55",
@@ -12338,14 +12342,14 @@ const OC = {
               "min-width": S.minWidth,
               "show-overflow-tooltip": S.showOverflowTooltip ?? !0
             }, $n({
-              default: R((T) => [
+              default: N((T) => [
                 w.$slots.default ? K(w.$slots, "default", {
                   key: 0,
                   item: T.row,
                   row: T.row,
                   column: S,
                   index: T.$index
-                }) : G("", !0),
+                }) : q("", !0),
                 S.custom && T.$index >= 0 ? K(w.$slots, S.custom, {
                   key: 1,
                   item: T.row,
@@ -12358,7 +12362,7 @@ const OC = {
             }, [
               S.header ? {
                 name: "header",
-                fn: R(() => [
+                fn: N(() => [
                   K(w.$slots, "header", { column: S }),
                   K(w.$slots, S.header, { column: S })
                 ]),
@@ -12370,15 +12374,15 @@ const OC = {
         }, [
           w.$slots.empty ? {
             name: "empty",
-            fn: R(() => [
+            fn: N(() => [
               K(w.$slots, "empty")
             ]),
             key: "0"
           } : void 0
         ]), 1040, ["data", "header-cell-style"]),
-        N("div", PC, [
-          N("div", AC, [
-            w.$slots.footer ? K(w.$slots, "footer", { key: 0 }) : G("", !0)
+        w.showFooter ? (E(), P("div", PC, [
+          R("div", AC, [
+            w.$slots.footer ? K(w.$slots, "footer", { key: 0 }) : q("", !0)
           ]),
           Z(h(Nn), xe({
             total: w.total,
@@ -12388,7 +12392,7 @@ const OC = {
             "onUpdate:modelValue": C[0] || (C[0] = (S) => m.value = S),
             onCurrentChange: b
           }), null, 16, ["total", "show-size", "modelValue"])
-        ])
+        ])) : q("", !0)
       ], 64);
     };
   }
@@ -12426,9 +12430,9 @@ const MC = H({
       }
     };
   }
-}), IC = /* @__PURE__ */ N("span", null, "这是一段信息", -1), LC = { class: "dialog-footer" };
+}), IC = /* @__PURE__ */ R("span", null, "这是一段信息", -1), LC = { class: "dialog-footer" };
 function NC(e, t, n, o, l, r) {
-  const s = q("el-button"), a = q("el-dialog");
+  const s = G("el-button"), a = G("el-dialog");
   return E(), V(a, xe({
     title: e.title,
     modelValue: e.dialogVisible,
@@ -12438,7 +12442,7 @@ function NC(e, t, n, o, l, r) {
     onClose: e.closeHandle,
     onOpen: e.openHandler
   }), $n({
-    default: R(() => [
+    default: N(() => [
       K(e.$slots, "default", {}, () => [
         IC
       ])
@@ -12447,14 +12451,14 @@ function NC(e, t, n, o, l, r) {
   }, [
     e.showFooter ? {
       name: "footer",
-      fn: R(() => [
+      fn: N(() => [
         K(e.$slots, "footer", {}, () => [
-          N("span", LC, [
+          R("span", LC, [
             Z(s, {
               size: "large",
               onClick: t[0] || (t[0] = (i) => e.dialogVisible = !1)
             }, {
-              default: R(() => [
+              default: N(() => [
                 Ke("取 消")
               ]),
               _: 1
@@ -12465,7 +12469,7 @@ function NC(e, t, n, o, l, r) {
               disabled: e.confirmDisabled,
               onClick: e.confirmHandler
             }, {
-              default: R(() => [
+              default: N(() => [
                 Ke("确 定")
               ]),
               _: 1
@@ -12502,11 +12506,11 @@ const RC = H({
   }
 }), FC = { class: "crumb-header flex-between" }, BC = { class: "crumb-contain" }, zC = ["onClick"];
 function HC(e, t, n, o, l, r) {
-  const s = q("el-space");
+  const s = G("el-space");
   return E(), P("div", FC, [
-    N("div", BC, [
+    R("div", BC, [
       Z(s, { spacer: "/" }, {
-        default: R(() => [
+        default: N(() => [
           (E(!0), P($e, null, ze(e.list, (a, i) => (E(), P("span", {
             key: i,
             class: M({ "crumb-item": i !== e.list.length - 1 }),
@@ -12560,7 +12564,7 @@ const DC = H({
   }
 }), VC = { class: "tabs-right ml10" };
 function KC(e, t, n, o, l, r) {
-  const s = q("el-tab-pane"), a = q("el-tabs");
+  const s = G("el-tab-pane"), a = G("el-tabs");
   return E(), P("div", {
     class: M(["k-tabs", { "style-card": !e.type, "style-padding": e.isPadding && !e.type }])
   }, [
@@ -12572,7 +12576,7 @@ function KC(e, t, n, o, l, r) {
       "onUpdate:modelValue": t[0] || (t[0] = (i) => e.activeName = i),
       onTabClick: e.handleClick
     }), {
-      default: R(() => [
+      default: N(() => [
         (E(!0), P($e, null, ze(e.tabsList, (i) => (E(), V(s, {
           label: i.label,
           name: i.name,
@@ -12581,7 +12585,7 @@ function KC(e, t, n, o, l, r) {
       ]),
       _: 1
     }, 16, ["type", "modelValue", "onTabClick"]),
-    N("div", VC, [
+    R("div", VC, [
       K(e.$slots, "default")
     ])
   ], 2);
@@ -12642,29 +12646,30 @@ const oa = H({
   }
 }), Ms = () => {
   br((e) => ({
-    "5d7f46b5": e.autoheight,
-    "0031176e": e.rightwidth
+    "30cf80d2": e.autoheight,
+    ebff25aa: e.rightwidth
   }));
 }, Is = oa.setup;
 oa.setup = Is ? (e, t) => (Ms(), Is(e, t)) : Ms;
-const WC = { class: "k-picker flex-column" }, jC = { class: "col-left height-auto flex-column" }, UC = { class: "col-right flex-column height-auto" }, qC = { class: "selete-header flex-between" }, GC = { class: "selete-content flex1" }, YC = { class: "flex flex1 mr20 overflow" }, XC = { class: "text-overflow" };
-function QC(e, t, n, o, l, r) {
-  const s = q("batchTable"), a = q("el-col"), i = q("delete"), u = q("el-icon"), c = q("el-button"), d = q("el-tooltip"), v = q("k-input-number"), g = q("el-scrollbar"), p = q("el-row");
+const WC = { class: "k-picker flex-column" }, jC = { class: "col-left height-auto flex-column" }, UC = { class: "selete-header flex-between" }, qC = { class: "selete-content flex1" }, GC = { class: "flex flex1 mr20 overflow" }, YC = { class: "text-overflow" };
+function XC(e, t, n, o, l, r) {
+  const s = G("batchTable"), a = G("el-col"), i = G("delete"), u = G("el-icon"), c = G("el-button"), d = G("el-tooltip"), v = G("k-input-number"), g = G("el-scrollbar"), p = G("el-row");
   return E(), P("div", WC, [
     K(e.$slots, "top", {}, void 0, !0),
     Z(p, {
       gutter: 10,
       class: M(["height-auto", { "custom-right": e.rightWidth }])
     }, {
-      default: R(() => [
+      default: N(() => [
         Z(a, {
           span: 15,
           class: "height-auto flex1"
         }, {
-          default: R(() => [
-            N("div", jC, [
+          default: N(() => [
+            R("div", jC, [
               Z(s, {
                 ref: "batchTableRef",
+                "show-footer": !1,
                 height: e.height,
                 "table-data": e.tableData,
                 "table-column": e.tableColumn,
@@ -12676,15 +12681,15 @@ function QC(e, t, n, o, l, r) {
                 "onUpdate:page": t[1] || (t[1] = (f) => e.currentPage = f),
                 "scrollbar-always-on": e.scrollbarAlwaysOn
               }, {
-                header: R(({ column: f }) => [
+                header: N(({ column: f }) => [
                   K(e.$slots, f.header, { column: f }, void 0, !0)
                 ]),
-                default: R(({ row: f, column: m, index: b }) => [
+                default: N(({ row: f, column: m, index: b }) => [
                   m.custom && b >= 0 ? K(e.$slots, m.custom, {
                     key: 0,
                     row: f,
                     index: b
-                  }, void 0, !0) : G("", !0)
+                  }, void 0, !0) : q("", !0)
                 ]),
                 _: 3
               }, 8, ["height", "table-data", "table-column", "select-list", "key-id", "modelValue", "page", "scrollbar-always-on"])
@@ -12694,16 +12699,19 @@ function QC(e, t, n, o, l, r) {
         }),
         Z(a, {
           span: 9,
-          class: "height-auto flex-column"
+          class: "height-auto flex-column flex1"
         }, {
-          default: R(() => [
-            N("div", UC, [
+          default: N(() => [
+            R("div", {
+              class: "col-right flex-column height-auto",
+              style: ye({ height: e.height })
+            }, [
               K(e.$slots, "right", {}, () => [
-                N("div", qC, [
+                R("div", UC, [
                   K(e.$slots, "right-header", {}, () => [
-                    N("span", null, [
+                    R("span", null, [
                       Ke("已选择"),
-                      N("span", null, "(" + ie(e.multipleSelection.length) + ")", 1)
+                      R("span", null, "(" + ie(e.multipleSelection.length) + ")", 1)
                     ]),
                     Z(c, {
                       type: "primary",
@@ -12711,9 +12719,9 @@ function QC(e, t, n, o, l, r) {
                       disabled: !e.multipleSelection.length,
                       onClick: e.emptyHandler
                     }, {
-                      default: R(() => [
+                      default: N(() => [
                         Z(u, null, {
-                          default: R(() => [
+                          default: N(() => [
                             Z(i)
                           ]),
                           _: 1
@@ -12724,21 +12732,21 @@ function QC(e, t, n, o, l, r) {
                     }, 8, ["disabled", "onClick"])
                   ], !0)
                 ]),
-                N("div", GC, [
+                R("div", qC, [
                   Z(g, { always: "" }, {
-                    default: R(() => [
+                    default: N(() => [
                       (E(!0), P($e, null, ze(e.multipleSelection, (f) => (E(), P("div", {
                         class: M(["flex-between pl10 pr10", { mt10: e.showCount }]),
                         key: e.getId(f)
                       }, [
-                        N("div", YC, [
+                        R("div", GC, [
                           Z(d, {
                             effect: "dark",
                             content: e.getName(f),
                             placement: "top"
                           }, {
-                            default: R(() => [
-                              N("span", XC, ie(e.getName(f)), 1)
+                            default: N(() => [
+                              R("span", YC, ie(e.getName(f)), 1)
                             ]),
                             _: 2
                           }, 1032, ["content"])
@@ -12749,13 +12757,13 @@ function QC(e, t, n, o, l, r) {
                           "onUpdate:modelValue": (m) => f.num = m,
                           min: 1,
                           class: "width-120 flex-shrink mr10"
-                        }, null, 8, ["modelValue", "onUpdate:modelValue"])) : G("", !0),
+                        }, null, 8, ["modelValue", "onUpdate:modelValue"])) : q("", !0),
                         Z(c, {
                           type: "primary",
                           text: "",
                           onClick: (m) => e.deleteHandler(f)
                         }, {
-                          default: R(() => [
+                          default: N(() => [
                             Ke(" 删除 ")
                           ]),
                           _: 2
@@ -12766,7 +12774,7 @@ function QC(e, t, n, o, l, r) {
                   })
                 ])
               ], !0)
-            ])
+            ], 4)
           ]),
           _: 3
         })
@@ -12776,11 +12784,11 @@ function QC(e, t, n, o, l, r) {
     K(e.$slots, "footer", {}, void 0, !0)
   ]);
 }
-const Jo = /* @__PURE__ */ He(oa, [["render", QC], ["__scopeId", "data-v-ba9c4774"]]);
+const Jo = /* @__PURE__ */ He(oa, [["render", XC], ["__scopeId", "data-v-515ffe32"]]);
 Jo.install = function(e) {
   e.component(Jo.name, Jo);
 };
-const ZC = H({
+const QC = H({
   name: "KTooltip",
   props: {
     placement: { type: String, default: "top" },
@@ -12789,17 +12797,17 @@ const ZC = H({
   },
   components: { Warning: af }
 });
-function JC(e, t, n, o, l, r) {
-  const s = q("warning"), a = q("el-icon"), i = q("el-tooltip");
+function ZC(e, t, n, o, l, r) {
+  const s = G("warning"), a = G("el-icon"), i = G("el-tooltip");
   return E(), P("div", {
     class: M(["flex flex1", { "text-overflow": e.overflow }])
   }, [
     Z(i, xe(e.$attrs, { placement: e.placement }), {
-      content: R(() => [
+      content: N(() => [
         K(e.$slots, "content", {}, void 0, !0)
       ]),
-      default: R(() => [
-        N("div", {
+      default: N(() => [
+        R("div", {
           class: M(["flex-center", { "text-overflow": e.overflow }])
         }, [
           K(e.$slots, "default", {}, void 0, !0),
@@ -12807,28 +12815,28 @@ function JC(e, t, n, o, l, r) {
             key: 0,
             class: "ml5"
           }, {
-            default: R(() => [
+            default: N(() => [
               K(e.$slots, "icon", {}, () => [
                 Z(s)
               ], !0)
             ]),
             _: 3
-          })) : G("", !0)
+          })) : q("", !0)
         ], 2)
       ]),
       _: 3
     }, 16, ["placement"])
   ], 2);
 }
-const el = /* @__PURE__ */ He(ZC, [["render", JC], ["__scopeId", "data-v-d468c200"]]);
+const el = /* @__PURE__ */ He(QC, [["render", ZC], ["__scopeId", "data-v-d468c200"]]);
 el.install = function(e) {
   e.component(el.name, el);
 };
-const eS = {
+const JC = {
   __name: "main",
   setup(e) {
     return (t, n) => (E(), V(h(Qi), { locale: h(Hu) }, {
-      default: R(() => [
+      default: N(() => [
         K(t.$slots, "default")
       ]),
       _: 3
@@ -12863,7 +12871,7 @@ const eS = {
       set: (c) => t("update:modelValue", c)
     }), i = (c) => c.getTime() > Date.now(), u = (c) => t("change", c);
     return (c, d) => {
-      const v = q("el-date-picker");
+      const v = G("el-date-picker");
       return E(), V(v, xe({
         modelValue: a.value,
         "onUpdate:modelValue": d[0] || (d[0] = (g) => a.value = g),
@@ -12881,7 +12889,7 @@ const eS = {
       }, c.$attrs, { onChange: u }), null, 16, ["modelValue", "type", "format"]);
     };
   }
-}, tS = { class: "date-picker flex" }, nS = {
+}, eS = { class: "date-picker flex" }, tS = {
   __name: "selectType",
   props: {
     daterange: { type: Boolean, default: !1 },
@@ -12931,15 +12939,15 @@ const eS = {
       t("change", { type: o.value, time: r.value });
     };
     return (g, p) => {
-      const f = q("el-option"), m = q("el-select"), b = q("el-date-picker");
-      return E(), P("div", tS, [
+      const f = G("el-option"), m = G("el-select"), b = G("el-date-picker");
+      return E(), P("div", eS, [
         Z(m, {
           modelValue: o.value,
           "onUpdate:modelValue": p[0] || (p[0] = (w) => o.value = w),
           class: "width-100 mr10",
           onChange: d
         }, {
-          default: R(() => [
+          default: N(() => [
             (E(!0), P($e, null, ze(l.value, (w) => (E(), V(f, {
               key: w.value,
               label: w.label,
@@ -12948,7 +12956,7 @@ const eS = {
           ]),
           _: 1
         }, 8, ["modelValue"]),
-        N("div", null, [
+        R("div", null, [
           e.daterange && !o.value ? (E(), V(Ku, xe({
             key: 0,
             modelValue: r.value,
@@ -12972,27 +12980,27 @@ const eS = {
       ]);
     };
   }
-}, oS = H({
+}, nS = H({
   name: "KDatePicker",
   props: {
     selectType: { type: Boolean, default: !1 }
     // 是否选择模式（年月日）
     // daterange: { type: Boolean, default: false }, // 是否选择模式下 是否日期范围
   },
-  components: { configProvider: eS, selectType: nS, datePicker: Ku },
+  components: { configProvider: JC, selectType: tS, datePicker: Ku },
   setup() {
   }
 });
-function lS(e, t, n, o, l, r) {
-  const s = q("selectType"), a = q("datePicker"), i = q("config-provider");
+function oS(e, t, n, o, l, r) {
+  const s = G("selectType"), a = G("datePicker"), i = G("config-provider");
   return E(), V(i, null, {
-    default: R(() => [
+    default: N(() => [
       e.selectType ? (E(), V(s, aa(xe({ key: 0 }, e.$attrs)), null, 16)) : (E(), V(a, aa(xe({ key: 1 }, e.$attrs)), null, 16))
     ]),
     _: 1
   });
 }
-const tl = /* @__PURE__ */ He(oS, [["render", lS]]);
+const tl = /* @__PURE__ */ He(nS, [["render", oS]]);
 tl.install = function(e) {
   e.component(tl.name, tl);
 };
@@ -13064,11 +13072,11 @@ const la = H({
   }));
 }, Ns = la.setup;
 la.setup = Ns ? (e, t) => (Ls(), Ns(e, t)) : Ls;
-const rS = { class: "number-keyboard mt10" }, aS = { class: "number-ul" };
-function sS(e, t, n, o, l, r) {
-  const s = q("el-button");
-  return E(), P("div", rS, [
-    N("ul", aS, [
+const lS = { class: "number-keyboard mt10" }, rS = { class: "number-ul" };
+function aS(e, t, n, o, l, r) {
+  const s = G("el-button");
+  return E(), P("div", lS, [
+    R("ul", rS, [
       (E(!0), P($e, null, ze(e.keyboardList, (a, i) => (E(), P("li", {
         key: i,
         class: M(a.class)
@@ -13078,7 +13086,7 @@ function sS(e, t, n, o, l, r) {
           color: e.color,
           onClick: (u) => e.clickHandleBtn(a)
         }, {
-          default: R(() => [
+          default: N(() => [
             Ke(ie(a.name), 1)
           ]),
           _: 2
@@ -13087,11 +13095,11 @@ function sS(e, t, n, o, l, r) {
     ])
   ]);
 }
-const nl = /* @__PURE__ */ He(la, [["render", sS], ["__scopeId", "data-v-2e1be318"]]);
+const nl = /* @__PURE__ */ He(la, [["render", aS], ["__scopeId", "data-v-2e1be318"]]);
 nl.install = function(e) {
   e.component(nl.name, nl);
 };
-const iS = H({
+const sS = H({
   name: "KAutoCounter",
   props: {
     modelValue: { type: [Number, String], default: 0 },
@@ -13129,22 +13137,22 @@ const iS = H({
       }
     }), { textValue: n, spanText: l, setDeimals: o };
   }
-}), uS = { class: "auto-counter" }, cS = { class: "mr5" }, dS = { class: "ml5" };
-function fS(e, t, n, o, l, r) {
-  return E(), P("div", uS, [
-    N("span", cS, ie(e.prefix), 1),
-    N("span", {
+}), iS = { class: "auto-counter" }, uS = { class: "mr5" }, cS = { class: "ml5" };
+function dS(e, t, n, o, l, r) {
+  return E(), P("div", iS, [
+    R("span", uS, ie(e.prefix), 1),
+    R("span", {
       class: "span-text",
       ref: "spanText"
     }, ie(e.autoinit ? e.setDeimals(e.start) : e.setDeimals(e.textValue)), 513),
-    N("span", dS, ie(e.suffix), 1)
+    R("span", cS, ie(e.suffix), 1)
   ]);
 }
-const ol = /* @__PURE__ */ He(iS, [["render", fS]]);
+const ol = /* @__PURE__ */ He(sS, [["render", dS]]);
 ol.install = function(e) {
   e.component(ol.name, ol);
 };
-const pS = H({
+const fS = H({
   name: "KCollapseButton",
   components: { ElIcon: De, CaretLeft: Ac, CaretRight: Fc },
   props: {
@@ -13211,11 +13219,11 @@ const pS = H({
     };
   }
 });
-function vS(e, t, n, o, l, r) {
-  const s = q("CaretRight"), a = q("CaretLeft"), i = q("el-icon");
+function pS(e, t, n, o, l, r) {
+  const s = G("CaretRight"), a = G("CaretLeft"), i = G("el-icon");
   return E(), P("div", {
     class: "collapse-button flex-center pointer",
-    style: we(e.collapseStyle),
+    style: ye(e.collapseStyle),
     ref: "collapse",
     onClick: t[0] || (t[0] = (...u) => e.clickHandle && e.clickHandle(...u))
   }, [
@@ -13224,7 +13232,7 @@ function vS(e, t, n, o, l, r) {
         size: 18,
         color: "#999999"
       }, {
-        default: R(() => [
+        default: N(() => [
           e.isCollapse ? (E(), V(s, { key: 0 })) : (E(), V(a, { key: 1 }))
         ]),
         _: 1
@@ -13232,11 +13240,11 @@ function vS(e, t, n, o, l, r) {
     ], !0)
   ], 4);
 }
-const ll = /* @__PURE__ */ He(pS, [["render", vS], ["__scopeId", "data-v-53ad025a"]]);
+const ll = /* @__PURE__ */ He(fS, [["render", pS], ["__scopeId", "data-v-53ad025a"]]);
 ll.install = function(e) {
   e.component(ll.name, ll);
 };
-const hS = {
+const vS = {
   modelValue: { type: [String, Number], default: "" },
   data: { type: Array, default: () => [] },
   width: { type: String, default: "" },
@@ -13251,7 +13259,7 @@ const hS = {
   // 点击是否高亮
   rowClass: { type: [String, Object], default: "border" }
 };
-function gS(e, t) {
+function hS(e, t) {
   const n = k(null), o = k(100), l = k(null), r = () => {
     var w;
     return ((w = document.querySelector(".card-row")) == null ? void 0 : w.offsetHeight) ?? 10;
@@ -13293,7 +13301,7 @@ function gS(e, t) {
 }
 const ra = H({
   name: "KCardList",
-  props: hS,
+  props: vS,
   emits: ["click", "mouseenter", "mouseleave", "update:modelValue", "scroll"],
   setup(e, { emit: t }) {
     const n = _(() => `${Number((100 / e.columns).toFixed(1))}%`), o = _(() => `${e.gridGap}px`), l = _(() => `${e.width}`), r = (m) => m.disabled || e.disabled, s = _(() => e.rowClass === "border" ? "border-row" : e.rowClass === "shadow" ? "box-shadow" : e.rowClass), a = k("");
@@ -13310,7 +13318,7 @@ const ra = H({
       viewListRanges: g,
       onScroll: p,
       resetViewport: f
-    } = gS(e, t);
+    } = hS(e, t);
     return {
       calcnum: n,
       gridgap: o,
@@ -13338,9 +13346,9 @@ const ra = H({
   }));
 }, Fs = ra.setup;
 ra.setup = Fs ? (e, t) => (Rs(), Fs(e, t)) : Rs;
-const mS = { class: "card-contain" }, bS = ["onClick", "onMouseenter", "onMouseleave"], yS = { class: "card-list-content" }, wS = { class: "sign" };
-function CS(e, t, n, o, l, r) {
-  const s = q("el-scrollbar");
+const gS = { class: "card-contain" }, mS = ["onClick", "onMouseenter", "onMouseleave"], bS = { class: "card-list-content" }, yS = { class: "sign" };
+function wS(e, t, n, o, l, r) {
+  const s = G("el-scrollbar");
   return E(), V(s, xe({
     ref: "scrollbarRef",
     "data-test": "card-list"
@@ -13348,17 +13356,17 @@ function CS(e, t, n, o, l, r) {
     always: "",
     onScroll: e.onScroll
   }), {
-    default: R(() => [
-      N("div", mS, [
-        N("div", {
+    default: N(() => [
+      R("div", gS, [
+        R("div", {
           class: "card-wrap",
-          style: we({ height: `${e.containHeight}px` })
+          style: ye({ height: `${e.containHeight}px` })
         }, null, 4),
-        N("div", {
+        R("div", {
           class: "card-list",
-          style: we({ transform: `translate3d(0,${e.startOffset}px,0)` })
+          style: ye({ transform: `translate3d(0,${e.startOffset}px,0)` })
         }, [
-          N("div", {
+          R("div", {
             class: M([e.fixedColumn ? "card-fixed-coumn" : "card-content", { "fixed-width": e.width }])
           }, [
             (E(!0), P($e, null, ze(e.viewListRanges, (a, i) => (E(), P("div", {
@@ -13370,7 +13378,7 @@ function CS(e, t, n, o, l, r) {
               onMouseenter: (u) => e.$emit("mouseenter", a),
               onMouseleave: (u) => e.$emit("mouseleave", a)
             }, [
-              N("div", yS, [
+              R("div", bS, [
                 K(e.$slots, "default", {
                   row: a,
                   index: a.rowIndex
@@ -13378,13 +13386,13 @@ function CS(e, t, n, o, l, r) {
                   Ke(ie(a.rowIndex), 1)
                 ], !0)
               ]),
-              N("div", wS, [
+              R("div", yS, [
                 K(e.$slots, "sign", {
                   row: a,
                   index: a.rowIndex
                 }, void 0, !0)
               ])
-            ], 42, bS))), 128))
+            ], 42, mS))), 128))
           ], 2)
         ], 4)
       ])
@@ -13392,7 +13400,7 @@ function CS(e, t, n, o, l, r) {
     _: 3
   }, 16, ["onScroll"]);
 }
-const rl = /* @__PURE__ */ He(ra, [["render", CS], ["__scopeId", "data-v-6f6f8503"]]);
+const rl = /* @__PURE__ */ He(ra, [["render", wS], ["__scopeId", "data-v-6f6f8503"]]);
 rl.install = function(e) {
   e.component(rl.name, rl);
 };
@@ -13418,12 +13426,12 @@ const Wl = {
   install: () => {
   }
 };
-function SS(e, t, n = 0) {
+function CS(e, t, n = 0) {
   return e.substr(n, t.length) === t;
 }
 Wl.install = function(e) {
   Object.keys(Wl).forEach((t) => {
-    if (SS(t, "K")) {
+    if (CS(t, "K")) {
       const n = Wl[t];
       e.component(n.name, n);
     }

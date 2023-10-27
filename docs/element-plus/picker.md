@@ -16,6 +16,14 @@
 
 </demo>
 
+## 自适应高度
+
+<demo md src="picker/auto-height">
+
+<<< @/example/element-plus/picker/auto-height.vue
+
+</demo>
+
 ## 自定义右侧
 
 <demo md src="picker/custom-right">

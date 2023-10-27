@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Align: typeof import('./example/vant/table/align.vue')['default']
+    AutoHeight: typeof import('./example/element-plus/picker/auto-height.vue')['default']
     Autoinit: typeof import('./example/element-plus/auto-counter/autoinit.vue')['default']
     Background: typeof import('./example/element-plus/layout/background.vue')['default']
     Basic: typeof import('./example/vant/tree/basic.vue')['default']

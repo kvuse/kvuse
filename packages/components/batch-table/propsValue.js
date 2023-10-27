@@ -8,6 +8,7 @@ export default {
   checkKey: { type: String, default: 'isSelect' },
   tableData: { type: Array, default: () => [] },
   selectList: { type: Array, default: () => [] },
+  showFooter: { type: Boolean, default: true },
   tableColumn: {
     type: Array,
     default: () => [

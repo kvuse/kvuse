@@ -4,7 +4,7 @@
     <el-row :gutter="10" class="height-auto" :class="{'custom-right':rightWidth}">
       <el-col :span="15" class="height-auto flex1">
         <div class="col-left height-auto flex-column">
-          <batchTable ref="batchTableRef" :height="height" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage" :scrollbar-always-on="scrollbarAlwaysOn">
+          <batchTable ref="batchTableRef" :show-footer="false" :height="height" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage" :scrollbar-always-on="scrollbarAlwaysOn">
             <template #header="{column}">
               <slot :name="column.header" :column="column" />
             </template>
@@ -14,8 +14,8 @@
           </batchTable>
         </div>
       </el-col>
-      <el-col :span="9" class="height-auto flex-column">
-        <div class="col-right flex-column height-auto">
+      <el-col :span="9" class="height-auto flex-column flex1">
+        <div class="col-right flex-column height-auto" :style="{ height: height }">
           <slot name="right">
             <div class="selete-header flex-between">
               <slot name="right-header">
@@ -131,8 +131,6 @@ export default defineComponent({
   .col-right {
     border: 1px solid #d8dce5;
     border-radius: 6px;
-    min-height: v-bind(autoheight);
-    height: calc(100% - 20px);
 
     .selete-header {
       background: #f5f5f5;

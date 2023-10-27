@@ -16,7 +16,7 @@
       <slot name="empty" />
     </template>
   </el-table>
-  <div class="flex-between">
+  <div class="flex-between" v-if="showFooter">
     <div class="flex1 mr20 mt20">
       <slot name="footer" v-if="$slots.footer" />
     </div>

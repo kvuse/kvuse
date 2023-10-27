@@ -2,7 +2,7 @@
   <div class="picker-edit flex-align-center flex" :class="[borderClasses]" v-bind="$attrs">
     <div class="edit-content">
       <div class="left-icon">
-        <van-icon name="underway-o" v-if="$attrs.showIcon || true" />
+        <van-icon name="underway-o" v-if="$attrs['show-icon'] ?? true" />
       </div>
     </div>
     <input class="edit-control" :value="dateTime" disabled placeholder="开始时间" />
