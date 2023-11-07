@@ -2,10 +2,12 @@
   <div class="k-tree">
     <template v-for="item in list" :key="item[deaultProps.id]">
       <div class="tree-item p10 flex-center" @click.stop="clickItem(item,depth)" :class="getClassName(item,depth)">
-        <div class="flex-center flex1 tree-item-content">
-          <span class="mr10">{{ item[deaultProps.name] }}</span>
-          <van-icon :name="item.showChildren ? 'arrow-up' : 'arrow-down'" v-if="item[deaultProps.child]" />
-        </div>
+        <slot :row="item">
+          <div class="flex-center flex1 tree-item-content">
+            <span class="mr10">{{ item[deaultProps.name] }}</span>
+            <van-icon :name="item.showChildren ? 'arrow-up' : 'arrow-down'" v-if="item[deaultProps.child]" />
+          </div>
+        </slot>
       </div>
       <template v-if="item.showChildren && item[deaultProps.child]">
         <kv-tree v-model="item[deaultProps.child]" :props="deaultProps" :theme="theme" :depth="depth + 1" @click="clickChild" />
