@@ -22,12 +22,14 @@
 import {
   defineComponent, ref, computed, watchEffect,
 } from 'vue';
+import { ElScrollbar } from 'element-plus';
 import propsValue from './propsValue';
 import { useCardList } from './useCardList';
 
 export default defineComponent({
   name: 'KCardList',
   props: propsValue,
+  components: { ElScrollbar },
   emits: ['click', 'mouseenter', 'mouseleave', 'update:modelValue', 'scroll'],
   setup(props, { emit }) {
     const calcnum = computed(() => `${Number((100 / props.columns).toFixed(1))}%`);

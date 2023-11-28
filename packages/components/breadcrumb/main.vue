@@ -16,6 +16,7 @@
 
 <script>
 import { defineComponent, getCurrentInstance } from 'vue';
+import { ElSpace } from 'element-plus';
 
 export default defineComponent({
   name: 'KBreadcrumb',
@@ -25,6 +26,7 @@ export default defineComponent({
       default: () => ([]),
     },
   },
+  components: { ElSpace },
   setup(props) {
     const instance = getCurrentInstance();
     const router = instance.appContext.config.globalProperties.$router;

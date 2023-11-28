@@ -19,6 +19,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { Warning } from '@element-plus/icons-vue';
+import { ElTooltip } from 'element-plus';
 
 export default defineComponent({
   name: 'KTooltip',
@@ -27,7 +28,7 @@ export default defineComponent({
     showIcon: { type: Boolean, default: false },
     overflow: { type: Boolean, default: false },
   },
-  components: { Warning },
+  components: { Warning, ElTooltip },
 });
 </script>
 

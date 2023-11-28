@@ -16,6 +16,7 @@
 
 <script>
 import { defineComponent, computed } from 'vue';
+import { ElDialog, ElButton } from 'element-plus';
 
 export default defineComponent({
   name: 'KDialog',
@@ -27,6 +28,7 @@ export default defineComponent({
     class: { type: String, default: '' },
     confirmDisabled: { type: Boolean, default: false },
   },
+  components: { ElDialog, ElButton },
   emits: ['update:modelValue', 'confirm', 'open', 'close'],
   setup(props, { emit }) {
     const dialogVisible = computed({

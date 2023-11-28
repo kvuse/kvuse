@@ -2,7 +2,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 
-const routesModules = import.meta.globEager('../views/**/router/*.js');
+const routesModules = import.meta.glob('../views/**/router/*.js', { eager: true });
 const modules = [];
 Object.keys(routesModules).forEach((key) => {
   modules.push(...routesModules[key].default);

@@ -56,14 +56,15 @@ import {
 } from 'vue';
 import { Delete } from '@element-plus/icons-vue';
 import {
-  ElRow, ElCol, ElButton, ElIcon,
+  ElRow, ElCol, ElButton, ElIcon, ElScrollbar, ElTooltip,
 } from 'element-plus';
 import batchTable from '../batch-table/main.vue';
+import kInputNumber from '../input-number/main.vue';
 
 export default defineComponent({
   name: 'KPicker',
   components: {
-    batchTable, Delete, ElRow, ElCol, ElButton, ElIcon,
+    batchTable, kInputNumber, Delete, ElRow, ElCol, ElButton, ElIcon, ElScrollbar, ElTooltip,
   },
   emits: ['update:modelValue', 'update:page'],
   props: {

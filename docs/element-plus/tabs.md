@@ -62,4 +62,7 @@
 
 <v-table type="slot" :data="[
   { name :'-', dec: '右侧的内容', child: '-' },
+  { name :'right', dec: '右侧的内容', child: '-' },
+  { name :'label', dec: 'Tab-pane 的标题内容', child: '{ row, index }' },
+  { name :'addIcon', dec: '	自定义添加按钮图标', child: '-' },
 ]" />

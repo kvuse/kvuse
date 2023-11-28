@@ -9,6 +9,7 @@
       <router-view />
     </el-container>
   </div>
+  <k-tabs />
 </template>
 
 <script setup>

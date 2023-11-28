@@ -24,11 +24,11 @@
   </div>
 </template>
 
-<script  setup>
+<script setup>
 import {
   ref, computed, watch, nextTick,
 } from 'vue';
-import { ElTable } from 'element-plus';
+import { ElTable, ElTableColumn } from 'element-plus';
 
 import propsValue from './propsValue';
 import pagination from '../pagination';

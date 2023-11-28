@@ -1,9 +1,15 @@
 <template>
   <div class="k-tabs" :class="{'style-card':!type,'style-padding':isPadding && !type}">
     <el-tabs class="flex-tabs" :type="type" v-bind="$attrs" v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane v-for="item in tabsList" :label="item.label" :name="item.name" :key="item.name" />
+      <el-tab-pane v-for="(item, index) in tabsList" :label="item.label" :name="item.name" :key="item.name">
+        <slot name="label" :row="item" :index="index" />
+      </el-tab-pane>
+      <template #addIcon>
+        <slot name="addIcon" />
+      </template>
     </el-tabs>
     <div class="tabs-right ml10">
+      <slot name="right" />
       <slot />
     </div>
   </div>
@@ -14,8 +20,11 @@ import {
   ref, computed, watchEffect, defineComponent, getCurrentInstance,
 } from 'vue';
 
+import { ElTabs, ElTabPane } from 'element-plus';
+
 export default defineComponent({
   name: 'KTabs',
+  components: { ElTabs, ElTabPane },
   props: {
     type: { type: String, default: '' },
     isRouter: { type: Boolean, default: false },

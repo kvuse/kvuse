@@ -19,11 +19,12 @@
 
 <script>
 import { defineComponent, computed, ref } from 'vue';
+import { ElTable, ElTableColumn } from 'element-plus';
 import pagination from '../pagination';
 
 export default defineComponent({
   name: 'KTable',
-  components: { pagination },
+  components: { pagination, ElTable, ElTableColumn },
   props: {
     emptyText: { type: String, default: '暂无数据' },
     headerCellStyle: {

@@ -8,9 +8,11 @@
 
 <script>
 import { ref, computed, defineComponent } from 'vue';
+import { ElButton } from 'element-plus';
 
 export default defineComponent({
   name: 'KButton',
+  components: { ElButton },
   props: {
     // 是否可以点击
     clickState: { type: Boolean, default: false },

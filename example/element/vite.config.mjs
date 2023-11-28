@@ -3,8 +3,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 // 自动引入 https://juejin.cn/post/7050668133404639268
 import AutoImport from 'unplugin-auto-import/vite';
-
-const { resolve } = require('path');
+import path from 'path';
 
 // 详情 https://juejin.cn/post/6994310850290909214
 export default ({ mode }) => defineConfig({
@@ -39,7 +38,7 @@ export default ({ mode }) => defineConfig({
   resolve: {
     // 设置别名
     alias: {
-      '@': resolve(__dirname, 'src/'),
+      '@': path.resolve(__dirname, 'src/'),
     },
   },
   css: {

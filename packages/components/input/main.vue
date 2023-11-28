@@ -18,9 +18,11 @@
 
 <script>
 import { defineComponent, ref, computed } from 'vue';
+import { ElInput } from 'element-plus';
 
 export default defineComponent({
   name: 'KInput',
+  components: { ElInput },
   props: {
     modelValue: { type: [String, Number], default: '' },
     /**
