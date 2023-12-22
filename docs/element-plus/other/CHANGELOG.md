@@ -4,8 +4,8 @@
 
 ### Bug Fixes
 
-- 修复`breadcrumb`组件跳转的优化
-- 修复一些已知问题
+- 修复使用`unplugin-vue-components`自动引入`elementPlus`时，`el-`前缀丢失的问题
+- 修复`input`自定义引入没有验证问题
 
 ## 1.5.0 (2023-11-28)
 
