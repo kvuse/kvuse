@@ -195,6 +195,6 @@ const getList = async () => {
   { event :'beforeResponse', dec: '响应拦截', callback: 'response' },
   { event :'responseHandler', dec: '响应处理', callback: 'response' },
   { event :'errorResponse', dec: '响应报错处理', callback: 'error, config' },
-  { event :'errorHandler', dec: '报错信息处理, 默认message.error提示报错信息', callback: 'error' },
+  { event :'errorHandler', dec: '报错信息处理, 默认message.error提示报错信息', callback: 'error, data' },
   { event :'excludePeddings', dec: '不去重连续请求的接口列表 url&get，默认 [ ]', callback: '-' },
 ]" />

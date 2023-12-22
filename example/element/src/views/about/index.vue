@@ -18,10 +18,12 @@
       <k-number-keyboard v-model="value" />
     </div>
   </div>
+  <test />
 </template>
 
 <script setup>
 import { useAboutStore } from './store';
+import test from './components/test.vue';
 
 const value = ref();
 

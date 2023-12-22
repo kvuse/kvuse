@@ -1,6 +1,6 @@
 <template>
   <!-- 基础输入框 -->
-  <el-input v-model.trim="inputValue" v-bind="$attrs" @keyup.enter="searchContent" @change="changeValue">
+  <el-input v-model="inputValue" v-bind="$attrs" @keyup.enter="searchContent" @change="changeValue">
     <template #append v-if="$slots.append">
       <slot name="append" />
     </template>

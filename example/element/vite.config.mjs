@@ -3,6 +3,8 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 // 自动引入 https://juejin.cn/post/7050668133404639268
 import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import path from 'path';
 
 // 详情 https://juejin.cn/post/6994310850290909214
@@ -18,6 +20,14 @@ export default ({ mode }) => defineConfig({
         filepath: './.eslintrc-auto-import.json',
         globalsPropValue: true,
       },
+      resolvers: [
+        ElementPlusResolver(),
+      ],
+    }),
+    Components({
+      resolvers: [
+        ElementPlusResolver(),
+      ],
     }),
   ],
   base: mode === 'production' ? '/static' : '/',
