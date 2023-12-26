@@ -28,7 +28,7 @@ export default defineComponent({
   props: {
     type: { type: String, default: '' },
     isRouter: { type: Boolean, default: false },
-    modelValue: { type: String, default: '' },
+    modelValue: { type: [String, Number], default: '' },
     isPadding: { type: Boolean, default: true },
     replace: { type: Boolean, default: false },
     tabsList: {

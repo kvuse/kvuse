@@ -1455,7 +1455,7 @@ const Xt = B({
   props: {
     type: { type: String, default: "" },
     isRouter: { type: Boolean, default: !1 },
-    modelValue: { type: String, default: "" },
+    modelValue: { type: [String, Number], default: "" },
     isPadding: { type: Boolean, default: !0 },
     replace: { type: Boolean, default: !1 },
     tabsList: {
