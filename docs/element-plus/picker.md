@@ -76,6 +76,7 @@
   { name :'header', dec: '自定义表头插槽', child: '{  column }' },
   { name :'custom', dec: '自定义内容插槽', child: '{ row, column, index }' },
   { name :'right', dec: '右侧插槽', child: '-' },
+  { name :'top', dec: '选择表格上面内容插槽', child: '-' },
   { name :'right-header', dec: '右侧表头插槽', child: '-' },
 ]" />
 
