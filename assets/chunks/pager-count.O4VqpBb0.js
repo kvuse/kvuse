@@ -1,0 +1,1 @@
+import{c as t,af as s,l as u,S as p}from"./framework.Urq_c1ER.js";const _={__name:"pager-count",setup(g){const n=t(500),e=t(1),l=o=>{console.log("page: ",o)};return(o,a)=>{const r=s("k-page");return u(),p(r,{total:n.value,"pager-count":5,modelValue:e.value,"onUpdate:modelValue":a[0]||(a[0]=c=>e.value=c),onCurrentChange:l},null,8,["total","modelValue"])}}};export{_ as default};

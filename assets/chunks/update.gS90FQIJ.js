@@ -1,0 +1,1 @@
+import{c as n,ag as o,l as a,m as t,O as l,a6 as c,X as r,p as u}from"./framework.Urq_c1ER.js";const i=u("span",null,"金额处理：",-1),d={__name:"update",setup(p){const e=n(88.88888);return setTimeout(()=>{e.value=188.66666},1e3),(_,m)=>{const s=o("money");return a(),t("span",null,[i,l((a(),t("span",null,[c(r(e.value),1)])),[[s,e.value,"value"]])])}}};export{d as default};

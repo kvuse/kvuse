@@ -1,0 +1,1 @@
+import{c as a,af as o,l as s,S as c}from"./framework.Urq_c1ER.js";const m={__name:"basic",setup(r){const e=a([{title:"首页",path:"home"},{title:"前台"}]);return(l,n)=>{const t=o("k-breadcrumb");return s(),c(t,{list:e.value},null,8,["list"])}}};export{m as default};

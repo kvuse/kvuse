@@ -1,0 +1,1 @@
+import{c as l,af as n,l as s,m as p,V as r}from"./framework.Urq_c1ER.js";const u={class:"width-240"},d={__name:"point",setup(c){const e=l("");return(m,o)=>{const t=n("kv-input");return s(),p("div",u,[r(t,{point:3,placeholder:"可输入小数点后3位",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=a=>e.value=a)},null,8,["modelValue"])])}}};export{d as default};

@@ -1,0 +1,1 @@
+import{c as l,af as n,l as s,m,V as r}from"./framework.Urq_c1ER.js";const u={class:"width-240"},d={__name:"maxlength",setup(c){const e=l("");return(p,o)=>{const t=n("k-input");return s(),m("div",u,[r(t,{placeholder:"请输入金额",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=a=>e.value=a),maxlength:"10"},null,8,["modelValue"])])}}};export{d as default};

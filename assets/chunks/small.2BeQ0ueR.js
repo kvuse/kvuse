@@ -1,0 +1,1 @@
+import{c as l,af as c,l as u,S as p}from"./framework.Urq_c1ER.js";const g={__name:"small",setup(m){const t=l(50),e=l(1),n=a=>{console.log("page: ",a)};return(a,o)=>{const s=c("k-page");return u(),p(s,{total:t.value,small:"",modelValue:e.value,"onUpdate:modelValue":o[0]||(o[0]=r=>e.value=r),onCurrentChange:n},null,8,["total","modelValue"])}}};export{g as default};

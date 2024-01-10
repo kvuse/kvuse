@@ -1,0 +1,1 @@
+import{c as n,ag as c,l as e,m as a,O as o,a6 as r,X as l,p as i}from"./framework.Urq_c1ER.js";const _=i("span",null,"金额处理：",-1),d={__name:"basic",setup(p){const s=n(88.8888);return(u,m)=>{const t=c("money");return e(),a("span",null,[_,o((e(),a("span",null,[r(l(s.value),1)])),[[t]])])}}};export{d as default};

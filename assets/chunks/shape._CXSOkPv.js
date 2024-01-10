@@ -1,0 +1,1 @@
+import{c as r,af as s,l as m,S as c}from"./framework.Urq_c1ER.js";const u={__name:"shape",setup(p){const e=r({startTime:"",endTime:""}),n=o=>{console.log("value: ",o)};return(o,a)=>{const t=s("kv-date-picker");return m(),c(t,{modelValue:e.value,"onUpdate:modelValue":a[0]||(a[0]=l=>e.value=l),shape:"round-border",onConfirm:n},null,8,["modelValue"])}}};export{u as default};

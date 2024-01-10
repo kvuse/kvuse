@@ -1,1 +1,0 @@
-import{_ as s,D as o,a6 as c,o as e,c as n,a7 as r,b as _,w as l,a as i,F as d,k as m}from"./framework.1elGDiSs.js";const u={},p=m("div",{class:"mb10"},"设置1s后可点击",-1);function b(f,v){const t=o("el-button"),a=c("button");return e(),n(d,null,[p,r((e(),_(t,{type:"primary"},{default:l(()=>[i("延迟1s")]),_:1})),[[a,{delay:1e3}]])],64)}const h=s(u,[["render",b]]);export{h as default};

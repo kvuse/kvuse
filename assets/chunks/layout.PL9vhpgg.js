@@ -1,0 +1,1 @@
+import{c,af as t,l as n,S as r,T as e,a6 as l,V as _}from"./framework.Urq_c1ER.js";const d={__name:"layout",setup(u){const a=c([{title:"首页",path:"home"},{title:"前台"}]);return(m,p)=>{const o=t("k-button"),s=t("k-breadcrumb");return n(),r(s,{list:a.value},{default:e(()=>[_(o,null,{default:e(()=>[l("设置")]),_:1})]),_:1},8,["list"])}}};export{d as default};

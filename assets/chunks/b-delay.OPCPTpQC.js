@@ -1,0 +1,1 @@
+import{ai as s,af as o,ag as c,l as e,m as n,O as r,S as l,T as _,a6 as i,F as d,p as m}from"./framework.Urq_c1ER.js";const p={},u=m("div",{class:"mb10"},"设置1s后可点击",-1);function f(b,v){const t=o("el-button"),a=c("button");return e(),n(d,null,[u,r((e(),l(t,{type:"primary"},{default:_(()=>[i("延迟1s")]),_:1})),[[a,{delay:1e3}]])],64)}const h=s(p,[["render",f]]);export{h as default};

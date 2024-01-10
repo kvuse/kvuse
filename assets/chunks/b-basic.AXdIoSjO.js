@@ -1,0 +1,1 @@
+import{ai as s,af as o,ag as c,l as e,m as n,O as r,S as i,T as _,a6 as l,F as m,p as d}from"./framework.Urq_c1ER.js";const p={},u=d("div",{class:"mb10"},"点击后设置不可点击，800ms后恢复",-1);function f(b,v){const t=o("el-button"),a=c("button");return e(),n(m,null,[u,r((e(),i(t,{type:"primary"},{default:_(()=>[l("防抖点击")]),_:1})),[[a]])],64)}const B=s(p,[["render",f]]);export{B as default};

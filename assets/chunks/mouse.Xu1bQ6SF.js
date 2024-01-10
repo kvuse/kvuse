@@ -1,0 +1,1 @@
+import{ai as e,l as o,m as t,p as s}from"./framework.Urq_c1ER.js";const n={},c=s("span",{class:"line-through"},"中划线",-1),a=s("span",{class:"pointer ml10"},"光标手指指针",-1),_=s("span",{class:"not-allowed ml10"},"禁用样式",-1),l=[c,a,_];function r(i,d){return o(),t("div",null,l)}const m=e(n,[["render",r]]);export{m as default};

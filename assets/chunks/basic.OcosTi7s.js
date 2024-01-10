@@ -1,1 +1,0 @@
-import{h as s,D as c,o as r,c as u,I as p}from"./framework.1elGDiSs.js";const d={class:"width-240"},i={__name:"basic",setup(_){const e=s(""),n=o=>{console.log("val: ",o)};return(o,a)=>{const l=c("k-input");return r(),u("div",d,[p(l,{placeholder:"请输入金额",modelValue:e.value,"onUpdate:modelValue":a[0]||(a[0]=t=>e.value=t),onChange:n},null,8,["modelValue"])])}}};export{i as default};
