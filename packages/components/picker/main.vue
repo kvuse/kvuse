@@ -1,8 +1,8 @@
 <template>
   <div class="k-picker flex-column">
     <slot name="top" />
-    <el-row :gutter="10" class="height-auto mb20" :class="{'custom-right':rightWidth}">
-      <el-col :span="15" class="height-auto flex1">
+    <el-row :gutter="10" class="height-auto mb20" :class="{'custom-right':rightwidth}">
+      <el-col :span="leftSpan" class="height-auto flex1">
         <div class="col-left height-auto flex-column">
           <batchTable ref="batchTableRef" :show-footer="false" :height="height" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage" :scrollbar-always-on="scrollbarAlwaysOn">
             <template #header="{column}">
@@ -14,7 +14,7 @@
           </batchTable>
         </div>
       </el-col>
-      <el-col :span="9" class="height-auto flex-column flex1">
+      <el-col :span="rightSpan" class="height-auto flex-column flex1">
         <div class="col-right flex-column height-auto" :style="{ height: height }">
           <slot name="right">
             <div class="selete-header flex-between">
@@ -79,6 +79,7 @@ export default defineComponent({
     height: { type: String, default: '442px' },
     scrollbarAlwaysOn: { type: Boolean, default: false },
     rightWidth: { type: String, default: '' },
+    rightSpan: { type: Number, default: 9 },
   },
   setup(props, { emit }) {
     const multipleSelection = computed({
@@ -108,11 +109,12 @@ export default defineComponent({
     const getName = (item) => item[props.keyName];
     const getId = (item) => item[props.keyId];
 
+    const leftSpan = computed(() => 24 - props.rightSpan);
     const rightwidth = computed(() => props.rightWidth);
     const autoheight = computed(() => props.height);
 
     return {
-      multipleSelection, batchTableRef, currentPage, emptyHandler, resetData, deleteHandler, getName, getId, rightwidth, autoheight,
+      multipleSelection, batchTableRef, currentPage, emptyHandler, resetData, deleteHandler, getName, getId, rightwidth, autoheight, leftSpan,
     };
   },
 });
@@ -159,6 +161,7 @@ export default defineComponent({
     .el-col-9 {
       flex: none;
       width: v-bind(rightwidth);
+      max-width: none;
     }
   }
 

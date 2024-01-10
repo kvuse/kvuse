@@ -1,5 +1,16 @@
 # 更新日志
 
+## 1.5.7 (2024-01-10)
+
+### Bug Fixes
+
+- 修复[`picker`](../picker.md) 设置`right-width`没有效果问题
+
+### Change
+
+- [`picker`](../picker.md)，添加`right-span`属性
+- [`table`组件](../table.md)，分页组件的优化
+
 ## 1.5.5 (2023-12-22)
 
 ### Bug Fixes

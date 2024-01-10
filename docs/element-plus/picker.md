@@ -64,6 +64,7 @@
   { attr :'scrollbar-always-on', dec: '总是显示滚动条', type: 'string', optional: '-', default: 'false' },
   { attr :'height', dec: '表格的高度,如果自适应布局,设置100%', type: 'string', optional: '-', default: '442px' },
   { attr :'right-width', dec: '右侧的固定宽度，如果没有设置15:9', type: 'string', optional: '-', default: '' },
+  { attr :'right-span', dec: '右侧的栅格化宽度,如果没有设置15:9', type: 'number', optional: '-', default: '9' },
 ]" />
 
 ## TableColumn 属性
