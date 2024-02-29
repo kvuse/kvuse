@@ -4,7 +4,7 @@
     <el-row :gutter="10" class="height-auto mb20" :class="{'custom-right':rightwidth}">
       <el-col :span="leftSpan" class="height-auto flex1">
         <div class="col-left height-auto flex-column">
-          <batchTable ref="batchTableRef" :show-footer="false" :height="height" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" v-model="multipleSelection" v-model:page="currentPage" :scrollbar-always-on="scrollbarAlwaysOn">
+          <batchTable ref="batchTableRef" :show-footer="false" :height="height" :table-data="tableData" :table-column="tableColumn" :select-list="selectList" :key-id="keyId" :check-key="checkKey" v-model="multipleSelection" v-model:page="currentPage" :scrollbar-always-on="scrollbarAlwaysOn">
             <template #header="{column}">
               <slot :name="column.header" :column="column" />
             </template>
@@ -74,6 +74,7 @@ export default defineComponent({
     tableData: { type: Array, default: () => [] },
     tableColumn: { type: Array, default: () => [] },
     keyId: { type: String, default: 'id' },
+    checkKey: { type: String, default: 'isSelect' },
     keyName: { type: String, default: 'name' },
     showCount: { type: Boolean, default: false },
     height: { type: String, default: '442px' },

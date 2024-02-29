@@ -1777,7 +1777,7 @@ function Un() {
 function Bn(e = {}, t = []) {
   const n = {};
   return Object.keys(e).forEach((r) => {
-    e[r] && !t.includes(r) && (n[r] = e[r]);
+    (e[r] || e[r] === 0) && !t.includes(r) && (n[r] = e[r]);
   }), n;
 }
 function Dn(e) {

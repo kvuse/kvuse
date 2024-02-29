@@ -1550,6 +1550,7 @@ const be = B({
     tableData: { type: Array, default: () => [] },
     tableColumn: { type: Array, default: () => [] },
     keyId: { type: String, default: "id" },
+    checkKey: { type: String, default: "isSelect" },
     keyName: { type: String, default: "name" },
     showCount: { type: Boolean, default: !1 },
     height: { type: String, default: "442px" },
@@ -1586,8 +1587,8 @@ const be = B({
   }
 }), ke = () => {
   ye((e) => ({
-    "083bbda8": e.autoheight,
-    aab82988: e.rightwidth
+    "3d88ab14": e.autoheight,
+    f8b84fec: e.rightwidth
   }));
 }, Ce = be.setup;
 be.setup = Ce ? (e, t) => (ke(), Ce(e, t)) : ke;
@@ -1615,6 +1616,7 @@ function ua(e, t, a, l, s, i) {
                 "table-column": e.tableColumn,
                 "select-list": e.selectList,
                 "key-id": e.keyId,
+                "check-key": e.checkKey,
                 modelValue: e.multipleSelection,
                 "onUpdate:modelValue": t[0] || (t[0] = (y) => e.multipleSelection = y),
                 page: e.currentPage,
@@ -1632,7 +1634,7 @@ function ua(e, t, a, l, s, i) {
                   }, void 0, !0) : A("", !0)
                 ]),
                 _: 3
-              }, 8, ["height", "table-data", "table-column", "select-list", "key-id", "modelValue", "page", "scrollbar-always-on"])
+              }, 8, ["height", "table-data", "table-column", "select-list", "key-id", "check-key", "modelValue", "page", "scrollbar-always-on"])
             ])
           ]),
           _: 3
@@ -1724,7 +1726,7 @@ function ua(e, t, a, l, s, i) {
     _(e.$slots, "footer", {}, void 0, !0)
   ]);
 }
-const oe = /* @__PURE__ */ M(be, [["render", ua], ["__scopeId", "data-v-7d2cd23c"]]);
+const oe = /* @__PURE__ */ M(be, [["render", ua], ["__scopeId", "data-v-26399515"]]);
 oe.install = function(e) {
   e.component(oe.name, oe);
 };

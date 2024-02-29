@@ -7,7 +7,7 @@
 export function useFormatParams(params = {}, excludeList = []) {
   const currentParams = {};
   Object.keys(params).forEach((key) => {
-    if (params[key] && !excludeList.includes(key)) currentParams[key] = params[key];
+    if ((params[key] || params[key] === 0) && !excludeList.includes(key)) currentParams[key] = params[key];
   });
   return currentParams;
 }
