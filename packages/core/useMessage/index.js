@@ -31,11 +31,11 @@ export function useMessage() {
         type,
         ...arg,
       }).then(() => resolve(true))
-        .catch(() => {
+        .catch(() => reject())
+        .finally(() => {
           // eslint-disable-next-line no-restricted-globals
           parent.window.postMessage('closeMask()', '*');
           window.top.postMessage('closeMask()', '*');
-          reject();
         });
     }),
     alert: ({
