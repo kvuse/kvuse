@@ -1624,8 +1624,8 @@ function bn() {
           buttonSize: "",
           type: m,
           ...p
-        }).then(() => d(!0)).catch(() => u()).finally(() => {
-          parent.window.postMessage("closeMask()", "*"), window.top.postMessage("closeMask()", "*");
+        }).then(() => d(!0)).catch(() => {
+          parent.window.postMessage("closeMask()", "*"), window.top.postMessage("closeMask()", "*"), u();
         });
       }),
       alert: ({
